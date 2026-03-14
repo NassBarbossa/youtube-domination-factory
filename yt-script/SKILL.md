@@ -34,18 +34,18 @@ Write complete, ready-to-film YouTube scripts that:
 
 ### Step 1: Brief Analysis
 
-Before writing, confirm with the user:
+Before writing, gather this info from the user. Don't dump all questions at once — ask naturally based on what's missing:
 - What's the topic?
 - What format? (Tutorial / News / Deep Dive / Comparison / Reaction)
 - Target length? (Short < 5min / Medium 5-15min / Long 15min+)
 - Key message — what should the viewer walk away with?
 - Any specific points to cover or avoid?
 
-If the user provides a topic from yt-veille output, extract this info from the recommendation.
+If the user provides a topic from yt-veille output, extract this info from the recommendation. If the user already gave some of this info upfront, don't re-ask — just confirm what's unclear.
 
 ### Step 2: Structure
 
-Build the script skeleton using this framework:
+Build the script skeleton as bullet points using this framework:
 
 ```
 1. HOOK (0-10s)
@@ -59,34 +59,50 @@ Build the script skeleton using this framework:
 3. CORE CONTENT (variable)
    → 3-5 main points max
    → Each point: claim → proof → application
-   → Transitions between points feel natural
 
-4. DEMO / PROOF (if applicable)
-   → Screen share moments marked with [SCREEN]
-   → Step-by-step walkthrough marked with [DEMO]
-
-5. BUSINESS ANGLE
+4. BUSINESS ANGLE
    → How to monetize / leverage this
    → Concrete opportunity or use case
 
-6. CTA + OUTRO (last 30s)
+5. CTA + OUTRO (last 30s)
    → Specific call to action (not generic "like and subscribe")
    → Tease next video if possible
 ```
 
-### Step 3: Writing
+### Step 3: Validation
 
-Write the full script with these markers:
+**STOP. Present the bullet points to the user and wait for validation before writing the script.** Do NOT write the full script until the user has approved the structure. This is a collaborative step — the user may:
+- Add, remove, or reorder points
+- Ask for suggestions on specific points (e.g. "propose moi des idées pour les 4 derniers tips")
+- Ask questions about a point before deciding
 
-- `[FACE CAM]` — Nass talking to camera
-- `[SCREEN]` — Screen share / demo moment
-- `[DEMO]` — Live walkthrough
-- `[B-ROLL]` — Suggest visual overlay
-- `[TEXT ON SCREEN]` — Key text to display
-- `[PAUSE]` — Dramatic pause for emphasis
-- `(tone note)` — How to deliver a line, e.g. (sarcastique), (serious), (excited)
+Iterate until the user is satisfied with the full structure. Only then move to Step 4.
 
-### Step 4: Review Checklist
+### Step 4: Writing
+
+Write the full script as **clean text only** — no visual markers, no stage directions, no tone notes. The script is purely what Nass says. The visual and editing directions are handled by the yt-montage skill.
+
+### Step 5: Output Generation
+
+Generate **two outputs** and save them in `yt-script/outputs/`:
+
+**Output 1 — Script Markdown** (`[slug].md`)
+The full script as clean text with metadata (word count, reading time, suggested timestamps). Use the template in `references/script-template.md`.
+
+**Output 2 — Visual Slides HTML** (`[slug]-visual.html`)
+An HTML file (1920x1080 per slide) styled like an Excalidraw whiteboard for use as on-screen visuals during the video. Specifications:
+- One intro slide (title + subtitle)
+- One slide per main section/tip/point
+- Each slide contains: tip number, title, tagline, and 3-5 bullet points summarizing key takeaways
+- Hand-drawn font (Caveat from Google Fonts)
+- Dotted background, slight card rotation for sketch feel
+- Each slide has a unique accent color
+- Cards with white background, colored border, and subtle shadow
+- Designed to be screenshot-ready or screen-recorded for B-roll
+
+Open both files for the user after generation (Cursor for .md, browser for .html).
+
+### Step 6: Review Checklist
 
 Before delivering, verify:
 - [ ] Hook creates curiosity in first 10 seconds
@@ -105,7 +121,7 @@ Before delivering, verify:
 - ALWAYS include a business/opportunity angle — the audience wants to know "how does this make me money or save me time?"
 - ALWAYS write the way people TALK, not the way people WRITE. Read it aloud mentally.
 - Mark estimated word count and reading time at the end of the script
-- If a demo section exists, describe what should be shown on screen precisely enough for Nass to follow during recording
+- If a demo section exists, describe clearly what Nass should show/do so he can follow during recording
 - Output language follows the user's request (French by default, English if asked)
 
 ## Script Length Guide
@@ -125,7 +141,7 @@ Before delivering, verify:
 "Et si je te disais que t'as pas besoin de savoir coder pour lancer un SaaS en 2026 ?"
 
 ### The Demo Tease
-"Regarde ce que je viens de build en 10 minutes. [SCREEN] Oui, ca marche. Et je vais te montrer comment."
+"Regarde ce que je viens de build en 10 minutes. Oui, ca marche. Et je vais te montrer comment."
 
 ### The Contrarian
 "Tout le monde parle d'agents IA. Mais personne te dit le vrai probleme."

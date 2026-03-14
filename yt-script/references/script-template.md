@@ -8,23 +8,18 @@ Use this as a starting structure. Adapt based on format and topic.
 
 ---
 
-### HOOK [FACE CAM] (0:00 - 0:10)
+### HOOK (0:00 - 0:10)
 
 [Bold opening line that creates curiosity]
 
-### CONTEXT [FACE CAM] (0:10 - 0:30)
+### CONTEXT (0:10 - 0:30)
 
 [Why this matters now + what's in it for the viewer]
 
 ### POINT 1: [SUBTITLE] (0:30 - X:XX)
 
-[FACE CAM]
 [Claim]
-
-[SCREEN] / [DEMO]
 [Proof / demonstration]
-
-[FACE CAM]
 [Application — how the viewer uses this]
 
 ### POINT 2: [SUBTITLE] (X:XX - X:XX)
@@ -35,11 +30,11 @@ Use this as a starting structure. Adapt based on format and topic.
 
 [Same structure: claim → proof → application]
 
-### BUSINESS ANGLE [FACE CAM] (X:XX - X:XX)
+### BUSINESS ANGLE (X:XX - X:XX)
 
 [How to monetize or leverage this — concrete opportunity]
 
-### CTA + OUTRO [FACE CAM] (last 30s)
+### CTA + OUTRO (last 30s)
 
 [Specific call to action]
 [Tease next video if applicable]
