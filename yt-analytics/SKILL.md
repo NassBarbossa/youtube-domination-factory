@@ -101,7 +101,28 @@ Deliver 3-5 specific, prioritized recommendations:
 ...
 ```
 
-### Step 5: Growth Tracking
+### Step 5: Output Generation
+
+Generate an **HTML analytics dashboard** and save it in `yt-analytics/outputs/[slug]-analytics.html`.
+
+The dashboard must include:
+- **Header**: Video title, publish date, data date, duration, verdict badge
+- **Metrics grid**: Key stats (vues, CTR, rétention, conversion abonnés) with color-coded benchmarks (bad/avg/good/great)
+- **Secondary metrics**: Impressions, spectateurs uniques, AVD, abonnés gagnés
+- **Retention visualization**: Bar charts showing retention by segment (hook, début, corps)
+- **What worked / What didn't**: Two-column cards with specific observations
+- **Recommendations**: Priority-ordered cards (1-4) with: based on, action, expected impact
+- **Footer**: Report metadata
+
+Design specs:
+- Dark theme (#0f0f0f background), Inter font
+- Color coding: red = bad/critical, orange = average/important, blue = action, green = great/win
+- Clean, dashboard-style layout — data-dense but readable
+- Responsive within a 1400px container
+
+Open the HTML in the browser after generation.
+
+### Step 6: Growth Tracking
 
 If historical data available, track:
 - Subscriber growth rate (monthly)
