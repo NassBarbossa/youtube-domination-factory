@@ -214,3 +214,47 @@ Expected:
 ```
 
 All intermediate data should be visible in `context/video-context.json`.
+
+---
+
+## Maintenance & GitHub
+
+### When Pushing to GitHub
+
+**Important:** Every time you make architecture changes and push to GitHub, **update README.md** to keep documentation in sync.
+
+**Checklist before `git push`:**
+
+- [ ] Architecture changes? → Update [README.md](README.md) sections:
+  - "The Pipeline" (if phases change)
+  - "Skills Included" (if skills are added/removed)
+  - "Data Flow Example" (if context structure changes)
+
+- [ ] New skill added? → Add row to "Skills Included" table in README
+
+- [ ] Phase changes or orchestrator logic modified? → Update "The Pipeline" diagram in README
+
+- [ ] New features? → Update "Key Features" checklist
+
+- [ ] Sprint 2 progress? → Update "Sprint 2 (Planned)" section
+
+**Example commit message:**
+```
+git commit -m "feat: Add new Phase X
+
+- Modified yt-orchestrator/SKILL.md (Phase X logic)
+- Updated CLAUDE.md (architecture section)
+- Updated README.md (pipeline diagram + data flow)"
+```
+
+### README Structure
+
+The README.md is the **public-facing documentation**. Keep these sections up-to-date:
+- Quick Start (if triggers change)
+- Architecture v2.0 → The Pipeline (if phases change)
+- Skills Included (if skills change)
+- Data Flow Example (if context.json structure changes)
+- Key Features (if capabilities change)
+- Sprint 2 (if roadmap updates)
+
+CLAUDE.md is the **internal guidance** for developers. It's more detailed but README is what users see first.
