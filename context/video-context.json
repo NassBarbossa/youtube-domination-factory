@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "slug": null,
+    "status": "pending",
+    "pipeline_step": 0,
+    "triggered_by": null,
+    "created_at": null,
+    "updated_at": null
+  },
+  "request": {
+    "raw_input": null,
+    "topic": null,
+    "language": "fr"
+  },
+  "veille": {
+    "status": "pending",
+    "selected_idea": null
+  },
+  "script": {
+    "status": "pending",
+    "slug": null,
+    "file_path": null,
+    "visual_path": null,
+    "word_count": 0,
+    "reading_time_min": 0,
+    "structure": {
+      "hook": null,
+      "sections": [],
+      "timestamps_raw": [],
+      "shorts_moments": []
+    }
+  },
+  "titres_seo": {
+    "status": "pending",
+    "winning_title": null,
+    "primary_keyword": null,
+    "secondary_keywords": []
+  },
+  "miniature": {
+    "status": "pending",
+    "recommended_concept": null
+  },
+  "description": {
+    "status": "pending",
+    "description_full": null,
+    "tags": [],
+    "first_150_chars": null
+  },
+  "repurposing": {
+    "status": "pending",
+    "shorts": [],
+    "x_thread_hook": null,
+    "linkedin_hook": null,
+    "posting_schedule": null
+  },
+  "pipeline_log": []
+}

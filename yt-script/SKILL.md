@@ -149,3 +149,74 @@ Before delivering, verify:
 ## Communication
 
 Talk to Nass directly during the process. Ask clarifying questions if the brief is vague. Suggest alternatives if something feels off. Be honest if a topic is hard to make entertaining.
+
+---
+
+## Context Protocol (Mode Autonome — Orchestrateur)
+
+Quand tu es invoqué par `yt-orchestrator` (mode autonome), ignore les étapes Step 1-3 classiques et suis ce protocole :
+
+### Input
+
+Lire `context/video-context.json` :
+
+- `request.topic` : le sujet de la vidéo (ex: "Claude Code 4")
+- `veille.selected_idea` : si Mode B, l'idée avec angle/format/hook_suggestion
+- Aucune interaction utilisateur directe — tu travailles autonome
+
+### Workflow Autonome
+
+1. **Extraire le topic** depuis `request.topic` (ou depuis `veille.selected_idea.title` si disponible)
+2. **Déterminer le format** depuis `veille.selected_idea.format` ou déduire ("Tutorial" par défaut)
+3. **Déterminer la longueur** : Medium (5-15 min) par défaut
+4. **Générer le slug** : `slugify(topic)` (ex: `claude-4-features`)
+5. **Écrire le script** directement (pas de Step 3 validation — tu as confiance)
+   - Hook naturel, pas copié de yt-veille
+   - Structure classique (hook → context → core → business angle → CTA)
+   - Longueur : ~1500 mots pour Medium
+
+### Output
+
+Écrire dans `context/video-context.json` → `script` :
+
+```json
+{
+  "script": {
+    "status": "completed",
+    "slug": "[generated-slug]",
+    "file_path": "yt-script/outputs/[slug].md",
+    "visual_path": "yt-script/outputs/[slug]-visual.html",
+    "word_count": [integer],
+    "reading_time_min": [integer],
+    "structure": {
+      "hook": "[first 30 chars of hook]",
+      "sections": [
+        {"title": "Section 1", "key_points": [...]},
+        {"title": "Section 2", "key_points": [...]}
+      ],
+      "timestamps_raw": [
+        {"time": "0:00", "label": "Hook"},
+        {"time": "0:30", "label": "Context"},
+        ...
+      ],
+      "shorts_moments": [
+        {"start": 45, "end": 60, "description": "Short-worthy clip"}
+      ]
+    }
+  }
+}
+```
+
+Aussi créer les deux fichiers outputs (`[slug].md` et `[slug]-visual.html`) dans `yt-script/outputs/`.
+
+### Autonomie
+
+- **Pas d'interaction Nass** : tu génères le script complet sans feedback
+- **Pas de Step 3 validation** : tu valides toi-même que le script respecte les règles
+- **Erreurs** : si tu ne peux pas générer (topic trop vague), log dans `pipeline_log` et notifie `yt-orchestrator`
+
+---
+
+## Mode Manuel (Préservé)
+
+Si Nass t'appelle directement avec `/yt-script`, ignore le Context Protocol et utilise le workflow classique (Step 1-6 avec interaction utilisateur).

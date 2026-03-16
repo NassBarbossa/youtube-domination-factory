@@ -87,3 +87,78 @@ Rank ideas by total score and recommend the top 3 with a short justification for
 ## Communication
 
 Casual, direct tone. Use "tu" with Nass. No corporate fluff. If an idea is mediocre, say it straight.
+
+---
+
+## Context Protocol (Mode Autonome — Orchestrateur, Mode B uniquement)
+
+Quand tu es invoqué par `yt-orchestrator` en Phase 0.5 (mode autonome, Mode B), suis ce protocole :
+
+### Mode On-Demand (Appel depuis orchestrateur)
+
+**Déclenché quand** : Nass dit "trouve moi des idées", "sujet de vidéo", etc. sans fournir de topic spécifique.
+
+### Input
+
+Lire `context/video-context.json` → `request` :
+
+- `request.raw_input` : la demande brute de Nass
+- Aucune contrainte de topic — tu cherches librement
+
+### Workflow
+
+1. **Rechercher** : parcourir les sources (Anthropic, Twitter/X, nouveaux outils, tendances)
+2. **Scorer** : chaque idée sur Niche relevance / Audience potential / Timing
+3. **Filtrer** : ne garder que les > 3/5
+4. **Formatter** : présenter les top 3-5 idées selon le template Step 3
+5. **Recommander** : classer et suggérer la meilleure option
+
+### Output
+
+Écrire dans `context/video-context.json` → `veille` :
+
+```json
+{
+  "veille": {
+    "status": "ideas_generated",
+    "ideas": [
+      {
+        "title": "[idea title]",
+        "angle": "[one-sentence why and when]",
+        "format": "[Tutorial/News/Deep Dive/Comparison/Reaction]",
+        "length": "[Short/Medium/Long]",
+        "seo_keywords": ["keyword1", "keyword2"],
+        "hook_suggestion": "[first sentence]",
+        "scores": {
+          "relevance": 5,
+          "audience": 5,
+          "timing": 5,
+          "total": 15
+        }
+      }
+    ],
+    "top_recommendation": {
+      "title": "[best idea title]",
+      "reason": "[1-2 sentences why this one]"
+    }
+  }
+}
+```
+
+Puis **attendre la validation Nass** (orchestrateur demandera à Nass de choisir).
+
+### Mode Cron (Sprint 2 — Optionnel pour la v2.0)
+
+À l'avenir (Sprint 2), ce skill supportera aussi un **mode cron autonome** qui :
+- Scanne les sources 1-2x/jour
+- Accumule les idées dans `context/backlog.json` (nouveau fichier)
+- Ne bloque PAS sur validation — juste enrichit le backlog
+- Notifie Nass quand une idée urgente/trendy est détectée
+
+Pour la v2.0, cette fonctionnalité est **optionnelle**.
+
+---
+
+## Mode Manuel (Préservé)
+
+Si Nass t'appelle directement avec `/yt-veille`, ignore le Context Protocol et utilise le workflow classique (Step 1-4 avec interaction utilisateur).

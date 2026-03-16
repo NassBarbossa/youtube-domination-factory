@@ -110,3 +110,67 @@ Always include these base tags alongside topic-specific ones:
 - claude code, ia, intelligence artificielle, ai, anthropic
 - business ia, entrepreneur ia, automatisation
 - nass riviera
+
+---
+
+## Context Protocol (Mode Autonome — Orchestrateur)
+
+Quand tu es invoqué par `yt-orchestrator` en Phase 2 (mode autonome), suis ce protocole :
+
+### Input
+
+Lire `context/video-context.json` → `script` et `titres_seo` :
+
+- `titres_seo.winning_title` : le titre pour la première ligne
+- `titres_seo.primary_keyword` : keyword principal pour front-load
+- `titres_seo.secondary_keywords[]` : keywords pour la section tags
+- `script.structure.timestamps_raw[]` : timestamps pour la description
+- `script.slug` : slug de la vidéo
+
+Aucune interaction utilisateur — tu travailles autonome.
+
+### Workflow Autonome
+
+1. **Écrire la description** :
+   - Ligne 1-2 : front-load primary_keyword + hook court
+   - Ligne 3 : value proposition (pourquoi regarder)
+   - Timestamps : depuis script.structure.timestamps_raw
+   - Resources section : adaptée au topic
+   - About section : boilerplate standard
+   - CTA : standard (s'abonner)
+   - Social links : Twitter/X + LinkedIn
+
+2. **Générer 15-20 tags** :
+   - Exact match : primary + secondary keywords
+   - Broad : AI, Claude Code, automation
+   - Channel : claude code, ia, nass riviera
+   - Long-tail : spécifiques au topic
+
+3. **Extraire first 150 chars** : les premiers 150 caractères de la description (ce qui s'affiche en recherche)
+
+### Output
+
+Écrire dans `context/video-context.json` → `description` :
+
+```json
+{
+  "description": {
+    "status": "completed",
+    "description_full": "[full description text — 300-500 words]",
+    "tags": ["tag1", "tag2", "tag3", ...],
+    "first_150_chars": "[first 150 chars — what shows in search results]"
+  }
+}
+```
+
+### Autonomie
+
+- **Pas d'interaction** : tu génères la description et tags complets
+- **Responsabilité** : tu garantis que first_150_chars est optimisé SEO
+- **Format** : description prête à copier-coller dans YouTube
+
+---
+
+## Mode Manuel (Préservé)
+
+Si Nass t'appelle directement avec `/yt-description`, ignore le Context Protocol et utilise le workflow classique (Step 1-4 avec interaction utilisateur).

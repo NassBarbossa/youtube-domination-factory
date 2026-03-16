@@ -165,3 +165,92 @@ Thread →"
 ### Bad X thread opener
 "Nouvelle video sur ma chaine ! Je parle des Agent Teams de Claude Code. Lien dans le thread."
 → Zero value, pure promo, nobody cares
+
+---
+
+## Context Protocol (Mode Autonome — Orchestrateur)
+
+Quand tu es invoqué par `yt-orchestrator` en Phase 4 (mode autonome), suis ce protocole :
+
+### Input
+
+Lire `context/video-context.json` → `script` et `titres_seo` :
+
+- `script.slug` : slug de la vidéo
+- `script.structure.shorts_moments[]` : moments clippables pour Shorts (timestamp, description)
+- `script.structure` : sections et points clé
+- `titres_seo.winning_title` : le titre VALIDÉ (utiliser dans les CTAs)
+
+Aucune interaction utilisateur — tu travailles autonome.
+
+### Workflow Autonome
+
+1. **Miner le script** : extraire quotable moments, insights, démos
+2. **Générer les Shorts** :
+   - 1-3 shorts depuis script.structure.shorts_moments
+   - Hook puissant (2 sec), contenu (40-50 sec), punchline (5 sec)
+   - Prêts pour le clipping
+
+3. **Générer le thread X** :
+   - Hook statement puissant
+   - 5-6 tweets valeur
+   - CTA avec lien video + mention du titre validé
+   - Prêt pour copy-paste
+
+4. **Générer le post LinkedIn** :
+   - Hook intrigant (pour le "...see more")
+   - Body 800-1200 chars, angle professionnel
+   - CTA question + lien video
+   - Prêt pour copy-paste
+
+5. **Créer schedule** :
+   - Day 0 : video YouTube
+   - Day 0 (+2h) : X thread
+   - Day 1 : LinkedIn
+   - Day 1-3 : Shorts (1/jour)
+
+### Output
+
+Écrire dans `context/video-context.json` → `repurposing` :
+
+```json
+{
+  "repurposing": {
+    "status": "completed",
+    "shorts": [
+      {
+        "number": 1,
+        "title": "[Short title]",
+        "hook": "[first 2 sec]",
+        "content": "[40-50 sec]",
+        "punchline": "[5 sec + CTA]",
+        "text_overlay": "[on-screen text]",
+        "source_timestamp": "[MM:SS - MM:SS]"
+      }
+    ],
+    "x_thread_hook": "[hook tweet for thread]",
+    "x_thread_full": "[complete thread ready to post]",
+    "linkedin_hook": "[first line before ...see more]",
+    "linkedin_full": "[complete post ready to post]",
+    "posting_schedule": {
+      "day_0_youtube": "Video goes live",
+      "day_0_x_thread": "Post X thread (2h after YouTube)",
+      "day_1_linkedin": "Post LinkedIn",
+      "day_1_3_shorts": "1 Short per day"
+    }
+  }
+}
+```
+
+### Autonomie
+
+- **Pas d'interaction** : tu génères tous les contenus directement (Shorts, thread, LinkedIn, schedule)
+- **Titre validé** : utilise `titres_seo.winning_title` dans tous les CTAs (il a déjà été validé par Nass)
+- **Responsabilité** : tu garantis que chaque plateforme a sa propre voix et format
+- **Prêt à poster** : tous les contenus sont ready to copy-paste
+
+---
+
+## Mode Manuel (Préservé)
+
+Si Nass t'appelle directement avec `/yt-repurposing`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec interaction utilisateur).

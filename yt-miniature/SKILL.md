@@ -115,3 +115,66 @@ When running as part of an agent team:
 - **Topic**: "Build a SaaS with Claude Code"
 - **Text on thumbnail**: "BUILD A SAAS WITH CLAUDE CODE"
 - **Why it fails**: Just repeats the title, adds zero new information
+
+---
+
+## Context Protocol (Mode Autonome — Orchestrateur)
+
+Quand tu es invoqué par `yt-orchestrator` en Phase 2 (mode autonome), suis ce protocole :
+
+### Input
+
+Lire `context/video-context.json` → `script` et `titres_seo` :
+
+- `script.slug` : slug de la vidéo
+- `script.structure.hook` : le hook pour inspirer le concept
+- `titres_seo.winning_title` : le titre gagnant **IMPORTANT** : À NE PAS répéter dans text_overlay
+
+Aucune interaction utilisateur — tu travailles autonome.
+
+### Workflow Autonome
+
+1. **Analyser le script** : extraire emotion, key visual, main idea
+2. **Lire le titre gagnant** depuis `titres_seo.winning_title`
+3. **Générer 3 concepts** thumbnail avec:
+   - Layout clair
+   - Text overlay qui **COMPLÈTE** le titre (pas une répétition)
+   - Émotions et visuels
+   - Palette couleur
+4. **Scorer** rapidement (scroll-stop, clarity, title synergy, brand consistency)
+5. **Sélectionner le meilleur** concept comme `recommended_concept`
+
+### Output
+
+Écrire dans `context/video-context.json` → `miniature` :
+
+```json
+{
+  "miniature": {
+    "status": "completed",
+    "recommended_concept": {
+      "name": "[Concept name]",
+      "layout": "[description]",
+      "main_visual": "[face/screenshot/icon/object]",
+      "text_overlay": "[2-4 words — NOT repeating title]",
+      "font_style": "[Bold sans-serif / handwritten / tech-style]",
+      "color_palette": ["#HEX1", "#HEX2", "#HEX3"],
+      "face_expression": "[specific expression if Nass appears]",
+      "emotion_conveyed": "[feeling]",
+      "contrast_trick": "[what makes it pop]"
+    }
+  }
+}
+```
+
+### Autonomie
+
+- **Pas d'interaction** : tu choisis le meilleur concept directement (pas de présentation des 3 options)
+- **Règle critique** : `text_overlay` ne doit JAMAIS répéter le `winning_title` — complémenter seulement
+- **Responsabilité** : tu garantis que le concept est mobile-first et prêt pour Canva
+
+---
+
+## Mode Manuel (Préservé)
+
+Si Nass t'appelle directement avec `/yt-miniature`, ignore le Context Protocol et utilise le workflow classique (Step 1-4 avec présentation des 3 concepts).

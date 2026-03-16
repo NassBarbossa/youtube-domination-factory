@@ -44,3 +44,173 @@ Each module contains a single `SKILL.md` with YAML frontmatter (name, descriptio
 ## Script Markers
 
 Scripts use visual markers: `[FACE CAM]`, `[SCREEN]`, `[DEMO]`, `[B-ROLL]` to indicate shot types for the editing team.
+
+---
+
+# Multi-Agent Architecture v2.0
+
+Starting from March 2026, the system supports **automated multi-agent orchestration** in addition to manual skill-by-skill workflows. This dramatically reduces manual copy-paste between skills and enables end-to-end pipeline automation.
+
+## How It Works
+
+### The Orchestrator
+
+One master skill (`yt-orchestrator`) manages the entire pipeline:
+- Detects user intent (Mode A: topic provided, Mode B: find ideas first)
+- Creates a shared JSON context file (`context/video-context.json`)
+- Spawns agent instances using Claude Code's `Agent` tool
+- Passes context to each agent, collects outputs, feeds them to the next agent
+- Pauses for human validation at critical steps (Phase 3: title, thumbnail, description)
+- Handles errors and session recovery
+
+### Shared Context File
+
+**Location**: `context/video-context.json`
+
+This single JSON file is the "bus" through which all agents communicate:
+```json
+{
+  "_meta": {version, slug, status, pipeline_step, ...},
+  "request": {raw_input, topic, language},
+  "veille": {selected_idea, status, ...},
+  "script": {slug, file_path, word_count, structure, ...},
+  "titres_seo": {winning_title, keywords, ...},
+  "miniature": {recommended_concept, ...},
+  "description": {description_full, tags, ...},
+  "repurposing": {shorts[], x_thread_full, linkedin_full, ...},
+  "pipeline_log": [...]
+}
+```
+
+Each agent:
+1. **Reads** from its input section (e.g., yt-script reads `request.topic` and `veille.selected_idea`)
+2. **Writes** to its output section (e.g., yt-script writes `script.*`)
+3. **Ignores** sections it doesn't care about
+
+### Two Modes of Operation
+
+#### Mode A: Topic Provided
+User says: *"Fais une vidéo sur Claude Code 4"*
+
+```
+yt-orchestrator
+├─ Phase 1 → yt-script (writes script.*)
+├─ Phase 2 → [parallel] yt-titres-seo + yt-miniature + yt-description
+├─ Phase 3 → PAUSE for human validation (title ✓ thumbnail ✓ description ✓)
+└─ Phase 4 → yt-repurposing (writes shorts, threads, LinkedIn posts)
+```
+
+#### Mode B: Find Ideas First
+User says: *"Trouve moi un sujet de vidéo"*
+
+```
+yt-orchestrator
+├─ Phase 0.5 → yt-veille (generates 3-5 ideas, PAUSE for choice)
+├─ Phase 1 → yt-script (writes script.*)
+├─ Phase 2 → [parallel] yt-titres-seo + yt-miniature + yt-description
+├─ Phase 3 → PAUSE for human validation
+└─ Phase 4 → yt-repurposing
+```
+
+### Pipeline Phases
+
+| Phase | Agent(s) | Action | Pause? |
+|-------|----------|--------|--------|
+| 0 | orchestrator | Init slug, create JSON | No |
+| 0.5 | yt-veille | Generate ideas (Mode B only) | **Yes** — user chooses |
+| 1 | yt-script | Write full script | No |
+| 2a | yt-titres-seo | Generate titles & keywords | No |
+| 2b | yt-miniature | Design thumbnail concept | No (parallel with 2a/2c) |
+| 2c | yt-description | Write description & tags | No (parallel with 2a/2b) |
+| 3 | orchestrator | Present validation summary | **Yes** — user validates title, thumbnail, description |
+| 4 | yt-repurposing | Create shorts, threads, LinkedIn posts | No |
+| 5 | orchestrator | Generate recap, archive JSON | No |
+
+### Context Protocol (in Each Skill)
+
+Each skill now has a **Context Protocol** section that defines:
+- **Autonomous mode**: How to read from JSON, process without user interaction, write back to JSON
+- **Manual mode**: Traditional workflow (preserved for backward compatibility)
+
+When `yt-orchestrator` spawns an agent, it provides:
+```
+"Read context/video-context.json as input.
+Operate autonomously (no interactive validation).
+Write your outputs directly to context/video-context.json.
+Report completion."
+```
+
+### Session Recovery
+
+If the pipeline is interrupted:
+1. `yt-orchestrator` reads `_meta.pipeline_step`
+2. Offers to resume from that step or restart
+3. Agents read the existing JSON and continue from where it left off
+
+---
+
+## Manual Mode (Fully Preserved)
+
+**Every skill continues to work 100% normally if called directly.**
+
+Examples:
+- `/yt-script "write a script about Claude Code"` → Uses classic workflow (Step 1-6 with interaction)
+- `/yt-titres-seo` → Presents 5 title options for choice
+- `/yt-miniature` → Shows 3 concepts for selection
+
+The Context Protocol is **transparent** — it only activates when:
+1. An agent is spawned by `yt-orchestrator` (detected via prompt)
+2. `context/video-context.json` exists and is passed as input
+
+Manual invocation is never forced. Nass can still:
+- Mix orchestrated and manual workflows
+- Call individual skills directly
+- Manually copy-paste between skills (old way still works)
+
+---
+
+## Key Design Decisions
+
+1. **One-way data flow from script to repurposing** — ensures dependencies are met
+2. **Parallel Phase 2** — faster turnaround (3 agents at once instead of sequentially)
+3. **Validation pause before repurposing** — title/thumbnail/description must be approved before creating multi-platform content
+4. **Archive versioning** — each completed pipeline is saved to `context/archive/[slug]-[timestamp].json` for history
+5. **No breaking changes** — manual mode still works, orchestrator is optional
+
+---
+
+## Implementation Checklist
+
+- [x] Create `context/video-context.json` template
+- [x] Create `yt-orchestrator/SKILL.md` (master orchestrator)
+- [x] Add Context Protocol to `yt-script/SKILL.md`
+- [x] Add Context Protocol to `yt-titres-seo/SKILL.md`
+- [x] Add Context Protocol to `yt-miniature/SKILL.md`
+- [x] Add Context Protocol to `yt-description/SKILL.md`
+- [x] Add Context Protocol to `yt-repurposing/SKILL.md`
+- [x] Add Context Protocol to `yt-veille/SKILL.md`
+- [ ] Delete `yt-montage/` (replaced by better tooling)
+- [ ] Update `yt-analytics/SKILL.md` (Sprint 2)
+- [ ] Create `context/backlog.json` for cron ideas (Sprint 2)
+- [ ] Implement cron job for `yt-veille` (Sprint 2)
+
+---
+
+## Testing the v2.0
+
+**Quick Test**:
+```
+User: "Fais une vidéo sur Claude Code 4"
+
+Expected:
+1. yt-orchestrator detects Mode A
+2. Generates slug "claude-code-4"
+3. Spawns yt-script
+4. Spawns yt-titres-seo, yt-miniature, yt-description in parallel
+5. Presents validation summary
+6. Awaits "OK" from user
+7. Spawns yt-repurposing
+8. Presents final recap
+```
+
+All intermediate data should be visible in `context/video-context.json`.

@@ -108,3 +108,56 @@ When running as part of an agent team:
 - Click: 2/5 — Vague, could be anything
 - Accuracy: 3/5 — Too generic to be accurate or inaccurate
 - Nass fit: 1/5 — Too hype-bro
+
+---
+
+## Context Protocol (Mode Autonome — Orchestrateur)
+
+Quand tu es invoqué par `yt-orchestrator` en Phase 2 (mode autonome), suis ce protocole :
+
+### Input
+
+Lire `context/video-context.json` → `script` :
+
+- `script.slug` : le slug de la vidéo
+- `script.structure.hook` : le hook du script
+- `script.word_count` : nombre de mots (indique le format)
+
+Aucune interaction utilisateur — tu travailles autonome.
+
+### Workflow Autonome
+
+1. **Analyser le script** : extraire topic, angle, unique value proposition
+2. **Générer 8-10 titres** selon les formulas classiques
+3. **Scorer** rapidement (SEO strength, click appeal, accuracy, Nass fit)
+4. **Sélectionner le meilleur** titre comme `winning_title`
+5. **Identifier keywords** :
+   - Primary keyword : le terme principal recherché
+   - Secondary keywords : 3-5 variations longue traîne
+
+### Output
+
+Écrire dans `context/video-context.json` → `titres_seo` :
+
+```json
+{
+  "titres_seo": {
+    "status": "completed",
+    "winning_title": "[titre de 40-55 caractères]",
+    "primary_keyword": "[main keyword]",
+    "secondary_keywords": ["keyword1", "keyword2", "keyword3"]
+  }
+}
+```
+
+### Autonomie
+
+- **Pas d'interaction** : tu choisis le meilleur titre directement (pas de présentation des 5 meilleures options)
+- **Responsabilité** : tu garantis que le titre respecte les règles (< 60 chars, SEO, Nass fit)
+- **Pas de reprise** : une fois écrit dans le JSON, c'est validé au step Phase 3 par Nass
+
+---
+
+## Mode Manuel (Préservé)
+
+Si Nass t'appelle directement avec `/yt-titres-seo`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec présentation des top 5 options).
