@@ -4,21 +4,26 @@
 Generate individual and aggregated analytics reports from YouTube CSV data.
 
 Usage:
+    python generate_report.py "path/to/ZIP"
+    OR
     python generate_report.py "path/to/CSV" "video-slug"
 
 This script:
-1. Parses YouTube Studio CSV
-2. Checks historical data for the video
-3. Calculates deltas (changes from last analysis)
-4. Generates individual HTML report with comparison
-5. Updates historical database
-6. (Future) Regenerates aggregated dashboard
+1. Parses YouTube Studio CSV (extracts from ZIP or uses CSV directly)
+2. Extracts video title from ZIP filename (YouTube Studio format)
+3. Generates slug automatically from title
+4. Checks historical data for the video
+5. Calculates deltas (changes from last analysis)
+6. Generates individual HTML report with comparison
+7. Updates historical database
 """
 
 import csv
 import json
 import sys
 import io
+import re
+import zipfile
 from pathlib import Path
 from datetime import datetime
 
@@ -31,6 +36,38 @@ OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 
 HISTORY_DIR.mkdir(exist_ok=True)
 OUTPUTS_DIR.mkdir(exist_ok=True)
+
+def extract_title_from_zip_name(zip_filename):
+    """
+    Extract video title from YouTube Studio ZIP filename.
+
+    Format: "Contenu 2026-03-08_2026-03-15 On #VibeCode un site (complet) en 20 minutes - Guide #ClaudeCode (EP02).zip"
+    Returns: "On #VibeCode un site (complet) en 20 minutes - Guide #ClaudeCode (EP02)"
+    """
+    # Remove extension
+    name = Path(zip_filename).stem
+
+    # Pattern: "Contenu YYYY-MM-DD_YYYY-MM-DD [TITLE].zip"
+    # We need to extract the part after the date range
+    match = re.search(r'Contenu \d{4}-\d{2}-\d{2}_\d{4}-\d{2}-\d{2}\s+(.+)', name)
+
+    if match:
+        return match.group(1).strip()
+
+    # Fallback: return filename without dates
+    return name
+
+def slugify(title):
+    """Convert title to URL-safe slug."""
+    # Convert to lowercase
+    slug = title.lower()
+    # Remove special chars but keep hyphens, spaces, alphanumeric
+    slug = re.sub(r'[^a-z0-9\s\-]', '', slug)
+    # Replace spaces and multiple hyphens with single hyphen
+    slug = re.sub(r'[\s\-]+', '-', slug)
+    # Remove leading/trailing hyphens
+    slug = slug.strip('-')
+    return slug
 
 def time_to_seconds(time_str):
     """Convert HH:MM:SS or M:SS format to seconds."""
@@ -127,9 +164,13 @@ def load_history(video_slug):
         "analyses": []
     }
 
-def save_history(video_slug, history_data):
+def save_history(video_slug, video_title, history_data):
     """Save historical data for a video."""
     history_file = HISTORY_DIR / f"{video_slug}.json"
+
+    # Add title if not already present
+    if "video_title" not in history_data:
+        history_data["video_title"] = video_title
 
     with open(history_file, 'w', encoding='utf-8') as f:
         json.dump(history_data, f, indent=2, ensure_ascii=False)
@@ -163,7 +204,7 @@ def format_metric_badge(delta):
     else:
         return f'<span class="badge badge-stable">→ Stable</span>'
 
-def generate_html_report(video_slug, metrics, delta_data):
+def generate_html_report(video_slug, video_title, metrics, delta_data):
     """Generate HTML report with comparison data."""
 
     # Format comparison section
@@ -223,7 +264,7 @@ def generate_html_report(video_slug, metrics, delta_data):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analytics — {video_slug}</title>
+<title>Analytics — {video_title}</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * {{ margin: 0; padding: 0; box-sizing: border-box; }}
@@ -382,8 +423,8 @@ def generate_html_report(video_slug, metrics, delta_data):
 
   <div class="header">
     <div class="header-left">
-      <h1>Analytics <span>— {video_slug}</span></h1>
-      <div class="meta">Analysée le {metrics['date']}</div>
+      <h1>Analytics <span>— {video_title}</span></h1>
+      <div class="meta">Slug: {video_slug} | Analysée le {metrics['date']}</div>
     </div>
   </div>
 
@@ -420,13 +461,58 @@ def generate_html_report(video_slug, metrics, delta_data):
     return html_content
 
 def main():
-    if len(sys.argv) < 3:
-        print("Usage: python generate_report.py 'path/to/CSV' 'video-slug'")
-        print("Example: python generate_report.py 'inputs/vibecoding.csv' 'vibecoding'")
+    if len(sys.argv) < 2:
+        print("Usage: python generate_report.py 'path/to/ZIP'")
+        print("       OR: python generate_report.py 'path/to/CSV' 'video-slug'")
+        print("\nExamples:")
+        print("  python generate_report.py 'Contenu 2026-03-08_2026-03-15 On #VibeCode...zip'")
+        print("  python generate_report.py 'inputs/vibecoding.csv' 'vibecoding'")
         sys.exit(1)
 
-    csv_path = sys.argv[1]
-    video_slug = sys.argv[2]
+    input_path = sys.argv[1]
+    input_file = Path(input_path)
+
+    # Determine if input is ZIP or CSV
+    if input_file.suffix.lower() == '.zip':
+        # Extract CSV from ZIP
+        try:
+            with zipfile.ZipFile(input_file, 'r') as zip_ref:
+                # Find the "Informations relatives aux tableaux.csv" file
+                csv_files = [f for f in zip_ref.namelist() if f.endswith('.csv')]
+                if not csv_files:
+                    print(f"Erreur: Pas de fichier CSV trouvé dans le ZIP")
+                    sys.exit(1)
+
+                # Extract the relevant CSV
+                csv_name = 'Informations relatives aux tableaux.csv'
+                if csv_name not in csv_files:
+                    csv_name = csv_files[0]  # Fallback to first CSV
+
+                csv_content = zip_ref.read(csv_name).decode('utf-8')
+
+                # Write to temporary location
+                csv_path = PROJECT_ROOT / "inputs" / f"{csv_name}"
+                with open(csv_path, 'w', encoding='utf-8') as f:
+                    f.write(csv_content)
+
+        except Exception as e:
+            print(f"Erreur: Impossible d'extraire le ZIP: {e}")
+            sys.exit(1)
+
+        # Extract title and generate slug
+        video_title = extract_title_from_zip_name(input_file.name)
+        video_slug = slugify(video_title)
+
+    else:
+        # CSV path provided directly
+        csv_path = input_path
+        if len(sys.argv) < 3:
+            print("Erreur: Quand vous utilisez un CSV, fournissez aussi le slug")
+            print("Usage: python generate_report.py 'path/to/CSV' 'video-slug'")
+            sys.exit(1)
+
+        video_slug = sys.argv[2]
+        video_title = video_slug.replace('-', ' ').title()
 
     if not Path(csv_path).exists():
         print(f"Erreur: Fichier CSV non trouvé: {csv_path}")
@@ -458,11 +544,11 @@ def main():
 
     # Save to history
     history = add_analysis(history, metrics)
-    save_history(video_slug, history)
+    save_history(video_slug, video_title, history)
     print(f"✅ Historique mis à jour")
 
     # Generate HTML
-    html_content = generate_html_report(video_slug, metrics, delta_data)
+    html_content = generate_html_report(video_slug, video_title, metrics, delta_data)
     output_file = OUTPUTS_DIR / f"{video_slug}-analytics.html"
 
     with open(output_file, 'w', encoding='utf-8') as f:
