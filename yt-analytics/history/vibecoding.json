@@ -1,0 +1,53 @@
+{
+  "video_slug": "vibecoding",
+  "analyses": [
+    {
+      "date": "2026-03-10",
+      "views": 120,
+      "impressions": 650,
+      "ctr": 6.15,
+      "retention": 18.5,
+      "watch_time_hours": 12.1,
+      "average_view_duration": "0:05:05",
+      "unique_viewers": 85,
+      "new_subscribers": 0,
+      "shares": 3
+    },
+    {
+      "date": "2026-03-16",
+      "views": 167,
+      "impressions": 777,
+      "ctr": 8.24,
+      "retention": 21.42,
+      "watch_time_hours": 15.39,
+      "average_view_duration": "0:05:31",
+      "unique_viewers": 102,
+      "new_subscribers": 1,
+      "shares": 5
+    },
+    {
+      "date": "2026-03-16",
+      "views": 167,
+      "impressions": 777,
+      "ctr": 8.24,
+      "retention": 21.42,
+      "watch_time_hours": 15.39,
+      "average_view_duration": "0:05:31",
+      "unique_viewers": 102,
+      "new_subscribers": 1,
+      "shares": 5
+    },
+    {
+      "date": "2026-03-16",
+      "views": 245,
+      "impressions": 920,
+      "ctr": 10.89,
+      "retention": 28.5,
+      "watch_time_hours": 22.8,
+      "average_view_duration": "0:06:15",
+      "unique_viewers": 140,
+      "new_subscribers": 3,
+      "shares": 12
+    }
+  ]
+}
