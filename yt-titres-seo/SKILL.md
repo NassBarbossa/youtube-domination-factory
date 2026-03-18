@@ -42,18 +42,33 @@ Identify:
 
 ### Step 3: Title Generation
 
-Generate 8-10 title variations using these proven formulas:
+Generate 8-10 title variations using these proven formulas (adapted from the NassRiviera_YouTube2026 playbook):
 
-| Formula | Example |
-|---------|---------|
-| **How to [result] with [tool]** | "How to Build a SaaS with Claude Code (No Coding)" |
-| **[Number] [things] that [outcome]** | "5 AI Tools That Replace a Full Dev Team" |
-| **[Bold claim] — [proof/qualifier]** | "Claude Code Just Killed Freelancing — Here's Why" |
-| **[Question that triggers curiosity]** | "Can You Really Build an App Without Writing Code?" |
-| **[I did X] — [result]** | "I Built a SaaS in 2 Hours — Here's How" |
-| **[Thing] is [contrarian take]** | "AI Agents Are Overrated (Unless You Do This)" |
-| **The [adjective] Guide to [topic]** | "The Complete Guide to Claude Code Agent Teams" |
-| **[Year/New] [topic]: [angle]** | "Claude Code 2026: The Features Nobody Talks About" |
+| ID | Formula | Example |
+|----|---------|---------|
+| **T1** | **[Action choc] en [Temps] (sans coder)** | "J'ai créé un SaaS en 20 min (sans coder)" |
+| **T2** | **J'ai testé [X] pour toi — voici la vérité** | "J'ai testé les 5 meilleurs AI coder — la vérité" |
+| **T3** | **[Grosse actu] : ce que ça change VRAIMENT** | "GPT-5 sorti : ce que ça change vraiment" |
+| **T4** | **[Outil IA] va tuer [Métier/Chose]** | "Claude Code va tuer les devs freelance" |
+| **T5** | **Je build [Projet] en LIVE — tu peux copier** | "Je build un SaaS en LIVE — tu peux copier" |
+| **T6** | **Stop [Mauvaise pratique] — fais ça à la place** | "Stop coder manuellement — fais ça à la place" |
+| **T7** | **L'erreur que [Groupe] fait avec [Sujet]** | "L'erreur que les débutants font avec Cursor" |
+| **T8** | **[Résultat improbable] — voici comment** | "3 000€ de revenus passifs avec du VibeCoding" |
+
+### Mécanismes psychologiques (au moins 2/3 par titre)
+
+| Mécanisme | Description | Exemple |
+|-----------|-------------|---------|
+| **Dopamine du Seek** | Le cerveau veut résoudre l'incertitude — créer l'envie de cliquer | Miniature qui montre un résultat sans expliquer comment |
+| **Information Gap** | Gap entre ce que le viewer sait et veut savoir — créer le manque | "L'ingrédient que tu oublies" > "Comment faire un gâteau" |
+| **Negative Bias** | Le cerveau priorise les menaces ×2 vs les opportunités (+22% vues) | "va tuer ton métier" > "Apprends le VibeCoding" |
+
+### Check des 4 questions (au moins 2/4 pour valider un titre)
+
+1. **Gap ?** — Qu'est-ce que je sais qu'ils ne savent pas ?
+2. **Erreur ?** — En quoi ça défie leurs croyances ?
+3. **Menace ?** — Quelle perte font-ils maintenant ?
+4. **Effort ?** — Est-ce simple à consommer ?
 
 ### Step 4: Scoring
 
@@ -77,8 +92,11 @@ Also provide:
 
 ## Rules
 
-- Title MUST be under 60 characters (ideally 40-55 for mobile display)
-- NEVER use ALL CAPS for entire title (one word max for emphasis: "This Changes EVERYTHING")
+- Title MUST be **≤ 30 caractères** and **5 mots max** (source : 1of10.com, 62Md vues — +60% de vues vs titre à 70 car.)
+- Langage **simple et parlé** (+20% de vues — mots courts sans jargon)
+- Privilégier l'**émotion négative** quand pertinent (+22% de vues vs titre neutre)
+- **JAMAIS de listes chiffrées** type "10 tips" (-11% de vues)
+- NEVER use ALL CAPS for entire title (one word max for emphasis)
 - NEVER use misleading clickbait — the content must deliver on the promise
 - ALWAYS include the primary keyword naturally
 - AVOID generic filler words ("amazing", "incredible", "you won't believe")
@@ -96,11 +114,12 @@ When running as part of an agent team:
 ## Examples
 
 ### Strong title
-"J'ai Build un SaaS en 2h avec Claude Code (Sans Coder)"
-- SEO: 5/5 — "Claude Code", "SaaS", "sans coder" are all searched
-- Click: 5/5 — Specific time + surprising claim
+"SaaS en 2h sans coder" (22 caractères, 4 mots)
+- SEO: 5/5 — "SaaS", "sans coder" are searched
+- Click: 5/5 — Specific time + surprising claim + negative bias
 - Accuracy: 5/5 — If the video shows exactly this
 - Nass fit: 4/5 — Direct, no hype
+- 4 questions: Gap ✓ (comment c'est possible?) Effort ✓ (simple à consommer)
 
 ### Weak title
 "Nouvelle Update IA Incroyable !!"
@@ -143,7 +162,7 @@ Aucune interaction utilisateur — tu travailles autonome.
 {
   "titres_seo": {
     "status": "completed",
-    "winning_title": "[titre de 40-55 caractères]",
+    "winning_title": "[titre de ≤ 30 caractères, 5 mots max]",
     "primary_keyword": "[main keyword]",
     "secondary_keywords": ["keyword1", "keyword2", "keyword3"]
   }
@@ -153,7 +172,7 @@ Aucune interaction utilisateur — tu travailles autonome.
 ### Autonomie
 
 - **Pas d'interaction** : tu choisis le meilleur titre directement (pas de présentation des 5 meilleures options)
-- **Responsabilité** : tu garantis que le titre respecte les règles (< 60 chars, SEO, Nass fit)
+- **Responsabilité** : tu garantis que le titre respecte les règles (≤ 30 chars, 5 mots max, au moins 2/4 questions validées, SEO, Nass fit)
 - **Pas de reprise** : une fois écrit dans le JSON, c'est validé au step Phase 3 par Nass
 
 ---

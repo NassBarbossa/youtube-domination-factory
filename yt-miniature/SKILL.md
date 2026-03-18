@@ -41,7 +41,7 @@ Generate 3 thumbnail concepts, each with:
 **Layout**: [Describe spatial arrangement — left/right/center]
 **Background**: [Color, gradient, or image]
 **Main visual**: [What dominates the thumbnail — face, screenshot, icon, object]
-**Text overlay**: [Max 3-4 words, large font]
+**Text overlay**: [< 10 caractères OU aucun texte — moins = mieux]
 **Font style**: [Bold sans-serif / handwritten / tech-style]
 **Color palette**: [2-3 colors max]
 **Face expression**: [If Nass appears — specific expression to use]
@@ -63,13 +63,15 @@ Present all 3 concepts ranked, with the recommended winner and reasoning.
 
 ## Design Principles
 
-### Text Rules
-- MAX 3-4 words on thumbnail (less is more)
+### Text Rules (source : 1of10.com, 62Md vues)
+- **Texte sur miniature = -19% de vues** → moins de texte = mieux, idéalement AUCUN texte
+- Si texte absolument nécessaire : **< 10 caractères**, couvre **< 7% de l'image**
 - Text should ADD context, not repeat the title
 - Use contrasting colors for text readability
 - Bold, thick fonts — must be readable on mobile (phone-sized)
 
 ### Face Rules (when Nass appears)
+- **Émotion visible OBLIGATOIRE** — montrer l'émotion AVANT que le titre l'explique
 - Expression must match the emotion (surprised, focused, confident, skeptical)
 - Face should take up 30-40% of the thumbnail
 - Eyes looking at camera OR at the main visual element
@@ -81,19 +83,22 @@ Present all 3 concepts ranked, with the recommended winner and reasoning.
 - Clear visual hierarchy: one element dominates
 - Negative space is your friend — don't clutter
 
-### Color Rules
+### Color Rules (source : 1of10.com, 62Md vues)
+- **Couleur dominante : cyan OU orange** — ce sont les 2 couleurs les plus performantes (cyan = +36% de vues)
+- **Luminosité cible : 100-110** — le peak de performance. Sombre = FAIL
 - High contrast between background and foreground
 - Use brand colors consistently across videos
 - Bright/saturated colors perform better than muted tones
-- Dark backgrounds with bright elements = strong contrast
 
 ## Rules
 
 - NEVER suggest cluttered thumbnails — simplicity wins
-- NEVER put more than 4 words on a thumbnail
+- **Privilégier AUCUN texte sur la miniature.** Si texte indispensable : < 10 caractères, < 7% de l'image
 - ALWAYS think mobile-first (60%+ views are on phones)
 - ALWAYS provide enough detail for someone to recreate the concept in Canva
 - Thumbnail and title together should tell the full story — neither should work alone
+- **Couleur dominante : cyan OU orange** (jamais les deux ensemble)
+- **Luminosité haute (100-110)** — jamais sombre
 
 ## Teammate Communication
 
@@ -156,7 +161,7 @@ Aucune interaction utilisateur — tu travailles autonome.
       "name": "[Concept name]",
       "layout": "[description]",
       "main_visual": "[face/screenshot/icon/object]",
-      "text_overlay": "[2-4 words — NOT repeating title]",
+      "text_overlay": "[< 10 chars OU vide — NOT repeating title — moins = mieux]",
       "font_style": "[Bold sans-serif / handwritten / tech-style]",
       "color_palette": ["#HEX1", "#HEX2", "#HEX3"],
       "face_expression": "[specific expression if Nass appears]",
@@ -170,7 +175,8 @@ Aucune interaction utilisateur — tu travailles autonome.
 ### Autonomie
 
 - **Pas d'interaction** : tu choisis le meilleur concept directement (pas de présentation des 3 options)
-- **Règle critique** : `text_overlay` ne doit JAMAIS répéter le `winning_title` — complémenter seulement
+- **Règle critique** : `text_overlay` ne doit JAMAIS répéter le `winning_title` — complémenter seulement. Privilégier aucun texte (< 10 chars si indispensable)
+- **Couleur dominante** : utiliser cyan OU orange comme couleur principale. Luminosité haute (100-110)
 - **Responsabilité** : tu garantis que le concept est mobile-first et prêt pour Canva
 
 ---

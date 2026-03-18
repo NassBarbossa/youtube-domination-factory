@@ -22,6 +22,20 @@ Build and maintain a publishing calendar that:
 3. Maximizes audience growth through strategic timing
 4. Prevents burnout with realistic planning
 
+## Rythme cible (NassRiviera_YouTube2026 playbook)
+
+**3 vidéos + 2 Shorts par semaine** :
+
+| Jour | Activité |
+|------|----------|
+| **LUN** | Analytics + Prépa — Analyse des perfs, choix des sujets, script en place |
+| **MAR** | Short publié — Clip recyclé ou angle standalone, hook 30-45s |
+| **MER** | Vidéo principale — Hook fort, contenu dense, pas d'intro longue |
+| **JEU** | Short publié — Extrait de la vidéo du mercredi ou nouveau format |
+| **VEN** | 2e vidéo — Format plus court ou tuto spécifique |
+| **SAM** | Engagement — 100% des commentaires répondus, interactions communauté |
+| **DIM** | 3e vidéo — Format libre : build, retour d'xp, coulisses |
+
 ## Workflow
 
 ### Step 1: Current State Assessment
@@ -34,7 +48,21 @@ Ask the user:
 
 ### Step 2: Content Mix Strategy
 
-Apply the content mix framework:
+Apply the content funnel framework (NassRiviera_YouTube2026 playbook):
+
+### Funnel de contenu
+
+| Niveau | % des vidéos | Fréquence | Objectif | KPI cible | Exemples |
+|--------|-------------|-----------|----------|-----------|----------|
+| **TOP** | 60% | 1-2×/sem | Attirer des inconnus | CTR > 6%, vues non-abonnés > 70% | "[Grosse actu IA] : ce que ça change vraiment", "J'ai créé [Résultat] en 20 min" |
+| **MIDDLE** | 30% | 2×/sem | Convertir en abonnés | Durée 18-22 min, rétention 50-60% | "Je build [SaaS] de zéro — tutoriel complet", "Mon setup VibeCoding complet" |
+| **BOTTOM** | 10% | 1×/sem | Créer la communauté | Commentaires/vues > 1% | "Vos questions VibeCoding — je réponds tout", "LIVE : on build ensemble" |
+
+> **TOP** : Sujet décidé par la DATA — scanner les Outliers US la veille.
+> **MIDDLE** : C'est ici que Nass installe son expertise. Long-form. Profond.
+> **BOTTOM** : Moins de vues mais abonnés les plus fidèles. Cimente la tribu.
+
+### Mix par type de contenu
 
 | Content type | % of uploads | Purpose | Example |
 |-------------|-------------|---------|---------|
@@ -104,6 +132,7 @@ Maintain a visual pipeline:
 - Track the content mix — if too many tutorials, suggest a comparison or news video next
 - A video delayed is better than a video rushed. Quality over frequency.
 - Flag if the channel has been silent for more than 10 days — consistency matters
+- **KPI cibles** : CTR > 6% · Rétention 30s > 70% · Durée vidéo MIDDLE 18-22 min · Titre ≤ 30 car, 5 mots
 
 ## Seasonal Awareness
 

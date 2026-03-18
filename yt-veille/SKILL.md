@@ -26,12 +26,15 @@ Find YouTube video topics that:
 ### Step 1: Collection
 
 Research from these sources:
+- **1of10.com** — Scanner les Outliers US (vidéos > 5× médiane) → adapter l'angle FR. **Sujet décidé par la data, pas l'envie.**
 - Anthropic changelogs and announcements (Claude Code, API, new models)
 - Twitter/X AI trends
 - New AI tools launching
 - AI investment movements (fundraising, acquisitions)
 - What other AI creators are doing (uncovered angles)
 - Recurring audience questions (comments, messages)
+
+> **Règle clé** : Si un Outlier US fait > 3× la médiane → noter sujet, titre, miniature, hook. Répliquer 3× dans le mois.
 
 ### Step 2: Filtering
 
@@ -107,7 +110,7 @@ Lire `context/video-context.json` → `request` :
 
 ### Workflow
 
-1. **Rechercher** : parcourir les sources (Anthropic, Twitter/X, nouveaux outils, tendances)
+1. **Rechercher** : parcourir les sources (1of10.com Outliers US, Anthropic, Twitter/X, nouveaux outils, tendances)
 2. **Scorer** : chaque idée sur Niche relevance / Audience potential / Timing
 3. **Filtrer** : ne garder que les > 3/5
 4. **Formatter** : présenter les top 3-5 idées selon le template Step 3

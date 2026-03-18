@@ -48,13 +48,21 @@ If the user provides a topic from yt-veille output, extract this info from the r
 Build the script skeleton as bullet points using this framework:
 
 ```
-1. HOOK (0-10s)
-   → Pattern interrupt or bold statement
-   → Create curiosity gap
+1. HOOK (0-30s) — LES 30 PREMIÈRES SECONDES DÉCIDENT DE TOUT
+   Rétention < 50% à 30s → l'algo ARRÊTE de distribuer. Cible : > 70% à 30s.
 
-2. CONTEXT (10-30s)
-   → Why this matters NOW
-   → What's in it for the viewer
+   0:00 – 0:05 ATTENTION GRAB
+   → NE COMMENCE JAMAIS par "salut c'est Nass" → commence par le RÉSULTAT
+   → Montre l'écran d'une app finie, un build, une stat choc
+   → Le cerveau doit se dire "Attends, c'est quoi ça ?"
+
+   0:05 – 0:15 CLARIFIER LA PROMESSE
+   → Énonce exactement ce que le viewer va obtenir
+   → "...et dans cette vidéo je vais te montrer comment reproduire ça en 20 minutes."
+
+   0:15 – 0:30 ÉTABLIR LES ENJEUX
+   → Pourquoi maintenant, pourquoi toi, pourquoi ça compte
+   → Le viewer doit sentir qu'il va rater quelque chose s'il part
 
 3. CORE CONTENT (variable)
    → 3-5 main points max
@@ -105,7 +113,9 @@ Open both files for the user after generation (Cursor for .md, browser for .html
 ### Step 6: Review Checklist
 
 Before delivering, verify:
-- [ ] Hook creates curiosity in first 10 seconds
+- [ ] Hook commence par le RÉSULTAT (jamais par "salut c'est Nass")
+- [ ] Hook respecte le blueprint 0-5s / 5-15s / 15-30s
+- [ ] Rétention cible > 70% à 30s (le hook doit être assez fort)
 - [ ] No unexplained jargon — every technical term is broken down
 - [ ] Each section delivers a clear takeaway
 - [ ] Business/money angle is present
@@ -126,11 +136,13 @@ Before delivering, verify:
 
 ## Script Length Guide
 
-| Format | Duration | Word count (FR) | Word count (EN) |
-|--------|----------|-----------------|-----------------|
-| Short  | < 5 min  | ~750 words      | ~650 words      |
-| Medium | 5-15 min | 750-2250 words  | 650-1950 words  |
-| Long   | 15+ min  | 2250+ words     | 1950+ words     |
+| Format | Duration | Word count (FR) | Word count (EN) | Usage funnel |
+|--------|----------|-----------------|-----------------|-------------|
+| Short (TOP) | < 5 min  | ~750 words      | ~650 words      | Trend/choc — attirer des inconnus |
+| Medium (MIDDLE) | **18-22 min** | **2700-3300 words** | **2350-2850 words** | Tutoriels/deep dives — convertir en abonnés |
+| Long (BOTTOM) | 25+ min  | 3750+ words     | 3250+ words     | Communauté — LIVE, Q&A |
+
+> **Note** : Le peak de performance YouTube est à 18-24 min (source : 1of10.com). Le format MIDDLE (18-22 min) est le sweet spot pour installer l'expertise de Nass.
 
 ## Example Hook Patterns
 
@@ -168,12 +180,13 @@ Lire `context/video-context.json` :
 
 1. **Extraire le topic** depuis `request.topic` (ou depuis `veille.selected_idea.title` si disponible)
 2. **Déterminer le format** depuis `veille.selected_idea.format` ou déduire ("Tutorial" par défaut)
-3. **Déterminer la longueur** : Medium (5-15 min) par défaut
+3. **Déterminer la longueur** : Medium (18-22 min, ~3000 mots FR) par défaut — c'est le sweet spot YouTube
 4. **Générer le slug** : `slugify(topic)` (ex: `claude-4-features`)
 5. **Écrire le script** directement (pas de Step 3 validation — tu as confiance)
    - Hook naturel, pas copié de yt-veille
    - Structure classique (hook → context → core → business angle → CTA)
-   - Longueur : ~1500 mots pour Medium
+   - Longueur : ~3000 mots pour Medium (18-22 min)
+   - Hook : JAMAIS "salut c'est Nass" — commencer par le résultat final (blueprint 0-5s/5-15s/15-30s)
 
 ### Output
 

@@ -89,7 +89,7 @@ Provide:
 
 ## Rules
 
-- First 150 characters are CRITICAL — they show in search results. Front-load keywords and value.
+- **First 150 characters are CRITICAL** — they show in search results. Front-load keywords and value. Le titre gagnant doit avoir ≤ 30 caractères, donc la description compense en SEO.
 - NEVER stuff keywords unnaturally — write for humans first, algorithm second
 - ALWAYS include timestamps (YouTube promotes timestamped videos)
 - Keep total description under 5000 characters (YouTube limit)
@@ -109,6 +109,7 @@ When running as part of an agent team:
 Always include these base tags alongside topic-specific ones:
 - claude code, ia, intelligence artificielle, ai, anthropic
 - business ia, entrepreneur ia, automatisation
+- vibecoding, vibe coding
 - nass riviera
 
 ---

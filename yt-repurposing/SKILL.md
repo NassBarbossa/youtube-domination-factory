@@ -119,11 +119,11 @@ Present all content pieces in order:
 2. X Thread (ready to copy-paste)
 3. LinkedIn Post (ready to copy-paste)
 
-Include a **posting schedule suggestion**:
-- Day 0: YouTube video goes live
-- Day 0 (2h later): X Thread
-- Day 1: LinkedIn Post
-- Day 1-3: Shorts (staggered, one per day)
+Include a **posting schedule** (from NassRiviera_YouTube2026 playbook):
+- **Day 0**: YouTube video goes live
+- **Day 0 (+2h)**: X Thread
+- **Day 1**: LinkedIn Post
+- **Day 1-3**: Shorts (staggered, one per day — publier **24-48h après** la vidéo principale pour renvoyer du trafic vers elle)
 
 ## Rules
 
@@ -131,6 +131,7 @@ Include a **posting schedule suggestion**:
 - NEVER copy the video title as-is for other platforms
 - ALWAYS adapt the tone: YouTube (casual) → X (punchy) → LinkedIn (insightful)
 - Shorts MUST work standalone — a viewer who never sees the full video should still get value
+- Shorts publiés **24-48h après** la vidéo principale (jamais le même jour — renvoie vers la vidéo)
 - X threads: value first, promo last. The thread should be worth reading even without clicking the video.
 - LinkedIn: lead with insight, not "I just posted a video about..."
 - Output language matches the original video language
