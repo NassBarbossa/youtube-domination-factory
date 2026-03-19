@@ -42,7 +42,7 @@ Identify:
 
 ### Step 3: Title Generation
 
-Generate 8-10 title variations using these proven formulas (adapted from the NassRiviera_YouTube2026 playbook):
+Generate **exactement 7 titres** using these proven formulas (adapted from the NassRiviera_YouTube2026 playbook):
 
 | ID | Formula | Example |
 |----|---------|---------|
@@ -80,11 +80,14 @@ Rate each title on:
 
 ### Step 5: Delivery
 
-Present the **top 5 titles** ranked by total score, with:
-- The title
-- Score breakdown
-- Why it works
-- Suggested A/B test pairing (if applicable)
+Present les **7 titres** dans un tableau avec :
+- Le titre (chars count + word count)
+- Template utilisé (T1-T8)
+- Mécanismes psy activés
+- Questions validées (Gap/Erreur/Menace/Effort)
+- 1 phrase : pourquoi ce titre fonctionne
+
+Puis indiquer un **top 3** avec justification (meilleur équilibré, meilleur CTR, meilleur SEO).
 
 Also provide:
 - **Primary keyword** to share with yt-description teammate
@@ -147,9 +150,9 @@ Aucune interaction utilisateur — tu travailles autonome.
 ### Workflow Autonome
 
 1. **Analyser le script** : extraire topic, angle, unique value proposition
-2. **Générer 8-10 titres** selon les formulas classiques
+2. **Générer exactement 7 titres** selon les templates T1-T8
 3. **Scorer** rapidement (SEO strength, click appeal, accuracy, Nass fit)
-4. **Sélectionner le meilleur** titre comme `winning_title`
+4. **Sélectionner le meilleur** titre comme `winning_title` et les 7 dans `all_titles`
 5. **Identifier keywords** :
    - Primary keyword : le terme principal recherché
    - Secondary keywords : 3-5 variations longue traîne
@@ -163,6 +166,7 @@ Aucune interaction utilisateur — tu travailles autonome.
   "titres_seo": {
     "status": "completed",
     "winning_title": "[titre de ≤ 30 caractères, 5 mots max]",
+    "all_titles": ["titre1", "titre2", "titre3", "titre4", "titre5", "titre6", "titre7"],
     "primary_keyword": "[main keyword]",
     "secondary_keywords": ["keyword1", "keyword2", "keyword3"]
   }
@@ -171,7 +175,7 @@ Aucune interaction utilisateur — tu travailles autonome.
 
 ### Autonomie
 
-- **Pas d'interaction** : tu choisis le meilleur titre directement (pas de présentation des 5 meilleures options)
+- **Pas d'interaction** : tu génères 7 titres, choisis le meilleur comme `winning_title`, et stockes les 7 dans `all_titles` pour validation Phase 3
 - **Responsabilité** : tu garantis que le titre respecte les règles (≤ 30 chars, 5 mots max, au moins 2/4 questions validées, SEO, Nass fit)
 - **Pas de reprise** : une fois écrit dans le JSON, c'est validé au step Phase 3 par Nass
 
@@ -179,4 +183,4 @@ Aucune interaction utilisateur — tu travailles autonome.
 
 ## Mode Manuel (Préservé)
 
-Si Nass t'appelle directement avec `/yt-titres-seo`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec présentation des top 5 options).
+Si Nass t'appelle directement avec `/yt-titres-seo`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec présentation des 7 titres).

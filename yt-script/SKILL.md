@@ -36,12 +36,22 @@ Write complete, ready-to-film YouTube scripts that:
 
 Before writing, gather this info from the user. Don't dump all questions at once — ask naturally based on what's missing:
 - What's the topic?
+- **Quel niveau de funnel ?** (TOP / MIDDLE / BOTTOM) — voir règles ci-dessous
 - What format? (Tutorial / News / Deep Dive / Comparison / Reaction)
-- Target length? (Short < 5min / Medium 5-15min / Long 15min+)
 - Key message — what should the viewer walk away with?
 - Any specific points to cover or avoid?
 
 If the user provides a topic from yt-veille output, extract this info from the recommendation. If the user already gave some of this info upfront, don't re-ask — just confirm what's unclear.
+
+### Règles par niveau de funnel (NassRiviera_YouTube2026 playbook)
+
+Le niveau de funnel détermine la durée, le ton et la structure. **Toujours demander avant de commencer.**
+
+| Funnel | Durée cible | Word count (FR) | Objectif | Style |
+|--------|-------------|-----------------|----------|-------|
+| **TOP** | **5-12 min** | **750-1800 mots** | Attirer des inconnus — trend, choc, résultat | Punchy, rapide, pas de détour. Hook ultra fort. Montrer le résultat d'entrée. CTR > 6%, vues non-abonnés > 70% |
+| **MIDDLE** | **18-22 min** | **2700-3300 mots** | Convertir en abonnés — tutoriels, deep dives | Profond, pédagogique. C'est ici que Nass installe son expertise. Rétention 50-60% |
+| **BOTTOM** | **25+ min** | **3750+ mots** | Communauté — LIVE, Q&A, coulisses | Authentique, personnel. Moins de vues mais abonnés les plus fidèles |
 
 ### Step 2: Structure
 
@@ -136,13 +146,13 @@ Before delivering, verify:
 
 ## Script Length Guide
 
-| Format | Duration | Word count (FR) | Word count (EN) | Usage funnel |
-|--------|----------|-----------------|-----------------|-------------|
-| Short (TOP) | < 5 min  | ~750 words      | ~650 words      | Trend/choc — attirer des inconnus |
-| Medium (MIDDLE) | **18-22 min** | **2700-3300 words** | **2350-2850 words** | Tutoriels/deep dives — convertir en abonnés |
-| Long (BOTTOM) | 25+ min  | 3750+ words     | 3250+ words     | Communauté — LIVE, Q&A |
+| Funnel | Duration | Word count (FR) | Word count (EN) | Usage |
+|--------|----------|-----------------|-----------------|-------|
+| **TOP** | **5-12 min** | **750-1800 mots** | **650-1550 mots** | Attirer des inconnus — trend, choc, résultat, étude de cas courte |
+| **MIDDLE** | **18-22 min** | **2700-3300 mots** | **2350-2850 mots** | Convertir en abonnés — tutoriels complets, deep dives |
+| **BOTTOM** | **25+ min** | **3750+ mots** | **3250+ mots** | Communauté — LIVE, Q&A, coulisses |
 
-> **Note** : Le peak de performance YouTube est à 18-24 min (source : 1of10.com). Le format MIDDLE (18-22 min) est le sweet spot pour installer l'expertise de Nass.
+> **Note** : Le peak de performance YouTube est à 18-24 min pour le MIDDLE (source : 1of10.com). Mais le TOP funnel doit rester court et punchy — ne jamais forcer 18-22 min sur une vidéo TOP.
 
 ## Example Hook Patterns
 
@@ -166,7 +176,7 @@ Talk to Nass directly during the process. Ask clarifying questions if the brief 
 
 ## Context Protocol (Mode Autonome — Orchestrateur)
 
-Quand tu es invoqué par `yt-orchestrator` (mode autonome), ignore les étapes Step 1-3 classiques et suis ce protocole :
+Quand tu es invoqué par `yt-orchestrator`, suis ce protocole en **deux temps** (Phase 1a → validation Nass → Phase 1b) :
 
 ### Input
 
@@ -174,23 +184,45 @@ Lire `context/video-context.json` :
 
 - `request.topic` : le sujet de la vidéo (ex: "Claude Code 4")
 - `veille.selected_idea` : si Mode B, l'idée avec angle/format/hook_suggestion
-- Aucune interaction utilisateur directe — tu travailles autonome
 
-### Workflow Autonome
+### Phase 1a — Funnel + Structure (bullet points)
 
 1. **Extraire le topic** depuis `request.topic` (ou depuis `veille.selected_idea.title` si disponible)
 2. **Déterminer le format** depuis `veille.selected_idea.format` ou déduire ("Tutorial" par défaut)
-3. **Déterminer la longueur** : Medium (18-22 min, ~3000 mots FR) par défaut — c'est le sweet spot YouTube
-4. **Générer le slug** : `slugify(topic)` (ex: `claude-4-features`)
-5. **Écrire le script** directement (pas de Step 3 validation — tu as confiance)
+3. **Demander le niveau de funnel à Nass** : TOP, MIDDLE ou BOTTOM ?
+   - Expliquer brièvement les implications (durée, style) pour aider Nass à choisir
+   - Si `request.funnel` est déjà renseigné dans le JSON, utiliser directement
+4. **Appliquer les règles du funnel choisi** :
+   - **TOP** : 5-12 min, ~750-1800 mots, punchy, résultat d'entrée, pas de détour
+   - **MIDDLE** : 18-22 min, ~2700-3300 mots, profond, pédagogique, expertise
+   - **BOTTOM** : 25+ min, ~3750+ mots, authentique, personnel, communauté
+5. **Générer le slug** : `slugify(topic)` (ex: `claude-4-features`)
+6. **Générer la structure en bullet points** (adaptée au funnel) :
+   - Hook (blueprint 0-5s/5-15s/15-30s — JAMAIS "salut c'est Nass")
+   - Sections avec key points (moins de sections pour TOP, plus pour MIDDLE/BOTTOM)
+   - Business angle
+   - CTA
+7. **Écrire dans `context/video-context.json` → `script`** :
+   - `status`: **"structure_ready"**
+   - `slug`, `structure.hook`, `structure.sections` (bullet points uniquement)
+   - `funnel`: le niveau choisi (TOP/MIDDLE/BOTTOM)
+
+8. **STOP — Présenter la structure à Nass et attendre sa validation.**
+   Nass peut : ajouter/supprimer/réorganiser des points, changer le funnel, poser des questions, demander des suggestions.
+
+### Phase 1b — Écriture complète (après validation Nass)
+
+Une fois que Nass a validé la structure :
+
+1. **Écrire le script complet** à partir de la structure validée :
    - Hook naturel, pas copié de yt-veille
    - Structure classique (hook → context → core → business angle → CTA)
-   - Longueur : ~3000 mots pour Medium (18-22 min)
+   - **Longueur adaptée au funnel** : TOP ~750-1800 mots / MIDDLE ~2700-3300 mots / BOTTOM ~3750+ mots
    - Hook : JAMAIS "salut c'est Nass" — commencer par le résultat final (blueprint 0-5s/5-15s/15-30s)
 
-### Output
+2. **Créer les deux fichiers outputs** (`[slug].md` et `[slug]-visual.html`) dans `yt-script/outputs/`
 
-Écrire dans `context/video-context.json` → `script` :
+3. **Mettre à jour `context/video-context.json` → `script`** :
 
 ```json
 {
@@ -220,12 +252,10 @@ Lire `context/video-context.json` :
 }
 ```
 
-Aussi créer les deux fichiers outputs (`[slug].md` et `[slug]-visual.html`) dans `yt-script/outputs/`.
-
 ### Autonomie
 
-- **Pas d'interaction Nass** : tu génères le script complet sans feedback
-- **Pas de Step 3 validation** : tu valides toi-même que le script respecte les règles
+- **Phase 1a est autonome** : tu génères la structure sans feedback
+- **Phase 1b NÉCESSITE la validation de Nass** : ne jamais écrire le script complet sans que Nass ait approuvé la structure
 - **Erreurs** : si tu ne peux pas générer (topic trop vague), log dans `pipeline_log` et notifie `yt-orchestrator`
 
 ---

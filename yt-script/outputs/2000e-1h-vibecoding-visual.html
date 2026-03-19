@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 000€ en 1h avec le VibeCoding — Slides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111;
+        }
+
+        .slide-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            padding: 60px 20px;
+        }
+
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #0A0A0A;
+            border-radius: 12px;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glow-orange {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,107,53,0.15) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+
+        .glow-cyan {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,229,255,0.12) 0%, transparent 70%);
+            filter: blur(80px);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 140px;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 50px;
+            right: 60px;
+            font-size: 18px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 3px;
+            z-index: 3;
+        }
+
+        h2 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 50px;
+            letter-spacing: -2px;
+        }
+
+        .text-orange { color: #FF6B35; }
+        .text-cyan { color: #00E5FF; }
+        .text-white { color: #FFFFFF; }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        ul li {
+            font-size: 36px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            padding-left: 40px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .bullet-orange li::before { background: #FF6B35; box-shadow: 0 0 12px rgba(255,107,53,0.5); }
+        .bullet-cyan li::before { background: #00E5FF; box-shadow: 0 0 12px rgba(0,229,255,0.5); }
+
+        .highlight {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .highlight-orange { background: rgba(255,107,53,0.15); color: #FF6B35; }
+        .highlight-cyan { background: rgba(0,229,255,0.12); color: #00E5FF; }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+            margin-bottom: 40px;
+        }
+
+        .divider-orange { background: #FF6B35; }
+        .divider-cyan { background: #00E5FF; }
+
+        .intro-center {
+            text-align: center;
+            align-items: center;
+        }
+
+        .big-number {
+            font-size: 140px;
+            font-weight: 900;
+            letter-spacing: -5px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .col-label {
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 24px;
+        }
+
+        .parcours-layout {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .parcours-photo {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 4px solid #FF6B35;
+            box-shadow: 0 0 40px rgba(255,107,53,0.3);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .parcours-info { flex: 1; }
+
+        .parcours-name {
+            font-size: 56px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .parcours-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 40px;
+        }
+
+        .statement {
+            font-size: 52px;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 1.4;
+            max-width: 1400px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container">
+
+    <!-- SLIDE 1 — INTRO -->
+    <div class="slide">
+        <span class="slide-number">01 / 15</span>
+        <div class="glow-orange" style="top: -200px; left: -100px;"></div>
+        <div class="glow-cyan" style="bottom: -200px; right: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="big-number text-orange">2 000€</div>
+            <h2 class="text-white">en 1h avec le <span class="text-cyan">VibeCoding</span></h2>
+        </div>
+    </div>
+
+    <!-- SLIDE 2 — C'est quoi le VibeCoding -->
+    <div class="slide">
+        <span class="slide-number">02 / 15</span>
+        <div class="glow-cyan" style="top: -100px; right: -200px;"></div>
+        <div class="slide-content">
+            <div class="divider divider-cyan"></div>
+            <h2 class="text-white">C'est quoi le <span class="text-cyan">VibeCoding</span> ?</h2>
+            <ul class="bullet-cyan">
+                <li>Transforme tes idées en business</li>
+                <li>Sans aucune compétence technique</li>
+                <li>Zéro code, que du résultat</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 3 — Mon parcours -->
+    <div class="slide">
+        <span class="slide-number">03 / 15</span>
+        <div class="glow-orange" style="bottom: -150px; left: -100px;"></div>
+        <div class="slide-content">
+            <div class="divider divider-orange"></div>
+            <div class="parcours-layout">
+                <img src="youtube_watermark_150x150.png" alt="Nass Riviera" class="parcours-photo">
+                <div class="parcours-info">
+                    <div class="parcours-name">Nass Riviera</div>
+                    <div class="parcours-title">Entrepreneur & Investisseur</div>
+                    <ul class="bullet-orange">
+                        <li>+10 ans d'entrepreneuriat</li>
+                        <li>Expert crypto — 5 ans à temps plein</li>
+                        <li>Profil autodidacte</li>
+                        <li>Début 2026 : pivot total vers le VibeCoding</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4 — OpenClaw -->
+    <div class="slide">
+        <span class="slide-number">04 / 15</span>
+        <div class="glow-orange" style="top: -100px; left: -100px;"></div>
+        <div class="slide-content">
+            <div class="divider divider-orange"></div>
+            <h2 class="text-white"><span class="text-orange">OpenClaw</span></h2>
+            <ul class="bullet-orange">
+                <li>Assistant IA personnel</li>
+                <li>Mémoire persistante — il se souvient de tout</li>
+                <li>Open-source</li>
+                <li>Le projet IA le plus viral de 2026</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 5 — Moltbook -->
+    <div class="slide">
+        <span class="slide-number">05 / 15</span>
+        <div class="glow-cyan" style="bottom: -150px; right: -100px;"></div>
+        <div class="slide-content">
+            <div class="divider divider-cyan"></div>
+            <h2 class="text-white"><span class="text-cyan">Moltbook</span></h2>
+            <ul class="bullet-cyan">
+                <li>Réseau social exclusivement pour agents IA</li>
+                <li>1.7M d'agents inscrits</li>
+                <li>Les agents postent, commentent, votent</li>
+                <li>Buzz mondial — racheté par Meta</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 6 — Le move : Nassistant -->
+    <div class="slide">
+        <span class="slide-number">06 / 15</span>
+        <div class="glow-orange" style="top: -200px; right: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-orange" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                Mon agent <span class="text-orange">Nassistant</span> est déployé sur Moltbook.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 — Le move : la méta crypto x IA -->
+    <div class="slide">
+        <span class="slide-number">07 / 15</span>
+        <div class="glow-cyan" style="bottom: -200px; left: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-cyan" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                La méta crypto en ce moment = <span class="text-cyan">intelligence artificielle</span>.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 8 — Le move : l'idée -->
+    <div class="slide">
+        <span class="slide-number">08 / 15</span>
+        <div class="glow-orange" style="top: -100px; left: 400px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-orange" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                Quelle idée ferait que les gens créent une <span class="text-orange">crypto</span> autour de mon agent ?
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 9 — Le move : animal de compagnie -->
+    <div class="slide">
+        <span class="slide-number">09 / 15</span>
+        <div class="glow-cyan" style="top: -200px; right: -100px;"></div>
+        <div class="glow-orange" style="bottom: -200px; left: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-cyan" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                Premier agent au monde à avoir un <span class="text-cyan">animal de compagnie</span> sur Moltbook.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 10 — Résultat : le token -->
+    <div class="slide">
+        <span class="slide-number">10 / 15</span>
+        <div class="glow-orange" style="top: -100px; right: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-orange" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                La communauté crypto crée le token <span class="highlight highlight-cyan">$GLITCH</span> — le nom de l'animal de compagnie.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 11 — Résultat : les fees -->
+    <div class="slide">
+        <span class="slide-number">11 / 15</span>
+        <div class="glow-cyan" style="bottom: -150px; left: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-cyan" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                Les <span class="text-cyan">fees de transaction</span> sont associés à mon compte.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 12 — Résultat : 2000€ -->
+    <div class="slide">
+        <span class="slide-number">12 / 15</span>
+        <div class="glow-orange" style="top: -100px; left: 400px;"></div>
+        <div class="slide-content intro-center">
+            <div class="big-number text-orange">2 000€</div>
+            <p class="statement">
+                en <span class="highlight highlight-orange">5 minutes</span> de travail réel.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 13 — Résultat : vision long terme -->
+    <div class="slide">
+        <span class="slide-number">13 / 15</span>
+        <div class="glow-cyan" style="top: -200px; right: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-cyan" style="margin: 0 auto 40px;"></div>
+            <p class="statement">
+                Pas de support du token — je veux construire des choses <span class="text-cyan">bien plus grandes</span>.
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 14 — La leçon -->
+    <div class="slide">
+        <span class="slide-number">14 / 15</span>
+        <div class="glow-cyan" style="bottom: -200px; left: -100px;"></div>
+        <div class="glow-orange" style="top: -200px; right: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-orange" style="margin: 0 auto 40px;"></div>
+            <h2 class="text-white" style="font-size: 64px; margin-bottom: 60px;">Ce qu'il faut retenir</h2>
+            <div class="two-col" style="text-align: left; max-width: 1400px;">
+                <div>
+                    <p class="col-label text-orange">01 — ACTION</p>
+                    <p style="font-size: 34px; color: rgba(255,255,255,0.8); line-height: 1.5;">Passer à l'action.<br>Mettre les mains dans le moteur.</p>
+                </div>
+                <div>
+                    <p class="col-label text-cyan">02 — OPPORTUNITÉS</p>
+                    <p style="font-size: 34px; color: rgba(255,255,255,0.8); line-height: 1.5;">Savoir trouver les opportunités.<br>Ça s'apprend.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 15 — CTA -->
+    <div class="slide">
+        <span class="slide-number">15 / 15</span>
+        <div class="glow-orange" style="top: -100px; left: -100px;"></div>
+        <div class="glow-cyan" style="bottom: -100px; right: -100px;"></div>
+        <div class="slide-content intro-center">
+            <div class="divider divider-cyan" style="margin: 0 auto 40px;"></div>
+            <h2 class="text-white" style="font-size: 64px;">Formation offerte <span class="text-orange">VibeCoding</span></h2>
+            <p style="font-size: 36px; color: rgba(255,255,255,0.6); margin-top: -20px; margin-bottom: 50px;">Lien dans la description</p>
+            <ul class="bullet-orange" style="text-align: left; max-width: 900px; margin: 0 auto;">
+                <li>4 modules disponibles</li>
+                <li>Déjà suivi par une communauté active</li>
+                <li>Abonne-toi — like — que la paix soit sur vous</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

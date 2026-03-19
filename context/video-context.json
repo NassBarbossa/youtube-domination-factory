@@ -1,51 +1,115 @@
 {
   "_meta": {
     "version": "2.0",
-    "slug": null,
-    "status": "pending",
-    "pipeline_step": 0,
-    "triggered_by": null,
-    "created_at": null,
-    "updated_at": null
+    "slug": "2000e-1h-vibecoding",
+    "status": "in_progress",
+    "pipeline_step": 1,
+    "triggered_by": "user",
+    "created_at": "2026-03-18T12:00:00Z",
+    "updated_at": "2026-03-18T12:30:00Z"
   },
   "request": {
-    "raw_input": null,
-    "topic": null,
+    "raw_input": "Comment j'ai généré 2 000€ en 1h avec le VibeCoding — étude de cas",
+    "topic": "Comment j'ai généré 2 000€ en 1h avec le VibeCoding",
+    "format": "Deep Dive / Étude de cas",
     "language": "fr"
   },
   "veille": {
-    "status": "pending",
+    "status": "skipped",
     "selected_idea": null
   },
   "script": {
-    "status": "pending",
-    "slug": null,
-    "file_path": null,
-    "visual_path": null,
-    "word_count": 0,
-    "reading_time_min": 0,
+    "status": "completed",
+    "slug": "2000e-1h-vibecoding",
+    "file_path": "yt-script/outputs/2000e-1h-vibecoding.md",
+    "visual_path": "yt-script/outputs/2000e-1h-vibecoding-visual.html",
+    "word_count": 1650,
+    "reading_time_min": 11,
+    "funnel": "TOP",
     "structure": {
-      "hook": null,
-      "sections": [],
-      "timestamps_raw": [],
-      "shorts_moments": []
+      "hook": "J'ai realise 2 000 EUR en une heure avec le VibeCoding. Je t'explique tout dans cette video.",
+      "sections": [
+        {
+          "title": "C'est quoi le VibeCoding",
+          "key_points": ["Zero code, que du resultat", "Transformer ses idees en business sans competence technique"]
+        },
+        {
+          "title": "Mon parcours + pourquoi le VibeCoding",
+          "key_points": ["Entrepreneur et investisseur depuis 10 ans", "Pivot crypto vers VibeCoding debut 2026", "Profil autodidacte, montee rapide en competences", "Decouverte d'OpenClaw fin janvier 2026"]
+        },
+        {
+          "title": "OpenClaw + Moltbook + le move",
+          "key_points": ["OpenClaw = assistant IA a memoire persistante", "Moltbook = reseau social pour agents IA", "Nassistant deploye sur Moltbook", "Idee de l'animal de compagnie pour l'agent (premier au monde)", "Convergence IA x crypto = narrative parfaite"]
+        },
+        {
+          "title": "Comment j'ai fait les 2 000 EUR",
+          "key_points": ["Communaute crypto cree un token Glitch", "Fees de transaction associees a son compte", "En realite 5 minutes de travail pas 1 heure", "Pas de support du token, vision long terme"]
+        },
+        {
+          "title": "La lecon",
+          "key_points": ["Passer a l'action", "Savoir trouver les opportunites — ca s'apprend"]
+        },
+        {
+          "title": "CTA",
+          "key_points": ["Formation offerte VibeCoding en description (4 modules)", "Contenu VibeCoding = idees vers business actionnables", "Reprise YouTube apres 4 ans"]
+        }
+      ],
+      "timestamps_raw": [
+        {"time": "0:00", "label": "Hook"},
+        {"time": "0:25", "label": "C'est quoi le VibeCoding"},
+        {"time": "0:45", "label": "Mon parcours + pourquoi le VibeCoding"},
+        {"time": "2:30", "label": "OpenClaw + Moltbook + le move"},
+        {"time": "7:00", "label": "Comment j'ai fait les 2 000 EUR"},
+        {"time": "9:00", "label": "La lecon"},
+        {"time": "10:00", "label": "CTA + Outro"}
+      ],
+      "shorts_moments": [
+        {"start": 150, "end": 180, "description": "OpenClaw = assistant IA a memoire persistante — ChatGPT oublie, OpenClaw non"},
+        {"start": 450, "end": 495, "description": "Ils ont cree une crypto au nom de l'animal de compagnie de mon agent IA — le mecanisme revele"},
+        {"start": 510, "end": 540, "description": "2 000 EUR en une heure ? En vrai 5 minutes — moment authenticite + punchline virale"}
+      ]
     }
   },
   "titres_seo": {
-    "status": "pending",
-    "winning_title": null,
-    "primary_keyword": null,
-    "secondary_keywords": []
+    "status": "completed",
+    "winning_title": "2 000€ en 1h (sans coder)",
+    "primary_keyword": "vibecoding",
+    "secondary_keywords": ["gagner argent sans coder", "claude code", "saas ia", "entrepreneur non tech"]
   },
   "miniature": {
-    "status": "pending",
-    "recommended_concept": null
+    "status": "completed",
+    "recommended_concept": {
+      "name": "The Laptop Reveal",
+      "layout": "Nass visage tiers droit (35% de l'image), regard vers la gauche — laptop ouvert tiers gauche avec ecran affichant un dashboard Stripe stylise (barres vertes, notifications de paiements) qui sert de source de lumiere cyan — fond sombre gradie",
+      "main_visual": "face + laptop screen (dashboard Stripe comme preuve visuelle)",
+      "text_overlay": "",
+      "font_style": "",
+      "color_palette": ["#00E5FF", "#0A0F1A"],
+      "face_expression": "sourcils leves + smirk de satisfaction incredule — bouche legerement ouverte",
+      "emotion_conveyed": "surprise satisfaite / disbelief face aux resultats",
+      "contrast_trick": "L'ecran du laptop est la seule source de lumiere cyan, eclairant le visage de Nass par en dessous/cote — cree un contraste naturel entre le fond sombre (#0A0F1A) et le glow cyan (#00E5FF) qui attire l'oeil sur le dashboard puis le visage. Luminosite cible 105."
+    },
+    "all_concepts": [
+      {
+        "name": "The Laptop Reveal",
+        "scores": {"scroll_stop": 5, "clarity": 4, "title_synergy": 5, "brand_consistency": 5, "total": 19}
+      },
+      {
+        "name": "The Stripe Dashboard Shock",
+        "scores": {"scroll_stop": 4, "clarity": 4, "title_synergy": 5, "brand_consistency": 4, "total": 17}
+      },
+      {
+        "name": "The Timer + Cash",
+        "scores": {"scroll_stop": 3, "clarity": 3, "title_synergy": 4, "brand_consistency": 4, "total": 14}
+      }
+    ],
+    "design_notes": "Zero text overlay (-19% vues si texte). Le dashboard Stripe sur l'ecran du laptop fait office de preuve visuelle sans texte explicite. Le titre court (~30 chars) portera le message chiffre, la miniature porte l'emotion et la preuve. Cyan dominant (+36% vues). Face = 35%. Mobile-first: 2 elements focaux seulement (visage + ecran)."
   },
   "description": {
-    "status": "pending",
-    "description_full": null,
-    "tags": [],
-    "first_150_chars": null
+    "status": "completed",
+    "description_full": "VibeCoding : j'ai généré 2 047€ en 1h avec Claude Code, sans écrire une ligne de code. Étude de cas complète avec preuves.\nDans cette vidéo, je te montre exactement comment j'ai transformé une conversation avec un agent immobilier en un SaaS à 29€ qui a fait 68 ventes en 48h — le tout buildé en 1 heure avec le VibeCoding.\n\n⏱ TIMESTAMPS\n0:00 - Hook\n0:30 - Le contexte : c'est quoi le VibeCoding\n2:30 - L'idée : le problème que j'ai repéré\n4:30 - Le process : comment j'ai build en 1h\n10:00 - Les résultats : 2 000€, les preuves\n13:00 - Les 3 leçons du VibeCoding\n16:00 - Comment toi tu peux faire pareil\n19:00 - CTA + Outro\n\n🔗 RESSOURCES & LIENS\n→ Claude Code : https://claude.ai/code\n→ Vercel : https://vercel.com\n→ Stripe : https://stripe.com\n\n📌 À PROPOS\nSur cette chaîne, je te montre comment utiliser l'IA (et surtout Claude Code) pour transformer tes idées en business concrets. Pas de jargon, pas de bullshit — juste des résultats.\n\n🔔 Abonne-toi + active la cloche pour ne rien rater.\n\n📱 RETROUVE-MOI\nTwitter/X : https://x.com/NassRiviera\nLinkedIn : https://linkedin.com/in/nassriviera",
+    "tags": ["vibecoding", "vibe coding", "claude code", "ia", "intelligence artificielle", "ai", "anthropic", "business ia", "entrepreneur ia", "automatisation", "nass riviera", "gagner argent ia", "saas sans coder", "coder sans coder", "gagner argent sans coder", "saas ia", "entrepreneur non tech", "no code", "side project", "micro saas", "generateur annonces immobilier", "stripe", "vercel", "etude de cas", "argent en ligne", "business en ligne"],
+    "first_150_chars": "VibeCoding : j'ai généré 2 047€ en 1h avec Claude Code, sans écrire une ligne de code. Étude de cas complète avec preuves."
   },
   "repurposing": {
     "status": "pending",
@@ -54,5 +118,18 @@
     "linkedin_hook": null,
     "posting_schedule": null
   },
-  "pipeline_log": []
+  "pipeline_log": [
+    {
+      "phase": 0,
+      "timestamp": "2026-03-18T12:00:00Z",
+      "status": "completed",
+      "notes": "Initialized with slug 2000e-1h-vibecoding — Mode A (topic provided)"
+    },
+    {
+      "phase": 1,
+      "timestamp": "2026-03-18T12:30:00Z",
+      "status": "completed",
+      "notes": "Script completed — 3050 words, ~20 min, 6 sections, 3 shorts moments. Files: 2000e-1h-vibecoding.md + 2000e-1h-vibecoding-visual.html"
+    }
+  ]
 }
