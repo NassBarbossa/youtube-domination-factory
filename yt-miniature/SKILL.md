@@ -73,22 +73,33 @@ Present all 3 concepts ranked, with the recommended winner and reasoning.
 ### Face Rules (when Nass appears)
 - **Émotion visible OBLIGATOIRE** — montrer l'émotion AVANT que le titre l'explique
 - Expression must match the emotion (surprised, focused, confident, skeptical)
-- Face should take up 30-40% of the thumbnail
-- Eyes looking at camera OR at the main visual element
-- Good lighting on face — no shadows
+- **Face should take up 40-50% of the thumbnail** (bigger = better CTR)
+- Eyes looking at camera OR at the main visual element (device screen)
+- **Dramatic rim lighting** on face — light from the side, not flat front lighting
+- Shallow depth of field — face sharp, background slightly blurred
 
 ### Composition Rules
 - Rule of thirds: main elements on grid intersections
-- Maximum 3 focal elements (face + text + visual)
+- **Maximum 2 focal elements** (face + ONE visual — device OR logo, not both)
 - Clear visual hierarchy: one element dominates
-- Negative space is your friend — don't clutter
+- **Negative space is your friend — don't clutter**
+- NO floating decorations, particles, or random shapes
+- Test at 256x144px (actual preview size) — if it's not clear, simplify
 
 ### Color Rules (source : 1of10.com, 62Md vues)
 - **Couleur dominante : cyan OU orange** — ce sont les 2 couleurs les plus performantes (cyan = +36% de vues)
 - **Luminosité cible : 100-110** — le peak de performance. Sombre = FAIL
-- High contrast between background and foreground
+- High contrast between background and foreground (+15% contrast on face)
 - Use brand colors consistently across videos
 - Bright/saturated colors perform better than muted tones
+- **Glow effect from device screen** illuminating face = natural color integration
+
+### Device Rules (when showing MacBook/iPhone)
+- Device should be **secondary** to face — face dominates, device supports
+- Screen content: **ONE element** (logo OR simple UI, never cluttered dashboards)
+- Avoid: trading charts, Stripe dashboards, code — too "make money YouTube" cliché
+- Prefer: Claude Code logo, simple checkmark, minimal chat interface
+- Device emits colored glow that illuminates face (orange or cyan)
 
 ## Rules
 
@@ -110,16 +121,77 @@ When running as part of an agent team:
 
 ## Examples
 
-### Strong thumbnail
-- **Topic**: "Build a SaaS with Claude Code"
-- **Text on thumbnail**: "0 LIGNE DE CODE"
-- **Visual**: Nass with surprised face + SaaS dashboard screenshot
-- **Why it works**: Title says HOW, thumbnail says the shocking RESULT
+### Strong thumbnail ✓
+- **Topic**: "2000€ en 1h avec le VibeCoding"
+- **Text on thumbnail**: AUCUN
+- **Visual**: Nass regardant MacBook, expression surprise, logo Claude Code sur écran, glow orange
+- **Why it works**: Face + émotion + device simple + une seule couleur dominante
 
-### Weak thumbnail
+### Strong thumbnail ✓
+- **Topic**: "Vibecoder depuis son téléphone"
+- **Text on thumbnail**: AUCUN
+- **Visual**: Nass tenant iPhone, yeux écarquillés, logo Claude Code sur écran, glow orange
+- **Why it works**: Composition clean, expression authentique, pas de clutter
+
+### Weak thumbnail ✗
 - **Topic**: "Build a SaaS with Claude Code"
 - **Text on thumbnail**: "BUILD A SAAS WITH CLAUDE CODE"
-- **Why it fails**: Just repeats the title, adds zero new information
+- **Visual**: Billets en main + graphiques trading + logo Claude + laptop
+- **Why it fails**: Trop d'éléments, répète le titre, cliché "make money YouTube"
+
+### Weak thumbnail ✗
+- **Topic**: Any
+- **Visual**: Floating shapes, particles, random decorations
+- **Why it fails**: Clutter amateur, distrait du message principal
+
+---
+
+## AI Image Generation (Gemini/Midjourney)
+
+Quand Nass veut générer la miniature avec l'IA, fournir ce template de prompt :
+
+### Template Prompt
+
+```
+STRICT FACE PRESERVATION: Use the EXACT face from my provided reference photo. Do not modify, generate, or replace any facial features.
+
+YouTube thumbnail, 1280x720, 16:9 aspect ratio, photorealistic:
+
+COMPOSITION:
+- Subject (me) positioned right third, face filling 40-50% of frame
+- [DEVICE: MacBook/iPhone] held naturally, screen facing viewer
+- Face well-lit, sharp focus, shallow depth of field on background
+
+EXPRESSION:
+- [EMOTION: surprised/curious/confident] — raised eyebrows, [specific expression]
+- Natural, not exaggerated or cartoonish
+
+DEVICE SCREEN:
+- Display the [LOGO/ELEMENT] I provided
+- Subtle [COLOR: orange/cyan] glow emanating from screen
+
+LIGHTING:
+- Dramatic rim light on face from the right side
+- Soft [COLOR] fill light from the device illuminating face
+- High contrast on facial features (+15%)
+
+BACKGROUND:
+- Pure dark gradient (#0A0F1A to #12151F)
+- NO floating elements, NO particles, NO decorations
+- Clean, minimal, professional
+
+OUTPUT: Export-ready PNG, sRGB, ultra sharp, no text overlay.
+```
+
+### Checklist avant validation
+- [ ] C'est bien le visage de Nass (pas un générique)
+- [ ] Expression émotionnelle visible
+- [ ] UN seul device (pas MacBook + iPhone)
+- [ ] Écran clean (logo ou UI simple, pas de dashboard)
+- [ ] Fond sombre sans clutter
+- [ ] Glow coloré depuis l'écran
+- [ ] Pas de texte
+- [ ] Pas de watermark
 
 ---
 
