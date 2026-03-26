@@ -147,24 +147,28 @@ Optimisation : limiter à 5 mots-clés par run = ~2 200 unités.
 ## Structure des fichiers
 
 ```
-yt-veille/
-├── scripts/
-│   ├── daily_monitor.py         # Script 1 — monitoring quotidien
-│   ├── discover_creators.py     # Script 2 — découverte de créateurs
-│   ├── config/
-│   │   ├── channels.json        # Liste des chaînes à surveiller
-│   │   └── keywords.json        # Mots-clés pour la découverte
-│   ├── data/
-│   │   ├── last_check.json      # Timestamp + IDs du dernier check
-│   │   └── channel_stats.json   # Historique stats pour calcul médiane
-│   ├── .env.example             # Template sans secrets
-│   ├── .gitignore               # Exclut .env
-│   └── requirements.txt         # Dépendances Python
-context/
-├── backlog.json                   # Idées accumulées (output principal, à la racine du projet)
-├── references/
-│   └── sources.md               # (existant)
-└── SKILL.md                     # (existant)
+youtube-domination-factory/          # Racine du projet
+├── context/
+│   ├── video-context.json           # (existant) Pipeline vidéo en cours
+│   ├── backlog.json                 # (nouveau) Idées accumulées par la veille
+│   └── backlog-archive/             # (nouveau) Archive des entrées > 90 jours
+│       └── YYYY-MM.json
+├── yt-veille/
+│   ├── SKILL.md                     # (existant)
+│   ├── references/
+│   │   └── sources.md               # (existant)
+│   └── scripts/
+│       ├── daily_monitor.py         # Script 1 — monitoring quotidien
+│       ├── discover_creators.py     # Script 2 — découverte de créateurs
+│       ├── config/
+│       │   ├── channels.json        # Liste des chaînes à surveiller
+│       │   └── keywords.json        # Mots-clés pour la découverte
+│       ├── data/
+│       │   ├── last_check.json      # Timestamp + IDs du dernier check
+│       │   └── channel_stats.json   # Historique stats pour calcul médiane
+│       ├── .env.example             # Template sans secrets
+│       ├── .gitignore               # Exclut .env
+│       └── requirements.txt         # Dépendances Python
 ```
 
 ## Format de sortie — `backlog.json`
