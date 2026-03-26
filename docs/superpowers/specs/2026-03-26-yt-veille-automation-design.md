@@ -24,7 +24,9 @@ Automatiser la veille YouTube pour détecter les nouvelles vidéos des créateur
 - **Exécution** : VPS Hostinger (`72.62.253.227`), cohabite avec `openclaw.service`
 - **Cron** : 1x/jour à 9h00 SGT (UTC+8) = 01:00 UTC
 - **Source de données** : YouTube Data API v3 exclusivement
-- **Quota API** : ~620 unités/jour estimées sur 10 000 disponibles (6.2%)
+- **Quota API** : ~42 unités/jour estimées sur 10 000 disponibles (0.4%) — utilise `playlistItems.list` + batching `videos.list`
+- **Timestamps** : tous en UTC
+- **Python** : 3.10+ (Ubuntu 22.04 natif)
 
 ### Sécurité
 
@@ -45,15 +47,17 @@ Checker les dernières vidéos d'une liste prédéfinie de chaînes YouTube, dé
 
 1. Lire `config/channels.json` — liste des chaînes à surveiller
 2. Pour chaque chaîne :
-   - API YouTube `channels.list` → stats chaîne (abonnés, total vues)
-   - API YouTube `search.list` → dernières vidéos (titre, date, videoId)
-   - API YouTube `videos.list` → stats vidéos (vues, likes, commentaires)
+   - API YouTube `channels.list` → stats chaîne (abonnés, total vues) — 1 unité
+   - API YouTube `playlistItems.list` sur la playlist uploads (`UU` + channel_id sans le `UC`) → dernières vidéos (titre, date, videoId) — 1 unité
+   - Si `playlistItems.list` échoue → fallback sur `search.list` (100 unités) et log un warning
+   - API YouTube `videos.list` → stats vidéos (vues, likes, commentaires) — batch jusqu'à 50 IDs par appel = 1 unité
 3. Comparer avec `data/last_check.json` → identifier les nouvelles vidéos depuis le dernier run
 4. Détecter les outliers : vidéo avec vues > 3× la médiane des vues récentes de la chaîne
-5. Écrire les nouveautés dans `context/backlog.json`
-6. Mettre à jour `data/last_check.json` avec le timestamp du check
-7. Mettre à jour `data/channel_stats.json` avec les stats historiques (pour calcul médiane)
-8. Commit + push sur le repo GitHub
+5. Dédupliquer par `videoId` avant d'ajouter au backlog (évite les doublons si `last_check.json` est reset)
+6. Écrire les nouveautés dans `context/backlog.json` (à la racine du projet, à côté de `video-context.json`)
+7. Mettre à jour `data/last_check.json` avec le timestamp du check
+8. Mettre à jour `data/channel_stats.json` avec les stats historiques (pour calcul médiane)
+9. `git pull --rebase` puis commit + push sur le repo GitHub. Si le rebase échoue → `git rebase --abort`, log l'erreur, exit 1
 
 ### Détection d'outliers
 
@@ -61,21 +65,31 @@ Checker les dernières vidéos d'une liste prédéfinie de chaînes YouTube, dé
 - Calculer la médiane des vues par chaîne
 - Si une nouvelle vidéo a > 3× la médiane → flag comme outlier
 - Les outliers sont marqués `"outlier": true` dans le backlog
+- **Nouvelles chaînes (< 5 vidéos en historique)** : pas de détection d'outlier, toutes les vidéos sont ajoutées normalement le temps de constituer l'historique
 
-### Coût API estimé
+### Gestion des erreurs
+
+- **API YouTube 403/429 (quota)** : log l'erreur, skip la chaîne, continuer les autres
+- **API YouTube 500** : retry 1x après 5s avec backoff, puis skip
+- **Fichiers JSON corrompus/manquants** : recréer un fichier vide par défaut, log un warning
+- **Écriture fichiers** : écrire dans un fichier temporaire puis renommer (atomic write) pour éviter les corruptions si le script crash mid-write
+- **Git push échoue** : `git pull --rebase`, si conflit → `git rebase --abort`, log erreur, exit 1
+- **Exit code non-zero** : le cron log l'erreur dans `/var/log/yt-veille.log`
+
+### Logging
+
+- Utiliser le module Python `logging` avec `RotatingFileHandler` (max 5 Mo, 3 fichiers de rotation)
+- Niveaux : INFO (run normal), WARNING (fallback, chaîne skippée), ERROR (échec critique)
+- Format : `[2026-03-26 01:00:00] INFO: Checked 20 channels, 5 new videos, 1 outlier`
+
+### Coût API estimé (avec `playlistItems.list` + batching `videos.list`)
 
 - 20 chaînes × `channels.list` = 20 unités
-- 20 chaînes × `search.list` = 2 000 unités (100/recherche)
-- ~100 vidéos × `videos.list` = 100 unités
-- **Total : ~2 120 unités/jour** (21.2% du quota)
+- 20 chaînes × `playlistItems.list` = 20 unités
+- ~100 vidéos × `videos.list` (batchées par 50) = 2 unités
+- **Total : ~42 unités/jour** (0.4% du quota)
 
-### Optimisation possible
-
-- Utiliser `playlistItems.list` sur la playlist "uploads" au lieu de `search.list` → 1 unité au lieu de 100
-- La playlist uploads a l'ID `UU` + channel_id (remplacer le premier `UC` par `UU`)
-- Réduirait le coût à **~120 unités/jour** (1.2% du quota)
-
-**Recommandation** : utiliser `playlistItems.list` pour le monitoring quotidien, garder `search.list` pour le discovery uniquement.
+Note : les estimates supposent ~20 chaînes à terme. Au lancement, 1 seule chaîne = ~3 unités/jour.
 
 ---
 
@@ -146,8 +160,8 @@ yt-veille/
 │   ├── .env.example             # Template sans secrets
 │   ├── .gitignore               # Exclut .env
 │   └── requirements.txt         # Dépendances Python
-├── context/
-│   └── backlog.json             # Idées accumulées (output principal)
+context/
+├── backlog.json                   # Idées accumulées (output principal, à la racine du projet)
 ├── references/
 │   └── sources.md               # (existant)
 └── SKILL.md                     # (existant)
@@ -211,6 +225,11 @@ python-dotenv              # Lecture .env
   ]
 }
 ```
+
+## Backlog pruning
+
+- Les entrées de plus de 90 jours sont archivées dans `context/backlog-archive/YYYY-MM.json`
+- Le backlog actif ne contient que les 90 derniers jours
 
 ## Hors scope
 
