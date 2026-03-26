@@ -122,8 +122,12 @@ def git_push(project_root: Path):
             cwd=project_root, check=True, capture_output=True, text=True
         )
     try:
-        # Stage changes first
-        run_git("add", "context/backlog.json", "context/backlog-archive/", "yt-veille/scripts/data/")
+        # Stage changes first (only add paths that exist)
+        paths_to_add = ["context/backlog.json", "yt-veille/scripts/data/"]
+        archive_dir = project_root / "context" / "backlog-archive"
+        if archive_dir.exists():
+            paths_to_add.append("context/backlog-archive/")
+        run_git("add", *paths_to_add)
         result = subprocess.run(
             ["git", "status", "--porcelain"],
             cwd=project_root, capture_output=True, text=True
