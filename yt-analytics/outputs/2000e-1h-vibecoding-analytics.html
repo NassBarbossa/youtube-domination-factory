@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics — VibeCoding: 2 000€ en 1h (Semaine 18-25 mars)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0f0f0f;
+    font-family: 'Inter', sans-serif;
+    color: #e8e8e8;
+    padding: 40px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .header-left h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .header-left h1 span { color: #f5a623; }
+
+  .header-left .meta {
+    font-size: 14px;
+    color: #888;
+  }
+
+  .verdict-badge {
+    background: #f5a6231a;
+    border: 2px solid #f5a623;
+    border-radius: 12px;
+    padding: 16px 28px;
+    text-align: center;
+  }
+
+  .verdict-badge .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #f5a623;
+    margin-bottom: 4px;
+  }
+
+  .verdict-badge .value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f5a623;
+  }
+
+  /* Metrics grid */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .metric-card {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid #2a2a2a;
+  }
+
+  .metric-card .label {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .metric-card .value {
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  .metric-card .benchmark {
+    font-size: 13px;
+    margin-top: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+
+  .benchmark.great { background: #22c55e1a; color: #22c55e; }
+  .benchmark.good { background: #3b82f61a; color: #3b82f6; }
+  .benchmark.avg { background: #f5a6231a; color: #f5a623; }
+  .benchmark.bad { background: #ef44441a; color: #ef4444; }
+
+  /* Secondary metrics */
+  .secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .secondary-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #2a2a2a;
+  }
+
+  .secondary-card .label {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .secondary-card .value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  /* Retention */
+  .retention-section {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #2a2a2a;
+    margin-bottom: 40px;
+  }
+
+  .retention-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .retention-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 200px;
+    padding-bottom: 30px;
+    position: relative;
+  }
+
+  .retention-bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  .retention-bar {
+    width: 100%;
+    max-width: 120px;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    min-height: 10px;
+  }
+
+  .retention-bar .bar-label {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .retention-bar-group .day-label {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+  }
+
+  /* Two column cards */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .insight-card {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #2a2a2a;
+  }
+
+  .insight-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .insight-card.wins h2 { color: #22c55e; }
+  .insight-card.losses h2 { color: #ef4444; }
+
+  .insight-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .insight-card li {
+    padding: 12px 0;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .insight-card li:last-child { border-bottom: none; }
+
+  .insight-card li .icon {
+    margin-right: 8px;
+  }
+
+  /* Recommendations */
+  .reco-section {
+    margin-bottom: 40px;
+  }
+
+  .reco-section h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .reco-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .reco-card {
+    background: #1a1a1a;
+    border-radius: 16px;
+    padding: 28px;
+    border-left: 4px solid;
+  }
+
+  .reco-card.p1 { border-color: #ef4444; }
+  .reco-card.p2 { border-color: #f5a623; }
+  .reco-card.p3 { border-color: #3b82f6; }
+  .reco-card.p4 { border-color: #22c55e; }
+
+  .reco-card .priority {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .reco-card.p1 .priority { color: #ef4444; }
+  .reco-card.p2 .priority { color: #f5a623; }
+  .reco-card.p3 .priority { color: #3b82f6; }
+  .reco-card.p4 .priority { color: #22c55e; }
+
+  .reco-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .reco-card .detail {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+  }
+
+  .reco-card .detail strong {
+    color: #e8e8e8;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #2a2a2a;
+    font-size: 13px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>VibeCoding: <span>2 000€ en 1h</span></h1>
+      <div class="meta">
+        Publie le 22 mars 2026 &middot; Donnees du 18-25 mars &middot; Duree estimee ~12 min &middot; 3 jours de data
+      </div>
+    </div>
+    <div class="verdict-badge">
+      <div class="label">Verdict</div>
+      <div class="value">Bon CTR, retention a travailler</div>
+    </div>
+  </div>
+
+  <!-- Primary Metrics -->
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="label">Vues</div>
+      <div class="value">498</div>
+      <div class="benchmark avg">~166/jour sur 3 jours</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">CTR</div>
+      <div class="value" style="color: #22c55e;">6.71%</div>
+      <div class="benchmark good">Good (5-8%)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Retention</div>
+      <div class="value" style="color: #ef4444;">26.6%</div>
+      <div class="benchmark bad">Bad (&lt;30%)</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Conv. Abonnes</div>
+      <div class="value" style="color: #22c55e;">1.0%</div>
+      <div class="benchmark good">Good (1-2%)</div>
+    </div>
+  </div>
+
+  <!-- Secondary Metrics -->
+  <div class="secondary-grid">
+    <div class="secondary-card">
+      <div class="label">Impressions</div>
+      <div class="value">4 216</div>
+    </div>
+    <div class="secondary-card">
+      <div class="label">Spectateurs uniques</div>
+      <div class="value">294</div>
+    </div>
+    <div class="secondary-card">
+      <div class="label">Duree moy. visionnage</div>
+      <div class="value">3:15</div>
+    </div>
+    <div class="secondary-card">
+      <div class="label">Abonnes gagnes</div>
+      <div class="value" style="color: #22c55e;">+5</div>
+    </div>
+  </div>
+
+  <!-- Retention by Day -->
+  <div class="retention-section">
+    <h2>Duree moyenne de visionnage par jour</h2>
+    <div class="retention-bars">
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 0%; background: #2a2a2a;">
+          <span class="bar-label" style="color: #555;">0:00</span>
+        </div>
+        <span class="day-label">18 mars</span>
+      </div>
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 0%; background: #2a2a2a;">
+          <span class="bar-label" style="color: #555;">0:00</span>
+        </div>
+        <span class="day-label">19 mars</span>
+      </div>
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 0%; background: #2a2a2a;">
+          <span class="bar-label" style="color: #555;">0:00</span>
+        </div>
+        <span class="day-label">20 mars</span>
+      </div>
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 0%; background: #2a2a2a;">
+          <span class="bar-label" style="color: #555;">0:00</span>
+        </div>
+        <span class="day-label">21 mars</span>
+      </div>
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 100%; background: linear-gradient(180deg, #22c55e, #16a34a);">
+          <span class="bar-label" style="color: #22c55e;">4:00</span>
+        </div>
+        <span class="day-label">22 mars</span>
+      </div>
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 81%; background: linear-gradient(180deg, #f5a623, #d4911c);">
+          <span class="bar-label" style="color: #f5a623;">3:15</span>
+        </div>
+        <span class="day-label">23 mars</span>
+      </div>
+      <div class="retention-bar-group">
+        <div class="retention-bar" style="height: 68%; background: linear-gradient(180deg, #ef4444, #dc2626);">
+          <span class="bar-label" style="color: #ef4444;">2:44</span>
+        </div>
+        <span class="day-label">24 mars</span>
+      </div>
+    </div>
+    <p style="color: #888; font-size: 13px; margin-top: 16px;">
+      Tendance a la baisse : l'AVD passe de 4:00 (jour 1) a 2:44 (jour 3). Les viewers tardifs regardent moins longtemps, ce qui est normal car le trafic passe de l'audience fidele au trafic browse/suggested moins engage.
+    </p>
+  </div>
+
+  <!-- What Worked / What Didn't -->
+  <div class="two-col">
+    <div class="insight-card wins">
+      <h2>Ce qui a marche</h2>
+      <ul>
+        <li><span class="icon">+</span><strong>CTR a 6.71%</strong> — Le titre "2 000€ en 1h" avec le mot VibeCoding cree un hook puissant. La promesse est concrete et mesurable. La miniature et le titre font le job.</li>
+        <li><span class="icon">+</span><strong>Conversion abonnes a 1%</strong> — Ceux qui regardent sont convaincus par le contenu. 5 abonnes sur 498 vues c'est un bon signal de qualite percue.</li>
+        <li><span class="icon">+</span><strong>4 216 impressions en 3 jours</strong> — YouTube pousse la video. Le CTR eleve aide l'algo a distribuer plus largement.</li>
+      </ul>
+    </div>
+    <div class="insight-card losses">
+      <h2>Ce qui n'a pas marche</h2>
+      <ul>
+        <li><span class="icon">-</span><strong>Retention a 26.6%</strong> — Sur une video estimee a ~12 min, les gens ne regardent que 3:15. Le probleme n'est PAS le titre (le CTR prouve que les gens cliquent). Le probleme est dans le contenu : soit l'intro est trop longue, soit il y a un drop massif apres le hook initial.</li>
+        <li><span class="icon">-</span><strong>AVD en chute</strong> — De 4:00 (J1) a 2:44 (J3). Les viewers du J1 (abonnes, notif) sont plus engages. Le trafic browse qui arrive ensuite decroche plus vite.</li>
+        <li><span class="icon">-</span><strong>Ratio vues/impressions</strong> — 498 vues / 4216 impressions. Le CTR est bon mais le volume d'impressions est encore limite. La faible retention freine probablement YouTube a pousser plus.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="reco-section">
+    <h2>Recommandations</h2>
+    <div class="reco-grid">
+      <div class="reco-card p1">
+        <div class="priority">Priorite 1 — Critique</div>
+        <h3>Reduire l'intro et livrer la valeur plus vite</h3>
+        <div class="detail">
+          <strong>Base sur :</strong> Retention 26.6% — les viewers decrochent avant la moitie de la video<br><br>
+          <strong>Action :</strong> Commencer directement par la demo ou le resultat (montrer les 2000€). L'intro contextuelle ne doit pas depasser 30-45 secondes. Les 60 premieres secondes font ou defont la retention.<br><br>
+          <strong>Impact attendu :</strong> Retention cible > 35%, ce qui devrait debloquer plus d'impressions de l'algo YouTube.
+        </div>
+      </div>
+      <div class="reco-card p2">
+        <div class="priority">Priorite 2 — Important</div>
+        <h3>Ajouter des pattern interrupts dans le body</h3>
+        <div class="detail">
+          <strong>Base sur :</strong> AVD en baisse progressive, probablement des drop reguliers dans le corps de la video<br><br>
+          <strong>Action :</strong> Toutes les 2-3 minutes, inserer un changement : question a l'ecran, changement de cadrage, recap rapide, teaser de ce qui vient. Casser le rythme monotone.<br><br>
+          <strong>Impact attendu :</strong> +15-20% de retention dans le corps de la video.
+        </div>
+      </div>
+      <div class="reco-card p3">
+        <div class="priority">Priorite 3 — Action</div>
+        <h3>Tester un format plus court (7-8 min)</h3>
+        <div class="detail">
+          <strong>Base sur :</strong> Si l'AVD est ~3:15 sur une video de ~12 min, une video de 7-8 min pourrait naturellement atteindre 40%+ de retention<br><br>
+          <strong>Action :</strong> Pour la prochaine video similaire (story/resultat), viser 7-8 min max. Couper tout ce qui est contexte non essentiel.<br><br>
+          <strong>Impact attendu :</strong> Meilleur % de retention = meilleur signal a l'algo = plus d'impressions.
+        </div>
+      </div>
+      <div class="reco-card p4">
+        <div class="priority">Priorite 4 — Capitaliser</div>
+        <h3>Continuer les titres avec chiffres concrets</h3>
+        <div class="detail">
+          <strong>Base sur :</strong> CTR de 6.71% — la formule "[Montant] en [Temps]" fonctionne tres bien<br><br>
+          <strong>Action :</strong> Garder cette structure de titre pour les prochaines videos de type resultat/story. Le CTR est ton point fort, ne change pas ce qui marche.<br><br>
+          <strong>Impact attendu :</strong> Maintien du CTR > 6% sur les videos de ce format.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    YT Analytics Dashboard &middot; Genere le 25 mars 2026 &middot; Data : YouTube Studio Export (18-25 mars 2026) &middot; 3 jours de donnees
+  </div>
+
+</div>
+</body>
+</html>
