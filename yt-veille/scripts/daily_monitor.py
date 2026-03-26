@@ -116,15 +116,14 @@ def build_backlog_entry(
 
 
 def git_push(project_root: Path):
+    def run_git(*args):
+        return subprocess.run(
+            ["git"] + list(args),
+            cwd=project_root, check=True, capture_output=True, text=True
+        )
     try:
-        subprocess.run(
-            ["git", "pull", "--rebase"],
-            cwd=project_root, check=True, capture_output=True, text=True
-        )
-        subprocess.run(
-            ["git", "add", "context/backlog.json", "context/backlog-archive/", "yt-veille/scripts/data/"],
-            cwd=project_root, check=True, capture_output=True, text=True
-        )
+        # Stage changes first
+        run_git("add", "context/backlog.json", "context/backlog-archive/", "yt-veille/scripts/data/")
         result = subprocess.run(
             ["git", "status", "--porcelain"],
             cwd=project_root, capture_output=True, text=True
@@ -132,14 +131,11 @@ def git_push(project_root: Path):
         if not result.stdout.strip():
             logger.info("No changes to commit")
             return
-        subprocess.run(
-            ["git", "commit", "-m", "chore(veille): daily monitor update"],
-            cwd=project_root, check=True, capture_output=True, text=True
-        )
-        subprocess.run(
-            ["git", "push"],
-            cwd=project_root, check=True, capture_output=True, text=True
-        )
+        # Commit locally
+        run_git("commit", "-m", "chore(veille): daily monitor update")
+        # Pull rebase then push
+        run_git("pull", "--rebase")
+        run_git("push")
         logger.info("Changes pushed to GitHub")
     except subprocess.CalledProcessError as e:
         logger.error("Git operation failed: %s\n%s", e, e.stderr)
