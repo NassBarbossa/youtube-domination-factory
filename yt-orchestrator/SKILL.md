@@ -305,3 +305,171 @@ agent_result = Agent(
 ```
 
 Voir documentation Claude Code sur `Agent` tool pour detailsopening le passage de données au JSON.
+
+---
+
+## Feedback Loop — Self-Improvement System (Orchestrator Level)
+
+L'orchestrator a **deux niveaux de feedback** qui fonctionnent ensemble :
+
+### Niveau 1 : Meta-Feedback (auto-analyse du pipeline)
+
+L'orchestrator s'analyse lui-même : comment le pipeline a tourné, sa vitesse, ses erreurs.
+
+#### Après chaque pipeline terminé
+
+Logger dans `yt-orchestrator/memory/pipeline_runs.json` :
+
+```json
+{
+  "video_slug": "slug-de-la-video",
+  "mode": "A|B",
+  "started_at": "2026-03-29T10:00:00Z",
+  "completed_at": "2026-03-29T13:30:00Z",
+  "total_duration_min": 210,
+  "phases": {
+    "phase_0_init": {"duration_min": 2, "status": "success"},
+    "phase_0.5_veille": {"duration_min": 15, "status": "success|skipped"},
+    "phase_1_script": {"duration_min": 105, "status": "success", "retries": 0},
+    "phase_2a_titres": {"duration_min": 10, "status": "success"},
+    "phase_2b_miniature": {"duration_min": 12, "status": "success"},
+    "phase_2c_description": {"duration_min": 8, "status": "success"},
+    "phase_3_validation": {"duration_min": 30, "status": "success", "changes_requested": ["titre"]},
+    "phase_4_repurposing": {"duration_min": 20, "status": "success"},
+    "phase_5_recap": {"duration_min": 5, "status": "success"}
+  },
+  "errors": [],
+  "validation_rounds": 1,
+  "changes_requested_at_validation": ["titre"],
+  "skills_used": {
+    "titres_seo": {"title_style": "chiffre", "char_count": 42},
+    "miniature": {"concept": "cyan-face-dark", "has_face": true},
+    "script": {"hook_type": "curiosity-gap", "duration_min": 11, "structure": "tutorial"},
+    "veille": {"source": "daily_monitor", "topic_category": "claude-code", "outlier_score": 3.1}
+  },
+  "performance": null
+}
+```
+
+#### Ce qu'on en extrait (meta_lessons) :
+
+- **Bottleneck** : quelle phase prend le plus de temps en moyenne → optimiser
+- **Taux de complétion** : % de pipelines terminés vs abandonnés
+- **Retries** : quels agents échouent le plus souvent
+- **Validation** : combien de rounds de changements à Phase 3 en moyenne → si > 2, les agents en amont doivent mieux calibrer
+- **Vitesse totale** : temps moyen du pipeline → corrélation avec la performance vidéo (plus rapide = trend encore chaude ?)
+
+Exemple de meta_lesson :
+```json
+{
+  "rule": "Phase 1 (script) est le bottleneck — 50% du temps total en moyenne",
+  "evidence": "Moyenne 105 min sur 210 min totales, sur 5 pipelines",
+  "action": "Envisager de pré-écrire les outlines avant de lancer le pipeline complet",
+  "sample_size": 5,
+  "confidence": "medium"
+}
+```
+
+### Niveau 2 : Cross-Feedback (combinaisons gagnantes)
+
+L'orchestrator lit les leçons de chaque skill et identifie les **combinaisons** qui performent ensemble.
+
+#### Avant chaque nouveau pipeline
+
+1. Lire `yt-orchestrator/memory/lessons.json`
+2. Lire les `memory/lessons.json` de chaque skill (titres, miniature, script, veille)
+3. Si des cross-lessons existent, les injecter dans les prompts des agents :
+   - "Combinaison gagnante : titre chiffre + miniature cyan + hook curiosity = 3× la moyenne"
+   - "Éviter : titre descriptif + miniature sans visage = sous-performance systématique"
+4. Mentionner à Nass : "Basé sur [N] vidéos, la combinaison [X] est ta meilleure formule"
+
+#### Après chaque analyse du feedback_analyzer
+
+Croiser les données de performance avec les choix combinés de chaque pipeline :
+
+```json
+{
+  "winning_combos": [
+    {
+      "combo": {
+        "title_style": "chiffre",
+        "thumbnail_concept": "cyan-face-dark",
+        "hook_type": "curiosity-gap",
+        "topic_category": "claude-code"
+      },
+      "avg_performance_index": 2.3,
+      "count": 3,
+      "confidence": "medium",
+      "example_video": "2000e-1h-vibecoding"
+    }
+  ],
+  "losing_combos": [
+    {
+      "combo": {
+        "title_style": "descriptif",
+        "thumbnail_concept": "text-overlay-bright",
+        "hook_type": "statement",
+        "topic_category": "ai-news"
+      },
+      "avg_performance_index": 0.6,
+      "count": 2,
+      "confidence": "low",
+      "example_video": "nvidia-gtc-recap"
+    }
+  ]
+}
+```
+
+#### Analyse des corrélations croisées
+
+L'orchestrator cherche des patterns entre skills :
+
+| Corrélation | Question posée | Exemple de leçon |
+|-------------|---------------|-----------------|
+| Titre × Miniature | Quels duos titre+miniature performent ? | "Titre chiffre + miniature visage = CTR 6.5% vs 3.2% pour les autres combos" |
+| Script × Rétention × Titre | Est-ce que le style de hook corrèle avec le CTR du titre ? | "Les hooks curiosity gap ont un meilleur CTR que les hooks statement — le titre promet, le hook livre" |
+| Veille × Performance globale | Les sujets trend convertissent-ils mieux selon le packaging ? | "Les outliers OpenClaw marchent mieux avec un titre 'how-to' qu'un titre 'news'" |
+| Vitesse × Performance | Publier vite améliore-t-il les vues ? | "Les pipelines < 48h font 2.1× la moyenne vs 0.8× pour les > 7 jours" |
+
+#### Format des cross_lessons
+
+```json
+{
+  "cross_lessons": [
+    {
+      "rule": "Titre chiffre + miniature cyan + hook curiosity gap = formule gagnante",
+      "evidence": "3 vidéos avec cette combinaison : performance index moyen 2.3x vs 0.9x pour les autres",
+      "skills_involved": ["titres_seo", "miniature", "script"],
+      "sample_size": 3,
+      "confidence": "medium",
+      "created_at": "2026-04-15"
+    },
+    {
+      "rule": "Les pipelines complétés en < 48h performent 2× mieux",
+      "evidence": "Corrélation -0.65 entre durée pipeline et performance index sur 8 vidéos",
+      "skills_involved": ["orchestrator"],
+      "sample_size": 8,
+      "confidence": "medium",
+      "created_at": "2026-04-20"
+    }
+  ]
+}
+```
+
+### Confidence Levels
+
+- `low` : < 5 pipelines complétés
+- `medium` : 5-15 pipelines complétés
+- `high` : > 15 pipelines complétés
+
+### Intégration avec le Feedback Analyzer
+
+Le script `yt-analytics/feedback_analyzer.py` met à jour les performances individuelles par skill. L'orchestrator ajoute une couche supplémentaire :
+
+1. Après que `feedback_analyzer.py` a tourné, l'orchestrator peut relire les `lessons.json` de chaque skill
+2. Il croise les données pour trouver les combinaisons inter-skills
+3. Il met à jour ses propres `cross_lessons` et `winning_combos`
+
+Cette analyse croisée se fait soit :
+- Manuellement quand Nass demande "analyse mes performances"
+- Automatiquement au début de chaque nouveau pipeline (lecture des leçons existantes)

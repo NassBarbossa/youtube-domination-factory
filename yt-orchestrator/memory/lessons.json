@@ -1,0 +1,13 @@
+{
+  "last_updated": null,
+  "sample_size": 0,
+  "meta_lessons": [],
+  "cross_lessons": [],
+  "winning_combos": [],
+  "pipeline_stats": {
+    "avg_total_duration_min": null,
+    "avg_phase_durations": {},
+    "bottleneck_phase": null,
+    "completion_rate": null
+  }
+}
