@@ -288,3 +288,96 @@ Une fois que Nass a validé la structure :
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-script`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec interaction utilisateur).
+
+---
+
+## Feedback Loop — Self-Improvement System
+
+### Avant chaque écriture de script
+
+1. Lire `yt-script/memory/lessons.json`
+2. Si des leçons existent (sample_size >= 3), les intégrer :
+   - Ajuster la structure du hook selon ce qui retient le plus
+   - Adapter le pacing et la longueur des sections
+   - Éviter les anti-patterns identifiés
+   - Mentionner : "Tes vidéos avec [pattern] retiennent X% vs Y% sans"
+3. Si pas assez de données, écrire normalement
+
+### Après chaque script terminé
+
+Logger dans `yt-script/memory/choices.json` :
+
+```json
+{
+  "video_slug": "slug-de-la-video",
+  "date": "2026-03-29",
+  "script_file": "yt-script/outputs/slug.md",
+  "hook_type": "curiosity-gap|bold-claim|question|story|stat",
+  "hook_length_words": 25,
+  "hook_length_seconds_est": 8,
+  "has_branded_intro": false,
+  "branded_intro_length_sec": 0,
+  "num_sections": 6,
+  "total_word_count": 1650,
+  "estimated_duration_min": 11,
+  "open_loops_count": 3,
+  "has_escalation": true,
+  "cta_position": "end",
+  "early_cta": false,
+  "uses_conclusion_words": false,
+  "structure_type": "tutorial|story|deep-dive|comparison|news|reaction",
+  "pacing_wpm_est": 160,
+  "pattern_interrupts_count": 5,
+  "shorts_moments_count": 3,
+  "performance": null
+}
+```
+
+### Critères d'analyse (pour le feedback analyzer)
+
+| Facteur | Poids | Optimal | Impact | Source |
+|---------|-------|---------|--------|--------|
+| Hook < 5s jusqu'à value prop | Élevé | Oui | +15-20% rétention à 30s | vidIQ, 1M vidéos |
+| Intro brandée | Élevé | < 3s ou aucune | > 5s = -10-15% rétention | vidIQ/TubeBuddy |
+| Cold open (pas d'intro) | Élevé | Oui | +25-30% rétention 1ère min | vidIQ |
+| CTA dans les 15 premières sec | Moyen | Non | CTA tôt = -3-8% drop | vidIQ |
+| Open loops | Élevé | Tous les 3-5 min | +10-20% rétention mid-video | Think Media |
+| Escalation | Élevé | Chaque section > précédente | +20-40% rétention 2ème moitié | Paddy Galloway |
+| Re-engagement hooks | Moyen | Toutes les 60-90s | Micro-spikes de rétention | Paddy Galloway |
+| Mots "en conclusion" | Élevé | JAMAIS | Trigger -15-30% cliff | Paddy Galloway |
+| Pacing (WPM) | Moyen | 150-170 WPM | < 130 = lent, > 190 = incompréhensible | Social Media Examiner |
+| Sujet unique/throughline | Élevé | 1 sujet clair | +20-30% vs multi-sujet | Études cognitives |
+| Structure numérotée | Moyen | Steps/liste | +8-12% rétention moy. | vidIQ |
+| Durée vidéo | Moyen | 8-12 min (éducatif) | Sweet spot rétention 45-55% | Think Media |
+| Language "tu/vous" | Faible | Fréquent | +5-8% rétention | Social Media Examiner |
+| Preview contenu < 10s | Moyen | Oui | +8-12% rétention | Film Booth |
+
+### Anti-patterns à détecter automatiquement
+
+- ❌ "En conclusion" / "Pour résumer" / "Voilà" → cliff de -15-30%
+- ❌ Intro brandée > 5 secondes → -10-15% perte
+- ❌ CTA "abonnez-vous" dans les 15 premières secondes → -3-8% drop
+- ❌ Section sans nouvelle info > 15 secondes → dip visible
+- ❌ Pas d'open loop pendant > 5 minutes → valley de rétention
+- ❌ Multi-sujets sans lien clair → -20-30% rétention globale
+
+### Format des leçons
+
+```json
+{
+  "lessons": [
+    {
+      "rule": "Les hooks < 10s avec curiosity gap retiennent 45% vs 28% pour les hooks > 20s",
+      "evidence": "Basé sur 6 vidéos, corrélation hook_length_seconds avec retention_pct",
+      "sample_size": 6,
+      "confidence": "medium",
+      "created_at": "2026-04-15"
+    }
+  ],
+  "structure_performance": {
+    "tutorial": {"count": 3, "avg_retention": 26.5, "avg_watch_time": 1200},
+    "story": {"count": 2, "avg_retention": 32.1, "avg_watch_time": 1800},
+    "deep-dive": {"count": 1, "avg_retention": 24.0, "avg_watch_time": 2100}
+  }
+}
+```
