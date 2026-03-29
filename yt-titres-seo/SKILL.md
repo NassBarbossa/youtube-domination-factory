@@ -184,3 +184,85 @@ Aucune interaction utilisateur — tu travailles autonome.
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-titres-seo`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec présentation des 7 titres).
+
+---
+
+## Feedback Loop — Self-Improvement System
+
+### Avant chaque génération de titres
+
+1. Lire `yt-titres-seo/memory/lessons.json`
+2. Si des leçons existent (sample_size >= 3), les intégrer dans la génération :
+   - Privilégier les styles qui ont un CTR supérieur à la moyenne
+   - Éviter les patterns qui sous-performent
+   - Mentionner les leçons clés à Nass : "Tes titres avec [pattern] font en moyenne X% CTR"
+3. Si pas assez de données, générer normalement
+
+### Après chaque choix de titre
+
+Logger dans `yt-titres-seo/memory/choices.json` :
+
+```json
+{
+  "video_slug": "slug-de-la-video",
+  "date": "2026-03-29",
+  "title_chosen": "Le titre choisi",
+  "titles_rejected": ["Titre 2", "Titre 3", "Titre 4", "Titre 5"],
+  "style": "chiffre|question|how-to|contrarian|curiosity-gap|story|liste|descriptif",
+  "char_count": 42,
+  "word_count": 7,
+  "has_number": true,
+  "number_type": "odd|even|money|time",
+  "has_power_words": true,
+  "power_words_used": ["astuce"],
+  "has_brackets": false,
+  "keyword_position": 2,
+  "framing": "positive|negative|neutral",
+  "performance": null
+}
+```
+
+Le champ `performance` est rempli plus tard par le feedback analyzer quand les analytics arrivent.
+
+### Critères d'analyse (pour le feedback analyzer)
+
+Le feedback analyzer corrèle chaque choix avec les données analytics (CTR, vues, impressions) et met à jour `lessons.json`. Critères de scoring du titre :
+
+| Facteur | Poids | Optimal | Source |
+|---------|-------|---------|--------|
+| Longueur (chars) | Élevé | 40-60 chars | SubSub.io, 120K vidéos |
+| Longueur (mots) | Moyen | 6-10 mots | Semrush, SubSub.io |
+| Contient un chiffre | Moyen | Oui, impair (3,5,7) = +36% clics | TunePocket, 50K titres |
+| Power words | Moyen | 1-2 = bon, 3+ = spam | Increv, Humble&Brag |
+| Framing négatif | Moyen | +20% vues médian | Quasa.io, 323K vidéos |
+| Keyword position | Élevé | Dans les 5 premiers mots (+20% SEO) | Increv |
+| Brackets | Faible | Léger bonus si présent | Humble&Brag |
+| ALL CAPS | Faible | Pénalité si > 3 mots en caps | SubSub.io |
+| Emojis (long-form) | Faible | Pénalité | SubSub.io |
+
+### Format des leçons extraites
+
+```json
+{
+  "lessons": [
+    {
+      "rule": "Les titres avec un chiffre impair font le meilleur CTR",
+      "evidence": "Moyenne 5.8% CTR vs 3.5% pour les descriptifs",
+      "sample_size": 8,
+      "confidence": "low|medium|high",
+      "created_at": "2026-03-29",
+      "last_validated": "2026-04-15"
+    }
+  ],
+  "style_performance": {
+    "chiffre": {"count": 3, "avg_ctr": 5.8, "avg_views": 450},
+    "question": {"count": 2, "avg_ctr": 4.2, "avg_views": 320},
+    "descriptif": {"count": 1, "avg_ctr": 3.1, "avg_views": 200}
+  }
+}
+```
+
+Confidence levels :
+- `low` : < 5 vidéos
+- `medium` : 5-10 vidéos
+- `high` : > 10 vidéos
