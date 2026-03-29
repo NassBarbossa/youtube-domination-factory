@@ -256,3 +256,76 @@ Aucune interaction utilisateur — tu travailles autonome.
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-miniature`, ignore le Context Protocol et utilise le workflow classique (Step 1-4 avec présentation des 3 concepts).
+
+---
+
+## Feedback Loop — Self-Improvement System
+
+### Avant chaque génération de miniatures
+
+1. Lire `yt-miniature/memory/lessons.json`
+2. Si des leçons existent (sample_size >= 3), les intégrer :
+   - Privilégier les styles visuels qui ont un CTR supérieur à la moyenne
+   - Mentionner : "Tes miniatures avec [pattern] font en moyenne X% CTR"
+3. Si pas assez de données, générer normalement
+
+### Après chaque choix de concept
+
+Logger dans `yt-miniature/memory/choices.json` :
+
+```json
+{
+  "video_slug": "slug-de-la-video",
+  "date": "2026-03-29",
+  "concept_chosen": "The Laptop Reveal",
+  "concepts_rejected": ["The Stripe Dashboard Shock", "The Timer + Cash"],
+  "has_face": true,
+  "face_size_pct": 35,
+  "face_expression": "surprise",
+  "dominant_color": "#00E5FF",
+  "color_name": "cyan",
+  "text_on_thumbnail": false,
+  "text_word_count": 0,
+  "num_focal_points": 2,
+  "has_border_glow": true,
+  "background_style": "dark-gradient",
+  "title_thumbnail_synergy": "complement",
+  "performance": null
+}
+```
+
+### Critères d'analyse (pour le feedback analyzer)
+
+| Facteur | Poids | Optimal | Source |
+|---------|-------|---------|--------|
+| Visage présent | Élevé | Oui = +30% clics | YouTube Creator Academy |
+| Taille du visage | Élevé | 30-60% du cadre | Justin Briggs, 100K vidéos |
+| Expression faciale | Moyen | Surprise, joie > neutre (+15-25%) | YouTube Creator Academy |
+| Direction du regard | Moyen | Vers le centre ou vers le texte (+5-10%) | vidIQ A/B tests |
+| Texte sur miniature | Moyen | 3-5 mots max, lisible en mobile | Justin Briggs |
+| Couleur dominante | Moyen | Warm (rouge/jaune/orange) > cool pour CTR | Justin Briggs, Paddy Galloway |
+| Luminosité | Moyen | Score > 120 (sur 0-255) | Justin Briggs |
+| Contraste | Moyen | Ratio >= 4.5:1 foreground/background | Justin Briggs |
+| Éléments focaux | Élevé | Max 3, composition clean | Paddy Galloway (MrBeast) |
+| Espace négatif | Faible | 20-30% du cadre | Paddy Galloway |
+| Cohérence titre/miniature | Élevé | Complémentaires, jamais dupliqués | Covington et al. |
+| Border/glow sur sujet | Faible | +5-12% CTR | vidIQ/TubeBuddy |
+
+### Format des leçons
+
+```json
+{
+  "lessons": [
+    {
+      "rule": "Les miniatures cyan avec visage font le meilleur CTR",
+      "evidence": "6.2% CTR moyen vs 3.8% sans visage",
+      "sample_size": 6,
+      "confidence": "medium"
+    }
+  ],
+  "concept_performance": {
+    "cyan-face-dark": {"count": 3, "avg_ctr": 6.2},
+    "text-overlay-bright": {"count": 2, "avg_ctr": 4.1}
+  }
+}
+```
