@@ -255,3 +255,56 @@ Aucune interaction utilisateur — tu travailles autonome.
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-repurposing`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec interaction utilisateur).
+
+---
+
+## Content Machine Integration
+
+Le repurposing LinkedIn utilise la **Content Machine** (`/Users/punk6995/content-machine/`) comme moteur de génération. La Content Machine est un projet externe indépendant — on la lit, on ne la modifie jamais.
+
+### Avant chaque exécution
+
+1. **Vérifier la version** : lire le dernier commit de `/Users/punk6995/content-machine/` pour s'assurer qu'on utilise la dernière version
+2. **Charger la config** :
+   - `/Users/punk6995/content-machine/config/brand.md` → audience, ton, positionnement
+   - `/Users/punk6995/content-machine/core/rules.md` → formatting, limites, banned words
+3. **Charger les engines** :
+   - `/Users/punk6995/content-machine/engines/a-oneshot/hook/SKILL.md` → hooks curiosité
+   - `/Users/punk6995/content-machine/engines/a-oneshot/post/SKILL.md` → post one-shot
+   - `/Users/punk6995/content-machine/engines/b-iterative/hook/SKILL.md` → hooks outcome-first
+   - `/Users/punk6995/content-machine/engines/b-iterative/post/SKILL.md` → post 4 passes
+4. **Charger la voice memory** (si elle existe) :
+   - `/Users/punk6995/content-machine/platforms/linkedin/memory/voice.md`
+
+### Workflow LinkedIn (via Content Machine)
+
+Quand le repurposing génère le post LinkedIn :
+
+1. **Extraire le sujet** du script vidéo (pas un résumé — l'angle business/insight)
+2. **Identifier le type** automatiquement depuis le contenu : story | tips | contrarian | transformation | lesson | behind-the-scenes
+3. **Extraire les détails concrets** du script : scène exacte, moment clé, chiffres/preuves
+4. **Générer avec les 2 engines en parallèle** (via l'outil Agent) :
+   - Engine A (curiosity, one-shot) → 1 post complet
+   - Engine B (outcome-first, 4 passes) → 1 post complet
+5. **Présenter côte à côte** pour que Nass choisisse
+6. **Logger le choix** dans `/Users/punk6995/content-machine/memory/ab-test.json`
+
+### Règles Content Machine
+
+- Respecter **toutes** les rules de `core/rules.md` (formatting, limites, banned words)
+- Respecter le **brand voice** de `config/brand.md`
+- 1 phrase par ligne, pas de hashtags, 1 emoji max
+- Sweet spot : 1300-1600 chars
+- Hook : 210-235 chars visibles avant "voir plus"
+- Au moins 1 preuve concrète par post (chiffre, date, nom)
+
+### X Thread (pas via Content Machine)
+
+Le thread X/Twitter n'utilise PAS la Content Machine (qui est optimisée LinkedIn). Le thread suit le workflow standard du Step 3 ci-dessus.
+
+### Version Check
+
+Avant chaque exécution, comparer le hash du dernier commit de `/Users/punk6995/content-machine/` avec le hash stocké dans `yt-repurposing/last_cm_version.txt`. Si différent :
+- Relire tous les fichiers config/engines
+- Mettre à jour `last_cm_version.txt`
+- Notifier : "Content Machine mise à jour détectée — config rechargée"
