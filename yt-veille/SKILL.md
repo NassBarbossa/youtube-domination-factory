@@ -165,3 +165,114 @@ Pour la v2.0, cette fonctionnalité est **optionnelle**.
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-veille`, ignore le Context Protocol et utilise le workflow classique (Step 1-4 avec interaction utilisateur).
+
+---
+
+## Feedback Loop — Self-Improvement System
+
+### Avant chaque session de veille
+
+1. Lire `yt-veille/memory/lessons.json`
+2. Si des leçons existent (sample_size >= 3), ajuster la recherche :
+   - Prioriser les catégories de sujets avec le meilleur hit rate
+   - Signaler les filons confirmés ("Les sujets OpenClaw marchent à chaque fois")
+   - Alerter sur les catégories qui ne convertissent pas
+   - Mentionner : "Hit rate actuel : X% — les sujets [catégorie] performent le mieux"
+3. Si pas assez de données, chercher normalement
+
+### Après chaque décision de sujet
+
+Logger dans `yt-veille/memory/choices.json` :
+
+```json
+{
+  "video_slug": "slug-de-la-video",
+  "date_detected": "2026-03-25",
+  "date_decided": "2026-03-26",
+  "date_published": "2026-03-28",
+  "days_lag_detect_to_publish": 3,
+  "source": "daily_monitor|manual|discover",
+  "source_channel": "AlexFinnOfficial",
+  "source_video_id": "abc123",
+  "source_video_views": 65000,
+  "source_channel_avg_views": 21000,
+  "outlier_score": 3.1,
+  "topic_category": "claude-code|ai-tools|vibecoding|ai-business|ai-news|tutorial|comparison",
+  "decision": "make_video|skip",
+  "skip_reason": null,
+  "toast_score": {
+    "timeliness": 4,
+    "originality": 3,
+    "audience_alignment": 5,
+    "searchability": 3,
+    "thumbnail_title_potential": 4,
+    "total": 19
+  },
+  "performance": null
+}
+```
+
+Le champ `performance` est rempli par le feedback analyzer après publication + analytics.
+
+### Critères d'analyse (pour le feedback analyzer)
+
+**Métriques de performance post-publication :**
+
+| Métrique | Comment la calculer | Benchmark |
+|----------|-------------------|-----------|
+| Performance Index | vues_vidéo / moyenne_vues_chaîne | > 1.5 = hit |
+| Replication Rate | vues_vidéo / vues_outlier_source | 5-15% = succès |
+| Hit Rate global | vidéos_trend_au_dessus_moyenne / total_vidéos_trend | > 50% = bon |
+| Temps de réaction moyen | moyenne(days_lag_detect_to_publish) | < 3 jours = bon |
+| CTR vs moyenne | CTR_vidéo - CTR_moyen_chaîne | > 0 = bon sujet |
+| View Velocity (48h) | vues_48h / abonnés | > 5% = bon |
+
+**Score TOAST prédictif :**
+- **T**imeliness : Le sujet est-il tendance maintenant ? (1-5)
+- **O**riginality : Notre angle est-il unique ? (1-5)
+- **A**udience Alignment : Le sujet correspond-il à nos abonnés ? (1-5)
+- **S**earchability : Y a-t-il de la demande en recherche ? (1-5)
+- **T**humbnail/Title potential : Peut-on le packager de façon accrocheuse ? (1-5)
+
+Score total /25. Sujets > 18 = haute probabilité de surperformer.
+
+Après accumulation de données, calculer la **corrélation** entre le TOAST score et le Performance Index pour valider/ajuster les poids.
+
+### Benchmarks de performance
+
+| Métrique | Mauvais | Acceptable | Bon | Excellent |
+|----------|---------|------------|-----|-----------|
+| Hit Rate | < 30% | 30-50% | 50-70% | > 70% |
+| Performance Index moyen | < 0.8 | 0.8-1.2 | 1.2-2.0 | > 2.0 |
+| Replication Rate | < 1% | 1-5% | 5-15% | > 15% |
+| Temps de réaction moyen | > 7j | 3-7j | 1-3j | < 24h |
+
+### Format des leçons
+
+```json
+{
+  "lessons": [
+    {
+      "rule": "Les sujets OpenClaw/Claude Code ont un hit rate de 80%",
+      "evidence": "4/5 vidéos basées sur des outliers OpenClaw ont surperformé la moyenne chaîne",
+      "sample_size": 5,
+      "confidence": "medium",
+      "created_at": "2026-04-15"
+    },
+    {
+      "rule": "Publier dans les 48h après détection donne 3x plus de vues",
+      "evidence": "Corrélation -0.72 entre days_lag et performance_index sur 8 vidéos",
+      "sample_size": 8,
+      "confidence": "medium",
+      "created_at": "2026-04-20"
+    }
+  ],
+  "topic_performance": {
+    "claude-code": {"count": 4, "avg_performance_index": 1.8, "hit_rate": 0.75},
+    "ai-news": {"count": 2, "avg_performance_index": 0.9, "hit_rate": 0.5},
+    "vibecoding": {"count": 3, "avg_performance_index": 2.1, "hit_rate": 1.0}
+  },
+  "hit_rate": 0.67,
+  "avg_days_lag": 2.5
+}
+```
