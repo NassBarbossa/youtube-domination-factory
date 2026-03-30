@@ -1,6 +1,42 @@
 {
-  "last_updated": "2026-03-29T01:00:03Z",
+  "last_updated": "2026-03-30T01:00:03Z",
   "items": [
+    {
+      "id": "dlcBRxoq20o",
+      "title": "L’avancé incroyable de NotebookLM en 2026 (tutoriel complet)",
+      "channel": "minutora",
+      "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA",
+      "published": "2026-03-29T08:30:00Z",
+      "views": 79,
+      "likes": 3,
+      "comments": 0,
+      "channel_subscribers": 715,
+      "thumbnail": "https://i.ytimg.com/vi/dlcBRxoq20o/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=dlcBRxoq20o",
+      "outlier": false,
+      "median_views": 399.5,
+      "outlier_ratio": 0.19774718397997496,
+      "detected_at": "2026-03-30T01:00:03Z",
+      "source": "daily_monitor"
+    },
+    {
+      "id": "h4xp2BthaFo",
+      "title": "Claude Code veut remplacer OpenClaw : LEUR NOUVEAU TOOLS",
+      "channel": "melvynxdev",
+      "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA",
+      "published": "2026-03-29T08:00:35Z",
+      "views": 3119,
+      "likes": 86,
+      "comments": 35,
+      "channel_subscribers": 56700,
+      "thumbnail": "https://i.ytimg.com/vi/h4xp2BthaFo/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=h4xp2BthaFo",
+      "outlier": false,
+      "median_views": 4607.5,
+      "outlier_ratio": 0.6769397721106891,
+      "detected_at": "2026-03-30T01:00:03Z",
+      "source": "daily_monitor"
+    },
     {
       "id": "HJ-dwefABss",
       "title": "This One Tool Turns Claude Code Into an Entire Agent Company",
