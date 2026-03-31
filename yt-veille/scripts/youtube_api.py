@@ -98,6 +98,51 @@ class YouTubeClient:
                 logger.error("Error fetching video stats: %s", e)
         return result
 
+    def get_video_details(self, video_ids: list[str]) -> dict:
+        """Fetch full video details: snippet, stats, content, topics."""
+        result = {}
+        for i in range(0, len(video_ids), 50):
+            batch = video_ids[i:i + 50]
+            try:
+                resp = self.service.videos().list(
+                    part="snippet,statistics,contentDetails,topicDetails",
+                    id=",".join(batch)
+                ).execute()
+                for item in resp.get("items", []):
+                    vid_id = item["id"]
+                    snippet = item.get("snippet", {})
+                    stats = item.get("statistics", {})
+                    content = item.get("contentDetails", {})
+                    topics = item.get("topicDetails", {})
+                    result[vid_id] = {
+                        "title": snippet.get("title", ""),
+                        "description": snippet.get("description", ""),
+                        "tags": snippet.get("tags", []),
+                        "published_at": snippet.get("publishedAt", ""),
+                        "thumbnail_url": snippet.get("thumbnails", {}).get("high", {}).get("url", ""),
+                        "category_id": snippet.get("categoryId", ""),
+                        "duration_seconds": self._parse_duration(content.get("duration", "PT0S")),
+                        "views": int(stats.get("viewCount", 0)),
+                        "likes": int(stats.get("likeCount", 0)),
+                        "comments": int(stats.get("commentCount", 0)),
+                        "topic_categories": topics.get("topicCategories", []),
+                    }
+            except HttpError as e:
+                logger.error("Error fetching video details: %s", e)
+        return result
+
+    @staticmethod
+    def _parse_duration(duration: str) -> int:
+        """Parse ISO 8601 duration (PT10M30S) to seconds."""
+        import re
+        match = re.match(r'PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?', duration)
+        if not match:
+            return 0
+        hours = int(match.group(1) or 0)
+        minutes = int(match.group(2) or 0)
+        seconds = int(match.group(3) or 0)
+        return hours * 3600 + minutes * 60 + seconds
+
     def search_channels(self, query: str, max_results: int = 10) -> list[dict]:
         try:
             resp = self.service.search().list(

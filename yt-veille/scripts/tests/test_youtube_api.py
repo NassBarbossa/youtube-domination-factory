@@ -103,3 +103,64 @@ def test_get_channel_stats_empty_response(mock_service):
     client = YouTubeClient("fake_key")
     stats = client.get_channel_stats("UC_INVALID")
     assert stats is None
+
+
+def test_get_video_details(mock_service):
+    mock_service.videos().list().execute.return_value = {
+        "items": [
+            {
+                "id": "abc123",
+                "snippet": {
+                    "title": "Test Video",
+                    "description": "A test description",
+                    "tags": ["ai", "claude"],
+                    "publishedAt": "2026-03-25T20:00:00Z",
+                    "thumbnails": {"high": {"url": "https://img.youtube.com/vi/abc123/hq.jpg"}},
+                    "categoryId": "28",
+                },
+                "contentDetails": {"duration": "PT10M30S"},
+                "statistics": {
+                    "viewCount": "15230",
+                    "likeCount": "892",
+                    "commentCount": "134",
+                },
+                "topicDetails": {
+                    "topicCategories": ["https://en.wikipedia.org/wiki/Technology"]
+                },
+            }
+        ]
+    }
+    client = YouTubeClient("fake_key")
+    details = client.get_video_details(["abc123"])
+    assert "abc123" in details
+    d = details["abc123"]
+    assert d["title"] == "Test Video"
+    assert d["description"] == "A test description"
+    assert d["tags"] == ["ai", "claude"]
+    assert d["duration_seconds"] == 630
+    assert d["views"] == 15230
+    assert d["likes"] == 892
+    assert d["comments"] == 134
+    assert d["thumbnail_url"] == "https://img.youtube.com/vi/abc123/hq.jpg"
+    assert d["category_id"] == "28"
+
+def test_get_video_details_no_tags(mock_service):
+    mock_service.videos().list().execute.return_value = {
+        "items": [
+            {
+                "id": "abc123",
+                "snippet": {
+                    "title": "No Tags Video",
+                    "description": "",
+                    "publishedAt": "2026-03-25T20:00:00Z",
+                    "thumbnails": {"high": {"url": ""}},
+                    "categoryId": "22",
+                },
+                "contentDetails": {"duration": "PT5M"},
+                "statistics": {"viewCount": "100", "likeCount": "5", "commentCount": "1"},
+            }
+        ]
+    }
+    client = YouTubeClient("fake_key")
+    details = client.get_video_details(["abc123"])
+    assert details["abc123"]["tags"] == []
