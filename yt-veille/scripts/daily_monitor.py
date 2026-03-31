@@ -108,12 +108,12 @@ def _score_all_videos(db_path: str, channels: list[dict]):
         subscribers = ch_row[0] if ch_row else 0
 
         videos = conn.execute(
-            "SELECT video_id, title, description FROM videos WHERE channel_id=?", (cid,)
+            "SELECT video_id, title, description, published_at FROM videos WHERE channel_id=?", (cid,)
         ).fetchall()
         conn.close()
 
         for vid_row in videos:
-            vid_id, title, description = vid_row[0], vid_row[1], vid_row[2]
+            vid_id, title, description, published_at = vid_row[0], vid_row[1], vid_row[2], vid_row[3]
             snapshots = get_video_snapshots(vid_id, db_path)
             if not snapshots:
                 continue
@@ -123,6 +123,7 @@ def _score_all_videos(db_path: str, channels: list[dict]):
                 channel_median=median,
                 channel_avg_velocity=avg_vel,
                 channel_subscribers=subscribers,
+                published_at=published_at,
             )
 
             topic = None

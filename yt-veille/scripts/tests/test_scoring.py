@@ -66,3 +66,56 @@ def test_compute_video_metrics_single_snapshot():
     )
     assert metrics["velocity_ratio"] == 0
     assert metrics["composite"] >= 0
+    assert metrics["early"] is False
+
+
+def test_composite_score_early_weights():
+    """Early mode should give more weight to engagement."""
+    result_normal = composite_score(outlier=5.0, velocity_ratio=3.0,
+                                     views_subs=0.30, engagement=7.0)
+    result_early = composite_score(outlier=5.0, velocity_ratio=3.0,
+                                    views_subs=0.30, engagement=7.0, early=True)
+    # With high engagement, early mode should score higher
+    assert result_early > result_normal
+
+
+def test_compute_video_metrics_early_velocity():
+    """Video < 24h old with 1 snapshot should use early velocity from published_at."""
+    from datetime import datetime, timezone, timedelta
+    # Published 6 hours ago
+    pub_time = (datetime.now(timezone.utc) - timedelta(hours=6)).isoformat()
+    snapshots = [
+        {"scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+         "views": 30000, "likes": 2000, "comments": 300},
+    ]
+    metrics = compute_video_metrics(
+        snapshots=snapshots,
+        channel_median=10000,
+        channel_avg_velocity=500.0,
+        channel_subscribers=50000,
+        published_at=pub_time,
+    )
+    assert metrics["early"] is True
+    # 30000 views / 6 hours = 5000 views/h, channel avg = 500 → ratio = 10
+    assert metrics["velocity_ratio"] > 5
+    assert metrics["composite"] > 0
+
+
+def test_compute_video_metrics_old_video_not_early():
+    """Video > 24h old should NOT use early mode."""
+    from datetime import datetime, timezone, timedelta
+    pub_time = (datetime.now(timezone.utc) - timedelta(hours=48)).isoformat()
+    snapshots = [
+        {"scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+         "views": 30000, "likes": 2000, "comments": 300},
+    ]
+    metrics = compute_video_metrics(
+        snapshots=snapshots,
+        channel_median=10000,
+        channel_avg_velocity=500.0,
+        channel_subscribers=50000,
+        published_at=pub_time,
+    )
+    assert metrics["early"] is False
+    # No 2nd snapshot + not early → velocity = 0
+    assert metrics["velocity_ratio"] == 0

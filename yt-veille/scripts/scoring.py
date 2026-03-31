@@ -13,6 +13,13 @@ WEIGHTS = {
     "engagement": 0.15,
 }
 
+WEIGHTS_EARLY = {
+    "outlier": 0.35,
+    "velocity": 0.25,
+    "views_subs": 0.15,
+    "engagement": 0.25,
+}
+
 
 def normalize(value: float, thresholds: list[float]) -> float:
     scores = [0, 25, 50, 75, 100]
@@ -28,21 +35,24 @@ def normalize(value: float, thresholds: list[float]) -> float:
 
 
 def composite_score(*, outlier: float, velocity_ratio: float,
-                    views_subs: float, engagement: float) -> float:
+                    views_subs: float, engagement: float,
+                    early: bool = False) -> float:
+    w = WEIGHTS_EARLY if early else WEIGHTS
     o = normalize(outlier, OUTLIER_THRESHOLDS)
     v = normalize(velocity_ratio, VELOCITY_THRESHOLDS)
     vs = normalize(views_subs, VIEWS_SUBS_THRESHOLDS)
     e = normalize(engagement, ENGAGEMENT_THRESHOLDS)
-    return round(o * WEIGHTS["outlier"] + v * WEIGHTS["velocity"]
-                 + vs * WEIGHTS["views_subs"] + e * WEIGHTS["engagement"], 2)
+    return round(o * w["outlier"] + v * w["velocity"]
+                 + vs * w["views_subs"] + e * w["engagement"], 2)
 
 
 def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
                           channel_avg_velocity: float,
-                          channel_subscribers: int) -> dict:
+                          channel_subscribers: int,
+                          published_at: str | None = None) -> dict:
     if not snapshots:
         return {"outlier_score": 0, "velocity_ratio": 0, "views_subs_ratio": 0,
-                "engagement_rate": 0, "composite": 0}
+                "engagement_rate": 0, "composite": 0, "early": False}
 
     latest = snapshots[-1]
     views = latest["views"]
@@ -51,6 +61,15 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
 
     outlier_score = views / channel_median if channel_median > 0 else 0
 
+    # Determine if video is < 24h old
+    early = False
+    if published_at:
+        pub_time = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+        now = datetime.now(pub_time.tzinfo) if pub_time.tzinfo else datetime.utcnow()
+        age_hours = (now - pub_time).total_seconds() / 3600
+        early = age_hours < 24
+
+    # Velocity calculation
     if len(snapshots) >= 2:
         first, last = snapshots[0], snapshots[-1]
         t0 = datetime.fromisoformat(first["scraped_at"])
@@ -58,6 +77,16 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         hours = (t1 - t0).total_seconds() / 3600
         video_velocity = (last["views"] - first["views"]) / hours if hours > 0 else 0
         velocity_ratio = video_velocity / channel_avg_velocity if channel_avg_velocity > 0 else 0
+    elif early and published_at:
+        # Early velocity: views / hours since publication
+        pub_time = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+        now = datetime.now(pub_time.tzinfo) if pub_time.tzinfo else datetime.utcnow()
+        hours_since_pub = (now - pub_time).total_seconds() / 3600
+        if hours_since_pub > 0:
+            early_vel = views / hours_since_pub
+            velocity_ratio = early_vel / channel_avg_velocity if channel_avg_velocity > 0 else 0
+        else:
+            velocity_ratio = 0
     else:
         velocity_ratio = 0
 
@@ -69,6 +98,7 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         velocity_ratio=velocity_ratio,
         views_subs=views_subs_ratio,
         engagement=engagement_rate * 100,
+        early=early,
     )
 
     return {
@@ -77,4 +107,5 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         "views_subs_ratio": round(views_subs_ratio, 4),
         "engagement_rate": round(engagement_rate, 4),
         "composite": score,
+        "early": early,
     }
