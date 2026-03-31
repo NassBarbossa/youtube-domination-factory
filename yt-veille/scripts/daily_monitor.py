@@ -1,23 +1,28 @@
-"""Daily YouTube channel monitor — detects new videos and outliers."""
+"""Daily YouTube channel monitor — scrapes to SQLite, scores, extracts topics."""
+import json
 import logging
 import os
-import statistics
-import subprocess
 import sys
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 from dotenv import load_dotenv
 
-from json_io import read_json, write_json
+from database import (
+    init_db, upsert_channel, upsert_video, insert_snapshot,
+    get_channel_median, get_channel_avg_velocity,
+    get_video_snapshots, update_video_score, update_channel_stats,
+    get_connection,
+)
+from json_io import read_json
+from scoring import compute_video_metrics
+from topic_extractor import extract_topic
 from youtube_api import YouTubeClient
 
 SCRIPT_DIR = Path(__file__).parent
 CONFIG_DIR = SCRIPT_DIR / "config"
-DATA_DIR = SCRIPT_DIR / "data"
-PROJECT_ROOT = SCRIPT_DIR.parent.parent
-BACKLOG_PATH = PROJECT_ROOT / "context" / "backlog.json"
+DB_PATH = str(SCRIPT_DIR / "data" / "veille.db")
 
 logger = logging.getLogger("daily_monitor")
 
@@ -34,117 +39,100 @@ def setup_logging():
     logger.setLevel(logging.INFO)
 
 
-def detect_new_videos(uploads: list[dict], checked_ids: set) -> list[dict]:
-    return [v for v in uploads if v["video_id"] not in checked_ids]
+def run_monitor(*, db_path: str, client, channels: list[dict]):
+    """Core monitor logic — testable without env/logging."""
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+    for ch in channels:
+        cid = ch["channel_id"]
+        logger.info("Checking channel: %s (%s)", ch["handle"], cid)
 
-def compute_outliers(video_views: dict, history: list[int]) -> dict:
-    result = {}
-    if len(history) < 5:
-        for vid, views in video_views.items():
-            result[vid] = {"outlier": False, "median_views": None, "outlier_ratio": None}
-        return result
-    median = statistics.median(history)
-    for vid, views in video_views.items():
-        ratio = views / median if median > 0 else 0
-        result[vid] = {
-            "outlier": ratio > 3.0,
-            "median_views": median,
-            "outlier_ratio": ratio,
-        }
-    return result
+        stats = client.get_channel_stats(cid)
+        if stats is None:
+            logger.warning("Skipping channel %s — could not fetch stats", ch["handle"])
+            continue
 
-
-def deduplicate_backlog(existing_items: list[dict], new_items: list[dict]) -> list[dict]:
-    existing_ids = {item["id"] for item in existing_items}
-    return [item for item in new_items if item["id"] not in existing_ids]
-
-
-def prune_backlog(items: list[dict], max_age_days: int = 90) -> tuple[list[dict], list[dict]]:
-    cutoff = datetime.now(timezone.utc) - timedelta(days=max_age_days)
-    kept, archived = [], []
-    for item in items:
-        detected = datetime.fromisoformat(item["detected_at"].replace("Z", "+00:00"))
-        if detected >= cutoff:
-            kept.append(item)
-        else:
-            archived.append(item)
-    return kept, archived
-
-
-def save_archive(archived: list[dict], project_root: Path):
-    if not archived:
-        return
-    archive_dir = project_root / "context" / "backlog-archive"
-    by_month = {}
-    for item in archived:
-        month_key = item["detected_at"][:7]
-        by_month.setdefault(month_key, []).append(item)
-    for month_key, items in by_month.items():
-        path = str(archive_dir / f"{month_key}.json")
-        existing = read_json(path, default={"items": []})
-        existing_ids = {i["id"] for i in existing["items"]}
-        new_items = [i for i in items if i["id"] not in existing_ids]
-        existing["items"].extend(new_items)
-        write_json(path, existing)
-    logger.info("Archived %d items across %d month(s)", len(archived), len(by_month))
-
-
-def build_backlog_entry(
-    video_id: str, title: str, channel_name: str, channel_id: str,
-    published_at: str, views: int, likes: int, comments: int,
-    subscribers: int, outlier: bool, median_views, outlier_ratio,
-) -> dict:
-    return {
-        "id": video_id,
-        "title": title,
-        "channel": channel_name,
-        "channel_id": channel_id,
-        "published": published_at,
-        "views": views,
-        "likes": likes,
-        "comments": comments,
-        "channel_subscribers": subscribers,
-        "thumbnail": f"https://i.ytimg.com/vi/{video_id}/hqdefault.jpg",
-        "url": f"https://www.youtube.com/watch?v={video_id}",
-        "outlier": outlier,
-        "median_views": median_views,
-        "outlier_ratio": outlier_ratio,
-        "detected_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "source": "daily_monitor",
-    }
-
-
-def git_push(project_root: Path):
-    def run_git(*args):
-        return subprocess.run(
-            ["git"] + list(args),
-            cwd=project_root, check=True, capture_output=True, text=True
+        upsert_channel(
+            db_path, channel_id=cid, handle=ch["handle"],
+            subscribers=stats["subscriber_count"],
+            niche=ch.get("niche", ""), added_at=ch.get("added_at", today),
         )
-    try:
-        # Stage changes first (only add paths that exist)
-        paths_to_add = ["context/backlog.json", "yt-veille/scripts/data/"]
-        archive_dir = project_root / "context" / "backlog-archive"
-        if archive_dir.exists():
-            paths_to_add.append("context/backlog-archive/")
-        run_git("add", *paths_to_add)
-        result = subprocess.run(
-            ["git", "status", "--porcelain"],
-            cwd=project_root, capture_output=True, text=True
-        )
-        if not result.stdout.strip():
-            logger.info("No changes to commit")
-            return
-        # Commit locally
-        run_git("commit", "-m", "chore(veille): daily monitor update")
-        # Pull rebase then push
-        run_git("pull", "--rebase")
-        run_git("push")
-        logger.info("Changes pushed to GitHub")
-    except subprocess.CalledProcessError as e:
-        logger.error("Git operation failed: %s\n%s", e, e.stderr)
-        subprocess.run(["git", "rebase", "--abort"], cwd=project_root, capture_output=True)
-        sys.exit(1)
+
+        uploads = client.get_latest_uploads(cid, max_results=5)
+        if not uploads:
+            logger.info("  No uploads for %s", ch["handle"])
+            continue
+
+        video_ids = [v["video_id"] for v in uploads]
+        details = client.get_video_details(video_ids)
+
+        for vid_id, d in details.items():
+            upsert_video(
+                db_path, video_id=vid_id, channel_id=cid,
+                title=d["title"], description=d["description"],
+                tags=json.dumps(d["tags"]), duration_seconds=d["duration_seconds"],
+                published_at=d["published_at"], thumbnail_url=d["thumbnail_url"],
+                category_id=d["category_id"], detected_at=today,
+            )
+            insert_snapshot(
+                db_path, video_id=vid_id, scraped_at=today,
+                views=d["views"], likes=d["likes"], comments=d["comments"],
+            )
+
+        logger.info("  Inserted %d videos for %s", len(details), ch["handle"])
+
+    logger.info("Running scoring pass...")
+    _score_all_videos(db_path, channels)
+
+
+def _score_all_videos(db_path: str, channels: list[dict]):
+    """Score all videos and extract topics for those above threshold."""
+    for ch in channels:
+        cid = ch["channel_id"]
+        median = get_channel_median(cid, db_path)
+        avg_vel = get_channel_avg_velocity(cid, db_path)
+
+        if median is None or median == 0:
+            logger.info("  Not enough data for %s — skipping scoring", ch["handle"])
+            continue
+
+        if avg_vel is None:
+            avg_vel = 0
+
+        update_channel_stats(db_path, cid, median, avg_vel)
+
+        conn = get_connection(db_path)
+        ch_row = conn.execute(
+            "SELECT subscribers FROM channels WHERE channel_id=?", (cid,)
+        ).fetchone()
+        subscribers = ch_row[0] if ch_row else 0
+
+        videos = conn.execute(
+            "SELECT video_id, title, description FROM videos WHERE channel_id=?", (cid,)
+        ).fetchall()
+        conn.close()
+
+        for vid_row in videos:
+            vid_id, title, description = vid_row[0], vid_row[1], vid_row[2]
+            snapshots = get_video_snapshots(vid_id, db_path)
+            if not snapshots:
+                continue
+
+            metrics = compute_video_metrics(
+                snapshots=snapshots,
+                channel_median=median,
+                channel_avg_velocity=avg_vel,
+                channel_subscribers=subscribers,
+            )
+
+            topic = None
+            if metrics["composite"] > 50:
+                topic = extract_topic(title or "", description or "")
+
+            update_video_score(db_path, vid_id, metrics["composite"], topic)
+
+        logger.info("  Scored videos for %s (median=%.0f, avg_vel=%.0f)",
+                     ch["handle"], median, avg_vel or 0)
 
 
 def main():
@@ -156,96 +144,13 @@ def main():
         logger.error("YOUTUBE_API_KEY not set")
         sys.exit(1)
 
+    init_db(DB_PATH)
     client = YouTubeClient(api_key)
-    channels = read_json(str(CONFIG_DIR / "channels.json"), default={"channels": []})
-    last_check = read_json(str(DATA_DIR / "last_check.json"), default={"last_check_utc": None, "checked_video_ids": []})
-    channel_stats = read_json(str(DATA_DIR / "channel_stats.json"), default={})
-    backlog = read_json(str(BACKLOG_PATH), default={"last_updated": None, "items": []})
+    channels_config = read_json(str(CONFIG_DIR / "channels.json"), default={"channels": []})
+    channels = channels_config.get("channels", [])
 
-    checked_ids = set(last_check.get("checked_video_ids", []))
-    all_new_checked_ids = set()
-    new_entries = []
-    total_new = 0
-    total_outliers = 0
-
-    for ch in channels.get("channels", []):
-        cid = ch["channel_id"]
-        logger.info("Checking channel: %s (%s)", ch["handle"], cid)
-
-        stats = client.get_channel_stats(cid)
-        if stats is None:
-            logger.warning("Skipping channel %s — could not fetch stats", ch["handle"])
-            continue
-
-        uploads = client.get_latest_uploads(cid, max_results=10)
-        new_videos = detect_new_videos(uploads, checked_ids)
-
-        if not new_videos:
-            logger.info("  No new videos for %s", ch["handle"])
-            all_new_checked_ids.update(v["video_id"] for v in uploads)
-            continue
-
-        video_ids = [v["video_id"] for v in new_videos]
-        video_stats = client.get_video_stats(video_ids)
-        all_new_checked_ids.update(v["video_id"] for v in uploads)
-
-        history = channel_stats.get(cid, {"views_history": []})
-        views_history = history.get("views_history", [])
-
-        video_views = {vid: video_stats.get(vid, {}).get("views", 0) for vid in video_ids}
-        outlier_info = compute_outliers(video_views, views_history)
-
-        for v in new_videos:
-            vid = v["video_id"]
-            vs = video_stats.get(vid, {"views": 0, "likes": 0, "comments": 0})
-            oi = outlier_info.get(vid, {"outlier": False, "median_views": None, "outlier_ratio": None})
-
-            entry = build_backlog_entry(
-                video_id=vid,
-                title=v["title"],
-                channel_name=ch["handle"],
-                channel_id=cid,
-                published_at=v["published_at"],
-                views=vs["views"],
-                likes=vs["likes"],
-                comments=vs["comments"],
-                subscribers=stats["subscriber_count"],
-                outlier=oi["outlier"],
-                median_views=oi["median_views"],
-                outlier_ratio=oi["outlier_ratio"],
-            )
-            new_entries.append(entry)
-            views_history.append(vs["views"])
-            if oi["outlier"]:
-                total_outliers += 1
-
-        channel_stats[cid] = {
-            "handle": ch["handle"],
-            "subscriber_count": stats["subscriber_count"],
-            "views_history": views_history[-20:],
-            "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        }
-        total_new += len(new_videos)
-
-    deduped = deduplicate_backlog(backlog.get("items", []), new_entries)
-    backlog["items"] = deduped + backlog.get("items", [])
-
-    kept, archived = prune_backlog(backlog["items"])
-    backlog["items"] = kept
-    save_archive(archived, PROJECT_ROOT)
-
-    backlog["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-    write_json(str(BACKLOG_PATH), backlog)
-    write_json(str(DATA_DIR / "last_check.json"), {
-        "last_check_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "checked_video_ids": list(checked_ids | all_new_checked_ids),
-    })
-    write_json(str(DATA_DIR / "channel_stats.json"), channel_stats)
-
-    logger.info("Checked %d channels, %d new videos, %d outliers", len(channels.get("channels", [])), total_new, total_outliers)
-
-    git_push(PROJECT_ROOT)
+    run_monitor(db_path=DB_PATH, client=client, channels=channels)
+    logger.info("Daily monitor complete.")
 
 
 if __name__ == "__main__":
