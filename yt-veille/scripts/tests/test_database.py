@@ -152,3 +152,26 @@ def test_get_scored_videos(tmp_path):
     results = get_scored_videos(db_path, min_score=50)
     assert len(results) == 1
     assert results[0]["video_id"] == "vid1"
+
+
+from database import update_video_score, update_channel_stats
+
+def test_update_video_score(tmp_path):
+    db_path = _seed_db(tmp_path)
+    update_video_score(db_path, video_id="vid1", composite_score=85.5, topic="Claude AI")
+    conn = sqlite3.connect(db_path)
+    row = conn.execute("SELECT composite_score, topic FROM videos WHERE video_id='vid1'").fetchone()
+    conn.close()
+    assert row is not None
+    assert row[0] == 85.5
+    assert row[1] == "Claude AI"
+
+def test_update_channel_stats(tmp_path):
+    db_path = _seed_db(tmp_path)
+    update_channel_stats(db_path, channel_id="UC123", median_views=45000.0, avg_velocity=12500.5)
+    conn = sqlite3.connect(db_path)
+    row = conn.execute("SELECT median_views, avg_velocity FROM channels WHERE channel_id='UC123'").fetchone()
+    conn.close()
+    assert row is not None
+    assert row[0] == 45000.0
+    assert row[1] == 12500.5
