@@ -121,21 +121,52 @@ Le script complet avec :
 - Shorts moments identifiés (2-3 segments clippables)
 
 **Output 2 — Slides de présentation HTML** (`[slug]-visual.html`)
-Un fichier HTML (1920x1080 par slide) **présentable à l'écran pendant la vidéo**. C'est ce que le viewer voit, pas des notes internes.
+Un fichier HTML self-contained **présentable à l'écran pendant la vidéo**. Zéro dépendance externe sauf Google Fonts. Navigable au clavier (flèches, espace) et au touch.
+
+**IMPORTANT** : Utiliser `yt-script/references/slide-template.html` comme template de base. Copier le CSS et le JS intégralement, ne modifier que le contenu des slides.
 
 Spécifications visuelles :
-- **Fond sombre** (#0A0A0A) avec grille subtile
+- **Fond sombre** (#0A0A0A) avec grille subtile (lignes 60px, 2% opacité)
 - **Couleurs brand** : orange (#FF6B35) et cyan (#00E5FF) uniquement
-- **Police** : Inter (Google Fonts) — clean, moderne, sans-serif
-- **Effets glow** : halos orange ou cyan en arrière-plan pour le côté pro
-- **Divider coloré** (80px) au-dessus de chaque titre de slide
+- **Polices** : Syne (800, titres) + Inter (400/600, body) via Google Fonts
+- **Effets glow** : halos orange/cyan en arrière-plan (radial-gradient, 12-15% opacité)
+- **Divider coloré** (80px × 4px) au-dessus de chaque titre de section
 - **Numérotation** discrète en haut à droite (ex: "03 / 12")
+- **Progress bar** en haut (dégradé orange → cyan)
+- **Sizing responsive** : tout en `clamp()`, jamais de valeurs fixes en px pour le texte
+
+Animations :
+- Classe `.reveal` sur chaque élément de contenu
+- Entrance : fade + translateY(30px) avec easing expo
+- Stagger : 0.1s de délai entre chaque élément (via nth-child)
+- Déclenché par IntersectionObserver quand la slide devient visible
+- Respecter `prefers-reduced-motion`
+
+Navigation :
+- Scroll snap vertical (`scroll-snap-type: y mandatory`)
+- Clavier : flèches, espace, PageUp/PageDown
+- Touch : swipe vertical
 
 Structure des slides :
-- 1 slide intro (titre + chiffre clé, pas de sous-titre superflu)
-- 1 slide par section avec bullet points **courts et concis** (pas de phrases du script)
-- **Moments clés / révélations = UNE PHRASE PAR SLIDE** — pas de bullet points, juste une phrase impactante centrée
-- Slide CTA à la fin
+- **Slide intro** : chiffre clé (`.stat`, grande taille) + titre (h1) + sous-titre court
+- **Slides section** : divider + titre (h2) + 4 bullets max (courts et concis, PAS de phrases du script)
+- **Slides key statement** : UNE PHRASE PAR SLIDE (`.key-statement`), centrée, pas de bullets — pour les moments de révélation
+- **Slide two-col** : quand il y a une comparaison ou un avant/après
+- **Slide CTA** : box avec bordure orange, titre + texte
+
+Limites de contenu par slide (ne jamais dépasser) :
+- Titre + sous-titre : 1 heading + 1 ligne max
+- Section : 1 heading + 4-6 bullets max
+- Statement : 1 phrase de 3 lignes max
+- Two-col : 1 heading + 2 blocs de texte courts
+
+Anti-patterns (NE JAMAIS faire) :
+- Copier le texte du script dans les slides (les slides sont des SUPPORTS VISUELS, pas un transcript)
+- Mettre plus de 6 bullets sur une slide
+- Utiliser des fonts autres que Syne/Inter
+- Ajouter des couleurs hors orange/cyan/blanc/gris
+- Utiliser des tailles fixes en px pour le texte (toujours clamp())
+- Oublier la classe `.reveal` sur les éléments de contenu
 
 Assets brand : si une image de Nass est disponible dans `yt-script/outputs/` (ex: `youtube_watermark_150x150.png`), l'utiliser sur la slide parcours.
 
