@@ -116,7 +116,7 @@ def push_to_notion(top15: list[dict], token: str, parent_page: str):
          "-H", "Content-Type: application/json",
          "-d", json.dumps({
              "parent": {"page_id": parent_page},
-             "title": [{"type": "text", "text": {"content": f"Top 15 — {today}"}}],
+             "title": [{"type": "text", "text": {"content": f"Top 25 — {today}"}}],
              "properties": {
                  "Titre": {"title": {}},
                  "Chaîne": {"rich_text": {}},
@@ -173,7 +173,7 @@ def main():
 
     # Score and get top 15
     all_scored = score_all_videos(db_path)
-    top15 = all_scored[:15]
+    top15 = all_scored[:25]
 
     # Print
     print(f"\n{'='*70}")
