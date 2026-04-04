@@ -58,7 +58,8 @@ def run_monitor(*, db_path: str, client, channels: list[dict]):
             niche=ch.get("niche", ""), added_at=ch.get("added_at", today),
         )
 
-        uploads = client.get_latest_uploads(cid, max_results=5)
+        max_vids = ch.get("max_videos", 5)
+        uploads = client.get_latest_uploads(cid, max_results=max_vids)
         if not uploads:
             logger.info("  No uploads for %s", ch["handle"])
             continue

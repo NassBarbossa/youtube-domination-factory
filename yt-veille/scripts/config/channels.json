@@ -1,40 +1,684 @@
 {
   "channels": [
     {
-      "handle": "AlexFinnOfficial",
+      "handle": "AI Jason",
+      "channel_id": "UCrXSVX9a1mj8l0CMLwKgMVw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Adrian CHIAPELLO | Claude Code",
+      "channel_id": "UCoWs1E6OLTqv6BMUjgZENMw",
+      "niche": "claude-code",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Alex Finn",
       "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg",
-      "niche": "claude-code-ai",
-      "added_at": "2026-03-26"
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Aurélien FAGIOLI | IA Automatisation",
+      "channel_id": "UCdL89Z0gQUDc1HT1882AGLw",
+      "niche": "ai-automation",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Benjamin Code",
+      "channel_id": "UCLOAPb7ATQUs_nDs9ViLcMw",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Cole Medin",
+      "channel_id": "UCMwVTLZIRRUyyVrkjDpn4pA",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
     },
     {
       "handle": "HenriExplorIA",
       "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ",
       "niche": "ai-fr",
-      "added_at": "2026-03-26"
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
     },
     {
-      "handle": "nateherk",
-      "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA",
+      "handle": "Liam Ottley",
+      "channel_id": "UCui4jxDaMb53Gdh-AZUTPAg",
       "niche": "ai-tools",
-      "added_at": "2026-03-26"
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
     },
     {
-      "handle": "mikeynocode",
+      "handle": "Melvynx",
+      "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Meydeey | Automatisation IA",
+      "channel_id": "UCQTHcO_4IWr_Mn1FhSidOlA",
+      "niche": "ai-automation",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Nate Herk | AI Automation",
+      "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Nick Saraev",
+      "channel_id": "UCbo-KbSjJDG6JWQ_MTZ_rNA",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "NoCode StartUp",
+      "channel_id": "UCYx10jQ_0QeqkV7gWiUE5yw",
+      "niche": "no-code-ai",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Riley Brown",
+      "channel_id": "UCMcoud_ZW7cfxeIugBflSBw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Shubham SHARMA",
+      "channel_id": "UCLKx4-_XO5sR0AO0j8ye7zQ",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Yassine Sdiri",
+      "channel_id": "UC94UeaPuTt_L51RkDxj9d_w",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "AI Coding Daily",
+      "channel_id": "UCIuDdCJXnKZb4CUzhVO-DcQ",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "AI Founders",
+      "channel_id": "UCRdfhTdKpGtJg-QIuAIND8g",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "AI Revolution en Français",
+      "channel_id": "UC92vtIxo1ZoXyF_yqJWFiJQ",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "AICodeKing",
+      "channel_id": "UC0m81bQuthaQZmFbXEY9QSw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "AISeeKing",
+      "channel_id": "UCfI2Wf-yji9reXIhn8U4jkQ",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Brendan Jowett",
+      "channel_id": "UCzIsviqoJc-VcWqF5Pp8iLw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "BuildWithAI",
+      "channel_id": "UCYq9VOkrH3uv7IiWcDKm5zw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Christian Peverelli - WeAreNoCode",
+      "channel_id": "UCrJrY9gMcbRL2APnFCXiuBQ",
+      "niche": "no-code-ai",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "CodeWithMuh | AI Automation",
+      "channel_id": "UC1HEefoqUWmztGZ_Laq28sw",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Coriace | No-Code",
+      "channel_id": "UCNpfBfSrzHPo5R1N8CpsXgg",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Dee Willis | Claude Code & AI Automation",
+      "channel_id": "UC87v3BEd8gwadKKcv9yJyMA",
+      "niche": "claude-code",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Ed Hill | AI Automation",
+      "channel_id": "UC5_2We-HeVdEeHcIyfmMHOg",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Frank Houbre - IA & intelligence artificielle",
+      "channel_id": "UC9o07w5xSlfekfLlvfdpLsQ",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Helena Liu",
+      "channel_id": "UCpM_g95uzZ_OyhgukvrbbiQ",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "IA Technologie",
+      "channel_id": "UCCE-g5LSVQUSNZQEgZuAOtw",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "IA et Stratégie | Le SamourAI",
+      "channel_id": "UC2UmrCDeb8CEB7t6v6Kqt7A",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "IndyDevDan",
+      "channel_id": "UC_x36zCEGilGpB1m-V4gmjg",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Instinct IA",
+      "channel_id": "UC_j4SWyQ6iRhC2RPfrhFaug",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Mikey No Code",
       "channel_id": "UCde0vB0fTwC8AT3sJofFV0w",
       "niche": "no-code-ai",
-      "added_at": "2026-03-26"
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Mistral AI",
+      "channel_id": "UC5-pBdfdA3KUo-vq72l-umA",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Monsieur IA",
+      "channel_id": "UC_iGBgr6kw1EtGKyo0s440A",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "NOFLOW",
+      "channel_id": "UCHE_W8CnOaOsTGj4HEk9I6w",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "No Code MBA",
+      "channel_id": "UCU0RB5iVFW3LbmshiC_Kf-Q",
+      "niche": "no-code-ai",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "NoCode AI Builders",
+      "channel_id": "UCdD-LpmkLjIz6j6E_tABIHQ",
+      "niche": "no-code-ai",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Peter Yang",
+      "channel_id": "UCnpBg7yqNauHtlNSpOl5-cg",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Tech With Tim",
+      "channel_id": "UC4JX40jDee_tINbkjycV4Sg",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Vision IA",
+      "channel_id": "UCyc03X3uRuxM9n7fyRH_gIw",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
     },
     {
       "handle": "minutora",
       "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA",
-      "niche": "ai-tools",
-      "added_at": "2026-03-26"
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-04-04"
     },
     {
-      "handle": "melvynxdev",
-      "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA",
-      "niche": "dev-ai-fr",
-      "added_at": "2026-03-26"
+      "handle": "Agent Zero",
+      "channel_id": "UCm4Sy7W36u_ZFOZWX9cd07w",
+      "niche": "ai-agents",
+      "market": "US",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Ahmad | AI Automation",
+      "channel_id": "UCndJsCumRxIZJ2W_i8y9dxw",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Business IA - Elgoz Media",
+      "channel_id": "UC-uDbxeYgjwtM9Z-TwEWlyQ",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Easy AI Coding",
+      "channel_id": "UCXjJHDUDF8vWVHiFq91qyfg",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Kunaal Naik | AI Agents",
+      "channel_id": "UCZN-xTV6lFwfJHl6ZId_dOg",
+      "niche": "ai-agents",
+      "market": "US",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Ludo Salenne",
+      "channel_id": "UCnnYqSNKKygemgmxC9PyLTw",
+      "niche": "ai-fr",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "corbin",
+      "channel_id": "UCJFMlSxcvlZg5yZUYJT0Pug",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Claude",
+      "channel_id": "UCV03SRZXJEz-hchIAogeJOg",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Cursor",
+      "channel_id": "UC6YYHJzM6PhZ2Yey9BQiUaw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Dify",
+      "channel_id": "UC2JZCsZSOudXA08cMMRCL9g",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Duncan Rogoff | AI Automation",
+      "channel_id": "UC37JpWP5PxLSma2lh79HU9A",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Fireship",
+      "channel_id": "UCsBjURrPoezykLs9EqgamOA",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Hashtag No Code & IA",
+      "channel_id": "UCyHnA-g1oUHzGALhobCoO_w",
+      "niche": "no-code-ai",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Jack Roberts",
+      "channel_id": "UCA00QTLGuJ0I0wpEjLGAm9Q",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Ken Voss | AI Automation",
+      "channel_id": "UCafrZHMEVAky2G-ZtB6_E4g",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Leonardo Grigorio | Build & Ship with AI",
+      "channel_id": "UC0BHO4AbCeBpghWNifMbH5Q",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Manus AI",
+      "channel_id": "UCQgFQdqiFQ_LfFBGP6z9dqQ",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Mark Kashef",
+      "channel_id": "UCHkzp52CldSPZqU5T49mOnA",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Net Ninja",
+      "channel_id": "UCW5YeuERMmlnqo4oq8vwUpg",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Sabrina Ramonov",
+      "channel_id": "UCiGWNa6QK6CiKPvv5-YPv8g",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Sean Kochel",
+      "channel_id": "UCFig7skuwYrCIGy0tuZHA2Q",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Serop | AI Automation",
+      "channel_id": "UCL9S_mHsL0ihkXQMh80WYtg",
+      "niche": "ai-automation",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "The PrimeTime",
+      "channel_id": "UCUyeluBRhGPCW4rPe_UvBZQ",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
+    },
+    {
+      "handle": "leerob",
+      "channel_id": "UCZMli3czZnd1uoc1ShTouQw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Non classé",
+      "priority": 4,
+      "max_videos": 3,
+      "added_at": "2026-04-04"
     }
   ]
 }
