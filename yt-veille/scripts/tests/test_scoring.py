@@ -145,7 +145,7 @@ def test_compute_video_metrics_with_tier():
         channel_avg_velocity=500.0, channel_subscribers=50000,
         tier="Tier 1",
     )
-    assert boosted["composite_boosted"] > raw["composite_boosted"]
+    assert boosted["composite"] > raw["composite"]
     assert boosted["composite_raw"] == raw["composite_raw"]
     assert boosted["composite"] <= 100
 

@@ -145,7 +145,6 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         early=early,
     )
     boosted_score = apply_tier_boost(raw_score, tier)
-    final_score, is_anomaly = apply_decay(boosted_score, published_at)
 
     return {
         "outlier_score": round(outlier_score, 2),
@@ -153,8 +152,6 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         "views_subs_ratio": round(views_subs_ratio, 4),
         "engagement_rate": round(engagement_rate, 4),
         "composite_raw": raw_score,
-        "composite_boosted": boosted_score,
-        "composite": final_score,
+        "composite": boosted_score,
         "early": early,
-        "anomaly": is_anomaly,
     }
