@@ -1,9 +1,9 @@
 import sqlite3
 import pytest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 from datetime import datetime, timezone, timedelta
 from daily_monitor import run_monitor
-from database import init_db, get_connection
+from database import init_db
 
 @pytest.fixture
 def db_path(tmp_path):
@@ -33,7 +33,7 @@ def mock_youtube_client():
             "description": "Learn Claude Code from scratch",
             "tags": ["claude code", "tutorial"],
             "published_at": pub1,
-            "thumbnail_url": "https://img.youtube.com/vi/vid1/hq.jpg",
+            "thumbnail_url": "",
             "category_id": "28",
             "duration_seconds": 900,
             "views": 80000,
@@ -46,7 +46,7 @@ def mock_youtube_client():
             "description": "How I start my day",
             "tags": ["routine"],
             "published_at": pub2,
-            "thumbnail_url": "https://img.youtube.com/vi/vid2/hq.jpg",
+            "thumbnail_url": "",
             "category_id": "22",
             "duration_seconds": 600,
             "views": 5000,
@@ -58,7 +58,7 @@ def mock_youtube_client():
     return client
 
 def test_run_monitor_inserts_data(db_path, mock_youtube_client):
-    channels = [{"channel_id": "UC123", "handle": "TestChannel", "niche": "ai", "added_at": "2026-03-01"}]
+    channels = [{"channel_id": "UC123", "handle": "TestChannel"}]
     run_monitor(db_path=db_path, client=mock_youtube_client, channels=channels)
 
     conn = sqlite3.connect(db_path)
@@ -72,31 +72,24 @@ def test_run_monitor_inserts_data(db_path, mock_youtube_client):
     assert len(snaps) == 2
     conn.close()
 
-def test_run_monitor_scores_videos(db_path, mock_youtube_client):
-    channels = [{"channel_id": "UC123", "handle": "TestChannel", "niche": "ai", "added_at": "2026-03-01"}]
-    run_monitor(db_path=db_path, client=mock_youtube_client, channels=channels)
-    # Simulate next day with more views
-    mock_youtube_client.get_video_details.return_value["vid1"]["views"] = 120000
-    mock_youtube_client.get_video_details.return_value["vid2"]["views"] = 7000
+def test_run_monitor_no_scoring_in_db(db_path, mock_youtube_client):
+    """Monitor only scrapes — no scoring columns in videos."""
+    channels = [{"channel_id": "UC123", "handle": "TestChannel"}]
     run_monitor(db_path=db_path, client=mock_youtube_client, channels=channels)
 
     conn = sqlite3.connect(db_path)
-    vid1 = conn.execute("SELECT composite_score FROM videos WHERE video_id='vid1'").fetchone()
-    vid2 = conn.execute("SELECT composite_score FROM videos WHERE video_id='vid2'").fetchone()
+    cols = [c[1] for c in conn.execute("PRAGMA table_info(videos)").fetchall()]
     conn.close()
-    assert vid1[0] is not None
-    assert vid1[0] > vid2[0]
+    assert "composite_score" not in cols
+    assert "outlier_score" not in cols
 
-def test_run_monitor_extracts_topic_above_threshold(db_path, mock_youtube_client):
-    channels = [{"channel_id": "UC123", "handle": "TestChannel", "niche": "ai", "added_at": "2026-03-01"}]
+def test_run_monitor_updates_snapshots(db_path, mock_youtube_client):
+    """Running twice same day updates snapshots, not duplicates."""
+    channels = [{"channel_id": "UC123", "handle": "TestChannel"}]
     run_monitor(db_path=db_path, client=mock_youtube_client, channels=channels)
     run_monitor(db_path=db_path, client=mock_youtube_client, channels=channels)
 
     conn = sqlite3.connect(db_path)
-    vid1 = conn.execute("SELECT topic, composite_score FROM videos WHERE video_id='vid1'").fetchone()
-    vid2 = conn.execute("SELECT topic, composite_score FROM videos WHERE video_id='vid2'").fetchone()
+    snaps = conn.execute("SELECT * FROM snapshots").fetchall()
     conn.close()
-    if vid1[1] and vid1[1] > 50:
-        assert vid1[0] is not None
-    if vid2[1] and vid2[1] <= 50:
-        assert vid2[0] is None
+    assert len(snaps) == 2  # not 4
