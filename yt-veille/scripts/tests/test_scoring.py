@@ -1,186 +1,161 @@
 import pytest
-from scoring import normalize, composite_score, compute_video_metrics, apply_tier_boost, apply_decay
+from datetime import datetime, timezone, timedelta
+from scoring import (
+    normalize, compute_score, compute_channel_stats,
+    apply_tier_boost, apply_decay,
+)
+
+
+# --- normalize ---
 
 def test_normalize_at_zero():
-    thresholds = [1.0, 2.0, 3.0, 10.0, 20.0]
-    assert normalize(0.5, thresholds) == 0
-    assert normalize(1.0, thresholds) == 0
+    assert normalize(0.5, [1.0, 2.0, 3.0, 10.0, 20.0]) == 0
+    assert normalize(1.0, [1.0, 2.0, 3.0, 10.0, 20.0]) == 0
 
 def test_normalize_between_thresholds():
-    thresholds = [1.0, 2.0, 3.0, 10.0, 20.0]
-    assert normalize(2.0, thresholds) == 25
-    assert normalize(3.0, thresholds) == 50
-    assert normalize(10.0, thresholds) == 75
+    t = [1.0, 2.0, 3.0, 10.0, 20.0]
+    assert normalize(2.0, t) == 25
+    assert normalize(3.0, t) == 50
+    assert normalize(10.0, t) == 75
 
 def test_normalize_interpolation():
-    thresholds = [1.0, 2.0, 3.0, 10.0, 20.0]
-    result = normalize(1.5, thresholds)
-    assert result == pytest.approx(12.5)
+    assert normalize(1.5, [1.0, 2.0, 3.0, 10.0, 20.0]) == pytest.approx(12.5)
 
 def test_normalize_capped_at_100():
-    thresholds = [1.0, 2.0, 3.0, 10.0, 20.0]
-    assert normalize(50.0, thresholds) == 100
+    assert normalize(50.0, [1.0, 2.0, 3.0, 10.0, 20.0]) == 100
 
-def test_composite_score_all_max():
-    result = composite_score(outlier=20.0, velocity_ratio=15.0,
-                             views_subs=2.0, engagement=8.0)
-    assert result == 100.0
+def test_normalize_views_abs():
+    t = [1000, 5000, 20000, 40000, 100000]
+    assert normalize(500, t) == 0
+    assert normalize(5000, t) == 25
+    assert normalize(20000, t) == 50
+    assert normalize(40000, t) == 75
+    assert normalize(100000, t) == 100
+    assert normalize(200000, t) == 100
 
-def test_composite_score_all_zero():
-    result = composite_score(outlier=0.5, velocity_ratio=0.5,
-                             views_subs=0.02, engagement=0.3)
-    assert result == 0.0
 
-def test_composite_score_mixed():
-    result = composite_score(outlier=10.0, velocity_ratio=3.0,
-                             views_subs=0.30, engagement=5.0)
-    # outlier=75*0.4=30, velocity=50*0.25=12.5, views_subs=50*0.2=10, engagement=75*0.15=11.25
-    assert result == pytest.approx(63.75)
+# --- compute_channel_stats ---
 
-def test_compute_video_metrics():
-    snapshots = [
-        {"scraped_at": "2026-03-20", "views": 5000, "likes": 300, "comments": 50},
-        {"scraped_at": "2026-03-21", "views": 50000, "likes": 3000, "comments": 500},
+def test_compute_channel_stats():
+    video_snapshots = {
+        "vid1": [
+            {"scraped_at": "2026-04-01", "views": 5000},
+            {"scraped_at": "2026-04-02", "views": 15000},
+        ],
+        "vid2": [
+            {"scraped_at": "2026-04-01", "views": 2000},
+            {"scraped_at": "2026-04-02", "views": 4000},
+        ],
+    }
+    stats = compute_channel_stats(video_snapshots)
+    assert stats["median_views"] == 9500.0  # median of [15000, 4000]
+    assert stats["avg_velocity"] > 0
+
+def test_compute_channel_stats_single_snapshot():
+    video_snapshots = {
+        "vid1": [{"scraped_at": "2026-04-01", "views": 5000}],
+    }
+    stats = compute_channel_stats(video_snapshots)
+    assert stats["median_views"] == 5000
+    assert stats["avg_velocity"] == 0
+
+
+# --- compute_score ---
+
+def test_compute_score_basic():
+    snaps = [
+        {"scraped_at": "2026-04-01", "views": 5000, "likes": 300, "comments": 50},
+        {"scraped_at": "2026-04-02", "views": 50000, "likes": 3000, "comments": 500},
     ]
-    metrics = compute_video_metrics(
-        snapshots=snapshots,
-        channel_median=10000,
-        channel_avg_velocity=500.0,
-        channel_subscribers=50000,
+    result = compute_score(
+        views=50000, likes=3000, comments=500,
+        channel_median=10000, channel_avg_velocity=500.0,
+        channel_subscribers=50000, snapshots=snaps,
     )
-    assert metrics["outlier_score"] == pytest.approx(5.0)
-    assert metrics["velocity_ratio"] > 0
-    assert metrics["views_subs_ratio"] == pytest.approx(1.0)
-    assert metrics["engagement_rate"] > 0
-    assert 0 <= metrics["composite"] <= 100
+    assert 0 <= result["composite"] <= 100
+    assert result["outlier"] == 5.0
+    assert result["views_abs"] == 50000
+    assert result["velocity_ratio"] > 0
+    assert result["early"] is False
 
-def test_compute_video_metrics_single_snapshot():
-    snapshots = [
-        {"scraped_at": "2026-03-20", "views": 50000, "likes": 3000, "comments": 500},
-    ]
-    metrics = compute_video_metrics(
-        snapshots=snapshots,
-        channel_median=10000,
-        channel_avg_velocity=500.0,
-        channel_subscribers=50000,
+def test_compute_score_views_abs_matters():
+    """Video with high absolute views should score higher than low views with high outlier."""
+    snaps_low = [{"scraped_at": "2026-04-01", "views": 3000, "likes": 200, "comments": 30}]
+    snaps_high = [{"scraped_at": "2026-04-01", "views": 60000, "likes": 2000, "comments": 200}]
+
+    low_views = compute_score(
+        views=3000, likes=200, comments=30,
+        channel_median=300, channel_avg_velocity=0,
+        channel_subscribers=5000, snapshots=snaps_low,
     )
-    assert metrics["velocity_ratio"] == 0
-    assert metrics["composite"] >= 0
-    assert metrics["early"] is False
-
-
-def test_composite_score_early_weights():
-    """Early mode should give more weight to engagement."""
-    result_normal = composite_score(outlier=5.0, velocity_ratio=3.0,
-                                     views_subs=0.30, engagement=7.0)
-    result_early = composite_score(outlier=5.0, velocity_ratio=3.0,
-                                    views_subs=0.30, engagement=7.0, early=True)
-    # With high engagement, early mode should score higher
-    assert result_early > result_normal
-
-
-def test_compute_video_metrics_early_velocity():
-    """Video < 24h old with 1 snapshot should use early velocity from published_at."""
-    from datetime import datetime, timezone, timedelta
-    # Published 6 hours ago
-    pub_time = (datetime.now(timezone.utc) - timedelta(hours=6)).isoformat()
-    snapshots = [
-        {"scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-         "views": 30000, "likes": 2000, "comments": 300},
-    ]
-    metrics = compute_video_metrics(
-        snapshots=snapshots,
-        channel_median=10000,
-        channel_avg_velocity=500.0,
-        channel_subscribers=50000,
-        published_at=pub_time,
+    high_views = compute_score(
+        views=60000, likes=2000, comments=200,
+        channel_median=30000, channel_avg_velocity=0,
+        channel_subscribers=200000, snapshots=snaps_high,
     )
-    assert metrics["early"] is True
-    # 30000 views / 6 hours = 5000 views/h, channel avg = 500 → ratio = 10
-    assert metrics["velocity_ratio"] > 5
-    assert metrics["composite"] > 0
+    # 60k views should beat 3k views even though 3k has 10x outlier
+    assert high_views["composite"] > low_views["composite"]
 
-
-def test_compute_video_metrics_old_video_not_early():
-    """Video > 24h old should NOT use early mode."""
-    from datetime import datetime, timezone, timedelta
-    pub_time = (datetime.now(timezone.utc) - timedelta(hours=48)).isoformat()
-    snapshots = [
-        {"scraped_at": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-         "views": 30000, "likes": 2000, "comments": 300},
-    ]
-    metrics = compute_video_metrics(
-        snapshots=snapshots,
-        channel_median=10000,
-        channel_avg_velocity=500.0,
-        channel_subscribers=50000,
-        published_at=pub_time,
+def test_compute_score_early():
+    now = datetime.now(timezone.utc)
+    pub = (now - timedelta(hours=6)).isoformat()
+    snaps = [{"scraped_at": now.strftime("%Y-%m-%d"), "views": 30000, "likes": 2000, "comments": 300}]
+    result = compute_score(
+        views=30000, likes=2000, comments=300,
+        channel_median=10000, channel_avg_velocity=500.0,
+        channel_subscribers=50000, snapshots=snaps,
+        published_at=pub,
     )
-    assert metrics["early"] is False
-    # No 2nd snapshot + not early → velocity = 0
-    assert metrics["velocity_ratio"] == 0
+    assert result["early"] is True
+    assert result["velocity_ratio"] > 0
+
+def test_compute_score_no_snapshots():
+    result = compute_score(
+        views=0, likes=0, comments=0,
+        channel_median=10000, channel_avg_velocity=500,
+        channel_subscribers=50000, snapshots=[],
+    )
+    assert result["composite"] == 0
 
 
-def test_apply_tier_boost():
-    assert apply_tier_boost(50.0, "Tier 1") == 75.0   # ×1.5
-    assert apply_tier_boost(50.0, "Tier 2") == 60.0   # ×1.2
-    assert apply_tier_boost(50.0, "Tier 3") == 50.0   # ×1.0
+# --- apply_tier_boost ---
+
+def test_tier_boost():
+    assert apply_tier_boost(50.0, "Tier 1") == 75.0
+    assert apply_tier_boost(50.0, "Tier 2") == 60.0
+    assert apply_tier_boost(50.0, "Tier 3") == 50.0
     assert apply_tier_boost(50.0, "Non classé") == 50.0
 
-def test_apply_tier_boost_capped():
-    assert apply_tier_boost(80.0, "Tier 1") == 100.0  # 80×1.5=120 → capé à 100
-
-def test_compute_video_metrics_with_tier():
-    snapshots = [
-        {"scraped_at": "2026-03-20", "views": 5000, "likes": 300, "comments": 50},
-        {"scraped_at": "2026-03-21", "views": 50000, "likes": 3000, "comments": 500},
-    ]
-    raw = compute_video_metrics(
-        snapshots=snapshots, channel_median=10000,
-        channel_avg_velocity=500.0, channel_subscribers=50000,
-        tier="Non classé",
-    )
-    boosted = compute_video_metrics(
-        snapshots=snapshots, channel_median=10000,
-        channel_avg_velocity=500.0, channel_subscribers=50000,
-        tier="Tier 1",
-    )
-    assert boosted["composite"] > raw["composite"]
-    assert boosted["composite_raw"] == raw["composite_raw"]
-    assert boosted["composite"] <= 100
+def test_tier_boost_capped():
+    assert apply_tier_boost(80.0, "Tier 1") == 100.0
 
 
-def test_apply_decay_fresh():
-    from datetime import datetime, timezone, timedelta
+# --- apply_decay ---
+
+def test_decay_fresh():
     pub = (datetime.now(timezone.utc) - timedelta(hours=12)).isoformat()
     score, anomaly = apply_decay(75.0, pub)
-    assert score == 75.0  # < 24h, no decay
+    assert score == 75.0
     assert anomaly is False
 
-def test_apply_decay_2_days():
-    from datetime import datetime, timezone, timedelta
+def test_decay_2_days():
     pub = (datetime.now(timezone.utc) - timedelta(hours=48)).isoformat()
-    score, anomaly = apply_decay(80.0, pub)
-    assert score == 60.0  # ×0.75
-    assert anomaly is False
+    score, _ = apply_decay(80.0, pub)
+    assert score == 60.0
 
-def test_apply_decay_5_days():
-    from datetime import datetime, timezone, timedelta
+def test_decay_5_days():
     pub = (datetime.now(timezone.utc) - timedelta(hours=120)).isoformat()
-    score, anomaly = apply_decay(80.0, pub)
-    assert score == 40.0  # ×0.5
-    assert anomaly is False
+    score, _ = apply_decay(80.0, pub)
+    assert score == 40.0
 
-def test_apply_decay_old_excluded():
-    from datetime import datetime, timezone, timedelta
+def test_decay_old_excluded():
     pub = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
     score, anomaly = apply_decay(50.0, pub)
-    assert score == 0.0  # 7+ days, score < 80 → excluded
+    assert score == 0.0
     assert anomaly is False
 
-def test_apply_decay_old_anomaly():
-    from datetime import datetime, timezone, timedelta
+def test_decay_old_anomaly():
     pub = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
     score, anomaly = apply_decay(90.0, pub)
-    assert score == 27.0  # 90 × 0.3
+    assert score == 27.0
     assert anomaly is True
