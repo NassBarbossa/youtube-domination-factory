@@ -99,7 +99,7 @@ All agents communicate through a single JSON bus: **`context/video-context.json`
 | **yt-miniature** | Thumbnail concept briefs | "miniature", "thumbnail", "design thumbnail" |
 | **yt-description** | YouTube description + tags | "ecris la description", "YouTube description" |
 | **yt-repurposing** | Multi-platform content transformation | "repurpose", "shorts", "thread X", "LinkedIn post" |
-| **yt-veille** | AI trend research & video ideas | "trouve moi des idees", "tendances IA", "sujet de video" |
+| **yt-veille** | AI trend research & video ideas — automated daily scraping of 67 channels, composite scoring, top 25 report | "trouve moi des idees", "tendances IA", "sujet de video" |
 | **yt-analytics** | Channel performance analysis | "analyse mes stats", "YouTube stats" |
 | **yt-calendrier** | Editorial calendar planning | "calendrier", "schedule", "planning video" |
 
@@ -235,23 +235,49 @@ Phase 4: yt-repurposing reads validated script.* + titres_seo.winning_title → 
 
 ---
 
-## 🔮 Sprint 2 (Planned)
+## 🔮 Sprint 2 (In Progress)
 
-- [ ] Cron job for `yt-veille` (1-2x daily trend monitoring)
-- [ ] Backlog accumulation (`context/backlog.json`) for idea collection
+- [x] Cron job for `yt-veille` — daily scraping at 5h30 SGT (67 channels, ~300 videos/day)
+- [x] SQLite database for video metrics + daily snapshots
+- [x] Composite scoring: views abs (30%) + velocity (25%) + outlier (15%) + views/subs (15%) + engagement (15%)
+- [x] Tier-based channel weighting (Tier 1 ×1.5, Tier 2 ×1.2)
+- [x] Time decay for freshness (< 24h ×1.0, 1-3d ×0.85, 3-6d ×0.65, 7d+ excluded)
+- [x] Automated top 25 report → Notion + JSON for orchestrator
+- [x] Topic extraction (claude-code, vibe-coding, ai-agents, etc.)
 - [ ] Analytics integration (`yt-analytics` context protocol)
 - [ ] Calendar sync (`yt-calendrier` context protocol)
 - [ ] Posting schedule automation
+
+### yt-veille Architecture
+
+```
+daily_monitor.py (cron 5h30 SGT)
+    → Scrapes 67 YouTube channels via API
+    → Stores in SQLite: channels, videos, snapshots
+
+scoring.py (stateless)
+    → Computes composite score from DB data
+    → No storage — called on demand
+
+report.py (after scrape)
+    → Applies tier boost + time decay
+    → Generates top 25
+    → Pushes to Notion (daily table)
+    → Writes context/veille-top25.json for orchestrator
+```
 
 ---
 
 ## 📊 Stats
 
 - **9 specialized skills** + 1 orchestrator
+- **67 YouTube channels** tracked daily (US + FR)
+- **~300 videos** scraped per day
 - **5 validation phases** in the pipeline
 - **2 operation modes** (topic-driven or idea-driven)
 - **3 parallel agents** in Phase 2
 - **1 shared JSON bus** for all communication
+- **1 SQLite DB** for veille data
 - **100% backward compatible** with manual workflows
 
 ---

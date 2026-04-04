@@ -6,14 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 YouTube Domination Factory is a **modular AI skill system** for Claude Code that orchestrates the entire YouTube video production lifecycle. It targets the **Claude Code / AI trends / business opportunities** niche for a French-speaking audience (men 26-35, entrepreneurs/executives, non-technical).
 
-There are no build steps, dependencies, tests, or runtime — the project is a collection of SKILL.md files loaded into Claude's skill system.
+The project is a collection of SKILL.md files loaded into Claude's skill system, plus Python scripts for automated veille (yt-veille) and analytics (yt-analytics) that run on a VPS.
 
 ## Architecture
 
 Nine skills form a production pipeline:
 
 ```
-yt-veille (Trend Research & Ideas)
+yt-veille (Trend Research — automated daily scraping + scoring)
     ↓
 yt-script (Script Writing)
     ├→ yt-titres-seo (SEO Titles) ──→ yt-miniature (Thumbnail Briefs)
@@ -191,8 +191,13 @@ Manual invocation is never forced. Nass can still:
 - [x] Add Context Protocol to `yt-veille/SKILL.md`
 - [ ] Delete `yt-montage/` (replaced by better tooling)
 - [ ] Update `yt-analytics/SKILL.md` (Sprint 2)
-- [ ] Create `context/backlog.json` for cron ideas (Sprint 2)
-- [ ] Implement cron job for `yt-veille` (Sprint 2)
+- [x] Implement cron job for `yt-veille` — daily scraping at 5h30 SGT
+- [x] SQLite database (veille.db) — channels, videos, snapshots tables
+- [x] Composite scoring (views abs 30%, velocity 25%, outlier 15%, views/subs 15%, engagement 15%)
+- [x] Tier-based channel weighting (67 channels, Tier 1-3 + Non classé)
+- [x] Time decay for video freshness
+- [x] report.py — top 25 → Notion + JSON (context/veille-top25.json)
+- [x] Upgraded slide system for yt-script (responsive, animations, keyboard nav)
 
 ---
 
