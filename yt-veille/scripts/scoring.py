@@ -20,6 +20,13 @@ WEIGHTS_EARLY = {
     "engagement": 0.25,
 }
 
+TIER_MULTIPLIER = {
+    "Tier 1": 1.5,
+    "Tier 2": 1.2,
+    "Tier 3": 1.0,
+    "Non classé": 1.0,
+}
+
 
 def normalize(value: float, thresholds: list[float]) -> float:
     scores = [0, 25, 50, 75, 100]
@@ -46,13 +53,20 @@ def composite_score(*, outlier: float, velocity_ratio: float,
                  + vs * w["views_subs"] + e * w["engagement"], 2)
 
 
+def apply_tier_boost(score: float, tier: str) -> float:
+    """Apply tier multiplier to composite score, capped at 100."""
+    multiplier = TIER_MULTIPLIER.get(tier, 1.0)
+    return min(round(score * multiplier, 2), 100.0)
+
+
 def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
                           channel_avg_velocity: float,
                           channel_subscribers: int,
-                          published_at: str | None = None) -> dict:
+                          published_at: str | None = None,
+                          tier: str = "Non classé") -> dict:
     if not snapshots:
         return {"outlier_score": 0, "velocity_ratio": 0, "views_subs_ratio": 0,
-                "engagement_rate": 0, "composite": 0, "early": False}
+                "engagement_rate": 0, "composite": 0, "composite_raw": 0, "early": False}
 
     latest = snapshots[-1]
     views = latest["views"]
@@ -93,19 +107,21 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
     views_subs_ratio = views / channel_subscribers if channel_subscribers > 0 else 0
     engagement_rate = (likes + comments) / views if views > 0 else 0
 
-    score = composite_score(
+    raw_score = composite_score(
         outlier=outlier_score,
         velocity_ratio=velocity_ratio,
         views_subs=views_subs_ratio,
         engagement=engagement_rate * 100,
         early=early,
     )
+    boosted_score = apply_tier_boost(raw_score, tier)
 
     return {
         "outlier_score": round(outlier_score, 2),
         "velocity_ratio": round(velocity_ratio, 2),
         "views_subs_ratio": round(views_subs_ratio, 4),
         "engagement_rate": round(engagement_rate, 4),
-        "composite": score,
+        "composite_raw": raw_score,
+        "composite": boosted_score,
         "early": early,
     }

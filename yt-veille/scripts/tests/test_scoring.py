@@ -1,5 +1,5 @@
 import pytest
-from scoring import normalize, composite_score, compute_video_metrics
+from scoring import normalize, composite_score, compute_video_metrics, apply_tier_boost
 
 def test_normalize_at_zero():
     thresholds = [1.0, 2.0, 3.0, 10.0, 20.0]
@@ -119,3 +119,32 @@ def test_compute_video_metrics_old_video_not_early():
     assert metrics["early"] is False
     # No 2nd snapshot + not early → velocity = 0
     assert metrics["velocity_ratio"] == 0
+
+
+def test_apply_tier_boost():
+    assert apply_tier_boost(50.0, "Tier 1") == 75.0   # ×1.5
+    assert apply_tier_boost(50.0, "Tier 2") == 60.0   # ×1.2
+    assert apply_tier_boost(50.0, "Tier 3") == 50.0   # ×1.0
+    assert apply_tier_boost(50.0, "Non classé") == 50.0
+
+def test_apply_tier_boost_capped():
+    assert apply_tier_boost(80.0, "Tier 1") == 100.0  # 80×1.5=120 → capé à 100
+
+def test_compute_video_metrics_with_tier():
+    snapshots = [
+        {"scraped_at": "2026-03-20", "views": 5000, "likes": 300, "comments": 50},
+        {"scraped_at": "2026-03-21", "views": 50000, "likes": 3000, "comments": 500},
+    ]
+    raw = compute_video_metrics(
+        snapshots=snapshots, channel_median=10000,
+        channel_avg_velocity=500.0, channel_subscribers=50000,
+        tier="Non classé",
+    )
+    boosted = compute_video_metrics(
+        snapshots=snapshots, channel_median=10000,
+        channel_avg_velocity=500.0, channel_subscribers=50000,
+        tier="Tier 1",
+    )
+    assert boosted["composite"] > raw["composite"]
+    assert boosted["composite_raw"] == raw["composite_raw"]
+    assert boosted["composite"] <= 100

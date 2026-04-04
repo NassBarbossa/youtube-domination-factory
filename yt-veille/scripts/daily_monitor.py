@@ -125,6 +125,7 @@ def _score_all_videos(db_path: str, channels: list[dict]):
                 channel_avg_velocity=avg_vel,
                 channel_subscribers=subscribers,
                 published_at=published_at,
+                tier=ch.get("tier", "Non classé"),
             )
 
             topic = None
