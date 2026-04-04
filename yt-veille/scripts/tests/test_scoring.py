@@ -141,12 +141,12 @@ def test_decay_fresh():
 def test_decay_2_days():
     pub = (datetime.now(timezone.utc) - timedelta(hours=48)).isoformat()
     score, _ = apply_decay(80.0, pub)
-    assert score == 60.0
+    assert score == 68.0  # ×0.85
 
 def test_decay_5_days():
     pub = (datetime.now(timezone.utc) - timedelta(hours=120)).isoformat()
     score, _ = apply_decay(80.0, pub)
-    assert score == 40.0
+    assert score == 52.0  # ×0.65
 
 def test_decay_old_excluded():
     pub = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
