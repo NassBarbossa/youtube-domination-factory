@@ -158,13 +158,20 @@ from database import update_video_score, update_channel_stats
 
 def test_update_video_score(tmp_path):
     db_path = _seed_db(tmp_path)
-    update_video_score(db_path, video_id="vid1", composite_score=85.5, topic="Claude AI")
+    metrics = {
+        "composite": 85.5, "composite_raw": 57.0,
+        "outlier_score": 5.0, "velocity_ratio": 3.2,
+        "views_subs_ratio": 1.6, "engagement_rate": 0.07,
+    }
+    update_video_score(db_path, video_id="vid1", metrics=metrics, topic="Claude AI")
     conn = sqlite3.connect(db_path)
-    row = conn.execute("SELECT composite_score, topic FROM videos WHERE video_id='vid1'").fetchone()
+    row = conn.execute("SELECT composite_score, topic, outlier_score, velocity_ratio FROM videos WHERE video_id='vid1'").fetchone()
     conn.close()
     assert row is not None
     assert row[0] == 85.5
     assert row[1] == "Claude AI"
+    assert row[2] == 5.0
+    assert row[3] == 3.2
 
 def test_update_channel_stats(tmp_path):
     db_path = _seed_db(tmp_path)

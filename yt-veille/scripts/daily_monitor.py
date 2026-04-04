@@ -132,7 +132,7 @@ def _score_all_videos(db_path: str, channels: list[dict]):
             if metrics["composite"] > 50:
                 topic = extract_topic(title or "", description or "")
 
-            update_video_score(db_path, vid_id, metrics["composite"], topic)
+            update_video_score(db_path, vid_id, metrics, topic)
 
         logger.info("  Scored videos for %s (median=%.0f, avg_vel=%.0f)",
                      ch["handle"], median, avg_vel or 0)

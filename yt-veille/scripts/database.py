@@ -39,7 +39,12 @@ def init_db(db_path: str):
             category_id TEXT,
             detected_at TEXT,
             topic TEXT,
-            composite_score REAL
+            composite_score REAL,
+            outlier_score REAL,
+            velocity_ratio REAL,
+            views_subs_ratio REAL,
+            engagement_rate REAL,
+            composite_raw REAL
         );
 
         CREATE TABLE IF NOT EXISTS snapshots (
@@ -188,18 +193,21 @@ def get_scored_videos(db_path: str, min_score: float = 50, days: int = 30) -> li
     ]
 
 
-def update_video_score(db_path: str, video_id: str, composite_score: float, topic: str | None = None):
+def update_video_score(db_path: str, video_id: str, metrics: dict, topic: str | None = None):
     conn = get_connection(db_path)
-    if topic:
-        conn.execute(
-            "UPDATE videos SET composite_score=?, topic=? WHERE video_id=?",
-            (composite_score, topic, video_id)
-        )
-    else:
-        conn.execute(
-            "UPDATE videos SET composite_score=? WHERE video_id=?",
-            (composite_score, video_id)
-        )
+    conn.execute("""
+        UPDATE videos SET
+            composite_score=?, composite_raw=?,
+            outlier_score=?, velocity_ratio=?,
+            views_subs_ratio=?, engagement_rate=?,
+            topic=COALESCE(?, topic)
+        WHERE video_id=?
+    """, (
+        metrics["composite"], metrics["composite_raw"],
+        metrics["outlier_score"], metrics["velocity_ratio"],
+        metrics["views_subs_ratio"], metrics["engagement_rate"],
+        topic, video_id
+    ))
     conn.commit()
     conn.close()
 
