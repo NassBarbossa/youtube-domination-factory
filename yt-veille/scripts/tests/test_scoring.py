@@ -1,5 +1,5 @@
 import pytest
-from scoring import normalize, composite_score, compute_video_metrics, apply_tier_boost
+from scoring import normalize, composite_score, compute_video_metrics, apply_tier_boost, apply_decay
 
 def test_normalize_at_zero():
     thresholds = [1.0, 2.0, 3.0, 10.0, 20.0]
@@ -145,6 +145,42 @@ def test_compute_video_metrics_with_tier():
         channel_avg_velocity=500.0, channel_subscribers=50000,
         tier="Tier 1",
     )
-    assert boosted["composite"] > raw["composite"]
+    assert boosted["composite_boosted"] > raw["composite_boosted"]
     assert boosted["composite_raw"] == raw["composite_raw"]
     assert boosted["composite"] <= 100
+
+
+def test_apply_decay_fresh():
+    from datetime import datetime, timezone, timedelta
+    pub = (datetime.now(timezone.utc) - timedelta(hours=12)).isoformat()
+    score, anomaly = apply_decay(75.0, pub)
+    assert score == 75.0  # < 24h, no decay
+    assert anomaly is False
+
+def test_apply_decay_2_days():
+    from datetime import datetime, timezone, timedelta
+    pub = (datetime.now(timezone.utc) - timedelta(hours=48)).isoformat()
+    score, anomaly = apply_decay(80.0, pub)
+    assert score == 60.0  # ×0.75
+    assert anomaly is False
+
+def test_apply_decay_5_days():
+    from datetime import datetime, timezone, timedelta
+    pub = (datetime.now(timezone.utc) - timedelta(hours=120)).isoformat()
+    score, anomaly = apply_decay(80.0, pub)
+    assert score == 40.0  # ×0.5
+    assert anomaly is False
+
+def test_apply_decay_old_excluded():
+    from datetime import datetime, timezone, timedelta
+    pub = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
+    score, anomaly = apply_decay(50.0, pub)
+    assert score == 0.0  # 7+ days, score < 80 → excluded
+    assert anomaly is False
+
+def test_apply_decay_old_anomaly():
+    from datetime import datetime, timezone, timedelta
+    pub = (datetime.now(timezone.utc) - timedelta(days=10)).isoformat()
+    score, anomaly = apply_decay(90.0, pub)
+    assert score == 27.0  # 90 × 0.3
+    assert anomaly is True

@@ -1,6 +1,7 @@
 import sqlite3
 import pytest
 from unittest.mock import MagicMock, patch
+from datetime import datetime, timezone, timedelta
 from daily_monitor import run_monitor
 from database import init_db, get_connection
 
@@ -12,6 +13,10 @@ def db_path(tmp_path):
 
 @pytest.fixture
 def mock_youtube_client():
+    now = datetime.now(timezone.utc)
+    pub1 = (now - timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    pub2 = (now - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ")
+
     client = MagicMock()
     client.get_channel_stats.return_value = {
         "subscriber_count": 50000,
@@ -19,15 +24,15 @@ def mock_youtube_client():
         "video_count": 100,
     }
     client.get_latest_uploads.return_value = [
-        {"video_id": "vid1", "title": "Video 1", "published_at": "2026-03-25T10:00:00Z"},
-        {"video_id": "vid2", "title": "Video 2", "published_at": "2026-03-24T10:00:00Z"},
+        {"video_id": "vid1", "title": "Video 1", "published_at": pub1},
+        {"video_id": "vid2", "title": "Video 2", "published_at": pub2},
     ]
     client.get_video_details.return_value = {
         "vid1": {
             "title": "Claude Code Full Tutorial",
             "description": "Learn Claude Code from scratch",
             "tags": ["claude code", "tutorial"],
-            "published_at": "2026-03-25T10:00:00Z",
+            "published_at": pub1,
             "thumbnail_url": "https://img.youtube.com/vi/vid1/hq.jpg",
             "category_id": "28",
             "duration_seconds": 900,
@@ -40,7 +45,7 @@ def mock_youtube_client():
             "title": "My Daily Routine",
             "description": "How I start my day",
             "tags": ["routine"],
-            "published_at": "2026-03-24T10:00:00Z",
+            "published_at": pub2,
             "thumbnail_url": "https://img.youtube.com/vi/vid2/hq.jpg",
             "category_id": "22",
             "duration_seconds": 600,

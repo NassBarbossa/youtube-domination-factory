@@ -27,6 +27,17 @@ TIER_MULTIPLIER = {
     "Non classé": 1.0,
 }
 
+# Decay: age in hours → multiplier
+AGE_DECAY = [
+    (24, 1.0),       # < 24h: no decay
+    (72, 0.75),      # 1-3 days
+    (144, 0.5),      # 3-6 days
+    (168, 0.0),      # 7+ days: excluded (unless anomaly)
+]
+
+# Anomaly threshold: if score is above this BEFORE decay, show it even if old
+ANOMALY_THRESHOLD = 80
+
 
 def normalize(value: float, thresholds: list[float]) -> float:
     scores = [0, 25, 50, 75, 100]
@@ -57,6 +68,25 @@ def apply_tier_boost(score: float, tier: str) -> float:
     """Apply tier multiplier to composite score, capped at 100."""
     multiplier = TIER_MULTIPLIER.get(tier, 1.0)
     return min(round(score * multiplier, 2), 100.0)
+
+
+def apply_decay(score: float, published_at: str | None) -> tuple[float, bool]:
+    """Apply time decay. Returns (decayed_score, is_anomaly).
+    Videos 7+ days old get score 0 unless score before decay >= ANOMALY_THRESHOLD."""
+    if not published_at:
+        return score, False
+    pub_time = datetime.fromisoformat(published_at.replace("Z", "+00:00"))
+    now = datetime.now(pub_time.tzinfo) if pub_time.tzinfo else datetime.utcnow()
+    age_hours = (now - pub_time).total_seconds() / 3600
+
+    for threshold, multiplier in AGE_DECAY:
+        if age_hours < threshold:
+            return min(round(score * multiplier, 2), 100.0), False
+
+    # 7+ days: excluded unless anomaly
+    if score >= ANOMALY_THRESHOLD:
+        return min(round(score * 0.3, 2), 100.0), True
+    return 0.0, False
 
 
 def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
@@ -115,6 +145,7 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         early=early,
     )
     boosted_score = apply_tier_boost(raw_score, tier)
+    final_score, is_anomaly = apply_decay(boosted_score, published_at)
 
     return {
         "outlier_score": round(outlier_score, 2),
@@ -122,6 +153,8 @@ def compute_video_metrics(*, snapshots: list[dict], channel_median: float,
         "views_subs_ratio": round(views_subs_ratio, 4),
         "engagement_rate": round(engagement_rate, 4),
         "composite_raw": raw_score,
-        "composite": boosted_score,
+        "composite_boosted": boosted_score,
+        "composite": final_score,
         "early": early,
+        "anomaly": is_anomaly,
     }
