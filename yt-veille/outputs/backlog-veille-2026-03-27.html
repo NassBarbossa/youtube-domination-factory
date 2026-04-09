@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Concurrentielle — 27 mars 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0f0f0f;
+    font-family: 'Inter', sans-serif;
+    color: #e8e8e8;
+    padding: 40px;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 1400px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .header-left h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .header-left h1 span { color: #f5a623; }
+
+  .header-left .meta {
+    font-size: 14px;
+    color: #888;
+  }
+
+  .stat-cards {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px 28px;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .stat-card .label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .stat-card .value {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .stat-card .value.gold { color: #f5a623; }
+  .stat-card .value.green { color: #4ade80; }
+  .stat-card .value.blue { color: #60a5fa; }
+  .stat-card .value.purple { color: #c084fc; }
+
+  /* Filters */
+  .filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #ccc;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: #f5a623; color: #f5a623; }
+  .filter-btn.active { background: #f5a623; color: #0f0f0f; border-color: #f5a623; }
+
+  /* Search */
+  .search-bar {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: #e8e8e8;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    margin-bottom: 24px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-bar:focus { border-color: #f5a623; }
+  .search-bar::placeholder { color: #555; }
+
+  /* Table */
+  .table-wrap {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    background: #141414;
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    border-bottom: 1px solid #2a2a2a;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  thead th:hover { color: #f5a623; }
+  thead th.sorted { color: #f5a623; }
+  thead th .arrow { margin-left: 4px; font-size: 10px; }
+
+  tbody tr {
+    border-bottom: 1px solid #1f1f1f;
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: #222; }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 12px 16px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .rank {
+    font-weight: 700;
+    color: #555;
+    width: 40px;
+    text-align: center;
+  }
+
+  .rank.top3 { color: #f5a623; }
+
+  .thumb-cell {
+    width: 120px;
+    padding: 8px 12px;
+  }
+
+  .thumb-cell img {
+    width: 110px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+  }
+
+  .title-cell a {
+    color: #e8e8e8;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1.4;
+    display: block;
+  }
+
+  .title-cell a:hover { color: #f5a623; }
+
+  .channel-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .channel-nateherk { background: #dc262620; color: #f87171; }
+  .channel-AlexFinnOfficial { background: #f5a62320; color: #f5a623; }
+  .channel-mikeynocode { background: #60a5fa20; color: #60a5fa; }
+  .channel-HenriExplorIA { background: #4ade8020; color: #4ade80; }
+  .channel-melvynxdev { background: #c084fc20; color: #c084fc; }
+  .channel-minutora { background: #e879f920; color: #e879f9; }
+
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .num.highlight { color: #f5a623; font-weight: 600; }
+
+  .outlier-tag {
+    background: #f5a62320;
+    color: #f5a623;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .date-cell {
+    color: #888;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #2a2a2a;
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    body { padding: 16px; }
+    .thumb-cell { display: none; }
+    .stat-card { min-width: 140px; padding: 14px 18px; }
+    .stat-card .value { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-left">
+      <h1>Veille <span>Concurrentielle</span></h1>
+      <div class="meta">Dernière MAJ : 27 mars 2026 01:00 UTC &middot; 6 chaînes monitorées &middot; Source : daily_monitor.py</div>
+    </div>
+  </div>
+
+  <div class="stat-cards" id="stats"></div>
+
+  <div class="filters" id="filters"></div>
+
+  <input type="text" class="search-bar" id="search" placeholder="Rechercher un titre, une chaîne...">
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-sort="rank" class="sorted"># <span class="arrow">▼</span></th>
+          <th></th>
+          <th data-sort="title">Titre</th>
+          <th data-sort="channel">Chaîne</th>
+          <th data-sort="views" class="num">Vues</th>
+          <th data-sort="likes" class="num">Likes</th>
+          <th data-sort="comments" class="num">Com.</th>
+          <th data-sort="published">Publié</th>
+          <th>Outlier</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    YouTube Domination Factory &middot; Veille automatisée par daily_monitor.py
+  </div>
+
+</div>
+
+<script>
+const DATA = [{"id": "I378VC9wMiY", "title": "Ce site te donne accès à des milliers de modèles d’IA !", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-23T19:54:51Z", "views": 9514, "likes": 336, "comments": 139, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/I378VC9wMiY/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=I378VC9wMiY", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "glnQ5BEGPfM", "title": "Mieux utiliser l'IA en entreprise 🤖", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-23T11:03:45Z", "views": 2393, "likes": 40, "comments": 1, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/glnQ5BEGPfM/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=glnQ5BEGPfM", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "6lnXZWQaADg", "title": "Mieux utiliser l'IA en entreprise 🤖", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-23T11:03:35Z", "views": 2306, "likes": 38, "comments": 2, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/6lnXZWQaADg/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=6lnXZWQaADg", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "H1GrAeK8L8w", "title": "Mieux utiliser l'IA en entreprise 🤖", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-23T11:03:24Z", "views": 1137, "likes": 14, "comments": 0, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/H1GrAeK8L8w/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=H1GrAeK8L8w", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "4BgN_poX2R0", "title": "Mes 10 skills Claude préférés en 30 secondes", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-22T14:38:36Z", "views": 10123, "likes": 348, "comments": 298, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/4BgN_poX2R0/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=4BgN_poX2R0", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "5CH8a_j_pGg", "title": "Finies les leçons à l’ancienne : vos enfants ont besoin de l’IA", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-21T09:03:50Z", "views": 1995, "likes": 64, "comments": 6, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/5CH8a_j_pGg/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=5CH8a_j_pGg", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "CbzIYA-Qm2U", "title": "Finies les leçons à l’ancienne : vos enfants ont besoin de l’IA", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-21T09:02:12Z", "views": 1642, "likes": 33, "comments": 0, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/CbzIYA-Qm2U/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=CbzIYA-Qm2U", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "_MffNMhJuXg", "title": "Finies les leçons à l’ancienne : vos enfants ont besoin de l’IA", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-21T09:02:07Z", "views": 1985, "likes": 64, "comments": 1, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/_MffNMhJuXg/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=_MffNMhJuXg", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "EGAmlizylp0", "title": "Importe ta mémoire dans Claude depuis tes autres outils IA !", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-21T08:08:59Z", "views": 18314, "likes": 501, "comments": 64, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/EGAmlizylp0/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=EGAmlizylp0", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "Izwl9gt_rsI", "title": "Classement des outils IA.", "channel": "HenriExplorIA", "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ", "published": "2026-03-18T20:42:29Z", "views": 27592, "likes": 379, "comments": 72, "channel_subscribers": 66800, "thumbnail": "https://i.ytimg.com/vi/Izwl9gt_rsI/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=Izwl9gt_rsI", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:02Z", "source": "daily_monitor"}, {"id": "H7QQTvL_FOw", "title": "Claude Code + iMessage is Finally Here..", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-26T03:36:42Z", "views": 12696, "likes": 503, "comments": 19, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/H7QQTvL_FOw/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=H7QQTvL_FOw", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "hHlpVeooPrI", "title": "Claude Code + iMessage is Finally Here.", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-26T02:54:48Z", "views": 20984, "likes": 555, "comments": 54, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/hHlpVeooPrI/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=hHlpVeooPrI", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "pkSxISewcw8", "title": "STOP Using Bypass Permissions, Use This New Feature Instead", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-24T22:42:50Z", "views": 49274, "likes": 1093, "comments": 67, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/pkSxISewcw8/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=pkSxISewcw8", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "LrgfmZkl3nc", "title": "Claude Code Just Dropped Memory 2.0", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-24T15:04:07Z", "views": 137781, "likes": 2548, "comments": 143, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/LrgfmZkl3nc/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=LrgfmZkl3nc", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "X6EGzi9qm3E", "title": "Claude Code Just Got Another Huge Upgrade", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-24T01:11:34Z", "views": 124484, "likes": 2405, "comments": 242, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/X6EGzi9qm3E/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=X6EGzi9qm3E", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "T6_Ges4j1qY", "title": "This $100M AI App Just Changed Software Forever", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-23T22:34:24Z", "views": 31492, "likes": 1076, "comments": 97, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/T6_Ges4j1qY/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=T6_Ges4j1qY", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "vDVSGVpB2vc", "title": "How to Build Claude Agent Teams Better Than 99% of People", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-23T13:03:53Z", "views": 70679, "likes": 2001, "comments": 80, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/vDVSGVpB2vc/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=vDVSGVpB2vc", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "ZeJXI2MAhj0", "title": "Stop Learning n8n in 2026...Learn THIS Instead", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-21T11:58:00Z", "views": 64239, "likes": 2113, "comments": 172, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/ZeJXI2MAhj0/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=ZeJXI2MAhj0", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "4Zaoo0YbYaw", "title": "Generate Content for 9 Socials on Autopilot with Claude Code", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-17T14:44:04Z", "views": 27375, "likes": 753, "comments": 50, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/4Zaoo0YbYaw/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=4Zaoo0YbYaw", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "mpALXah_PBg", "title": "Build & Sell with Claude Code (10+ Hour Course)", "channel": "nateherk", "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA", "published": "2026-03-12T14:35:41Z", "views": 276951, "likes": 12827, "comments": 904, "channel_subscribers": 604000, "thumbnail": "https://i.ytimg.com/vi/mpALXah_PBg/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=mpALXah_PBg", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "Q_FZ800Hm4g", "title": "Vibe Coding Tutorial for Beginners 2026: Step by Step", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-25T14:15:03Z", "views": 16297, "likes": 0, "comments": 18, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/Q_FZ800Hm4g/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=Q_FZ800Hm4g", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "C05XDMGaAn8", "title": "AI Agent Full Tutorial for Beginners 2026: How to Build AI Agents in Minutes", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-23T14:28:30Z", "views": 29858, "likes": 0, "comments": 26, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/C05XDMGaAn8/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=C05XDMGaAn8", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "aQZkra1kEcg", "title": "Micro Saas Tutorial for Beginners: How to Build a SaaS with AI (2026)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-20T14:08:19Z", "views": 20036, "likes": 0, "comments": 22, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/aQZkra1kEcg/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=aQZkra1kEcg", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "VpWflY63-b8", "title": "Flutter Tutorial for Beginners: Build App with AI (2026)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-18T14:18:06Z", "views": 17514, "likes": 0, "comments": 16, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/VpWflY63-b8/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=VpWflY63-b8", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "RKbmqSRc0z0", "title": "Best AI Coding Tools for Developers in 2026 (Don't Choose Wrong)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-16T14:14:41Z", "views": 29536, "likes": 0, "comments": 42, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/RKbmqSRc0z0/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=RKbmqSRc0z0", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "VMbm1I6sdAs", "title": "STOP Using Cursor and Lovable! This New Tool is 10x BETTER (Orchids Review)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-13T14:09:52Z", "views": 19536, "likes": 0, "comments": 18, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/VMbm1I6sdAs/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=VMbm1I6sdAs", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "65CASowfnKs", "title": "AI Tutorial for Beginners 2026: How To Use AI & Build ANYTHING", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-11T14:05:19Z", "views": 20431, "likes": 0, "comments": 23, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/65CASowfnKs/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=65CASowfnKs", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "ZFBpnV-1dXo", "title": "Stop Vibe Coding! Build Real Apps with Rork Max AI (Full Guide)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-09T13:36:13Z", "views": 26605, "likes": 0, "comments": 33, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/ZFBpnV-1dXo/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=ZFBpnV-1dXo", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "aML6rJI1e_w", "title": "Best AI App Builder for iOS and Android (2026)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-06T14:25:43Z", "views": 29704, "likes": 0, "comments": 34, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/aML6rJI1e_w/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=aML6rJI1e_w", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "qpIDMZZIv3s", "title": "Replit Tutorial for Beginners: Build App with AI (2026)", "channel": "mikeynocode", "channel_id": "UCde0vB0fTwC8AT3sJofFV0w", "published": "2026-03-04T13:55:24Z", "views": 23647, "likes": 0, "comments": 16, "channel_subscribers": 114000, "thumbnail": "https://i.ytimg.com/vi/qpIDMZZIv3s/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=qpIDMZZIv3s", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:03Z", "source": "daily_monitor"}, {"id": "iOcjpPB0BE4", "title": "Qwen 3.5 le seul modèle local dont tu as besoin", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-03-22T09:48:19Z", "views": 3124, "likes": 115, "comments": 14, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/iOcjpPB0BE4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=iOcjpPB0BE4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "I7jjf7QhLFE", "title": "Les 6 fonctionnalités indispensables de Claude code", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-03-15T14:31:44Z", "views": 257, "likes": 13, "comments": 4, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/I7jjf7QhLFE/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=I7jjf7QhLFE", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "C2gECZoi1tM", "title": "J'ai installé OpenClaw | Voici comment faire pas à pas", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-03-08T20:04:39Z", "views": 5027, "likes": 147, "comments": 5, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/C2gECZoi1tM/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=C2gECZoi1tM", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "kowfEfKPMK0", "title": "Presentation power point par assistant IA qui marche (tutoriel complet)", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-02-27T11:52:54Z", "views": 117, "likes": 9, "comments": 0, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/kowfEfKPMK0/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=kowfEfKPMK0", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "rjrt8PxsdOI", "title": "Organise tes vacances 10 fois plus vite avec un assistant IA (tutoriel)", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-02-20T07:00:47Z", "views": 107, "likes": 4, "comments": 2, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/rjrt8PxsdOI/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=rjrt8PxsdOI", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "NMsbQobtyw4", "title": "Panorama de l'open source du vibe coding", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-02-15T08:01:20Z", "views": 338, "likes": 10, "comments": 3, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/NMsbQobtyw4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=NMsbQobtyw4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "l1s7FFdvGEE", "title": "Assistant IA :  3 tutos pour comprendre (claude / glm)", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-02-09T07:31:01Z", "views": 219, "likes": 11, "comments": 0, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/l1s7FFdvGEE/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=l1s7FFdvGEE", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "Ve75tDnlAzY", "title": "Claude n'est plus la meilleure IA pour le vibe coding (GLM est le nouveau roi)", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-02-01T19:57:39Z", "views": 807, "likes": 32, "comments": 6, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/Ve75tDnlAzY/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=Ve75tDnlAzY", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "gRZblleCzBw", "title": "Développeur en 2026 : mythes et réalités à l'ère de l'IA", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-01-21T08:17:04Z", "views": 461, "likes": 22, "comments": 0, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/gRZblleCzBw/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=gRZblleCzBw", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "A3WYoFOfSG4", "title": "Synchronise tes fichiers sur tous tes appareils sans cloud (tutoriel syncthing)", "channel": "minutora", "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA", "published": "2026-01-08T18:31:05Z", "views": 1783, "likes": 65, "comments": 9, "channel_subscribers": 561, "thumbnail": "https://i.ytimg.com/vi/A3WYoFOfSG4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=A3WYoFOfSG4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "vamlWbDTWG4", "title": "PERSONNE ne comprend OpenClaw : voici le VRAI usage que j'en fais", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-26T17:24:23Z", "views": 1879, "likes": 74, "comments": 30, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/vamlWbDTWG4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=vamlWbDTWG4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "QG7aDk5om9I", "title": "Claude Code fonctionne 100x mieux via cette application", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-24T17:00:43Z", "views": 8582, "likes": 140, "comments": 31, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/QG7aDk5om9I/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=QG7aDk5om9I", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "nwNvBz2-qFc", "title": "SKILLATON à San Francisco : va-t-on réussir à gagner 1 000 $ à San Francisco (c'est galère...)", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-23T17:15:06Z", "views": 2297, "likes": 110, "comments": 47, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/nwNvBz2-qFc/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=nwNvBz2-qFc", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "bGKljRcN_lE", "title": "ARRÊTE LES MCP : Voici ce qu'il faut utiliser MAINTENANT", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-22T17:10:00Z", "views": 15576, "likes": 353, "comments": 70, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/bGKljRcN_lE/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=bGKljRcN_lE", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "TUjo2dO85aA", "title": "5 ERREURS que tu FAIS avec Claude Code (en entreprise)", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-21T17:00:13Z", "views": 3827, "likes": 119, "comments": 22, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/TUjo2dO85aA/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=TUjo2dO85aA", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "9YAUNW6BoU4", "title": "COMPOSER 2.0 MEILLEUR QUE OPUS pour 10x moins cher ? (oui...)", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-20T07:19:30Z", "views": 6719, "likes": 121, "comments": 44, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/9YAUNW6BoU4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=9YAUNW6BoU4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "VdJOiXI8vkk", "title": "Quel outil choisir en 2026 pour coder (comparaison honnête)", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-19T06:30:14Z", "views": 4619, "likes": 89, "comments": 32, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/VdJOiXI8vkk/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=VdJOiXI8vkk", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "EI0JC0g3FwE", "title": "Je SETUP OpenClaw en 1 heure à un total débutant", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-18T17:00:32Z", "views": 5207, "likes": 89, "comments": 27, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/EI0JC0g3FwE/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=EI0JC0g3FwE", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "x6ki508zAeo", "title": "VLOG : Mon PREMIER Hackathon à San Francisco (ça a dégénéré)", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-17T18:00:02Z", "views": 4596, "likes": 177, "comments": 74, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/x6ki508zAeo/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=x6ki508zAeo", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "zZqFVjiiGN8", "title": "Les 4 NIVEAUX de développeur IA (et comment devenir plus productif)", "channel": "melvynxdev", "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA", "published": "2026-03-15T09:01:19Z", "views": 3583, "likes": 115, "comments": 29, "channel_subscribers": 56400, "thumbnail": "https://i.ytimg.com/vi/zZqFVjiiGN8/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=zZqFVjiiGN8", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-27T01:00:04Z", "source": "daily_monitor"}, {"id": "sTTCF83Us3E", "title": "LIVE: OpenAI Shutting Down Sora!! It's OVER. Also I'm running Opus 4.6 locally????", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-25T20:45:23Z", "views": 8468, "likes": 252, "comments": 11, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/sTTCF83Us3E/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=sTTCF83Us3E", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "UlC7pTdH_y4", "title": "Why you NEED to be running local AI models (FULL beginners guide)", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-24T22:20:54Z", "views": 27888, "likes": 1261, "comments": 142, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/UlC7pTdH_y4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=UlC7pTdH_y4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "LaHXmRE-_fs", "title": "OpenClaw's new update is MASSIVE", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-23T20:14:09Z", "views": 26696, "likes": 903, "comments": 54, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/LaHXmRE-_fs/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=LaHXmRE-_fs", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "qRA0MyPlEPE", "title": "5 OpenClaw use cases that will actually improve your life...", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-22T13:15:13Z", "views": 65807, "likes": 2134, "comments": 132, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/qRA0MyPlEPE/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=qRA0MyPlEPE", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "WDtlvsgF4xs", "title": "LIVE: I built my own AI research lab (Hermes agent/OpenClaw)", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-20T20:13:12Z", "views": 16692, "likes": 640, "comments": 57, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/WDtlvsgF4xs/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=WDtlvsgF4xs", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "lPsyi5i6SQc", "title": "LIVE: The ULTIMATE OpenClaw Mission Control revealed!", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-18T20:29:22Z", "views": 15543, "likes": 534, "comments": 57, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/lPsyi5i6SQc/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=lPsyi5i6SQc", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "CxErCGVo-oo", "title": "The only OpenClaw tutorial you’ll ever need (March 2026 edition)", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-17T21:34:07Z", "views": 209713, "likes": 9411, "comments": 601, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/CxErCGVo-oo/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=CxErCGVo-oo", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "YaakcHNtUEw", "title": "LIVE: MASSIVE Nvidia Announcements (full Jensen Huang GTC Keynote)", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-16T20:38:00Z", "views": 13321, "likes": 436, "comments": 11, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/YaakcHNtUEw/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=YaakcHNtUEw", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "sWuMEPES3So", "title": "LIVE: OpenClaw running on 3 Mac Studios and a DGX Spark", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-13T21:18:30Z", "views": 13808, "likes": 809, "comments": 32, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/sWuMEPES3So/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=sWuMEPES3So", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}, {"id": "Rjd1LqF9cG4", "title": "How to build an army of OpenClaw agents", "channel": "AlexFinnOfficial", "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg", "published": "2026-03-12T21:34:49Z", "views": 59926, "likes": 2016, "comments": 170, "channel_subscribers": 169000, "thumbnail": "https://i.ytimg.com/vi/Rjd1LqF9cG4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=Rjd1LqF9cG4", "outlier": false, "median_views": null, "outlier_ratio": null, "detected_at": "2026-03-26T12:13:50Z", "source": "daily_monitor"}];
+
+const channels = [...new Set(DATA.map(v => v.channel))].sort();
+const channelColors = {};
+channels.forEach(ch => channelColors[ch] = `channel-${ch}`);
+
+// Stats
+const statsEl = document.getElementById('stats');
+const totalViews = DATA.reduce((s, v) => s + v.views, 0);
+const totalLikes = DATA.reduce((s, v) => s + v.likes, 0);
+const outlierCount = DATA.filter(v => v.outlier).length;
+const avgViews = Math.round(totalViews / DATA.length);
+
+statsEl.innerHTML = `
+  <div class="stat-card"><div class="label">Vidéos détectées</div><div class="value gold">${DATA.length}</div></div>
+  <div class="stat-card"><div class="label">Vues totales</div><div class="value green">${fmt(totalViews)}</div></div>
+  <div class="stat-card"><div class="label">Likes totaux</div><div class="value blue">${fmt(totalLikes)}</div></div>
+  <div class="stat-card"><div class="label">Moyenne vues</div><div class="value purple">${fmt(avgViews)}</div></div>
+`;
+
+// Filters
+const filtersEl = document.getElementById('filters');
+let activeChannel = null;
+
+filtersEl.innerHTML = `<button class="filter-btn active" data-ch="">Tous</button>` +
+  channels.map(ch => `<button class="filter-btn" data-ch="${ch}">${ch}</button>`).join('');
+
+filtersEl.addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  filtersEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  activeChannel = e.target.dataset.ch || null;
+  render();
+});
+
+// Search
+const searchEl = document.getElementById('search');
+searchEl.addEventListener('input', () => render());
+
+// Sort
+let sortKey = 'views';
+let sortDir = -1;
+
+document.querySelectorAll('thead th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.sort;
+    if (sortKey === key) sortDir *= -1;
+    else { sortKey = key; sortDir = key === 'title' || key === 'channel' ? 1 : -1; }
+    document.querySelectorAll('thead th').forEach(t => { t.classList.remove('sorted'); t.querySelector('.arrow')?.remove(); });
+    th.classList.add('sorted');
+    th.insertAdjacentHTML('beforeend', `<span class="arrow">${sortDir === 1 ? '▲' : '▼'}</span>`);
+    render();
+  });
+});
+
+function fmt(n) {
+  return n.toLocaleString('fr-FR');
+}
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' });
+}
+
+function render() {
+  const query = searchEl.value.toLowerCase();
+  let items = DATA.filter(v => {
+    if (activeChannel && v.channel !== activeChannel) return false;
+    if (query && !(v.title.toLowerCase().includes(query) || v.channel.toLowerCase().includes(query))) return false;
+    return true;
+  });
+
+  items.sort((a, b) => {
+    let va = a[sortKey], vb = b[sortKey];
+    if (sortKey === 'rank') { va = a._rank; vb = b._rank; }
+    if (typeof va === 'string') return sortDir * va.localeCompare(vb);
+    return sortDir * (va - vb);
+  });
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = items.map((v, i) => {
+    const rank = i + 1;
+    const isTop3 = rank <= 3;
+    return `<tr>
+      <td class="rank ${isTop3 ? 'top3' : ''}">${rank}</td>
+      <td class="thumb-cell"><img src="${v.thumbnail}" alt="" loading="lazy"></td>
+      <td class="title-cell"><a href="${v.url}" target="_blank">${v.title}</a></td>
+      <td><span class="channel-badge ${channelColors[v.channel] || ''}">${v.channel}</span></td>
+      <td class="num ${v.views > 50000 ? 'highlight' : ''}">${fmt(v.views)}</td>
+      <td class="num">${fmt(v.likes)}</td>
+      <td class="num">${fmt(v.comments)}</td>
+      <td class="date-cell">${fmtDate(v.published)}</td>
+      <td>${v.outlier ? '<span class="outlier-tag">OUTLIER</span>' : ''}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Initial rank
+DATA.sort((a, b) => b.views - a.views);
+DATA.forEach((v, i) => v._rank = i + 1);
+render();
+</script>
+</body>
+</html>

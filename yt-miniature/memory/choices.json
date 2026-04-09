@@ -1,3 +1,42 @@
 {
-  "choices": []
+  "choices": [
+    {
+      "video_slug": "2000e-1h-vibecoding",
+      "date": "2026-03-18",
+      "concept_chosen": "The Laptop Reveal",
+      "concepts_rejected": ["The Stripe Dashboard Shock", "The Timer + Cash"],
+      "has_face": true,
+      "face_size_pct": 35,
+      "face_expression": "surprise",
+      "dominant_color": "#00E5FF",
+      "color_name": "cyan",
+      "text_on_thumbnail": false,
+      "text_word_count": 0,
+      "num_focal_points": 2,
+      "has_border_glow": true,
+      "background_style": "dark-gradient",
+      "title_thumbnail_synergy": "complement",
+      "performance": null
+    },
+    {
+      "video_slug": "associe-oussama-amar",
+      "date": "2026-03-30",
+      "concept_chosen": "The Power Duo",
+      "concepts_rejected": ["The Handshake", "The Reveal"],
+      "has_face": true,
+      "face_size_pct": 40,
+      "face_expression": "confident-smile",
+      "dominant_color": "#00E5FF",
+      "color_name": "cyan",
+      "text_on_thumbnail": true,
+      "text_word_count": 1,
+      "text_content": "VibeCoding",
+      "num_focal_points": 3,
+      "has_border_glow": true,
+      "background_style": "dark-subtle-stars",
+      "title_thumbnail_synergy": "complement",
+      "notes": "Format dual-face collab. Texte VibeCoding centré entre les deux visages. Background fourni en référence à Gemini plutôt que généré. Rendu validé par Nass.",
+      "performance": null
+    }
+  ]
 }

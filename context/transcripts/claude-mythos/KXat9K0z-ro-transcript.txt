@@ -1,0 +1,377 @@
+Anthropique a accidentellement révélé
+son IA la plus puissante à ce jour
+appelée Mythos. Meta vient tout juste de
+dévoiler un nouveau modèle capable de
+prédire comment le cerveau réagit au
+contenu. Un nouvel agent auto-évolutif
+appelé Joan Clow tente de résoudre l'un
+des plus grands problèmes de l'IA et
+Alibaba vient de dévoiler une nouvelle
+puce conçue spécialement pour les agents
+d'IRAR. Commençons d'abord par
+anhropique car cette histoire est plutôt
+énorme. En fait, cela n'était même pas
+censé être rendu public pour l'instant.
+Ce qui s'est passé, c'est une erreur
+interne assez classique. Un brouillon
+dont un article de blog complet sur un
+nouveau modèle a été accidentellement
+laissé dans un caché publique et il ne
+s'agit pas que d'un ou deux fichiers. Il
+y avait près de 3000 éléments qui
+traînaient en là, y compris des images,
+des PDF, des documents internes, voire
+même des fichiers liés aux employés.
+Tout cela concernait leur système de
+gestion de contenu. Quand des
+journalistes et chercheurs en sécurité
+l'ont découvert, Entropique a rapidement
+fermé l'accès et ils ont admis que cela
+était dû à une erreur humaine dans la
+configuration de leur CMS. Mais la
+partie importante, c'est ce que
+contenait son ces finant de ces
+documents. La fuite a révélé un nouveau
+modèle appelé Claude Mythos. En interne
+et l'intéorni, il est également désigné
+sous le nom de Capibara qui représente
+en fait une nouvelle catégorie de
+modèles. Et c'est là que ça devient
+intéressant parce que actuellement
+Entropic propose trois principales
+catégories : Aiku, Sonet et Opus. Opus
+est leur modèle le plus puissant
+actuellement, mais Capibara est présenté
+comme encore supérieur. Donc en gros,
+vous avez affaire à une nouvelle
+catégorie de modèles qui se situe
+au-dessus de leur niveau actuel le plus
+élevé, ce qui signifie plus grand, plus
+performant et aussi plus coûteux à faire
+fonctionner. D'après le brouillon, ce
+modèle est déjà entraîné et il est
+actuellement testé avec des clients en
+accès anticipé. Anthropique eux-mêmes
+ont confirmé qu'ils travaillent sur un
+nouveau modèle polyvalent avec des
+améliorations majeures en raisonnement,
+en programmation et en cybersécurité.
+Ils qualifien cela de saut de
+performance et ils affirment que c'est
+le système le plus performant qu'ils
+étant jamais conçu et ils font très
+attention à la manière dont ils le
+déploient. Non, ce n'est pas directement
+accessible au public. C'est limité à un
+petit groupe d'utilisateurs précoces,
+principalement des organisations. Et il
+y a une raison à cela. Les documents
+montrent clairement que la cybersécurité
+est une préoccupation majeure. Ils
+affirment que ce modèle surpasse
+actuellement tous les autres en capacité
+cyber et s'inquiète des implications.
+Dans le monde réel, on craint que des
+modèles comme celui-ci ne trouvent et
+exploitent des vulnérabilités plus vite
+que les défenseurs ne les corrigent.
+Donc au lieu de le diffuser largement,
+ils donnent un accès anticipé aux
+équipes de cybersécurité afin qu'elles
+puissent se préparer à ce qui arrive. Et
+ce n'est pas théorique. Anthropique a
+déjà eu des cas où leurs modèles ont été
+utilisés lors de véritables attaques. Un
+groupe lié à l'État chinois a utilisé
+Claude Mythos pour cibler environ 30
+organisations dont des entreprises de
+technologique, institutions financières
+et agences gouvernance gouvernementale.
+Anthropiicle l'a détecté, a mené une
+enquête pendant environ 10 jours, a
+banni les comptes et à informer les
+organisations concernées. Quand ils
+disent que ce nouveau modèle pourrait
+accélérer les cyberattaques, ils parlent
+d'expérience. La fuite révèle aussi que
+le modèle est coûteux à exploiter et pas
+prêt pour une sortie générale, ce qui
+reflète la tendance du secteur. Ces
+modèles de premier plan deviennent de
+plus en plus puissants mais aussi plus
+lourds en terme de calcul et de coûts.
+Parallèlement, Entropique s'implique
+davantage dans le secteur des
+entreprises. La fuite a aussi révélé des
+plans pour une retraite privée et sur
+invitation pour les PDG en Europe prévu
+au Royaume-Uni dirigeants auront un
+accès anticipé à des capacités cloud
+inédites. Il s'agit d'une discussion de
+haut niveau sur l'adoption de l'IA par
+les entreprises avec des décideurs
+politiques. Donc vous avez cette
+combinaison d'un modèle plus puissant,
+de risque plus élevés et d'un
+déploiement très contrôlé destiné aux
+grandes organisations. Maintenant, à
+partir de là, passons à MTA. Leur équipe
+Fire vient tout juste de présenter
+quelque chose appelé Tribe V2 et c'est
+l'un de ces projets. Ça peut sembler un
+peu technique au début, mais l'idée
+principale est en fait facile à
+comprendre. Ils essent de construire un
+système DIIA capable de prédire comment
+le cerveau humain réagit lorsqu'une
+personne regarde quelque chose, entend
+quelque chose ou lit quelque chose.
+C'est toute l'idée. Longtemps, les
+neurosciences ont surtout étudié le
+cerveau par fragment. Un groupe s'occupe
+de la vision, un autre s'occupe de la
+parole, un autre des visages, du
+mouvement, des émotions et ainsi de
+suite. Cela a permis de nombreuses
+découvertes utiles, mais la vision
+d'ensemble reste un peu fragmentée. Ce
+que Meta essaie de faire avec Tribe V2,
+c'est de construire un système unique
+capable d'analyser la vidéo, l'audio et
+le langage ensemble et de relier cela à
+l'activité cérébrale réelle mesurée par
+des scans IRMF. et MTA n'a pas entraîné
+ce système à partir de zéro de la
+manière habituelle. À la place, ils ont
+assemblé certains de leurs meilleurs
+modules DIIA existant. Pour le texte,
+ils ont utilisé Lama 3.2 à 3B pour la
+vidéo, ils ont utilisé Vegpa de géant et
+pour l'audio, ils ont utilisé Wav 2
+Vegber 2.0. Ensuite, ils ont combiné
+tout cela dans un système partagé et ont
+utilisé un Transformer pour analyser
+environ 100 secondes d'information
+entrantes à la fois. Si vous enlevez le
+jargon, ce que cela signifie vraiment
+c'est ceci. Le modèle observe, écoute et
+lit sur une période donnée puis essaie
+de prédire ce que le cerveau devrait
+faire pendant cette même période. Et
+l'échelle ici est vraiment
+impressionnante. Le système a été
+entraîné sur 451,6
+heures de données IRMF recueillies
+auprès de 25 personnes dans le cadre de
+quatre études naturalistes comprenant
+des films, des podcasts et des vidéos
+muettes. Ensuite, il a été évalué sur un
+groupe beaucoup plus large totalisant
+1117,7
+heures provenant de 720 personnes. Ça
+fait beaucoup de données cérébrale. Le
+modèle prédit l'activité sur 20484
+points corticaux et 8800 de voxell
+souscorticau. Donc, ce n'est pas une
+simple estimation grossière des zones du
+cerveau qui s'activent. Il essaie de
+modéliser les réponses cérébrales avec
+un niveau de détail assez élevé et les
+résultats étaient suffisamment solides
+pour que cela devienne plus qu'une
+simple expérience intéressante. Meta
+affirme que Tribef 2 surpasse clairement
+les anciennes méthodes que les
+chercheurs utilisaient depuis des années
+comme approche standard. L'un des
+aspects les plus surprenants, c'est la
+façon dont il gère aussi bien de
+nouvelles personnes qu'il n'a jamais vu
+auparavant. D'habitude, si vous voulez
+qu'un modèle comme celui-ci fonctionne
+sur un nouveau sujet, vous vous attendez
+à avoir besoin de beaucoup de nouvelles
+données. Mais Tribe F prédit aussi en
+zéro shot, estimant les réponses
+cérébrales de nouvelles personnes sans
+entraînement supplémentaire. Et dans
+certains cas, ces prédictions captent en
+fait mieux la réponse moyenne du groupe
+que beaucoup d'enregistrements
+individuels réels. C'est un peu fou
+quand on y pense. Sur le jeu de données
+Human Connectom Project Sept T, le
+modèle a atteint une corrélation de
+groupes proche de 0,4, ce que l'article
+décrit comme environ deux fois meilleur
+que la prédictivité de groupe du sujet
+médian. quand les chercheurs lui ont
+donné peu de données d'un nouveau
+participant jusqu'à 1 heure. Après une
+époque d'affinage, le modèle s'est
+encore amélioré, surpassant les modèles
+linéaires de deux à quatre fois.
+L'aspect suivant rend cela encore plus
+impressionnant. MTA affirme que le
+modèle peut servir aux neurosciences in
+silico, c'est-à-dire effectuer des
+expériences de le cérébral virtuel sur
+ordinateur avant ou en parallèle des
+expériences réelles. Lorsqu'ils l'ont
+testé sur l'ensemble de données de
+cartographie cérébrale individuelle,
+Tribe V2 a pu retrouver des repères
+cérébraux classiques comme la zone
+fusiforme des visages pour les visages,
+la zone para hypocampique pour les
+lieux, la jonction temporopariétale pour
+le traitement émotionnel et l'air de
+broca pour la syntaxe et le langage.
+Encore plus intéressant, lorsque les
+chercheurs ont examiné la couche finale
+du modèle, elle s'est naturellement
+organisée autour de cinq grands réseaux
+cérébraux : auditif, langage, mouvement,
+mode par défaut et visuel. Maintenant, à
+partir de là, passons à Joen Clo. L'idée
+principale ici est la suivante. Beaucoup
+d'agents d'IA semblent intelligents dans
+les discussions. Cependant, dès qu'on
+leur confie une vraie tâche complète,
+ils perdent le fil, recommencent, oublié
+vos attentes ou échouent. Dès que la
+situation change, Juan Clo essaie
+justement de résoudre ce problème. Le
+projet est issu de la communauté Open
+Juen et au lieu de courir après le titre
+d'agent conversationnel le plus
+performant, il se concentre sur
+l'exécution. Le système peut-il
+réellement terminer le travail ?
+Supposons que vous travaillez sur un
+fichier Excel, changer le format en
+cours, supprimer les doublons, ajouter
+un résumé puis modifier encore la
+sortie. Beaucoup d'agents voient dans
+chaque modification comme une nouvelle
+demande. Joen Cl maintient la tâche
+active. Pendant ces changements, il peut
+mettre en pause, réorganiser, insérer,
+supprimer et poursuivre sans tout
+réinitialiser. Une grande partie de cela
+vient de son système de mémoire qui
+comporte trois couches. Une couche
+d'identité stable, une couche de
+contexte à long terme et une couche de
+trajectoire dynamique. En résumé, il
+préserve votre contexte général, votre
+historique de travail et l'état de votre
+tâche. Il introduit ensuite le contexte
+slimming, une méthode pour réduire les
+informations superflues tout en gardant
+l'essentiel. Cela aide le système à
+rester stable lors de tâches longues
+sans être submergé par son propre
+contexte ni générer des coûts énormes en
+jeton. Autre idée ingénieuse, il ne
+dépend pas d'un environnement de
+démonstration de navigateur isolé. De
+nombreux agents réussissent en
+environnement contrôlé mais échouent sur
+de vrais sites web avec connexion,
+cookies, cach et systèmes antibotes.
+Winclow contrôle l'environnement du
+navigateur local, utilisant ainsi de
+vrais états de connexion, cookies et
+cach pour agir comme un véritable
+utilisateur dans les systèmes réels et
+surtout il se distingue par sa capacité
+à évoluer. La plupart des agents actuels
+sont fixes. En cas d'échec, une erreur
+survient et on passe à autre chose. Si
+vous les corrigez, il le réparent une
+fois mais n'évoluent trop pas vraiment.
+Joan Cllo intègre une boucle
+d'autoévolution. Les échecs et retours
+négatifs sont enregistrés, analysés pour
+identifier leurs cause puis convertis en
+amélioration ciblée. Ainsi, le cycle
+devient exécution, échec, apprentissage,
+optimisation puis une nouvelle
+tentative. Cela signifie que l'agent est
+censé s'améliorer grâce à une
+utilisation réelle répétée au lieu de
+rester figé. Le jour de son lancement,
+il s'intègre également aux plateformes
+déjà utilisées par les gens, notamment
+Huawei, Celia, Telegram, WhatsApp, Faisu
+et Web Access. Il gère le déploiement
+privé pour les entreprises soucieuses de
+confidentialité et de contrôle des
+données. Enfin, évoquons Alibaba car ce
+point concerne l'aspect matériel de la
+course aux agents. Alibaba vient de
+dévoiler un nouveau processeur appelé
+Xuan TC950.
+Et le point clé ici, cet a été conçu
+spécifiquement en pensant à l'IA
+agentique. Alors que beaucoup se
+focalisent sur les GPU essentiel à
+l'entraînement des grands modèles d'IA,
+Alibaba estime que les CPU sont aussi
+très importants, surtout pour
+l'inférence, c'est-à-dire la partie où
+les modèles fonctionnent réellement et
+exécutent pour des détaches. C'est
+important parce que les agents ne se
+contentent pas de donner une seule
+réponse et de s'arrêter. Ils effectuent
+souvent des actions en plusieurs étapes
+et les CPU sont naturellement importants
+pour ce type de traitement séquentiel.
+Alibaba affirme que leuantai C9150 conçu
+pour les centres de données peut gérer
+les charges de travail en plusieurs
+étapes utilisées près l'année par les
+agents. L'entreprise affirme que la puce
+est personnalisable pour des schémas
+d'inférence spécifique et offre plus de
+30 % de performance en plus que certains
+produits grand publics. En raison de
+cette flexibilité, la puce est basée sur
+RIS CV, ce qui est également important.
+Riscv est une architecture ouverte
+contrairement au modèle de conception
+d'ARM où les entreprises BIP peut des
+redevances sorternes pour utiliser le
+plan. Donc choisir RSCV donne à Alibaba
+plus de liberté et potentiellement des
+coûts plus bas. Ce lancement s'inscrit
+également dans une histoire beaucoup
+plus vaste. Les entreprises chinoises
+sous pression à cause des restrictions
+américaines sur les puces Nvidia ont dû
+intensifier leurs efforts sur le
+matériel d'IA national. Alibaba
+développe déjà ses efforts dans les
+semi-conducteurs à travers sa division
+THAD et plus tôt cette année, elle a
+sorti une autre puce d'IA appelé Genu
+810E. L'entreprise ne vend pas ses puces
+directement à d'autres sociétés. Au lieu
+de cela, elle les utilise pour renforcer
+ses propres services d'IA dans le cloud,
+ont déclaré des analystes cités dans
+l'article. La plus grande valeur du C950
+n'est pas qu'il va soudainement
+transformer le chiffre d'affaires
+d'Alibaba du jour au lendemain, mais
+qu'il peut améliorer la résilience de la
+chaîne d'approvisionnement, réduire les
+coûts et donner à l'entreprise plus de
+contrôle. Dans un monde où la puissance
+de calcul de l'IA devient de plus en
+plus difficile à obtenir, voilà, c'est
+tout pour cette fois. Dites-moi ce que
+vous en pensez. Merci d'avoir regardé et
+on se retrouve à la prochaine.

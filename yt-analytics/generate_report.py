@@ -125,13 +125,13 @@ def parse_youtube_csv(csv_path):
 def calculate_delta(current, previous):
     """Calculate change (delta) between current and previous metrics."""
     if previous is None:
-        return None
+        return {"value": current, "percent": 0, "previous": 0, "current": current, "status": "new"}
 
     if current == 0 and previous == 0:
-        return {"value": 0, "percent": 0, "status": "stable"}
+        return {"value": 0, "percent": 0, "previous": previous, "current": current, "status": "stable"}
 
     if previous == 0:
-        return {"value": current, "percent": float('inf'), "status": "new"}
+        return {"value": current, "percent": float('inf'), "previous": previous, "current": current, "status": "new"}
 
     delta = current - previous
     percent = (delta / previous) * 100

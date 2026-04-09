@@ -118,20 +118,42 @@ Generate **two outputs** and save them in `yt-script/outputs/`:
 Le script complet avec :
 - Metadata (word count, reading time, timestamps)
 - Marqueurs visuels ([FACE CAM], [SCREEN], [DEMO], [B-ROLL])
+- Marqueurs slides `[SLIDE: type | contenu]` (voir règles ci-dessous)
 - Shorts moments identifiés (2-3 segments clippables)
 
+#### Règles de génération des marqueurs `[SLIDE]`
+
+Le principe : **une slide apparaît à chaque fois que l'information est mieux transmise visuellement qu'oralement.** Chaque marqueur dans le script sera transformé en slide HTML.
+
+| Déclencheur | Type de slide | Format du marqueur | Exemple |
+|-------------|--------------|-------------------|---------|
+| **Terme technique / jargon** | `definition` | `[SLIDE: definition \| "Terme" \| Explication simple en 1 phrase]` | `[SLIDE: definition \| "SWE Bench" \| Le test de référence : on donne des vrais bugs à l'IA et on regarde si elle les corrige]` |
+| **Chiffre / statistique** | `stat` | `[SLIDE: stat \| "93.9%" \| Contexte court]` | `[SLIDE: stat \| "93.9%" \| SWE Bench Verified]` |
+| **Comparaison avant/après** | `compare` | `[SLIDE: compare \| Label A : valeur A \| Label B : valeur B]` | `[SLIDE: compare \| Opus 4.6 : 80.8% \| Mythos : 93.9%]` |
+| **Liste de 3+ éléments** | `bullets` | `[SLIDE: bullets \| Titre \| Item 1 \| Item 2 \| Item 3]` | `[SLIDE: bullets \| Projet Glasswing \| Apple, Google, Microsoft \| 100M$ crédits \| 40+ organisations]` |
+| **Citation** | `quote` | `[SLIDE: quote \| "Citation exacte" \| Source]` | `[SLIDE: quote \| "C'est de loin le plus puissant jamais développé" \| Brouillon interne Anthropic]` |
+| **Punchline / concept clé** | `statement` | `[SLIDE: statement \| La phrase]` | `[SLIDE: statement \| 5× plus cher, 4.9× moins de tokens = plus intelligent par dollar]` |
+| **Timeline / chronologie** | `timeline` | `[SLIDE: timeline \| Date 1 : événement \| Date 2 : événement]` | `[SLIDE: timeline \| 26 mars : fuite \| 7 avril : officialisation]` |
+
+**Règles d'ordonnancement** :
+- Une slide `definition` vient **toujours avant** la slide `stat` ou `compare` qui utilise ce terme (d'abord comprendre, ensuite voir le chiffre)
+- L'audience est **non-technique** : chaque terme de benchmark, protocole, ou concept tech doit avoir sa slide `definition`
+- Ne pas hésiter à avoir 12-18 slides pour une vidéo de 6-10 min — les slides changent souvent = plus engageant visuellement
+
 **Output 2 — Slides de présentation HTML** (`[slug]-visual.html`)
-Généré via le skill **`frontend-slides`**. Invoquer le skill `frontend-slides` avec le contenu du script comme input pour produire un fichier HTML self-contained présentable à l'écran pendant la vidéo.
+Généré via le skill **`frontend-slides`**. Transformer chaque marqueur `[SLIDE]` du script en slide HTML.
 
 **Workflow** :
-1. Extraire les moments clés du script (chiffres, statements, comparaisons, CTA)
-2. Invoquer `frontend-slides` en lui passant ces éléments comme contenu
-3. Sauvegarder l'output dans `yt-script/outputs/[slug]-visual.html`
+1. Parser tous les marqueurs `[SLIDE: ...]` du script markdown
+2. Générer une slide HTML par marqueur, dans l'ordre du script
+3. Ajouter une slide titre (intro) et une slide CTA (fin)
+4. Invoquer `frontend-slides` ou générer directement en suivant le template
+5. Sauvegarder l'output dans `yt-script/outputs/[slug]-visual.html`
 
-**Consignes pour frontend-slides** :
+**Consignes pour les slides** :
 - Les slides sont des **supports visuels pour la vidéo**, pas un transcript du script
-- Privilégier : chiffres clés en grand, une phrase par slide pour les révélations, 4 bullets max par section
-- Ne jamais copier le texte du script mot pour mot dans les slides
+- Chaque slide affiche UN concept (jamais mélanger stat + définition sur la même slide)
+- Ne jamais copier le texte du script mot pour mot — les slides résument visuellement
 - **Skipper la Phase 2 (style discovery)** de frontend-slides — utiliser directement les couleurs brand ci-dessous
 - **Branding Nass Riviera** (obligatoire, ne jamais changer) :
   - Fond sombre : `#0A0A0A`

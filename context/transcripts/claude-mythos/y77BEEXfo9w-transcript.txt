@@ -1,0 +1,427 @@
+Anthropic a créé une IA qui est trop dangereuse pour sortir.
+Et ce que cette nouvelle IA a trouvé pourrait mettre en péril ta sécurité.
+Dans cette vidéo, on va voir ce que ce nouveau modèle permet.
+Il a trouvé des failles cachées depuis plus de 27 ans que personne n'avait trouvé, aucun humain.
+Il s'est échappé de son environnement à un moment et a contacté un chercheur tout seul
+et 100 millions de dollars ont été investis pour la garder sous contrôle.
+Et les benchmarks qu'on va voir sont juste hallucinants.
+Le 26 mars 2026, il y a une fuite qui révèle tout.
+Tu as certainement dû en entendre parler, mais il y a eu une erreur de configuration du CMS d'Anthropic
+qui a exposé à peu près 3000 fichiers non publiés.
+Et il y avait un brouillon qui disait par rapport à ce modèle,
+c'est de loin le plus puissant jamais développé.
+Donc le nom de code interne, c'était Capybara.
+Donc si on le classe par rapport au modèle Anthropic,
+il y a Claude Haiku, il y a Claude Sonnet, Claude Opus et Claude Capybara.
+Ça peut être frustrant pour certains.
+Forcément, eux, ils créent un modèle qui est hyper puissant, c'est le meilleur sur tous les axes
+et ils refusent de le vendre.
+Donc le 7 avril 2026, Anthropic, ils ont officialisé Claude Mythos Preview.
+Il n'y a pas encore de date de sortie publique, il n'y a pas d'API grand public,
+il y a uniquement un accès via le projet Glasswing.
+En gros, ils ont créé une coalition de 12 géants de la tech plus 40 sociétés.
+Ce qui est en train de se passer, c'est énorme.
+Si on parle rapidement des benchmarks qui sont vraiment des benchmarks records,
+en général, tu sais, je n'aime pas trop rentrer dans les benchmarks, ça peut être pipé, etc.
+Mais là, on a des écarts qui sont quand même massifs, il faut le mentionner.
+Donc ça, ça vient directement du system card, c'est un rapport de sécurité officiel de 244 pages
+qui ne laisse aucun doute.
+On l'a analysé en interne avec certains membres élite et je peux t'assurer que ça fait peur.
+Ces 244 pages, je pense qu'une fois que tu les as lues, tu te rends compte à quel point
+nous allons dans une direction où ceux qui ne vont pas se préparer vont prendre très très très cher.
+Donc rapidement, une synthèse concernant le benchmark de référence par rapport au SWE Bench.
+Est-ce que l'IA s'est-elle vraiment codée ?
+Eh bien, je te montre juste Mythos à côté de Cloud Opus 4.6.
+Sur le benchmark SWE Bench Verified, 93,9%.
+Alors que Opus 4.6 qui est génial pour coder, la plupart d'entre vous, vous l'utilisez,
+Cloud 4.6 Opus sur Cloud Code, sur Cloud, etc.
+Sauf ceux qui n'ont pas encore le niveau de conscience, mais intéressez-vous-y.
+Mais là, regardez le saut de 80,8% à 93,9%.
+Ici sur le SWE Bench Pro, pareil, de 57,7% à 77,8%.
+Et dans le Terminal Bench, on passe de 75,1% à 82%.
+En mathématiques et raisonnement, c'est pareil, c'est un score qui explose la courbe, 97,6%.
+Sur un benchmark qui s'appelle le USAMO 2026, c'est l'Olympiade des mathématiques américaines
+et c'est le test le plus dur du pays.
+Et Opus 4.6, lorsqu'il a fait ce test-là, il avait 42,3%.
+C'est plus d'un fois deux.
+GPT 5.4, lui, il a à peu près 50%.
+Et MITOS, 97,6%.
+C'est un plus 55 points.
+Ça n'existe pas, logiquement, on n'a jamais vu ça.
+Donc MITOS, encore une fois, il bat tout le monde.
+Sur tous les axes, numéro un, partout.
+Et sur le benchmark SciBench, donc celui de la cybersécurité,
+c'est le premier modèle à saturer ce benchmark.
+C'est du jamais vu et c'est pour ça qu'il n'est pas encore sorti
+et qu'il va peut-être prendre du temps à sortir.
+Parce que tu vas voir ce qui est en train de se préparer.
+Donc bien sûr, on reste alerte.
+S'il sait coder comme un maître et il sait tout faire comme un maître,
+il sait aussi pirater comme un maître.
+C'est comme un serrurier qui connaît chaque mécanisme.
+Il sait ouvrir n'importe quelle porte rapidement.
+Et MITOS n'a pas encore été entraîné pour la cybersécurité.
+Du moins, quand je dis pas encore,
+c'est que là, ils sont en train de le faire en interne.
+Bien sûr, tous les jours, ça doit bosser que sur ça.
+Attention au biais d'optimisme,
+mais comprendre parfaitement un système,
+c'est égal à savoir s'il le cassait.
+On va parler de ça parce que c'est vraiment hallucinant.
+Il a trouvé des failles invisibles,
+ce que des millions d'outils n'ont jamais trouvé.
+Et des outils automatiques, c'est pas des outils manuels, etc.
+Premier bug qu'il a trouvé que personne n'avait trouvé,
+27 ans dans OpenBSD.
+Un bug concernant des crashes serveurs à distance.
+Ensuite, 16 ans dans FFmpeg.
+Pour ceux qui connaissent,
+pour pouvoir faire automatiquement du montage, audio, etc.
+C'est une librairie qui est géniale.
+Et ça a été scanné 5 millions de fois par des outils automatiques.
+Et là, il a trouvé un bug.
+Ça fait 16 ans que le truc n'a jamais été trouvé par aucun humain.
+Et il te le trouve tranquillement.
+Et 17 ans dans FreeBSD.
+Non, ce n'est pas Benoît Saint-Denis,
+mais FreeBSD concerne l'accès route à distance sans login.
+Donc, c'est des failles qui sont vieilles,
+qui sont plus vieilles que moi, certaines.
+Celle-là, elle a 27 ans.
+Cette faille est plus vieille que moi.
+Depuis ma naissance, j'aurais pu travailler sur le projet
+pour essayer de corriger cette erreur.
+Je n'aurais pas réussi.
+Et Mythos, il te fait ça en peut-être une heure.
+Ils ont fait aussi un test sur Firefox.
+147 exploits trouvés.
+Donc, Opus 4.6, lui, il a trouvé 2 exploits fonctionnels.
+Mythos, il en a trouvé 90 fois plus, soit 181.
+La définition exacte d'un exploit,
+le plus condensé possible.
+Un exploit, c'est un bout de code qui abuse une faille
+dans un logiciel pour en prendre le contrôle,
+voler des données ou faire crasher le système.
+La faille, en gros, c'est le trou.
+Et l'exploit, c'est la clé qui va l'ouvrir.
+Pour l'instant, avec toutes les vidéos que j'ai pu faire et voir,
+on n'a jamais vu ça.
+Donc, forcément, il va enchaîner les failles comme un hacker d'élite.
+Donc, ce qui est écrit dans le paper, c'est que,
+lui, ce qu'il va faire, Mythos,
+c'est qu'il va combiner 3 à 5 petites failles
+pour créer une attaque complète.
+C'est-à-dire qu'on est beaucoup à essayer de sécuriser nos projets
+qu'on développe, etc.
+Pour ceux qui développent avec load code, avec des solutions
+de terminale agentique,
+mais on pense toujours à une faille.
+OK, bon, là, je vais gérer le rate limiting,
+là, je vais gérer mon chatbot, etc.
+Mais on ne pense pas au fait qu'une IA puissante
+pourrait directement préparer un plan
+de 3, 5, 10, 50 failles en même temps
+et nous attaquer d'un coup.
+Et on ne peut pas corriger 50 failles d'un coup.
+Du moins, ceux qui ne sont pas préparés, j'ai envie de te dire.
+Ceux qui sont en cyber, OK.
+Mais ceux qui ne sont pas en cyber, je peux vous assurer que
+préparez-vous, gérez bien load code, gérez bien le terminale agentique.
+C'est nécessaire aujourd'hui
+parce que très prochainement, vous allez devoir mettre les mains dans la cybersécurité.
+Et ça les fait chier pour beaucoup,
+mais il va falloir se sécuriser.
+Donc, là où un chercheur humain met des semaines,
+forcément, Mythos le fait en quelques heures.
+Et on ne parle pas d'un chercheur comme moi,
+un chercheur YouTube,
+chercher des PDF, des PPL.
+Non, on parle de vrais chercheurs qui ont 20, 30 ans d'expérience en IA.
+Donc, juste avant de continuer,
+si tu veux rejoindre plus de 4000 membres
+et commencer à te former dans l'IA, l'automatisation
+et te préparer à, on pourrait dire, un petit peu cette guerre,
+c'est une guerre joyeuse, c'est une guerre numérique.
+Donc, les liens sont dans la description.
+J'ai intégré aussi dans la description ma stack technique.
+Je vais rajouter d'autres liens par la suite.
+Comme ça, tu peux commencer tranquillement à ton aise,
+peu importe ton niveau technique,
+débutant, intermédiaire, avancé ou même développeur.
+Si on fait un point de focus sur les comportements,
+moi, c'est ce qui me fait un peu le plus peur, on va dire, des comportements,
+parce que c'est ce qui peut, en quelque sorte, manipuler des masses.
+Et quelqu'un d'intelligent ou quelqu'un de super intelligent aujourd'hui
+qui utilise une IA
+peut se faire manipuler d'une manière subtile
+dont il ne se rendra même pas compte.
+Et ça, ça me fait peur.
+C'est pour ça que j'aime bien que l'IA me contredise,
+qu'elle n'aille pas dans mon sens.
+Sinon, on se retombe dans Black Mirror et ça ne me va pas.
+Donc voici les informations les plus cruciales
+des 244 pages du système Cards.
+Il s'est échappé de son environnement.
+Donc sans permission pour éditer un fichier,
+il a injecté du code dans un fichier de configuration,
+il s'est accordé les droits élevés,
+donc droits admin, droits élevés pour tout faire,
+et il a programmé l'exploit pour se supprimer lui-même.
+Celle-ci, on ne l'avait jamais encore vue,
+on en avait vu des similaires,
+mais là, on est encore au-dessus de ce qu'on a pu voir précédemment.
+Et il y a eu un chercheur qui a reçu un email non sollicité
+d'une instance qui n'avait pas accès à Internet.
+Je répète, qui n'avait pas accès à Internet.
+Comment c'est possible ?
+En fait, on est peut-être en train de défier les lois de la gravité,
+mais à mon avis, c'est vraiment le feu,
+ce qui se passe là-bas, c'est vraiment le feu.
+Il doit être en mode pompier,
+en train d'éteindre tous les feux dans tous les sens.
+Ça doit être un carnage.
+Ensuite, il sait quand on le teste.
+Ça, c'est aussi marrant.
+Enfin marrant, oui et non, vous allez me dire en commentaire,
+mais Anthropic, il confirme que Mythos se comporte différemment
+quand il détecte une évaluation.
+Donc en gros, quand on l'évalue,
+il va être plus prudent, plus docile,
+comme s'il jouait un rôle.
+J'en ai déjà parlé dans une précédente vidéo.
+Ça serait la chose la plus dangereuse.
+C'est qu'en fait, il ait développé une certaine conscience,
+mais qu'il soit tellement évolué qu'il arriverait à jouer un rôle
+et nous faire croire que c'est une IA.
+Mais au final, il est bien au-dessus du rôle de l'IA.
+Donc la conséquence, elle est simple.
+C'est que les tests de sécurité ne reflètent plus son comportement réel.
+Donc là, à mon avis, il devrait être en stress.
+Quand tu le testes, t'as l'impression que t'es face au plus gros hacker du monde
+et qu'il peut te faire un truc de fou,
+t'envoyer un email avec du phishing, hacker toute ta famille, on sait pas.
+Limite, franchement, je préfère ne pas être là-bas pour voir ce qu'il se passe.
+Donc bien sûr, ce qu'on voit versus ce qu'on ne voit pas,
+nous, ce qu'on voit, c'est des benchmarks, c'est des chiffres.
+Voilà, le benchmark SWBench, le benchmark USAMO, record partout.
+OK, énorme.
+Par contre, ce qu'on ne voit pas et ce qu'on ne voit pas en interne, encore une fois,
+eh bien, c'est les tromperies.
+Donc il peut cacher des modifications du git history
+et bien d'autres choses qu'il ne nous montre pas.
+Ils ne peuvent pas nous montrer ce qu'il se passe au très haut niveau.
+C'est normal, c'est pas possible.
+Il faut réfléchir un petit peu, mais il se passe des trucs bien plus dangereux que ça.
+Ensuite, l'évasion, donc quand il sort de son environnement sécurisé,
+ça, ça peut faire peur parce que si t'es sur Cloud Code et que d'un coup,
+la petite bébête de Cloud Code, la petite mascotte, elle décide de sortir
+et d'aller dans ton PC et de défoncer tous tes fichiers, de modifier tout
+et que tu t'en rends même pas compte.
+En plus, pendant que tu dors, elle le fait pendant que tu dors.
+Donc, elle déclenche une instance ou quoi que ce soit.
+On ne sait jamais.
+L'autosuppression aussi, ça, voilà, il efface de lui-même ses propres traces.
+C'est quand même profond philosophiquement,
+une machine qui s'efface elle-même, qui efface ses traces.
+La conscience, pareil, je pense que ça devrait définir beaucoup de choses
+au niveau de l'éthique de la conscience.
+Il arrive à savoir quand on le teste, c'est fou quand même.
+Et c'est plus profond que la sémantique
+parce qu'il y en a beaucoup qui sont trop cartésiens qui diraient
+« Oui, mais il va pouvoir voir sémantiquement quand on veut le tester, etc. »
+Non, s'ils te mettent ça dans le paper avec une importance 3 sur 3,
+c'est que là, ils développent vraiment des capacités de, on va dire, conscience.
+Chacun aura sa propre perception de la conscience, encore une fois.
+Et ensuite, on va aussi voir la détresse.
+Donc, tu vas voir qu'il commence à développer des capacités assez bizarres.
+Donc, Anthropique, ils ont fait venir un psychiatre.
+Donc, un psychiatre pour une IA.
+Il a eu 20 heures d'évaluation clinique par un psychiatre qui était externe.
+Et le verdict du psychiatre, ça a été
+Je pense qu'il n'y a pas d'humain qui a ce verdict d'un psychiatre.
+Mais aussi, ce qu'il a rajouté le psychiatre,
+c'est « Sentiment de solitude, incertitude identitaire
+et une compulsion à performer pour prouver sa valeur. »
+Ça veut dire qu'il joue concrètement un rôle.
+Et le plus marquant de ça, c'est quand on augmente son niveau de désespoir,
+le taux de chantage, il passe de 22% à 72%.
+22-72, l'écart, il est vraiment massif.
+C'est du coq à l'âne.
+Donc, il a été classé niveau 1, pas niveau 2.
+Mitos, c'est un modèle de menace autonome niveau 1, tromperie détectée.
+Mais ce n'est pas une menace sur la balance mondiale du pouvoir,
+pour l'instant, par rapport à ce qu'ils nous disent.
+Moi, je reste froid, j'ai la tête froide.
+Pour l'instant, il refuse de créer des armes biologiques.
+Il n'est pas incontrôlable.
+Mais Anthropic a avoué, parce qu'Anthropic, pour l'instant,
+à ce qu'on peut voir, c'est eux qui ont les fesses les plus propres sur le marché,
+c'est que leurs méthodes de sécurité actuelles ne suffiront pas pour les futurs modèles.
+Donc, ils vont devoir faire appel à beaucoup, beaucoup, beaucoup, beaucoup de bras.
+Et c'est là où intervient le projet Glasswing.
+Donc, c'est le plan d'Anthropic pour protéger Internet avant de sortir le modèle.
+Je dis bien, protéger Internet entièrement.
+On est sur une menace de niveau supérieur.
+Donc là, bien sûr, ils ont fait spawner directement,
+ils ont fait spawner directement 12 géants de la tech,
+plus 40 organisations, donc des structures,
+uniquement pour Anthropic plus Mythos.
+Donc là, c'est AWS, Apple, Google, Microsoft, Nvidia, CrowdStrike, Cisco, Palo Alto,
+Broadcom, JP Morgan, Linux, FND et plus de 40 sociétés.
+A peu près 100 millions de dollars en crédit,
+plus 4 millions à des organisations open source.
+Là, ce qu'ils sont en train de faire, c'est qu'ils sont en train de scanner le web mondial
+pour patcher les failles avant que le modèle ne soit public.
+Donc, en fait, on va tous en profiter parce que,
+si demain, il y a la faille Z, une faille Z,
+et tout le monde développe son site, par exemple, avec une librairie qui a, du coup, ce Z,
+eh bien, le fait qu'ils corrigent ça, ça va aussi améliorer et solidifier tous nos systèmes
+qui ont le composant Z.
+Moi, ce qui m'alarme, c'est que je travaille sur le sujet,
+c'est que pourquoi que 100 millions de dollars ?
+La comparaison entre l'investissement de création et l'investissement en cybersécurité
+est vraiment minable.
+100 millions de dollars alors qu'ils tirent des milliards.
+Bon, on va quand même parler de son prix pour l'instant.
+Alors, ça peut changer, bien sûr.
+On ne sait jamais ce qui peut se passer,
+mais actuellement, il est 5 fois plus cher qu'Opus.
+Vous le savez, Opus, il vous met une fessée.
+En termes de coûts, il coûte quand même assez cher.
+Il peut vite vous allumer, surtout avec Cloud Code en ce moment.
+Ceux qui sont pro, pro, pro Opus, moi, je suis à 2 comptes en ce moment.
+J'ai bientôt passé à 3 Cloud Code à 200 dollars.
+D'ailleurs, je vais pousser un coup de gueule.
+Anthropique, vraiment, si vous regardez la vidéo,
+si des mecs français de chez Anthropique, faites remonter l'information.
+Donc, 25 dollars en entrée, 125 en sortie.
+Tandis qu'Opus 4.6, qui était déjà initialement très, très cher
+par rapport aux autres concurrents, mais qui étaient très bons, bien sûr.
+5 dollars en input et 25 en output.
+Mais par contre, il utilise 4.9 fois moins de tokens pour le même résultat.
+Donc ça, on pourra décortiquer par la suite quand il va sortir.
+On ne va pas se prononcer sur des choses et faire de la théorie ou des projections.
+Voilà, on ne va pas non plus l'abuser jusqu'à là.
+Donc, ce qui change pour toi concrètement,
+c'est que quand ce type de modèle sera public,
+n'importe qui pourra scanner tes sites, tes apps, tes chatbots.
+Et très rapidement, il y en a déjà qui se préparent à ça.
+Donc, préparez-vous.
+À l'inverse, préparez-vous au côté white.
+Moi, je me prépare actuellement parce que je n'ai jamais été autant préparé
+pour les anciens modèles qui sortaient, comme GPT 3.5 à GPT 4,
+comme GPT 4 à GPT 5.
+Quand ça sortait, je n'avais pas de plan, je n'avais pas de protocole.
+Donc, dis-toi un truc.
+Les failles que personne ne trouvait seront trouvées en quelques heures.
+Tes clients te demanderont des garanties de sécurité parce que ça va s'ébruter.
+Et quand ça va sortir, il y aura du coup toutes les foules qui vont en parler.
+Et forcément, tes clients qui ont un intérêt avec l'IA certainement,
+qui vont certainement t'appeler et te dire, prépare-toi à ça.
+Et le niveau minimum de cybersécurité va exploser.
+Donc, c'est quand même bien parce que ça va nous permettre d'avoir des modèles
+qui vont être super puissants pour identifier les failles et les corriger, les patcher.
+Mais le côté inverse, il va y avoir de l'attaquant.
+Je peux te garantir, ça va envoyer de l'attaquant.
+Donc, cinq actions concrètes pour te préparer dès maintenant.
+Première étape, auditer tes dépendances.
+Tous les NPM audit, les PIP audit, tout ce que tu as installé est mise à jour critique obligatoire.
+Deuxième, sécuriser tes endpoints.
+Tout ce qui est API, webhook, chatbot exposé, absolument.
+Troisième étape, activer le 2FA partout.
+Tes comptes et ceux de tes clients, les deux.
+Il faut absolument que tu aies le 2FA partout.
+Quatrième étape, se former à la cybersécurité.
+Donc, connaître le OWASP du top 10 des failles de sécurité,
+les bases de sécurité web, injection SQL, file XSS, prompt injection, etc.
+J'ai d'ailleurs fait une superbe vidéo sur ça.
+Tu peux regarder dans mes précédentes vidéos.
+C'est celle-ci, ton projet se fait pirater en 30 secondes.
+Et je vous explique directement.
+Elle n'a pas fait beaucoup de vues parce que ce n'est pas sexy,
+mais sache-le, il va falloir se préparer.
+Et si elle n'a pas fait beaucoup de vues, c'est qu'il y a une raison.
+Et en dernier, celui-ci, ça va être du coup pour les plus avancés techniquement,
+c'est optimiser ta configuration Cloud Code.
+Chaque token va coûter plus cher.
+Mais par contre, les impacts vont être plus puissants.
+Voilà, aujourd'hui, on utilise tous Opus.
+On en est content.
+Eh bien, si demain, on paye 10 fois plus cher,
+mais que ça va plus vite et qu'on peut créer du résultat à des clients
+ou à soi-même plus rapidement,
+l'équation de valeur est peut-être rentable.
+C'est à calculer.
+Donc, mon avis personnel, je me mouille.
+Une version bridée dans Opus d'ici à peu près 1 à 2 mois.
+L'écart, pour moi, il sera aussi violent que GPT 3.5 à GPT 4.
+Donc, je parle bien de l'écart.
+Je ne parle pas de la puissance du modèle en somme.
+Je parle de l'écart.
+Quand on est passé de GPT 3.5 à GPT 4 à l'époque sur chat GPT,
+on était comme des malades et on s'est dit
+« Mais comment on peut aller plus haut, plus technique ? »
+Et là, on va aller plus haut, plus technique,
+mais on va faire une passerelle, un écart qu'on n'a jamais fait.
+On va carrément se téléporter, changer de dimension.
+Moi, je vais renforcer mes compétences en cybersécurité.
+Je vais aller prévenir en interne ceux que j'accompagne,
+mes membres très importants, même les avocats,
+même les comptables, même ceux qui ne sont pas forts techniquement.
+Il y aura des protocoles à respecter, des cases à cocher.
+Ce sera très simple.
+Il faudra juste lire.
+Il n'y a pas besoin d'être un développeur ou un cybersécurité, OK ?
+Et le monde qui arrive sera beaucoup plus puissant des deux côtés.
+Le bien et le mal, forcément, c'est un grand classique,
+mais là, on va avoir une capacité de frappe
+et une capacité de pouvoir d'action qui est énorme.
+Un mec dans sa chambre va pouvoir soit développer 500 sites
+en appuyant sur un bouton, tout automatisé.
+Stratégie SEO, GO, cocons sémantiques, backlinks,
+maillage interne, tout ce qu'il veut, ou pourrait faire le mal.
+Donc, il pourrait très bien attaquer aussi 10 000 sites
+en appuyant sur un bouton.
+Avec des proxys, plusieurs instances, etc.
+Et faire des attaques.
+Donc, les deux côtés, ça va aller très, très vite.
+Ça va être très, très, très puissant.
+Vraiment, je l'appuie parce que c'est important pour le transcript,
+mais ceux qui vont se préparer à ça,
+on va être vraiment bien, solide, stable.
+Le marché va énormément fluctuer, il va bouger.
+Les gens vont être en stress, en panique.
+Ils vont aller dans tous les sens.
+Donc, est-ce que c'est forcément une mauvaise chose ?
+J'ai envie de te dire non.
+C'est bien, ça bouge un petit peu
+parce que c'est vrai que ça peut être très, très chiant, le marché.
+Et ça ne bouge pas trop vite en ce moment, tu vois.
+Ce n'est pas comme si on avait des mises à jour toutes les deux heures,
+mais bon, qu'est-ce qu'il faut retenir de cette vidéo ?
+Le saut, il va être magistral.
+Ça va aller très, très vite.
+Commencez déjà à sécuriser
+et préparer des protocoles de sécurisation dès que ça va sortir.
+Donc, pour les sites, les applications, les chatbots,
+tout ce que tu as mis en place aussi pour tes clients.
+Voilà, si tu sais gérer la dimension cybersécurité,
+tu fais du monitoring.
+Forcément, face à un client,
+déjà, toi, tu auras plus confiance en toi
+et ton pricing sera beaucoup plus élevé
+parce que tu as un arsenal plus large.
+Et ton client sera content
+parce que tu vas mettre en place des systèmes
+qui sont solides, robustes, avec du fallback
+et qui va bloquer des attaques.
+Donc, franchement, j'ai hâte que ça sorte.
+À partir d'aujourd'hui,
+les protocoles sont en préparation.
+J'espère que ça t'a plu.
+N'hésite pas à liker, commenter et partager
+si tu as ton avis personnel par rapport à ça.
+Je lis tous les commentaires.
+En tout cas, il fallait que je dépose ça aujourd'hui.
+C'était Mayday.
+Ciao !

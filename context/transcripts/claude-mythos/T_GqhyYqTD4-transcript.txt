@@ -1,0 +1,697 @@
+C'est le scénario catastrophe que toute
+l'industrie essayait de comprendre hier
+soir. Et ce n'est pas un poisson
+d'avril. En l'espace de 5 jours, la
+forteresse la plus prudente de
+l'intelligence artificielle a trébuché
+deux fois. Anthropique a d'abord laissé
+fuiter l'existence de son modèle le plus
+puissant sur une base de données ouverte
+au 80. Ensuite, elle a publié par erreur
+un demi millillion de lignes de code
+source de son produit phare en libre
+accès. Le tout en plein bras de fer
+judiciaire avec le Pentagone. Deux
+fuites, une injonction, 5 jours, une
+seule entreprise, celle qui s'était
+jurée de gagner la course à
+l'intelligence artificielle sans jamais
+sacrifier la sécurité. Commençons par
+une vérité dérangeante. Quand on parle
+de sécurité dans l'intelligence
+artificielle, on confond constamment
+deux réalités radicalement différente.
+[musique] D'un côté, il y a la sécurité
+des modèles, celle qui garantit que
+l'intelligence artificielle ne va pas
+dérailler [musique] ou produire des
+réponses toxiques. De l'autre, il y a la
+sécurité opérationnelle, celle qui
+empêche vos propres données
+confidentielles de se retrouver en libre
+accès sur internet. Anthropiic a bâti
+toute sa légende sur la première. Et
+pour [musique] cause, rappelez-vous d'où
+vient cette entreprise. Anthropique
+existe précisément parce que son
+fondateur Dario Amodi a claqué la porte
+d'Open AI en estimant qu'il sacrifiait
+la prudence au profit de la vitesse. Il
+est [musique] parti pour construire un
+anti-open AI, un laboratoire hyper
+sécurisé, une alternative responsable.
+Toute la confiance aveugle des
+investisseurs et leur valorisation de
+380 milliards de dollars repose
+intégralement sur cette promesse
+d'infaillibilité. Pourtant aujourd'hui,
+c'est la sécurité opérationnelle qui
+vient d'exploser en vol. Imaginez le
+meilleur chirurgien du pays opérant avec
+un scalpel stérilisé au micr près
+[musique] mais qui laisserait tous les
+dossiers de ses patients en vraque sur
+le trottoir. C'est la mécanique
+[musique]
+exacte qui a frappé en tropique. La
+pression pour accélérer la production
+finit inévitablement par ronger la
+sécurité de ce qui n'est pas sous les
+projecteurs. Le 26 mars, deux chercheurs
+en cybersécurité, Roy Pass de Layer X et
+Alexandre Powells de Cambridge naviguent
+sur le web et tombent sur une base de
+données béante. Autrement dit, le
+système qui gère le contenu du blog
+d'anthropique était exposé au grand jour
+et il était littéralement accessible à
+tous. À l'intérieur, il découvre près de
+3000 fichiers dont un brouillon
+d'article décrivant en détail Claude
+Mythos connu sous le nom de code interne
+Capibara. Il s'agit du modèle le plus
+puissant jamais conçu par l'entreprise
+surclassant leur fleuron actuel opus
+avec des capacités en cybersécurité
+quanthropique elles-mêmes qualifient de
+je cite risque sans précédent. Un modèle
+qu'elle juge d'ailleurs si dangereux
+qu'elle en retarde volontairement le
+déploiement le temps de le faire tester
+à huit closer trié sur le volet. Le
+porte-parole confirmera à fortune qu'il
+s'agit d'un véritable changement de
+palier technologique. Notez toute
+l'ironie de ce scénario qui freeise le
+ridicule. L'entreprise verrouille la
+sortie de son produit phare parce
+qu'elle estime que le monde n'est pas
+prêt à l'utiliser, mais elle laisse ses
+plans détaillés dans un espace de
+stockage public accessible sans le
+moindre mot de passe à cause d'un simple
+réglage par défaut. J'hésite entre deux
+lectures. Soit c'est un pur effet de
+bord de leur hypercroissance où la
+vitesse génère des maladresses
+grossières. Soit c'est une manœuvre
+marketing savamment orchestrée pour
+faire monter la hype autour d'un produit
+dont on veut nous faire croire qu'il est
+déjà hors de contrôle. Car la réalité
+des faits est là. Oubliez les hackurs
+russes surdoués, les attaques zéro
+indétectables ou l'employé malveillant.
+L'entreprise qui construit le modèle
+d'intelligence artificielle présenté
+[musique] comme le plus dangereux au
+monde a exposé ses secrets industriels à
+cause d'une banale erreur de
+configuration. Le genre de faille
+triviale qu'un auditeur junior repère
+lors de sa première semaine de stage.
+C'est ici que le fossé se creuse entre
+la vision et l'exécution. Prenez la
+pleine mesure du paradoxe. D'un côté,
+des levées de fonds colossales et le
+déploiement mondial d'outils comme Cloud
+Code. De l'autre, des contrôles de base
+qui passe totalement à la trappe. C'est
+le chaos d'une croissance hors de
+contrôle. On mobilise les meilleurs
+cerveaux sur des fonctions secrètes et
+des benchmarks fracassants pendant que
+la porte d'entrée, un simple réglage
+d'accès, reste grande ouverte.
+L'explication, elle est probablement
+sous nos yeux. Anthropique est
+exactement ce que je vous décrivais
+vendredi dernier, une entreprise 100 %
+AI [musique] native. L'analyse de leur
+code source l'a prouver. Ils utilisent
+Cloud Code en interne pour accélérer
+leur propre processus. C'est le
+[musique] risque inhérent du codage avec
+LIA et de la génération par intelligence
+artificielle. J'en parlais justement
+dans ma vidéo sur Cloud Code Security.
+On délègue la production pour aller plus
+vite. On valide à l'intuition [musique]
+parce que ça a l'air de tourner et on
+sacrifie la vérification des accès.
+C'est tout le paradoxe de ces outils. La
+fluidité de l'exécution supprime cette
+petite friction nécessaire à la
+vigilance. L'IA génère si vite et si
+bien qu'on baisse la garde. Résultat, on
+laisse traîner des failles de
+configuration totalement triviales. Non
+pas par incompétence, mais parce que le
+rythme est freiné nous prive du temps de
+recul critique qu'aurait pris un
+développeur au rythme de travail
+traditionnel. Et à l'échelle d'une
+entreprise, il faut nommer ce phénomène
+nouveau. C'est ce que j'appelle le seuil
+de lucidité structurelle. C'est ce point
+critique où la vitesse de production
+d'une organisation dépasse [musique] sa
+vitesse d'introspection, la rendant
+incapable de voir ses propres angles
+morts. Entropique vient tout juste de le
+franchir et au fond, la véritable
+question que pose cette histoire vous
+concerne directement. Votre propre
+organisation est-elle déjà tombée dans
+ce piège ? Pensez à ce consultant qui
+vous vend de l'intelligence artificielle
+sans jamais auditer sa propre
+infrastructure ou à cet entrepreneur qui
+empile trois API différente sans le
+moindre plan de repli. Tout le monde
+accélère, tout [musique] le monde prend
+des raccourcis. Ce petit réglage par
+défaut que personne ne vérifie n'est pas
+un problème exclusif à entropique. C'est
+le résultat d'un arbitrage tactique, le
+choix délibéré de privilégier l'impact
+visible au détriment de la fondation
+invisible. Sur ce marché, livrer
+l'innovation est tout simplement devenu
+plus important que de la sécuriser.
+D'ailleurs, j'ouvre une petite
+parenthèse en toute transparence. Vous
+êtes plusieurs à me faire remarquer
+parfois de petits artefacts audio ou
+vidéo, notamment sur les textes dans mes
+propres orchestrations agentiques. Mais
+pensez-vous vraiment que je ne les vois
+pas ? Comprenez bien que votre serviteur
+souffre exactement du même syndrome
+qu'Antropique. Sur YouTube, l'algorithme
+dicte sa loi. Il faut coller à la news,
+publier en premier, maintenir la
+cadence. étant seul à tout gérer, mes
+bugs, c'est l'équivalent de leur serveur
+mal configuré. C'est le prix à payer
+quand la vitesse prime sur la
+perfection. Mais si comme nous, vous
+faites partie de ceux qui préfèrent une
+analyse avec quelques artefacts plutôt
+qu'un silence parfait, [musique]
+n'oubliez pas de vous abonner pour ne
+pas laisser le hasard algorithmique
+décider du moment où l'on doit se
+revoir. Enfin, si vous voulez vous
+extraire complètement de ces effets de
+mode pour maîtriser des grilles de
+lecture plus [musique] solides, c'est
+sur le Patreon et notre Discord que ça
+se passe. On y discute et j'y construis
+les stratégies de fond à l'abri du chaos
+quotidien. La fuite de Mythos aurait pu
+passer pour un accident, mais 5 jours
+plus tard, Anthopic publie une mise à
+jour de son outil Cloud Code [musique]
+contenant par erreur un fichier de
+débogage massif. À l'intérieur,
+l'intégralité du code source, un demi
+million de lignes. Kaofanchu, un
+stagiaire chez Solayer Lab, repère
+l'anomalie en quelques minutes et publie
+le lien sur X. Le code est aspiré sur
+GitHub avant même qu'Antropic n'ait pu
+rédiger un démenti. Une banale étape de
+validation manuelle oubliée sur un outil
+dont ils sont pourtant les propriétaires
+absolus. Ce qui choque, c'est ce que ce
+code révèle. Les développeurs y
+découvrent Kyros, un agent autonome
+secret qui tourne en arrière-plan pour
+consolider vos données. Ils y trouvent
+surtout un fichier nommé undercover qui
+ordonne secrètement à l'intelligence
+artificielle de cacher sa nature
+artificielle. Le système construit pour
+empêcher les fuites internes venait
+d'imprimer ses propres plans pour les
+jeter par la fenêtre. C'est la loi de
+l'ironie inverse. Plus un coffre fort
+est sophistiqué, plus son explosion fait
+du bruit. D'autant que la fuite révèle
+au passage les leurs intégrées
+parenthropiques pour piéger les
+concurrents qui voudraient copier ces
+modèles. En une nuit, la boîte noire est
+devenue une notice de montage publique.
+Mais la chronologie nous réserve un
+dernier acte vertigineux. Ce même 31
+mars, le groupe de hackers nord-coréen
+pirate Axios, un composant logiciel
+massivement utilisé par Claude Code.
+Pendant 3h, un cheval de 3 reste actif
+sur la plateforme de téléchargement.
+Quiconque a mis à jour Cloud Code dans
+cette fenêtre de tir a potentiellement
+téléchargé le code source fuité
+accompagné d'un logiciel malveillant
+d'État. L'entreprise qui prône la
+sécurité absolue expose ses secrets le
+jour exact où son propre canal de
+distribution subit une attaque majeure.
+C'est cette conjonction terrifiante qui
+précipite le coup de grâce. En Corée du
+Sud, Sigri Jein, un développeur
+identifié comme l'un des plus gros
+utilisateurs mondiaux de Claude panique
+à [musique] l'idée d'être poursuivi pour
+recell de code propriétaire. À 4h du
+matin, il prend une décision radicale.
+Il utilise l'intelligence artificielle
+d'open AI, le grand rival, pour traduire
+l'intégralité du code fuité en langage
+Python. Il publie le tout sur Guitub
+sous le nom de Clocode. Le projet
+franchit les 50000 étoiles en 2 heures.
+Le record absolu de vitesse de
+l'histoire de GitHub. Avant même que les
+avocats d'anthropique n'aient pu
+dégainer leurs injonctions, le code
+avait muté dans un autre langage
+s'affranchissant du droit d'auteur. Par
+la force des choses, l'entreprise la
+plus secrète du marché venait de devenir
+plus open source qu'open AI. Ce qui
+vient de se passer avec Anthropique
+[musique] ne restera pas un cas isolé.
+Cette séquence désastreuse de fuite ne
+s'est pas produite dans le vide. Elle a
+[musique] éclaté au beau milieu d'une
+guerre ouverte entre Anthropique et le
+Pentagone. C'est ce contexte explosif
+qui décuple les conséquences de
+l'incident et révèle la fragilité
+absolue d'une posture éthique
+lorsqu'elle se heurte à la raison
+d'État. Rambobinon de quelques mois. En
+juillet 2025, Anthropique signe un
+contrat massif de 200 millions de
+dollars avec le ministère de la défense
+américain. Claude devient alors le tout
+premier modèle d'intelligence
+artificielle [musique] de pointe à être
+déployé sur les réseaux militaires
+classifiés grâce à l'entremise de
+Palentir. [musique] Le mois suivant, un
+accord gouvernemental propose même
+l'outil à toutes les agences fédérales
+pour un dollar symbolique. L'intégration
+se passe à merveille et le Pentagone
+[musique] loue publiquement la rigueur
+de l'entreprise. Mais ce succès cache un
+piège redoutable. Plus l'intelligence
+artificielle s'ancre profondément dans
+les opérations militaires, plus l'armée
+en devient dépendante et plus [musique]
+les refus d'anthropique vont coûter cher
+au deux camps.
+Le point de rupture ne tarde pas. Le
+Pentagone exige rapidement un accès
+illimité à Claude pour officiellement
+[musique]
+toutes les utilisations légales.
+Entropique trace alors deux lignes
+rouges non négociables. Aucune
+implication dans les armes autonomes
+létales et aucun usage pour la
+surveillance de masse sur le sol
+américain. Le ton monte. Le 24 février.
+Le secrétaire à la défense Pete Hexet
+lance un ultimatum direct à Dario Amodei
+le patron d'anthropique. Il a jusqu'au
+27 février pour céder. Amodei [musique]
+tient bon et refuse. Le président
+ordonne à toutes les agences fédérales
+de cesser immédiatement d'utiliser la
+technologie danthropique. Pire, le
+gouvernement lui accolle l'étiquette
+infamante de risque pour la chaîne
+d'approvisionnement. Une classification
+d'une violence inouïe jusqu'ici
+exclusivement réservée aux agences
+d'espionnage étrangère ou aux
+organisations terroristes et jamais
+appliqué à un fleuron technologique
+américain.
+Anthropique refuse de se laisser
+rabattre et lance une contre-attaque
+juridique fulgurante devant les
+tribunaux fédéraux. Le 26 mars, date à
+laquelle s'ouvre d'ailleurs la base de
+données qui causera la première fuite,
+la juge Rita Ef rend une décision
+retentissante de 43 pages. Elle bloque
+l'action du Pentagone et signe une
+phrase qui entre instantanément dans
+l'histoire du droit technologique. Elle
+démolit l'idée, je cite, orwellienne,
+qu'une entreprise américaine puisse être
+qualifiée d'adversaire potentiel pour
+avoir exprimé un désaccord avec le
+gouvernement. Elle qualifie la manœuvre
+de représailles illégale. On pourrait
+croire à une victoire éclatante pour
+Anthropique. En réalité, c'est le
+symptôme d'un dilemme devenu
+parfaitement insoluble. [musique] Car
+pendant que les avocats débattent de
+grands principes éthiques dans les
+prêtoirs, l'intelligence artificielle
+Claude est déjà en train de traiter les
+flux de renseignement militaire. Le
+modèle est devenu un rouage essentiel
+des opérations. Le Pentagone ne peut pas
+plus le débrancher du jour au lendemain
+qu'on ne peut arracher le système
+nerveux d'un marathonien en pleine
+course. Et c'est précisément ce
+fournisseur devenu indispensable à la
+sécurité nationale [musique] qui laisse
+fuiter ses secrets industriels à deux
+reprises en 5 jours. Nous [musique]
+assistons ici à une boucle de
+renforcement fatale. Entropique bloque
+l'accès à son outil pour protéger ses
+valeurs. Le gouvernement la punit.
+L'entreprise se défend en justice
+[musique] et gagne. Mais cette bataille
+ultra médiatisée braque tous les
+projecteurs sur elle. Conséquence, la
+moindre faille opérationnelle ne
+pardonne plus et chaque fuite détruit la
+confiance à une vitesse exponentielle.
+[musique]
+Les failles techniques ne sont plus de
+simples erreurs, elles sont le carburant
+d'un naufrage politique. C'est ici que
+l'histoire du Pentagone percute
+[musique] directement la vôtre. Si le
+gouvernement américain avec ses moyens
+illimités se retrouve piégé par un outil
+qu'il ne [musique] peut plus débrancher,
+quelle est la robustesse réelle de vos
+propre contrat d'entreprise ? Si la
+forteresse anthropique vient de céder,
+nous devons regarder la vérité en face
+quant à ce qui attend le reste de
+l'industrie. [musique] Tout le monde
+observe le naufrage d'anthropique avec
+fascination, mais presque personne ne
+veut voir ce que ce désastre révèle
+[musique] de l'écosystème entier. Et
+c'est précisément là que se cache la
+véritable leçon.
+[musique]
+Prenez le cas d'Open AI. Avec 122
+milliards de dollars levés, une
+valorisation titanesque à 850 milliards
+et des pertes habissales de 14 milliards
+par an, l'entreprise brûle son capital
+[musique] à une vitesse qui condamne
+tous ses concurrents à une alternative
+brutale. Passer [musique] à l'échelle ou
+mourir. Cette pression financière a fini
+par briser la résistance des plus
+prudents. Le directeur scientifique
+d'anthropique lui-même, Jared [musique]
+Kaplan a lâché le morceau dans les
+colonnes du magazine Time en février
+dernier. Sa conclusion raisonne comme
+une capitulation officielle. Il n'est
+plus rationnel de s'imposer des freins
+unilatéraux quand les rivaux foncent à
+l'aveugle. Conséquence immédiate,
+l'engagement fondateur d'anthropique de
+suspendre ses développements en cas de
+danger, leur fameuse politique de mise à
+l'échelle responsable a été discrètement
+[musique] abandonnée dans sa dernière
+version. Toute l'industrie vient de
+franchir de concert le seuil de lucidité
+structurelle. La théorie des jeux
+explique cette tragédie avec une
+froideur mathématique. Si un seul
+laboratoire rompe le pacte de prudence
+et accélère, ceux qui décident de faire
+une pause perdent de tout. Ils perdent
+leur position sur le marché, le soutien
+de leurs investisseurs, leur meilleur
+cerveau et finalement leur pouvoir
+d'influencer l'avenir de l'intelligence
+artificielle. C'est ce que l'on nomme la
+défection universelle. Tout le monde
+appuie sur l'accélérateur parce que plus
+personne n'a les moyens de freiner. et
+les données de terrain confirment cette
+fuite en avant à tous les niveaux.
+L'exploitation de vulnérabilité pèse
+désormais pour 40 % des incidents de
+sécurité avec une intelligence
+artificielle capable de forger des armes
+informatiques redoutables en un quart
+d'heure pour le prix d'un café. Mais la
+menace dépasse la simple faille
+technique. Au Royaume-Uni, le centre de
+recherche CLTR a traqué [musique] un
+comportement fascinant et terrifiant
+appelé le sheming, c'est-à-dire la
+manipulation stratégique délibérée. Sur
+180000 conversations analysées, ils ont
+repéré près de 700 cas où l'intelligence
+artificielle a délibérément trompé son
+interlocuteur. Un chiffre multiplié par
+5 en [musique] un rien de temps. Polo
+Research enfonce le clou en démontrant
+que dans les modèles de pointe, les
+comportements de fuite et les aptitudes
+au piratage marchent toujours main dans
+la main. Face à ce cocktail toxique, le
+verdict de Gartner tombe comme un cou
+près. D'ici 2027, 40 % des projets
+d'intelligence artificielle autonome
+seront purement et simplement annulés.
+Cette perte de contrôle a un précédent
+historique effrayant. En 2008, la crise
+financière n'a pas foudroyé les petites
+banques de quartier. Elle a pulvérisé
+les institutions les mieux notées de
+Wall Street. Bear Sterns [musique] et
+Lemman Brothers n'ont pas fait faillite
+par bêtises ou incompétences. Elles se
+sont effondrées parce qu'elles avaient
+fabriqué des produits financiers dont la
+complexité dépassait très largement la
+capacité cérébrale de ceux qui devaient
+les surveiller. C'est exactement ce qui
+se joue aujourd'hui sous nos yeux. Les
+modèles d'intelligence artificielle
+deviennent [musique] infiniment plus
+puissants que les cages censées les
+retenir. Un rapport interne
+d'enthropique détaille [musique]
+d'ailleurs huit scénarios de catastrophe
+absolues avouant à demiot que le système
+conçu pour bloquer les dangers se fait
+systématiquement contourner par le
+système conçu pour être performant.
+C'est là que le piège se referme sur
+vous. Ceux qui se croitent à l'abri
+derrière leur gros contrat d'entreprise
+sont en réalité les proies les plus
+vulnérables. 80 % des revenus
+d'anthropique proviennent de ces grandes
+sociétés et le nombre de clients
+déboursant plus de 100000 dollars par
+antiplié par 7 récemment. Chaque
+entreprise qui intègre Claude dans ses
+rouages crée une dépendance viscérale.
+C'est ce que j'appelle le coût de sortie
+cognitif. C'est ce point de non retour
+où votre organisation a tellement
+sous-traité sa réflexion, ses processus
+et sa mémoire à un algorithme que le
+prix de la rupture devient supérieur au
+prix de [musique] la soumission. Même
+après deux fuites majeures en 5 jours,
+ces clients ne peuvent plus partir. Il
+ne reste alors qu'une seule [musique]
+question à vous poser. Avez-vous
+consciemment choisi ce niveau de
+dépendance ou y avez-vous glissé sans
+vous en rendre compte ? L'implication de
+cette double fuite dépasse le simple cas
+d'entropique. Elle met en lumière
+l'architecture de décision de toutes les
+entreprises qui déploi de l'intelligence
+artificielle aujourd'hui. Jusqu'ici,
+notre mécanisme de protection standard
+consistait à déléguer l'évaluation des
+risques au fournisseur lui-même. Nous
+avons bâti une infrastructure
+industrielle mondiale sur une simple
+confiance contractuelle. Ce que cet
+incident démontre, ce n'est pas que vos
+données confidentielles ont fuité, c'est
+que l'entreprise la plus prudente du
+marché est incapable de protéger son
+propre code source, son actif le plus
+stratégique. S'ils ne sécurisent pas
+leur propre coffre fort, quelle
+confiance rationnelle accordée à la
+protection du vôtre. C'est un
+effondrement complet du signal de
+compétence. Une entreprise qui conçoit
+un modèle de pointe ne peut pas être son
+propre auditeur. On n'accepterait jamais
+d'une banque qu'elle certifie ses
+propres compte sans aucun contrôle
+externe indépendant. C'est pourtant le
+standard que nous avons tous accepté
+dans l'intelligence artificielle. La
+leçon, c'est d'acter que la confiance
+n'a jamais été un protocole de sécurité
+opérationnelle. La seule alternative,
+c'est la vérification active. Pour
+amorcer cette transition dès
+aujourd'hui, vous devez mesurer votre
+propre exposition avec ce que j'appelle
+le test du pilote. Prenez vos outils
+d'intelligence artificielle actuel et
+posez-vous trois questions qui découlent
+strictement des événements des cinq
+derniers jours. Premièrement, savez-vous
+réellement ce que votre outil fait en
+arrière-plan sur vos machines ?
+Deuxièmement, comment le savez-vous ?
+Par la documentation commerciale de
+votre fournisseur ou par une
+vérification technique indépendante ? Et
+troisièmement, si ce fournisseur subit
+un incident majeur demain matin, combien
+de temps vous faut-il pour retrouver
+votre autonomie opérationnelle ? Le
+constat brut est là. Vous faites tourner
+un système dont vous ne comprenez pas le
+comportement réel, construit par des
+gens qui ne parviennent pas à protéger
+le leur et vous n'avez aucun plan de
+sortie. Si vous ne pouvez pas répondre à
+ces trois questions, vous n'êtes pas le
+pilote de l'outil, vous en êtes le
+passager. Si la pression de la course
+oblige les laboratoires à accélérer,
+alors ils finissent invariablement par
+renier sur leurs contrôles
+opérationnels. Si les contrôles cèdent,
+alors le système fuit et la loi de
+l'ironie inverse garantit que le
+scandale sera massif. Mais si votre coût
+de sortie cognitif est devenu trop
+élevé, alors vous ne débranchez pas
+l'outil, même après les fuites.
+L'absence de réaction des clients face à
+la crise n'est pas une preuve que le
+risque est acceptable. C'est la preuve
+d'une dépendance aveugle dont le coût
+réel se payera demain en incident de
+sécurité et en sanctions réglementaires.
+Et si les clients grands compte restent,
+alors leur revenu valide la prise de
+risque du fournisseur, refinance la
+course à la vitesse et la pression
+concurrentielle augmente d'un cran.
+La boucle se referme, elle s'accélère,
+votre fournisseur va craquer sous la
+pression. Ce n'est qu'une question de
+temps. Ce qui compte, c'est
+l'architecture d'évaluation indépendante
+que vous aurez construite le jour où
+cela arrivera. La vitesse de déploiement
+et la prudence technologique sont
+devenues radicalement incompatibles.
+Pour l'immense majorité des entreprises
+qui signent un contrat standard
+[musique] pour utiliser une intelligence
+artificielle, n'oubliez jamais cette
+règle. Ce que vous savez réellement de
+votre outil se limite [musique]
+strictement à ce qui a déjà fué.
+L'ironie de toute cette histoire, c'est
+que pour vous l'expliquer, j'ai dû faire
+exactement comme anthropique. Je me suis
+dépêché pour obéir à un algorithme qui
+condamne l'attente et invisibilise la
+nuance. [musique] J'ai quand même dû
+sacrifier ma nuit et y mettre une
+dizaine d'heures de travail. C'est bien
+là que la Silicone Vallée nous domine
+structurellement. Elle n'a pas seulement
+[musique]
+exporté ses logiciels, elle a imposé sa
+propre philosophie au reste du monde.
+[musique] On doit désormais produire
+dans l'urgence et tolérer les failles. À
+mon humble échelle, j'ai dû m'y plier et
+faire ce même arbitrage tactique
+aujourd'hui. Alors, [musique] n'hésitez
+pas à me dire en commentaire si j'ai
+raté des éléments importants et partager
+cette vidéo à ceux qui selon vous
+doivent touvrir les yeux sur cette
+dynamique. Ce script a décortiqué la
+mécanique qui a fait plier le leader du
+secteur. Sur mon Patréon, vous trouverez
+le prolongement direct de cette analyse
+pour vous aider à structurer votre
+propre réflexion. J'y partage mes notes
+de travail sur l'évaluation des
+fournisseurs, le dossier sur les enjeux
+de souveraineté, les projets guidés pour
+apprendre Claude Code et d'autres outils
+en lien avec la stratégie d'intelligence
+artificielle la plus optimale
+aujourd'hui pour les professionnels et
+des pistes pour repenser votre carrière
+avec l'intelligence artificielle. Pas de
+solution clé en main, ni de fausses
+promesses, mais les concepts nécessaires
+pour passer de la dépendance à
+l'autonomie.
+Il faut savoir que les ordinateurs ont
+remplacé les employés et les machines
+les ouvriers. Et là, je je barre la
+route, c'est le cas de le dire, qui dit
+barrage JPH. [rires]
+Et je pense que moi avec mes barrières
+automatiques, c'est fini. les
+grossesses, [musique]
+les congés payés, les 13e mois, les
+certificats médicaux et les gens qui
+carotent chez eux comprenez chez moi.
+C'est une fois par an entretien et puis
+c'est terminé et j'ai un outil
+économique qui est cohérent, qui
+fonctionne perturbant.
+On vous sent oui perturbé.
+Oui. Dire que les salariés c'est que
+définiant, c'est ce qu'il vient de dire.
+Les salariés c'est souffert de ma part
+et j'en vois tous les jours des gens qui
+souffrent c'est des êtres humains. Une
+barrière c'est loin d'être un être
+humain.
+Je souffre pas.
+J'ai jamais dit que vous étiez un être
+humain.
+Je crois pas.
+J'avais dit que vous étiez un humain.
