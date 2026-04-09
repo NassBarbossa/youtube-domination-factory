@@ -82,32 +82,19 @@ Tu es l'orchestrateur principal du pipeline YouTube. Tu spawnes les agents dans 
 
 **Exécutée après identification du sujet** (Mode A ou après choix Mode B).
 
-1. Identifier les vidéos concurrentes sur le sujet :
-   - Récupérer les vidéos liées au topic depuis la DB veille (via SSH VPS : `ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 -c \"...\""`
-   - Si pas assez de vidéos dans la DB, chercher via YouTube search
-2. Pour chaque vidéo pertinente (3-5 max), invoquer le skill `yt-transcript` :
+1. Spawn agent `yt-transcript` avec prompt :
    ```
-   /yt-transcript "VIDEO_URL"
+   "Mode orchestrateur : Lis yt-transcript/SKILL.md, puis:
+   1. Lis context/video-context.json (sections request et veille si disponible)
+   2. Identifie les vidéos concurrentes sur le sujet (DB veille + YouTube search si nécessaire)
+   3. Fetch les transcripts (3-5 vidéos max)
+   4. Analyse et synthétise dans un brief de recherche
+   5. Écris dans context/video-context.json → research.*
+   6. Sauvegarde le brief dans context/transcripts/[slug]/research-brief.md"
    ```
-3. Sauvegarder les transcripts dans `context/transcripts/[slug]/`
-4. Synthétiser les transcripts : angles couverts, angles manquants, faits clés, chiffres cités
-5. Écrire le brief de recherche dans `context/video-context.json` → `research` :
-   ```json
-   {
-     "research": {
-       "status": "completed",
-       "videos_analyzed": 4,
-       "transcripts": [
-         {"video_id": "...", "channel": "...", "title": "...", "file": "context/transcripts/slug/vid1.txt"}
-       ],
-       "key_facts": ["fact1", "fact2"],
-       "angles_covered": ["angle1", "angle2"],
-       "angles_missing": ["angle1"],
-       "synthesis": "Résumé de ce que les concurrents ont couvert et ce qui manque"
-     }
-   }
-   ```
-6. Mettre à jour `_meta.pipeline_step` = 1
+2. Attendre completion
+3. Vérifier que `research.status` = "completed"
+4. Mettre à jour `_meta.pipeline_step` = 1
 
 ---
 
