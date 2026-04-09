@@ -3,7 +3,7 @@ name: yt-miniature
 description: Create detailed YouTube thumbnail briefs and concepts. Use when user says "miniature", "thumbnail", "cree la miniature", "design thumbnail", "brief miniature", "visuel video", or needs a YouTube thumbnail concept.
 metadata:
   author: NassRiviera
-  version: 1.0.0
+  version: 1.1.0
   category: youtube-workflow
   tags: [thumbnail, design, youtube, visual]
 ---
@@ -61,6 +61,27 @@ Rate each concept on:
 
 Present all 3 concepts ranked, with the recommended winner and reasoning.
 
+## Specs Techniques
+
+| Spec | Valeur |
+|------|--------|
+| **Dimensions** | 1280×720 px (16:9) |
+| **Format** | PNG ou JPG |
+| **Taille max** | < 2 MB |
+| **Résolution min** | 640×360 (mais toujours viser 1280×720) |
+
+### Safe Zone — Zones à éviter
+
+YouTube overlay des éléments UI sur la miniature. Ne jamais placer d'éléments importants dans ces zones :
+
+| Zone | Ce que YouTube y met |
+|------|----------------------|
+| **Bas-droite** | Durée de la vidéo (timestamp) |
+| **Haut-droite** | Bouton "Watch Later" / "Add to queue" |
+| **Bas-gauche** | Progression bar (si déjà vu partiellement) |
+
+**Règle** : garder les éléments critiques (visage, texte, logo) dans le **centre et tiers supérieur** de l'image. Prévoir une marge de ~10% sur les bords.
+
 ## Design Principles
 
 ### Text Rules (source : 1of10.com, 62Md vues)
@@ -84,7 +105,9 @@ Present all 3 concepts ranked, with the recommended winner and reasoning.
 - Clear visual hierarchy: one element dominates
 - **Negative space is your friend — don't clutter**
 - NO floating decorations, particles, or random shapes
+- **Contrast ratio ≥ 4.5:1** entre foreground et background (standard WCAG — lisible même en petite taille)
 - Test at 256x144px (actual preview size) — if it's not clear, simplify
+- **Safe zone** : pas d'éléments importants dans les coins (YouTube y met ses overlays — voir Specs Techniques)
 
 ### Color Rules (source : 1of10.com, 62Md vues)
 - **Couleur dominante : cyan OU orange** — ce sont les 2 couleurs les plus performantes (cyan = +36% de vues)
@@ -110,6 +133,35 @@ Present all 3 concepts ranked, with the recommended winner and reasoning.
 - Thumbnail and title together should tell the full story — neither should work alone
 - **Couleur dominante : cyan OU orange** (jamais les deux ensemble)
 - **Luminosité haute (100-110)** — jamais sombre
+
+## Cross-Platform Crops
+
+La miniature YouTube peut être réutilisée pour accompagner les posts de repurposing. Prévoir des crops depuis le fichier source 1280×720 :
+
+| Plateforme | Dimensions | Ratio | Notes |
+|------------|------------|-------|-------|
+| **YouTube** (original) | 1280×720 | 16:9 | Fichier source |
+| **X/Twitter** post image | 1200×675 | 16:9 | Crop quasi identique |
+| **LinkedIn** feed image | 1200×627 | 1.91:1 | Légèrement plus large — vérifier que le visage reste cadré |
+| **LinkedIn** carrousel | 1200×1200 | 1:1 | Recadrage carré centré sur le visage |
+| **Instagram** | 1080×1350 | 4:5 | Vertical — recadrage significatif, prévoir espace en haut/bas |
+
+**Règle** : lors de la conception, s'assurer que les éléments clés (visage + visual principal) restent visibles dans un crop 1:1 centré. Si c'est le cas, tous les formats cross-platform fonctionneront.
+
+## A/B Test — Thumbnail Test & Compare
+
+YouTube propose un outil natif **Thumbnail Test & Compare** (lancé 2024) :
+
+1. **Uploader 2-3 miniatures** pour la même vidéo
+2. YouTube les affiche aléatoirement à différents segments d'audience
+3. Après suffisamment d'impressions, YouTube indique le **winner par watch time share**
+
+**Quand l'utiliser** :
+- Quand on hésite entre 2 concepts (ex: avec visage vs sans visage)
+- Quand on veut valider une hypothèse du feedback loop (ex: "cyan > orange ?")
+- Sur les vidéos à fort potentiel (topiques trending)
+
+**Intégration feedback loop** : logger le résultat du A/B test dans `yt-miniature/memory/choices.json` avec un champ `ab_test_winner: true/false`.
 
 ## Teammate Communication
 

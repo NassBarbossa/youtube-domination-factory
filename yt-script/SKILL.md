@@ -3,7 +3,7 @@ name: yt-script
 description: Write YouTube video scripts for AI and Claude Code content. Use when user says "ecris le script", "write the script", "script video", "redige la video", "prepare le script", "scriptwriting", or provides a video topic to script.
 metadata:
   author: NassRiviera
-  version: 1.0.0
+  version: 1.1.0
   category: youtube-workflow
   tags: [script, writing, youtube, video]
 ---
@@ -63,9 +63,13 @@ Le script se construit **avec Nass**, pas pour lui. C'est un processus collabora
 
 ```
 1. HOOK (0-30s) — LES 30 PREMIÈRES SECONDES DÉCIDENT DE TOUT
+   71% des viewers décident en 3 SECONDES s'ils continuent.
    Rétention < 50% à 30s → l'algo ARRÊTE de distribuer. Cible : > 70% à 30s.
 
-   0:00 – 0:05 ATTENTION GRAB
+   0:00 – 0:03 FIRST FRAME DECISION (71% décident ici)
+   → L'image + la première phrase doivent créer un "wait, what?"
+
+   0:03 – 0:05 ATTENTION GRAB
    → NE COMMENCE JAMAIS par "salut c'est Nass" → commence par le RÉSULTAT
    → Montre l'écran d'une app finie, un build, une stat choc
    → Le cerveau doit se dire "Attends, c'est quoi ça ?"
@@ -79,7 +83,10 @@ Le script se construit **avec Nass**, pas pour lui. C'est un processus collabora
 
 2. CORE CONTENT (variable)
    → 3-5 main points max
-   → Each point: claim → proof → application
+   → Each point suit le **framework CPA** : Claim → Proof → Application
+     (Affirmer → Prouver → Appliquer concrètement)
+   → Alternative par section si pertinent : PAS (Problem → Agitation → Solution)
+     ou AIDA (Attention → Interest → Desire → Action)
 
 3. BUSINESS ANGLE
    → How to monetize / leverage this
@@ -90,7 +97,16 @@ Le script se construit **avec Nass**, pas pour lui. C'est un processus collabora
    → Tease next video if possible
 ```
 
-#### 2b. Itérer section par section avec Nass
+#### 2b. Information Gain Check
+
+Avant de valider la structure, vérifier le **gain d'information** par rapport aux vidéos concurrentes :
+
+- **Si Phase 0.75 (yt-transcript) a été exécutée** : lire `context/video-context.json` → `research.angles_covered[]` et `research.angles_missing[]`. Chaque section du script DOIT couvrir au moins un angle de `angles_missing` ou apporter une info absente de `angles_covered`.
+- **Si pas de Phase 0.75** : poser la question à Nass : "Qu'est-ce que cette vidéo apporte que les autres sur ce sujet n'ont PAS ?"
+
+**Règle** : un script qui répète ce que 10 vidéos concurrentes disent déjà = zéro valeur ajoutée. Chaque section doit passer le test : *"Est-ce que le viewer pourrait trouver ça ailleurs ?"* Si oui → trouver un angle différent, une donnée exclusive, ou une expérience personnelle de Nass.
+
+#### 2c. Itérer section par section avec Nass
 
 **STOP. Présenter les bullet points et attendre la validation.** Ne PAS écrire le script tant que Nass n'a pas approuvé.
 
@@ -172,8 +188,10 @@ Open both files for the user after generation.
 
 Before delivering, verify:
 - [ ] Hook commence par le RÉSULTAT (jamais par "salut c'est Nass")
-- [ ] Hook respecte le blueprint 0-5s / 5-15s / 15-30s
+- [ ] Hook respecte le blueprint 0-3s / 3-5s / 5-15s / 15-30s
+- [ ] First frame (0-3s) crée un "wait, what?" (71% décident ici)
 - [ ] Rétention cible > 70% à 30s (le hook doit être assez fort)
+- [ ] **Information gain** : chaque section apporte quelque chose que les vidéos concurrentes n'ont pas
 - [ ] No unexplained jargon — every technical term is broken down
 - [ ] Each section delivers a clear takeaway
 - [ ] Business/money angle is present
@@ -194,13 +212,13 @@ Before delivering, verify:
 
 ## Script Length Guide
 
-| Funnel | Duration | Word count (FR) | Word count (EN) | Usage |
-|--------|----------|-----------------|-----------------|-------|
-| **TOP** | **5-12 min** | **750-1800 mots** | **650-1550 mots** | Attirer des inconnus — trend, choc, résultat, étude de cas courte |
-| **MIDDLE** | **18-22 min** | **2700-3300 mots** | **2350-2850 mots** | Convertir en abonnés — tutoriels complets, deep dives |
-| **BOTTOM** | **25+ min** | **3750+ mots** | **3250+ mots** | Communauté — LIVE, Q&A, coulisses |
+| Funnel | Duration | Word count (FR) | Word count (EN) | Completion rate cible | Usage |
+|--------|----------|-----------------|-----------------|----------------------|-------|
+| **TOP** | **5-12 min** | **750-1800 mots** | **650-1550 mots** | **45-55%** | Attirer des inconnus — trend, choc, résultat, étude de cas courte |
+| **MIDDLE** | **18-22 min** | **2700-3300 mots** | **2350-2850 mots** | **40-50%** | Convertir en abonnés — tutoriels complets, deep dives |
+| **BOTTOM** | **25+ min** | **3750+ mots** | **3250+ mots** | **35-45%** | Communauté — LIVE, Q&A, coulisses |
 
-> **Note** : Le peak de performance YouTube est à 18-24 min pour le MIDDLE (source : 1of10.com). Mais le TOP funnel doit rester court et punchy — ne jamais forcer 18-22 min sur une vidéo TOP.
+> **Note** : Le peak de performance YouTube est à 18-24 min pour le MIDDLE (source : 1of10.com). Mais le TOP funnel doit rester court et punchy — ne jamais forcer 18-22 min sur une vidéo TOP. Les completion rates sont des cibles réalistes — au-dessus = excellent, en-dessous = revoir le pacing et les open loops.
 
 ## Example Hook Patterns
 

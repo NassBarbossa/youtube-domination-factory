@@ -3,7 +3,7 @@ name: yt-repurposing
 description: Repurpose YouTube video scripts into Shorts, X threads, LinkedIn posts, and other formats. Use when user says "repurpose", "decoupe en shorts", "thread X", "post LinkedIn", "adapte le contenu", "shorts", "clip it", or wants to transform a video into multi-platform content.
 metadata:
   author: NassRiviera
-  version: 1.0.0
+  version: 1.1.0
   category: youtube-workflow
   tags: [repurposing, shorts, twitter, linkedin, multi-platform]
 ---
@@ -40,12 +40,12 @@ For each Short:
 ## Short [X]: [Working title]
 
 **Source**: Script section [X] (timestamp XX:XX - XX:XX)
-**Hook** (first 2 seconds): [Opening line that stops the scroll]
+**Hook** (first 2 seconds, 5-7 mots): [Formule de hook — voir table ci-dessous]
 **Core content** (40-50 seconds): [The key point, condensed]
 **Punchline/CTA** (last 5 seconds): [Ending that drives to full video]
 **Text overlay**: [Key phrase displayed on screen]
 **Duration**: [Target: 45-59 seconds]
-**On-screen caption**: Yes (most Shorts watched without sound)
+**Captions**: OBLIGATOIRE — 80% regardent sans son, +12-20% watch time
 
 ### Recording notes:
 - [ ] Can be clipped directly from the long video
@@ -53,63 +53,125 @@ For each Short:
 - [ ] Screen demo works in vertical format
 ```
 
+#### Formules de hook Short (5-7 mots, première frame)
+
+| Formule | Exemple |
+|---------|---------|
+| **"Stop scrolling si tu [action]"** | "Stop scrolling si tu utilises Cursor" |
+| **"[Résultat chiffré] en [temps]"** | "Un SaaS complet en 20 minutes" |
+| **"Personne ne te dit ça sur [sujet]"** | "Personne ne te dit ça sur Claude Code" |
+| **"Attends la fin"** | "J'ai laissé l'IA coder 1h — attends la fin" |
+| **"[Chiffre] [chose] que tu fais mal"** | "3 erreurs que tu fais avec l'IA" |
+| **"J'ai testé [X] — voici le résultat"** | "J'ai testé GPT-5 — voici le résultat" |
+
+**Règle** : le hook doit tenir en **5-7 mots**. Si tu ne peux pas le dire en 5-7 mots, il est trop compliqué.
+
 #### Short Selection Criteria
 - Does it work WITHOUT the rest of the video? If not, skip.
-- Does it have a strong hook in the first 2 seconds?
+- Does it have a strong hook in the first 2 seconds (5-7 mots)?
 - Is the payoff within 60 seconds?
 - Would someone share this?
+- **Captions** : chaque Short DOIT avoir des sous-titres intégrés (auto-caption YouTube ou gravés dans le montage)
 
 ### Step 3: X/Twitter Thread
+
+#### Algo X — Signaux clés (Grok AI, 2025-2026)
+
+| Signal | Impact |
+|--------|--------|
+| **Replies** | Signal #1 — 54-75x le poids d'un like. Poser des questions ouvertes. |
+| **Author replies** | Répondre à ses propres replies = 75x visibility. Toujours répondre aux premiers commentaires. |
+| **Bookmark** | Nouveau signal fort en 2026. Les saves boostent la recommandation. |
+| **Liens externes** | **-50% de score**. Regular accounts : 0% engagement sur link posts depuis 2025. |
+| **Early engagement** | Les 30 premières minutes décident de la reach. Poster quand l'audience est active. |
+| **Fréquence** | 5-8 posts/jour max. >10/jour = -80% visibility sur les posts suivants. |
+
+**RÈGLE CRITIQUE** : le lien vidéo va **en reply séparé**, JAMAIS dans le thread principal. Un lien dans le tweet = -50% de reach.
 
 Structure:
 
 ```
 ## X Thread: [Topic]
 
-**Tweet 1 (Hook)**:
-[Bold statement or question — max 280 chars]
+**Tweet 1 (Hook)** — 71-100 chars idéal:
+[Bold statement or question — court et percutant]
 [Must stand alone as a banger tweet even without the thread]
 
-**Tweet 2-6 (Value)**:
+**Tweet 2-5 (Value)** — 71-100 chars par tweet:
 [One insight per tweet]
 [Use line breaks for readability]
 [Include numbers, specifics, not fluff]
 
-**Tweet 7 (CTA)**:
-[Link to video + reason to watch]
-[Make it specific: "I show the full process in X minutes"]
+**Tweet 6 (CTA — sans lien)**:
+[Raison de regarder la vidéo + teaser]
+[Make it specific: "Je montre tout le process en X minutes"]
+[NO LINK HERE — le lien va en reply]
+
+**Reply séparé (lien)**:
+[Lien YouTube + "Vidéo complète ici 👇"]
 
 ### Thread rules:
+- **Lien vidéo EN REPLY**, jamais dans le thread (-50% reach sinon)
 - Each tweet must work independently (people see them in feeds)
 - No "1/" numbering — it's outdated
 - Use the arrow (→) or bullet points for structure within tweets
-- Max 7-8 tweets (engagement drops after that)
+- Max 6 tweets + 1 reply lien (engagement drops after 7-8)
+- Sweet spot par tweet : **71-100 caractères** (pas 200-250)
+- Finir par une **question ouverte** (replies = signal #1 de l'algo)
 ```
 
 ### Step 4: LinkedIn Post
+
+#### LinkedIn algo — Signaux clés (2025-2026)
+
+| Signal | Impact |
+|--------|--------|
+| **Polls & PDFs/Carousels** | **Plus forte reach** de tous les formats LinkedIn |
+| **Mobile-first** | **88% des users** sont sur mobile → vertical, line breaks obligatoires |
+| **Sweet spot** | **1300-1600 chars** = highest engagement. >2000 = -35% |
+| **Hook "See more"** | **210-235 chars** visibles avant la coupure. 60-80% décident là |
+| **Hashtags** | 3-5 en fin de post, pas au début |
+
+#### Image specs LinkedIn
+
+| Format | Dimensions | Usage |
+|--------|------------|-------|
+| **Single image** | 1200×627 (1.91:1) | Feed standard, link previews |
+| **Carrousel/PDF** | 1200×1200 ou 1080×1350 | Multi-slides (highest reach) |
+| **Vertical** | Préféré (88% mobile) | Plus d'espace écran |
 
 Structure:
 
 ```
 ## LinkedIn Post
 
-**Hook line**: [First line that appears before "...see more"]
-[MUST be intriguing enough to click "see more"]
+**Hook line** (≤ 210-235 chars): [First line that appears before "...see more"]
+[MUST be intriguing enough to click "see more" — chiffre, résultat, claim bold]
 
-**Body** (800-1200 characters):
+**Body** (1300-1600 characters):
 [Professional angle on the same topic]
 [More "business insight" framing than YouTube]
 [Personal experience or observation]
 [Concrete numbers or results if possible]
+[1 phrase par ligne — mobile readability]
 
-**CTA**: [Soft — question to drive comments + link to video]
+**CTA**: [Question ouverte pour drive comments + lien vidéo]
+
+**Hashtags**: [3-5 hashtags en fin de post]
+
+**Format bonus** (si applicable):
+- [ ] Carrousel PDF (slides du tuto/comparatif) → highest reach
+- [ ] Poll (question liée au sujet) → highest reach
+- [ ] Image 1200×627 (résultat/screenshot)
 
 ### LinkedIn rules:
 - Tone: Still casual but slightly more professional than YouTube
 - No emojis spam (1-2 max, strategic)
-- Line breaks between every 1-2 sentences (mobile readability)
+- **1 phrase par ligne** — 88% mobile, line breaks obligatoires
 - End with a question to drive comments
 - First-person perspective ("I tested...", "I discovered...")
+- **Sweet spot : 1300-1600 chars** (pas 800-1200)
+- **Hashtags en fin de post** (3-5), jamais au début
 ```
 
 ### Step 5: Delivery
@@ -129,20 +191,24 @@ Include a **posting schedule** (from NassRiviera_YouTube2026 playbook):
 
 - NEVER just shorten the script — each platform needs its own angle and format
 - NEVER copy the video title as-is for other platforms
-- ALWAYS adapt the tone: YouTube (casual) → X (punchy) → LinkedIn (insightful)
-- Shorts MUST work standalone — a viewer who never sees the full video should still get value
+- ALWAYS adapt the tone: YouTube (casual) → X (punchy, 71-100 chars) → LinkedIn (insightful, 1300-1600 chars)
+- **Shorts** : MUST work standalone + hook 5-7 mots + **captions obligatoires** (80% regardent sans son)
 - Shorts publiés **24-48h après** la vidéo principale (jamais le même jour — renvoie vers la vidéo)
-- X threads: value first, promo last. The thread should be worth reading even without clicking the video.
-- LinkedIn: lead with insight, not "I just posted a video about..."
+- **X threads** : value first, promo last. **Lien vidéo EN REPLY séparé** (jamais dans le thread — -50% reach). Max 6 tweets + 1 reply lien. Finir par une question ouverte (replies = signal #1).
+- **LinkedIn** : lead with insight, not "I just posted a video about...". Hook ≤ 210-235 chars. 1 phrase par ligne. Hashtags (3-5) en fin de post.
 - Output language matches the original video language
 
 ## Platform Character Limits
 
-| Platform | Limit | Sweet spot |
-|----------|-------|------------|
-| YouTube Short title | 100 chars | 40-60 chars |
-| X/Tweet | 280 chars | 200-250 chars |
-| LinkedIn post | 3000 chars | 800-1200 chars |
+| Platform | Limit | Sweet spot | Notes |
+|----------|-------|------------|-------|
+| YouTube Short title | 100 chars | 40-60 chars | |
+| YouTube Short hook | — | **5-7 mots** | Première frame, doit accrocher immédiatement |
+| X/Tweet | 280 chars | **71-100 chars** | Sweet spot engagement (pas 200-250) |
+| X Thread total | 6 tweets + 1 reply | ~80 chars/tweet | Lien en reply séparé |
+| LinkedIn hook | 210-235 chars | 140-210 chars | Ce qui s'affiche avant "See more" |
+| LinkedIn post | 3000 chars | **1300-1600 chars** | >2000 = -35% engagement |
+| LinkedIn hashtags | — | 3-5 | En fin de post uniquement |
 
 ## Examples
 
@@ -193,15 +259,18 @@ Aucune interaction utilisateur — tu travailles autonome.
    - Prêts pour le clipping
 
 3. **Générer le thread X** :
-   - Hook statement puissant
-   - 5-6 tweets valeur
-   - CTA avec lien video + mention du titre validé
+   - Hook statement puissant (71-100 chars)
+   - 4-5 tweets valeur (71-100 chars chacun)
+   - Tweet final : CTA **sans lien** + question ouverte
+   - **Reply séparé** : lien vidéo (JAMAIS dans le thread — -50% reach)
    - Prêt pour copy-paste
 
 4. **Générer le post LinkedIn** :
-   - Hook intrigant (pour le "...see more")
-   - Body 800-1200 chars, angle professionnel
+   - Hook ≤ 210-235 chars (pour le "...see more")
+   - Body **1300-1600 chars**, angle professionnel, 1 phrase par ligne
    - CTA question + lien video
+   - 3-5 hashtags en fin de post
+   - Format bonus si applicable (carrousel PDF, poll, image 1200×627)
    - Prêt pour copy-paste
 
 5. **Créer schedule** :
@@ -229,10 +298,12 @@ Aucune interaction utilisateur — tu travailles autonome.
         "source_timestamp": "[MM:SS - MM:SS]"
       }
     ],
-    "x_thread_hook": "[hook tweet for thread]",
-    "x_thread_full": "[complete thread ready to post]",
-    "linkedin_hook": "[first line before ...see more]",
-    "linkedin_full": "[complete post ready to post]",
+    "x_thread_hook": "[hook tweet — 71-100 chars]",
+    "x_thread_full": "[complete thread — 6 tweets max, NO link]",
+    "x_reply_link": "[reply séparé avec lien vidéo]",
+    "linkedin_hook": "[first line ≤ 210-235 chars before ...see more]",
+    "linkedin_full": "[complete post — 1300-1600 chars, 1 phrase/ligne, hashtags fin]",
+    "linkedin_format_bonus": "carousel|poll|image|none",
     "posting_schedule": {
       "day_0_youtube": "Video goes live",
       "day_0_x_thread": "Post X thread (2h after YouTube)",
