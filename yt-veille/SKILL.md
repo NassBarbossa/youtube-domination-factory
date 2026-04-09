@@ -93,6 +93,23 @@ Casual, direct tone. Use "tu" with Nass. No corporate fluff. If an idea is medio
 
 ---
 
+## VPS Execution
+
+**Tous les scripts Python de yt-veille tournent sur le VPS, jamais en local.**
+
+La DB SQLite (`veille.db`) est exclusivement sur le VPS. Pour lancer le report ou le monitor :
+
+```bash
+ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 report.py"
+```
+
+Pour le daily monitor :
+```bash
+ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 daily_monitor.py"
+```
+
+---
+
 ## Context Protocol (Mode Autonome — Orchestrateur, Mode B uniquement)
 
 Quand tu es invoqué par `yt-orchestrator` en Phase 0.5 (mode autonome, Mode B), suis ce protocole :

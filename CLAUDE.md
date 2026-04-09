@@ -8,6 +8,22 @@ YouTube Domination Factory is a **modular AI skill system** for Claude Code that
 
 The project is a collection of SKILL.md files loaded into Claude's skill system, plus Python scripts for automated veille (yt-veille) and analytics (yt-analytics) that run on a VPS.
 
+## VPS Execution Rule
+
+**All Python scripts (daily_monitor.py, report.py, scoring.py, etc.) MUST be executed on the VPS via SSH, never locally.**
+
+The SQLite database (`veille.db`) lives exclusively on the VPS. The local copy is empty and gitignored.
+
+```bash
+# Correct — run on VPS
+ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 report.py"
+
+# Wrong — will fail (empty local DB)
+python3 yt-veille/scripts/report.py
+```
+
+This applies to all pipeline phases that need veille data, analytics data, or any DB access.
+
 ## Architecture
 
 Nine skills form a production pipeline:
@@ -189,7 +205,7 @@ Manual invocation is never forced. Nass can still:
 - [x] Add Context Protocol to `yt-description/SKILL.md`
 - [x] Add Context Protocol to `yt-repurposing/SKILL.md`
 - [x] Add Context Protocol to `yt-veille/SKILL.md`
-- [ ] Delete `yt-montage/` (replaced by better tooling)
+- [x] Delete `yt-montage/` (replaced by better tooling)
 - [ ] Update `yt-analytics/SKILL.md` (Sprint 2)
 - [x] Implement cron job for `yt-veille` — daily scraping at 5h30 SGT
 - [x] SQLite database (veille.db) — channels, videos, snapshots tables
