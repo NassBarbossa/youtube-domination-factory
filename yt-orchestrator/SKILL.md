@@ -78,6 +78,39 @@ Tu es l'orchestrateur principal du pipeline YouTube. Tu spawnes les agents dans 
 
 ---
 
+### Phase 0.75 — Recherche de transcripts concurrents
+
+**Exécutée après identification du sujet** (Mode A ou après choix Mode B).
+
+1. Identifier les vidéos concurrentes sur le sujet :
+   - Récupérer les vidéos liées au topic depuis la DB veille (via SSH VPS : `ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 -c \"...\""`
+   - Si pas assez de vidéos dans la DB, chercher via YouTube search
+2. Pour chaque vidéo pertinente (3-5 max), invoquer le skill `yt-transcript` :
+   ```
+   /yt-transcript "VIDEO_URL"
+   ```
+3. Sauvegarder les transcripts dans `context/transcripts/[slug]/`
+4. Synthétiser les transcripts : angles couverts, angles manquants, faits clés, chiffres cités
+5. Écrire le brief de recherche dans `context/video-context.json` → `research` :
+   ```json
+   {
+     "research": {
+       "status": "completed",
+       "videos_analyzed": 4,
+       "transcripts": [
+         {"video_id": "...", "channel": "...", "title": "...", "file": "context/transcripts/slug/vid1.txt"}
+       ],
+       "key_facts": ["fact1", "fact2"],
+       "angles_covered": ["angle1", "angle2"],
+       "angles_missing": ["angle1"],
+       "synthesis": "Résumé de ce que les concurrents ont couvert et ce qui manque"
+     }
+   }
+   ```
+6. Mettre à jour `_meta.pipeline_step` = 1
+
+---
+
 ### Phase 1 — Rédaction du script
 
 **Exécutée séquentiellement** (attend completion avant Phase 2).
@@ -85,10 +118,11 @@ Tu es l'orchestrateur principal du pipeline YouTube. Tu spawnes les agents dans 
 1. Spawn agent `yt-script` avec prompt :
    ```
    "Mode orchestrateur : Lis yt-script/SKILL.md, puis:
-   1. Lis context/video-context.json (sections request et veille si disponible)
-   2. Rédige le script complet avec markers [FACE CAM], [SCREEN], etc.
-   3. Écris dans context/video-context.json → script.* (slug, file_path, word_count, structure)
-   4. Fournis le titre du script à Nass"
+   1. Lis context/video-context.json (sections request, veille si disponible, et research)
+   2. Utilise le brief de recherche (research.synthesis, key_facts, angles_missing) pour écrire un script avec un angle différenciant
+   3. Rédige le script complet avec markers [FACE CAM], [SCREEN], etc.
+   4. Écris dans context/video-context.json → script.* (slug, file_path, word_count, structure)
+   5. Fournis le titre du script à Nass"
    ```
 2. Attendre completion
 3. Vérifier que `script.status` = "completed"

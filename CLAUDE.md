@@ -89,6 +89,7 @@ This single JSON file is the "bus" through which all agents communicate:
   "_meta": {version, slug, status, pipeline_step, ...},
   "request": {raw_input, topic, language},
   "veille": {selected_idea, status, ...},
+  "research": {videos_analyzed, transcripts[], key_facts[], angles_covered[], angles_missing[], synthesis},
   "script": {slug, file_path, word_count, structure, ...},
   "titres_seo": {winning_title, keywords, ...},
   "miniature": {recommended_concept, ...},
@@ -110,7 +111,8 @@ User says: *"Fais une vidéo sur Claude Code 4"*
 
 ```
 yt-orchestrator
-├─ Phase 1 → yt-script (writes script.*)
+├─ Phase 0.75 → yt-transcript (fetch transcripts concurrents, analyse, brief recherche)
+├─ Phase 1 → yt-script (writes script.* using research brief)
 ├─ Phase 2 → [parallel] yt-titres-seo + yt-miniature + yt-description
 ├─ Phase 3 → PAUSE for human validation (title ✓ thumbnail ✓ description ✓)
 └─ Phase 4 → yt-repurposing (writes shorts, threads, LinkedIn posts)
@@ -122,7 +124,8 @@ User says: *"Trouve moi un sujet de vidéo"*
 ```
 yt-orchestrator
 ├─ Phase 0.5 → yt-veille (generates 3-5 ideas, PAUSE for choice)
-├─ Phase 1 → yt-script (writes script.*)
+├─ Phase 0.75 → yt-transcript (fetch transcripts concurrents, analyse, brief recherche)
+├─ Phase 1 → yt-script (writes script.* using research brief)
 ├─ Phase 2 → [parallel] yt-titres-seo + yt-miniature + yt-description
 ├─ Phase 3 → PAUSE for human validation
 └─ Phase 4 → yt-repurposing
@@ -134,7 +137,8 @@ yt-orchestrator
 |-------|----------|--------|--------|
 | 0 | orchestrator | Init slug, create JSON | No |
 | 0.5 | yt-veille | Generate ideas (Mode B only) | **Yes** — user chooses |
-| 1 | yt-script | Write full script | No |
+| 0.75 | yt-transcript | Fetch transcripts concurrents, analyse, brief recherche | No |
+| 1 | yt-script | Write full script using research brief | No |
 | 2a | yt-titres-seo | Generate titles & keywords | No |
 | 2b | yt-miniature | Design thumbnail concept | No (parallel with 2a/2c) |
 | 2c | yt-description | Write description & tags | No (parallel with 2a/2b) |
