@@ -46,8 +46,9 @@ Each module contains a single `SKILL.md` with YAML frontmatter (name, descriptio
 
 - **yt-titres-seo → yt-miniature**: Title and thumbnail must COMPLEMENT each other, never duplicate
 - **yt-titres-seo → yt-description**: Primary/secondary keywords are shared for SEO consistency
-- **yt-montage → yt-description**: Timestamps must be coordinated for video chapters
+- **yt-transcript → yt-script**: Research `angles_missing[]` feed the Information Gain Check (Step 2b) — each script section must cover angles competitors missed
 - **yt-script → yt-repurposing**: Scripts must contain extractable Shorts moments
+- **yt-miniature → yt-repurposing**: Thumbnail source file (1280×720) provides cross-platform crops for X (1200×675), LinkedIn (1200×627), carousel (1200×1200)
 - **yt-analytics → yt-calendrier**: Performance data drives the content mix (40% tutorials, 25% news, 20% deep dives, 10% comparisons, 5% community)
 
 ## Content Voice
@@ -93,8 +94,8 @@ This single JSON file is the "bus" through which all agents communicate:
   "script": {slug, file_path, word_count, structure, ...},
   "titres_seo": {winning_title, keywords, ...},
   "miniature": {recommended_concept, ...},
-  "description": {description_full, tags, ...},
-  "repurposing": {shorts[], x_thread_full, linkedin_full, ...},
+  "description": {description_full, hook_framework, tags, enriched_keywords, sources, cta_type, ...},
+  "repurposing": {shorts[], x_thread_full, x_reply_link, linkedin_full, linkedin_format_bonus, ...},
   "pipeline_log": [...]
 }
 ```
@@ -218,6 +219,7 @@ Manual invocation is never forced. Nass can still:
 - [x] Time decay for video freshness
 - [x] report.py — top 25 → Notion + JSON (context/veille-top25.json)
 - [x] Upgraded slide system for yt-script (responsive, animations, keyboard nav)
+- [x] Competitive analysis vs kostja94/marketing-skills (160+ skills) — enhanced yt-description, yt-miniature, yt-repurposing, yt-script to v1.1.0
 
 ---
 

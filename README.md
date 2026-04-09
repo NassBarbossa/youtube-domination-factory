@@ -79,8 +79,8 @@ All agents communicate through a single JSON bus: **`context/video-context.json`
   "script": {full_script, structure, word_count, ...},
   "titres_seo": {winning_title, keywords, ...},
   "miniature": {recommended_concept, ...},
-  "description": {full_description, tags, ...},
-  "repurposing": {shorts[], x_thread, linkedin_post, ...},
+  "description": {full_description, hook_framework, tags, enriched_keywords, sources, cta_type, ...},
+  "repurposing": {shorts[], x_thread, x_reply_link, linkedin_post, linkedin_format_bonus, ...},
   "pipeline_log": [...]
 }
 ```
@@ -206,15 +206,18 @@ Phase 2b: yt-miniature reads script.* + titres_seo.winning_title → writes mini
           └─ color_palette = ["#FF6B00", "#FFFFFF"]
 
 Phase 2c: yt-description reads script.* + titres_seo.* → writes description.*
-          └─ description_full = "In this video, I show how..."
+          └─ hook_framework = "PAS" (Problem → Agitation → Solution in first 150 chars)
+          └─ description_full = "Tu galères à gérer une équipe ? Ça te coûte..."
           └─ tags = ["claude code", "ai agents", "automation", ...]
+          └─ sources = ["https://docs.anthropic.com/...", "https://..."]
 
 Phase 3: USER VALIDATES → clicks "OK"
 
 Phase 4: yt-repurposing reads validated script.* + titres_seo.winning_title → writes repurposing.*
-         └─ shorts[0] = {hook: "...", content: "...", punchline: "..."}
-         └─ x_thread = "I built an AI agency with 0 employees. Here's how..."
-         └─ linkedin = "Excited to share how I scaled a team using AI..."
+         └─ shorts[0] = {hook: "0 employés, 1 IA — attends la fin", ...}  (5-7 word hooks, captions mandatory)
+         └─ x_thread = "J'ai construit une agence IA sans employés..." (71-100 chars/tweet, NO link in thread)
+         └─ x_reply_link = "Vidéo complète ici 👇 [URL]"  (link in reply = -50% reach penalty avoided)
+         └─ linkedin = "Il y a 6 mois, j'avais 3 employés..." (1300-1600 chars, PAS framework hook)
 ```
 
 **Result:** All outputs in `context/video-context.json` + individual files in `yt-script/outputs/`, etc.
