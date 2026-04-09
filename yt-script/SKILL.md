@@ -121,52 +121,26 @@ Le script complet avec :
 - Shorts moments identifiés (2-3 segments clippables)
 
 **Output 2 — Slides de présentation HTML** (`[slug]-visual.html`)
-Un fichier HTML self-contained **présentable à l'écran pendant la vidéo**. Zéro dépendance externe sauf Google Fonts. Navigable au clavier (flèches, espace) et au touch.
+Généré via le skill **`frontend-slides`**. Invoquer le skill `frontend-slides` avec le contenu du script comme input pour produire un fichier HTML self-contained présentable à l'écran pendant la vidéo.
 
-**IMPORTANT** : Utiliser `yt-script/references/slide-template.html` comme template de base. Copier le CSS et le JS intégralement, ne modifier que le contenu des slides.
+**Workflow** :
+1. Extraire les moments clés du script (chiffres, statements, comparaisons, CTA)
+2. Invoquer `frontend-slides` en lui passant ces éléments comme contenu
+3. Sauvegarder l'output dans `yt-script/outputs/[slug]-visual.html`
 
-Spécifications visuelles :
-- **Fond sombre** (#0A0A0A) avec grille subtile (lignes 60px, 2% opacité)
-- **Couleurs brand** : orange (#FF6B35) et cyan (#00E5FF) uniquement
-- **Polices** : Syne (800, titres) + Inter (400/600, body) via Google Fonts
-- **Effets glow** : halos orange/cyan en arrière-plan (radial-gradient, 12-15% opacité)
-- **Divider coloré** (80px × 4px) au-dessus de chaque titre de section
-- **Numérotation** discrète en haut à droite (ex: "03 / 12")
-- **Progress bar** en haut (dégradé orange → cyan)
-- **Sizing responsive** : tout en `clamp()`, jamais de valeurs fixes en px pour le texte
-
-Animations :
-- Classe `.reveal` sur chaque élément de contenu
-- Entrance : fade + translateY(30px) avec easing expo
-- Stagger : 0.1s de délai entre chaque élément (via nth-child)
-- Déclenché par IntersectionObserver quand la slide devient visible
-- Respecter `prefers-reduced-motion`
-
-Navigation :
-- Scroll snap vertical (`scroll-snap-type: y mandatory`)
-- Clavier : flèches, espace, PageUp/PageDown
-- Touch : swipe vertical
-
-Structure des slides :
-- **Slide intro** : chiffre clé (`.stat`, grande taille) + titre (h1) + sous-titre court
-- **Slides section** : divider + titre (h2) + 4 bullets max (courts et concis, PAS de phrases du script)
-- **Slides key statement** : UNE PHRASE PAR SLIDE (`.key-statement`), centrée, pas de bullets — pour les moments de révélation
-- **Slide two-col** : quand il y a une comparaison ou un avant/après
-- **Slide CTA** : box avec bordure orange, titre + texte
-
-Limites de contenu par slide (ne jamais dépasser) :
-- Titre + sous-titre : 1 heading + 1 ligne max
-- Section : 1 heading + 4-6 bullets max
-- Statement : 1 phrase de 3 lignes max
-- Two-col : 1 heading + 2 blocs de texte courts
-
-Anti-patterns (NE JAMAIS faire) :
-- Copier le texte du script dans les slides (les slides sont des SUPPORTS VISUELS, pas un transcript)
-- Mettre plus de 6 bullets sur une slide
-- Utiliser des fonts autres que Syne/Inter
-- Ajouter des couleurs hors orange/cyan/blanc/gris
-- Utiliser des tailles fixes en px pour le texte (toujours clamp())
-- Oublier la classe `.reveal` sur les éléments de contenu
+**Consignes pour frontend-slides** :
+- Les slides sont des **supports visuels pour la vidéo**, pas un transcript du script
+- Privilégier : chiffres clés en grand, une phrase par slide pour les révélations, 4 bullets max par section
+- Ne jamais copier le texte du script mot pour mot dans les slides
+- **Skipper la Phase 2 (style discovery)** de frontend-slides — utiliser directement les couleurs brand ci-dessous
+- **Branding Nass Riviera** (obligatoire, ne jamais changer) :
+  - Fond sombre : `#0A0A0A`
+  - Couleur primaire (accents, titres, dividers) : orange `#FF6B35`
+  - Couleur secondaire (highlights, données) : cyan `#00E5FF`
+  - Texte principal : blanc `#FFFFFF`
+  - Texte secondaire : `rgba(255,255,255,0.75)`
+  - Polices : **Syne** (800, titres) + **Inter** (400/600, body)
+  - Effets glow : halos orange/cyan en arrière-plan (radial-gradient, 12-15% opacité)
 
 Assets brand : si une image de Nass est disponible dans `yt-script/outputs/` (ex: `youtube_watermark_150x150.png`), l'utiliser sur la slide parcours.
 
@@ -275,7 +249,7 @@ Une fois que Nass a validé la structure :
 
 2. **Créer les deux fichiers outputs** dans `yt-script/outputs/` :
    - `[slug].md` — script avec metadata, timestamps, shorts moments
-   - `[slug]-visual.html` — slides de présentation (fond sombre, orange/cyan, Inter, moments clés = une phrase par slide)
+   - `[slug]-visual.html` — slides de présentation générées via le skill `frontend-slides`
 
 3. **Mettre à jour `context/video-context.json` → `script`** :
 
