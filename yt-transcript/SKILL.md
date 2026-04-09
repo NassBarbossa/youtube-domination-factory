@@ -36,7 +36,7 @@ Sources (dans cet ordre) :
    conn.close()
    \""
    ```
-2. **YouTube search** (fallback) — si la DB n'a pas assez de résultats
+Si aucune vidéo n'est trouvée dans la DB → le signaler. C'est une info utile (terrain vierge ou sujet pas encore couvert par les chaînes trackées).
 
 Sélectionner **3-5 vidéos max** les plus pertinentes (priorité aux Tier 1, aux scores élevés, et aux vidéos récentes).
 
