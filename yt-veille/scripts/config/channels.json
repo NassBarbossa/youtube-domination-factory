@@ -669,6 +669,26 @@
       "priority": 4,
       "max_videos": 3,
       "added_at": "2026-04-04"
+    },
+    {
+      "handle": "Zeyneb Madi",
+      "channel_id": "UC3HXrI_uzpOLm4b0BcYbn6g",
+      "niche": "ai-tools",
+      "market": "FR",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-09"
+    },
+    {
+      "handle": "Julian Goldie SEO",
+      "channel_id": "UCGpsgNbzdF7BECCVbB1COHw",
+      "niche": "ai-tools",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-04-09"
     }
   ]
 }
