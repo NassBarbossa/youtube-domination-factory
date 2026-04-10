@@ -2,8 +2,8 @@
   "_meta": {
     "version": "2.0",
     "slug": "claude-mythos",
-    "status": "completed",
-    "pipeline_step": 5,
+    "status": "in_progress",
+    "pipeline_step": 3,
     "triggered_by": "user",
     "created_at": "2026-04-09T22:00:00Z"
   },

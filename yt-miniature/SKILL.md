@@ -198,51 +198,134 @@ When running as part of an agent team:
 
 ---
 
-## AI Image Generation (Gemini/Midjourney)
+## AI Image Generation — Nano Banana 2 via OpenRouter
 
-Quand Nass veut générer la miniature avec l'IA, fournir ce template de prompt :
+Generate thumbnails directly via OpenRouter API (no external CLI needed). The prompt MUST be in English.
 
-### Template Prompt
+### API Configuration
+
+- **Endpoint**: `https://openrouter.ai/api/v1/chat/completions`
+- **Model**: `google/gemini-3.1-flash-image-preview`
+- **API Key**: `OPENROUTER_API_KEY` from `.env` at project root
+- **Cost**: ~$0.07 per generation
+- **Output**: Base64 JPEG in `response.choices[0].message.images[0].image_url.url`
+
+### Reference Photos
+
+Nass's reference photos are stored in `yt-miniature/references/nass/`. Files are named by expression type:
 
 ```
-STRICT FACE PRESERVATION: Use the EXACT face from my provided reference photo. Do not modify, generate, or replace any facial features.
+yt-miniature/references/nass/
+├── surprised.jpg      — eyebrows raised, mouth open
+├── curious.jpg        — eyebrow raise, engaged eyes
+├── confident.jpg      — slight smile, direct gaze
+├── focused.jpg        — looking at screen, concentrated
+├── skeptical.jpg      — one eyebrow up, slight frown
+└── neutral.jpg        — baseline expression
+```
 
-YouTube thumbnail, 1280x720, 16:9 aspect ratio, photorealistic:
+**Photo selection**: Match the concept's `face_expression` to the closest photo filename. If no exact match, use `neutral.jpg` as fallback.
 
-COMPOSITION:
-- Subject (me) positioned right third, face filling 40-50% of frame
-- [DEVICE: MacBook/iPhone] held naturally, screen facing viewer
-- Face well-lit, sharp focus, shallow depth of field on background
+### Generation Command
 
-EXPRESSION:
-- [EMOTION: surprised/curious/confident] — raised eyebrows, [specific expression]
-- Natural, not exaggerated or cartoonish
+To generate a thumbnail, use this bash command pattern:
 
-DEVICE SCREEN:
-- Display the [LOGO/ELEMENT] I provided
-- Subtle [COLOR: orange/cyan] glow emanating from screen
+```bash
+# 1. Select reference photo based on concept expression
+REF_PHOTO="yt-miniature/references/nass/[EXPRESSION].jpg"
 
-LIGHTING:
-- Dramatic rim light on face from the right side
-- Soft [COLOR] fill light from the device illuminating face
-- High contrast on facial features (+15%)
+# 2. Encode reference photo to base64
+REF_B64=$(base64 -w 0 "$REF_PHOTO")
 
-BACKGROUND:
-- Pure dark gradient (#0A0F1A to #12151F)
-- NO floating elements, NO particles, NO decorations
-- Clean, minimal, professional
+# 3. Call OpenRouter API
+source .env && curl -s "https://openrouter.ai/api/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -d "{
+    \"model\": \"google/gemini-3.1-flash-image-preview\",
+    \"messages\": [{
+      \"role\": \"user\",
+      \"content\": [
+        {\"type\": \"text\", \"text\": \"[ENGLISH PROMPT HERE]\"},
+        {\"type\": \"image_url\", \"image_url\": {\"url\": \"data:image/jpeg;base64,$REF_B64\"}}
+      ]
+    }],
+    \"max_tokens\": 4096
+  }" | node -e "
+    const d=[];
+    process.stdin.on('data',c=>d.push(c));
+    process.stdin.on('end',()=>{
+      const r=JSON.parse(d.join(''));
+      const img=r.choices[0].message.images[0];
+      const b64=img.image_url.url.replace(/^data:image\/\w+;base64,/,'');
+      require('fs').writeFileSync('yt-miniature/outputs/[SLUG]-thumbnail.jpg', Buffer.from(b64,'base64'));
+      console.log('Saved. Cost:', r.usage.cost, 'USD');
+    })"
+```
 
-OUTPUT: Export-ready PNG, sRGB, ultra sharp, no text overlay.
+### Output Files
+
+Generated thumbnails are saved to:
+```
+yt-miniature/outputs/[slug]-thumbnail.jpg      — raw AI generation (no text)
+yt-miniature/outputs/[slug]-thumbnail-final.jpg — after Canva text overlay (manual)
+```
+
+### Prompting Framework (source: Google Cloud — Ultimate Nano Banana Prompting Guide)
+
+**Formula**: `[Subject] + [Action] + [Location/context] + [Composition] + [Style]`
+
+**Rules**:
+- **Narrative, not keywords** — describe the scene like a creative director, not a tag list
+- **Positive framing** — describe what you want, never what you don't want ("empty background" not "no clutter")
+- **Specify lens** — use photographic terminology ("shallow depth of field f/1.8", "85mm portrait lens")
+- **Specify lighting** — name the technique ("dramatic chiaroscuro rim lighting", "soft split lighting")
+- **Describe materials physically** — textures and surfaces ("matte dark fabric", "brushed aluminum")
+- **Output in English** — Nano Banana 2 performs best with English prompts
+
+### Template Prompt (English — for Nano Banana 2)
+
+The prompt below is a **template**. Replace `[PLACEHOLDERS]` with values from the thumbnail concept. Always attach Nass's reference photo when invoking nano-banana-2.
+
+```
+Generate a photorealistic YouTube thumbnail, 1280x720, 16:9 aspect ratio.
+
+[SUBJECT] A young man (use the EXACT face from my attached reference photo — do not modify, generate, or replace any facial features) positioned on the [LEFT/RIGHT] third of the frame, face filling approximately [40-50]% of the frame.
+
+[ACTION] [EXPRESSION DESCRIPTION — e.g. "Looking directly at camera with impressed curiosity — slight eyebrow raise, eyes wide and engaged, mouth neutral, conveying 'I need to tell you about this' energy."]
+
+[LOCATION/CONTEXT] [BACKGROUND DESCRIPTION — e.g. "Standing against a pure dark gradient background transitioning from #0A0A0A to #12151F." Include any secondary elements like devices, glow layers, etc.]
+
+[COMPOSITION] Medium close-up shot, rule of thirds, two focal points maximum (face + [SECOND ELEMENT]). Shot on an 85mm portrait lens at f/1.8, shallow depth of field — face tack-sharp, background softly blurred. Safe zones clear: no important elements in bottom-right (YouTube timestamp), top-right (watch later button), or bottom-left (progress bar).
+
+[STYLE] High-end YouTube thumbnail photography style. [COLOR] dominant color palette with dramatic [LIGHTING TECHNIQUE — e.g. "cyan rim light from the right side"]. High contrast on facial features. Face luminosity high (bright, well-exposed). Clean, minimal composition — no floating elements, no particles, no decorations. Export-ready PNG, sRGB, ultra sharp. Do not add any text overlay on the image.
+```
+
+### Example: Claude Mythos thumbnail
+
+```
+Generate a photorealistic YouTube thumbnail, 1280x720, 16:9 aspect ratio.
+
+A young man (use the EXACT face from my attached reference photo — do not modify, generate, or replace any facial features) positioned on the left third of the frame, face filling approximately 45% of the frame.
+
+Looking directly at camera with impressed curiosity — slight eyebrow raise, eyes wide and engaged, mouth neutral. Conveying calm confidence and intellectual intrigue, not shock or fear.
+
+Standing against a pure dark gradient background transitioning from #0A0A0A to #12151F. On the right side of the frame, four subtle horizontal glowing layers ascending from dim to bright cyan, suggesting a hierarchy.
+
+Medium close-up shot, rule of thirds, two focal points maximum (face and the ascending glow layers). Shot on an 85mm portrait lens at f/1.8, shallow depth of field — face tack-sharp, background softly blurred.
+
+High-end YouTube thumbnail photography style. Cyan (#00E5FF) dominant color palette with dramatic cyan rim light from the right side illuminating the subject's face. High contrast on facial features. Face luminosity high and well-exposed against the dark background. Clean, minimal composition — no floating elements, no particles, no decorations. Export-ready PNG, sRGB, ultra sharp. Do not add any text overlay on the image.
 ```
 
 ### Checklist avant validation
+- [ ] Prompt rédigé en anglais
+- [ ] Photo de référence de Nass attachée
 - [ ] C'est bien le visage de Nass (pas un générique)
-- [ ] Expression émotionnelle visible
-- [ ] UN seul device (pas MacBook + iPhone)
-- [ ] Écran clean (logo ou UI simple, pas de dashboard)
+- [ ] Expression émotionnelle visible et naturelle
+- [ ] Maximum 2 éléments focaux
 - [ ] Fond sombre sans clutter
-- [ ] Glow coloré depuis l'écran
-- [ ] Pas de texte
+- [ ] Couleur dominante cohérente (cyan OU orange)
+- [ ] Pas de texte généré sur l'image (text overlay ajouté manuellement dans Canva)
 - [ ] Pas de watermark
 
 ---

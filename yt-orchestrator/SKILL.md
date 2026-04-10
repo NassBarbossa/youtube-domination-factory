@@ -234,9 +234,15 @@ Lance **3 appels Agent simultanés** :
    Prêt pour upload yt-calendrier ou montage manuel.
    ```
 
-2. Archiver le JSON complet : copier `context/video-context.json` vers `context/archive/[slug]-[timestamp].json`
-3. Mettre à jour `_meta.status` = "completed"
-4. Mettre à jour `_meta.pipeline_step` = 5
+2. **Exporter vers Google Docs** (via MCP `google-workspace`) :
+   - Créer un doc `[Script] {winning_title}` avec le contenu du script → sauver lien dans `script.google_doc_url`
+   - Créer un doc `[Repurposing] {winning_title}` avec Shorts + Thread X + LinkedIn → sauver lien dans `repurposing.google_doc_url`
+   - Email : `quentin.riviere69@gmail.com`
+   - Ajouter les liens Google Docs dans le récap affiché à Nass
+
+3. Archiver le JSON complet : copier `context/video-context.json` vers `context/archive/[slug]-[timestamp].json`
+4. Mettre à jour `_meta.status` = "completed"
+5. Mettre à jour `_meta.pipeline_step` = 5
 
 ---
 

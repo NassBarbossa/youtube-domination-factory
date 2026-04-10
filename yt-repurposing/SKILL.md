@@ -323,6 +323,61 @@ Aucune interaction utilisateur — tu travailles autonome.
 
 ---
 
+## Google Docs Export
+
+Après génération du repurposing, exporter automatiquement vers Google Docs.
+
+### Export automatique
+
+Utiliser le MCP `google-workspace` pour créer un Google Doc avec tous les contenus repurposing :
+
+1. **Créer le doc** via `mcp__google-workspace__create_doc` :
+   - `title` : `[Repurposing] {titre de la vidéo}` (ex: `[Repurposing] Claude Mythos : plus fort, moins cher`)
+   - `user_google_email` : `quentin.riviere69@gmail.com`
+   - `content` : tout le contenu repurposing formaté en texte brut :
+     ```
+     SHORTS
+     ======
+     
+     Short 1 — {title}
+     Hook: {hook}
+     {content}
+     Punchline: {punchline}
+     Text overlay: {text_overlay}
+     Source: {source_timestamp}
+     
+     [repeat for each short]
+     
+     THREAD X
+     ========
+     
+     {x_thread_full}
+     
+     Reply lien: {x_reply_link}
+     
+     POST LINKEDIN
+     =============
+     
+     {linkedin_full}
+     
+     PLANNING PUBLICATION
+     ====================
+     
+     {posting_schedule formatted}
+     ```
+
+2. **Sauvegarder le lien** dans `context/video-context.json` → `repurposing.google_doc_url`
+
+3. **Annoncer à Nass** : "Repurposing exporté vers Google Docs : [lien]"
+
+### Quand exporter
+
+- **Mode orchestrateur** : à la fin de Phase 4, après génération de tous les contenus
+- **Mode manuel** : après validation finale par Nass
+- **Toujours** : l'export est le dernier step
+
+---
+
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-repurposing`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec interaction utilisateur).

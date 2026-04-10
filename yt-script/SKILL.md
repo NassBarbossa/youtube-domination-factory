@@ -330,6 +330,31 @@ Une fois que Nass a validé la structure :
 
 ---
 
+## Google Docs Export
+
+Après génération du script (Phase 1b ou mode manuel), exporter automatiquement vers Google Docs.
+
+### Export automatique
+
+Utiliser le MCP `google-workspace` pour créer un Google Doc avec le script complet :
+
+1. **Créer le doc** via `mcp__google-workspace__create_doc` :
+   - `title` : `[Script] {titre de la vidéo}` (ex: `[Script] Claude Mythos : plus fort, moins cher`)
+   - `user_google_email` : `quentin.riviere69@gmail.com`
+   - `content` : le script complet en texte brut (contenu du fichier `[slug].md`)
+
+2. **Sauvegarder le lien** dans `context/video-context.json` → `script.google_doc_url`
+
+3. **Annoncer à Nass** : "Script exporté vers Google Docs : [lien]"
+
+### Quand exporter
+
+- **Mode orchestrateur** : à la fin de Phase 1b, après écriture du script
+- **Mode manuel** : après validation finale du script par Nass
+- **Toujours** : l'export est le dernier step, après les fichiers locaux
+
+---
+
 ## Mode Manuel (Préservé)
 
 Si Nass t'appelle directement avec `/yt-script`, ignore le Context Protocol et utilise le workflow classique (Step 1-5 avec interaction utilisateur).
