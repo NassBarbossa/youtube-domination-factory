@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'IA Remplace 3 400 Emplois Par Jour — Nass Riviera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   THEME — Nass Riviera Brand
+   =========================================== */
+:root {
+    --bg: #0A0A0A;
+    --orange: #FF6B35;
+    --cyan: #00E5FF;
+    --red: #FF4444;
+    --text: #FFFFFF;
+    --text-secondary: rgba(255,255,255,0.75);
+    --text-muted: rgba(255,255,255,0.4);
+    --glow-orange: rgba(255,107,53,0.12);
+    --glow-cyan: rgba(0,229,255,0.08);
+    --glow-red: rgba(255,68,68,0.10);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --title-size: clamp(2rem, 6vw, 5rem);
+    --h2-size: clamp(1.5rem, 3.5vw, 3rem);
+    --body-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    --stat-size: clamp(3rem, 8vw, 7rem);
+    --slide-num-size: clamp(0.65rem, 1vw, 0.85rem);
+    --slide-padding: clamp(2rem, 5vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.6s;
+}
+
+/* ===========================================
+   VIEWPORT BASE (MANDATORY)
+   =========================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--bg); }
+body { font-family: var(--font-body); color: var(--text); background: url('bg-nass.png') center top / 100% auto fixed no-repeat, var(--bg); -webkit-font-smoothing: antialiased; }
+
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); position: relative; z-index: 1; }
+.slide-num { position: absolute; top: clamp(1rem, 2vw, 2rem); right: clamp(1rem, 2vw, 2rem); font-family: var(--font-body); font-size: var(--slide-num-size); color: rgba(255,255,255,0.3); letter-spacing: 0.1em; z-index: 10; }
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; z-index: 100; background: linear-gradient(90deg, var(--orange), var(--cyan)); width: 0%; transition: width 0.3s ease; }
+.watermark { position: fixed; bottom: clamp(1rem, 2vw, 2rem); left: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-display); font-weight: 800; font-size: clamp(0.65rem, 1vw, 0.85rem); color: rgba(255,255,255,0.25); letter-spacing: 0.05em; z-index: 50; pointer-events: none; }
+
+/* ===========================================
+   TYPOGRAPHY
+   =========================================== */
+h1 { font-family: var(--font-display); font-weight: 800; font-size: var(--title-size); line-height: 1.1; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--h2-size); line-height: 1.2; }
+h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 2vw, 1.5rem); line-height: 1.2; color: var(--text); }
+p, li { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-secondary); }
+.divider { width: 80px; height: 4px; background: linear-gradient(90deg, var(--orange), var(--cyan)); border-radius: 2px; margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem); }
+
+/* ===========================================
+   STAT
+   =========================================== */
+.stat { font-family: var(--font-display); font-weight: 800; font-size: var(--stat-size); background: linear-gradient(135deg, var(--orange), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.stat-red { font-family: var(--font-display); font-weight: 800; font-size: var(--stat-size); background: linear-gradient(135deg, var(--red), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.stat-label { font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.5rem; }
+
+/* ===========================================
+   GLITCH EFFECT
+   =========================================== */
+.glitch { position: relative; display: inline-block; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
+.glitch::before { left: 2px; text-shadow: -2px 0 var(--red); clip-path: inset(0 0 100% 0); animation: glitch-top 2.5s infinite linear alternate-reverse; }
+.glitch::after { left: -2px; text-shadow: 2px 0 var(--cyan); clip-path: inset(100% 0 0 0); animation: glitch-bottom 3s infinite linear alternate-reverse; }
+@keyframes glitch-top { 0%,95%{clip-path:inset(0 0 100% 0)}96%{clip-path:inset(20% 0 50% 0)}97%{clip-path:inset(60% 0 10% 0)}98%{clip-path:inset(40% 0 30% 0)}100%{clip-path:inset(0 0 100% 0)} }
+@keyframes glitch-bottom { 0%,95%{clip-path:inset(100% 0 0 0)}96%{clip-path:inset(50% 0 20% 0)}97%{clip-path:inset(10% 0 60% 0)}98%{clip-path:inset(30% 0 40% 0)}100%{clip-path:inset(100% 0 0 0)} }
+
+/* ===========================================
+   KEY STATEMENT + GRADIENT SHIFT
+   =========================================== */
+.key-statement { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.5rem); line-height: 1.3; color: var(--text); text-align: center; max-width: 800px; margin: 0 auto; }
+.gradient-shift { background: linear-gradient(90deg, var(--orange), var(--cyan), var(--orange)); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradient-shift 4s ease infinite; }
+@keyframes gradient-shift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
+
+/* ===========================================
+   DEFINITION
+   =========================================== */
+.def-term { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 4vw, 3.5rem); color: var(--cyan); margin-bottom: clamp(0.5rem, 1vw, 1rem); }
+.def-explanation { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-secondary); max-width: 700px; line-height: 1.5; }
+
+/* ===========================================
+   QUOTE
+   =========================================== */
+.quote-text { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 2.5vw, 2rem); line-height: 1.4; color: var(--text); font-style: italic; max-width: 750px; }
+.quote-text::before { content: '\201C'; color: var(--orange); font-size: 1.5em; }
+.quote-text::after { content: '\201D'; color: var(--orange); font-size: 1.5em; }
+.quote-source { font-size: var(--body-size); color: var(--orange); margin-top: 1rem; }
+.typing-cursor::after { content: '|'; animation: blink 0.7s step-end infinite; color: var(--orange); font-style: normal; margin-left: 2px; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+
+/* ===========================================
+   INDUSTRY GRID — 4 sectors on one slide
+   =========================================== */
+.industry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.75rem, 2vw, 1.5rem); width: 100%; max-width: 900px; margin: 0 auto; }
+.industry-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: clamp(0.6rem, 1.5vw, 1.2rem); display: flex; flex-direction: column; gap: clamp(0.2rem, 0.5vw, 0.4rem); transition: border-color 0.3s ease; }
+.industry-card:hover { border-color: rgba(255,255,255,0.15); }
+.industry-card-header { display: flex; align-items: center; gap: clamp(0.3rem, 0.8vw, 0.6rem); }
+.industry-card-header svg { width: clamp(18px, 2.5vw, 28px); height: clamp(18px, 2.5vw, 28px); flex-shrink: 0; }
+.industry-card-header h3 { font-size: clamp(0.8rem, 1.5vw, 1.1rem); }
+.industry-card .company { font-size: clamp(0.7rem, 1.2vw, 0.95rem); color: var(--text-secondary); line-height: 1.4; }
+.industry-card .company strong { color: var(--text); }
+.industry-card .company .jobs { color: var(--cyan); font-weight: 600; font-family: var(--font-display); }
+
+/* ===========================================
+   LOGO GRID — AI tool logos
+   =========================================== */
+.logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.75rem, 2vw, 1.5rem); width: 100%; max-width: 700px; margin: 0 auto; }
+.logo-card { background: rgba(255,255,255,0.95); border-radius: 12px; padding: clamp(0.8rem, 2vw, 1.5rem); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(0.4rem, 0.8vw, 0.7rem); aspect-ratio: 4/3; transition: transform 0.3s var(--ease-out-expo); }
+.logo-card:hover { transform: scale(1.05); }
+.logo-card .logo-name { font-family: var(--font-display); font-weight: 800; font-size: clamp(0.7rem, 1.3vw, 1rem); color: #111; }
+.logo-card img { width: clamp(36px, 5vw, 56px); height: clamp(36px, 5vw, 56px); object-fit: contain; }
+
+/* ===========================================
+   QUALITY CIRCLES — "pas besoin d'être..."
+   =========================================== */
+.quality-row { display: flex; gap: clamp(1.5rem, 4vw, 4rem); justify-content: center; align-items: center; flex-wrap: wrap; margin-top: var(--content-gap); }
+.quality-circle { width: clamp(100px, 15vw, 160px); height: clamp(100px, 15vw, 160px); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.quality-circle.not-needed { border: 2px solid rgba(255,255,255,0.15); background: transparent; }
+.quality-circle.needed { border: 2px solid var(--cyan); background: rgba(0,229,255,0.05); }
+.quality-circle svg { width: clamp(24px, 3vw, 36px); height: clamp(24px, 3vw, 36px); margin-bottom: 0.5rem; }
+.quality-circle span { font-family: var(--font-display); font-weight: 700; font-size: clamp(0.7rem, 1.2vw, 1rem); color: var(--text); }
+
+/* ===========================================
+   USE CASE CARD
+   =========================================== */
+.usecase-content { display: flex; gap: clamp(1.5rem, 3vw, 3rem); align-items: center; max-width: 900px; margin: 0 auto; width: 100%; }
+.usecase-icon { flex-shrink: 0; width: clamp(60px, 10vw, 120px); height: clamp(60px, 10vw, 120px); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
+.usecase-icon svg { width: 60%; height: 60%; }
+.usecase-details { flex: 1; }
+.usecase-details h2 { margin-bottom: clamp(0.5rem, 1vw, 1rem); }
+.usecase-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.3rem, 0.6vh, 0.6rem); }
+.usecase-list li { padding-left: 1.2em; position: relative; font-size: clamp(0.75rem, 1.3vw, 1.05rem); color: var(--text-secondary); line-height: 1.5; }
+.usecase-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+.usecase-list li strong { color: var(--text); }
+
+/* ===========================================
+   BULLET LIST
+   =========================================== */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.4rem, 1vh, 1rem); }
+.bullet-list li { padding-left: 1.5em; position: relative; font-size: var(--body-size); color: var(--text-secondary); }
+.bullet-list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.bullet-list li strong { color: var(--text); }
+
+/* ===========================================
+   CTA
+   =========================================== */
+.cta-box { border: 2px solid var(--orange); border-radius: 12px; padding: clamp(1.5rem, 3vw, 3rem); text-align: center; background: rgba(255,107,53,0.05); animation: cta-pulse 2.5s ease-in-out infinite; }
+@keyframes cta-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,0.3)}50%{box-shadow:0 0 30px 8px rgba(255,107,53,0.15)} }
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(1){transition-delay:.1s}.reveal:nth-child(2){transition-delay:.2s}.reveal:nth-child(3){transition-delay:.3s}.reveal:nth-child(4){transition-delay:.4s}.reveal:nth-child(5){transition-delay:.5s}.reveal:nth-child(6){transition-delay:.6s}.reveal:nth-child(7){transition-delay:.7s}
+
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo); }
+.slide.visible .reveal-left { opacity: 1; transform: translateX(0); }
+.reveal-left:nth-child(1){transition-delay:.15s}.reveal-left:nth-child(2){transition-delay:.25s}.reveal-left:nth-child(3){transition-delay:.35s}.reveal-left:nth-child(4){transition-delay:.45s}.reveal-left:nth-child(5){transition-delay:.55s}.reveal-left:nth-child(6){transition-delay:.65s}
+
+.reveal-scale { opacity: 0; transform: scale(0.7); transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo); }
+.slide.visible .reveal-scale { opacity: 1; transform: scale(1); }
+
+.reveal-blur { opacity: 0; filter: blur(12px); transition: opacity 0.8s var(--ease-out-expo), filter 0.8s var(--ease-out-expo); }
+.slide.visible .reveal-blur { opacity: 1; filter: blur(0); }
+
+/* ===========================================
+   SECTION TITLE — transition slides
+   =========================================== */
+.section-number { font-family: var(--font-display); font-weight: 800; font-size: clamp(4rem, 12vw, 10rem); line-height: 1; background: linear-gradient(135deg, var(--orange), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; position: absolute; top: clamp(1rem, 3vw, 3rem); left: clamp(2rem, 5vw, 6rem); }
+.section-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 4.5vw, 4rem); color: var(--text); line-height: 1.15; }
+.section-subtitle { font-size: clamp(0.9rem, 1.5vw, 1.2rem); color: var(--text-muted); margin-top: clamp(0.5rem, 1vw, 1rem); }
+.section-line { width: clamp(40px, 8vw, 100px); height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem); }
+
+/* ===========================================
+   BACKGROUNDS — bg image on body, slides are transparent overlays
+   =========================================== */
+.slide { background: transparent; }
+/* Subtle mood overlays — bg image shows through from body */
+.glow-orange { background: linear-gradient(135deg, rgba(10,10,10,0.4) 0%, rgba(255,107,53,0.06) 100%); }
+.glow-cyan { background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, rgba(10,10,10,0.4) 100%); }
+.glow-both { background: transparent; }
+.glow-red { background: linear-gradient(135deg, rgba(255,68,68,0.06) 0%, rgba(10,10,10,0.35) 100%); }
+.grid-bg { } /* grid already in the bg image */
+.scanlines::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px); pointer-events: none; z-index: 2; }
+#particleCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media(max-height:700px){:root{--slide-padding:clamp(0.75rem,3vw,2rem);--content-gap:clamp(0.4rem,1.5vw,1rem);--title-size:clamp(1.25rem,4.5vw,2.5rem);--h2-size:clamp(1rem,3vw,1.75rem)}}
+@media(max-height:600px){:root{--slide-padding:clamp(0.5rem,2.5vw,1.5rem);--title-size:clamp(1.1rem,4vw,2rem);--body-size:clamp(0.7rem,1.2vw,0.95rem)}.slide-num{display:none}}
+@media(max-height:500px){:root{--slide-padding:clamp(0.4rem,2vw,1rem);--title-size:clamp(1rem,3.5vw,1.5rem)}}
+@media(max-width:600px){.industry-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:repeat(2,1fr)}.usecase-content{flex-direction:column;text-align:center}.quality-row{gap:1rem}.quality-circle{width:80px;height:80px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.2s!important}html{scroll-behavior:auto}#particleCanvas{display:none}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="watermark">Nass Riviera</div>
+
+<!-- =====================================================
+     SECTION 1 — L'IA remplace massivement l'humain
+     ===================================================== -->
+
+<!-- 01 — SECTION TITLE -->
+<section class="slide glow-red">
+    <span class="section-number reveal-blur">01</span>
+    <span class="slide-num">01 / 28</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="section-line reveal"></div>
+        <h1 class="section-title reveal" style="transition-delay: 0.15s;">L'IA remplace<br>massivement l'humain</h1>
+        <p class="section-subtitle reveal" style="transition-delay: 0.3s;">Les chiffres que personne ne veut voir</p>
+    </div>
+</section>
+
+<!-- 02 — TITLE -->
+<section class="slide glow-red grid-bg scanlines">
+    <canvas id="particleCanvas"></canvas>
+    <span class="slide-num">02 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <div class="divider reveal"></div>
+        <h1 class="reveal-scale glitch" data-text="3 400 emplois." style="font-size: clamp(2.5rem, 7vw, 6rem);">3 400 emplois.</h1>
+        <h1 class="reveal-blur" style="color: var(--orange); font-size: clamp(1.5rem, 4vw, 3.5rem); transition-delay: 0.4s;">Par jour.</h1>
+        <p class="reveal" style="font-size: clamp(0.9rem, 1.5vw, 1.2rem); margin-top: 1.5rem; color: var(--text-muted); transition-delay: 0.7s;">Source : layoffhedge.com</p>
+    </div>
+</section>
+
+<!-- 02 — STAT: 180 000 -->
+<section class="slide glow-orange scanlines">
+    <span class="slide-num">03 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem; opacity: 0.8;"><polyline points="7 13 12 18 17 13"/><line x1="12" y1="2" x2="12" y2="18"/></svg>
+        <div class="stat-red reveal-scale counter" data-target="180000" data-suffix="" data-separator=" ">180 000</div>
+        <p class="stat-label reveal" style="transition-delay: 0.4s;">emplois attribués directement à l'IA en 2025</p>
+    </div>
+</section>
+
+<!-- 03 — STAT: 92 000 -->
+<section class="slide glow-cyan scanlines">
+    <span class="slide-num">04 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem; opacity: 0.8;"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        <div class="stat-red reveal-scale counter" data-target="92000" data-suffix="" data-separator=" ">92 000</div>
+        <p class="stat-label reveal" style="transition-delay: 0.4s;">emplois US supprimés en février 2026 seul</p>
+    </div>
+</section>
+
+<!-- 04 — STAT: Janvier 2026 -->
+<section class="slide glow-red grid-bg scanlines">
+    <span class="slide-num">05 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/><circle cx="12" cy="19" r="0.5" fill="var(--orange)"/></svg>
+        <h2 class="reveal-blur" style="font-size: clamp(2rem, 5vw, 4rem);">Janvier 2026</h2>
+        <p class="reveal" style="font-size: clamp(1.1rem, 2.2vw, 1.8rem); margin-top: 1rem; max-width: 700px; transition-delay: 0.3s;">Plus gros mois de licenciements annoncés <span class="gradient-shift" style="font-weight: 700;">depuis la récession de 2009</span></p>
+    </div>
+</section>
+
+<!-- 05 — STAT: 58% -->
+<section class="slide glow-orange">
+    <span class="slide-num">06 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        <div class="stat reveal-scale counter" data-target="58" data-suffix="%">58%</div>
+        <p class="stat-label reveal" style="transition-delay: 0.4s;">des entreprises prévoient encore plus de licenciements en 2026</p>
+    </div>
+</section>
+
+<!-- 06 — ALL INDUSTRIES grid -->
+<section class="slide glow-both grid-bg">
+    <span class="slide-num">07 / 28</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <h2 class="reveal" style="margin-bottom: var(--content-gap); text-align: center;">Toutes les industries sont touchées</h2>
+        <div class="industry-grid">
+            <div class="industry-card reveal-left" style="transition-delay: 0.15s;">
+                <div class="industry-card-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1" fill="rgba(0,229,255,0.15)"/><line x1="9" y1="1" x2="9" y2="5"/><line x1="15" y1="1" x2="15" y2="5"/><line x1="9" y1="19" x2="9" y2="23"/><line x1="15" y1="19" x2="15" y2="23"/><line x1="1" y1="9" x2="5" y2="9"/><line x1="1" y1="15" x2="5" y2="15"/><line x1="19" y1="9" x2="23" y2="9"/><line x1="19" y1="15" x2="23" y2="15"/></svg>
+                    <h3>Tech</h3>
+                </div>
+                <p class="company"><strong>Oracle</strong> — <span class="jobs">30 000</span> postes</p>
+            </div>
+            <div class="industry-card reveal-left" style="transition-delay: 0.3s;">
+                <div class="industry-card-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M3 21h18"/><path d="M3 10h18"/><path d="M12 3l9 7H3l9-7z" fill="rgba(255,107,53,0.12)"/><line x1="5" y1="10" x2="5" y2="21"/><line x1="9" y1="10" x2="9" y2="21"/><line x1="15" y1="10" x2="15" y2="21"/><line x1="19" y1="10" x2="19" y2="21"/></svg>
+                    <h3>Banque</h3>
+                </div>
+                <p class="company"><strong>HSBC</strong> — <span class="jobs">20 000</span> postes</p>
+            </div>
+            <div class="industry-card reveal-left" style="transition-delay: 0.45s;">
+                <div class="industry-card-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1" fill="rgba(0,229,255,0.06)"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    <h3>Logistique</h3>
+                </div>
+                <p class="company"><strong>UPS</strong> — <span class="jobs">30 000</span> postes</p>
+            </div>
+            <div class="industry-card reveal-left" style="transition-delay: 0.6s;">
+                <div class="industry-card-header">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" fill="rgba(255,107,53,0.08)"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <h3>Consulting</h3>
+                </div>
+                <p class="company"><strong>Accenture</strong> — <span class="jobs">11 000</span> postes</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SECTION 2 — Les mots des CEOs
+     ===================================================== -->
+
+<!-- 08 — SECTION TITLE -->
+<section class="slide glow-orange">
+    <span class="section-number reveal-blur">02</span>
+    <span class="slide-num">08 / 28</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="section-line reveal"></div>
+        <h1 class="section-title reveal" style="transition-delay: 0.15s;">Les mots des CEOs</h1>
+        <p class="section-subtitle reveal" style="transition-delay: 0.3s;">Ce qu'ils disent après avoir viré des milliers de personnes</p>
+    </div>
+</section>
+
+<!-- 09 — QUOTE: CEO Block (traduite FR) -->
+<section class="slide glow-orange grid-bg">
+    <span class="slide-num">09 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center;">
+        <svg class="reveal" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1.5rem; opacity: 0.6;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="rgba(255,107,53,0.08)"/></svg>
+        <p class="quote-text reveal-blur typing-cursor" style="transition-delay: 0.2s;">Les outils d'intelligence artificielle ont changé ce que ça veut dire de construire quelque chose</p>
+        <p class="quote-source reveal" style="transition-delay: 0.6s;">— CEO de Block, après avoir viré 4 000 personnes</p>
+    </div>
+</section>
+
+<!-- 08 — QUOTE: CEO WiseTech (traduite FR) -->
+<section class="slide glow-cyan">
+    <span class="slide-num">10 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center;">
+        <svg class="reveal" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1.5rem; opacity: 0.6;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="rgba(0,229,255,0.08)"/></svg>
+        <p class="quote-text reveal-blur typing-cursor" style="transition-delay: 0.2s;">L'ère du code manuel est terminée</p>
+        <p class="quote-source reveal" style="transition-delay: 0.6s;">— CEO de WiseTech Global, après avoir supprimé 29% de ses effectifs</p>
+    </div>
+</section>
+
+<!-- 11 — QUESTION: L'IA va-t-elle tous nous remplacer ? -->
+<section class="slide glow-red">
+    <span class="slide-num">11 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <h1 class="reveal-blur" style="font-size: clamp(1.5rem, 3.5vw, 3rem);">Alors, l'IA va-t-elle vraiment<br><span style="color: var(--orange);">tous nous remplacer ?</span></h1>
+    </div>
+</section>
+
+<!-- 12 — RÉPONSE: NON -->
+<section class="slide glow-both">
+    <span class="slide-num">12 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <h1 class="reveal-scale" style="font-size: clamp(3rem, 8vw, 7rem); color: var(--cyan);">NON</h1>
+        <p class="reveal" style="font-size: clamp(1.2rem, 2.5vw, 2rem); margin-top: clamp(1rem, 2vw, 2rem); max-width: 700px; transition-delay: 0.4s;">Elle remplacera seulement<br><span style="color: var(--orange); font-weight: 700; font-family: var(--font-display);">les humains obsolètes</span></p>
+    </div>
+</section>
+
+<!-- 13 — EXEMPLE: Service de 20 personnes -->
+<section class="slide glow-orange grid-bg">
+    <span class="slide-num">13 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="reveal" style="font-size: clamp(1rem, 1.8vw, 1.4rem); color: var(--text-secondary); margin-bottom: clamp(1rem, 2vw, 1.5rem);">Prenons un exemple</p>
+        <h2 class="reveal-blur" style="font-size: clamp(1.5rem, 3.5vw, 2.8rem); transition-delay: 0.2s;">Un service dans une entreprise</h2>
+        <!-- 20 person icons in a grid -->
+        <div class="reveal" style="display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(6px, 1vw, 12px); margin-top: clamp(1.5rem, 3vw, 2.5rem); max-width: 500px; transition-delay: 0.5s;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+        </div>
+        <p class="reveal" style="font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.5rem); margin-top: clamp(1rem, 2vw, 1.5rem); transition-delay: 0.7s;"><span style="color: var(--text-muted);">qui a</span> <span class="counter" data-target="20" data-suffix=" personnes" style="color: var(--text);">20 personnes</span></p>
+    </div>
+</section>
+
+<!-- 14 — RÉSULTAT: 2 employés boostés -->
+<section class="slide glow-cyan">
+    <span class="slide-num">14 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="reveal" style="font-size: clamp(1rem, 1.8vw, 1.4rem); color: var(--text-secondary); margin-bottom: clamp(1rem, 2vw, 1.5rem);">On va garder seulement</p>
+        <!-- 2 person icons in cyan + lightning bolts -->
+        <div class="reveal-scale" style="display: flex; gap: clamp(2rem, 5vw, 5rem); justify-content: center; margin-bottom: clamp(1rem, 2vw, 2rem); transition-delay: 0.3s;">
+            <div style="text-align: center;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><circle cx="12" cy="7" r="4" fill="rgba(0,229,255,0.1)"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" style="margin-top: -4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="rgba(255,107,53,0.2)"/></svg>
+            </div>
+            <div style="text-align: center;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><circle cx="12" cy="7" r="4" fill="rgba(0,229,255,0.1)"/><path d="M5.5 21c0-4 3-7 6.5-7s6.5 3 6.5 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2" style="margin-top: -4px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="rgba(255,107,53,0.2)"/></svg>
+            </div>
+        </div>
+        <h1 class="reveal-blur" style="font-size: clamp(2rem, 5vw, 4rem); transition-delay: 0.5s;"><span style="color: var(--cyan);">2</span> employés</h1>
+        <p class="reveal" style="font-size: clamp(1.2rem, 2.2vw, 1.8rem); margin-top: 0.5rem; transition-delay: 0.7s;">boostés à l'<span class="gradient-shift" style="font-weight: 700;">IA</span></p>
+    </div>
+</section>
+
+<!-- 15 — STATEMENT: le twist -->
+<section class="slide glow-both">
+    <span class="slide-num">15 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center;">
+        <p class="key-statement reveal-scale" style="font-size: clamp(1.5rem, 3.5vw, 3rem);">L'IA ne remplace pas les gens.<br><br><span class="gradient-shift" style="font-size: 1.1em;">Elle remplace ceux qui ne l'utilisent pas.</span></p>
+    </div>
+</section>
+
+<!-- =====================================================
+     SECTION 3 — Alors comment piloter l'IA
+     ===================================================== -->
+
+<!-- 16 — SECTION TITLE -->
+<section class="slide glow-cyan">
+    <span class="section-number reveal-blur">03</span>
+    <span class="slide-num">16 / 28</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="section-line reveal" style="background: var(--cyan);"></div>
+        <h1 class="section-title reveal" style="transition-delay: 0.15s;">Alors comment<br>piloter l'IA</h1>
+        <p class="section-subtitle reveal" style="transition-delay: 0.3s;">La solution pour ne pas se faire remplacer</p>
+    </div>
+</section>
+
+<!-- 17 — Pas besoin d'être... -->
+<section class="slide glow-cyan grid-bg">
+    <span class="slide-num">17 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <h2 class="reveal" style="font-size: clamp(1.5rem, 3.5vw, 2.8rem);">Pour commencer, tu n'as pas besoin d'être un</h2>
+        <div class="quality-row" style="margin-top: clamp(1.5rem, 3vw, 3rem);">
+            <!-- Entrepreneur: person with briefcase -->
+            <div class="quality-circle not-needed reveal-scale" style="transition-delay: 0.2s; width: clamp(110px, 16vw, 170px); height: clamp(110px, 16vw, 170px);">
+                <svg viewBox="0 0 64 64" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: clamp(44px, 6vw, 64px); height: clamp(44px, 6vw, 64px);">
+                    <circle cx="32" cy="14" r="7" fill="rgba(255,255,255,0.05)"/>
+                    <path d="M20 30c0-6.6 5.4-9 12-9s12 2.4 12 9"/>
+                    <rect x="22" y="36" width="20" height="14" rx="2" fill="rgba(255,255,255,0.05)"/>
+                    <line x1="32" y1="36" x2="32" y2="50"/>
+                    <path d="M28 36v-3a4 4 0 0 1 8 0v3"/>
+                    <line x1="22" y1="42" x2="42" y2="42"/>
+                </svg>
+                <span>Entrepreneur</span>
+            </div>
+            <!-- Développeur: person at laptop -->
+            <div class="quality-circle not-needed reveal-scale" style="transition-delay: 0.35s; width: clamp(110px, 16vw, 170px); height: clamp(110px, 16vw, 170px);">
+                <svg viewBox="0 0 64 64" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: clamp(44px, 6vw, 64px); height: clamp(44px, 6vw, 64px);">
+                    <circle cx="32" cy="12" r="6" fill="rgba(255,255,255,0.05)"/>
+                    <path d="M24 24c0-4 3.5-6 8-6s8 2 8 6"/>
+                    <rect x="14" y="32" width="36" height="22" rx="3" fill="rgba(255,255,255,0.05)"/>
+                    <rect x="18" y="36" width="28" height="14" rx="1"/>
+                    <polyline points="24 41 28 45 24 49" stroke-width="1.5"/>
+                    <line x1="31" y1="49" x2="38" y2="49" stroke-width="1.5"/>
+                    <line x1="10" y1="54" x2="54" y2="54"/>
+                </svg>
+                <span>Développeur</span>
+            </div>
+            <!-- Génie: person with lightbulb brain -->
+            <div class="quality-circle not-needed reveal-scale" style="transition-delay: 0.5s; width: clamp(110px, 16vw, 170px); height: clamp(110px, 16vw, 170px);">
+                <svg viewBox="0 0 64 64" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: clamp(44px, 6vw, 64px); height: clamp(44px, 6vw, 64px);">
+                    <circle cx="32" cy="18" r="8" fill="rgba(255,255,255,0.05)"/>
+                    <path d="M20 36c0-6.6 5.4-10 12-10s12 3.4 12 10"/>
+                    <path d="M32 4v-2" stroke="var(--text-muted)" stroke-width="1.5"/>
+                    <path d="M22 8l-2-2" stroke="var(--text-muted)" stroke-width="1.5"/>
+                    <path d="M42 8l2-2" stroke="var(--text-muted)" stroke-width="1.5"/>
+                    <path d="M28 10a5 5 0 0 1 8 0" stroke-width="1.5"/>
+                    <path d="M26 15h2m6 0h2" stroke-width="1.5"/>
+                    <path d="M29 20h6" stroke-width="1.5"/>
+                    <text x="30" y="50" font-family="var(--font-display)" font-size="16" fill="var(--text-muted)" text-anchor="middle" stroke="none">E=mc²</text>
+                </svg>
+                <span>Génie</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 11 — 2 qualités -->
+<section class="slide glow-orange">
+    <span class="slide-num">18 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <h2 class="reveal" style="font-size: clamp(1.5rem, 3.5vw, 2.8rem);">Tu as besoin de 2 qualités</h2>
+        <div class="quality-row" style="margin-top: clamp(1.5rem, 3vw, 3rem);">
+            <!-- Obsédé: person focused with target/fire -->
+            <div class="quality-circle needed reveal-scale" style="transition-delay: 0.2s; width: clamp(120px, 18vw, 190px); height: clamp(120px, 18vw, 190px);">
+                <svg viewBox="0 0 64 64" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: clamp(48px, 7vw, 72px); height: clamp(48px, 7vw, 72px);">
+                    <circle cx="32" cy="16" r="7" fill="rgba(0,229,255,0.08)"/>
+                    <path d="M22 32c0-5.5 4.5-8 10-8s10 2.5 10 8"/>
+                    <circle cx="32" cy="48" r="10" stroke-width="1.5" fill="rgba(0,229,255,0.05)"/>
+                    <circle cx="32" cy="48" r="6" stroke-width="1.5"/>
+                    <circle cx="32" cy="48" r="2" fill="var(--cyan)"/>
+                </svg>
+                <span>Obsédé(e)</span>
+            </div>
+            <!-- Déterminé: person climbing mountain -->
+            <div class="quality-circle needed reveal-scale" style="transition-delay: 0.4s; width: clamp(120px, 18vw, 190px); height: clamp(120px, 18vw, 190px);">
+                <svg viewBox="0 0 64 64" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: clamp(48px, 7vw, 72px); height: clamp(48px, 7vw, 72px);">
+                    <path d="M8 56L28 20l12 16 14-32" stroke-width="2" fill="rgba(0,229,255,0.04)"/>
+                    <circle cx="38" cy="22" r="5" fill="rgba(0,229,255,0.08)"/>
+                    <path d="M34 32l-2 8 6-2 2 8"/>
+                    <path d="M42 28l-4-1"/>
+                    <line x1="54" y1="4" x2="54" y2="4" stroke="var(--cyan)">
+                        <animate attributeName="y2" values="4;0;4" dur="2s" repeatCount="indefinite"/>
+                    </line>
+                    <polygon points="50,8 54,0 58,8" fill="var(--cyan)" opacity="0.6" stroke="none">
+                        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                    </polygon>
+                </svg>
+                <span>Déterminé(e)</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 12 — Transition: Ok concrètement -->
+<section class="slide glow-both">
+    <span class="slide-num">19 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem);">Ok concrètement,<br>comment on fait ?</h1>
+    </div>
+</section>
+
+<!-- =====================================================
+     PART 4 — LES OUTILS & CAS CONCRETS
+     ===================================================== -->
+
+<!-- 13 — Logos outils IA (vrais logos PNG) -->
+<section class="slide glow-cyan grid-bg">
+    <span class="slide-num">20 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <h2 class="reveal" style="margin-bottom: var(--content-gap);">Tu connais déjà des outils d'IA</h2>
+        <div class="logo-grid">
+            <div class="logo-card reveal-scale" style="transition-delay: 0.1s;">
+                <img src="logos/chatgpt.png" alt="ChatGPT">
+                <span class="logo-name">ChatGPT</span>
+            </div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.2s;">
+                <img src="logos/gemini.png" alt="Gemini">
+                <span class="logo-name">Gemini</span>
+            </div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.3s;">
+                <img src="logos/claude.png" alt="Claude">
+                <span class="logo-name">Claude</span>
+            </div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.4s;">
+                <img src="logos/perplexity.png" alt="Perplexity">
+                <span class="logo-name">Perplexity</span>
+            </div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.5s;">
+                <img src="logos/mistral.png" alt="Mistral AI">
+                <span class="logo-name">Mistral AI</span>
+            </div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.6s;">
+                <img src="logos/deepseek.png" alt="DeepSeek">
+                <span class="logo-name">DeepSeek</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 14 — Ce sont des LLM classiques -->
+<section class="slide glow-orange">
+    <span class="slide-num">21 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <h2 class="reveal" style="font-size: clamp(1.5rem, 3.5vw, 2.8rem); color: var(--text-muted);">Ce sont des LLM classiques</h2>
+        <p class="reveal" style="margin-top: 1.5rem; font-size: clamp(1rem, 2vw, 1.5rem); transition-delay: 0.3s;">Tu leur poses une question, ils répondent.</p>
+        <p class="reveal" style="margin-top: 2rem; font-size: clamp(1.5rem, 3.5vw, 2.8rem); font-family: var(--font-display); font-weight: 800; color: var(--text); transition-delay: 0.6s;">Mais ici on parlera d'<span style="color: var(--cyan);">Agents IA</span></p>
+    </div>
+</section>
+
+<!-- 15 — Definition: Agent IA -->
+<section class="slide glow-cyan grid-bg">
+    <span class="slide-num">22 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><rect x="3" y="8" width="18" height="12" rx="3" fill="rgba(0,229,255,0.06)"/><circle cx="9" cy="14" r="1.5" fill="var(--cyan)"/><circle cx="15" cy="14" r="1.5" fill="var(--cyan)"/><line x1="12" y1="4" x2="12" y2="8"/><circle cx="12" cy="3" r="1"/><line x1="1" y1="14" x2="3" y2="14"/><line x1="21" y1="14" x2="23" y2="14"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s;">Agent IA</div>
+        <p class="def-explanation reveal" style="transition-delay: 0.5s;">Pas un chatbot. Une IA qui peut <strong style="color: var(--text);">agir</strong> : chercher des données, exécuter des tâches, prendre des décisions, enchaîner des actions de manière autonome.</p>
+    </div>
+</section>
+
+<!-- 19 — Cas d'usage 1: Site web -->
+<section class="slide glow-cyan grid-bg">
+    <span class="slide-num">23 / 28</span>
+    <div class="slide-content">
+        <div class="usecase-content">
+            <div class="usecase-icon reveal-scale" style="background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.2);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="7" x2="22" y2="7"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="usecase-details">
+                <h2 class="reveal">Créer un site web en quelques minutes</h2>
+                <ul class="usecase-list" style="margin-top: var(--content-gap);">
+                    <li class="reveal-left"><strong>Prototypage rapide</strong> — tester un concept sans investissement</li>
+                    <li class="reveal-left"><strong>Réduction des coûts</strong> — plus besoin de dev traditionnel</li>
+                    <li class="reveal-left"><strong>Agilité</strong> — répondre aux retours clients en temps réel</li>
+                    <li class="reveal-left"><strong>Démocratisation</strong> — non-devs peuvent concrétiser leurs idées</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 20 — Cas d'usage 2: SaaS en solo -->
+<section class="slide glow-orange">
+    <span class="slide-num">24 / 28</span>
+    <div class="slide-content">
+        <div class="usecase-content">
+            <div class="usecase-icon reveal-scale" style="background: rgba(255,107,53,0.08); border: 1px solid rgba(255,107,53,0.2);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+            </div>
+            <div class="usecase-details">
+                <h2 class="reveal">Construire ton SaaS en solo</h2>
+                <ul class="usecase-list" style="margin-top: var(--content-gap);">
+                    <li class="reveal-left"><strong>Architecture complète</strong> — frontend + backend générés</li>
+                    <li class="reveal-left"><strong>Base de données</strong> — structure créée automatiquement</li>
+                    <li class="reveal-left"><strong>Tests & bugs</strong> — corrigés par l'agent</li>
+                    <li class="reveal-left"><strong>Déploiement</strong> — en ligne en quelques commandes</li>
+                </ul>
+                <p class="reveal" style="margin-top: 1rem; color: var(--orange); font-weight: 600; font-style: italic; transition-delay: 0.6s;">Ce qui prenait 3 développeurs, devient un sprint solo.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 21 — Definition: VibeCoding (repositionné ici) -->
+<section class="slide glow-orange">
+    <span class="slide-num">25 / 28</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><rect x="2" y="4" width="20" height="16" rx="2" fill="rgba(255,107,53,0.06)"/><polyline points="6 10 10 14 6 18"/><line x1="14" y1="18" x2="18" y2="18"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s; color: var(--orange);">VibeCoding</div>
+        <p class="def-explanation reveal" style="transition-delay: 0.5s;">Créer des outils, des sites, des apps... <strong style="color: var(--text);">en parlant à l'IA.</strong> Pas en codant. On parle, on ne code pas. On avance par itération.</p>
+    </div>
+</section>
+
+<!-- =====================================================
+     TRANSITION + FIN
+     ===================================================== -->
+
+<!-- 26 — Cas d'usage 3: Armée d'agents IA (déplacé à la fin) -->
+<section class="slide glow-both grid-bg">
+    <span class="slide-num">26 / 28</span>
+    <div class="slide-content">
+        <div class="usecase-content">
+            <div class="usecase-icon reveal-scale" style="background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.2);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="3" y="8" width="18" height="12" rx="3" fill="rgba(0,229,255,0.06)"/><circle cx="9" cy="14" r="1.5" fill="var(--cyan)"/><circle cx="15" cy="14" r="1.5" fill="var(--cyan)"/><line x1="12" y1="4" x2="12" y2="8"/><circle cx="12" cy="3" r="1"/></svg>
+            </div>
+            <div class="usecase-details">
+                <h2 class="reveal">Créer ton armée d'agents IA</h2>
+                <ul class="usecase-list" style="margin-top: var(--content-gap);">
+                    <li class="reveal-left"><strong>Agent Veille Marché</strong> — surveille les tendances automatiquement</li>
+                    <li class="reveal-left"><strong>Agent Contenu</strong> — génère threads, posts, scripts</li>
+                    <li class="reveal-left"><strong>Agent Publication</strong> — diffuse aux moments optimaux</li>
+                    <li class="reveal-left"><strong>Agent Support</strong> — répond à ta communauté 24/7</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 27 — Slide titre: teaser -->
+<section class="slide glow-both">
+    <span class="slide-num">27 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="reveal" style="font-size: clamp(1.2rem, 2.5vw, 2rem); color: var(--text-secondary); margin-bottom: clamp(1rem, 2vw, 2rem);">Mais surtout pour piloter l'IA</p>
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem); transition-delay: 0.3s;">nous allons apprendre le...</h1>
+        <h1 class="reveal-scale gradient-shift" style="font-size: clamp(2.5rem, 7vw, 6rem); transition-delay: 0.8s; margin-top: clamp(0.5rem, 1.5vw, 1.5rem);">VibeCoding</h1>
+    </div>
+</section>
+
+<!-- 24 — CTA -->
+<section class="slide glow-orange">
+    <span class="slide-num">28 / 28</span>
+    <div class="slide-content" style="align-items: center; justify-content: center;">
+        <div class="cta-box reveal-scale">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1rem;"><path d="M22 10l-10-6L2 10l10 6 10-6z" fill="rgba(255,107,53,0.1)"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/><line x1="22" y1="10" x2="22" y2="16"/></svg>
+            <h2 style="margin-bottom: 1rem;">Formation Gratuite</h2>
+            <p style="font-size: clamp(1rem, 1.8vw, 1.4rem);">Apprends à utiliser l'IA et les agents IA dans ton quotidien.</p>
+            <p style="margin-top: 1.5rem; color: var(--orange); font-weight: 600; font-size: clamp(1rem, 1.5vw, 1.3rem);">Lien dans la description.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===========================================
+     JAVASCRIPT
+     =========================================== -->
+<script>
+class SlidePresentation {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.currentSlide = 0;
+        this.progressBar = document.getElementById('progressBar');
+        this.setupIntersectionObserver();
+        this.setupKeyboardNav();
+        this.setupTouchNav();
+    }
+    setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    this.currentSlide = [...this.slides].indexOf(entry.target);
+                    this.updateProgress();
+                    this.triggerCounters(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        this.slides.forEach(slide => observer.observe(slide));
+    }
+    setupKeyboardNav() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowRight') { e.preventDefault(); this.goTo(this.currentSlide + 1); }
+            else if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft') { e.preventDefault(); this.goTo(this.currentSlide - 1); }
+        });
+    }
+    setupTouchNav() {
+        let startY = 0;
+        document.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; });
+        document.addEventListener('touchend', (e) => {
+            const diff = startY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) { diff > 0 ? this.goTo(this.currentSlide + 1) : this.goTo(this.currentSlide - 1); }
+        });
+    }
+    goTo(index) { if (index >= 0 && index < this.slides.length) { this.slides[index].scrollIntoView({ behavior: 'smooth' }); } }
+    updateProgress() { this.progressBar.style.width = ((this.currentSlide + 1) / this.slides.length * 100) + '%'; }
+    triggerCounters(slide) {
+        const counters = slide.querySelectorAll('.counter:not(.counted)');
+        counters.forEach(counter => {
+            counter.classList.add('counted');
+            const target = parseInt(counter.dataset.target);
+            const suffix = counter.dataset.suffix || '';
+            const sep = counter.dataset.separator || '';
+            const duration = 1800;
+            const start = performance.now();
+            const easeOutExpo = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+            const formatNum = n => sep ? n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep) : n.toString();
+            const animate = (now) => {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.round(easeOutExpo(progress) * target);
+                counter.textContent = formatNum(current) + suffix;
+                if (progress < 1) requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+        });
+    }
+}
+
+class ParticleSystem {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particles = [];
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.init();
+        this.animate();
+    }
+    resize() { this.canvas.width = this.canvas.offsetWidth; this.canvas.height = this.canvas.offsetHeight; }
+    init() {
+        const count = Math.min(120, Math.floor(this.canvas.width / 10));
+        for (let i = 0; i < count; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width, y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 0.4, vy: Math.random() * 0.8 + 0.3,
+                size: Math.random() * 3 + 1, opacity: Math.random() * 0.6 + 0.2,
+                color: Math.random() > 0.3 ? '255,107,53' : '255,68,68'
+            });
+        }
+    }
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.y > this.canvas.height) { p.y = -5; p.x = Math.random() * this.canvas.width; }
+            if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+            this.ctx.beginPath(); this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            this.ctx.fillStyle = `rgba(${p.color},${p.opacity})`; this.ctx.fill();
+        });
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+new SlidePresentation();
+const pc = document.getElementById('particleCanvas');
+if (pc) new ParticleSystem(pc);
+</script>
+</body>
+</html>

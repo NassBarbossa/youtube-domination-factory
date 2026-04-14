@@ -128,14 +128,69 @@ Write the full script with marqueurs visuels `[FACE CAM]`, `[SCREEN]`, `[DEMO]`,
 
 ### Step 4: Output Generation
 
-Generate **two outputs** and save them in `yt-script/outputs/`:
+**Le process se fait en 3 phases : Script → Squelette slides (validation) → HTML final.**
 
-**Output 1 — Script Markdown** (`[slug].md`)
-Le script complet avec :
+#### Phase A — Script Markdown (`[slug].md`)
+
+Sauvegarder dans `yt-script/outputs/`. Le script complet avec :
 - Metadata (word count, reading time, timestamps)
 - Marqueurs visuels ([FACE CAM], [SCREEN], [DEMO], [B-ROLL])
 - Marqueurs slides `[SLIDE: type | contenu]` (voir règles ci-dessous)
 - Shorts moments identifiés (2-3 segments clippables)
+
+#### Phase B — Squelette slides (Google Doc) — VALIDATION OBLIGATOIRE
+
+**Avant de générer le HTML, créer un Google Doc avec le squelette des slides.** Ceci permet à Nass de valider la structure, réorganiser l'ordre, ajouter/supprimer des slides AVANT le travail visuel.
+
+**Créer le doc** via `mcp__google-workspace__create_doc` :
+- `title` : `[Slides] {titre de la vidéo}` (ex: `[Slides] L'IA remplace 3400 emplois par jour`)
+- `user_google_email` : `quentin.riviere69@gmail.com`
+
+**Format du squelette** — pour chaque slide, une entrée numérotée avec :
+
+```
+---
+SLIDE 01 — [TYPE: transition]
+Section : L'IA remplace massivement l'humain
+Sous-titre : Les chiffres que personne ne veut voir
+---
+
+---
+SLIDE 02 — [TYPE: stat]
+Texte principal : 3 400 emplois
+Texte secondaire : Par jour.
+Source : layoffhedge.com
+Visuel : particules tombantes + glitch effect
+---
+
+---
+SLIDE 03 — [TYPE: stat]
+Chiffre : 180 000
+Contexte : emplois attribués directement à l'IA en 2025
+Visuel : animated counter + flèche rouge
+---
+
+---
+SLIDE 08 — [TYPE: logos]
+Titre : Tu connais déjà des outils d'IA
+Logos : ChatGPT, Gemini, Claude, Perplexity, Mistral AI, DeepSeek
+Note : vrais logos PNG à télécharger
+---
+```
+
+Chaque slide doit indiquer :
+1. **Numéro + type** (transition / stat / quote / bullets / logos / definition / statement / usecase)
+2. **Texte exact** qui apparaîtra à l'écran
+3. **Notes visuelles** (quel effet, quelle icône, quel layout)
+
+**Workflow** :
+1. Générer le squelette complet dans le Google Doc
+2. Partager le lien à Nass : "Voici le squelette des slides — valide l'ordre et le contenu"
+3. **ATTENDRE la validation de Nass** — ne PAS générer le HTML tant qu'il n'a pas dit OK
+4. Si Nass réorganise / ajoute / supprime des slides dans le doc → mettre à jour les marqueurs `[SLIDE]` du script markdown
+5. Seulement après validation → passer en Phase C
+
+#### Phase C — Slides HTML (`[slug]-visual.html`)
 
 #### Règles de génération des marqueurs `[SLIDE]`
 
@@ -150,35 +205,117 @@ Le principe : **une slide apparaît à chaque fois que l'information est mieux t
 | **Citation** | `quote` | `[SLIDE: quote \| "Citation exacte" \| Source]` | `[SLIDE: quote \| "C'est de loin le plus puissant jamais développé" \| Brouillon interne Anthropic]` |
 | **Punchline / concept clé** | `statement` | `[SLIDE: statement \| La phrase]` | `[SLIDE: statement \| 5× plus cher, 4.9× moins de tokens = plus intelligent par dollar]` |
 | **Timeline / chronologie** | `timeline` | `[SLIDE: timeline \| Date 1 : événement \| Date 2 : événement]` | `[SLIDE: timeline \| 26 mars : fuite \| 7 avril : officialisation]` |
+| **Logos / marques** | `logos` | `[SLIDE: logos \| Titre \| Marque1, Marque2, Marque3]` | `[SLIDE: logos \| Les outils d'IA que tu connais \| ChatGPT, Gemini, Claude, Perplexity, Mistral AI, DeepSeek]` |
+
+**Règle logos / marques (OBLIGATOIRE)** :
+Quand le script mentionne des marques, entreprises ou produits reconnaissables, **toujours utiliser les vrais logos officiels** — jamais d'icônes SVG faites main ni d'émojis en remplacement. Workflow :
+1. Télécharger les logos PNG officiels (fond transparent, ~512px) dans `yt-script/outputs/logos/`
+2. Les intégrer via `<img src="logos/[nom].png">` dans les slides HTML
+3. Sources fiables pour les logos : sites officiels des marques, UXWing, Brandfetch, SVGPorn
+4. Nommer les fichiers en kebab-case : `chatgpt.png`, `mistral-ai.png`, `oracle.png`
+5. Cette règle s'applique aussi aux slides `bullets` qui listent des entreprises — si une slide montre une grille d'entreprises/outils, chaque card doit avoir le vrai logo
 
 **Règles d'ordonnancement** :
 - Une slide `definition` vient **toujours avant** la slide `stat` ou `compare` qui utilise ce terme (d'abord comprendre, ensuite voir le chiffre)
 - L'audience est **non-technique** : chaque terme de benchmark, protocole, ou concept tech doit avoir sa slide `definition`
-- Ne pas hésiter à avoir 12-18 slides pour une vidéo de 6-10 min — les slides changent souvent = plus engageant visuellement
+- Nombre de slides par durée : **12-18 slides** (5-12 min TOP) / **20-28 slides** (18-22 min MIDDLE) / **30+ slides** (25+ min BOTTOM)
+- Les slides de transition entre sections comptent dans le total
+- Les slides changent souvent = plus engageant visuellement
 
-**Output 2 — Slides de présentation HTML** (`[slug]-visual.html`)
-Généré via le skill **`frontend-slides`**. Transformer chaque marqueur `[SLIDE]` du script en slide HTML.
+Généré via le skill **`frontend-slides`**. Transformer chaque marqueur `[SLIDE]` du script en slide HTML **uniquement après validation du squelette par Nass (Phase B)**.
 
 **Workflow** :
-1. Parser tous les marqueurs `[SLIDE: ...]` du script markdown
-2. Générer une slide HTML par marqueur, dans l'ordre du script
-3. Ajouter une slide titre (intro) et une slide CTA (fin)
-4. Invoquer `frontend-slides` ou générer directement en suivant le template
-5. Sauvegarder l'output dans `yt-script/outputs/[slug]-visual.html`
+1. Relire le squelette validé par Nass (le Google Doc peut avoir été modifié)
+2. Parser tous les marqueurs `[SLIDE: ...]` du script markdown (mis à jour si besoin)
+3. Générer une slide HTML par marqueur, dans l'ordre validé
+4. Ajouter les slides de transition entre les sections
+5. Invoquer `frontend-slides` ou générer directement en suivant le template
+6. Sauvegarder l'output dans `yt-script/outputs/[slug]-visual.html`
 
 **Consignes pour les slides** :
 - Les slides sont des **supports visuels pour la vidéo**, pas un transcript du script
 - Chaque slide affiche UN concept (jamais mélanger stat + définition sur la même slide)
 - Ne jamais copier le texte du script mot pour mot — les slides résument visuellement
-- **Skipper la Phase 2 (style discovery)** de frontend-slides — utiliser directement les couleurs brand ci-dessous
-- **Branding Nass Riviera** (obligatoire, ne jamais changer) :
-  - Fond sombre : `#0A0A0A`
-  - Couleur primaire (accents, titres, dividers) : orange `#FF6B35`
-  - Couleur secondaire (highlights, données) : cyan `#00E5FF`
-  - Texte principal : blanc `#FFFFFF`
-  - Texte secondaire : `rgba(255,255,255,0.75)`
-  - Polices : **Syne** (800, titres) + **Inter** (400/600, body)
-  - Effets glow : halos orange/cyan en arrière-plan (radial-gradient, 12-15% opacité)
+- **Skipper la Phase 2 (style discovery)** de frontend-slides — utiliser directement les règles brand ci-dessous
+
+#### Branding Nass Riviera (obligatoire, ne jamais changer)
+
+**Couleurs** :
+- Fond sombre : `#0A0A0A`
+- Couleur primaire (accents, titres, dividers) : orange `#FF6B35`
+- Couleur secondaire (highlights, données) : cyan `#00E5FF`
+- Texte principal : blanc `#FFFFFF`
+- Texte secondaire : `rgba(255,255,255,0.75)`
+- Texte muted : `rgba(255,255,255,0.4)`
+
+**Polices** : **Syne** (700/800, titres) + **Inter** (400/600, body) via Google Fonts
+
+#### Background (OBLIGATOIRE)
+
+- Utiliser l'image `yt-script/outputs/bg-nass.png` comme fond de **toute** la présentation
+- Le background est appliqué sur `body` en `position: fixed` — il ne bouge PAS entre les slides
+- Les slides sont transparentes avec des overlays légers selon le mood (orange, cyan, red)
+- **Ne jamais mettre le bg en `cover` sur chaque slide individuellement** — ça crée un "saut" visuel entre chaque slide
+
+```css
+body { background: url('bg-nass.png') center top / 100% auto fixed no-repeat, var(--bg); }
+.slide { background: transparent; }
+.glow-orange { background: linear-gradient(135deg, rgba(10,10,10,0.4) 0%, rgba(255,107,53,0.06) 100%); }
+.glow-cyan { background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, rgba(10,10,10,0.4) 100%); }
+.glow-both { background: transparent; }
+.glow-red { background: linear-gradient(135deg, rgba(255,68,68,0.06) 0%, rgba(10,10,10,0.35) 100%); }
+```
+
+#### Watermark
+
+Ajouter un watermark **fixe** "Nass Riviera" en bas à gauche, visible sur toutes les slides :
+```html
+<div class="watermark">Nass Riviera</div>
+```
+```css
+.watermark { position: fixed; bottom: clamp(1rem, 2vw, 2rem); left: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-display); font-weight: 800; font-size: clamp(0.65rem, 1vw, 0.85rem); color: rgba(255,255,255,0.25); z-index: 50; pointer-events: none; }
+```
+
+#### Slides de transition (sections)
+
+Quand la vidéo a plusieurs parties, ajouter des **slides de transition** avec :
+- Un gros numéro de section en filigrane (ex: "01", "02") en gradient orange/cyan, opacité 15%
+- Une barre de couleur (orange ou cyan) au-dessus du titre
+- Le titre de la section en gros + un sous-titre explicatif
+
+#### Animations à utiliser
+
+| Contexte | Animation | Class CSS |
+|----------|-----------|-----------|
+| Entrée standard | Fade + slide up | `reveal` |
+| Bullet points | Slide from left, staggered | `reveal-left` |
+| Stats choc / gros chiffres | Scale in (0.7 → 1) | `reveal-scale` |
+| Quotes / moments dramatiques | Blur in | `reveal-blur` |
+| Punchlines | Gradient shift animé | `gradient-shift` |
+| Titre slide 1 | Glitch effect (red/cyan) | `glitch` |
+| Stats numériques | Counter animé (JS, compte de 0 à N) | `counter` data-target="N" |
+| Quotes | Curseur typing clignotant | `typing-cursor` |
+| CTA | Pulse glow sur le border | `cta-pulse` |
+| Slide titre | Particules tombantes orange (canvas) | `#particleCanvas` |
+
+#### Particules (slide titre)
+
+Canvas avec particules orange/rouge qui tombent. Config par défaut :
+- ~120 particules, taille 1-4px, opacité 20-80%
+- 70% orange `255,107,53` / 30% rouge `255,68,68`
+- Vitesse verticale : 0.3-1.1, légère dérive horizontale
+
+#### Visuels pour les concepts
+
+- **Personnes/rôles** : utiliser des bonhommes SVG détaillés (tête + corps + attribut métier), pas des icônes abstraites
+- **Grilles d'entreprises/industries** : layout 2x2 en cards avec icône SVG par secteur (puce CPU = tech, colonnes = banque, camion = logistique, mallette = consulting)
+- **Avant/après ou comparaisons** : montrer visuellement (ex: 20 bonhommes gris → 2 bonhommes cyan avec éclairs)
+
+#### Densité des slides
+
+- Ne pas surcharger : 1 concept par slide max
+- Quand 4+ items du même type (ex: 4 industries) → regrouper en 1 grille au lieu de 4 slides séparées
+- Les slides de transition comptent dans le total — prévoir 20-28 slides pour une vidéo de 15-20 min
 
 Assets brand : si une image de Nass est disponible dans `yt-script/outputs/` (ex: `youtube_watermark_150x150.png`), l'utiliser sur la slide parcours.
 
