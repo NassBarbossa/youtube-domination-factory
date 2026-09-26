@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pourquoi investir en 2026 — Nass Riviera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A;
+  --orange:#FF6B35;
+  --cyan:#00E5FF;
+  --red:#FF4444;
+  --text:#FFFFFF;
+  --text-secondary:rgba(255,255,255,0.78);
+  --text-muted:rgba(255,255,255,0.42);
+  --font-display:'Syne',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --title-size:clamp(2.2rem,6vw,5rem);
+  --h2-size:clamp(1.8rem,4.5vw,3.6rem);
+  --body-size:clamp(1rem,1.7vw,1.35rem);
+  --slide-padding:clamp(2rem,6vw,7rem);
+  --content-gap:clamp(1rem,2.5vw,2.2rem);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;background:var(--bg);}
+
+body{
+  font-family:var(--font-body);
+  color:var(--text);
+  background:url('bg-nass-v2.jpg') center center / cover fixed no-repeat, var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ============ SLIDE BASE ============ */
+.slide{
+  width:100vw;
+  height:100vh;height:100dvh;
+  overflow:hidden;
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  padding:var(--slide-padding);
+}
+/* readability overlay — keeps the busy bg visible but text crisp */
+.slide::after{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 45%,rgba(10,10,10,0.30),rgba(10,10,10,0.66));
+  z-index:0;pointer-events:none;
+}
+.slide.tint-orange::after{background:radial-gradient(circle at 70% 70%,rgba(255,107,53,0.10),rgba(10,10,10,0.60));}
+.slide.tint-cyan::after{background:radial-gradient(circle at 30% 30%,rgba(0,229,255,0.10),rgba(10,10,10,0.62));}
+.slide.tint-dark::after{background:radial-gradient(circle at 50% 50%,rgba(10,10,10,0.55),rgba(10,10,10,0.78));}
+
+.slide-content{
+  position:relative;z-index:2;
+  max-width:min(90vw,1180px);
+  display:flex;flex-direction:column;
+  gap:var(--content-gap);
+}
+.center{align-items:center;text-align:center;}
+
+/* ============ TYPOGRAPHY ============ */
+h1{font-family:var(--font-display);font-size:var(--title-size);font-weight:800;line-height:1.05;letter-spacing:-0.02em;}
+h2{font-family:var(--font-display);font-size:var(--h2-size);font-weight:800;line-height:1.12;letter-spacing:-0.01em;}
+p,li{font-size:var(--body-size);line-height:1.6;color:var(--text-secondary);font-weight:400;}
+.lead{font-size:clamp(1.05rem,1.9vw,1.5rem);color:var(--text-secondary);}
+
+.kicker{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(0.8rem,1.1vw,1rem);letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--orange);
+}
+.text-cyan{color:var(--cyan);}
+.text-orange{color:var(--orange);}
+
+/* accent word */
+.hl-o{color:var(--orange);font-weight:600;}
+.hl-c{color:var(--cyan);font-weight:600;}
+
+/* ============ DESIGN ELEMENTS ============ */
+.divider{width:88px;height:4px;border-radius:2px;}
+.divider-orange{background:var(--orange);box-shadow:0 0 20px rgba(255,107,53,0.5);}
+.divider-cyan{background:var(--cyan);box-shadow:0 0 20px rgba(0,229,255,0.4);}
+
+.slide-num{
+  position:absolute;top:clamp(1.2rem,2.5vw,2.4rem);right:clamp(1.4rem,3vw,3rem);
+  font-family:var(--font-display);font-size:clamp(0.7rem,1vw,0.9rem);
+  color:rgba(255,255,255,0.35);font-weight:700;letter-spacing:0.15em;z-index:3;
+}
+
+/* ---- Intro ---- */
+#particleCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+.glitch{position:relative;}
+.glitch::before,.glitch::after{
+  content:attr(data-text);position:absolute;left:0;top:0;width:100%;
+  text-align:inherit;pointer-events:none;opacity:0;
+}
+.glitch::before{color:var(--cyan);animation:glitchB 3.2s infinite;}
+.glitch::after{color:var(--red);animation:glitchR 3.2s infinite;}
+@keyframes glitchB{
+  0%,66%{opacity:0;transform:translate(0,0);clip-path:inset(0 0 0 0);}
+  68%{opacity:.8;transform:translate(-5px,-2px);clip-path:inset(0 0 58% 0);}
+  71%{opacity:.8;transform:translate(4px,1px);clip-path:inset(38% 0 22% 0);}
+  74%{opacity:.8;transform:translate(-2px,2px);clip-path:inset(0 0 30% 0);}
+  76%,100%{opacity:0;transform:translate(0,0);}
+}
+@keyframes glitchR{
+  0%,67%{opacity:0;transform:translate(0,0);clip-path:inset(0 0 0 0);}
+  69%{opacity:.7;transform:translate(5px,2px);clip-path:inset(55% 0 0 0);}
+  72%{opacity:.7;transform:translate(-4px,-1px);clip-path:inset(20% 0 40% 0);}
+  75%{opacity:.7;transform:translate(3px,-2px);clip-path:inset(60% 0 0 0);}
+  77%,100%{opacity:0;transform:translate(0,0);}
+}
+
+/* ---- Agenda ---- */
+.agenda{display:flex;flex-direction:column;gap:clamp(0.9rem,2vw,1.6rem);margin-top:0.5rem;}
+.agenda-item{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);}
+.agenda-num{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3vw,2.6rem);
+  background:linear-gradient(135deg,var(--orange),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  min-width:clamp(2.4rem,4vw,3.6rem);line-height:1;
+}
+.agenda-text{font-family:var(--font-display);font-weight:700;font-size:clamp(1.15rem,2.4vw,2rem);color:var(--text);}
+
+/* ---- Transition (section) ---- */
+.section-ghost{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(14rem,34vw,30rem);line-height:1;z-index:1;
+  background:linear-gradient(135deg,var(--orange),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:0.13;letter-spacing:-0.03em;user-select:none;
+}
+
+/* ---- Usecase ---- */
+.icon-wrap{
+  width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:20px;border:1.5px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.03);backdrop-filter:blur(4px);
+}
+.icon-wrap svg{width:56%;height:56%;}
+.uc-title{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.8rem);line-height:1.1;}
+.uc-desc{max-width:620px;}
+
+.badge{
+  display:inline-flex;align-items:center;gap:0.5em;align-self:flex-start;
+  font-family:var(--font-display);font-weight:700;font-size:clamp(0.7rem,1vw,0.9rem);
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:0.5em 1em;border-radius:999px;
+}
+.badge-cyan{color:var(--cyan);border:1.5px solid rgba(0,229,255,0.4);background:rgba(0,229,255,0.08);}
+.badge-orange{color:var(--orange);border:1.5px solid rgba(255,107,53,0.4);background:rgba(255,107,53,0.08);}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor;}
+
+/* ---- Statement ---- */
+.statement{
+  font-family:var(--font-display);font-weight:800;
+  font-size:clamp(1.7rem,4vw,3.4rem);line-height:1.25;letter-spacing:-0.01em;
+  max-width:960px;
+}
+.statement .quote-mark{color:var(--orange);font-size:1.2em;line-height:0;}
+
+/* ---- Signature outro ---- */
+.sig-img{width:min(70vw,560px);height:auto;filter:drop-shadow(0 0 30px rgba(0,229,255,0.15));}
+.outro-tag{font-family:var(--font-display);font-weight:700;font-size:clamp(1.2rem,2.6vw,2rem);color:var(--text);}
+
+/* ============ REVEAL ANIMATIONS ============ */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal-scale{opacity:0;transform:scale(0.78);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal-blur{opacity:0;filter:blur(14px);transform:translateY(16px);transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease);}
+.visible .reveal,.visible .reveal-left,.visible .reveal-scale{opacity:1;transform:none;}
+.visible .reveal-blur{opacity:1;filter:blur(0);transform:none;}
+.visible .reveal:nth-child(1),.visible .reveal-left:nth-child(1){transition-delay:.05s;}
+.visible .reveal:nth-child(2),.visible .reveal-left:nth-child(2){transition-delay:.18s;}
+.visible .reveal:nth-child(3),.visible .reveal-left:nth-child(3){transition-delay:.31s;}
+.visible .reveal:nth-child(4),.visible .reveal-left:nth-child(4){transition-delay:.44s;}
+.visible .reveal:nth-child(5),.visible .reveal-left:nth-child(5){transition-delay:.57s;}
+.visible .agenda-item:nth-child(1){transition-delay:.15s;}
+.visible .agenda-item:nth-child(2){transition-delay:.30s;}
+.visible .agenda-item:nth-child(3){transition-delay:.45s;}
+
+/* ============ PROGRESS BAR ============ */
+.progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--orange),var(--cyan));z-index:100;transition:width .3s ease;}
+
+/* ============ RESPONSIVE ============ */
+@media(max-height:700px){
+  :root{--slide-padding:clamp(1.4rem,4vw,3.5rem);--title-size:clamp(1.8rem,5vw,3.4rem);--h2-size:clamp(1.4rem,3.5vw,2.4rem);}
+}
+@media(max-width:768px){
+  .section-ghost{font-size:40vw;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important;}
+  .glitch::before,.glitch::after{display:none;}
+}
+
+/* ============ DECK-SPECIFIC : pourquoi-investir-2026 ============ */
+.slide.tint-red::after{background:radial-gradient(circle at 50% 40%,rgba(255,68,68,0.12),rgba(10,10,10,0.66));}
+.text-red{color:var(--red);}
+.hl-r{color:var(--red);font-weight:600;}
+
+/* ---- Quote ---- */
+.quote-big{font-family:var(--font-display);font-weight:800;font-size:clamp(1.9rem,4.4vw,3.8rem);line-height:1.2;max-width:1050px;}
+.quote-big .quote-mark{color:var(--orange);}
+.quote-src{font-family:var(--font-display);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;font-size:clamp(0.75rem,1vw,0.95rem);color:var(--text-muted);}
+.typing-cursor::after{content:'';display:inline-block;width:0.08em;height:0.9em;margin-left:0.12em;vertical-align:-0.08em;background:var(--orange);animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+/* ---- Reason cards (blurred / unblurred) ---- */
+.reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1rem,3vw,2.5rem);width:min(90vw,1050px);}
+.reason-card{
+  border-radius:24px;padding:clamp(1.4rem,3vw,2.6rem);text-align:left;
+  background:rgba(255,255,255,0.04);backdrop-filter:blur(6px);
+  border:1.5px solid rgba(255,255,255,0.12);
+  display:flex;flex-direction:column;gap:0.8rem;min-height:clamp(150px,20vh,230px);justify-content:center;
+}
+.reason-card.o{border-color:rgba(255,107,53,0.45);box-shadow:0 0 40px rgba(255,107,53,0.10);}
+.reason-card.c{border-color:rgba(0,229,255,0.45);box-shadow:0 0 40px rgba(0,229,255,0.10);}
+.reason-label{font-family:var(--font-display);font-weight:700;font-size:clamp(0.8rem,1.1vw,1rem);letter-spacing:0.25em;text-transform:uppercase;}
+.reason-card.o .reason-label{color:var(--orange);}
+.reason-card.c .reason-label{color:var(--cyan);}
+.reason-text{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.2vw,2.7rem);line-height:1.1;color:var(--text);}
+.blurred{filter:blur(16px);user-select:none;}
+.lock{font-size:clamp(0.8rem,1.1vw,1rem);color:var(--text-muted);font-family:var(--font-display);font-weight:700;letter-spacing:0.1em;}
+/* unblur on reveal */
+.unblur{filter:blur(18px);opacity:.6;transition:filter 1.4s var(--ease) .6s,opacity 1.4s var(--ease) .6s;}
+.visible .unblur{filter:blur(0);opacity:1;}
+.reason-hero{width:min(88vw,760px);}
+.reason-hero .reason-text{font-size:clamp(2.2rem,5.5vw,4.6rem);}
+
+/* ---- Strike list ---- */
+.strike-list{display:flex;flex-direction:column;gap:clamp(0.9rem,2vw,1.4rem);margin-top:0.4rem;}
+.strike-item{display:flex;align-items:center;gap:clamp(0.9rem,2vw,1.5rem);font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2.8rem);color:var(--text);}
+.strike-item .x{
+  flex:none;width:clamp(40px,4.4vw,58px);height:clamp(40px,4.4vw,58px);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--red);border:1.5px solid rgba(255,68,68,0.45);background:rgba(255,68,68,0.08);font-size:0.7em;
+}
+.strike-item .word{position:relative;}
+.strike-item .word::after{content:'';position:absolute;left:-4px;right:-4px;top:54%;height:4px;border-radius:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);}
+.visible .strike-item:nth-child(1) .word::after{transform:scaleX(1);transition-delay:.7s;}
+.visible .strike-item:nth-child(2) .word::after{transform:scaleX(1);transition-delay:1.0s;}
+.visible .strike-item:nth-child(3) .word::after{transform:scaleX(1);transition-delay:1.3s;}
+.visible .strike-list .reveal-left:nth-child(1){transition-delay:.15s;}
+.visible .strike-list .reveal-left:nth-child(2){transition-delay:.3s;}
+.visible .strike-list .reveal-left:nth-child(3){transition-delay:.45s;}
+
+/* ---- Big statement gradient ---- */
+.gradient-shift{
+  background:linear-gradient(90deg,var(--orange),var(--cyan),var(--orange));background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gshift 5s linear infinite;
+}
+@keyframes gshift{to{background-position:200% center;}}
+.mega{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,9vw,8rem);line-height:1;letter-spacing:-0.03em;}
+
+/* ---- Definition ---- */
+.def-term{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,7vw,6rem);line-height:1;}
+.def-tag{font-family:'Inter',sans-serif;font-style:italic;color:var(--text-muted);font-size:clamp(0.95rem,1.4vw,1.2rem);}
+.def-body{font-size:clamp(1.3rem,2.6vw,2.1rem);line-height:1.4;color:var(--text);max-width:900px;font-weight:500;}
+.def-bar{border-left:4px solid var(--cyan);padding-left:clamp(1rem,2vw,1.6rem);}
+
+/* ---- Stats / compare ---- */
+.stat-num{font-family:var(--font-display);font-weight:800;font-size:clamp(4rem,13vw,11rem);line-height:0.95;letter-spacing:-0.04em;white-space:nowrap;}
+.stat-ctx{font-size:clamp(1.1rem,2.2vw,1.8rem);color:var(--text-secondary);max-width:820px;}
+.stat-src{font-size:clamp(0.75rem,1vw,0.9rem);color:var(--text-muted);letter-spacing:0.08em;}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(1rem,3vw,3rem);width:min(92vw,1100px);}
+.compare-col{display:flex;flex-direction:column;align-items:center;gap:0.6rem;text-align:center;}
+.compare-num{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,8vw,7rem);white-space:nowrap;line-height:1;letter-spacing:-0.03em;}
+.compare-lbl{font-family:var(--font-display);font-weight:700;font-size:clamp(1rem,1.8vw,1.5rem);color:var(--text-secondary);}
+.compare-arrow{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,5vw,4rem);color:var(--text-muted);}
+
+/* ---- Timeline ---- */
+.tl{display:flex;align-items:flex-start;width:min(92vw,1150px);position:relative;margin-top:1.5rem;}
+.tl::before{content:'';position:absolute;left:4%;right:4%;top:14px;height:3px;background:linear-gradient(90deg,var(--orange),var(--cyan));opacity:.7;transform:scaleX(0);transform-origin:left;transition:transform 1.6s var(--ease) .2s;}
+.visible .tl::before{transform:scaleX(1);}
+.tl-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center;}
+.tl-dot{width:30px;height:30px;border-radius:50%;background:var(--bg);border:3px solid var(--orange);box-shadow:0 0 18px rgba(255,107,53,0.5);position:relative;z-index:1;}
+.tl-step:nth-child(even) .tl-dot{border-color:var(--cyan);box-shadow:0 0 18px rgba(0,229,255,0.5);}
+.tl-lbl{font-family:var(--font-display);font-weight:800;font-size:clamp(0.95rem,1.9vw,1.6rem);color:var(--text);}
+.visible .tl-step:nth-child(1){transition-delay:.3s;}
+.visible .tl-step:nth-child(2){transition-delay:.5s;}
+.visible .tl-step:nth-child(3){transition-delay:.7s;}
+.visible .tl-step:nth-child(4){transition-delay:.9s;}
+.visible .tl-step:nth-child(5){transition-delay:1.1s;}
+.visible .tl-step:nth-child(6){transition-delay:1.3s;}
+
+/* ---- Chart ---- */
+.chart-wrap{width:min(94vw,1200px);}
+.chart-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;}
+.chart svg{width:100%;height:auto;display:block;overflow:visible;}
+.bar{transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);transition:transform .9s var(--ease);}
+.visible .bar{transform:scaleY(1);}
+.bar-val{opacity:0;transition:opacity .5s ease;}
+.visible .bar-val{opacity:1;}
+.axis-lbl{font-family:'Inter',sans-serif;font-size:13px;fill:rgba(255,255,255,0.55);}
+.val-lbl{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;}
+.chart-legend{display:flex;gap:1.6rem;flex-wrap:wrap;font-size:clamp(0.8rem,1.1vw,0.95rem);color:var(--text-secondary);}
+.chart-legend span{display:inline-flex;align-items:center;gap:0.5em;}
+.chart-legend i{width:12px;height:12px;border-radius:3px;display:inline-block;}
+
+/* ---- Caddies ---- */
+.carts{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(1rem,3vw,3rem);width:min(92vw,1100px);}
+.cart{display:flex;flex-direction:column;align-items:center;gap:0.9rem;}
+.cart svg{width:clamp(130px,17vw,230px);height:auto;}
+.cart-when{font-family:var(--font-display);font-weight:700;letter-spacing:0.2em;text-transform:uppercase;font-size:clamp(0.75rem,1.1vw,1rem);color:var(--text-muted);}
+.cart-price{font-family:var(--font-display);font-weight:800;font-size:clamp(2.8rem,7vw,5.5rem);white-space:nowrap;line-height:1;}
+.note-small{font-size:clamp(0.75rem,1vw,0.9rem);color:var(--text-muted);font-style:italic;}
+
+/* ---- Salary vs investments ---- */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2.5rem);width:min(92vw,1100px);}
+.vs-card{border-radius:24px;padding:clamp(1.4rem,3vw,2.4rem);background:rgba(255,255,255,0.04);backdrop-filter:blur(6px);border:1.5px solid rgba(255,255,255,0.12);display:flex;flex-direction:column;gap:1rem;}
+.vs-card.grey{opacity:.85;}
+.vs-card.c{border-color:rgba(0,229,255,0.45);box-shadow:0 0 40px rgba(0,229,255,0.10);}
+.vs-card svg{width:clamp(48px,5vw,68px);height:auto;}
+.vs-title{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1;}
+.vs-desc{font-size:clamp(1rem,1.7vw,1.35rem);color:var(--text-secondary);}
+
+/* ---- Recap ---- */
+.recap-item{display:flex;align-items:center;gap:clamp(1rem,2vw,1.8rem);}
+
+/* ---- CTA ---- */
+.cta-box{border-radius:28px;padding:clamp(1.8rem,4vw,3.4rem) clamp(1.6rem,4vw,3.6rem);border:2px solid rgba(255,107,53,0.6);background:rgba(10,10,10,0.45);backdrop-filter:blur(6px);animation:ctaPulse 2.4s ease-in-out infinite;}
+@keyframes ctaPulse{0%,100%{box-shadow:0 0 0 rgba(255,107,53,0);}50%{box-shadow:0 0 48px rgba(255,107,53,0.35);}}
+.cta-q{font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,4.4vw,3.6rem);line-height:1.15;}
+
+.watermark{position:fixed;bottom:clamp(1rem,2vw,2rem);left:clamp(1.5rem,3vw,3rem);font-family:var(--font-display);font-weight:800;font-size:clamp(0.65rem,1vw,0.85rem);color:rgba(255,255,255,0.25);z-index:50;pointer-events:none;}
+
+
+/* ---- Years crescendo ---- */
+.year-pre{font-family:var(--font-display);font-weight:700;font-size:clamp(1.4rem,3vw,2.4rem);color:var(--text-secondary);}
+.year-big{font-family:var(--font-display);font-weight:800;font-size:clamp(5rem,18vw,15rem);line-height:0.9;letter-spacing:-0.04em;}
+
+/* ---- One word per slide + animation ---- */
+.one-word{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,9vw,7.5rem);line-height:1;color:var(--text);}
+.one-word .word{position:relative;display:inline-block;}
+.one-word .word::after{content:'';position:absolute;left:-2%;right:-2%;top:52%;height:clamp(5px,0.8vw,10px);border-radius:6px;background:var(--red);box-shadow:0 0 18px rgba(255,68,68,.6);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease) 2.2s;}
+.visible .one-word .word::after{transform:scaleX(1);}
+.word-anim{width:min(80vw,620px);}
+.word-anim svg{width:100%;height:auto;overflow:visible;}
+.cdl{opacity:0;transform-box:fill-box;transform-origin:bottom;}
+.visible .cdl{animation:cdlIn 3.6s var(--ease) infinite;}
+@keyframes cdlIn{0%{opacity:0;transform:scaleY(0);}12%,80%{opacity:1;transform:scaleY(1);}100%{opacity:0;transform:scaleY(1);}}
+.zig{stroke-dasharray:1400;stroke-dashoffset:1400;filter:drop-shadow(0 0 6px rgba(255,107,53,.6));}
+.visible .zig{animation:zig 1.6s linear infinite;}
+@keyframes zig{to{stroke-dashoffset:0;}}
+.tag{opacity:0;}
+.visible .tag-buy{animation:tagBlink .8s steps(1) infinite;}
+.visible .tag-sell{animation:tagBlink .8s steps(1) .4s infinite;}
+@keyframes tagBlink{0%{opacity:1;}50%{opacity:0;}}
+.pulse{stroke-dasharray:14 400;stroke-dashoffset:0;opacity:0;}
+.visible .pulse{animation:pulse 2s linear infinite;}
+@keyframes pulse{0%{stroke-dashoffset:0;opacity:1;}100%{stroke-dashoffset:-414;opacity:1;}}
+.visible .node{animation:nodeGlow 2s ease-in-out infinite;}
+@keyframes nodeGlow{0%,100%{filter:none;}50%{filter:drop-shadow(0 0 10px #00E5FF);}}
+.visible .chip{animation:chipGlow 1.6s ease-in-out infinite;}
+@keyframes chipGlow{0%,100%{filter:drop-shadow(0 0 4px rgba(255,107,53,.4));}50%{filter:drop-shadow(0 0 22px rgba(255,107,53,.9));}}
+
+/* ---- Challenge ---- */
+.slide-content.challenge{flex-direction:row;align-items:center;gap:clamp(1.5rem,4vw,4rem);max-width:min(94vw,1400px);}
+.challenge-txt{display:flex;flex-direction:column;gap:var(--content-gap);flex:0 0 36%;}
+.challenge-num{font-family:var(--font-display);font-weight:800;font-size:clamp(2.8rem,7vw,6rem);line-height:1;letter-spacing:-0.03em;white-space:nowrap;}
+.challenge-num .arrow{color:var(--text-muted);font-size:.7em;}
+.challenge-img{flex:1;border-radius:20px;overflow:hidden;border:1.5px solid rgba(255,107,53,0.45);box-shadow:0 0 60px rgba(255,107,53,0.18);background:#0d0d0d;}
+.challenge-img img{display:block;width:100%;height:auto;}
+@media(max-width:900px){.slide-content.challenge{flex-direction:column;}.challenge-txt{flex:none;align-items:center;text-align:center;}}
+
+/* ---- Challenge v2 ---- */
+.ch2{width:min(94vw,1250px);gap:clamp(0.8rem,2vw,1.6rem);position:static;}
+.ch2-head{display:flex;align-items:baseline;justify-content:center;gap:clamp(0.6rem,2vw,1.6rem);font-family:var(--font-display);font-weight:800;line-height:1;letter-spacing:-0.03em;white-space:nowrap;}
+.ch2-from{font-size:clamp(2.4rem,6vw,5rem);color:var(--text-muted);}
+.ch2-arrow{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,5vw,4rem);color:var(--text-muted);margin:0 .3em;}
+.ch2-to{font-size:clamp(4rem,12vw,10rem);}
+.ch2-x{align-self:center;font-size:clamp(1.2rem,2.6vw,2.2rem);color:#0A0A0A;background:var(--cyan);border-radius:999px;padding:.25em .7em;box-shadow:0 0 30px rgba(0,229,255,.55);animation:ctaPulse 2s ease-in-out infinite;}
+.ch2-chart{position:relative;width:100%;height:clamp(160px,30vh,300px);}
+.ch2-chart svg{width:100%;height:100%;display:block;}
+.ch2-line{stroke-dasharray:3000;stroke-dashoffset:3000;filter:drop-shadow(0 0 8px rgba(0,229,255,.5));}
+.visible .ch2-line{animation:drawLine 2.6s var(--ease) .3s forwards;}
+@keyframes drawLine{to{stroke-dashoffset:0;}}
+.ch2-area{opacity:0;transition:opacity 1s ease 2.4s;}
+.visible .ch2-area{opacity:1;}
+.ch2-dot{position:absolute;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);}
+.ch2-dot-start{background:var(--orange);box-shadow:0 0 16px var(--orange);}
+.ch2-dot-end{background:var(--cyan);box-shadow:0 0 22px var(--cyan);opacity:0;transition:opacity .4s ease 2.8s;}
+.visible .ch2-dot-end{opacity:1;animation:ctaPulse 1.6s ease-in-out 3s infinite;}
+.ch2-lbl{position:absolute;font-family:var(--font-display);font-weight:800;font-size:clamp(.8rem,1.3vw,1.1rem);padding:.3em .7em;border-radius:10px;background:rgba(10,10,10,.8);border:1px solid rgba(255,255,255,.15);white-space:nowrap;}
+.ch2-lbl-start{transform:translate(-20%,40%);color:var(--orange);}
+.ch2-lbl-end{transform:translate(-100%,-150%);color:var(--cyan);opacity:0;transition:opacity .4s ease 2.9s;}
+.visible .ch2-lbl-end{opacity:1;}
+.ch2-axis{display:flex;justify-content:space-between;margin-top:.5rem;font-size:clamp(.75rem,1vw,.9rem);color:var(--text-muted);}
+.ch2-proof{position:absolute;z-index:3;right:clamp(1.5rem,3vw,3rem);bottom:clamp(1.5rem,3vw,3rem);width:clamp(120px,15vw,220px);transform:rotate(3deg);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 10px 30px rgba(0,0,0,.5);background:#0d0d0d;}
+.ch2-proof img{display:block;width:100%;}
+.ch2-proof span{display:block;font-size:.7rem;color:var(--text-muted);padding:.3em .6em;text-align:left;}
+
+/* ---- Live challenge ---- */
+.live{gap:clamp(0.9rem,2.2vw,1.8rem);}
+.live-badge{display:inline-flex;align-items:center;gap:.6em;font-family:var(--font-display);font-weight:800;letter-spacing:.2em;font-size:clamp(1rem,1.8vw,1.5rem);color:#fff;background:var(--red);padding:.45em 1.1em;border-radius:10px;box-shadow:0 0 40px rgba(255,68,68,.55);}
+.live-dot{width:.7em;height:.7em;border-radius:50%;background:#fff;animation:liveDot 1s ease-in-out infinite;}
+@keyframes liveDot{50%{opacity:.2;transform:scale(.7);}}
+.live-title{display:flex;align-items:baseline;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:clamp(4rem,13vw,11rem);line-height:1;letter-spacing:-0.04em;white-space:nowrap;}
+.live-track{position:relative;width:min(80vw,900px);height:14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);}
+.live-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;background:linear-gradient(90deg,var(--cyan),var(--orange),var(--red));box-shadow:0 0 20px rgba(255,107,53,.6);}
+.visible .live-fill{animation:liveFill 4s var(--ease) .5s infinite;}
+@keyframes liveFill{0%{width:0;}70%,100%{width:100%;}}
+.live-end{position:absolute;right:-.2em;top:50%;transform:translate(100%,-50%);font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,2.6vw,2.2rem);color:var(--orange);padding-left:.4em;}
+
+/* ---- The rule (donut in steps) ---- */
+.slide-content.rule{flex-direction:row;align-items:center;gap:clamp(1.5rem,5vw,5rem);max-width:min(94vw,1300px);}
+.donut{width:clamp(260px,38vw,520px);height:auto;flex:none;transform:rotate(0deg);overflow:visible;}
+.rule-txt{display:flex;flex-direction:column;gap:var(--content-gap);}
+.seg{stroke-dasharray:0 100;transition:stroke-dasharray 1.4s var(--ease) .3s,opacity .6s ease;}
+.seg-on{stroke-dasharray:var(--len) 100;}
+.visible .seg-in{stroke-dasharray:var(--len) 100;}
+.seg-dim{opacity:.28;}
+.seg-in{filter:drop-shadow(0 0 1.2px currentColor);}
+.seg-num{font-family:'Syne',sans-serif;font-weight:800;font-size:5px;}
+.seg-num-in{opacity:0;transition:opacity .5s ease 1.4s;}
+.visible .seg-num-in{opacity:1;}
+.donut-final .seg-on{stroke-dasharray:0 100;}
+.visible .donut-final .seg-on{stroke-dasharray:var(--len) 100;}
+.visible .donut-final .seg-on:nth-of-type(2){transition-delay:.2s;}
+.visible .donut-final .seg-on:nth-of-type(3){transition-delay:.7s;}
+.visible .donut-final .seg-on:nth-of-type(4){transition-delay:1.2s;}
+.visible .donut-final .seg-on:nth-of-type(5){transition-delay:1.7s;}
+.part-pct{font-family:var(--font-display);font-weight:800;font-size:clamp(4rem,12vw,10rem);line-height:.95;letter-spacing:-0.04em;white-space:nowrap;}
+.part-label{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.8rem);line-height:1.1;color:var(--text);}
+.legend{display:flex;flex-direction:column;gap:clamp(.8rem,1.8vw,1.4rem);}
+.leg-item{display:flex;align-items:center;gap:1rem;}
+.leg-sw{width:18px;height:18px;border-radius:5px;flex:none;}
+.leg-pct{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.2vw,2.8rem);min-width:3.2em;}
+.leg-lbl{font-family:var(--font-display);font-weight:700;font-size:clamp(1rem,1.9vw,1.6rem);color:var(--text);}
+.visible .legend .leg-item:nth-child(1){transition-delay:.4s;}
+.visible .legend .leg-item:nth-child(2){transition-delay:.9s;}
+.visible .legend .leg-item:nth-child(3){transition-delay:1.4s;}
+.visible .legend .leg-item:nth-child(4){transition-delay:1.9s;}
+.rule-teaser{position:relative;display:flex;align-items:center;justify-content:center;}
+.rule-teaser .donut{width:clamp(200px,28vw,360px);filter:blur(14px);}
+.rule-teaser .seg-num{display:none;}
+.rule-lock{position:absolute;font-size:clamp(2.4rem,5vw,4rem);filter:drop-shadow(0 0 20px rgba(0,0,0,.8));}
+@media(max-width:900px){.slide-content.rule{flex-direction:column;}.donut{width:min(70vw,340px);}}
+
+
+@media(max-width:768px){
+  .reasons,.vs{grid-template-columns:1fr;}
+  .compare,.carts{grid-template-columns:1fr;}
+  .compare-arrow{transform:rotate(90deg);}
+  .tl{flex-wrap:wrap;row-gap:1.5rem;}
+  .tl::before{display:none;}
+  .tl-step{flex:0 0 33%;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cart" viewBox="0 0 64 56">
+    <path d="M3 5h8l7 30h32l6-22H15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="20" y="15" width="8" height="10" rx="1.5" fill="currentColor" opacity=".55"/>
+    <rect x="30" y="11" width="7" height="14" rx="1.5" fill="currentColor" opacity=".8"/>
+    <circle cx="44" cy="19" r="5.5" fill="currentColor" opacity=".45"/>
+    <circle cx="22" cy="45" r="4.5" fill="none" stroke="currentColor" stroke-width="3"/>
+    <circle cx="46" cy="45" r="4.5" fill="none" stroke="currentColor" stroke-width="3"/>
+  </symbol>
+</svg>
+
+<!-- 01 — TITRE -->
+<section class="slide center tint-dark">
+  <canvas id="particleCanvas"></canvas>
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <span class="kicker reveal">Formation offerte · Vidéo 1/3</span>
+    <h1 class="reveal glitch" data-text="Pourquoi il faut investir en 2026">Pourquoi il faut investir en 2026</h1>
+    <p class="lead reveal">Pas une option. <span class="hl-o">Une obligation.</span></p>
+  </div>
+</section>
+
+<!-- ET EN 2027 -->
+<section class="slide center tint-cyan">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="year-pre reveal">Et en</p>
+    <p class="year-big gradient-shift reveal-scale">2027</p>
+  </div>
+</section>
+
+<!-- ET EN 2028 -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="year-pre reveal">Et en</p>
+    <p class="year-big gradient-shift reveal-scale">2028</p>
+  </div>
+</section>
+
+<!-- ET EN 2029 -->
+<section class="slide center tint-cyan">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="year-pre reveal">Et en</p>
+    <p class="year-big gradient-shift reveal-scale">2029</p>
+  </div>
+</section>
+
+<!-- ET EN 2030 -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="year-pre reveal">Et en</p>
+    <p class="year-big gradient-shift reveal-scale">2030</p>
+  </div>
+</section>
+
+<!-- JUSQU'À LA FIN DE VOTRE VIE -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="year-pre reveal">Et au final…</p>
+    <p class="statement reveal-blur" style="font-size:clamp(2.2rem,5.5vw,4.8rem)">Jusqu'à la <span class="hl-o">fin de votre vie</span>.</p>
+  </div>
+</section>
+
+<!-- J'AIMERAIS COMMENCER AVEC UNE CITATION -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="statement reveal">J'aimerais commencer avec <span class="hl-c">une citation</span>.</p>
+  </div>
+</section>
+
+<!-- 02 — QUOTE F1 / KARTING -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="quote-big reveal-blur"><span class="quote-mark">“</span>Vous voulez tous conduire une <span class="text-orange">Formule 1</span>, mais vous ne savez même pas conduire un <span class="text-cyan">karting</span>.<span class="quote-mark typing-cursor">”</span></p>
+    <span class="quote-src reveal">— Nass Riviera</span>
+  </div>
+</section>
+
+<!-- DONC POURQUOI C'EST OBLIGATOIRE -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="statement reveal-blur" style="font-size:clamp(2rem,5vw,4.4rem)">Donc, pourquoi c'est <span class="hl-o">obligatoire</span> d'investir en 2026 ?</p>
+  </div>
+</section>
+
+<!-- 03 — LA RÈGLE (FLOUTÉE) -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="statement reveal" style="font-size:clamp(1.5rem,3.4vw,2.8rem)">Une règle que <span class="hl-o">énormément d'investisseurs</span> ne mettent pas en pratique.</p>
+    <div class="rule-teaser reveal-scale">
+      <svg class="donut blurred" viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#00E5FF" stroke-width="8" transform="rotate(-90.0 21 21)" style="--len:29.4"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#FFB020" stroke-width="8" transform="rotate(18.0 21 21)" style="--len:14.4"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF4444" stroke-width="8" transform="rotate(72.0 21 21)" style="--len:14.4"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF6B35" stroke-width="8" transform="rotate(126.0 21 21)" style="--len:39.4"/><text class="seg-num" x="42.03" y="5.72" fill="#00E5FF" text-anchor="middle" dominant-baseline="central">2</text><text class="seg-num" x="39.38" y="39.38" fill="#FFB020" text-anchor="middle" dominant-baseline="central">4</text><text class="seg-num" x="16.93" y="46.68" fill="#FF4444" text-anchor="middle" dominant-baseline="central">3</text><text class="seg-num" x="-3.73" y="12.97" fill="#FF6B35" text-anchor="middle" dominant-baseline="central">1</text></svg>
+      <span class="rule-lock">🔒</span>
+    </div>
+    <span class="lock reveal">Je vous la partage à la fin de la vidéo.</span>
+  </div>
+</section>
+
+<!-- 04 — TRANSITION 01 -->
+<section class="slide tint-orange">
+  <span class="slide-num"></span>
+  <div class="section-ghost">01</div>
+  <div class="slide-content">
+    <div class="divider divider-orange reveal"></div>
+    <h2 class="reveal">De quoi on parle</h2>
+    <p class="lead reveal">Et surtout, de quoi on <span class="hl-o">ne parle pas</span>.</p>
+  </div>
+</section>
+
+<!-- ON NE PARLE PAS : TRADING -->
+<section class="slide center tint-red">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <span class="kicker reveal">On ne parle pas de…</span>
+    <p class="one-word reveal-scale"><span class="word">Trading</span></p>
+    <div class="word-anim reveal"><svg viewBox="0 0 540 230" class="anim-trading"><g class="cdl" style="animation-delay:0.00s"><line x1="30" x2="30" y1="120" y2="200" stroke="#00E5FF" stroke-width="3"/><rect x="16" y="140" width="28" height="40" rx="3" fill="#00E5FF"/></g><g class="cdl" style="animation-delay:0.18s"><line x1="82" x2="82" y1="95" y2="170" stroke="#00E5FF" stroke-width="3"/><rect x="68" y="110" width="28" height="40" rx="3" fill="#00E5FF"/></g><g class="cdl" style="animation-delay:0.36s"><line x1="134" x2="134" y1="100" y2="180" stroke="#FF4444" stroke-width="3"/><rect x="120" y="115" width="28" height="45" rx="3" fill="#FF4444"/></g><g class="cdl" style="animation-delay:0.54s"><line x1="186" x2="186" y1="130" y2="210" stroke="#FF4444" stroke-width="3"/><rect x="172" y="150" width="28" height="40" rx="3" fill="#FF4444"/></g><g class="cdl" style="animation-delay:0.72s"><line x1="238" x2="238" y1="90" y2="175" stroke="#00E5FF" stroke-width="3"/><rect x="224" y="105" width="28" height="50" rx="3" fill="#00E5FF"/></g><g class="cdl" style="animation-delay:0.90s"><line x1="290" x2="290" y1="60" y2="140" stroke="#00E5FF" stroke-width="3"/><rect x="276" y="75" width="28" height="45" rx="3" fill="#00E5FF"/></g><g class="cdl" style="animation-delay:1.08s"><line x1="342" x2="342" y1="70" y2="160" stroke="#FF4444" stroke-width="3"/><rect x="328" y="85" width="28" height="50" rx="3" fill="#FF4444"/></g><g class="cdl" style="animation-delay:1.26s"><line x1="394" x2="394" y1="40" y2="120" stroke="#00E5FF" stroke-width="3"/><rect x="380" y="55" width="28" height="45" rx="3" fill="#00E5FF"/></g><g class="cdl" style="animation-delay:1.44s"><line x1="446" x2="446" y1="55" y2="135" stroke="#FF4444" stroke-width="3"/><rect x="432" y="65" width="28" height="45" rx="3" fill="#FF4444"/></g><g class="cdl" style="animation-delay:1.62s"><line x1="498" x2="498" y1="20" y2="100" stroke="#00E5FF" stroke-width="3"/><rect x="484" y="30" width="28" height="50" rx="3" fill="#00E5FF"/></g></svg></div>
+  </div>
+</section>
+
+<!-- ON NE PARLE PAS : SCALPING -->
+<section class="slide center tint-red">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <span class="kicker reveal">On ne parle pas de…</span>
+    <p class="one-word reveal-scale"><span class="word">Scalping</span></p>
+    <div class="word-anim reveal"><svg viewBox="0 0 540 230" class="anim-scalping">
+  <polyline class="zig" points="0,120 30,90 55,140 80,70 105,150 130,95 150,160 175,60 200,130 225,85 250,150 275,75 300,140 325,90 350,165 375,70 400,125 425,80 450,150 475,95 500,135 540,100" fill="none" stroke="#FF6B35" stroke-width="3" stroke-linejoin="round"/>
+  <g class="tag tag-buy"><rect x="150" y="10" width="80" height="34" rx="8" fill="rgba(0,229,255,0.15)" stroke="#00E5FF"/><text x="190" y="33" text-anchor="middle" fill="#00E5FF" font-family="Syne" font-weight="800" font-size="16">BUY</text></g>
+  <g class="tag tag-sell"><rect x="310" y="10" width="80" height="34" rx="8" fill="rgba(255,68,68,0.15)" stroke="#FF4444"/><text x="350" y="33" text-anchor="middle" fill="#FF4444" font-family="Syne" font-weight="800" font-size="16">SELL</text></g>
+  <text class="timer" x="270" y="222" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="Syne" font-weight="700" font-size="16">⏱ quelques secondes</text>
+</svg></div>
+  </div>
+</section>
+
+<!-- ON NE PARLE PAS : AUTOMATISATION AVEC L'IA -->
+<section class="slide center tint-red">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <span class="kicker reveal">On ne parle pas de…</span>
+    <p class="one-word reveal-scale" style="font-size:clamp(2rem,5.6vw,4.8rem);white-space:nowrap"><span class="word">Automatisation avec l'IA</span></p>
+    <div class="word-anim reveal"><svg viewBox="0 0 540 230" class="anim-ia"><line x1="270" y1="115" x2="110" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="270" y1="115" x2="110" y2="50" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.00s"/><line x1="270" y1="115" x2="110" y2="180" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="270" y1="115" x2="110" y2="180" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.25s"/><line x1="270" y1="115" x2="430" y2="50" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="270" y1="115" x2="430" y2="50" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.50s"/><line x1="270" y1="115" x2="430" y2="180" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="270" y1="115" x2="430" y2="180" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.75s"/><line x1="110" y1="50" x2="40" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="110" y1="50" x2="40" y2="115" stroke="#00E5FF" stroke-width="3" style="animation-delay:1.00s"/><line x1="110" y1="180" x2="40" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="110" y1="180" x2="40" y2="115" stroke="#00E5FF" stroke-width="3" style="animation-delay:1.25s"/><line x1="430" y1="50" x2="500" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="430" y1="50" x2="500" y2="115" stroke="#00E5FF" stroke-width="3" style="animation-delay:1.50s"/><line x1="430" y1="180" x2="500" y2="115" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line class="pulse" x1="430" y1="180" x2="500" y2="115" stroke="#00E5FF" stroke-width="3" style="animation-delay:1.75s"/><circle class="node" cx="110" cy="50" r="12" fill="#0A0A0A" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.0s"/><circle class="node" cx="110" cy="180" r="12" fill="#0A0A0A" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.3s"/><circle class="node" cx="430" cy="50" r="12" fill="#0A0A0A" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.6s"/><circle class="node" cx="430" cy="180" r="12" fill="#0A0A0A" stroke="#00E5FF" stroke-width="3" style="animation-delay:0.9s"/><circle class="node" cx="40" cy="115" r="12" fill="#0A0A0A" stroke="#00E5FF" stroke-width="3" style="animation-delay:1.2s"/><circle class="node" cx="500" cy="115" r="12" fill="#0A0A0A" stroke="#00E5FF" stroke-width="3" style="animation-delay:1.5s"/><rect class="chip" x="235" y="80" width="70" height="70" rx="14" fill="#0A0A0A" stroke="#FF6B35" stroke-width="3"/><text x="270" y="124" text-anchor="middle" fill="#FF6B35" font-family="Syne" font-weight="800" font-size="24">IA</text></svg></div>
+  </div>
+</section>
+
+<!-- 06 — C'EST L'INVESTISSEMENT -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="lead reveal">Ce que tout le monde sur Terre doit mettre en place :</p>
+    <p class="mega gradient-shift reveal-scale">C'est l'investissement.</p>
+  </div>
+</section>
+
+<!-- 07 — DÉFINITION INVESTIR -->
+<section class="slide tint-cyan">
+  <span class="slide-num"></span>
+  <div class="slide-content">
+    <span class="def-tag reveal">définition</span>
+    <h2 class="def-term text-cyan reveal">Investir</h2>
+    <div class="def-bar reveal"><p class="def-body">Mettre son argent dans quelque chose qui <span class="hl-c">prend de la valeur avec le temps</span>.</p></div>
+  </div>
+</section>
+
+<!-- 08 — TRANSITION 02 -->
+<section class="slide tint-cyan">
+  <span class="slide-num"></span>
+  <div class="section-ghost">02</div>
+  <div class="slide-content">
+    <div class="divider divider-cyan reveal"></div>
+    <h2 class="reveal">Qui je suis pour vous dire ça ?</h2>
+  </div>
+</section>
+
+<!-- 09 — 10 ANS / 6 ANS -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <div class="compare">
+      <div class="compare-col reveal-scale">
+        <span class="compare-num text-orange"><span class="counter" data-target="10">0</span> ans</span>
+        <span class="compare-lbl">à investir</span>
+      </div>
+      <span class="compare-arrow reveal">·</span>
+      <div class="compare-col reveal-scale">
+        <span class="compare-num text-cyan"><span class="counter" data-target="6">0</span> ans</span>
+        <span class="compare-lbl">à en vivre</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 — TIMELINE DES PHASES -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <h2 class="reveal">Toutes les phases, <span class="text-orange">je les ai vécues</span></h2>
+    <div class="tl">
+      <div class="tl-step reveal"><span class="tl-dot"></span><span class="tl-lbl">Crypto</span></div>
+      <div class="tl-step reveal"><span class="tl-dot"></span><span class="tl-lbl">ICO</span></div>
+      <div class="tl-step reveal"><span class="tl-dot"></span><span class="tl-lbl">NFT</span></div>
+      <div class="tl-step reveal"><span class="tl-dot"></span><span class="tl-lbl">Ordinals</span></div>
+      <div class="tl-step reveal"><span class="tl-dot"></span><span class="tl-lbl">Meme coins</span></div>
+      <div class="tl-step reveal"><span class="tl-dot"></span><span class="tl-lbl">DeFi</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 — 300+ -->
+<section class="slide center tint-cyan">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <span class="stat-num gradient-shift reveal-scale"><span class="counter" data-target="300">0</span>+</span>
+    <p class="stat-ctx reveal">personnes accompagnées et <span class="hl-c">formées</span> à l'investissement</p>
+  </div>
+</section>
+
+<!-- CHALLENGE PUBLIC 12K → 50K -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center ch2">
+    <span class="kicker reveal">Challenge public · Août → Septembre</span>
+    <div class="ch2-head reveal-scale">
+      <span class="ch2-from">12K</span>
+      <span class="ch2-arrow">→</span>
+      <span class="ch2-to gradient-shift"><span class="counter" data-from="12" data-target="50">12</span>K</span>
+      <span class="ch2-x">×4</span>
+    </div>
+    <div class="ch2-chart reveal">
+      <svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-label="Évolution du portefeuille du challenge">
+        <defs>
+          <linearGradient id="chLine" x1="0" x2="1"><stop offset="0" stop-color="#FF6B35"/><stop offset="1" stop-color="#00E5FF"/></linearGradient>
+          <linearGradient id="chArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(0,229,255,0.25)"/><stop offset="1" stop-color="rgba(0,229,255,0)"/></linearGradient>
+        </defs>
+        <path class="ch2-area" d="M20.0,300 L20.0,262.0 L98.7,262.0 L145.9,263.9 L208.9,262.7 L256.1,249.0 L287.5,247.8 L319.0,258.3 L366.2,252.1 L397.7,242.9 L429.2,230.5 L460.7,224.3 L492.1,181.0 L523.6,162.4 L555.1,150.0 L586.6,153.1 L618.0,150.0 L633.8,174.8 L649.5,171.7 L681.0,122.1 L696.7,153.1 L728.2,168.6 L759.7,156.2 L775.4,119.0 L791.1,165.5 L822.6,174.8 L854.1,159.3 L885.6,150.0 L917.0,119.0 L948.5,81.9 L980.0,31.1 L980.0,300 Z" fill="url(#chArea)"/>
+        <polyline class="ch2-line" points="20.0,262.0 98.7,262.0 145.9,263.9 208.9,262.7 256.1,249.0 287.5,247.8 319.0,258.3 366.2,252.1 397.7,242.9 429.2,230.5 460.7,224.3 492.1,181.0 523.6,162.4 555.1,150.0 586.6,153.1 618.0,150.0 633.8,174.8 649.5,171.7 681.0,122.1 696.7,153.1 728.2,168.6 759.7,156.2 775.4,119.0 791.1,165.5 822.6,174.8 854.1,159.3 885.6,150.0 917.0,119.0 948.5,81.9 980.0,31.1" fill="none" stroke="url(#chLine)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <span class="ch2-dot ch2-dot-start" style="left:14.59%;top:87.97%"></span>
+      <span class="ch2-dot ch2-dot-end" style="left:98.00%;top:10.38%"></span>
+      <span class="ch2-lbl ch2-lbl-start" style="left:14.59%;top:87.97%">12 632 $</span>
+      <span class="ch2-lbl ch2-lbl-end" style="left:98.00%;top:10.38%">50 205 $</span>
+      <div class="ch2-axis"><span>29 juil.</span><span>28 août</span><span>fin sept.</span></div>
+    </div>
+    <div class="ch2-proof reveal"><img src="challenge-12k-50k.png" alt="Capture CoinStats du portefeuille"><span>Preuve · CoinStats</span></div>
+  </div>
+</section>
+
+<!-- PROCHAIN CHALLENGE 10K → 100K LIVE -->
+<section class="slide center tint-red">
+  <span class="slide-num"></span>
+  <div class="slide-content center live">
+    <span class="live-badge reveal"><span class="live-dot"></span>LIVE</span>
+    <span class="kicker reveal">Prochain challenge</span>
+    <p class="live-title reveal-scale"><span class="text-cyan">10K</span><span class="ch2-arrow">→</span><span class="gradient-shift">100K</span></p>
+    <div class="live-track reveal">
+      <div class="live-fill"></div>
+      <span class="live-end">?</span>
+    </div>
+    <p class="lead reveal">En live. <span class="hl-o">Tout en public.</span></p>
+  </div>
+</section>
+
+<!-- 12 — LE PERMIS -->
+<section class="slide center tint-orange">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <p class="lead reveal">Avant la Formule 1, il y a le karting. Avant le karting…</p>
+    <p class="statement reveal-blur">Cette formation offerte, <span class="hl-o">c'est votre permis.</span> 🏁</p>
+  </div>
+</section>
+
+<!-- LA RÈGLE — TRANSITION 03 -->
+<section class="slide tint-orange">
+  <span class="slide-num"></span>
+  <div class="section-ghost">03</div>
+  <div class="slide-content">
+    <div class="divider divider-orange reveal"></div>
+    <h2 class="reveal">La règle</h2>
+    <p class="lead reveal">Celle que je vous ai promise au début.</p>
+  </div>
+</section>
+
+<!-- LA RÈGLE — GÉRER SON CAPITAL AVANT -->
+<section class="slide tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content rule">
+    <svg class="donut " viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/></svg>
+    <div class="rule-txt">
+      <span class="kicker reveal">Avant d'investir</span>
+      <p class="statement reveal-blur">Il faut <span class="hl-o">gérer son capital</span> avant.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA RÈGLE — PARTIE 1 -->
+<section class="slide tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content rule">
+    <svg class="donut " viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/><circle class="seg seg-in" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF6B35" stroke-width="8" transform="rotate(126.0 21 21)" style="--len:39.4"/><text class="seg-num seg-num-in" x="-3.73" y="12.97" fill="#FF6B35" text-anchor="middle" dominant-baseline="central">1</text></svg>
+    <div class="rule-txt">
+      <span class="kicker reveal" style="color:#FF6B35">Partie 1</span>
+      <p class="part-pct reveal-scale" style="color:#FF6B35">40 %</p>
+      <p class="part-label reveal">Coûts fixes de la vie</p><p class="lead reveal">Salaire, loyer, abonnements, vitaux…</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA RÈGLE — PARTIE 2 -->
+<section class="slide tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content rule">
+    <svg class="donut " viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/><circle class="seg seg-in" cx="21" cy="21" r="15.9155" fill="none" stroke="#00E5FF" stroke-width="8" transform="rotate(-90.0 21 21)" style="--len:29.4"/><circle class="seg seg-on seg-dim" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF6B35" stroke-width="8" transform="rotate(126.0 21 21)" style="--len:39.4"/><text class="seg-num seg-num-in" x="42.03" y="5.72" fill="#00E5FF" text-anchor="middle" dominant-baseline="central">2</text><text class="seg-num" x="-3.73" y="12.97" fill="#FF6B35" text-anchor="middle" dominant-baseline="central">1</text></svg>
+    <div class="rule-txt">
+      <span class="kicker reveal" style="color:#00E5FF">Partie 2</span>
+      <p class="part-pct reveal-scale" style="color:#00E5FF">30 %</p>
+      <p class="part-label reveal">Épargne</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA RÈGLE — PARTIE 3 -->
+<section class="slide tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content rule">
+    <svg class="donut " viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/><circle class="seg seg-on seg-dim" cx="21" cy="21" r="15.9155" fill="none" stroke="#00E5FF" stroke-width="8" transform="rotate(-90.0 21 21)" style="--len:29.4"/><circle class="seg seg-in" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF4444" stroke-width="8" transform="rotate(72.0 21 21)" style="--len:14.4"/><circle class="seg seg-on seg-dim" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF6B35" stroke-width="8" transform="rotate(126.0 21 21)" style="--len:39.4"/><text class="seg-num" x="42.03" y="5.72" fill="#00E5FF" text-anchor="middle" dominant-baseline="central">2</text><text class="seg-num seg-num-in" x="16.93" y="46.68" fill="#FF4444" text-anchor="middle" dominant-baseline="central">3</text><text class="seg-num" x="-3.73" y="12.97" fill="#FF6B35" text-anchor="middle" dominant-baseline="central">1</text></svg>
+    <div class="rule-txt">
+      <span class="kicker reveal" style="color:#FF4444">Partie 3</span>
+      <p class="part-pct reveal-scale" style="color:#FF4444">15 %</p>
+      <p class="part-label reveal">Investissement</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA RÈGLE — PARTIE 4 -->
+<section class="slide tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content rule">
+    <svg class="donut " viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/><circle class="seg seg-on seg-dim" cx="21" cy="21" r="15.9155" fill="none" stroke="#00E5FF" stroke-width="8" transform="rotate(-90.0 21 21)" style="--len:29.4"/><circle class="seg seg-in" cx="21" cy="21" r="15.9155" fill="none" stroke="#FFB020" stroke-width="8" transform="rotate(18.0 21 21)" style="--len:14.4"/><circle class="seg seg-on seg-dim" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF4444" stroke-width="8" transform="rotate(72.0 21 21)" style="--len:14.4"/><circle class="seg seg-on seg-dim" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF6B35" stroke-width="8" transform="rotate(126.0 21 21)" style="--len:39.4"/><text class="seg-num" x="42.03" y="5.72" fill="#00E5FF" text-anchor="middle" dominant-baseline="central">2</text><text class="seg-num seg-num-in" x="39.38" y="39.38" fill="#FFB020" text-anchor="middle" dominant-baseline="central">4</text><text class="seg-num" x="16.93" y="46.68" fill="#FF4444" text-anchor="middle" dominant-baseline="central">3</text><text class="seg-num" x="-3.73" y="12.97" fill="#FF6B35" text-anchor="middle" dominant-baseline="central">1</text></svg>
+    <div class="rule-txt">
+      <span class="kicker reveal" style="color:#FFB020">Partie 4</span>
+      <p class="part-pct reveal-scale" style="color:#FFB020">15 %</p>
+      <p class="part-label reveal">Plaisir</p>
+    </div>
+  </div>
+</section>
+
+<!-- LA RÈGLE — TOUT ENSEMBLE -->
+<section class="slide tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content rule">
+    <svg class="donut donut-final" viewBox="-12 -12 66 66"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#00E5FF" stroke-width="8" transform="rotate(-90.0 21 21)" style="--len:29.4"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#FFB020" stroke-width="8" transform="rotate(18.0 21 21)" style="--len:14.4"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF4444" stroke-width="8" transform="rotate(72.0 21 21)" style="--len:14.4"/><circle class="seg seg-on" cx="21" cy="21" r="15.9155" fill="none" stroke="#FF6B35" stroke-width="8" transform="rotate(126.0 21 21)" style="--len:39.4"/><text class="seg-num" x="42.03" y="5.72" fill="#00E5FF" text-anchor="middle" dominant-baseline="central">2</text><text class="seg-num" x="39.38" y="39.38" fill="#FFB020" text-anchor="middle" dominant-baseline="central">4</text><text class="seg-num" x="16.93" y="46.68" fill="#FF4444" text-anchor="middle" dominant-baseline="central">3</text><text class="seg-num" x="-3.73" y="12.97" fill="#FF6B35" text-anchor="middle" dominant-baseline="central">1</text></svg>
+    <div class="rule-txt">
+      <span class="kicker reveal">La règle complète</span>
+      <div class="legend"><div class="leg-item reveal-left"><span class="leg-sw" style="background:#FF6B35"></span><span class="leg-pct" style="color:#FF6B35">40 %</span><span class="leg-lbl">Coûts fixes de la vie</span></div><div class="leg-item reveal-left"><span class="leg-sw" style="background:#00E5FF"></span><span class="leg-pct" style="color:#00E5FF">30 %</span><span class="leg-lbl">Épargne</span></div><div class="leg-item reveal-left"><span class="leg-sw" style="background:#FF4444"></span><span class="leg-pct" style="color:#FF4444">15 %</span><span class="leg-lbl">Investissement</span></div><div class="leg-item reveal-left"><span class="leg-sw" style="background:#FFB020"></span><span class="leg-pct" style="color:#FFB020">15 %</span><span class="leg-lbl">Plaisir</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 26 — CTA -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <div class="cta-box reveal-scale">
+      <span class="kicker">Dites-le moi en commentaire</span>
+      <p class="cta-q" style="margin-top:1rem">Votre argent, il <span class="text-red">dort</span>… ou il <span class="text-cyan">travaille</span> ?</p>
+    </div>
+    <span class="badge badge-orange reveal" style="align-self:center"><span class="dot"></span>Prochaine vidéo · Formation 2/3</span>
+  </div>
+</section>
+
+<!-- 27 — SIGNATURE -->
+<section class="slide center tint-dark">
+  <span class="slide-num"></span>
+  <div class="slide-content center">
+    <img class="sig-img reveal-scale" src="signature-nass.png" alt="Nass Riviera">
+    <p class="outro-tag reveal">On se retrouve dans la vidéo 2.</p>
+  </div>
+</section>
+
+<script>
+/* ---------- Particles (intro slide) ---------- */
+(function(){
+  const canvas=document.getElementById('particleCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  function seed(i){
+    return{
+      x:((i*97)%100)/100*W,
+      y:((i*53)%100)/100*H,
+      r:1+((i*7)%30)/10,
+      s:0.3+((i*13)%80)/100,
+      drift:(((i*17)%20)-10)/40,
+      o:0.2+((i*11)%60)/100,
+      red:(i%10)<3
+    };
+  }
+  function init(){resize();particles=[];for(let i=0;i<120;i++)particles.push(seed(i));}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.y+=p.s;p.x+=p.drift;
+      if(p.y>H){p.y=-4;}
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.red?`rgba(255,68,68,${p.o})`:`rgba(255,107,53,${p.o})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',init);
+  window.addEventListener('load',init);
+  init();draw();
+})();
+
+/* ---------- Navigation + reveal ---------- */
+class SlidePresentation{
+  constructor(){
+    this.slides=[...document.querySelectorAll('.slide')];
+    this.progress=document.getElementById('progress');
+    this.total=this.slides.length;
+    this.current=0;
+    this.observe();this.keys();this.touch();
+  }
+  observe(){
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          this.current=this.slides.indexOf(e.target);
+          this.progress.style.width=((this.current+1)/this.total*100)+'%';
+        }
+      });
+    },{threshold:0.5});
+    this.slides.forEach(s=>io.observe(s));
+  }
+  go(i){this.current=Math.max(0,Math.min(i,this.total-1));this.slides[this.current].scrollIntoView({behavior:'smooth'});}
+  keys(){
+    document.addEventListener('keydown',(e)=>{
+      if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();this.go(this.current+1);}
+      else if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();this.go(this.current-1);}
+      else if(e.key==='Home'){e.preventDefault();this.go(0);}
+      else if(e.key==='End'){e.preventDefault();this.go(this.total-1);}
+    });
+  }
+  touch(){
+    let y0=0;
+    document.addEventListener('touchstart',e=>{y0=e.touches[0].clientY;},{passive:true});
+    document.addEventListener('touchend',e=>{
+      const d=y0-e.changedTouches[0].clientY;
+      if(Math.abs(d)>50)this.go(this.current+(d>0?1:-1));
+    },{passive:true});
+  }
+}
+new SlidePresentation();
+
+/* ---------- Slide numbers ---------- */
+(function(){
+  const s=[...document.querySelectorAll('.slide')];
+  s.forEach((el,i)=>{const n=el.querySelector('.slide-num');if(n)n.textContent=String(i+1).padStart(2,'0')+' / '+s.length;});
+})();
+
+/* ---------- Counters ---------- */
+(function(){
+  const run=c=>{
+    if(c.dataset.done)return;c.dataset.done=1;
+    const to=+c.dataset.target,from=+(c.dataset.from||0),dur=1400,t0=performance.now();
+    const step=t=>{const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);c.textContent=Math.round(from+(to-from)*e);if(p<1)requestAnimationFrame(step);};
+    setTimeout(()=>requestAnimationFrame(step),350);
+  };
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.counter').forEach(run);}),{threshold:0.5});
+  document.querySelectorAll('.slide').forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>
