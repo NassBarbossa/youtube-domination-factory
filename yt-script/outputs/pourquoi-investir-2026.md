@@ -18,7 +18,7 @@
 - 0:00 — Hook : la Formule 1 et le karting
 - 0:20 — Ce dont on ne parle pas (et ce dont on parle)
 - 1:00 — Qui je suis pour vous dire ça
-- 1:50 — La règle : gérer son capital avant d'investir
+- 1:50 — Le secret : gérer son capital avant d'investir
 - 3:40 — CTA + prochaine vidéo
 
 ---
@@ -49,13 +49,17 @@ Vous voulez tous conduire une Formule 1. Mais vous ne savez même pas conduire u
 
 [PAUSE]
 
-Donc, pourquoi c'est obligatoire d'investir en 2026 ?
+Donc, allons-y, on va passer le code aujourd'hui pour que vous puissiez commencer à conduire le karting.
 
-[SLIDE: statement | Donc, pourquoi c'est obligatoire d'investir en 2026 ?]
+[SLIDE: statement | Allons-y — On va passer le code aujourd'hui, pour que vous puissiez commencer à conduire le karting. 🏁]
 
-Je vais vous partager une règle que énormément d'investisseurs ne mettent pas en pratique. Et cette règle, je vous la partagerai à la fin de la vidéo.
+Je vais vous partager un secret. Et si vous ne l'avez jamais mis en place, il va vous changer littéralement votre vie.
 
-[SLIDE: teaser | Une règle que énormément d'investisseurs ne mettent pas en pratique | diagramme de la règle flouté + 🔒 | Je vous la partage à la fin de la vidéo.]
+[SLIDE: teaser | Je vais vous partager un secret. | diagramme flouté + 🔒 | Si vous ne l'avez jamais mis en place, il va littéralement changer votre vie.]
+
+Commençons le code.
+
+[SLIDE: statement | Commençons le code. | animation : feu rouge → orange → vert, puis le kart démarre sur la route]
 
 ---
 
@@ -89,79 +93,95 @@ On parle bien de quelque chose que tout le monde sur Terre doit mettre en place.
 
 Mais du coup, qui je suis, moi, pour vous dire ça ?
 
-Ça fait 10 ans que j'ai commencé à investir. 6 années que je vis de mes investissements.
+Ça fait 10 ans que je suis un investisseur et un entrepreneur.
 
-[SLIDE: compare | 10 ans : à investir | 6 ans : à en vivre]
+[SLIDE: stat | "10 ans" | que je suis investisseur et entrepreneur]
 
-Je suis passé par beaucoup de phases, que ce soit la crypto, les ICO, les NFT, les Ordinals, les meme coins, la DeFi.
+J'ai acheté mes premiers bitcoins en 2017.
 
-[SLIDE: timeline | Crypto | ICO | NFT | Ordinals | Meme coins | DeFi]
+[SLIDE: btc | Mes premiers bitcoins, achetés en 2017 | animation : pièce ₿ qui tombe et tourne, compteur jusqu'à 2017]
+
+Et ça fait six ans que j'ai quitté mon emploi, et donc que je vis de mes investissements.
+
+[SLIDE: stat | "6 ans" | animation : « Mon emploi » barré → « Je vis de mes investissements »]
 
 J'ai accompagné et formé plus de 300 personnes à l'investissement.
 
-[SLIDE: stat | "300+" | personnes accompagnées et formées à l'investissement]
+[SLIDE: stat | "300+" | personnes accompagnées et formées à l'investissement | animation : 300 points qui s'allument un par un]
+
+Je suis passé par beaucoup de phases, que ce soit la crypto, les ICO, les NFT, les Ordinals, les meme coins, la DeFi.
+
+[SLIDE: timeline | Crypto | ICO | NFT | Ordinals | Meme coins | DeFi | animation : icônes qui apparaissent une par une, ligne qui se trace]
 
 Un challenge réalisé en août, que j'ai clôturé en septembre, où j'ai fait 12K to 50K publiquement, sur un challenge public.
 
-[SLIDE: challenge | 12K → 50K ×4 (compteur animé) | courbe du portefeuille qui se trace de 12 632 $ à 50 205 $ | capture CoinStats en vignette « preuve » : challenge-12k-50k.png]
+[SLIDE: challenge | 12K → 50K ×4 (compteur animé) | courbe du portefeuille qui se trace de 12 632 $ à 50 205 $]
+
+[SLIDE: proof | En réel · CoinStats | capture plein écran : challenge-12k-50k.png]
 
 D'ailleurs, je vais revenir avec un challenge 10K to 100K. En live.
 
 [SLIDE: live | LIVE · Prochain challenge | 10K → 100K | barre de progression animée qui se remplit jusqu'au « ? » | En live. Tout en public.]
 
-Et aujourd'hui, avec mon expérience, je veux réaliser cette formation offerte. Parce que, comme je vous ai dit au début : vous voulez tous conduire une Formule 1, mais vous ne savez pas conduire un karting. Et ben, pour moi, cette formation offerte, c'est un moyen de vous faire passer le permis.
-
-[SLIDE: statement | Cette formation = votre permis 🏁]
-
-`[PROP]` Cette vidéo, c'est la première de trois. Et on commence par la base de la base : pourquoi.
-
 ---
 
-## SECTION 3 — La règle : gérer son capital avant d'investir (1:50 - 3:40)
+## SECTION 3 — Le secret : gérer son capital avant d'investir (1:50 - 3:40)
 
-[SLIDE: transition | 03 | La règle | Celle que je vous ai promise au début.]
+Le secret que je vais vous révéler.
+
+[SLIDE: reveal | Le secret que je vais vous révéler. | animation : le cadenas tremble, s'ouvre, rayons lumineux]
 
 [FACE CAM]
 
 Avant d'investir, il faut savoir gérer son argent.
 
-[SLIDE: rule | Il faut gérer son capital avant. | cercle vide]
+[SLIDE: rule | Il faut gérer son capital avant. | grand cercle vide, centré]
 
-[SLIDE: rule-part | Partie 1 | 40 % | Coûts fixes de la vie | Salaire, loyer, abonnements, vitaux…]
+On va faire un exercice, que vous allez faire, qui vous servira tout le long de votre vie.
+
+[SLIDE: statement | On va faire un exercice, que vous allez faire, qui vous servira tout le long de votre vie.]
+
+[SLIDE: rule-part | titre : Coûts fixes de la vie | grand diagramme centré, 40 % au milieu | Salaire, loyer, abonnements, vitaux…]
 
 `[À COMPLÉTER]` Ton explication de la partie 1.
 
-[SLIDE: rule-part | Partie 2 | 30 % | Épargne]
+[SLIDE: rule-part | titre : Épargne | grand diagramme centré, 30 % au milieu | Jusqu'à un matelas de sécurité.]
 
 `[À COMPLÉTER]` Ton explication de la partie 2.
 
-[SLIDE: rule-part | Partie 3 | 15 % | Investissement]
+[SLIDE: rule-part | titre : Investissement | grand diagramme centré, 15 % au milieu]
 
 `[À COMPLÉTER]` Ton explication de la partie 3.
 
-[SLIDE: rule-part | Partie 4 | 15 % | Plaisir]
+[SLIDE: rule-part | titre : Plaisir | grand diagramme centré, 15 % au milieu]
 
 `[À COMPLÉTER]` Ton explication de la partie 4.
 
-[SLIDE: rule-all | Les 4 parties ensemble | 40 % Coûts fixes · 30 % Épargne · 15 % Investissement · 15 % Plaisir]
+[SLIDE: rule-all | Les 4 parties ensemble, 100 % au milieu, légende en ligne | 40 % Coûts fixes · 30 % Épargne · 15 % Investissement · 15 % Plaisir]
 
 ---
 
-## CTA + OUTRO (3:40 - 4:10)
+## CTA + OUTRO
 
 [FACE CAM]
 
-`[PROP]` Investir, ce n'est pas la Formule 1. C'est le permis. Et dans la prochaine vidéo de cette formation, `[À COMPLÉTER : sujet de la vidéo 2]`.
+Passe à l'action.
 
-`[PROP]` Et avant de partir, dites-moi en commentaire : aujourd'hui, votre argent, il dort ou il travaille ? Je lis tout.
+[SLIDE: action | Passe à l'action. | animation : bouton play qui pulse + ondes]
 
-`[PROP]` Abonnez-vous pour ne pas rater la vidéo 2. On se retrouve là-bas.
+Dis-moi dans les commentaires si tu veux une vidéo sur l'inflation.
+
+[SLIDE: cta | Dis-moi dans les commentaires si tu veux une vidéo sur l'inflation. | bulle de commentaire qui tape + badge « Prochaine vidéo · Formation 2/3 »]
+
+`[À COMPLÉTER : annonce de la vidéo 2]`
+
+[SLIDE: signature | Nass Riviera qui brille + reflet doré | On se retrouve dans la vidéo 2.]
 
 ---
 
 ## Shorts moments (clippables)
 
-1. **La règle en camembert** (Section 3) — autonome, visuel, très partageable
+1. **Le secret en camembert** (Section 3) — autonome, visuel, très partageable
 2. **Formule 1 / karting / permis** (Hook + Section 2) — punchline de marque
 3. **Challenge 12K → 50K** (Section 2) — preuve, crédibilité
 
@@ -171,5 +191,5 @@ Avant d'investir, il faut savoir gérer son argent.
 
 - **Word count** : ~425 mots parlés
 - **Reading time** : ~3 min à 150 mots/min
-- **Slides** : 32
+- **Slides** : 37
 - **Écart vs cible MIDDLE** : il manque ~2 300-2 900 mots (≈ 15-19 min) pour atteindre 18-22 min
