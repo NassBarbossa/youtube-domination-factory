@@ -235,6 +235,7 @@ Phase 4: yt-repurposing reads validated script.* + titres_seo.winning_title → 
 - ✅ **Manual mode preserved** — Every skill still works standalone
 - ✅ **Error handling** — Pipeline logs + error reporting
 - ✅ **No breaking changes** — 100% backward compatible
+- ✅ **Dictated slides** — Say "slide après" sentence by sentence: one slide per sentence, custom animation each, auto-checked with Playwright screenshots
 
 ---
 

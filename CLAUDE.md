@@ -62,6 +62,18 @@ Each module contains a single `SKILL.md` with YAML frontmatter (name, descriptio
 
 Scripts use visual markers: `[FACE CAM]`, `[SCREEN]`, `[DEMO]`, `[B-ROLL]` to indicate shot types for the editing team.
 
+## Slides (HTML decks) — guidelines
+
+Full rules live in `yt-script/SKILL.md` (Step 4 → "Mode dictée « slide après »"). The essentials:
+
+- **Dictation mode**: when Nass dictates "…slide d'après…", each one is exactly one slide. Keep his exact words (fix only spelling/obvious dictation errors, and say so). Anything he didn't ask for is marked `[PROP]` in the `.md` script.
+- **Every key slide gets a custom animation** that tells the sentence (superhero transformation, slam + flash + shake, Far West scene, token swarm…). Reference deck: `yt-script/outputs/investissement-on-chain-visual.html` — reuse its patterns.
+- **Always centered** (`slide center` + `slide-content center`), Nass Riviera branding (orange `#FF6B35` / cyan `#00E5FF`, Syne + Inter).
+- **Keep `[slug].md` in sync** with the HTML deck on every change.
+- **Real data only**: price charts show the date under each price label, sourced from real data (exchange candles, on-chain timestamps), never from memory.
+- **Verify before delivering**: screenshot changed slides with Playwright + Chrome and look at them (overlaps, contrast, orphan words, JS errors). Open a deck on slide N with `deck.html#N`.
+- **Series naming**: the free training ("formation offerte") is 3 videos — `pourquoi-investir-2026`, `comment-devenir-riche`, `investissement-on-chain` (never write "Vidéo 3" on the last one's slides).
+
 ---
 
 # Multi-Agent Architecture v2.0
@@ -219,6 +231,7 @@ Manual invocation is never forced. Nass can still:
 - [x] Time decay for video freshness
 - [x] report.py — top 25 → Notion + JSON (context/veille-top25.json)
 - [x] Upgraded slide system for yt-script (responsive, animations, keyboard nav)
+- [x] Slide dictation mode ("slide après") + custom animation patterns library + Playwright visual check + `#N` deep-link (sept. 2026, formation offerte)
 - [x] Competitive analysis vs kostja94/marketing-skills (160+ skills) — enhanced yt-description, yt-miniature, yt-repurposing, yt-script to v1.1.0
 
 ---

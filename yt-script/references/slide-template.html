@@ -392,6 +392,9 @@ class SlidePresentation {
         this.setupObserver();
         this.setupKeyboard();
         this.setupTouch();
+        // Ouvrir directement sur une slide : fichier.html#12 → slide 12
+        const m = location.hash.match(/^#(\d+)$/);
+        if (m) setTimeout(() => this.slides[Math.min(+m[1], this.total) - 1].scrollIntoView(), 100);
     }
 
     setupObserver() {

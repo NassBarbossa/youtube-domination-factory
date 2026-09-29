@@ -236,6 +236,7 @@ Généré via le skill **`frontend-slides`**. Transformer chaque marqueur `[SLID
 - Les slides sont des **supports visuels pour la vidéo**, pas un transcript du script
 - Chaque slide affiche UN concept (jamais mélanger stat + définition sur la même slide)
 - Ne jamais copier le texte du script mot pour mot — les slides résument visuellement
+- **Composition centrée (OBLIGATOIRE)** : tout le contenu de chaque slide est centré à l'écran — y compris les slides de transition et les layouts image + texte (le bloc entier est centré, jamais collé à gauche). Toujours utiliser `<section class="slide center …">` + `<div class="slide-content center">`. Les diagrammes (camemberts, etc.) sont centrés, en grand, avec le titre au-dessus et le détail en dessous. Rendu YouTube : un contenu aligné à gauche fait vide et amateur.
 - **Skipper la Phase 2 (style discovery)** de frontend-slides — utiliser directement les règles brand ci-dessous
 
 #### Branding Nass Riviera (obligatoire, ne jamais changer)
@@ -320,6 +321,47 @@ Canvas avec particules orange/rouge qui tombent. Config par défaut :
 Assets brand : si une image de Nass est disponible dans `yt-script/outputs/` (ex: `youtube_watermark_150x150.png`), l'utiliser sur la slide parcours.
 
 Open both files for the user after generation.
+
+#### Mode dictée « slide après » (validé par Nass, sept. 2026 — formation offerte)
+
+Quand Nass dicte ses slides à la voix (« …slide d'après… »), c'est le mode de travail prioritaire. Il a qualifié le résultat de « gigabanger » : c'est la référence de qualité (deck `outputs/investissement-on-chain-visual.html`).
+
+**Découpage et texte**
+- **1 « slide après » = 1 slide.** Une phrase coupée entre deux slides se lit avec des points de suspension : « La façon la plus facile… » → « …c'est d'acheter avant les autres. »
+- **Ses mots, exactement.** Corriger seulement l'orthographe et les erreurs évidentes de dictée (« équiper » → « équipé »). Quand une interprétation est nécessaire (ex. « OKX au cube » → « OKX s'occupe »), la faire **et la signaler** dans la réponse.
+- « Tu mets X, mais tu n'écris pas le texte » = il décrit la slide : traduire l'idée en visuel (ex. 2 cartes « rôles » au lieu de la phrase brute).
+- Tout texte ou animation **non demandé** est marqué `[PROP]` dans le script `.md`, et annoncé dans la réponse.
+- Le script `.md` reste **synchronisé** à chaque tour (phrase parlée + marqueur `[SLIDE: …]`). Une slide supprimée garde sa phrase parlée avec `[pas de slide]`.
+
+**Animations**
+- Chaque slide clé a une animation **sur mesure**, qui raconte la phrase — pas un simple fade. Quand Nass dit « animation banger / giga banger », aller au maximum.
+- Patterns déjà construits (réutiliser le CSS du deck on-chain) :
+
+| Intention | Pattern | Classes |
+|---|---|---|
+| Transformation / potentiel | Bonhomme gris → flash → super-héros (cape, masque, emblème) puis décollage | `hero-stage transform` / `fly` |
+| Punchline choc (« banger ») | Mots en slam + flash blanc + tremblement + rayons qui tournent + mini-courbe « Toi / Les autres » | `bang-slide` |
+| Chaos / abondance | Bouton martelé qui fait jaillir 24 tokens sur tout l'écran | `mint-slide` |
+| Univers « Far West » | Coucher de soleil rétro, cactus, virevoltant, affiche WANTED, police **Rye**, impacts de balle | `farwest` (+ `crew-slide` pour la bande de cowboys) |
+| Rareté (« très peu », « encore moins ») | Grille de points qui s'éteignent / 3 points → 1 orange | `fr-crowd`, `few-dots` |
+| Sigle | Grosses lettres qui tombent + « **C**entralized **EX**change » | `dex-big`, `cex-acro` |
+| Rôle d'une plateforme | Logo en haut + 2 cartes numérotées animées | `okx-role` |
+| Choix | Chemin qui se sépare en 1 / 2, étiquettes `Choix 1` / `Choix 2` | `fork`, `choice-tag` |
+| Régularité | 12 barres Jan → Déc qui montent | `months` |
+| Fin / validation | Drapeau à damier, gros ✓ vert | `flag`, `ok-check` |
+| CTA description | Pastille « Lien dans la description » + flèche ↓ qui rebondit | `desc-cta` |
+
+- Déclencher les animations via `.visible` (ajoutée par l'IntersectionObserver), avec des `animation-delay` pour laisser le texte arriver d'abord (~1 s).
+- **Préfixer les classes par slide** et vérifier avec `grep` qu'un nom n'existe pas déjà : un conflit (ex. `.dl` déjà utilisé par `def-lines`) a cassé le « DEX » géant.
+
+**Données et assets**
+- Graphiques de prix : **toujours afficher la date sous chaque étiquette de prix** (`.pt-date`). Chaque date vient d'une source réelle (bougies Binance, date de création du pool, horodatage décodé de l'ID du tweet) — jamais de mémoire.
+- Logos : un SVG noir sur fond blanc est converti en version blanche sans fond pour le fond sombre (ex. `logos/okx-white.svg`). Stocker dans `outputs/logos/`.
+
+**Vérification (obligatoire avant de livrer)**
+- Capturer chaque slide modifiée avec Playwright + Chrome (`chromium.launch({channel:'chrome'})`, viewport 1600×900, attendre la fin des animations), puis **regarder** les captures : chevauchements, texte illisible sur fond clair, mot orphelin (utiliser `&nbsp;`), éléments hors cadre.
+- Vérifier qu'il n'y a aucune erreur JS (`pageerror`).
+- Ouvrir le deck sur la bonne slide avec `fichier.html#N` (navigation par ancre présente dans le template).
 
 ### Step 5: Review Checklist
 

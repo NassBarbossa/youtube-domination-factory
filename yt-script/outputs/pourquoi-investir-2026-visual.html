@@ -734,10 +734,10 @@ p,li{font-size:var(--body-size);line-height:1.6;color:var(--text-secondary);font
 </section>
 
 <!-- 04 — TRANSITION 01 -->
-<section class="slide tint-orange">
+<section class="slide center tint-orange">
   <span class="slide-num"></span>
   <div class="section-ghost">01</div>
-  <div class="slide-content">
+  <div class="slide-content center">
     <div class="divider divider-orange reveal"></div>
     <h2 class="reveal">De quoi on parle</h2>
     <p class="lead reveal">Et surtout, de quoi on <span class="hl-o">ne parle pas</span>.</p>
@@ -789,9 +789,9 @@ p,li{font-size:var(--body-size);line-height:1.6;color:var(--text-secondary);font
 </section>
 
 <!-- 07 — DÉFINITION INVESTIR -->
-<section class="slide tint-cyan">
+<section class="slide center tint-cyan">
   <span class="slide-num"></span>
-  <div class="slide-content">
+  <div class="slide-content center">
     <span class="def-tag reveal">définition</span>
     <h2 class="def-term text-cyan reveal">Investir</h2>
     <div class="def-bar reveal"><p class="def-body">Mettre son argent dans quelque chose qui <span class="hl-c">prend de la valeur avec le temps</span>.</p></div>
@@ -799,10 +799,10 @@ p,li{font-size:var(--body-size);line-height:1.6;color:var(--text-secondary);font
 </section>
 
 <!-- 08 — TRANSITION 02 -->
-<section class="slide tint-cyan">
+<section class="slide center tint-cyan">
   <span class="slide-num"></span>
   <div class="section-ghost">02</div>
-  <div class="slide-content">
+  <div class="slide-content center">
     <div class="divider divider-cyan reveal"></div>
     <h2 class="reveal">Qui je suis pour vous dire ça ?</h2>
   </div>
@@ -1091,6 +1091,7 @@ class SlidePresentation{
     this.total=this.slides.length;
     this.current=0;
     this.observe();this.keys();this.touch();
+    const m=location.hash.match(/^#(\d+)$/);if(m)setTimeout(()=>this.go(+m[1]-1),100);
   }
   observe(){
     const io=new IntersectionObserver((entries)=>{
