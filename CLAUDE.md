@@ -4,9 +4,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-YouTube Domination Factory is a **modular AI skill system** for Claude Code that orchestrates the entire YouTube video production lifecycle. It targets the **Claude Code / AI trends / business opportunities** niche for a French-speaking audience (men 26-35, entrepreneurs/executives, non-technical).
+YouTube Domination Factory est un **système modulaire de skills** pour Claude Code qui orchestre toute la production des vidéos YouTube de la chaîne de **Nass Riviera**. La chaîne est **100 % crypto** : investissement on-chain, spot, zéro levier, wallet public. Public francophone : hommes de 25 à 40 ans, déjà investisseurs (surtout immobilier), débutants en crypto (voir « Positionnement & avatar »).
 
 The project is a collection of SKILL.md files loaded into Claude's skill system, plus Python scripts for automated veille (yt-veille) and analytics (yt-analytics) that run on a VPS.
+
+## Positionnement & avatar
+
+**Positionnement** (site nassriviera.com) : « Nass Riviera · Investisseur on-chain · spot, zéro levier, wallet public ».
+
+**Offres à mettre en avant (CTA)** :
+- **Challenge public 10K → 100K $** : wallet public (Solana + EVM), chaque trade expliqué en live avant le résultat. « Les bons trades comme les mauvais. Pas de compte démo, pas de screen retouché. »
+- **Formation offerte en 3 vidéos** : « Pourquoi investir en 2026 », « Comment devenir riche », « L'investissement on-chain ».
+- **Communauté privée** : les trades du challenge en direct.
+- **Live hebdo « Convergence »** avec le co-host Sadek (marchés / or).
+
+**Avatar visuel** : le punk pixel @punk6995 (Barbossa).
+
+**Avatar client** (mots de Nass, à ne pas reformuler) :
+> « C'est des hommes entre 25 et 40 ans. Ils sont débutants, voire débutants plus. C'est déjà des investisseurs, principalement en immobilier avec crédit, mais ils n'ont pas commencé encore à investir dans la crypto. Peut-être un peu de bourse, mais pas de crypto. Et il n'y comprend rien, il ne connaît rien. Et nous, du coup, on vend le fait qu'on achète des cryptos en dehors des échanges avant qu'elles soient connues de tous. »
+
+**Disclaimer obligatoire** (script, description, posts) : « Pas un conseil en investissement. »
+
+## Règle halal (NON NÉGOCIABLE)
+
+S'applique à tous les skills et à tous les contenus produits (scripts, titres, miniatures, descriptions, Shorts, threads, posts, slides) :
+
+- **Spot uniquement.** Jamais de levier, futures, short, marge, ni de prêt/emprunt à intérêt (lending, yield à intérêt).
+- **Jamais de casino, de paris ou de jeu d'argent**, ni de vocabulaire qui présente l'investissement comme un jeu.
+- **Ne jamais encourager le crédit** (même si l'avatar investit déjà en immobilier avec crédit : on n'en fait jamais la promotion).
+- **Tokens très spéculatifs** (memecoins, pré-lancement) : toujours présentés comme des **paris risqués à petite taille**, avec le risque dit clairement. Jamais comme un jeu, jamais comme une promesse de gain.
+- **Pas de chiffres inventés, pas de faux témoignages.** Toute performance citée doit être réelle et vérifiable (wallet public, données on-chain, bougies d'exchange datées).
+- En cas de doute sur un sujet (protocole, produit, mécanisme de rendement), le signaler à Nass plutôt que de le traiter.
 
 ## VPS Execution Rule
 
@@ -38,7 +66,11 @@ yt-script (Script Writing)
     └→ yt-repurposing (Shorts, X threads, LinkedIn)
 
 yt-analytics (Performance Analysis) ──→ yt-calendrier (Editorial Calendar)
+
+yt-shorts-script (Shorts natifs) ──→ yt-shorts-montage (vidéo 1080×1920)
 ```
+
+**Shorts natifs** (fondations, oct. 2026) : `yt-shorts-script` écrit des Shorts originaux de 30-60 s, `yt-shorts-montage` les fabrique (HyperFrames, sous-titres, disclaimer). À ne pas confondre avec `yt-repurposing`, qui découpe des Shorts dans une vidéo longue. Les méthodes de script et de montage arrivent via les ressources de Nass dans `references/`.
 
 Each module contains a single `SKILL.md` with YAML frontmatter (name, description, version, triggers) and markdown instructions. Some modules have a `references/` subfolder with templates or source lists.
 
@@ -49,14 +81,16 @@ Each module contains a single `SKILL.md` with YAML frontmatter (name, descriptio
 - **yt-transcript → yt-script**: Research `angles_missing[]` feed the Information Gain Check (Step 2b) — each script section must cover angles competitors missed
 - **yt-script → yt-repurposing**: Scripts must contain extractable Shorts moments
 - **yt-miniature → yt-repurposing**: Thumbnail source file (1280×720) provides cross-platform crops for X (1200×675), LinkedIn (1200×627), carousel (1200×1200)
-- **yt-analytics → yt-calendrier**: Performance data drives the content mix (40% tutorials, 25% news, 20% deep dives, 10% comparisons, 5% community)
+- **yt-analytics → yt-calendrier**: Performance data drives the content mix (tutoriels, actus, deep dives, comparatifs, communauté — répartition à recalibrer sur les données de la chaîne crypto)
 
 ## Content Voice
 
-- **Tone**: Calm, pedagogical, laid-back (Nass Riviera's voice) — never hype-bro or corporate
-- **Language**: French-first, accessible to non-technical people
-- **Rule**: No filler — every sentence serves the viewer
-- **Angle**: Always explain the concrete business/time-saving opportunity behind AI topics
+- **Ton** : direct, transparent, pédagogique (la voix de Nass Riviera). Jamais hype, jamais « to the moon », jamais corporate.
+- **Transparence** : on montre les bons trades comme les mauvais, sur un wallet public. Pas de compte démo, pas de screen retouché.
+- **Langue** : français d'abord, accents corrects, accessible à un débutant complet en crypto. Chaque terme technique (wallet, DEX, on-chain, seed phrase, gas…) est expliqué la première fois.
+- **Règle** : pas de remplissage, chaque phrase sert le spectateur.
+- **Angle** : partir de ce que l'avatar connaît déjà (immobilier, un peu de bourse) pour expliquer la crypto, et montrer l'avantage concret de l'achat on-chain, en dehors des échanges, avant qu'un actif soit connu de tous. Toujours avec le risque dit clairement.
+- **Halal** : voir « Règle halal » ci-dessus. Disclaimer « Pas un conseil en investissement. » sur chaque contenu.
 
 ## Script Markers
 
@@ -68,7 +102,11 @@ Full rules live in `yt-script/SKILL.md` (Step 4 → "Mode dictée « slide aprè
 
 - **Dictation mode**: when Nass dictates "…slide d'après…", each one is exactly one slide. Keep his exact words (fix only spelling/obvious dictation errors, and say so). Anything he didn't ask for is marked `[PROP]` in the `.md` script.
 - **Every key slide gets a custom animation** that tells the sentence (superhero transformation, slam + flash + shake, Far West scene, token swarm…). Reference deck: `yt-script/outputs/investissement-on-chain-visual.html` — reuse its patterns.
-- **Always centered** (`slide center` + `slide-content center`), Nass Riviera branding (orange `#FF6B35` / cyan `#00E5FF`, Syne + Inter).
+- **Always centered** (`slide center` + `slide-content center`), charte Nass Riviera :
+  - Fond noir `#0B0B0B` ; sable/or `#DBB17F` (clair `#F3D6A8`, foncé `#9C7748`) ; crème `#F4EFE7` ; bleu punk `#648596` / `#4F6C7B` ; gris `#3B3A37` / `#9A968D`.
+  - Polices : **Archivo Black** (titres) + **Public Sans** (texte).
+  - Univers : punk pixel (@punk6995), montagnes au crépuscule, cartes crème à bord noir avec ombre pleine (néo-brutal doux).
+  - L'ancienne charte (orange `#FF6B35` / cyan `#00E5FF` / `#0A0A0A`, Syne + Inter) est abandonnée : ne plus l'utiliser.
 - **Keep `[slug].md` in sync** with the HTML deck on every change.
 - **Real data only**: price charts show the date under each price label, sourced from real data (exchange candles, on-chain timestamps), never from memory.
 - **Verify before delivering**: screenshot changed slides with Playwright + Chrome and look at them (overlaps, contrast, orphan words, JS errors). Open a deck on slide N with `deck.html#N`.
@@ -120,7 +158,7 @@ Each agent:
 ### Two Modes of Operation
 
 #### Mode A: Topic Provided
-User says: *"Fais une vidéo sur Claude Code 4"*
+User says: *"Fais une vidéo sur comment acheter sa première crypto on-chain"*
 
 ```
 yt-orchestrator
@@ -187,7 +225,7 @@ If the pipeline is interrupted:
 **Every skill continues to work 100% normally if called directly.**
 
 Examples:
-- `/yt-script "write a script about Claude Code"` → Uses classic workflow (Step 1-6 with interaction)
+- `/yt-script "écris le script sur le wallet public du challenge 10K → 100K"` → Uses classic workflow (Step 1-6 with interaction)
 - `/yt-titres-seo` → Presents 5 title options for choice
 - `/yt-miniature` → Shows 3 concepts for selection
 
@@ -227,7 +265,7 @@ Manual invocation is never forced. Nass can still:
 - [x] Implement cron job for `yt-veille` — daily scraping at 5h30 SGT
 - [x] SQLite database (veille.db) — channels, videos, snapshots tables
 - [x] Composite scoring (views abs 30%, velocity 25%, outlier 15%, views/subs 15%, engagement 15%)
-- [x] Tier-based channel weighting (67 channels, Tier 1-3 + Non classé)
+- [x] Tier-based channel weighting (Tier 1-3 + Non classé ; liste des chaînes suivies en refonte pour la niche crypto)
 - [x] Time decay for video freshness
 - [x] report.py — top 25 → Notion + JSON (context/veille-top25.json)
 - [x] Upgraded slide system for yt-script (responsive, animations, keyboard nav)
@@ -240,11 +278,11 @@ Manual invocation is never forced. Nass can still:
 
 **Quick Test**:
 ```
-User: "Fais une vidéo sur Claude Code 4"
+User: "Fais une vidéo sur comment acheter sa première crypto on-chain"
 
 Expected:
 1. yt-orchestrator detects Mode A
-2. Generates slug "claude-code-4"
+2. Generates slug "premiere-crypto-on-chain"
 3. Spawns yt-script
 4. Spawns yt-titres-seo, yt-miniature, yt-description in parallel
 5. Presents validation summary

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Short « wallets/01 » : exchange, hot wallet, cold wallet. 9:16, 47 s, sans musique (SFX seulement).
+         Texte = lignes ÉCRAN du script yt-shorts-script/outputs/wallets/01-hot-cold-exchange.md, mot pour mot. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/MorphSVGPlugin.min.js"></script>
+    <style>
+      @font-face { font-family: 'Archivo Black'; src: url('assets/fonts/ArchivoBlack-Regular.ttf') format('truetype'); }
+      @font-face { font-family: 'Public Sans'; src: url('assets/fonts/PublicSans-var.ttf') format('truetype'); font-weight: 100 900; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0B0B0B; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0B0B0B; color: #F4EFE7; font-family: 'Public Sans', sans-serif; }
+      .sand { color: #DBB17F; } .blue { color: #8FB0C2; }
+      .glow { position: absolute; left: 90px; top: 310px; width: 900px; height: 900px; border-radius: 50%; }
+      #glowS { background: radial-gradient(closest-side, rgba(219,177,127,.17), rgba(219,177,127,0)); }
+      #glowB { background: radial-gradient(closest-side, rgba(100,133,150,.26), rgba(100,133,150,0)); opacity: 0; }
+
+      /* hook — kinetic type */
+      .kw { position: absolute; left: 0; right: 0; text-align: center; font-family: 'Archivo Black', sans-serif; line-height: 1; white-space: nowrap; letter-spacing: -.01em; opacity: 0; }
+      #lock { position: absolute; left: 470px; top: 1290px; width: 140px; height: 160px; overflow: visible; opacity: 0; }
+
+      /* section */
+      #chip { position: absolute; left: 50%; top: 250px; padding: 16px 30px; border-radius: 10px; background: #DBB17F; color: #0B0B0B; font-family: 'Archivo Black', sans-serif; font-size: 40px; letter-spacing: .06em; white-space: nowrap; box-shadow: 8px 8px 0 #F4EFE7; opacity: 0; }
+      #chip span { position: absolute; left: 0; right: 0; top: 16px; text-align: center; opacity: 0; }
+      #chip b { visibility: hidden; font-weight: 400; }
+      #iconBox { position: absolute; left: 290px; top: 460px; width: 500px; height: 500px; }
+      #icon { width: 500px; height: 500px; overflow: visible; opacity: 0; }
+      .cap { position: absolute; left: 108px; width: 864px; top: 1100px; text-align: center; font-weight: 800; font-size: 62px; line-height: 1.16; letter-spacing: -.015em; opacity: 0; }
+
+      /* éléments ponctuels */
+      #minis { position: absolute; left: 0; right: 0; top: 560px; display: flex; justify-content: center; gap: 44px; }
+      .mini { width: 250px; height: 300px; border-radius: 22px; background: #F4EFE7; border: 6px solid #0B0B0B; box-shadow: 12px 12px 0 #DBB17F; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; opacity: 0; }
+      .mini svg { width: 150px; height: 150px; overflow: visible; }
+      .mini i { font-style: normal; font-family: 'Archivo Black', sans-serif; font-size: 70px; color: #0B0B0B; line-height: 1; }
+      #stamp { position: absolute; left: 50%; top: 640px; padding: 20px 34px; border: 10px solid #0B0B0B; border-radius: 14px; background: #DBB17F; color: #0B0B0B; font-family: 'Archivo Black', sans-serif; font-size: 66px; line-height: 1.02; text-align: center; white-space: nowrap; box-shadow: 12px 12px 0 #F4EFE7; opacity: 0; }
+      #words { position: absolute; left: 300px; top: 470px; width: 480px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      #words div { height: 100px; border-radius: 14px; background: #F4EFE7; border: 5px solid #0B0B0B; box-shadow: 7px 7px 0 #DBB17F; color: #0B0B0B; display: flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Archivo Black', sans-serif; font-size: 26px; opacity: 0; }
+      #words div em { font-style: normal; color: #6D6A64; letter-spacing: .1em; }
+      .pillx { position: absolute; padding: 16px 26px; border-radius: 12px; font-family: 'Archivo Black', sans-serif; font-size: 36px; line-height: 1.1; text-align: center; white-space: nowrap; opacity: 0; }
+      #pTok { left: 640px; top: 500px; background: #DBB17F; color: #0B0B0B; border: 5px solid #0B0B0B; box-shadow: 8px 8px 0 #F4EFE7; }
+      #pEx { left: 560px; top: 880px; font-size: 30px; background: #2A2926; color: #C9C4BA; border: 5px solid #3B3A37; }
+      #arrow { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; pointer-events: none; }
+
+      /* récap + fin */
+      #punk { position: absolute; left: 430px; top: 270px; width: 220px; height: 220px; border-radius: 26px; border: 8px solid #DBB17F; overflow: hidden; box-shadow: 12px 12px 0 #F4EFE7; opacity: 0; }
+      #punk img { width: 100%; height: 100%; image-rendering: pixelated; display: block; }
+      .row { position: absolute; left: 108px; width: 864px; height: 230px; border-radius: 26px; background: #F4EFE7; border: 7px solid #0B0B0B; box-shadow: 14px 14px 0 #DBB17F; color: #0B0B0B; display: flex; align-items: center; gap: 34px; padding: 0 44px; opacity: 0; }
+      .row svg { width: 140px; height: 140px; flex: none; overflow: visible; }
+      .row p { font-family: 'Archivo Black', sans-serif; font-size: 58px; line-height: 1.05; }
+      .row p span { color: #7A5A30; }
+      #r1 { top: 580px; } #r2 { top: 850px; } #r3 { top: 1120px; }
+      #cta { position: absolute; left: 108px; width: 864px; top: 900px; text-align: center; font-family: 'Archivo Black', sans-serif; font-size: 84px; line-height: 1.08; opacity: 0; }
+      #bio { position: absolute; left: 50%; top: 1250px; padding: 18px 36px; border-radius: 12px; background: #DBB17F; color: #0B0B0B; font-family: 'Archivo Black', sans-serif; font-size: 46px; white-space: nowrap; box-shadow: 8px 8px 0 #F4EFE7; opacity: 0; }
+      #disc { position: absolute; left: 0; right: 0; top: 1440px; text-align: center; font-size: 34px; font-weight: 600; color: #C9C4BA; opacity: 0; }
+      #root::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,.35) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="47" data-width="1080" data-height="1920">
+      <div class="glow" id="glowS"></div><div class="glow" id="glowB"></div>
+
+      <!-- HOOK -->
+      <div class="kw" id="k1" style="top:470px;font-size:136px">TA CRYPTO</div>
+      <div class="kw" id="k2" style="top:640px;font-size:80px">SUR UN EXCHANGE</div>
+      <div class="kw" id="k3" style="top:770px;font-size:136px">N'EST PAS</div>
+      <div class="kw sand" id="k4" style="top:940px;font-size:150px">VRAIMENT</div>
+      <div class="kw sand" id="k5" style="top:1100px;font-size:150px">À TOI.</div>
+      <svg id="lock" viewBox="0 0 140 160">
+        <path id="lockArc" d="M30 76 V48 a40 40 0 0 1 80 0 V76" fill="none" stroke="#F4EFE7" stroke-width="16" stroke-linecap="round" />
+        <rect x="10" y="70" width="120" height="86" rx="16" fill="#DBB17F" stroke="#0B0B0B" stroke-width="6" />
+        <circle cx="70" cy="110" r="12" fill="#0B0B0B" />
+      </svg>
+
+      <!-- 3 façons -->
+      <div id="minis">
+        <div class="mini" id="m1"><i>1</i></div>
+        <div class="mini" id="m2"><i>2</i></div>
+        <div class="mini" id="m3"><i>3</i></div>
+      </div>
+
+      <!-- icône centrale + sections -->
+      <div id="chip"><b>3 / 3 · COLD WALLET</b><span id="ch1">1 / 3 · EXCHANGE</span><span id="ch2">2 / 3 · HOT WALLET</span><span id="ch3">3 / 3 · COLD WALLET</span></div>
+      <div id="iconBox">
+        <svg id="icon" viewBox="0 0 400 400">
+          <path id="shadow" fill="#DBB17F" transform="translate(16 16)" />
+          <path id="shape" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="10" stroke-linejoin="round" />
+          <g id="dial" opacity="0">
+            <circle cx="186" cy="208" r="62" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="10" />
+            <g id="spokes" stroke="#0B0B0B" stroke-width="10" stroke-linecap="round"><path d="M186 160 V256 M138 208 H234" /></g>
+            <rect x="300" y="170" width="22" height="76" rx="8" fill="#0B0B0B" />
+          </g>
+          <g id="waves" fill="none" stroke="#648596" stroke-width="12" stroke-linecap="round" opacity="0">
+            <path d="M300 60 a40 40 0 0 1 40 40" /><path d="M300 25 a75 75 0 0 1 75 75" />
+          </g>
+          <path id="wifiX" d="M286 18 L384 116" stroke="#DBB17F" stroke-width="14" stroke-linecap="round" pathLength="1" />
+          <g id="key" opacity="0">
+            <circle cx="0" cy="0" r="30" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" />
+            <circle cx="0" cy="0" r="10" fill="#0B0B0B" />
+            <path d="M28 -9 H120 V9 H104 V30 H88 V9 H28 Z" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" stroke-linejoin="round" />
+          </g>
+          <g id="phish" opacity="0">
+            <path d="M200 70 V240 a54 54 0 1 1 -108 0 l26 -26" fill="none" stroke="#648596" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="200" cy="62" r="14" fill="#648596" />
+            <path id="phishX" d="M60 60 L340 340" stroke="#DBB17F" stroke-width="22" stroke-linecap="round" pathLength="1" />
+          </g>
+        </svg>
+      </div>
+      <div id="stamp">RETRAITS<br />SUSPENDUS</div>
+      <div id="words"></div>
+      <div class="pillx" id="pTok">TOKEN</div>
+      <div class="pillx" id="pEx">EXCHANGE<br />PLUS TARD</div>
+      <svg id="arrow" viewBox="0 0 1080 1920">
+        <path id="arr" d="M500 700 C 560 700, 600 660, 690 590" fill="none" stroke="#DBB17F" stroke-width="12" stroke-linecap="round" pathLength="1" />
+      </svg>
+
+      <!-- sous-titres (lignes ÉCRAN du script) -->
+      <div id="caps"></div>
+
+      <!-- récap -->
+      <div id="punk"><img src="assets/punk6995.jpg" alt="Nass Riviera" /></div>
+      <div class="row" id="r1"><svg viewBox="0 0 400 400"><path class="ico" data-i="BANK" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="14" stroke-linejoin="round" /></svg><p>Exchange<br /><span>pour acheter.</span></p></div>
+      <div class="row" id="r2"><svg viewBox="0 0 400 400"><path class="ico" data-i="WALLET" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="14" stroke-linejoin="round" /></svg><p>Hot wallet<br /><span>pour bouger.</span></p></div>
+      <div class="row" id="r3"><svg viewBox="0 0 400 400"><path class="ico" data-i="SAFE" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="14" stroke-linejoin="round" /></svg><p>Cold wallet<br /><span>pour garder.</span></p></div>
+
+      <!-- fin -->
+      <div id="cta">Je t'explique tout dans ma <span class="sand">formation offerte.</span></div>
+      <div id="bio">Lien en bio.</div>
+      <div id="disc">Pas un conseil en investissement.</div>
+    </div>
+
+    <script>
+      gsap.registerPlugin(MorphSVGPlugin);
+      const ICON = {
+        BANK: 'M200 40 L372 128 L28 128 Z M48 146 H352 V172 H48 Z M70 186 H118 V316 H70 Z M176 186 H224 V316 H176 Z M282 186 H330 V316 H282 Z M36 330 H364 V362 H36 Z',
+        WALLET: 'M70 110 H316 Q352 110 352 146 V330 Q352 362 320 362 H76 Q44 362 44 330 V140 Q44 110 70 110 Z M246 196 H372 Q384 196 384 208 V268 Q384 280 372 280 H246 Q232 280 232 266 V210 Q232 196 246 196 Z M60 78 H260 L300 110 H44 Z',
+        SAFE: 'M64 64 H330 Q350 64 350 84 V318 Q350 338 330 338 H64 Q44 338 44 318 V84 Q44 64 64 64 Z M78 338 H128 V370 H78 Z M266 338 H316 V370 H266 Z',
+      };
+      document.getElementById('shape').setAttribute('d', ICON.BANK);
+      document.getElementById('shadow').setAttribute('d', ICON.BANK);
+      document.querySelectorAll('.ico').forEach(p => p.setAttribute('d', ICON[p.dataset.i]));
+      ['BANK', 'WALLET', 'SAFE'].forEach((k, i) => document.getElementById('m' + (i + 1)).insertAdjacentHTML('afterbegin',
+        `<svg viewBox="0 0 400 400"><path d="${ICON[k]}" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="16" stroke-linejoin="round"/></svg>`));
+      document.getElementById('words').innerHTML = Array.from({ length: 12 }, (_, i) => `<div>${i + 1}<em>•••</em></div>`).join('');
+
+      // sous-titres : [début, fin, texte] — mots exacts du script
+      const CAPS = [
+        [3.0, 5.85, "Il y a <span class='sand'>3 façons</span> de garder ta crypto."],
+        [6.0, 8.9, "1. Sur l'exchange <span class='sand'>(Binance, Coinbase…)</span>"],
+        [9.0, 12.9, "C'est la plateforme qui <span class='sand'>garde tes clés.</span> Pratique pour acheter."],
+        [13.0, 16.85, "Mais si elle <span class='sand'>bloque les retraits,</span> tu attends. FTX, novembre 2022."],
+        [17.0, 20.9, "2. Le hot wallet : une appli <span class='blue'>connectée à internet</span> (Phantom, MetaMask)."],
+        [21.0, 24.9, "<span class='sand'>Les clés, c'est toi.</span> Ta phrase de récupération = 12 ou 24 mots."],
+        [25.0, 28.9, "C'est lui qui permet d'acheter <span class='sand'>on-chain,</span> avant que les exchanges listent un token."],
+        [29.0, 31.85, "Risque : piratage et faux liens. <span class='sand'>Personne ne te demande jamais ta phrase.</span>"],
+        [32.0, 35.9, "3. Le cold wallet : une clé physique <span class='sand'>hors ligne</span> (Ledger, Trezor)."],
+        [36.0, 39.75, "Tes clés ne touchent <span class='sand'>jamais internet.</span> Le coffre-fort pour ce que tu gardes longtemps."],
+      ];
+      document.getElementById('caps').innerHTML = CAPS.map((c, i) => `<div class="cap" id="c${i}">${c[2]}</div>`).join('');
+
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      gsap.set(['#chip', '#stamp', '#bio'], { xPercent: -50 });
+      gsap.set('#icon', { transformOrigin: '50% 90%' });
+      gsap.set(['#arr', '#wifiX', '#phishX'], { strokeDasharray: '1 1.2', strokeDashoffset: 1.1 });
+      gsap.set('#key', { x: -140, y: 250 });
+
+      // ===== 0 → 3 : hook en Kinetic Type =====
+      [['#k1', 0.08, -1], ['#k2', 0.6, 1], ['#k3', 1.15, -1], ['#k4', 1.7, 0], ['#k5', 1.95, 0]].forEach(([id, t, side]) => {
+        if (side) tl.fromTo(id, { opacity: 0, x: side * 700, skewX: side * -14 }, { opacity: 1, x: 0, skewX: 0, duration: 0.3, ease: 'power4.out', immediateRender: false }, t);
+        else tl.fromTo(id, { opacity: 0, scale: 2.2, filter: 'blur(14px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.28, ease: 'power4.out', immediateRender: false }, t);
+      });
+      tl.to('#root', { keyframes: [{ scale: 1.06, duration: 0.08 }, { scale: 1, duration: 0.3, ease: 'power3.out' }] }, 1.72);
+      tl.fromTo('#lock', { opacity: 0, y: 30, scale: 0.6 }, { opacity: 1, y: 0, scale: 1, duration: 0.3, ease: 'back.out(2.5)', immediateRender: false }, 2.15);
+      tl.fromTo('#lockArc', { y: -26 }, { y: 0, duration: 0.14, ease: 'power3.in', immediateRender: false }, 2.45);
+      tl.to(['.kw', '#lock'], { opacity: 0, y: -60, duration: 0.2, ease: 'power3.in', stagger: 0.02 }, 2.8);
+
+      // ===== sous-titres =====
+      CAPS.forEach(([a, b], i) => {
+        tl.fromTo('#c' + i, { opacity: 0, y: 30, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.35, ease: 'expo.out', immediateRender: false }, a);
+        tl.to('#c' + i, { opacity: 0, y: -20, duration: 0.15, ease: 'power2.in' }, b);
+      });
+
+      // ===== 3 → 6 : trois façons =====
+      ['#m1', '#m2', '#m3'].forEach((id, i) => tl.fromTo(id, { opacity: 0, y: -260, rotation: (i - 1) * 8 }, { opacity: 1, y: 0, rotation: (i - 1) * 3, duration: 0.45, ease: 'bounce.out', immediateRender: false }, 3.3 + i * 0.22));
+      tl.to('#minis .mini', { opacity: 0, scale: 0.6, duration: 0.2, stagger: 0.04, ease: 'power3.in' }, 5.6);
+
+      // ===== 6 → 17 : EXCHANGE =====
+      const chipIn = (id, t) => tl.fromTo(id, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: 'expo.out', immediateRender: false }, t);
+      tl.fromTo('#chip', { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2.5)', immediateRender: false }, 5.95);
+      chipIn('#ch1', 6.0);
+      tl.fromTo('#icon', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(2)', immediateRender: false }, 6.0);
+      tl.to('#key', { opacity: 1, duration: 0.15 }, 9.15);
+      tl.to('#key', { x: 150, y: 250, duration: 0.7, ease: 'power3.inOut' }, 9.2);
+      tl.to('#key', { scale: 0.3, opacity: 0, duration: 0.25, ease: 'power2.in' }, 9.85);
+      tl.fromTo('#stamp', { opacity: 0, scale: 2.6, rotation: -22 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.22, ease: 'power4.in', immediateRender: false }, 13.3);
+      tl.to('#root', { keyframes: [{ x: -16, y: 8, duration: 0.04 }, { x: 12, y: -6, duration: 0.04 }, { x: -6, y: 3, duration: 0.04 }, { x: 0, y: 0, duration: 0.05 }] }, 13.52);
+      tl.to('#icon', { opacity: 0.35, duration: 0.3 }, 13.4);
+      tl.to('#stamp', { opacity: 0, scale: 0.85, duration: 0.2 }, 16.6);
+      tl.to('#icon', { opacity: 1, duration: 0.2 }, 16.6);
+
+      // ===== 17 → 32 : HOT WALLET =====
+      const morph = (to, t) => {
+        tl.to('#icon', { keyframes: [{ scaleY: 0.82, scaleX: 1.1, duration: 0.1, ease: 'power2.in' }, { scaleY: 1.08, scaleX: 0.95, duration: 0.12, ease: 'power2.out' }, { scaleY: 1, scaleX: 1, duration: 0.12, ease: 'back.out(3)' }] }, t);
+        tl.to('#shape', { morphSVG: ICON[to], duration: 0.3, ease: 'power3.inOut' }, t + 0.04);
+        tl.to('#shadow', { morphSVG: ICON[to], duration: 0.3, ease: 'power3.inOut' }, t + 0.04);
+      };
+      tl.to('#ch1', { opacity: 0, y: -24, duration: 0.15 }, 16.9); chipIn('#ch2', 17.05);
+      morph('WALLET', 16.95);
+      tl.to('#glowS', { opacity: 0, duration: 0.4 }, 17.0); tl.to('#glowB', { opacity: 1, duration: 0.4 }, 17.0);
+      tl.fromTo('#waves', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2.5)', svgOrigin: '300 100', immediateRender: false }, 17.5);
+      tl.to('#icon', { opacity: 0.15, duration: 0.25 }, 21.05);
+      tl.fromTo('#words div', { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(2.5)', stagger: 0.07, immediateRender: false }, 21.2);
+      tl.to('#words div', { opacity: 0, scale: 0.8, duration: 0.15, stagger: 0.015 }, 24.7);
+      tl.to('#iconBox', { x: -190, scale: 0.72, duration: 0.45, ease: 'power3.inOut' }, 24.95);
+      tl.to('#icon', { opacity: 1, duration: 0.25 }, 24.95);
+      tl.to('#arr', { strokeDashoffset: 0, duration: 0.5, ease: 'power2.inOut' }, 25.3);
+      tl.fromTo('#pTok', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2.5)', immediateRender: false }, 25.6);
+      tl.fromTo('#pEx', { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.4, ease: 'expo.out', immediateRender: false }, 26.6);
+      tl.to(['#pTok', '#pEx', '#arr'], { opacity: 0, duration: 0.2 }, 28.75);
+      tl.to('#iconBox', { x: 0, scale: 1, duration: 0.4, ease: 'power3.inOut' }, 28.8);
+      tl.to('#waves', { opacity: 0.25, duration: 0.2 }, 29.1);
+      tl.to(['#shape', '#shadow'], { opacity: 0.18, duration: 0.25 }, 29.1);
+      tl.fromTo('#phish', { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.35, ease: 'back.out(2)', immediateRender: false }, 29.25);
+      tl.to('#phishX', { strokeDashoffset: 0, duration: 0.25, ease: 'power3.out' }, 29.9);
+      tl.to('#phish', { opacity: 0, duration: 0.2 }, 31.6);
+      tl.to(['#shape', '#shadow'], { opacity: 1, duration: 0.2 }, 31.6);
+
+      // ===== 32 → 40 : COLD WALLET =====
+      tl.to('#ch2', { opacity: 0, y: -24, duration: 0.15 }, 31.85); chipIn('#ch3', 32.0);
+      morph('SAFE', 31.9);
+      tl.to('#glowB', { opacity: 0, duration: 0.4 }, 32.0); tl.to('#glowS', { opacity: 1, duration: 0.4 }, 32.0);
+      tl.to('#waves', { opacity: 1, duration: 0.15 }, 32.2);
+      tl.to('#wifiX', { strokeDashoffset: 0, duration: 0.25, ease: 'power3.out' }, 32.55);
+      tl.fromTo('#dial', { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2.5)', svgOrigin: '186 208', immediateRender: false }, 32.3);
+      tl.to('#spokes', { rotation: 270, svgOrigin: '186 208', duration: 1.1, ease: 'power3.inOut' }, 36.2);
+      tl.to('#icon', { keyframes: [{ scale: 1.08, duration: 0.08 }, { scale: 1, duration: 0.3, ease: 'power3.out' }] }, 37.3);
+
+      // ===== 40 → 44 : récap =====
+      tl.to(['#iconBox', '#chip', '#waves', '#wifiX'], { opacity: 0, scale: 0.8, duration: 0.25, ease: 'power3.in' }, 39.75);
+      tl.to('#glowS', { opacity: 0.6, duration: 0.3 }, 39.8);
+      tl.fromTo('#punk', { opacity: 0, scale: 0.4, rotation: -8 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: 'back.out(2.2)', immediateRender: false }, 40.0);
+      ['#r1', '#r2', '#r3'].forEach((id, i) => tl.fromTo(id, { opacity: 0, x: i % 2 ? 900 : -900 }, { opacity: 1, x: 0, duration: 0.4, ease: 'power4.out', immediateRender: false }, 40.25 + i * 0.7));
+      tl.to(['#r1', '#r2', '#r3'], { opacity: 0, y: 40, duration: 0.2, stagger: 0.04, ease: 'power3.in' }, 43.8);
+
+      // ===== 44 → 47 : CTA =====
+      tl.to('#punk', { y: 200, scale: 1.45, duration: 0.45, ease: 'power3.inOut' }, 43.85);
+      tl.fromTo('#cta', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: 'expo.out', immediateRender: false }, 44.2);
+      tl.fromTo('#bio', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(2.5)', immediateRender: false }, 44.75);
+      tl.fromTo('#disc', { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, 45.1);
+      tl.to({}, { duration: 0.01 }, 46.99);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 
 **The AI-powered end-to-end YouTube video production pipeline.** One topic → Complete video + multi-platform content (Shorts, X threads, LinkedIn posts) in hours.
 
-Built for the **Claude Code / AI trends / business opportunities** niche, targeting non-technical entrepreneurs (26-35, French-speaking).
+Construit pour la chaîne YouTube **100 % crypto** de Nass Riviera — « Investisseur on-chain · spot, zéro levier, wallet public » ([nassriviera.com](https://nassriviera.com)). Public : hommes francophones de 25 à 40 ans, déjà investisseurs (surtout immobilier), débutants en crypto.
 
 ## ✨ What It Does
 
@@ -31,7 +31,7 @@ Instead of manually calling 9 separate tools and copy-pasting outputs between th
 ### Mode A: You Have a Topic
 
 ```
-User: "Fais une vidéo sur Claude Code 4"
+User: "Fais une vidéo sur comment acheter sa première crypto on-chain"
 
 → yt-orchestrator spawns the entire pipeline autonomously
 → Returns fully-written script, SEO titles, thumbnail brief, description, Shorts, X thread, LinkedIn post
@@ -99,7 +99,9 @@ All agents communicate through a single JSON bus: **`context/video-context.json`
 | **yt-miniature** | Thumbnail concept briefs | "miniature", "thumbnail", "design thumbnail" |
 | **yt-description** | YouTube description + tags | "ecris la description", "YouTube description" |
 | **yt-repurposing** | Multi-platform content transformation | "repurpose", "shorts", "thread X", "LinkedIn post" |
-| **yt-veille** | AI trend research & video ideas — automated daily scraping of 67 channels, composite scoring, top 25 report | "trouve moi des idees", "tendances IA", "sujet de video" |
+| **yt-shorts-script** | Scripts de Shorts natifs (30-60 s, 9:16) — fondations | "écris un short", "script short", "bombarde les shorts" |
+| **yt-shorts-montage** | Montage des Shorts (HyperFrames, sous-titres, 1080×1920) — fondations | "monte le short", "montage short" |
+| **yt-veille** | Veille crypto & idées de vidéos — scraping quotidien automatisé des chaînes suivies, scoring composite, rapport top 25 | "trouve moi des idees", "tendances crypto", "sujet de video" |
 | **yt-analytics** | Channel performance analysis | "analyse mes stats", "YouTube stats" |
 | **yt-calendrier** | Editorial calendar planning | "calendrier", "schedule", "planning video" |
 
@@ -109,7 +111,7 @@ All agents communicate through a single JSON bus: **`context/video-context.json`
 
 ### 1. **Direct Topic (Fastest)**
 ```
-/yt-orchestrator "Fais une vidéo sur Claude Code 4"
+/yt-orchestrator "Fais une vidéo sur comment acheter sa première crypto on-chain"
 ```
 Pipeline runs → You get validation prompt at Phase 3 → Approve → Done ✅
 
@@ -122,7 +124,7 @@ Pipeline runs → You get validation prompt at Phase 3 → Approve → Done ✅
 ### 3. **Individual Skills (Manual Mode)**
 Each skill still works standalone:
 ```
-/yt-script "Write a script about AI agents"
+/yt-script "Écris le script sur le wallet public du challenge 10K → 100K"
 /yt-titres-seo
 /yt-miniature
 ```
@@ -150,7 +152,7 @@ Each skill still works standalone:
 
 3. **Ready to go!**
    ```
-   /yt-orchestrator "Fais une vidéo sur Claude Code 4"
+   /yt-orchestrator "Fais une vidéo sur comment acheter sa première crypto on-chain"
    ```
 
 ---
@@ -170,26 +172,31 @@ Each skill still works standalone:
 
 ## 🎯 Content Voice & Audience
 
-**Target Audience:** Men 26-35, entrepreneurs/executives, non-technical, want to turn creativity/ideas into reality using AI
+**Positionnement :** « Nass Riviera · Investisseur on-chain · spot, zéro levier, wallet public ». Avatar visuel : le punk pixel @punk6995 (Barbossa).
 
-**Tone:** Calm, pedagogical, laid-back (Nass Riviera's voice)
-- Never hype-bro or corporate
-- No jargon without explanation
-- Focus on business opportunity angle
-- Every sentence must serve the viewer
+**Target Audience** (mots de Nass) :
+> « C'est des hommes entre 25 et 40 ans. Ils sont débutants, voire débutants plus. C'est déjà des investisseurs, principalement en immobilier avec crédit, mais ils n'ont pas commencé encore à investir dans la crypto. Peut-être un peu de bourse, mais pas de crypto. Et il n'y comprend rien, il ne connaît rien. Et nous, du coup, on vend le fait qu'on achète des cryptos en dehors des échanges avant qu'elles soient connues de tous. »
 
-**Content Mix (data-driven):**
-- 40% Tutorials ("How to...")
-- 25% News (trends, new features)
-- 20% Deep dives (detailed explanations)
-- 10% Comparisons (X vs Y)
-- 5% Community engagement
+**Offres :** challenge public 10K → 100K $ (wallet public Solana + EVM, chaque trade expliqué en live avant le résultat), formation offerte en 3 vidéos (« Pourquoi investir en 2026 », « Comment devenir riche », « L'investissement on-chain »), communauté privée (trades du challenge en direct), live hebdo « Convergence » avec Sadek (marchés / or).
+
+**Ton :** direct, transparent, pédagogique (la voix de Nass Riviera)
+- « Les bons trades comme les mauvais. Pas de compte démo, pas de screen retouché. »
+- Jamais hype, jamais de promesse de gain
+- Aucun jargon sans explication
+- Chaque phrase sert le spectateur
+- Disclaimer systématique : « Pas un conseil en investissement. »
+
+**Règle halal (non négociable) :** spot uniquement. Jamais de levier, futures, short, marge, prêt/emprunt à intérêt (lending, yield à intérêt), ni de casino/paris/jeu d'argent. Jamais d'incitation au crédit. Memecoins et tokens en pré-lancement présentés comme des paris risqués à petite taille, risque dit clairement. Pas de chiffres inventés, pas de faux témoignages. Détails dans [CLAUDE.md](CLAUDE.md).
+
+**Charte :** fond noir `#0B0B0B`, sable/or `#DBB17F` (clair `#F3D6A8`, foncé `#9C7748`), crème `#F4EFE7`, bleu punk `#648596` / `#4F6C7B`, gris `#3B3A37` / `#9A968D`. Polices Archivo Black (titres) + Public Sans (texte). Univers punk pixel, montagnes au crépuscule, cartes crème à bord noir avec ombre pleine.
+
+**Content Mix :** tutoriels, actus, deep dives, comparatifs, communauté — répartition à recalibrer sur les données de la chaîne crypto.
 
 ---
 
 ## 🔄 Data Flow Example
 
-**Input:** "Fais une vidéo sur les AI Agents"
+**Input:** "Fais une vidéo sur comment acheter sa première crypto on-chain"
 
 ```
 Phase 1: yt-script reads request.topic → writes script.*
@@ -197,27 +204,27 @@ Phase 1: yt-script reads request.topic → writes script.*
          └─ script.structure.shorts_moments = [{start:45, end:60, ...}, ...]
 
 Phase 2a: yt-titres-seo reads script.* → writes titres_seo.*
-          └─ winning_title = "I Built an AI Agency with 0 Employees"
-          └─ primary_keyword = "AI agents"
-          └─ secondary_keywords = ["claude code", "automation", ...]
+          └─ winning_title = "Acheter une crypto AVANT qu'elle soit sur Binance"
+          └─ primary_keyword = "acheter crypto on-chain"
+          └─ secondary_keywords = ["wallet crypto", "investir crypto débutant", ...]
 
 Phase 2b: yt-miniature reads script.* + titres_seo.winning_title → writes miniature.*
-          └─ text_overlay = "0 EMPLOYEES" (NOT repeating the title!)
-          └─ color_palette = ["#FF6B00", "#FFFFFF"]
+          └─ text_overlay = "AVANT TOUT LE MONDE" (NOT repeating the title!)
+          └─ color_palette = ["#0B0B0B", "#DBB17F", "#F4EFE7"]
 
 Phase 2c: yt-description reads script.* + titres_seo.* → writes description.*
           └─ hook_framework = "PAS" (Problem → Agitation → Solution in first 150 chars)
-          └─ description_full = "Tu galères à gérer une équipe ? Ça te coûte..."
-          └─ tags = ["claude code", "ai agents", "automation", ...]
-          └─ sources = ["https://docs.anthropic.com/...", "https://..."]
+          └─ description_full = "Tu investis déjà dans l'immobilier mais la crypto te paraît floue ? ..."
+          └─ tags = ["crypto débutant", "acheter crypto on-chain", "wallet crypto", ...]
+          └─ sources = ["https://solscan.io/...", "https://..."]
 
 Phase 3: USER VALIDATES → clicks "OK"
 
 Phase 4: yt-repurposing reads validated script.* + titres_seo.winning_title → writes repurposing.*
-         └─ shorts[0] = {hook: "0 employés, 1 IA — attends la fin", ...}  (5-7 word hooks, captions mandatory)
-         └─ x_thread = "J'ai construit une agence IA sans employés..." (71-100 chars/tweet, NO link in thread)
+         └─ shorts[0] = {hook: "Tu achètes tes cryptos au mauvais endroit", ...}  (5-7 word hooks, captions mandatory)
+         └─ x_thread = "La plupart des gens achètent une crypto quand elle arrive sur un exchange..." (71-100 chars/tweet, NO link in thread)
          └─ x_reply_link = "Vidéo complète ici 👇 [URL]"  (link in reply = -50% reach penalty avoided)
-         └─ linkedin = "Il y a 6 mois, j'avais 3 employés..." (1300-1600 chars, PAS framework hook)
+         └─ linkedin = "Tu as un crédit immobilier, un PEA, et zéro crypto..." (1300-1600 chars, PAS framework hook, disclaimer inclus)
 ```
 
 **Result:** All outputs in `context/video-context.json` + individual files in `yt-script/outputs/`, etc.
@@ -241,13 +248,13 @@ Phase 4: yt-repurposing reads validated script.* + titres_seo.winning_title → 
 
 ## 🔮 Sprint 2 (In Progress)
 
-- [x] Cron job for `yt-veille` — daily scraping at 5h30 SGT (67 channels, ~300 videos/day)
+- [x] Cron job for `yt-veille` — daily scraping at 5h30 SGT (liste des chaînes suivies en refonte pour la niche crypto)
 - [x] SQLite database for video metrics + daily snapshots
 - [x] Composite scoring: views abs (30%) + velocity (25%) + outlier (15%) + views/subs (15%) + engagement (15%)
 - [x] Tier-based channel weighting (Tier 1 ×1.5, Tier 2 ×1.2)
 - [x] Time decay for freshness (< 24h ×1.0, 1-3d ×0.85, 3-6d ×0.65, 7d+ excluded)
 - [x] Automated top 25 report → Notion + JSON for orchestrator
-- [x] Topic extraction (claude-code, vibe-coding, ai-agents, etc.)
+- [x] Topic extraction (catégories à adapter à la niche crypto)
 - [ ] Analytics integration (`yt-analytics` context protocol)
 - [ ] Calendar sync (`yt-calendrier` context protocol)
 - [ ] Posting schedule automation
@@ -256,7 +263,7 @@ Phase 4: yt-repurposing reads validated script.* + titres_seo.winning_title → 
 
 ```
 daily_monitor.py (cron 5h30 SGT)
-    → Scrapes 67 YouTube channels via API
+    → Scrapes the tracked YouTube channels via API
     → Stores in SQLite: channels, videos, snapshots
 
 scoring.py (stateless)
@@ -275,8 +282,7 @@ report.py (after scrape)
 ## 📊 Stats
 
 - **9 specialized skills** + 1 orchestrator
-- **67 YouTube channels** tracked daily (US + FR)
-- **~300 videos** scraped per day
+- **Chaînes YouTube crypto** suivies chaque jour (liste en refonte)
 - **5 validation phases** in the pipeline
 - **2 operation modes** (topic-driven or idea-driven)
 - **3 parallel agents** in Phase 2
@@ -327,4 +333,4 @@ Check [CLAUDE.md](CLAUDE.md) for deeper architecture documentation or review ind
 
 **Status:** ✅ v2.0 Live — Multi-Agent Architecture
 
-Built with ❤️ for creators who want to scale without hiring a team.
+Built with ❤️ pour la chaîne crypto de Nass Riviera. Pas un conseil en investissement.

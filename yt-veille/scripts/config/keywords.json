@@ -1,13 +1,39 @@
 {
+  "_comment": "Niche CRYPTO (rebrand 2026-10-07). 'keywords' = requêtes de découverte de chaînes (discover_creators.py). 'exclude_keywords' = filtre halal : toute chaîne ou vidéo qui tourne autour de ces sujets est écartée à la revue (pas encore appliqué automatiquement par discover_creators.py, voir SKILL.md). Ancienne liste IA : keywords_ia_archive.json.",
   "keywords": [
-    "Claude Code",
-    "VibeCoding",
-    "vibe coding",
-    "AI tools tutorial",
-    "build with AI",
-    "Anthropic Claude",
-    "AI automation business",
-    "no code AI",
-    "AI agent"
+    "crypto débutant",
+    "investir crypto",
+    "bitcoin investissement",
+    "altcoin pépite",
+    "crypto avant listing",
+    "analyse on-chain",
+    "wallet self-custody",
+    "airdrop crypto",
+    "DeFi expliqué",
+    "crypto investisseur immobilier",
+    "early crypto gems",
+    "on-chain analysis",
+    "crypto for beginners"
+  ],
+  "exclude_keywords": [
+    "levier",
+    "leverage",
+    "futures",
+    "perpetual",
+    "perps",
+    "short squeeze",
+    "vendre à découvert",
+    "margin trading",
+    "trading sur marge",
+    "options binaires",
+    "binary options",
+    "crypto lending",
+    "prêt crypto",
+    "emprunt crypto",
+    "casino",
+    "paris sportifs",
+    "betting",
+    "prediction market",
+    "polymarket"
   ]
 }

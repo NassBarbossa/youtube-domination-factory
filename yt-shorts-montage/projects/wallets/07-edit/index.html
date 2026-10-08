@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Reel « Acheter avant les autres » — edit TikTok ultra-rythmé : coupes sèches sur les mots forts, typo géante,
+         zooms punch, secousses, glitch, punk en stickers. Voix réelle de Nass. 9:16, 34,4 s, SFX, pas de musique. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: 'Archivo Black'; src: url('assets/fonts/ArchivoBlack-Regular.ttf') format('truetype'); }
+      @font-face { font-family: 'Public Sans'; src: url('assets/fonts/PublicSans-var.ttf') format('truetype'); font-weight: 100 900; }
+      @font-face { font-family: 'Plex Mono'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }
+      :root { --ink: #0B0B0B; --sand: #DBB17F; --sand-l: #F3D6A8; --cream: #F4EFE7; --punk: #648596; --rust: #E0653D; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--ink); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--ink); color: var(--cream); font-family: 'Public Sans', sans-serif; }
+      #stage { position: absolute; inset: 0; transform-origin: 50% 45%; }
+      .shot { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+      .shot.first { opacity: 1; }
+      .bgK { background: var(--ink); } .bgS { background: var(--sand); color: var(--ink); } .bgB { background: #16222C; }
+      .grid { position: absolute; inset: -200px; background-image: linear-gradient(rgba(244,239,231,.06) 2px, transparent 2px), linear-gradient(90deg, rgba(244,239,231,.06) 2px, transparent 2px); background-size: 90px 90px; }
+      .bgS .grid { background-image: linear-gradient(rgba(11,11,11,.08) 2px, transparent 2px), linear-gradient(90deg, rgba(11,11,11,.08) 2px, transparent 2px); }
+      .big { position: absolute; left: 0; right: 0; text-align: center; font-family: 'Archivo Black', sans-serif; line-height: .9; letter-spacing: -.03em; white-space: nowrap; }
+      .big span { display: inline-block; }
+      .rgb { text-shadow: -10px 0 0 rgba(100,133,150,.9), 10px 0 0 rgba(224,101,61,.75); }
+      .stroke { color: transparent; -webkit-text-stroke: 5px var(--cream); }
+      .bgS .stroke { -webkit-text-stroke-color: var(--ink); }
+      .tag { position: absolute; left: 50%; padding: 14px 28px; border-radius: 12px; font-family: 'Plex Mono', monospace; font-size: 34px; letter-spacing: .14em; white-space: nowrap; }
+      .tag.s { background: var(--sand); color: var(--ink); } .tag.k { background: var(--ink); color: var(--sand); } .tag.r { background: var(--rust); color: var(--ink); }
+      .stk { position: absolute; image-rendering: pixelated;
+        filter: drop-shadow(9px 0 0 #F4EFE7) drop-shadow(-9px 0 0 #F4EFE7) drop-shadow(0 9px 0 #F4EFE7) drop-shadow(0 -9px 0 #F4EFE7) drop-shadow(14px 18px 0 rgba(0,0,0,.55)); }
+      .stamp { position: absolute; padding: 10px 26px; border: 8px solid var(--rust); color: var(--rust); border-radius: 14px; font-family: 'Archivo Black'; font-size: 64px; letter-spacing: .02em; white-space: nowrap; }
+      .card { position: absolute; background: #15181C; border: 3px solid rgba(244,239,231,.12); border-radius: 36px; box-shadow: 0 40px 90px rgba(0,0,0,.6); }
+      .tok { position: absolute; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%; background: #1C1F24; border: 5px solid #4A5059; display: flex; align-items: center; justify-content: center;
+        font-family: 'Archivo Black'; font-size: 54px; color: #8E959E; }
+      .tok.gold { background: var(--sand); color: var(--ink); border-color: var(--ink); }
+      .ava { position: absolute; width: 120px; height: 150px; }
+      .ava::before { content: ''; position: absolute; left: 30px; top: 0; width: 60px; height: 60px; border-radius: 50%; background: #3A3F47; }
+      .ava::after { content: ''; position: absolute; left: 6px; top: 66px; width: 108px; height: 84px; border-radius: 54px 54px 12px 12px; background: #3A3F47; }
+      .bubble { position: absolute; width: 86px; height: 86px; margin-left: -43px; border-radius: 50%; background: var(--sand); color: var(--ink); font-family: 'Archivo Black'; font-size: 56px; line-height: 86px; text-align: center; border: 5px solid var(--ink); }
+      /* sous-titres façon edit : 1 à 3 mots, gros, mot actif en sable */
+      #caps { position: absolute; left: 60px; right: 60px; top: 1480px; height: 220px; }
+      .cp { position: absolute; left: 0; right: 0; top: 0; text-align: center; font-family: 'Archivo Black', sans-serif; font-size: 82px; line-height: 1.05; text-transform: uppercase; opacity: 0;
+        color: var(--cream); -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 0 8px 0 var(--ink), 0 10px 26px rgba(0,0,0,.6); }
+      .cp i { font-style: normal; display: inline-block; }
+      .cp i.on { color: var(--sand); }
+      #flash { position: absolute; inset: 0; background: var(--cream); opacity: 0; }
+      #scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(rgba(0,0,0,.10) 0 2px, rgba(0,0,0,0) 2px 5px); }
+      #grain { position: absolute; inset: -60px; pointer-events: none; opacity: .07;
+        background-image: radial-gradient(circle at 20% 30%, #fff 0 1px, transparent 1.5px), radial-gradient(circle at 70% 60%, #fff 0 1px, transparent 1.5px), radial-gradient(circle at 40% 80%, #fff 0 1px, transparent 1.5px);
+        background-size: 7px 7px, 11px 11px, 13px 13px; }
+      #root::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="34.4" data-fps="60" data-width="1080" data-height="1920">
+      <div id="stage">
+        <!-- 1 · « La façon la plus facile » -->
+        <div class="shot bgK first" id="s1"><div class="grid"></div>
+          <div class="big" id="s1a" style="top:330px;font-size:190px">LA FAÇON</div>
+          <div class="big stroke" id="s1b" style="top:540px;font-size:190px">LA PLUS</div>
+          <div class="big rgb" id="s1c" style="top:750px;font-size:230px;color:#DBB17F">FACILE</div></div>
+        <!-- 2 · « et la plus puissante pour faire de l'argent » -->
+        <div class="shot bgS" id="s2"><div class="grid"></div>
+          <div class="big" id="s2a" style="top:230px;font-size:150px">LA PLUS</div>
+          <div class="big" id="s2b" style="top:380px;font-size:150px">PUISSANTE</div>
+          <img class="stk" id="s2p" src="assets/punk-head-big.png" style="left:290px;top:640px;width:500px;height:525px" alt="" />
+          <div id="cash"></div></div>
+        <!-- 3 · « c'est d'acheter » -->
+        <div class="shot bgS" id="s3"><div class="grid"></div><div class="big" id="s3a" style="top:560px;font-size:200px">ACHETER</div>
+          <div class="big rgb" id="s3b" style="top:780px;font-size:260px">AVANT</div></div>
+        <!-- 4 · « avant » -->
+        <div class="shot bgK" id="s4"></div>
+        <!-- 5 · « les autres » -->
+        <div class="shot bgK" id="s5"><div id="crowd5"></div>
+          <img class="stk" id="s5p" src="assets/punk-head-big.png" style="left:340px;top:620px;width:400px;height:420px" alt="" />
+          <div class="tag s" id="s5t" style="top:1130px">TOI · EN PREMIER</div></div>
+        <!-- 6 · « quand tu vas acheter tes premières cryptos » -->
+        <div class="shot bgK" id="s6"><div class="grid"></div>
+          <div class="card" id="c6a" style="left:90px;top:380px;width:900px;height:220px"></div>
+          <div class="card" id="c6b" style="left:90px;top:640px;width:900px;height:220px"></div>
+          <div class="card" id="c6c" style="left:90px;top:900px;width:900px;height:220px"></div></div>
+        <!-- 7 · « …sur ce qu'on appelle un CEX » -->
+        <div class="shot bgK" id="s7"><div class="grid"></div>
+          <div class="card" id="phone" style="left:240px;top:250px;width:600px;height:1100px;border-radius:70px;border:10px solid #2A2E34">
+            <div style="position:absolute;left:50px;top:80px;font-family:'Plex Mono';font-size:26px;letter-spacing:.16em;color:#8E959E">EXCHANGE</div>
+            <div style="position:absolute;left:50px;top:130px;font-weight:900;font-size:58px">Acheter</div>
+            <div id="phoneRows"></div>
+            <div id="buy7" style="position:absolute;left:50px;right:50px;bottom:70px;height:120px;border-radius:999px;background:#DBB17F;color:#0B0B0B;font-weight:900;font-size:46px;display:flex;align-items:center;justify-content:center">Acheter</div></div>
+          <img class="stk" id="s7p" src="assets/punk-head-big.png" style="left:640px;top:1060px;width:200px;height:210px" alt="" /></div>
+        <!-- 8 · « CEX » -->
+        <div class="shot bgS" id="s8"><div class="big rgb" id="s8a" style="top:600px;font-size:420px">CEX</div>
+          <div class="tag k" id="s8t" style="top:1080px">EXCHANGE CENTRALISÉ</div></div>
+        <!-- 9 · « c'est eux qui décident ce qu'ils mettent » -->
+        <div class="shot bgK" id="s9"><div class="grid"></div>
+          <div class="big" id="s9a" style="top:270px;font-size:160px">C'EST <span style="color:#DBB17F">EUX</span></div>
+          <div id="toks9"></div>
+          <div class="stamp" id="s9s" style="left:170px;top:1180px;transform:rotate(-6deg)">ILS DÉCIDENT</div>
+          <svg id="lock9" viewBox="0 0 88 104" style="position:absolute;left:440px;top:560px;width:200px;height:236px;overflow:visible"><path id="shackle" d="M22 48 V30 a22 22 0 0 1 44 0 V48" fill="none" stroke="#DBB17F" stroke-width="10" stroke-linecap="round"/><rect x="6" y="46" width="76" height="56" rx="14" fill="#0B0B0B" stroke="#DBB17F" stroke-width="6"/><circle cx="44" cy="72" r="9" fill="#DBB17F"/></svg></div>
+        <!-- 10 · « Mais moi, ma méthode… » -->
+        <div class="shot bgB" id="s10"><div class="grid"></div>
+          <div class="big" id="s10a" style="top:230px;font-size:190px">MAIS MOI</div>
+          <img class="stk" id="s10p" src="assets/punk-head-big.png" style="left:240px;top:500px;width:600px;height:630px" alt="" />
+          <div class="tag s" id="s10t" style="top:1210px">MA MÉTHODE</div></div>
+        <!-- 11 · « …dans le monde décentralisé » -->
+        <div class="shot bgK" id="s11"><svg id="net11" viewBox="0 0 1080 1920" style="position:absolute;inset:0;width:1080px;height:1920px"></svg>
+          <div class="big rgb" id="s11a" style="top:260px;font-size:104px;color:#DBB17F">DÉCENTRALISÉ</div></div>
+        <!-- 12 · « Et là, tout le monde peut créer sa crypto » -->
+        <div class="shot bgK" id="s12"><div id="toks12"></div>
+          <div class="big" id="s12a" style="top:150px;font-size:120px">TOUT LE MONDE</div>
+          <div class="big" id="s12b" style="top:270px;font-size:120px;color:#DBB17F">PEUT CRÉER</div></div>
+        <!-- 13 · « Donc, forcément, c'est le Far West » -->
+        <div class="shot bgS" id="s13"><div class="grid"></div><div id="toks13"></div>
+          <div class="big" id="s13a" style="top:620px;font-size:250px">FAR</div>
+          <div class="big stroke" id="s13b" style="top:840px;font-size:250px">WEST</div></div>
+        <!-- 14 · « C'est pour ça qu'il faut venir équipé d'une méthode » -->
+        <div class="shot bgK" id="s14"><div class="grid"></div>
+          <img class="stk" id="s14p" src="assets/punk-head-big.png" style="left:290px;top:520px;width:500px;height:525px" alt="" />
+          <svg id="hud" viewBox="0 0 700 700" style="position:absolute;left:190px;top:430px;width:700px;height:700px;overflow:visible">
+            <circle id="h1" cx="350" cy="350" r="330" fill="none" stroke="#DBB17F" stroke-width="6" stroke-dasharray="8 26"/>
+            <circle id="h2" cx="350" cy="350" r="290" fill="none" stroke="#DBB17F" stroke-width="4" opacity=".6"/>
+            <path id="h3" d="M350 0 V70 M350 630 V700 M0 350 H70 M630 350 H700" stroke="#DBB17F" stroke-width="10" stroke-linecap="round"/></svg>
+          <div class="big" id="s14a" style="top:220px;font-size:170px">ÉQUIPÉ</div>
+          <div class="tag s" id="s14t" style="top:1180px;font-size:48px">D'UNE MÉTHODE</div></div>
+        <!-- 15 · « On peut se positionner grâce à la méthode » -->
+        <div class="shot bgK" id="s15"><div class="grid"></div>
+          <div class="big" id="s15a" style="top:420px;font-size:130px">SE</div>
+          <div class="big" id="s15b" style="top:560px;font-size:130px;color:#DBB17F">POSITIONNER</div>
+          <svg viewBox="0 0 900 400" style="position:absolute;left:90px;top:820px;width:900px;height:400px;overflow:visible"><path id="arr15" d="M20 380 C 260 370, 420 300, 560 180 S 780 30, 880 20" fill="none" stroke="#DBB17F" stroke-width="14" stroke-linecap="round" pathLength="1"/></svg></div>
+        <!-- 16 · « IOC » -->
+        <div class="shot bgS" id="s16"><div class="big rgb" id="s16a" style="top:560px;font-size:470px">IOC</div>
+          <div class="tag k" id="s16t" style="top:1080px">INVESTISSEMENT ON-CHAIN</div></div>
+        <!-- 17 · « avant que tout le monde soit au courant » -->
+        <div class="shot bgK" id="s17"><div class="grid"></div>
+          <svg viewBox="0 0 900 700" style="position:absolute;left:90px;top:420px;width:900px;height:700px;overflow:visible">
+            <path d="M0 690 H900" stroke="rgba(244,239,231,.2)" stroke-width="4"/>
+            <path id="line17" d="M20 640 C 300 630, 420 560, 560 380 S 800 60, 880 30" fill="none" stroke="#DBB17F" stroke-width="14" stroke-linecap="round" pathLength="1"/></svg>
+          <img class="stk" id="s17p" src="assets/punk-head-big.png" style="left:80px;top:900px;width:200px;height:210px" alt="" />
+          <div class="tag s" id="s17t" style="top:1150px;left:180px">TOI · AVANT</div>
+          <div id="crowd17"></div>
+          <div class="tag k" id="s17u" style="top:190px;left:640px;border:3px solid #DBB17F">TOUT LE MONDE</div></div>
+        <!-- fin -->
+        <div class="shot bgS" id="s18"><div class="grid"></div>
+          <img class="stk" id="s18p" src="assets/punk-head-big.png" style="left:340px;top:250px;width:400px;height:420px" alt="" />
+          <div class="big" id="s18a" style="top:790px;font-size:150px">FORMATION</div>
+          <div class="big stroke" id="s18b" style="top:950px;font-size:180px">OFFERTE</div>
+          <div class="tag k" id="s18c" style="top:1200px;font-size:46px;color:#F4EFE7">▶ LIEN EN BIO</div>
+          <div style="position:absolute;left:0;right:0;top:1340px;text-align:center;font-weight:700;font-size:32px;color:rgba(11,11,11,.7)" id="s18d">Pas un conseil en investissement.</div></div>
+      </div>
+      <div id="caps"></div>
+      <div id="flash"></div>
+      <div id="grain"></div>
+      <div id="scan"></div>
+    </div>
+
+    <script>
+      const DATA = {"words": [{"t": 0.3, "e": 0.46, "w": "La"}, {"t": 0.46, "e": 0.74, "w": "façon"}, {"t": 0.74, "e": 1.22, "w": "la"}, {"t": 1.22, "e": 1.44, "w": "plus"}, {"t": 1.44, "e": 1.9, "w": "facile"}, {"t": 1.9, "e": 2.16, "w": "et"}, {"t": 2.16, "e": 2.42, "w": "la"}, {"t": 2.42, "e": 2.64, "w": "plus"}, {"t": 2.64, "e": 3.12, "w": "puissante"}, {"t": 3.12, "e": 3.34, "w": "pour"}, {"t": 3.34, "e": 3.62, "w": "faire"}, {"t": 3.62, "e": 3.78, "w": "de"}, {"t": 3.78, "e": 3.96, "w": "l"}, {"t": 3.96, "e": 4.26, "w": "'argent,"}, {"t": 4.88, "e": 4.96, "w": "c"}, {"t": 4.96, "e": 5.22, "w": "'est"}, {"t": 5.22, "e": 5.52, "w": "d"}, {"t": 5.52, "e": 6.02, "w": "'acheter"}, {"t": 6.02, "e": 6.34, "w": "avant"}, {"t": 6.34, "e": 6.6, "w": "les"}, {"t": 6.6, "e": 6.78, "w": "autres."}, {"t": 7.09, "e": 7.25, "w": "Quand"}, {"t": 7.25, "e": 7.47, "w": "tu"}, {"t": 7.47, "e": 7.65, "w": "vas"}, {"t": 7.65, "e": 7.95, "w": "acheter"}, {"t": 7.95, "e": 8.17, "w": "tes"}, {"t": 8.17, "e": 8.49, "w": "premières"}, {"t": 8.49, "e": 9.09, "w": "cryptos,"}, {"t": 9.14, "e": 9.24, "w": "tu"}, {"t": 9.24, "e": 9.38, "w": "vas"}, {"t": 9.38, "e": 9.62, "w": "les"}, {"t": 9.62, "e": 9.84, "w": "acheter"}, {"t": 9.84, "e": 10.0, "w": "sur"}, {"t": 10.0, "e": 10.1, "w": "ce"}, {"t": 10.1, "e": 10.22, "w": "qu"}, {"t": 10.22, "e": 10.32, "w": "'on"}, {"t": 10.32, "e": 10.58, "w": "appelle"}, {"t": 10.58, "e": 11.0, "w": "un"}, {"t": 11.0, "e": 11.42, "w": "CEX."}, {"t": 11.73, "e": 11.87, "w": "Sur"}, {"t": 11.87, "e": 12.03, "w": "leur"}, {"t": 12.03, "e": 12.45, "w": "plateforme,"}, {"t": 12.61, "e": 12.61, "w": "c"}, {"t": 12.61, "e": 12.75, "w": "'est"}, {"t": 12.75, "e": 12.97, "w": "eux"}, {"t": 12.97, "e": 13.19, "w": "qui"}, {"t": 13.19, "e": 13.49, "w": "décident"}, {"t": 13.49, "e": 13.69, "w": "ce"}, {"t": 13.69, "e": 13.81, "w": "qu"}, {"t": 13.81, "e": 13.81, "w": "'ils"}, {"t": 13.81, "e": 14.39, "w": "mettent."}, {"t": 14.7, "e": 14.84, "w": "Mais"}, {"t": 14.84, "e": 15.08, "w": "moi,"}, {"t": 15.18, "e": 15.28, "w": "ma"}, {"t": 15.28, "e": 16.0, "w": "méthode,"}, {"t": 16.12, "e": 16.32, "w": "elle"}, {"t": 16.32, "e": 16.5, "w": "s"}, {"t": 16.5, "e": 16.92, "w": "'effectue"}, {"t": 16.92, "e": 17.08, "w": "dans"}, {"t": 17.08, "e": 17.32, "w": "le"}, {"t": 17.32, "e": 17.6, "w": "monde"}, {"t": 17.6, "e": 18.66, "w": "décentralisé."}, {"t": 18.97, "e": 19.17, "w": "Et"}, {"t": 19.17, "e": 19.63, "w": "là,"}, {"t": 19.77, "e": 19.89, "w": "tout"}, {"t": 19.89, "e": 19.95, "w": "le"}, {"t": 19.95, "e": 20.07, "w": "monde"}, {"t": 20.07, "e": 20.33, "w": "peut"}, {"t": 20.33, "e": 20.53, "w": "créer"}, {"t": 20.53, "e": 20.77, "w": "sa"}, {"t": 20.77, "e": 21.13, "w": "crypto."}, {"t": 21.44, "e": 21.8, "w": "Donc,"}, {"t": 21.8, "e": 22.26, "w": "forcément,"}, {"t": 22.66, "e": 22.74, "w": "c"}, {"t": 22.74, "e": 22.74, "w": "'est"}, {"t": 22.74, "e": 22.92, "w": "le"}, {"t": 22.92, "e": 23.1, "w": "Far"}, {"t": 23.1, "e": 23.4, "w": "West."}, {"t": 23.71, "e": 23.83, "w": "C"}, {"t": 23.83, "e": 23.89, "w": "'est"}, {"t": 23.89, "e": 24.21, "w": "pour"}, {"t": 24.21, "e": 24.39, "w": "ça"}, {"t": 24.39, "e": 24.53, "w": "qu"}, {"t": 24.53, "e": 24.57, "w": "'il"}, {"t": 24.57, "e": 24.71, "w": "faut"}, {"t": 24.71, "e": 25.19, "w": "venir"}, {"t": 25.19, "e": 25.59, "w": "équipé"}, {"t": 25.59, "e": 25.75, "w": "d"}, {"t": 25.75, "e": 25.87, "w": "'une"}, {"t": 25.87, "e": 26.19, "w": "méthode."}, {"t": 26.5, "e": 26.5, "w": "On"}, {"t": 26.5, "e": 26.68, "w": "peut"}, {"t": 26.68, "e": 26.9, "w": "se"}, {"t": 26.9, "e": 27.42, "w": "positionner"}, {"t": 27.42, "e": 27.7, "w": "grâce"}, {"t": 27.7, "e": 27.82, "w": "à"}, {"t": 27.82, "e": 27.94, "w": "la"}, {"t": 27.94, "e": 28.26, "w": "méthode"}, {"t": 28.26, "e": 28.64, "w": "IOC"}, {"t": 29.24, "e": 29.66, "w": "avant"}, {"t": 29.66, "e": 30.04, "w": "que"}, {"t": 30.04, "e": 30.24, "w": "tout"}, {"t": 30.24, "e": 30.28, "w": "le"}, {"t": 30.28, "e": 30.38, "w": "monde"}, {"t": 30.38, "e": 30.64, "w": "soit"}, {"t": 30.64, "e": 30.86, "w": "au"}, {"t": 30.86, "e": 31.14, "w": "courant."}], "phrases": [0.25, 7.04, 11.68, 14.65, 18.92, 21.39, 23.66, 26.45], "voiceEnd": 31.4};
+      const WORDS = DATA.words, PH = DATA.phrases, VEND = DATA.voiceEnd;
+      const norm = (x) => x.toLowerCase().replace(/[.,]/g, '');
+      const wt = (txt, after = 0) => WORDS.find(w => w.t >= after && norm(w.w) === norm(txt)).t;
+      let seed = 77;
+      const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+      // ---------- contenu généré ----------
+      const crowd = (id, n, x0, y0, dx, dy, sc) => { document.getElementById(id).innerHTML = Array.from({ length: n }, (_, i) =>
+        `<div class="ava" id="${id}_${i}" style="left:${x0 + (i % 5) * dx}px;top:${y0 + Math.floor(i / 5) * dy}px;transform:scale(${sc})"></div>`).join(''); };
+      crowd('crowd5', 10, 40, 1300, 210, 190, 0.9);
+      crowd('crowd17', 5, 600, 380, 80, 0, 0.6);
+      document.getElementById('crowd17').insertAdjacentHTML('beforeend', [0, 1, 2, 3, 4].map(i => `<div class="bubble" id="bb${i}" style="left:${660 + i * 80}px;top:285px">!</div>`).join(''));
+      document.getElementById('cash').innerHTML = Array.from({ length: 14 }, (_, i) => `<div class="tok gold" id="ca${i}" style="left:${80 + rnd() * 920}px;top:-120px;width:110px;height:110px;font-size:52px">$</div>`).join('');
+      const C6 = [['₿', 'Bitcoin'], ['Ξ', 'Ethereum'], ['◎', 'Solana']];
+      ['c6a', 'c6b', 'c6c'].forEach((id, i) => document.getElementById(id).innerHTML = `<div class="tok" style="left:130px;top:110px">${C6[i][0]}</div><div style="position:absolute;left:250px;top:62px;font-weight:900;font-size:80px">${C6[i][1]}</div>`);
+      document.getElementById('phoneRows').innerHTML = C6.map((c, i) => `<div style="position:absolute;left:50px;right:50px;top:${260 + i * 150}px;height:120px;border-radius:24px;background:rgba(244,239,231,.05);border:2px solid rgba(244,239,231,.1)">
+        <div class="tok" style="left:70px;top:60px;width:84px;height:84px;margin:-42px 0 0 -42px;font-size:36px">${c[0]}</div><div style="position:absolute;left:140px;top:34px;font-weight:800;font-size:42px">${c[1]}</div></div>`).join('');
+      // jetons rejetés / jetons du Far West
+      document.getElementById('toks9').innerHTML = [[200, 950], [880, 950], [540, 1000], [300, 760], [780, 760]].map(([x, y], i) => `<div class="tok" id="t9_${i}" style="left:${x}px;top:${y}px">?</div>`).join('');
+      const T12 = []; for (let i = 0; i < 30; i++) T12.push([127 + (i % 6) * 165, 520 + Math.floor(i / 6) * 190]);
+      document.getElementById('toks12').innerHTML = T12.map(([x, y], i) => `<div class="tok${i % 7 === 3 ? ' gold' : ''}" id="t12_${i}" style="left:${x}px;top:${y}px">$</div>`).join('');
+      document.getElementById('toks13').innerHTML = [[150, 260], [900, 330], [200, 1250], [880, 1200], [540, 1350]].map(([x, y], i) => `<div class="tok" id="t13_${i}" style="left:${x}px;top:${y}px">$</div><div class="stamp" id="w13_${i}" style="left:${x - 150}px;top:${y + 60}px;font-size:34px;padding:6px 14px;border-width:5px;background:#DBB17F">ARNAQUE</div>`).join('');
+      // réseau
+      let net = ''; const NC = { x: 540, y: 1000 };
+      for (let i = 0; i < 34; i++) { const a = i * 2.399, r = 140 + Math.sqrt(i / 34) * 520, x = NC.x + Math.cos(a) * r, y = NC.y + Math.sin(a) * r * 1.2;
+        net += `<line class="nl" x1="${NC.x}" y1="${NC.y}" x2="${x.toFixed(0)}" y2="${y.toFixed(0)}" stroke="rgba(219,177,127,.55)" stroke-width="4" pathLength="1"/><circle class="nn" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="16" fill="#0B0B0B" stroke="#DBB17F" stroke-width="5"/>`; }
+      document.getElementById('net11').innerHTML = net + `<image href="assets/punk-head-big.png" x="${NC.x - 110}" y="${NC.y - 115}" width="220" height="231" style="image-rendering:pixelated"/>`;
+
+      // sous-titres : groupes de 1 à 3 mots
+      const CAPS = document.getElementById('caps'); const chunks = []; let cur = [];
+      WORDS.forEach((w, i) => { cur.push(w); const nx = WORDS[i + 1]; const brk = !nx || cur.length >= 3 || /[.,?]$/.test(w.w) || (nx && nx.t - w.e > 0.35) || (nx && PH.some(p => w.t < p && nx.t >= p));
+        if (brk && !(nx && nx.w.startsWith("'"))) { chunks.push(cur); cur = []; } });
+      chunks.forEach((c, j) => { let h = ''; c.forEach((w, k) => h += (w.w.startsWith("'") || k === 0 ? '' : ' ') + `<i id="q${j}_${k}">${w.w.replace(/[.,]$/, '')}</i>`); CAPS.insertAdjacentHTML('beforeend', `<div class="cp" id="Q${j}">${h}</div>`); });
+
+      // ---------- timeline ----------
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      gsap.set(['.big', '.tag', '.stk', '.card', '.stamp', '.tok', '.ava', '.bubble', '#lock9', '#hud', '.nl', '.nn'], { opacity: 0 });
+      document.querySelectorAll('.tag').forEach(t => { if (!t.style.left || t.style.left === '50%') gsap.set(t, { xPercent: -50 }); });
+      gsap.set('#s1 .big', { opacity: 0 });
+      gsap.set(['#arr15', '#line17', '.nl'], { strokeDasharray: '1 1', strokeDashoffset: 1 });
+      gsap.set('#shackle', { y: -18 });
+
+      const SHOTS = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 's13', 's14', 's15', 's16', 's17', 's18'];
+      // transitions fluides : whip pan flouté (push), zoom traversant — centrées sur le mot
+      let CUR = 's1', TI = 0;
+      const TR = ['up', 'left', 'zoom', 'right', 'down', 'zoomout'];
+      const cut = (id, t, d = 0.62) => {
+        const pv = '#' + CUR, nx = '#' + id, k = TR[TI++ % TR.length], t0 = t - d / 2; CUR = id;
+        const F = { up: [{ yPercent: 100 }, { yPercent: -100 }], down: [{ yPercent: -100 }, { yPercent: 100 }], left: [{ xPercent: 100 }, { xPercent: -100 }],
+          right: [{ xPercent: -100 }, { xPercent: 100 }], zoom: [{ scale: 0.5, opacity: 0 }, { scale: 2.2, opacity: 0 }], zoomout: [{ scale: 2.2, opacity: 0 }, { scale: 0.5, opacity: 0 }] }[k];
+        tl.fromTo(nx, { opacity: 1, xPercent: 0, yPercent: 0, scale: 1, ...F[0] }, { opacity: 1, xPercent: 0, yPercent: 0, scale: 1, duration: d, ease: 'power3.inOut', immediateRender: false }, t0);
+        tl.fromTo(pv, { opacity: 1, xPercent: 0, yPercent: 0, scale: 1 }, { ...F[1], duration: d, ease: 'power3.inOut', immediateRender: false }, t0);
+        tl.fromTo([pv, nx], { filter: 'blur(0px)' }, { keyframes: [{ filter: 'blur(10px)', duration: d / 2, ease: 'power2.in' }, { filter: 'blur(0px)', duration: d / 2, ease: 'power2.out' }], immediateRender: false }, t0);
+        tl.set(pv, { opacity: 0, xPercent: 0, yPercent: 0, scale: 1, filter: 'none' }, t0 + d + 0.01);
+      };
+      const slam = (sel, t, from = 2.4, rot = 0) => tl.fromTo(sel, { opacity: 0, scale: 1 + (from - 1) * 0.3, rotation: rot * 0.4 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, t);
+      const slide = (sel, t, dx) => tl.fromTo(sel, { opacity: 0, x: dx }, { opacity: 1, x: 0, duration: 0.55, ease: 'expo.out', immediateRender: false }, t);
+      const pop = (sel, t) => tl.fromTo(sel, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.6)', immediateRender: false }, t);
+      const punch = (t, s = 1.12) => tl.fromTo('#stage', { scale: 1 + (s - 1) * 0.4 }, { scale: 1, duration: 0.8, ease: 'expo.out', immediateRender: false }, t);
+      const shake = (t, a = 22) => { a *= 0.35; tl.to('#stage', { keyframes: [{ x: -a, y: a * 0.4, duration: 0.06, ease: 'sine.inOut' }, { x: a * 0.7, y: -a * 0.3, duration: 0.07, ease: 'sine.inOut' }, { x: -a * 0.35, y: a * 0.15, duration: 0.08, ease: 'sine.inOut' }, { x: 0, y: 0, duration: 0.1, ease: 'sine.out' }] }, t); };
+      const flash = (t, o = 0.85) => tl.to('#flash', { keyframes: [{ opacity: o * 0.35, duration: 0.05 }, { opacity: 0, duration: 0.3, ease: 'power2.out' }] }, t);
+      const glitch = (sel, t) => tl.to(sel, { keyframes: [{ x: -16, skewX: 8, duration: 0.05 }, { x: 12, skewX: -5, duration: 0.05 }, { x: 0, skewX: 0, duration: 0.08, ease: 'power2.out' }] }, t);
+      const wobble = (sel, t0, t1) => tl.fromTo(sel, { rotation: -4 }, { rotation: 4, duration: 0.45, ease: 'sine.inOut', yoyo: true, repeat: Math.max(1, Math.floor((t1 - t0) / 0.45)), immediateRender: false }, t0);
+
+      // sous-titres
+      chunks.forEach((c, j) => { const t0 = c[0].t - 0.03, t1 = j + 1 < chunks.length ? chunks[j + 1][0].t - 0.04 : VEND + 0.2;
+        tl.fromTo('#Q' + j, { opacity: 0, scale: 0.7, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.12, ease: 'back.out(3)', immediateRender: false }, t0);
+        c.forEach((w, k) => { tl.set(`#q${j}_${k}`, { className: 'on' }, w.t); if (k < c.length - 1) tl.set(`#q${j}_${k}`, { className: '' }, c[k + 1].t); });
+        tl.set('#Q' + j, { opacity: 0 }, t1); });
+
+      // ===== 1 · « La façon la plus facile » =====
+      slam('#s1a', wt('façon') - 0.05, 1.8); slam('#s1b', wt('plus') - 0.05, 1.8); slam('#s1c', wt('facile') - 0.05, 2.6, -6);
+      punch(wt('facile'), 1.15); glitch('#s1c', wt('facile') + 0.12);
+      // ===== 2 · « et la plus puissante pour faire de l'argent » =====
+      cut('s2', wt('et') - 0.04); flash(wt('et') - 0.04, 0.5);
+      slide('#s2a', wt('plus', 2) - 0.05, -900); slam('#s2b', wt('puissante') - 0.04, 2.2); punch(wt('puissante'), 1.1);
+      slam('#s2p', wt('pour') - 0.05, 0.2, -30); wobble('#s2p', wt('pour') + 0.2, 4.8);
+      document.querySelectorAll('#cash .tok').forEach((c, i) => tl.fromTo(c, { opacity: 1, y: 0, rotation: 0 }, { opacity: 1, y: 2200, rotation: (i % 2 ? 1 : -1) * 260, duration: 1.1 + (i % 4) * 0.15, ease: 'power1.in', immediateRender: false }, wt("'argent,") - 0.1 + i * 0.05));
+      // ===== 3-5 · « c'est d'acheter avant les autres » =====
+      cut('s3', wt("'acheter") - 0.04, 0.5); slam('#s3a', wt("'acheter") - 0.04, 3, 8); punch(wt("'acheter"), 1.2); shake(wt("'acheter") + 0.05, 16);
+      slam('#s3b', wt('avant') - 0.05, 2.2, -6); flash(wt('avant') - 0.05, 0.5); shake(wt('avant'), 26); glitch('#s3b', wt('avant') + 0.3);
+      
+      cut('s5', wt('les', 6.2) - 0.03, 0.5);
+      document.querySelectorAll('#crowd5 .ava').forEach((a, i) => tl.fromTo(a, { opacity: 0, y: 200 }, { opacity: 0.8, y: 0, duration: 0.25, ease: 'back.out(2)', immediateRender: false }, wt('les', 6.2) + 0.05 + i * 0.03));
+      slam('#s5p', wt('les', 6.2) - 0.03, 2.5, 15); pop('#s5t', wt('autres.'));
+      // ===== 6 · « Quand tu vas acheter tes premières cryptos » =====
+      cut('s6', PH[1] - 0.04); flash(PH[1] - 0.04, 0.4);
+      slide('#c6a', wt('acheter', 7) - 0.05, 1100); slide('#c6b', wt('premières') - 0.05, -1100); slide('#c6c', wt('cryptos,') - 0.05, 1100);
+      punch(wt('cryptos,'), 1.08);
+      // ===== 7 · « tu vas les acheter sur ce qu'on appelle un » =====
+      cut('s7', wt('tu', 9) - 0.04);
+      tl.fromTo('#phone', { opacity: 0, y: 500, rotation: 8 }, { opacity: 1, y: 0, rotation: -3, duration: 0.35, ease: 'back.out(1.6)', immediateRender: false }, wt('tu', 9) - 0.04);
+      slam('#s7p', wt('acheter', 9.4) - 0.1, 0.3);
+      tl.to('#buy7', { keyframes: [{ scale: 0.9, duration: 0.06 }, { scale: 1, duration: 0.2, ease: 'back.out(3)' }] }, wt('acheter', 9.4) + 0.08);
+      tl.to('#phone', { scale: 1.5, y: 120, duration: 0.6, ease: 'power3.in' }, wt('appelle') - 0.2);
+      // ===== 8 · « CEX » =====
+      cut('s8', wt('cex') - 0.04); slam('#s8a', wt('cex') - 0.04, 3.2, -10); flash(wt('cex') - 0.04); shake(wt('cex'), 28); glitch('#s8a', wt('cex') + 0.2); glitch('#s8a', wt('cex') + 0.45);
+      pop('#s8t', wt('cex') + 0.25);
+      // ===== 9 · « Sur leur plateforme, c'est eux qui décident ce qu'ils mettent » =====
+      cut('s9', PH[2] - 0.04);
+      [0, 1, 2, 3, 4].forEach(i => pop('#t9_' + i, PH[2] + 0.1 + i * 0.08));
+      slam('#s9a', wt('eux') - 0.08, 2.2); punch(wt('eux'), 1.12);
+      slam('#s9s', wt('décident') - 0.04, 2.6, -16); shake(wt('décident') + 0.05, 18);
+      [0, 1, 2, 3, 4].forEach(i => tl.to('#t9_' + i, { x: (i % 2 ? 1 : -1) * 600, rotation: 120, opacity: 0, duration: 0.4, ease: 'power2.in' }, wt('décident') + 0.12 + i * 0.04));
+      slam('#lock9', wt('mettent') - 0.12, 0.3); tl.to('#shackle', { y: 0, duration: 0.1, ease: 'power3.in' }, wt('mettent') + 0.06); punch(wt('mettent') + 0.08, 1.1);
+      // ===== 10 · « Mais moi, ma méthode, elle s'effectue dans le monde » =====
+      cut('s10', PH[3] - 0.04); flash(PH[3] - 0.04, 0.5);
+      slam('#s10a', PH[3] - 0.04, 2.4, 6);
+      tl.fromTo('#s10p', { opacity: 0, scale: 0.2, rotation: -40 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.35, ease: 'back.out(2)', immediateRender: false }, wt('moi,'));
+      wobble('#s10p', wt('moi,') + 0.4, 17.4);
+      tl.fromTo('#s10p', { scale: 1 }, { scale: 1.15, duration: 2.4, ease: 'power1.inOut', immediateRender: false }, wt('moi,') + 0.4);
+      pop('#s10t', wt('méthode,'));
+      // ===== 11 · « décentralisé » =====
+      cut('s11', wt('décentralisé') - 0.05); flash(wt('décentralisé') - 0.05);
+      tl.to('#net11 .nl', { opacity: 1, strokeDashoffset: 0, duration: 0.45, ease: 'expo.out', stagger: 0.008 }, wt('décentralisé') - 0.05);
+      tl.to('#net11 .nn', { opacity: 1, duration: 0.2, stagger: 0.012 }, wt('décentralisé') + 0.1);
+      slam('#s11a', wt('décentralisé'), 2.4); glitch('#s11a', wt('décentralisé') + 0.25); punch(wt('décentralisé'), 1.2);
+      tl.fromTo('#net11', { scale: 1 }, { scale: 1.25, duration: 1.4, ease: 'power1.in', transformOrigin: '50% 52%', immediateRender: false }, wt('décentralisé'));
+      // ===== 12 · « Et là, tout le monde peut créer sa crypto » =====
+      cut('s12', PH[4] - 0.04);
+      slam('#s12a', wt('tout', PH[4]) - 0.05, 1.8); slam('#s12b', wt('créer') - 0.05, 2.4, -6); punch(wt('créer'), 1.1);
+      T12.forEach((_, i) => pop('#t12_' + i, wt('tout', PH[4]) + i * 0.035));
+      // ===== 13 · « Donc, forcément, c'est le Far West » =====
+      cut('s13', PH[5] - 0.04); flash(PH[5] - 0.04, 0.5);
+      [0, 1, 2, 3, 4].forEach(i => { pop('#t13_' + i, PH[5] + 0.05 + i * 0.07); tl.to('#t13_' + i, { x: 14, duration: 0.05, yoyo: true, repeat: 15, ease: 'none' }, PH[5] + 0.4); slam('#w13_' + i, wt('forcément,') + 0.1 + i * 0.12, 2.2, -12); });
+      slam('#s13a', wt('far') - 0.06, 3, -8); slam('#s13b', wt('west.') - 0.04, 3, 8); shake(wt('far'), 34); flash(wt('far') - 0.05); glitch('#s13a', wt('west.') + 0.1);
+      // ===== 14 · « C'est pour ça qu'il faut venir équipé d'une méthode » =====
+      cut('s14', PH[6] - 0.04);
+      tl.fromTo('#s14p', { opacity: 0, y: 300 }, { opacity: 1, y: 0, duration: 0.3, ease: 'back.out(1.8)', immediateRender: false }, PH[6]);
+      wobble('#s14p', PH[6] + 0.3, 26.3);
+      slam('#s14a', wt('équipé') - 0.06, 2.4, 6); flash(wt('équipé') - 0.06, 0.6); shake(wt('équipé'), 22);
+      tl.fromTo('#hud', { opacity: 0, scale: 1.8, rotation: -40 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: 'power4.out', immediateRender: false }, wt('équipé') - 0.02);
+      tl.to('#h1', { rotation: 360, svgOrigin: '350 350', duration: 2, ease: 'none' }, wt('équipé'));
+      slam('#s14t', wt('méthode', PH[6]) - 0.05, 2.2); punch(wt('méthode', PH[6]), 1.1);
+      // ===== 15 · « On peut se positionner grâce à la méthode » =====
+      cut('s15', PH[7] - 0.04);
+      slam('#s15a', wt('se', PH[7]) - 0.05, 2); slam('#s15b', wt('positionner') - 0.05, 2.4, -5); punch(wt('positionner'), 1.1);
+      tl.to('#arr15', { opacity: 1, strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut' }, wt('positionner') + 0.1);
+      // ===== 16 · « IOC » =====
+      cut('s16', wt('ioc') - 0.05); slam('#s16a', wt('ioc') - 0.05, 3.4, 12); flash(wt('ioc') - 0.05); shake(wt('ioc'), 34);
+      glitch('#s16a', wt('ioc') + 0.2); glitch('#s16a', wt('ioc') + 0.55); pop('#s16t', wt('ioc') + 0.3);
+      tl.fromTo('#s16a', { scale: 1 }, { scale: 1.1, duration: 0.8, ease: 'none', immediateRender: false }, wt('ioc') + 0.2);
+      // ===== 17 · « avant que tout le monde soit au courant » =====
+      cut('s17', wt('avant', 28.5) - 0.05); flash(wt('avant', 28.5) - 0.05, 0.4);
+      tl.to('#line17', { opacity: 1, strokeDashoffset: 0, duration: 0.8, ease: 'power2.inOut' }, wt('avant', 28.5));
+      slam('#s17p', wt('avant', 28.5), 2.4, -20); pop('#s17t', wt('avant', 28.5) + 0.2);
+      document.querySelectorAll('#crowd17 .ava').forEach((a, i) => tl.fromTo(a, { opacity: 0, y: -150 }, { opacity: 1, y: 0, duration: 0.25, ease: 'bounce.out', immediateRender: false }, wt('tout', 29.5) + i * 0.06));
+      pop('#s17u', wt('monde', 29.5));
+      [0, 1, 2, 3, 4].forEach(i => pop('#bb' + i, wt('courant.') + i * 0.05)); shake(wt('courant.'), 14);
+      // ===== fin =====
+      const END = VEND + 0.15;
+      cut('s18', END); flash(END, 0.9);
+      slam('#s18p', END + 0.02, 0.2, -30); wobble('#s18p', END + 0.4, 34.3);
+      slam('#s18a', END + 0.15, 2.2); slam('#s18b', END + 0.45, 2.6, -6); punch(END + 0.45, 1.1);
+      pop('#s18c', END + 0.9); tl.fromTo('#s18d', { opacity: 0 }, { opacity: 1, duration: 0.3, immediateRender: false }, END + 1.2);
+      tl.to('#s18c', { scale: 1.08, duration: 0.3, yoyo: true, repeat: 3, ease: 'sine.inOut' }, END + 1.3);
+      // grain qui vibre
+      for (let t = 0.05; t < 34.4; t += 0.1) tl.set('#grain', { x: Math.round((rnd() - .5) * 40), y: Math.round((rnd() - .5) * 40) }, t);
+      tl.to({}, { duration: 0.01 }, 34.39);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

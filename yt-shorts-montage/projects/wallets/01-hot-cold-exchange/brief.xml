@@ -1,0 +1,22 @@
+<brief short="wallets/01-hot-cold-exchange">
+<art_direction>
+Charte Nass Riviera. Fond noir #0B0B0B (grain léger). Cartes crème #F4EFE7 à bord noir épais et ombre pleine décalée.
+Accent sable/or #DBB17F (clair #F3D6A8, foncé #9C7748), bleu punk #648596 pour les éléments « tech ».
+Titres Archivo Black, texte Public Sans. Icônes plates en crème avec contour noir épais (banque, portefeuille, coffre-fort)
+qui se transforment l'une dans l'autre. Punk pixel @punk6995 en signature. Aucun graphique de prix.
+</art_direction>
+<references>
+Vidéo d'annonce Convergence (shows/emission-live/annonce-lancement) pour le rythme vertical.
+Site nassriviera.com pour la charte (cartes crème, ombre pleine, sable).
+</references>
+<timing>
+47 s au total, 1080x1920, 30 fps. Timecodes = ceux du script yt-shorts-script/outputs/wallets/01-hot-cold-exchange.md.
+0-3 hook ; 3 trois cartes ; 6-16 exchange (banque, guichet qui se ferme, tampon RETRAITS SUSPENDUS) ;
+17-31 hot wallet (la banque devient un portefeuille de poche, ondes wifi, hameçon barré) ;
+32-39 cold wallet (le portefeuille devient un coffre-fort, wifi barré) ; 40 récap 3 cartes + punk ; 44-47 CTA + disclaimer.
+</timing>
+<deliverable>
+1080 x 1920, 30 fps, MP4 SANS musique, avec sound effects sur les animations. Sous-titres = le texte à l'écran du script, mot pour mot.
+Rien d'important dans les 250 px du bas ni sur la colonne droite. Disclaimer « Pas un conseil en investissement. » à la fin.
+</deliverable>
+</brief>

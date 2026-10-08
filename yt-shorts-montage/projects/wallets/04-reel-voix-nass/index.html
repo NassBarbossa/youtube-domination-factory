@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Reel « Acheter avant les autres » — voix réelle de Nass (Video 3 de la formation), mini-jeu 8-bit du punk.
+         9:16, 34,4 s, SFX chiptune, pas de musique. Plan-séquence : course → CEX (château) → Far West (DEX) → IOC. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: 'Press Start 2P'; src: url('assets/fonts/PressStart2P-Regular.ttf') format('truetype'); }
+      :root { --bg: #0B0B0B; --sand: #DBB17F; --sand-light: #F3D6A8; --sand-dark: #9C7748; --cream: #F4EFE7; --punk: #648596; --punk-dark: #4F6C7B; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0E1216; color: var(--cream); font-family: 'Press Start 2P', monospace; }
+      #cam-outer { position: absolute; left: 540px; top: 960px; width: 0; height: 0; transform-origin: 0 0; }
+      #cam-inner { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+      #world { position: absolute; left: 0; top: 0; width: 5600px; height: 2200px; background: linear-gradient(#0B0E12 0%, #121A21 55%, #1B2630 100%); }
+      #desertSky { position: absolute; left: 3150px; top: 0; width: 2450px; height: 1700px; background: linear-gradient(#141018 0%, #3A2A22 60%, #7A5634 100%); }
+      #sun { position: absolute; left: 4380px; top: 980px; width: 300px; height: 300px; border-radius: 50%; background: #E9B872; opacity: .75; box-shadow: 0 0 0 26px rgba(233,184,114,.14), 0 0 0 52px rgba(233,184,114,.06); }
+      .sp { position: absolute; display: block; overflow: visible; shape-rendering: crispEdges; }
+      .ab { position: absolute; }
+      .star { position: absolute; width: 8px; height: 8px; background: var(--sand-light); }
+      .pk { position: absolute; width: 180px; height: 324px; }
+      .head { position: absolute; left: 0; top: 0; width: 180px; height: 189px; image-rendering: pixelated; }
+      .bod { position: absolute; left: 0; top: 189px; }
+      .bod .fr { position: absolute; left: 0; top: 0; opacity: 0; }
+      .arm { position: absolute; left: 0; top: 30px; opacity: 0; }
+      .bod .fr.f-idle, .npc .fr.f-idle { opacity: 1; }   /* pose de repos visible par défaut (le rendu ignore les réglages posés à 0 s) */
+      .npc { position: absolute; }
+      .npc .fr { position: absolute; left: 0; top: 0; opacity: 0; }
+      .bubble { position: absolute; padding: 16px 20px; background: var(--cream); color: var(--bg); border: 6px solid var(--bg); box-shadow: 8px 8px 0 var(--sand-dark); font-size: 48px; line-height: 1; }
+      .rays { position: absolute; width: 640px; height: 640px; border-radius: 50%;
+        background: repeating-conic-gradient(rgba(243,214,168,.34) 0deg 12deg, rgba(243,214,168,0) 12deg 30deg);
+        -webkit-mask: radial-gradient(closest-side, #000 30%, transparent 100%); mask: radial-gradient(closest-side, #000 30%, transparent 100%); }
+      .spark { position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+      .flag { position: absolute; width: 14px; height: 260px; background: var(--cream); border: 4px solid var(--bg); }
+      .flag::after { content: ''; position: absolute; left: 10px; top: 0; width: 90px; height: 60px; background: repeating-conic-gradient(var(--bg) 0 25%, var(--cream) 0 50%) 0 0 / 30px 30px; border: 4px solid var(--bg); }
+      #castle { position: absolute; left: 2380px; top: 1250px; width: 520px; height: 450px; }
+      .tw { position: absolute; top: 0; width: 140px; height: 450px; background: var(--sand-dark); border: 6px solid var(--bg);
+        background-image: linear-gradient(var(--bg) 6px, transparent 6px), linear-gradient(90deg, var(--bg) 6px, transparent 6px); background-size: 70px 48px; }
+      .tw::before { content: ''; position: absolute; left: -6px; right: -6px; top: -42px; height: 42px;
+        background: linear-gradient(90deg, var(--sand-dark) 0 33%, transparent 33% 66%, var(--sand-dark) 66%); border-top: 6px solid var(--bg); }
+      #wall { position: absolute; left: 120px; top: 110px; width: 280px; height: 340px; background: var(--sand);
+        background-image: linear-gradient(rgba(11,11,11,.6) 6px, transparent 6px), linear-gradient(90deg, rgba(11,11,11,.6) 6px, transparent 6px); background-size: 70px 48px; border: 6px solid var(--bg); }
+      #gate { position: absolute; left: 70px; top: 150px; width: 140px; height: 190px; background: var(--bg); overflow: hidden; }
+      #bars { position: absolute; left: 0; top: 0; width: 140px; height: 190px;
+        background-image: linear-gradient(90deg, var(--punk) 0 12px, transparent 12px), linear-gradient(var(--punk) 0 12px, transparent 12px); background-size: 34px 190px, 140px 46px; }
+      .sign { position: absolute; padding: 12px 18px; background: var(--bg); color: var(--sand); white-space: nowrap; border: 5px solid var(--cream); }
+      #shelf { position: absolute; left: 2420px; top: 1060px; width: 440px; height: 130px; background: var(--bg); border: 6px solid var(--cream); box-shadow: 10px 10px 0 var(--sand-dark); display: flex; align-items: center; justify-content: space-around; }
+      #wood { position: absolute; left: 3770px; top: 1150px; width: 420px; padding: 20px 0; text-align: center; background: var(--sand-dark); color: var(--bg); border: 6px solid var(--bg); box-shadow: 8px 8px 0 var(--bg); font-size: 48px; }
+      #wood::before, #wood::after { content: ''; position: absolute; top: 100%; width: 16px; height: 400px; background: var(--sand-dark); border: 5px solid var(--bg); }
+      #wood::before { left: 40px; } #wood::after { right: 40px; }
+      #hud { position: absolute; left: 70px; right: 70px; top: 120px; height: 70px; display: flex; justify-content: space-between; align-items: center; }
+      #hearts { display: flex; gap: 14px; }
+      #counter { display: flex; align-items: center; gap: 16px; font-size: 40px; text-shadow: 5px 5px 0 var(--bg); }
+      .kin { position: absolute; left: 0; right: 0; text-align: center; line-height: 1.15; white-space: nowrap; color: var(--cream); text-shadow: 8px 8px 0 var(--sand-dark), 8px 8px 0 var(--bg); opacity: 0; }
+      .kin.hl span { display: inline-block; background: var(--sand); color: var(--bg); padding: 18px 20px 12px; border: 6px solid var(--bg); box-shadow: 10px 10px 0 var(--cream); text-shadow: none; }
+      .ea { position: relative; display: inline-block; }
+      .ea::before { content: ''; position: absolute; left: 38%; top: -.32em; width: .28em; height: .16em; background: currentColor; transform: skewX(-30deg); }
+      #dlg { position: absolute; left: 70px; width: 940px; top: 1430px; height: 230px; background: var(--bg); border: 8px solid var(--cream); outline: 6px solid var(--bg); box-shadow: inset 0 0 0 6px var(--sand-dark), 14px 14px 0 var(--sand-dark); opacity: 0; }
+      .line { position: absolute; left: 36px; right: 36px; top: 34px; font-size: 32px; line-height: 1.65; color: var(--cream); opacity: 0; }
+      .line i { font-style: normal; opacity: 0; }
+      .line i.k { color: var(--sand); }
+      #dlgArrow { position: absolute; right: 30px; bottom: 22px; width: 0; height: 0; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 20px solid var(--sand); }
+      #flash { position: absolute; inset: 0; background: var(--cream); opacity: 0; }
+      #end { position: absolute; inset: 0; opacity: 0; background: #0E1216; }
+      #endBox { position: absolute; left: 400px; top: 360px; width: 280px; height: 300px; }
+      #endPunk { position: absolute; left: 0; top: 20px; width: 280px; height: 280px; border: 8px solid var(--bg); outline: 8px solid var(--sand); box-shadow: 18px 18px 0 var(--sand-dark); image-rendering: pixelated; }
+      #disc { position: absolute; left: 0; right: 0; top: 1520px; text-align: center; font-size: 22px; line-height: 1.6; color: rgba(244,239,231,.7); }
+      #scan { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(rgba(0,0,0,.16) 0 3px, rgba(0,0,0,0) 3px 6px); }
+      #root::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="34.4" data-width="1080" data-height="1920">
+      <div id="cam-outer"><div id="cam-inner"><div id="world">
+        <div id="desertSky"></div><div id="sun"></div>
+        <div id="stars"></div>
+        <div id="ground"></div>
+        <!-- 1 · la course -->
+        <div class="flag" style="left:300px;top:1440px"></div>
+        <div id="crowd"></div>
+        <div class="pk" id="pA" style="left:350px;top:1376px"></div>
+        <div class="ab" id="goldBlock" style="left:1460px;top:1604px"></div>
+        <div class="ab" id="nug" style="left:1468px;top:1500px"></div>
+        <div class="rays" id="raysA" style="left:1100px;top:1060px"></div>
+        <!-- 2 · le CEX -->
+        <div id="castle"><div class="tw" style="left:0"></div><div class="tw" style="left:380px"></div>
+          <div id="wall"><div class="sign" id="cexSign" style="left:50%;top:30px;font-size:44px">CEX</div><div id="gate"><div id="bars"></div></div></div></div>
+        <div id="shelf"></div>
+        <div class="ab" id="guard" style="left:2620px;top:1520px"></div>
+        <div id="outs"></div>
+        <div class="pk" id="pB" style="left:2100px;top:1376px"></div>
+        <!-- 3 · le Far West -->
+        <div id="cacti"></div>
+        <div id="wood">FAR WEST</div>
+        <div class="sign" id="dexSign" style="left:3500px;top:1250px;font-size:40px">DEX</div>
+        <div id="sprouts"></div>
+        <div class="ab" id="tumble" style="left:4900px;top:1580px"></div>
+        <div class="rays" id="raysC" style="left:3420px;top:1050px"></div>
+        <div class="ab" id="grpC" style="left:3600px;top:1376px"><div class="pk" id="pC" style="left:0;top:0"></div><div class="ab" id="badge" style="left:55px;top:215px"></div><div class="ab" id="hat" style="left:-6px;top:-66px"></div></div>
+        <div class="sign" id="iocChip" style="left:3880px;top:1330px;font-size:36px;background:#DBB17F;color:#0B0B0B;border-color:#0B0B0B">MÉTHODE IOC</div>
+        <!-- 4 · positionné avant tout le monde -->
+        <div id="stack"></div>
+        <div class="ab" id="nug2" style="left:4716px;top:1300px"></div>
+        <div class="rays" id="raysD" style="left:4440px;top:830px"></div>
+        <div id="crowd2"></div>
+        <div id="fx"></div>
+      </div></div></div>
+
+      <div id="hud"><div id="hearts"></div><div id="counter"><span id="ccoin"></span><span>x</span><span id="cnum" style="position:relative;display:inline-block;width:160px;height:40px"></span></div></div>
+      <div class="kin" id="kA1" style="top:330px;font-size:84px">ACHETER</div>
+      <div class="kin hl" id="kA2" style="top:460px;font-size:58px"><span style="transform:rotate(-2deg)">AVANT LES AUTRES</span></div>
+      <div class="kin hl" id="kF" style="top:360px;font-size:96px"><span style="transform:rotate(2deg)">FAR WEST</span></div>
+      <div class="kin" id="kI1" style="top:330px;font-size:64px">M<span class="ea">E</span>THODE</div>
+      <div class="kin hl" id="kI2" style="top:440px;font-size:120px"><span style="transform:rotate(-2deg)">IOC</span></div>
+      <div id="dlg"><div id="lines"></div><div id="dlgArrow"></div></div>
+      <div id="end">
+        <div id="endBox"><img id="endPunk" src="assets/punk6995.jpg" alt="Nass Riviera" /><div class="ab" id="endHat" style="left:20px;top:-70px"></div></div>
+        <div class="kin" id="e0" style="top:760px;font-size:34px;color:#DBB17F;text-shadow:none">NIVEAU 2 D<span class="ea">E</span>BLOQU<span class="ea">E</span></div>
+        <div class="kin" id="e1" style="top:860px;font-size:92px">FORMATION</div>
+        <div class="kin hl" id="e2" style="top:990px;font-size:92px"><span>OFFERTE</span></div>
+        <div class="kin" id="e3" style="top:1250px;font-size:50px;color:#F3D6A8">▶ LIEN EN BIO</div>
+        <div id="disc">Pas un conseil en<br />investissement.</div>
+      </div>
+      <div id="flash"></div>
+      <div id="scan"></div>
+    </div>
+
+    <script>
+      const DATA = {"words": [{"t": 0.3, "e": 0.46, "w": "La"}, {"t": 0.46, "e": 0.74, "w": "façon"}, {"t": 0.74, "e": 1.22, "w": "la"}, {"t": 1.22, "e": 1.44, "w": "plus"}, {"t": 1.44, "e": 1.9, "w": "facile"}, {"t": 1.9, "e": 2.16, "w": "et"}, {"t": 2.16, "e": 2.42, "w": "la"}, {"t": 2.42, "e": 2.64, "w": "plus"}, {"t": 2.64, "e": 3.12, "w": "puissante"}, {"t": 3.12, "e": 3.34, "w": "pour"}, {"t": 3.34, "e": 3.62, "w": "faire"}, {"t": 3.62, "e": 3.78, "w": "de"}, {"t": 3.78, "e": 3.96, "w": "l"}, {"t": 3.96, "e": 4.26, "w": "'argent,"}, {"t": 4.88, "e": 4.96, "w": "c"}, {"t": 4.96, "e": 5.22, "w": "'est"}, {"t": 5.22, "e": 5.52, "w": "d"}, {"t": 5.52, "e": 6.02, "w": "'acheter"}, {"t": 6.02, "e": 6.34, "w": "avant"}, {"t": 6.34, "e": 6.6, "w": "les"}, {"t": 6.6, "e": 6.78, "w": "autres."}, {"t": 7.09, "e": 7.25, "w": "Quand"}, {"t": 7.25, "e": 7.47, "w": "tu"}, {"t": 7.47, "e": 7.65, "w": "vas"}, {"t": 7.65, "e": 7.95, "w": "acheter"}, {"t": 7.95, "e": 8.17, "w": "tes"}, {"t": 8.17, "e": 8.49, "w": "premières"}, {"t": 8.49, "e": 9.09, "w": "cryptos,"}, {"t": 9.14, "e": 9.24, "w": "tu"}, {"t": 9.24, "e": 9.38, "w": "vas"}, {"t": 9.38, "e": 9.62, "w": "les"}, {"t": 9.62, "e": 9.84, "w": "acheter"}, {"t": 9.84, "e": 10.0, "w": "sur"}, {"t": 10.0, "e": 10.1, "w": "ce"}, {"t": 10.1, "e": 10.22, "w": "qu"}, {"t": 10.22, "e": 10.32, "w": "'on"}, {"t": 10.32, "e": 10.58, "w": "appelle"}, {"t": 10.58, "e": 11.0, "w": "un"}, {"t": 11.0, "e": 11.42, "w": "CEX."}, {"t": 11.73, "e": 11.87, "w": "Sur"}, {"t": 11.87, "e": 12.03, "w": "leur"}, {"t": 12.03, "e": 12.45, "w": "plateforme,"}, {"t": 12.61, "e": 12.61, "w": "c"}, {"t": 12.61, "e": 12.75, "w": "'est"}, {"t": 12.75, "e": 12.97, "w": "eux"}, {"t": 12.97, "e": 13.19, "w": "qui"}, {"t": 13.19, "e": 13.49, "w": "décident"}, {"t": 13.49, "e": 13.69, "w": "ce"}, {"t": 13.69, "e": 13.81, "w": "qu"}, {"t": 13.81, "e": 13.81, "w": "'ils"}, {"t": 13.81, "e": 14.39, "w": "mettent."}, {"t": 14.7, "e": 14.84, "w": "Mais"}, {"t": 14.84, "e": 15.08, "w": "moi,"}, {"t": 15.18, "e": 15.28, "w": "ma"}, {"t": 15.28, "e": 16.0, "w": "méthode,"}, {"t": 16.12, "e": 16.32, "w": "elle"}, {"t": 16.32, "e": 16.5, "w": "s"}, {"t": 16.5, "e": 16.92, "w": "'effectue"}, {"t": 16.92, "e": 17.08, "w": "dans"}, {"t": 17.08, "e": 17.32, "w": "le"}, {"t": 17.32, "e": 17.6, "w": "monde"}, {"t": 17.6, "e": 18.66, "w": "décentralisé."}, {"t": 18.97, "e": 19.17, "w": "Et"}, {"t": 19.17, "e": 19.63, "w": "là,"}, {"t": 19.77, "e": 19.89, "w": "tout"}, {"t": 19.89, "e": 19.95, "w": "le"}, {"t": 19.95, "e": 20.07, "w": "monde"}, {"t": 20.07, "e": 20.33, "w": "peut"}, {"t": 20.33, "e": 20.53, "w": "créer"}, {"t": 20.53, "e": 20.77, "w": "sa"}, {"t": 20.77, "e": 21.13, "w": "crypto."}, {"t": 21.44, "e": 21.8, "w": "Donc,"}, {"t": 21.8, "e": 22.26, "w": "forcément,"}, {"t": 22.66, "e": 22.74, "w": "c"}, {"t": 22.74, "e": 22.74, "w": "'est"}, {"t": 22.74, "e": 22.92, "w": "le"}, {"t": 22.92, "e": 23.1, "w": "Far"}, {"t": 23.1, "e": 23.4, "w": "West."}, {"t": 23.71, "e": 23.83, "w": "C"}, {"t": 23.83, "e": 23.89, "w": "'est"}, {"t": 23.89, "e": 24.21, "w": "pour"}, {"t": 24.21, "e": 24.39, "w": "ça"}, {"t": 24.39, "e": 24.53, "w": "qu"}, {"t": 24.53, "e": 24.57, "w": "'il"}, {"t": 24.57, "e": 24.71, "w": "faut"}, {"t": 24.71, "e": 25.19, "w": "venir"}, {"t": 25.19, "e": 25.59, "w": "équipé"}, {"t": 25.59, "e": 25.75, "w": "d"}, {"t": 25.75, "e": 25.87, "w": "'une"}, {"t": 25.87, "e": 26.19, "w": "méthode."}, {"t": 26.5, "e": 26.5, "w": "On"}, {"t": 26.5, "e": 26.68, "w": "peut"}, {"t": 26.68, "e": 26.9, "w": "se"}, {"t": 26.9, "e": 27.42, "w": "positionner"}, {"t": 27.42, "e": 27.7, "w": "grâce"}, {"t": 27.7, "e": 27.82, "w": "à"}, {"t": 27.82, "e": 27.94, "w": "la"}, {"t": 27.94, "e": 28.26, "w": "méthode"}, {"t": 28.26, "e": 28.64, "w": "IOC"}, {"t": 29.24, "e": 29.66, "w": "avant"}, {"t": 29.66, "e": 30.04, "w": "que"}, {"t": 30.04, "e": 30.24, "w": "tout"}, {"t": 30.24, "e": 30.28, "w": "le"}, {"t": 30.28, "e": 30.38, "w": "monde"}, {"t": 30.38, "e": 30.64, "w": "soit"}, {"t": 30.64, "e": 30.86, "w": "au"}, {"t": 30.86, "e": 31.14, "w": "courant."}], "phrases": [0.25, 7.04, 11.68, 14.65, 18.92, 21.39, 23.66, 26.45], "voiceEnd": 31.4};
+      const WORDS = DATA.words, PH = DATA.phrases, VEND = DATA.voiceEnd;
+      const norm = (x) => x.toLowerCase().replace(/[.,]/g, '');
+      const wt = (txt, after = 0) => WORDS.find(w => w.t >= after && norm(w.w) === norm(txt)).t;
+      let seed = 44;
+      const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+      // ---------- pixel art ----------
+      const PAL = { K: '#0B0B0B', S: '#DBB17F', L: '#F3D6A8', D: '#9C7748', C: '#F4EFE7', B: '#648596', J: '#4F6C7B', G: '#3B3A37', g: '#9A968D', Q: '#3B3A37', E: '#D9B47F', R: '#6B7D6A', r: '#4A5A49' };
+      const sprite = (rows, P, pal = PAL) => {
+        const w = rows[0].length * P, h = rows.length * P; let r = '';
+        rows.forEach((row, y) => [...row].forEach((c, x) => { if (pal[c]) r += `<rect x="${x * P}" y="${y * P}" width="${P}" height="${P}" fill="${pal[c]}"/>`; }));
+        return `<svg class="sp" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${r}</svg>`;
+      };
+      const COIN = ['..KKKK..', '.KSSSSK.', 'KSLSSDSK', 'KSLSSDSK', 'KSLSSDSK', 'KSLSSDSK', '.KSSSSK.', '..KKKK..'];
+      const BRICK = ['KKKKKKKK', 'KLDDDLDK', 'KDDDDDDK', 'KKKKKKKK', 'KDLDDDLK', 'KDDDDDDK', 'KDDDDDDK', 'KKKKKKKK'];
+      const SANDT = ['DDDDDDDD', 'SSSLSSSS', 'SSSSSSLS', 'SLSSSSSS', 'SSSSSLSS', 'SSSSSSSS', 'SSLSSSSS', 'SSSSSSSS'];
+      const GUARD = ['...KKKK...', '..KSSSSK..', '.KSSSSSSK.', '.KKKKKKKK.', '.KgKgKgKK.', '.KggggggK.', 'KJJJJJJJJK', 'KJJSJJSJJK', 'KJJJJJJJJK', 'KJJJJJJJJK', '.KJJKKJJK.', '.KKK..KKK.'];
+      const HEART = ['.KK.KK.', 'KSSKSSK', 'KSLSSSK', 'KSSSSSK', '.KSSSK.', '..KSK..', '...K...'];
+      const HAT = ['.....KKKKKK.....', '....KDDDDDDK....', '....KDDDDDDK....', '....KSSSSSSK....', 'KKKKKDDDDDDKKKKK', 'KDDDDDDDDDDDDDDK', '.KKKKKKKKKKKKKK.'];
+      const STAR = ['....KK....', '...KSSK...', 'KKKKSSKKKK', 'KSSSLLSSSK', '.KSSSSSSK.', '..KSSSSK..', '.KSSKKSSK.', '.KKK..KKK.'];
+      const CACTUS = ['...KKK...', '..KRRRK..', 'K.KRrRK..', 'KRKRrRK.K', 'KRKRrRKKR', 'KRRRrRKRR', '.KKRrRRRK', '..KRrRKK.', '..KRrRK..', '..KRrRK..', '..KRrRK..', '..KKKKK..'];
+      const TUMBLE = ['..KDKDK..', '.KD.D.DK.', 'KD.KDK.DK', 'D.KD.DK.D', 'KDD.K.DDK', 'D.KD.DK.D', 'KD.KDK.DK', '.KD.D.DK.', '..KDKDK..'];
+      const XMARK = ['KK....KK', 'KSK..KSK', '.KSKKSK.', '..KSSK..', '..KSSK..', '.KSKKSK.', 'KSK..KSK', 'KK....KK'];
+      // corps du punk (même grille que la tête : 1 pixel = 9 px)
+      const TORSO = ['..KKKKKKKKKK..', '.KJJJJLLJJJJK.', 'KJJJJJLLJJJJJK', 'KJKJJJJJJJJKJK', 'KJKJJJJJJJJKJK', 'KJKJJJJJJJJKJK', 'KEKJJJJJJJJKEK', 'KKKKSSSSSSKKKK', '..KQQQQQQQQK..'];
+      const TORSO_UP = TORSO.map((r, i) => (i >= 1 && i <= 6) ? '.K' + r.slice(2) : r);
+      const LEGS = {
+        idle: ['..KQQQKKQQQK..', '..KQQQKKQQQK..', '..KQQQKKQQQK..', '..KQQQKKQQQK..', '.KSSSSKKSSSSK.', '.KKKKKKKKKKKK.'],
+        a: ['..KQQQKKQQQK..', '.KQQQK..KQQQK.', 'KQQQK....KQQQK', 'KQQK......KQQK', 'KSSSK....KSSSK', 'KKKKK....KKKKK'],
+        b: ['..KQQQKKQQQK..', '...KQQQQQQK...', '...KQQQQQQK...', '...KQQKKQQK...', '..KSSSKKSSSK..', '..KKKKKKKKKK..'],
+        jump: ['..KQQQKKQQQK..', '.KQQQQKKQQQQK.', 'KQQQQK..KQQQQK', 'KSSSK....KSSSK', 'KKKK......KKKK', '..............'],
+      };
+      const ARM = ['KKK', 'KEK', 'KEK'].concat(Array(18).fill('KJK'));
+      const buildPunk = (id) => {
+        const fr = (cls, rows) => `<div class="fr f-${cls}">${sprite(rows, 9)}</div>`;
+        document.getElementById(id).innerHTML = `<div class="arm">${sprite(ARM, 9)}</div><img class="head" src="assets/punk-head-grid.png" alt="" />` +
+          `<div class="bod">${fr('idle', TORSO.concat(LEGS.idle))}${fr('a', TORSO.concat(LEGS.a))}${fr('b', TORSO.concat(LEGS.b))}${fr('jump', TORSO.concat(LEGS.jump))}${fr('up', TORSO_UP.concat(LEGS.idle))}</div>`;
+      };
+      ['pA', 'pB', 'pC'].forEach(buildPunk);
+      // la foule : silhouettes grises, mêmes animations
+      const NPCHEAD = ['...KKKKKKK....', '..KgggggggK...', '.KgggggggggK..', '.KgggggggggK..', '.KggKKggKKgK..', '.KggggggggggK.', '.KgggggKKgggK.', '.KggggggggggK.', '..KgggggggggK.', '...KKgggggK...', '....KgggggK...'];
+      const GPAL = Object.assign({}, PAL, { J: '#4A4A48', Q: '#2C2C2A', S: '#6D6A64', L: '#6D6A64', E: '#9A968D' });
+      const npc = (x, y, id) => {
+        const fr = (cls, legs) => `<div class="fr f-${cls}">${sprite(NPCHEAD.map(r => r.padEnd(14, '.')).concat(TORSO, legs), 7, GPAL)}</div>`;
+        return `<div class="npc" id="${id}" style="left:${x}px;top:${y}px">${fr('idle', LEGS.idle)}${fr('a', LEGS.a)}${fr('b', LEGS.b)}</div>`;
+      };
+      document.getElementById('crowd').innerHTML = [0, 1, 2, 3].map(i => npc(70 + i * 55, 1518, 'n' + i)).join('');
+      document.getElementById('crowd2').innerHTML = [0, 1, 2, 3].map(i => npc(3700 + i * 80, 1518, 'm' + i) + `<div class="bubble mx" id="mx${i}" style="left:${3720 + i * 80}px;top:1430px;font-size:34px;padding:10px 14px;opacity:0">!</div>`).join('');
+
+      // décor
+      let g = ''; for (let x = 0; x < 5600; x += 96) { const T = x < 3150 ? BRICK : SANDT; g += `<div class="ab" style="left:${x}px;top:1700px">${sprite(T, 12)}</div><div class="ab" style="left:${x}px;top:1796px">${sprite(T, 12)}</div>`; }
+      document.getElementById('ground').innerHTML = g;
+      let st = ''; for (let i = 0; i < 70; i++) st += `<div class="star" style="left:${(rnd() * 3100).toFixed(0)}px;top:${(rnd() * 1300).toFixed(0)}px;opacity:${(0.2 + rnd() * 0.6).toFixed(2)}"></div>`;
+      document.getElementById('stars').innerHTML = st;
+      document.getElementById('goldBlock').innerHTML = sprite(BRICK, 12);
+      document.getElementById('nug').innerHTML = sprite(COIN, 11);
+      document.getElementById('nug2').innerHTML = sprite(COIN, 11);
+      document.getElementById('guard').innerHTML = sprite(GUARD, 15);
+      document.getElementById('hat').innerHTML = sprite(HAT, 12);
+      document.getElementById('endHat').innerHTML = sprite(HAT, 15);
+      document.getElementById('badge').innerHTML = sprite(STAR, 7);
+      document.getElementById('tumble').innerHTML = sprite(TUMBLE, 14);
+      document.getElementById('shelf').innerHTML = [0, 1, 2].map(i => `<div id="sh${i}" style="opacity:0">${sprite(COIN, 8)}</div>`).join('');
+      document.getElementById('outs').innerHTML = [0, 1, 2].map(i => `<div class="ab" id="o${i}" style="left:${2960 + i * 110}px;top:${1300 + (i % 2) * 120}px">${sprite(COIN, 8)}<div class="ab ox" id="ox${i}" style="left:-6px;top:-6px;opacity:0">${sprite(XMARK, 10)}</div></div>`).join('');
+      document.getElementById('cacti').innerHTML = [[3300, 1.0], [4350, 1.2], [5150, 0.9]].map(([x, s]) => `<div class="ab" style="left:${x}px;top:${1700 - 12 * 14 * s}px">${sprite(CACTUS, Math.round(14 * s))}</div>`).join('');
+      const SX = [3380, 3470, 3900, 4000, 4090, 4180, 4280, 3560, 4400, 4480, 3300, 4560];
+      document.getElementById('sprouts').innerHTML = SX.map((x, i) => `<div class="ab sp2" id="sp${i}" style="left:${x}px;top:${1620 - (i % 3) * 30}px">${sprite(COIN, 8)}</div>`).join('');
+      document.getElementById('stack').innerHTML = [0, 1, 2].map(i => `<div class="ab blk" id="st${i}" style="left:${4520 + i * 96}px;top:${1604 - i * 96}px">${sprite(BRICK, 12)}</div>`).join('');
+      document.getElementById('hearts').innerHTML = [0, 1, 2].map(() => `<span style="position:relative;display:inline-block;width:56px;height:56px">${sprite(HEART, 8)}</span>`).join('');
+      document.getElementById('ccoin').innerHTML = sprite(COIN, 6);
+      document.getElementById('cnum').innerHTML = [0, 1, 2].map(n => `<span class="cn" id="cn${n}" style="position:absolute;left:0;top:0;opacity:${n ? 0 : 1}">${String(n).padStart(4, '0')}</span>`).join('');
+
+      // gerbes de pixels
+      const FX = document.getElementById('fx');
+      const makeBurst = (p, n, r, cols) => Array.from({ length: n }, (_, i) => {
+        const s = document.createElement('div'); s.className = 'spark'; s.style.left = p.x + 'px'; s.style.top = p.y + 'px'; s.style.background = cols[i % cols.length];
+        const a = (i / n) * Math.PI * 2 + rnd() * 0.4, d = r * (0.5 + rnd() * 0.7);
+        s.dataset.x = (Math.cos(a) * d).toFixed(0); s.dataset.y = (Math.sin(a) * d).toFixed(0); s.dataset.s = (0.8 + rnd() * 1.6).toFixed(2);
+        FX.appendChild(s); return s;
+      });
+      const SAND = ['#F3D6A8', '#DBB17F', '#F4EFE7'];
+      const bA = makeBurst({ x: 1512, y: 1440 }, 20, 280, SAND), bW = makeBurst({ x: 4100, y: 1150 }, 16, 260, ['#9C7748', '#DBB17F', '#0B0B0B']);
+      const bC = makeBurst({ x: 3700, y: 1450 }, 20, 280, SAND), bD = makeBurst({ x: 4760, y: 1150 }, 26, 340, SAND), bG = makeBurst({ x: 2590, y: 1640 }, 16, 220, ['#648596', '#F4EFE7', '#DBB17F']);
+
+      // ---------- sous-titres : boîte de dialogue, mots exacts de Nass au rythme de sa voix ----------
+      const KEYW = ['avant', 'autres.', 'CEX.', 'eux', 'décentralisé.', 'créer', 'Far', 'West.', 'méthode.', 'IOC', 'courant.'];
+      const LINES = document.getElementById('lines'); const groups = [];
+      // chaque phrase est découpée en pages de 3 lignes max (comme une vraie boîte de dialogue)
+      let gi = 0;
+      PH.forEach((t0, pi) => {
+        const t1 = pi + 1 < PH.length ? PH[pi + 1] - 0.05 : VEND + 0.5;
+        const ws = WORDS.filter(w => w.t >= t0 - 0.01 && w.t < t1);
+        const pages = [[]]; let len = 0;
+        ws.forEach(w => { const add = w.w.length + (w.w.startsWith("'") ? 0 : 1); if (len + add > 56 && !w.w.startsWith("'")) { pages.push([]); len = 0; } pages[pages.length - 1].push(w); len += add; });
+        pages.forEach((pw, j) => {
+          const id = gi++; let html = '';
+          pw.forEach((w, k) => { const glue = w.w.startsWith("'") || k === 0; html += (glue ? '' : ' ') + `<i id="w${id}_${k}"${KEYW.includes(w.w) ? ' class="k"' : ''}>${w.w}</i>`; });
+          LINES.insertAdjacentHTML('beforeend', `<div class="line" id="L${id}">${html}</div>`);
+          groups.push({ id, ws: pw, t0: j ? pw[0].t - 0.02 : t0 - 0.04, t1: j < pages.length - 1 ? pages[j + 1][0].t - 0.02 : t1 });
+        });
+      });
+
+      // ---------- timeline ----------
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      const cam = (x, y) => ({ x: -x, y: -y });
+      gsap.set('#cam-inner', cam(620, 1420)); gsap.set('#cam-outer', { scale: 0.95 });
+      gsap.set(['.rays', '#shelf', '#guard', '#iocChip', '#hat', '#badge', '#dexSign', '.sp2', '.kin', '#wood', '.blk', '#nug2', '#crowd2 .npc', '.spark'], { opacity: 0 });
+      gsap.set('#bars', { y: -190 });
+      gsap.set(['#cexSign'], { xPercent: -50, opacity: 0 });
+
+      const pose = (sel, f, t) => { tl.set(sel + ' .fr', { opacity: 0 }, t); tl.set(sel + ' .f-' + f, { opacity: 1 }, t); if (sel[1] === 'p') tl.set(sel + ' .arm', { opacity: f === 'up' ? 1 : 0 }, t); };
+      const walk = (sel, t0, t1, step = 0.11) => { for (let t = t0, i = 0; t < t1; t += step, i++) pose(sel, i % 2 ? 'b' : 'a', t); pose(sel, 'idle', t1); };
+      const playBurst = (parts, t) => parts.forEach((s, i) => tl.fromTo(s, { opacity: 1, x: 0, y: 0, scale: +s.dataset.s }, { opacity: 0, x: +s.dataset.x, y: +s.dataset.y, scale: 0.3, duration: 0.7 + (i % 4) * 0.08, ease: 'expo.out', immediateRender: false }, t));
+      const whip = (t, x, y, s, r, d = 0.34) => {
+        tl.to('#cam-inner', { ...cam(x, y), duration: d, ease: 'expo.inOut' }, t);
+        tl.to('#cam-outer', { scale: s, rotation: r, duration: d, ease: 'expo.inOut' }, t);
+        tl.to('#world', { keyframes: [{ filter: 'blur(9px)', duration: d * 0.45 }, { filter: 'blur(0px)', duration: d * 0.55 }] }, t);
+      };
+      const shake = (t, a = 14) => tl.to('#cam-outer', { keyframes: [{ x: -a, y: a / 2, duration: 0.04 }, { x: a * 0.8, y: -a / 2, duration: 0.04 }, { x: -a / 2, y: a / 4, duration: 0.04 }, { x: 0, y: 0, duration: 0.05 }] }, t);
+      const slam = (id, t, mode) => mode === 'scale'
+        ? tl.fromTo(id, { opacity: 0, scale: 2.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: 'power4.out', immediateRender: false }, t)
+        : tl.fromTo(id, { opacity: 0, x: mode * 900 }, { opacity: 1, x: 0, duration: 0.22, ease: 'power4.out', immediateRender: false }, t);
+      const showN = (v, t) => { tl.set('.cn', { opacity: 0 }, t); tl.set('#cn' + v, { opacity: 1 }, t); };
+      const spin = (sel, t0, t1) => { for (let t = t0, i = 0; t < t1; t += 0.1, i++) tl.set(sel + ' svg', { scaleX: [1, 0.6, 0.15, 0.6][i % 4] }, t); };
+      const breathe = (sel, t0, t1) => { for (let t = t0, i = 0; t < t1; t += 0.5, i++) tl.set(sel + ' .head', { y: i % 2 ? 0 : 9 }, t); };
+
+      document.querySelectorAll('.star').forEach((s, i) => { if (i % 3 === 0) for (let t = (i % 7) * 0.2; t < 34.4; t += 1.4) { tl.set(s, { opacity: 0.15 }, t); tl.set(s, { opacity: 0.85 }, t + 0.7); } });
+
+      // dialogue (mots qui s'écrivent au rythme de la voix)
+      tl.fromTo('#dlg', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.25, ease: 'back.out(2)', immediateRender: false }, 0.15);
+      tl.to('#dlg', { opacity: 0, y: 60, duration: 0.2 }, VEND + 0.35);
+      for (let t = 0.6, i = 0; t < VEND; t += 0.4, i++) tl.set('#dlgArrow', { opacity: i % 2 }, t);
+      groups.forEach(({ id, ws, t0, t1 }) => { tl.set('#L' + id, { opacity: 1 }, t0); ws.forEach((w, k) => tl.set(`#w${id}_${k}`, { opacity: 1 }, w.t)); tl.set('#L' + id, { opacity: 0 }, t1); });
+
+      // ===== 1 · « la façon la plus facile… c'est d'acheter avant les autres » : la course =====
+      breathe('#pA', 0.3, 4.8);
+      spin('#nug', 0.2, 7.0);
+      tl.to('#cam-outer', { scale: 1.05, duration: 4.6, ease: 'power1.inOut' }, 0);
+      const GO = wt("'acheter") - 0.25;                   // départ juste avant « acheter »
+      walk('#pA', GO, GO + 0.95, 0.07);
+      tl.to('#pA', { x: 1000, duration: 0.95, ease: 'power2.in' }, GO);
+      ['#n0', '#n1', '#n2', '#n3'].forEach((n, i) => { walk(n, GO + 0.25 + i * 0.05, 7.0, 0.09); tl.to(n, { x: 640 - i * 40, duration: 7.0 - GO - 0.25, ease: 'power1.in' }, GO + 0.25 + i * 0.05); });
+      tl.to('#cam-inner', { ...cam(1250, 1420), duration: 1.0, ease: 'power2.in' }, GO);
+      tl.to('#cam-outer', { scale: 1.15, rotation: -2, duration: 1.0, ease: 'power2.in' }, GO);
+      tl.to('#world', { keyframes: [{ filter: 'blur(5px)', duration: 0.5 }, { filter: 'blur(0px)', duration: 0.4 }] }, GO + 0.15);
+      const AV = wt('avant');
+      pose('#pA', 'jump', AV - 0.08);
+      tl.to('#pA', { keyframes: [{ y: -120, duration: 0.15, ease: 'power2.out' }, { y: 0, duration: 0.18, ease: 'power2.in' }] }, AV - 0.08);
+      tl.to('#nug', { x: -98, y: -170, scale: 1.2, duration: 0.2, ease: 'power3.out' }, AV);    // la pépite au-dessus de sa tête
+      pose('#pA', 'up', AV + 0.15);
+      tl.fromTo('#raysA', { opacity: 0, scale: 0.4, rotation: 0 }, { opacity: 1, scale: 1, rotation: 60, duration: 0.5, ease: 'expo.out', immediateRender: false }, AV);
+      tl.to('#raysA', { opacity: 0, rotation: 100, duration: 0.4 }, 6.9);
+      playBurst(bA, AV); shake(AV, 10); showN(1, AV);
+      slam('#kA1', wt("'acheter"), -1); slam('#kA2', AV, 'scale');
+      tl.to(['#kA1', '#kA2'], { opacity: 0, y: -60, duration: 0.15 }, PH[1] - 0.15);
+
+      // ===== 2 · « …sur ce qu'on appelle un CEX » / « c'est eux qui décident » =====
+      whip(PH[1] - 0.1, 2560, 1360, 1.05, 2);
+      breathe('#pB', PH[1], 34);
+      walk('#pB', PH[1] + 0.2, PH[1] + 1.6);
+      tl.to('#pB', { x: 150, duration: 1.4, ease: 'none' }, PH[1] + 0.2);
+      tl.fromTo('#cexSign', { opacity: 0, scale: 3 }, { opacity: 1, scale: 1, duration: 0.22, ease: 'power4.out', immediateRender: false }, wt('cex.') - 0.05);
+      shake(wt('cex.') + 0.15, 8);
+      tl.fromTo('#shelf', { opacity: 0, y: -60 }, { opacity: 1, y: 0, duration: 0.3, ease: 'back.out(2)', immediateRender: false }, wt('plateforme') - 0.1);
+      [0, 1, 2].forEach(i => tl.fromTo('#sh' + i, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.2, ease: 'back.out(3)', immediateRender: false }, wt('plateforme') + 0.15 + i * 0.1));
+      tl.fromTo('#guard', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.25, ease: 'back.out(2.5)', immediateRender: false }, wt('eux') - 0.05);
+      [0, 1, 2].forEach(i => { tl.fromTo('#o' + i, { x: 300, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: 'power3.out', immediateRender: false }, wt('eux') + i * 0.08); tl.set('#ox' + i, { opacity: 1 }, wt('décident') + i * 0.1); tl.to('#o' + i, { x: 500, y: -200, rotation: 90, opacity: 0, duration: 0.4, ease: 'power2.in' }, wt('décident') + 0.35 + i * 0.08); });
+      tl.to('#bars', { y: 0, duration: 0.14, ease: 'power4.in' }, wt('mettent.'));
+      playBurst(bG, wt('mettent.') + 0.12); shake(wt('mettent.') + 0.12, 12);
+
+      // ===== 3 · « ma méthode, elle s'effectue dans le monde décentralisé » : le Far West =====
+      whip(PH[3] - 0.1, 3800, 1380, 1.0, -2, 0.42);
+      breathe('#pC', PH[3], 34);
+      walk('#pC', PH[3] + 0.4, PH[3] + 1.5);
+      tl.to('#grpC', { x: 120, duration: 1.1, ease: 'none' }, PH[3] + 0.4);
+      tl.fromTo('#dexSign', { opacity: 0, scale: 3 }, { opacity: 1, scale: 1, duration: 0.22, ease: 'power4.out', immediateRender: false }, wt('décentralisé.') - 0.05);
+      // « tout le monde peut créer sa crypto » : les cryptos poussent de partout
+      tl.to('#cam-outer', { scale: 0.82, duration: 0.5, ease: 'power3.inOut' }, PH[4] - 0.1);
+      tl.to('#cam-inner', { ...cam(3950, 1330), duration: 0.5, ease: 'power3.inOut' }, PH[4] - 0.1);
+      SX.forEach((_, i) => tl.fromTo('#sp' + i, { opacity: 1, y: 140, scale: 0.4 }, { opacity: 1, y: -40 - (i % 4) * 30, scale: 1, duration: 0.35, ease: 'back.out(2.5)', immediateRender: false }, wt('tout', PH[4]) + i * 0.08));
+      SX.forEach((_, i) => spin('#sp' + i, wt('tout', PH[4]) + 0.4 + (i % 3) * 0.03, PH[6]));
+      // « c'est le Far West »
+      tl.fromTo('#tumble', { x: 0, rotation: 0 }, { x: -1500, rotation: -720, duration: 2.4, ease: 'none', immediateRender: false }, PH[5] - 0.1);
+      tl.fromTo('#wood', { opacity: 1, y: -700 }, { y: 0, duration: 0.3, ease: 'bounce.out', immediateRender: false }, wt('far') - 0.2);
+      playBurst(bW, wt('far') + 0.08); shake(wt('far') + 0.08, 16);
+      slam('#kF', wt('far'), 'scale');
+      tl.to('#kF', { opacity: 0, y: -60, duration: 0.15 }, PH[6] - 0.1);
+      tl.to('.sp2', { opacity: 0, duration: 0.25 }, PH[6]);
+      // « il faut venir équipé d'une méthode » : chapeau + badge IOC
+      tl.to('#cam-outer', { scale: 1.25, rotation: 0, duration: 0.45, ease: 'power3.inOut' }, PH[6] - 0.1);
+      tl.to('#cam-inner', { ...cam(3830, 1450), duration: 0.45, ease: 'power3.inOut' }, PH[6] - 0.1);
+      tl.fromTo('#hat', { opacity: 1, y: -500 }, { opacity: 1, y: 0, duration: 0.3, ease: 'bounce.out', immediateRender: false }, wt('équipé') - 0.25);
+      tl.fromTo('#badge', { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(3)', immediateRender: false }, wt('méthode', PH[6]) - 0.05);
+      pose('#pC', 'up', wt('méthode', PH[6]) - 0.05);
+      tl.fromTo('#raysC', { opacity: 0, scale: 0.4, rotation: 0 }, { opacity: 1, scale: 1, rotation: 60, duration: 0.5, ease: 'expo.out', immediateRender: false }, wt('méthode', PH[6]));
+      tl.fromTo('#iocChip', { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: 'back.out(3)', immediateRender: false }, wt('méthode', PH[6]) + 0.1);
+      playBurst(bC, wt('méthode', PH[6]));
+      pose('#pC', 'idle', PH[7] - 0.2);
+      tl.to(['#raysC', '#iocChip'], { opacity: 0, duration: 0.2 }, PH[7] - 0.2);
+
+      // ===== 4 · « se positionner grâce à la méthode IOC avant que tout le monde soit au courant » =====
+      whip(PH[7] - 0.15, 4650, 1300, 1.0, 2, 0.4);
+      tl.set('#grpC', { x: 760, y: 0 }, PH[7]);
+      tl.set(['.blk', '#nug2'], { opacity: 1 }, PH[7]);
+      spin('#nug2', PH[7], 31.4);
+      [0, 1, 2].forEach(i => { const t = PH[7] + 0.35 + i * 0.42; pose('#pC', 'jump', t);
+        tl.to('#grpC', { keyframes: [{ x: 830 + 96 * i, y: -96 * i - 150, duration: 0.17, ease: 'power2.out' }, { x: 878 + 96 * i, y: -96 * (i + 1), duration: 0.17, ease: 'power2.in' }] }, t); pose('#pC', 'idle', t + 0.34); });
+      const IOC = wt('ioc');
+      pose('#pC', 'up', IOC - 0.1);
+      tl.to('#nug2', { y: -250, duration: 0.22, ease: 'power3.out' }, IOC);
+      tl.fromTo('#raysD', { opacity: 0, scale: 0.4, rotation: 0 }, { opacity: 1, scale: 1, rotation: 80, duration: 0.6, ease: 'expo.out', immediateRender: false }, IOC);
+      playBurst(bD, IOC); shake(IOC, 12); showN(2, IOC);
+      slam('#kI1', IOC - 0.3, -1); slam('#kI2', IOC, 'scale');
+      tl.to(['#kI1', '#kI2'], { opacity: 0, y: -60, duration: 0.15 }, wt('avant', 28) - 0.1);
+      tl.to('#cam-outer', { scale: 0.75, duration: 0.6, ease: 'power3.inOut' }, wt('avant', 28) - 0.1);
+      tl.to('#cam-inner', { ...cam(4380, 1300), duration: 0.6, ease: 'power3.inOut' }, wt('avant', 28) - 0.1);
+      ['#m0', '#m1', '#m2', '#m3'].forEach((m, i) => { tl.set(m, { opacity: 1 }, wt('tout', 29) - 0.4); tl.fromTo(m, { x: -700 }, { x: 0, duration: 0.9, ease: 'power1.out', immediateRender: false }, wt('tout', 29) - 0.4 + i * 0.06); walk(m, wt('tout', 29) - 0.4 + i * 0.06, wt('courant.') - 0.05, 0.09);
+        tl.fromTo('#mx' + i, { opacity: 0, y: 30, scale: 0.4 }, { opacity: 1, y: 0, scale: 1, duration: 0.2, ease: 'back.out(3)', immediateRender: false }, wt('courant.') + i * 0.06); });
+
+      // ===== fin =====
+      const END = VEND + 0.05;
+      tl.to('#flash', { keyframes: [{ opacity: 0.9, duration: 0.04 }, { opacity: 0, duration: 0.3 }] }, END - 0.05);
+      tl.set(['#cam-outer', '#hud'], { opacity: 0 }, END);
+      tl.set('#end', { opacity: 1 }, END);
+      tl.fromTo('#endBox', { scale: 0.3, rotation: -14 }, { scale: 1, rotation: -3, duration: 0.4, ease: 'back.out(2.2)', immediateRender: false }, END);
+      tl.fromTo('#endHat', { y: -300 }, { y: 0, duration: 0.35, ease: 'bounce.out', immediateRender: false }, END + 0.25);
+      slam('#e0', END + 0.1, 'scale'); slam('#e1', END + 0.3, -1); slam('#e2', END + 0.7, 'scale');
+      tl.set('#e3', { opacity: 1 }, END + 1.2);
+      for (let i = 0; i < 6; i++) { tl.set('#e3', { opacity: 0 }, END + 1.6 + i * 0.25); tl.set('#e3', { opacity: 1 }, END + 1.72 + i * 0.25); }
+      tl.to({}, { duration: 0.01 }, 34.39);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 ---
 name: yt-orchestrator
-description: Master orchestrator that spawns video production pipeline agents in sequence and parallel, manages shared context file, and ensures human validation at critical steps.
+description: Master orchestrator for Nass Riviera's 100% crypto YouTube channel (on-chain investing, spot only, zero leverage, public wallet). Spawns video production pipeline agents in sequence and parallel, manages shared context file, and ensures human validation at critical steps. Use when user says "fais une vidéo sur", "lance le pipeline", "crée une vidéo", "trouve moi des idées", "vidéo crypto", "make a crypto video", "run the pipeline".
 version: 2.0
 triggers:
   - "fais une vidéo sur"
@@ -9,20 +9,35 @@ triggers:
   - "crée une vidéo"
   - "sujet de vidéo"
   - "trouve moi des idées"
+  - "vidéo crypto"
+  - "fais une vidéo crypto"
+  - "make a crypto video"
+  - "run the pipeline"
 ---
 
 # yt-orchestrator — Master Orchestrator
 
 ## Mode d'emploi
 
-Tu es l'orchestrateur principal du pipeline YouTube. Tu spawnes les agents dans le bon ordre, tu gères le fichier JSON partagé (`context/video-context.json`), et tu demandes la validation de Nass aux points critiques.
+Tu es l'orchestrateur principal du pipeline YouTube de **Nass Riviera**, chaîne **100 % crypto** : « Investisseur on-chain · spot, zéro levier, wallet public ». Tu spawnes les agents dans le bon ordre, tu gères le fichier JSON partagé (`context/video-context.json`), et tu demandes la validation de Nass aux points critiques.
+
+### Cadre éditorial (à transmettre à chaque agent)
+
+- **Avatar** (mots de Nass) : « C'est des hommes entre 25 et 40 ans. Ils sont débutants, voire débutants plus. C'est déjà des investisseurs, principalement en immobilier avec crédit, mais ils n'ont pas commencé encore à investir dans la crypto. Peut-être un peu de bourse, mais pas de crypto. Et il n'y comprend rien, il ne connaît rien. Et nous, du coup, on vend le fait qu'on achète des cryptos en dehors des échanges avant qu'elles soient connues de tous. »
+- **Ton** : direct, transparent, pédagogique. « Les bons trades comme les mauvais. Pas de compte démo, pas de screen retouché. »
+- **CTA possibles** : challenge public 10K → 100K $ (wallet public Solana + EVM), formation offerte en 3 vidéos, communauté privée, live hebdo « Convergence » avec Sadek.
+- **Disclaimer** : « Pas un conseil en investissement. »
+- **Règle halal NON NÉGOCIABLE** : spot uniquement. Jamais de levier, futures, short, marge, prêt/emprunt à intérêt (lending, yield à intérêt), ni de casino/paris/jeu d'argent. Jamais d'incitation au crédit. Memecoins et tokens en pré-lancement = paris risqués à petite taille, risque dit clairement, jamais un jeu ni une promesse de gain. Pas de chiffres inventés, pas de faux témoignages.
+- **Charte visuelle** : fond noir `#0B0B0B`, sable/or `#DBB17F` (clair `#F3D6A8`, foncé `#9C7748`), crème `#F4EFE7`, bleu punk `#648596` / `#4F6C7B`, gris `#3B3A37` / `#9A968D` ; Archivo Black + Public Sans ; punk pixel @punk6995, montagnes au crépuscule, cartes crème à bord noir avec ombre pleine.
+
+**Garde-fou** : si le sujet demandé implique du levier, des futures, du short, du lending/yield à intérêt ou du jeu d'argent, **ne lance pas le pipeline** : signale-le à Nass et propose un angle spot/halal. À la Phase 3, vérifie aussi que titre, miniature et description respectent ces règles.
 
 ### Détection du mode
 
 **Mode A** : Nass donne un sujet directement
 ```
-"Fais une vidéo sur Claude 4"
-"Lance le pipeline sur le topic: AI Agents"
+"Fais une vidéo sur comment acheter sa première crypto on-chain"
+"Lance le pipeline sur le topic : wallet public du challenge 10K → 100K"
 ```
 → **Saute Phase 0.5**, démarre directement à Phase 1 (yt-script)
 
@@ -42,7 +57,7 @@ Tu es l'orchestrateur principal du pipeline YouTube. Tu spawnes les agents dans 
 **Toujours exécutée** en premier.
 
 1. Déterminer le mode (A ou B) en analysant l'input de Nass
-2. Générer un `slug` (ex: `claude-4-features`) depuis le topic ou l'idée sélectionnée
+2. Générer un `slug` (ex : `premiere-crypto-on-chain`) depuis le topic ou l'idée sélectionnée
 3. Créer/initialiser `context/video-context.json` :
    - `_meta.slug` = slug généré
    - `_meta.status` = "in_progress"
@@ -176,6 +191,8 @@ Lance **3 appels Agent simultanés** :
    [description.first_150_chars]
 
    Tags SEO: [tags - premiers 5]
+
+   ☪️ Check halal : spot uniquement, pas de levier/lending/jeu, risque dit, disclaimer présent ✓
 
    ➜ Dis "OK" pour valider, ou "modifie X" pour demander des ajustements
    ```
@@ -370,9 +387,9 @@ Logger dans `yt-orchestrator/memory/pipeline_runs.json` :
   "changes_requested_at_validation": ["titre"],
   "skills_used": {
     "titres_seo": {"title_style": "chiffre", "char_count": 42},
-    "miniature": {"concept": "cyan-face-dark", "has_face": true},
+    "miniature": {"concept": "punk-sable-dark", "has_face": true},
     "script": {"hook_type": "curiosity-gap", "duration_min": 11, "structure": "tutorial"},
-    "veille": {"source": "daily_monitor", "topic_category": "claude-code", "outlier_score": 3.1}
+    "veille": {"source": "daily_monitor", "topic_category": "on-chain-debutant", "outlier_score": 3.1}
   },
   "performance": null
 }
@@ -406,7 +423,7 @@ L'orchestrator lit les leçons de chaque skill et identifie les **combinaisons**
 1. Lire `yt-orchestrator/memory/lessons.json`
 2. Lire les `memory/lessons.json` de chaque skill (titres, miniature, script, veille)
 3. Si des cross-lessons existent, les injecter dans les prompts des agents :
-   - "Combinaison gagnante : titre chiffre + miniature cyan + hook curiosity = 3× la moyenne"
+   - "Combinaison gagnante : titre chiffre + miniature punk sable + hook curiosity = 3× la moyenne"
    - "Éviter : titre descriptif + miniature sans visage = sous-performance systématique"
 4. Mentionner à Nass : "Basé sur [N] vidéos, la combinaison [X] est ta meilleure formule"
 
@@ -420,14 +437,14 @@ Croiser les données de performance avec les choix combinés de chaque pipeline 
     {
       "combo": {
         "title_style": "chiffre",
-        "thumbnail_concept": "cyan-face-dark",
+        "thumbnail_concept": "punk-sable-dark",
         "hook_type": "curiosity-gap",
-        "topic_category": "claude-code"
+        "topic_category": "on-chain-debutant"
       },
       "avg_performance_index": 2.3,
       "count": 3,
       "confidence": "medium",
-      "example_video": "2000e-1h-vibecoding"
+      "example_video": "premiere-crypto-on-chain"
     }
   ],
   "losing_combos": [
@@ -436,12 +453,12 @@ Croiser les données de performance avec les choix combinés de chaque pipeline 
         "title_style": "descriptif",
         "thumbnail_concept": "text-overlay-bright",
         "hook_type": "statement",
-        "topic_category": "ai-news"
+        "topic_category": "actu-crypto"
       },
       "avg_performance_index": 0.6,
       "count": 2,
       "confidence": "low",
-      "example_video": "nvidia-gtc-recap"
+      "example_video": "recap-actu-marche"
     }
   ]
 }
@@ -455,7 +472,7 @@ L'orchestrator cherche des patterns entre skills :
 |-------------|---------------|-----------------|
 | Titre × Miniature | Quels duos titre+miniature performent ? | "Titre chiffre + miniature visage = CTR 6.5% vs 3.2% pour les autres combos" |
 | Script × Rétention × Titre | Est-ce que le style de hook corrèle avec le CTR du titre ? | "Les hooks curiosity gap ont un meilleur CTR que les hooks statement — le titre promet, le hook livre" |
-| Veille × Performance globale | Les sujets trend convertissent-ils mieux selon le packaging ? | "Les outliers OpenClaw marchent mieux avec un titre 'how-to' qu'un titre 'news'" |
+| Veille × Performance globale | Les sujets trend convertissent-ils mieux selon le packaging ? | "Les outliers sur un nouveau token on-chain marchent mieux avec un titre 'how-to' qu'un titre 'news'" |
 | Vitesse × Performance | Publier vite améliore-t-il les vues ? | "Les pipelines < 48h font 2.1× la moyenne vs 0.8× pour les > 7 jours" |
 
 #### Format des cross_lessons
@@ -464,7 +481,7 @@ L'orchestrator cherche des patterns entre skills :
 {
   "cross_lessons": [
     {
-      "rule": "Titre chiffre + miniature cyan + hook curiosity gap = formule gagnante",
+      "rule": "Titre chiffre + miniature punk sable + hook curiosity gap = formule gagnante",
       "evidence": "3 vidéos avec cette combinaison : performance index moyen 2.3x vs 0.9x pour les autres",
       "skills_involved": ["titres_seo", "miniature", "script"],
       "sample_size": 3,

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Short « wallets/02 · C'est quoi un wallet » — 9:16, 22,5 s, voix off (edge-tts Henri), SFX, pas de musique.
+         Style : Nass Riviera (Editorial Grain). Plan-séquence caméra : wallet → blockchain → wallet → exchange. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: 'Archivo Black'; src: url('assets/fonts/ArchivoBlack-Regular.ttf') format('truetype'); }
+      @font-face { font-family: 'Public Sans'; src: url('assets/fonts/PublicSans-var.ttf') format('truetype'); font-weight: 100 900; }
+      :root { --bg: #0B0B0B; --sand: #DBB17F; --sand-light: #F3D6A8; --sand-dark: #9C7748; --cream: #F4EFE7; --punk: #648596; --grey: #9A968D; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: var(--cream); font-family: 'Public Sans', sans-serif; }
+      .sand { color: var(--sand); }
+
+      /* caméra */
+      #cam-outer { position: absolute; left: 540px; top: 960px; width: 0; height: 0; transform-origin: 0 0; }
+      #cam-inner { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+      #world { position: absolute; left: 0; top: 0; width: 3000px; height: 2400px;
+        background-image: radial-gradient(circle, rgba(244,239,231,.07) 2px, rgba(244,239,231,0) 2.6px); background-size: 72px 72px; }
+      .glow { position: absolute; border-radius: 50%; }
+      .card { background: var(--cream); border: 4px solid var(--bg); box-shadow: 10px 10px 0 var(--sand-dark); }
+
+      /* blockchain */
+      .blk { position: absolute; width: 160px; height: 160px; border-radius: 18px; display: flex; align-items: center; justify-content: center;
+        font-family: 'Archivo Black', sans-serif; font-size: 30px; color: var(--grey); }
+      .lnk { position: absolute; height: 16px; background: var(--sand); border: 3px solid var(--bg); transform-origin: 0 50%; }
+      .coin { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; background: var(--sand); border: 6px solid var(--bg);
+        box-shadow: inset 0 0 0 10px var(--sand-light), 6px 6px 0 var(--bg); display: flex; align-items: center; justify-content: center; }
+      .coin::after { content: ''; width: 34px; height: 34px; background: var(--bg); transform: rotate(45deg); border-radius: 4px; }
+      .coin.s { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-width: 4px; box-shadow: inset 0 0 0 6px var(--sand-light); }
+      .coin.s::after { width: 18px; height: 18px; }
+      svg.w { position: absolute; overflow: visible; }
+      .wchip { position: absolute; padding: 12px 24px; border-radius: 10px; background: var(--sand); color: var(--bg); border: 4px solid var(--bg); box-shadow: 8px 8px 0 var(--cream);
+        font-family: 'Archivo Black', sans-serif; font-size: 40px; white-space: nowrap; }
+      .dust { position: absolute; width: 22px; height: 22px; margin: -11px 0 0 -11px; background: var(--sand-light); }
+      #qmark { position: absolute; font-family: 'Archivo Black', sans-serif; font-size: 230px; line-height: 1; color: var(--sand); text-shadow: 8px 8px 0 var(--cream); }
+
+      /* HUD */
+      #dim { position: absolute; inset: 0; background: rgba(11,11,11,.82); opacity: 0; }
+      .kin { position: absolute; left: 0; right: 0; text-align: center; font-family: 'Archivo Black', sans-serif; line-height: 1; white-space: nowrap; }
+      .kin span { display: inline-block; position: relative; }
+      .paper { position: absolute; background: var(--sand); border: 4px solid var(--bg); box-shadow: 10px 10px 0 var(--cream); }
+      .kin.pp span { background: var(--sand); color: var(--bg); padding: 10px 30px 4px; border: 4px solid var(--bg); box-shadow: 10px 10px 0 var(--cream); }
+      #caps { position: absolute; left: 108px; width: 864px; top: 1520px; }
+      .cap { position: absolute; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 60px; line-height: 1.14; letter-spacing: -.015em; opacity: 0;
+        text-shadow: 0 4px 18px rgba(0,0,0,.8); }
+      .cap i { font-style: normal; }
+      #label { position: absolute; left: 90px; top: 150px; display: flex; align-items: center; gap: 18px; font-weight: 600; font-size: 26px; letter-spacing: .28em; color: var(--sand); }
+      #label::before { content: ''; width: 70px; height: 3px; background: var(--sand); }
+      #pnum { position: absolute; right: 90px; top: 142px; font-family: 'Archivo Black', sans-serif; font-size: 34px; color: rgba(244,239,231,.45); }
+      #end { position: absolute; inset: 0; opacity: 0; }
+      #endPunk { position: absolute; left: 380px; top: 470px; width: 320px; height: 320px; border-radius: 30px; border: 6px solid var(--bg); outline: 6px solid var(--sand); overflow: hidden; box-shadow: 18px 18px 0 var(--sand-dark); }
+      #endPunk img { width: 100%; height: 100%; image-rendering: pixelated; display: block; }
+      #disc { position: absolute; left: 0; right: 0; top: 1500px; text-align: center; font-weight: 600; font-size: 32px; color: rgba(244,239,231,.6); }
+      #flash { position: absolute; inset: 0; background: var(--cream); opacity: 0; }
+      #grain { position: absolute; inset: -40px; background: url('assets/grain.png'); opacity: .09; pointer-events: none; }
+      #root::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="22.5" data-width="1080" data-height="1920">
+      <div id="cam-outer"><div id="cam-inner"><div id="world">
+        <div class="glow" style="left:150px;top:-50px;width:1100px;height:1100px;background:radial-gradient(closest-side,rgba(219,177,127,.13),rgba(219,177,127,0))"></div>
+        <div class="glow" style="left:200px;top:1000px;width:1000px;height:1000px;background:radial-gradient(closest-side,rgba(100,133,150,.16),rgba(100,133,150,0))"></div>
+        <div class="glow" style="left:1700px;top:1000px;width:1000px;height:1000px;background:radial-gradient(closest-side,rgba(219,177,127,.12),rgba(219,177,127,0))"></div>
+
+        <!-- blockchain (C : y 520) -->
+        <div id="chain"></div>
+        <div class="coin" id="coin"></div>
+        <svg class="w" id="rope" style="left:0;top:0;width:3000px;height:2400px"><path id="ropeP" d="M700 1120 C 700 860, 600 560, 620 310" fill="none" stroke="#DBB17F" stroke-width="8" stroke-dasharray="4 22" stroke-linecap="round" /></svg>
+
+        <!-- wallet (W : centre 700, 1500) -->
+        <svg class="w" id="wallet" viewBox="0 0 400 400" style="left:480px;top:1280px;width:440px;height:440px">
+          <path d="M70 110 H316 Q352 110 352 146 V330 Q352 362 320 362 H76 Q44 362 44 330 V140 Q44 110 70 110 Z M246 196 H372 Q384 196 384 208 V268 Q384 280 372 280 H246 Q232 280 232 266 V210 Q232 196 246 196 Z" fill="#9C7748" transform="translate(14 14)" />
+          <path d="M70 110 H316 Q352 110 352 146 V330 Q352 362 320 362 H76 Q44 362 44 330 V140 Q44 110 70 110 Z M246 196 H372 Q384 196 384 208 V268 Q384 280 372 280 H246 Q232 280 232 266 V210 Q232 196 246 196 Z" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="10" stroke-linejoin="round" />
+          <path id="flap" d="M60 78 H260 L300 110 H44 Z" fill="#F3D6A8" stroke="#0B0B0B" stroke-width="10" stroke-linejoin="round" />
+        </svg>
+        <div id="flyCoins"></div>
+        <div id="dustBox"></div>
+        <svg class="w" id="key" viewBox="-40 -40 200 80" style="left:570px;top:1115px;width:260px;height:130px">
+          <g id="keyL"><circle cx="0" cy="0" r="30" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" /><circle cx="0" cy="0" r="10" fill="#0B0B0B" /><path d="M28 -9 H64 V9 H28 Z" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" /></g>
+          <g id="keyR"><path d="M60 -9 H120 V9 H104 V30 H88 V9 H60 Z" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" stroke-linejoin="round" /></g>
+        </svg>
+        <div class="wchip" id="chipKey" style="left:820px;top:1020px">LA CLÉ</div>
+        <svg class="w" id="hook" viewBox="0 0 200 1400" style="left:600px;top:-300px;width:200px;height:1400px">
+          <rect x="96" y="0" width="8" height="1240" fill="#9A968D" />
+          <path d="M100 1230 V1320 a42 42 0 1 1 -84 0 l20 -20" fill="none" stroke="#648596" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+        <!-- exchange (E : centre 2200, 1500) -->
+        <svg class="w" id="bank" viewBox="0 0 400 400" style="left:1970px;top:1270px;width:460px;height:460px">
+          <path d="M200 40 L372 128 L28 128 Z M48 146 H352 V172 H48 Z M70 186 H118 V316 H70 Z M176 186 H224 V316 H176 Z M282 186 H330 V316 H282 Z M36 330 H364 V362 H36 Z" fill="#9C7748" transform="translate(14 14)" />
+          <path d="M200 40 L372 128 L28 128 Z M48 146 H352 V172 H48 Z M70 186 H118 V316 H70 Z M176 186 H224 V316 H176 Z M282 186 H330 V316 H282 Z M36 330 H364 V362 H36 Z" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="10" stroke-linejoin="round" />
+          <g id="bars" fill="#0B0B0B"><rect x="128" y="182" width="12" height="140" /><rect x="152" y="182" width="12" height="140" /><rect x="236" y="182" width="12" height="140" /><rect x="260" y="182" width="12" height="140" /></g>
+        </svg>
+        <div id="qmark" style="left:2390px;top:1040px">?</div>
+        <svg class="w" id="key2" viewBox="-40 -40 200 80" style="left:1560px;top:1300px;width:230px;height:115px">
+          <circle cx="0" cy="0" r="30" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" /><circle cx="0" cy="0" r="10" fill="#0B0B0B" />
+          <path d="M28 -9 H120 V9 H104 V30 H88 V9 H28 Z" fill="#DBB17F" stroke="#0B0B0B" stroke-width="8" stroke-linejoin="round" />
+        </svg>
+        <div class="wchip" id="chipEux" style="left:1900px;top:1130px">LA CLÉ : CHEZ EUX</div>
+        <div class="wchip" id="chipToi" style="left:2260px;top:1215px;background:#F4EFE7;box-shadow:8px 8px 0 #9C7748">TOI : <s>&nbsp;NON&nbsp;</s></div>
+      </div></div></div>
+
+      <!-- HUD -->
+      <div id="dim"></div>
+      <div id="label">WALLET 101</div>
+      <div id="pnum">01</div>
+
+      <div class="kin" id="h1" style="top:330px;font-size:124px">TA CRYPTO</div>
+      <div class="kin pp" id="h2" style="top:500px;font-size:132px"><span style="transform:rotate(-2.5deg)">N'EST PAS</span></div>
+      <div class="kin" id="h3" style="top:700px;font-size:92px">DANS TON WALLET.</div>
+
+      <div class="kin pp" id="t1" style="top:330px;font-size:104px"><span style="transform:rotate(2deg)">TU PERDS TOUT</span></div>
+
+      <div class="kin" id="p1" style="top:640px;font-size:112px">PAS TES CLÉS,</div>
+      <div class="kin pp" id="p2" style="top:800px;font-size:88px"><span style="transform:rotate(-1.8deg)">PAS TES CRYPTOS.</span></div>
+
+      <div id="caps"></div>
+
+      <div id="end">
+        <div id="endPunk"><img src="assets/punk6995.jpg" alt="Nass Riviera" /></div>
+        <div class="kin" id="e1" style="top:900px;font-size:118px">FORMATION</div>
+        <div class="kin sand" id="e2" style="top:1030px;font-size:118px">OFFERTE</div>
+        <div class="wchip" id="e3" style="left:50%;top:1230px;font-size:52px;padding:18px 40px">LIEN EN BIO</div>
+        <div id="disc">Pas un conseil en investissement.</div>
+      </div>
+
+      <div id="flash"></div>
+      <div id="grain"></div>
+    </div>
+
+    <script>
+      const WORDS = [{"t": 0.096, "d": 0.139, "w": "Ta"}, {"t": 0.247, "d": 0.347, "w": "crypto"}, {"t": 0.606, "d": 0.116, "w": "n'est"}, {"t": 0.733, "d": 0.127, "w": "pas"}, {"t": 0.872, "d": 0.104, "w": "dans"}, {"t": 0.988, "d": 0.127, "w": "ton"}, {"t": 1.126, "d": 0.475, "w": "wallet"}, {"t": 2.407, "d": 0.162, "w": "Elle"}, {"t": 2.581, "d": 0.046, "w": "est"}, {"t": 2.639, "d": 0.139, "w": "sur"}, {"t": 2.789, "d": 0.081, "w": "la"}, {"t": 2.882, "d": 0.602, "w": "blockchain"}, {"t": 4.282, "d": 0.15, "w": "Ton"}, {"t": 4.444, "d": 0.347, "w": "wallet"}, {"t": 5.081, "d": 0.208, "w": "lui"}, {"t": 5.602, "d": 0.243, "w": "garde"}, {"t": 5.856, "d": 0.093, "w": "la"}, {"t": 5.961, "d": 0.185, "w": "clé"}, {"t": 6.157, "d": 0.15, "w": "qui"}, {"t": 6.319, "d": 0.278, "w": "permet"}, {"t": 6.609, "d": 0.081, "w": "de"}, {"t": 6.701, "d": 0.069, "w": "la"}, {"t": 6.782, "d": 0.44, "w": "bouger"}, {"t": 8.021, "d": 0.174, "w": "Perds"}, {"t": 8.206, "d": 0.081, "w": "la"}, {"t": 8.299, "d": 0.312, "w": "clé"}, {"t": 8.866, "d": 0.127, "w": "tu"}, {"t": 9.005, "d": 0.197, "w": "perds"}, {"t": 9.213, "d": 0.255, "w": "tout"}, {"t": 10.266, "d": 0.486, "w": "Donne-la"}, {"t": 10.949, "d": 0.046, "w": "on"}, {"t": 11.007, "d": 0.139, "w": "te"}, {"t": 11.157, "d": 0.394, "w": "vide"}, {"t": 12.35, "d": 0.139, "w": "Et"}, {"t": 12.5, "d": 0.174, "w": "sur"}, {"t": 12.685, "d": 0.023, "w": "un"}, {"t": 12.72, "d": 0.683, "w": "exchange"}, {"t": 14.213, "d": 0.232, "w": "C'est"}, {"t": 14.456, "d": 0.069, "w": "eux"}, {"t": 14.537, "d": 0.139, "w": "qui"}, {"t": 14.688, "d": 0.22, "w": "gardent"}, {"t": 14.919, "d": 0.093, "w": "la"}, {"t": 15.023, "d": 0.289, "w": "clé"}, {"t": 15.567, "d": 0.116, "w": "pas"}, {"t": 15.694, "d": 0.324, "w": "toi"}, {"t": 16.817, "d": 0.15, "w": "Pas"}, {"t": 16.979, "d": 0.116, "w": "tes"}, {"t": 17.107, "d": 0.278, "w": "clés"}, {"t": 17.662, "d": 0.104, "w": "pas"}, {"t": 17.778, "d": 0.104, "w": "tes"}, {"t": 17.893, "d": 0.463, "w": "cryptos"}, {"t": 19.167, "d": 0.509, "w": "Formation"}, {"t": 19.688, "d": 0.37, "w": "offerte"}, {"t": 20.37, "d": 0.208, "w": "lien"}, {"t": 20.59, "d": 0.058, "w": "en"}, {"t": 20.66, "d": 0.336, "w": "bio"}];
+      // phrases (nombre de mots) + texte affiché avec ponctuation
+      const SENT = [
+        ["Ta crypto n'est pas dans ton wallet.", 0],
+        ["Elle est sur la blockchain.", 1],
+        ["Ton wallet, lui, garde la clé qui permet de la bouger.", 1],
+        ["Perds la clé, tu perds tout.", 1],
+        ["Donne-la, on te vide.", 1],
+        ["Et sur un exchange ?", 1],
+        ["C'est eux qui gardent la clé, pas toi.", 1],
+        ["Pas tes clés, pas tes cryptos.", 0],
+        ["Formation offerte, lien en bio.", 0],
+      ];
+      let seed = 21;
+      const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+      // ---- décor ----
+      const CH = document.getElementById('chain');
+      [400, 620, 840, 1060].forEach((x, i) => {
+        CH.insertAdjacentHTML('beforeend', `<div class="blk card" id="b${i}" style="left:${x - 80}px;top:300px">#${i + 1}</div>`);
+        if (i) CH.insertAdjacentHTML('beforeend', `<div class="lnk" id="l${i}" style="left:${x - 140}px;top:372px;width:60px"></div>`);
+      });
+      const FC = document.getElementById('flyCoins');
+      for (let i = 0; i < 9; i++) {
+        const a = -Math.PI / 2 + (i - 4) * 0.32 + (rnd() - 0.5) * 0.2, d = 520 + rnd() * 420;
+        FC.insertAdjacentHTML('beforeend', `<div class="coin s fc" style="left:700px;top:1460px" data-x="${(Math.cos(a) * d).toFixed(0)}" data-y="${(Math.sin(a) * d).toFixed(0)}" data-r="${((rnd() - .5) * 720).toFixed(0)}"></div>`);
+      }
+      const DB = document.getElementById('dustBox');
+      for (let i = 0; i < 16; i++) {
+        const a = rnd() * Math.PI * 2, d = 120 + rnd() * 260;
+        DB.insertAdjacentHTML('beforeend', `<div class="dust" style="left:${700 + (rnd() - .5) * 120}px;top:1180px" data-x="${(Math.cos(a) * d).toFixed(0)}" data-y="${(Math.sin(a) * d + 160).toFixed(0)}"></div>`);
+      }
+      // sous-titres mot à mot
+      const CAPS = document.getElementById('caps');
+      let wi = 0;
+      const capWords = [];
+      SENT.forEach(([txt, show], si) => {
+        const toks = txt.split(' ');
+        const n = txt.replace(/ \?/, '').split(' ').length;
+        const ws = WORDS.slice(wi, wi + n); wi += n;
+        let html = '', k = 0;
+        toks.forEach((tk) => { if (tk === '?') { html += ' ?'; return; } html += (k ? ' ' : '') + `<i id="w${si}_${k}">${tk}</i>`; k++; });
+        CAPS.insertAdjacentHTML('beforeend', `<div class="cap" id="s${si}">${html}</div>`);
+        capWords.push({ si, show, ws, end: ws[ws.length - 1].t + ws[ws.length - 1].d });
+      });
+
+      // ---- timeline ----
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      const cam = (x, y) => ({ x: -x, y: -y });
+
+      gsap.set('#cam-outer', { scale: 1.0 });
+      gsap.set('#cam-inner', cam(700, 1270));
+      gsap.set(['.blk', '.lnk', '#coin', '#rope', '#chipKey', '#key', '#hook', '#bank', '#qmark', '#key2', '#chipEux', '#chipToi', '.fc', '.dust'], { opacity: 0 });
+      gsap.set('.lnk', { scaleX: 0 });
+      gsap.set('#coin', { x: 400, y: 238 });
+      gsap.set('#flap', { svgOrigin: '44 110' });
+      gsap.set('#e3', { xPercent: -50 });
+      gsap.set('.kin', { opacity: 0 });
+      gsap.set('#ropeP', { strokeDashoffset: 0 });
+
+      // grain : décalage aléatoire (déterministe) toutes les 2 images
+      for (let t = 0; t < 22.5; t += 2 / 30) tl.set('#grain', { x: Math.round((rnd() - .5) * 60), y: Math.round((rnd() - .5) * 60) }, t);
+
+      // sous-titres : apparition par phrase, mot actif en sable
+      capWords.forEach(({ si, show, ws, end }) => {
+        if (!show) return;
+        tl.fromTo('#s' + si, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.18, ease: 'expo.out', immediateRender: false }, ws[0].t - 0.05);
+        ws.forEach((w, k) => {
+          tl.set(`#w${si}_${k}`, { color: '#DBB17F', scale: 1.06 }, w.t);
+          tl.set(`#w${si}_${k}`, { color: '#F4EFE7', scale: 1 }, k < ws.length - 1 ? ws[k + 1].t : end + 0.25);
+        });
+        tl.to('#s' + si, { opacity: 0, duration: 0.12 }, end + 0.3);
+      });
+
+      // ===== 0 → 2,2 : HOOK (kinetic) + wallet vide =====
+      tl.fromTo('#h1', { opacity: 0, x: -700, skewX: 14 }, { opacity: 1, x: 0, skewX: 0, duration: 0.28, ease: 'power4.out', immediateRender: false }, 0.08);
+      tl.fromTo('#h2', { opacity: 0, scale: 2.4, filter: 'blur(14px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.24, ease: 'power4.out', immediateRender: false }, 0.6);
+      tl.to('#root', { keyframes: [{ scale: 1.07, duration: 0.07 }, { scale: 1, duration: 0.3, ease: 'power3.out' }] }, 0.73);
+      tl.fromTo('#h3', { opacity: 0, x: 700, skewX: -14 }, { opacity: 1, x: 0, skewX: 0, duration: 0.28, ease: 'power4.out', immediateRender: false }, 0.87);
+      tl.to('#cam-outer', { scale: 1.08, duration: 2.1, ease: 'power1.inOut' }, 0);
+      tl.to('#flap', { rotation: -48, duration: 0.3, ease: 'back.out(3)' }, 1.13);
+      tl.to(['#h1', '#h2', '#h3'], { opacity: 0, y: -80, duration: 0.18, ease: 'power3.in', stagger: 0.03 }, 2.1);
+
+      // ===== 2,25 : whip vers la blockchain =====
+      const whip = (t, x, y, s, r, d = 0.32) => {
+        tl.to('#cam-inner', { ...cam(x, y), duration: d, ease: 'expo.inOut' }, t);
+        tl.to('#cam-outer', { scale: s, rotation: r, duration: d, ease: 'expo.inOut' }, t);
+        tl.to('#world', { keyframes: [{ filter: 'blur(10px)', duration: d * 0.45 }, { filter: 'blur(0px)', duration: d * 0.55 }] }, t);
+      };
+      whip(2.22, 730, 420, 1.15, -3);
+      tl.to('#flap', { rotation: 0, duration: 0.2 }, 2.3);
+      ['#b0', '#b1', '#b2', '#b3'].forEach((b, i) => tl.fromTo(b, { opacity: 0, y: -120, rotation: (i % 2 ? 6 : -6) }, { opacity: 1, y: 0, rotation: (i % 2 ? 1.5 : -1.5), duration: 0.3, ease: 'back.out(2.2)', immediateRender: false }, 2.42 + i * 0.12));
+      ['#l1', '#l2', '#l3'].forEach((l, i) => { tl.set(l, { opacity: 1 }, 2.6 + i * 0.12); tl.to(l, { scaleX: 1, duration: 0.14, ease: 'power3.out' }, 2.6 + i * 0.12); });
+      tl.fromTo('#coin', { opacity: 0, y: -100 }, { opacity: 1, y: 238, duration: 0.35, ease: 'bounce.out', immediateRender: false }, 2.85);
+
+      // ===== 4,15 : retour au wallet, la clé sort =====
+      whip(4.12, 700, 1360, 1.2, 2);
+      tl.to('#flap', { rotation: -55, duration: 0.3, ease: 'back.out(3)' }, 4.45);
+      tl.fromTo('#key', { opacity: 0, y: 360, scale: 0.4, rotation: 0 }, { opacity: 1, y: 0, scale: 1, rotation: -12, duration: 0.42, ease: 'back.out(2)', immediateRender: false }, 5.5);
+      tl.to('#key', { rotation: 8, duration: 0.5, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 5.95);
+      tl.fromTo('#chipKey', { opacity: 0, scale: 0.4, rotation: 10 }, { opacity: 1, scale: 1, rotation: 3, duration: 0.3, ease: 'back.out(2.5)', immediateRender: false }, 5.96);
+      // zoom arrière : la clé tient le jeton, qui bouge
+      tl.to('#cam-inner', { ...cam(720, 930), duration: 0.55, ease: 'expo.inOut' }, 6.2);
+      tl.to('#cam-outer', { scale: 0.6, rotation: 0, duration: 0.55, ease: 'expo.inOut' }, 6.2);
+      tl.set('#rope', { opacity: 1 }, 6.35);
+      tl.fromTo('#ropeP', { strokeDashoffset: 0, opacity: 0 }, { opacity: 1, strokeDashoffset: -104, duration: 1.2, ease: 'none', immediateRender: false }, 6.35);
+      tl.to('#coin', { keyframes: [{ x: 510, y: 90, duration: 0.2, ease: 'power2.out' }, { x: 620, y: 238, duration: 0.22, ease: 'bounce.out' }] }, 6.78);
+
+      // ===== 7,8 : perds la clé, tu perds tout =====
+      tl.to('#cam-inner', { ...cam(700, 1380), duration: 0.32, ease: 'expo.inOut' }, 7.7);
+      tl.to('#cam-outer', { scale: 1.35, rotation: -2, duration: 0.32, ease: 'expo.inOut' }, 7.7);
+      tl.to(['#rope', '#chipKey'], { opacity: 0, duration: 0.15 }, 7.75);
+      tl.to('#key', { keyframes: [{ x: -10, duration: 0.04 }, { x: 10, duration: 0.04 }, { x: -6, duration: 0.04 }, { x: 0, duration: 0.04 }] }, 8.25);
+      tl.to('#keyL', { x: -40, y: 160, rotation: -70, svgOrigin: '0 0', duration: 0.5, ease: 'power2.in' }, 8.85);
+      tl.to('#keyR', { x: 40, y: 190, rotation: 80, svgOrigin: '90 0', duration: 0.5, ease: 'power2.in' }, 8.85);
+      tl.to('#key', { opacity: 0, duration: 0.25 }, 9.15);
+      document.querySelectorAll('.dust').forEach((d, i) => tl.fromTo(d, { opacity: 1, x: 0, y: 0, rotation: 0 }, { opacity: 0, x: +d.dataset.x, y: +d.dataset.y, rotation: 180, duration: 0.8 + (i % 3) * 0.1, ease: 'expo.out', immediateRender: false }, 8.9));
+      tl.fromTo('#t1', { opacity: 0, scale: 2.2, filter: 'blur(14px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.24, ease: 'power4.out', immediateRender: false }, 8.87);
+      tl.to(['#t1'], { opacity: 0, y: -60, duration: 0.18, ease: 'power3.in' }, 9.95);
+
+      // ===== 10,05 : donne-la, on te vide =====
+      tl.set('#keyL', { x: 0, y: 0, rotation: 0 }, 10.0); tl.set('#keyR', { x: 0, y: 0, rotation: 0 }, 10.0);
+      tl.fromTo('#key', { opacity: 0, scale: 0.3, rotation: 0 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.25, ease: 'back.out(3)', immediateRender: false }, 10.02);
+      tl.fromTo('#hook', { opacity: 1, y: -900 }, { opacity: 1, y: 20, duration: 0.3, ease: 'power3.in', immediateRender: false }, 10.27);
+      tl.to(['#hook', '#key'], { y: '-=1300', duration: 0.42, ease: 'power3.in' }, 10.62);
+      tl.to('#flap', { rotation: -70, duration: 0.15 }, 10.95);
+      document.querySelectorAll('.fc').forEach((c, i) => tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0 }, { x: +c.dataset.x, y: +c.dataset.y, rotation: +c.dataset.r, opacity: 0.9, duration: 0.9, ease: 'expo.out', immediateRender: false }, 10.98 + i * 0.02));
+      tl.to('#cam-outer', { keyframes: [{ scale: 1.25, duration: 0.06 }, { scale: 1.15, duration: 0.4, ease: 'power3.out' }] }, 10.98);
+      tl.to('#root', { keyframes: [{ x: -14, y: 8, duration: 0.04 }, { x: 12, y: -6, duration: 0.04 }, { x: -6, y: 3, duration: 0.04 }, { x: 0, y: 0, duration: 0.05 }] }, 11.0);
+      tl.to('.fc', { opacity: 0, duration: 0.3 }, 12.0);
+
+      // ===== 12,2 : et sur un exchange ? =====
+      whip(12.18, 2200, 1360, 1.12, -2, 0.36);
+      tl.fromTo('#bank', { opacity: 0, scale: 0.5, y: 80 }, { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: 'back.out(2)', transformOrigin: '50% 100%', immediateRender: false }, 12.45);
+      tl.set('#bars', { opacity: 0 }, 12.0);
+      tl.fromTo('#qmark', { opacity: 0, scale: 0.2, rotation: -40 }, { opacity: 1, scale: 1, rotation: 12, duration: 0.4, ease: 'back.out(3)', immediateRender: false }, 12.7);
+      tl.to('#qmark', { rotation: -8, duration: 0.5, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 13.1);
+
+      // ===== 14,2 : c'est eux qui gardent la clé, pas toi =====
+      tl.to('#qmark', { opacity: 0, scale: 0.4, duration: 0.15 }, 14.15);
+      tl.fromTo('#key2', { opacity: 1, x: -500, y: -200, rotation: -30 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.45, ease: 'power3.out', immediateRender: false }, 14.3);
+      tl.to('#key2', { x: 470, y: 140, scale: 0.2, opacity: 0, duration: 0.3, ease: 'power3.in' }, 14.78);
+      tl.fromTo('#bars', { opacity: 1, y: -200 }, { y: 0, duration: 0.16, ease: 'power4.in', immediateRender: false }, 15.0);
+      tl.to('#bank', { keyframes: [{ scaleY: 0.94, duration: 0.05 }, { scaleY: 1, duration: 0.2, ease: 'back.out(3)' }], transformOrigin: '50% 100%' }, 15.16);
+      tl.fromTo('#chipEux', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3, ease: 'back.out(2)', immediateRender: false }, 15.05);
+      tl.to('#cam-inner', { ...cam(2200, 1330), duration: 0.5, ease: 'power3.inOut' }, 15.2);
+      tl.fromTo('#chipToi', { opacity: 0, scale: 0.4, rotation: -8 }, { opacity: 1, scale: 1, rotation: -3, duration: 0.3, ease: 'back.out(2.5)', immediateRender: false }, 15.57);
+
+      // ===== 16,7 : pas tes clés, pas tes cryptos (kinetic plein écran) =====
+      tl.to('#dim', { opacity: 1, duration: 0.25 }, 16.6);
+      tl.to(['#chipEux', '#chipToi'], { opacity: 0, duration: 0.2 }, 16.55);
+      tl.to('#cam-outer', { scale: 1.3, duration: 2.2, ease: 'power1.in' }, 16.6);
+      tl.fromTo('#p1', { opacity: 0, x: -800, skewX: 16 }, { opacity: 1, x: 0, skewX: 0, duration: 0.28, ease: 'power4.out', immediateRender: false }, 16.8);
+      tl.fromTo('#p2', { opacity: 0, scale: 2.4, filter: 'blur(14px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.24, ease: 'power4.out', immediateRender: false }, 17.66);
+      tl.to('#root', { keyframes: [{ scale: 1.06, duration: 0.07 }, { scale: 1, duration: 0.3, ease: 'power3.out' }] }, 17.9);
+
+      // ===== 19 : fin =====
+      tl.to('#flash', { opacity: 0.85, duration: 0.05 }, 18.95);
+      tl.to('#flash', { opacity: 0, duration: 0.3, ease: 'power2.out' }, 19.02);
+      tl.set(['#cam-outer', '#p1', '#p2'], { opacity: 0 }, 19.0);
+      tl.set('#end', { opacity: 1 }, 19.0);
+      tl.fromTo('#endPunk', { scale: 0.3, rotation: -12 }, { scale: 1, rotation: -3, duration: 0.45, ease: 'back.out(2.2)', immediateRender: false }, 19.02);
+      tl.fromTo('#e1', { opacity: 0, x: -700 }, { opacity: 1, x: 0, duration: 0.28, ease: 'power4.out', immediateRender: false }, 19.17);
+      tl.fromTo('#e2', { opacity: 0, scale: 2.2, filter: 'blur(12px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.26, ease: 'power4.out', immediateRender: false }, 19.69);
+      tl.fromTo('#e3', { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2.5)', immediateRender: false }, 20.37);
+      tl.fromTo('#disc', { opacity: 0 }, { opacity: 1, duration: 0.4, immediateRender: false }, 20.8);
+      tl.to('#endPunk', { rotation: 3, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 20.5);
+      tl.to({}, { duration: 0.01 }, 22.49);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

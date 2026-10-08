@@ -108,6 +108,7 @@ Sauvegarder le brief dans `context/transcripts/[slug]/research-brief.md` avec ce
 - TOUJOURS citer les sources dans le brief (quelle chaîne a dit quoi)
 - Privilégier les vidéos des 7 derniers jours sur le sujet
 - Si aucune vidéo n'existe sur le sujet → le signaler (c'est une info utile : terrain vierge)
+- Règle halal : ne jamais recommander un angle levier, futures, short, marge, lending à intérêt ou paris, même si les concurrents le couvrent ; ne jamais reprendre comme « fait » un chiffre de gain d'un concurrent non vérifiable on-chain
 
 ---
 
@@ -141,8 +142,8 @@ Lire `context/video-context.json` :
     "transcripts": [
       {
         "video_id": "abc123",
-        "channel": "Nick Saraev",
-        "title": "Claude Mythos Preview: Everything You Need to Know",
+        "channel": "[Chaîne concurrente]",
+        "title": "Acheter sa première crypto on-chain : le guide complet",
         "file": "context/transcripts/slug/abc123-transcript.txt"
       }
     ],
@@ -162,4 +163,4 @@ Lire `context/video-context.json` :
 
 Si Nass t'appelle directement avec `/yt-transcript`, tu peux :
 - Récupérer le transcript d'une seule vidéo : `/yt-transcript VIDEO_URL`
-- Lancer une recherche complète sur un sujet : `/yt-transcript research "Claude Mythos"`
+- Lancer une recherche complète sur un sujet : `/yt-transcript research "acheter sa première crypto on-chain"`

@@ -1,3 +1,12 @@
 __pycache__/
 .env
 .env.local
+
+# Shorts : rendus et dépendances des projets de montage
+yt-shorts-montage/exports/
+yt-shorts-montage/projects/**/node_modules/
+yt-shorts-montage/projects/**/renders/
+yt-shorts-montage/projects/**/snapshots/
+# Shorts : audio régénérable (sfx/build.py) et sources lourdes (extraits de la formation)
+yt-shorts-montage/projects/**/sfx/track.wav
+yt-shorts-montage/projects/**/source/*.wav

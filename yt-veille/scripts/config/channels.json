@@ -1,694 +1,489 @@
 {
+  "_comment": "Niche CRYPTO (rebrand 2026-10-07). Seule la clé 'channels' est lue par daily_monitor.py / report.py. Chaque channel_id a été vérifié le 2026-10-07 (page YouTube publique : ID canonique, nom, abonnés, vidéos récentes). 'a_verifier' et 'exclus' sont ignorés par les scripts. Ancienne liste IA : channels_ia_archive.json.",
   "channels": [
     {
-      "handle": "AI Jason",
-      "channel_id": "UCrXSVX9a1mj8l0CMLwKgMVw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Adrian CHIAPELLO | Claude Code",
-      "channel_id": "UCoWs1E6OLTqv6BMUjgZENMw",
-      "niche": "claude-code",
+      "handle": "Hasheur",
+      "channel_id": "UChlTcWDE8gd4tsl_L727NrQ",
+      "niche": "crypto-fr-education",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Alex Finn",
-      "channel_id": "UCfQNB91qRP_5ILeu_S_bSkg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Aurélien FAGIOLI | IA Automatisation",
-      "channel_id": "UCdL89Z0gQUDc1HT1882AGLw",
-      "niche": "ai-automation",
+      "handle": "Hasheur Live",
+      "channel_id": "UCd1AdBu2cmlN0P_TxtzN6ew",
+      "niche": "crypto-fr-news",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Benjamin Code",
-      "channel_id": "UCLOAPb7ATQUs_nDs9ViLcMw",
-      "niche": "ai-fr",
+      "handle": "Cryptoast - Le média Crypto",
+      "channel_id": "UCD9yJ3yOv6hCMeYLYAVi7zw",
+      "niche": "crypto-fr-media",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Cole Medin",
-      "channel_id": "UCMwVTLZIRRUyyVrkjDpn4pA",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "HenriExplorIA",
-      "channel_id": "UCxx03UqvjTy9w8iomLwTSuQ",
-      "niche": "ai-fr",
+      "handle": "Journal du Coin",
+      "channel_id": "UC7qnB0XxzOEwWWn9Q6HPmCw",
+      "niche": "crypto-fr-media",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Liam Ottley",
-      "channel_id": "UCui4jxDaMb53Gdh-AZUTPAg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Melvynx",
-      "channel_id": "UC5HDIVwuqoIuKKw-WbQ4CvA",
-      "niche": "ai-fr",
+      "handle": "Grand Angle Bitcoin",
+      "channel_id": "UCT5FYQ_io06t7aY8rShgzvA",
+      "niche": "crypto-fr-education",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Meydeey | Automatisation IA",
-      "channel_id": "UCQTHcO_4IWr_Mn1FhSidOlA",
-      "niche": "ai-automation",
+      "handle": "Paul Finance",
+      "channel_id": "UCmnklryRV1DGtVnGQb0-5Bg",
+      "niche": "crypto-fr-investing",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Nate Herk | AI Automation",
-      "channel_id": "UC2ojq-nuP8ceeHqiroeKhBA",
-      "niche": "ai-automation",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Nick Saraev",
-      "channel_id": "UCbo-KbSjJDG6JWQ_MTZ_rNA",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "NoCode StartUp",
-      "channel_id": "UCYx10jQ_0QeqkV7gWiUE5yw",
-      "niche": "no-code-ai",
+      "handle": "Finary",
+      "channel_id": "UCRCCAnVyzDTcqNYh0pDcq7Q",
+      "niche": "finance-fr-investors",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Riley Brown",
-      "channel_id": "UCMcoud_ZW7cfxeIugBflSBw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Shubham SHARMA",
-      "channel_id": "UCLKx4-_XO5sR0AO0j8ye7zQ",
-      "niche": "ai-fr",
+      "handle": "CoinAcademy - L'univers crypto en profondeur",
+      "channel_id": "UCaoBf--cwOoZ4aZlkPWsG2A",
+      "niche": "crypto-fr-altcoins-early",
       "market": "FR",
       "tier": "Tier 1",
       "priority": 1,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Yassine Sdiri",
-      "channel_id": "UC94UeaPuTt_L51RkDxj9d_w",
-      "niche": "ai-fr",
-      "market": "FR",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "AI Coding Daily",
-      "channel_id": "UCIuDdCJXnKZb4CUzhVO-DcQ",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "AI Founders",
-      "channel_id": "UCRdfhTdKpGtJg-QIuAIND8g",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "AI Revolution en Français",
-      "channel_id": "UC92vtIxo1ZoXyF_yqJWFiJQ",
-      "niche": "ai-fr",
+      "handle": "Julien Roman | Finance & Investissement",
+      "channel_id": "UCF09Jbsxb7x6lJ5imkapHNA",
+      "niche": "finance-fr-macro",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "AICodeKing",
-      "channel_id": "UC0m81bQuthaQZmFbXEY9QSw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "AISeeKing",
-      "channel_id": "UCfI2Wf-yji9reXIhn8U4jkQ",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Brendan Jowett",
-      "channel_id": "UCzIsviqoJc-VcWqF5Pp8iLw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "BuildWithAI",
-      "channel_id": "UCYq9VOkrH3uv7IiWcDKm5zw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Christian Peverelli - WeAreNoCode",
-      "channel_id": "UCrJrY9gMcbRL2APnFCXiuBQ",
-      "niche": "no-code-ai",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "CodeWithMuh | AI Automation",
-      "channel_id": "UC1HEefoqUWmztGZ_Laq28sw",
-      "niche": "ai-automation",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Coriace | No-Code",
-      "channel_id": "UCNpfBfSrzHPo5R1N8CpsXgg",
-      "niche": "ai-fr",
+      "handle": "Crypto Le Trone",
+      "channel_id": "UC5kh_CumIL_usjg3pW5J9Qw",
+      "niche": "crypto-fr-analysis",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Dee Willis | Claude Code & AI Automation",
-      "channel_id": "UC87v3BEd8gwadKKcv9yJyMA",
-      "niche": "claude-code",
+      "handle": "Cryptoast Academy",
+      "channel_id": "UCKrn091jLWw-bDr9mFDbCfg",
+      "niche": "crypto-fr-analysis",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Ed Hill | AI Automation",
-      "channel_id": "UC5_2We-HeVdEeHcIyfmMHOg",
-      "niche": "ai-automation",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Frank Houbre - IA & intelligence artificielle",
-      "channel_id": "UC9o07w5xSlfekfLlvfdpLsQ",
-      "niche": "ai-fr",
+      "handle": "Cryptoast Podcast",
+      "channel_id": "UCMZUyCOiaol7QF4-hA_sSwg",
+      "niche": "crypto-fr-media",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Helena Liu",
-      "channel_id": "UCpM_g95uzZ_OyhgukvrbbiQ",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "IA Technologie",
-      "channel_id": "UCCE-g5LSVQUSNZQEgZuAOtw",
-      "niche": "ai-fr",
+      "handle": "Monsieur-TK : Bitcoin et Crypto",
+      "channel_id": "UC0DITweI6K01RpfrJDMQWFw",
+      "niche": "crypto-fr-education",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "IA et Stratégie | Le SamourAI",
-      "channel_id": "UC2UmrCDeb8CEB7t6v6Kqt7A",
-      "niche": "ai-fr",
+      "handle": "Cryptolyze | Crypto - Finance - Économie",
+      "channel_id": "UCuXgThwkFpefb41aKWKqrOw",
+      "niche": "crypto-fr-investing",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "IndyDevDan",
-      "channel_id": "UC_x36zCEGilGpB1m-V4gmjg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Instinct IA",
-      "channel_id": "UC_j4SWyQ6iRhC2RPfrhFaug",
-      "niche": "ai-fr",
+      "handle": "Crypto Flash",
+      "channel_id": "UC7t8V-dJPWfmAXEK2tvma1A",
+      "niche": "crypto-fr-news",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Mikey No Code",
-      "channel_id": "UCde0vB0fTwC8AT3sJofFV0w",
-      "niche": "no-code-ai",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Mistral AI",
-      "channel_id": "UC5-pBdfdA3KUo-vq72l-umA",
-      "niche": "ai-fr",
+      "handle": "Crypto Expert Chantal Läng",
+      "channel_id": "UCwLv8cwwngQswsHm52MpxCA",
+      "niche": "crypto-fr-altcoins-early",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Monsieur IA",
-      "channel_id": "UC_iGBgr6kw1EtGKyo0s440A",
-      "niche": "ai-fr",
+      "handle": "Jonathan Nowak (Fructify)",
+      "channel_id": "UCD7x_RThCvD24lytHl5zVhA",
+      "niche": "crypto-fr-investing",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "NOFLOW",
-      "channel_id": "UCHE_W8CnOaOsTGj4HEk9I6w",
-      "niche": "ai-fr",
+      "handle": "Crypto et Bourse pour tous",
+      "channel_id": "UC5bThRPUlQ51V3RhSYZ8vBw",
+      "niche": "crypto-fr-news",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "No Code MBA",
-      "channel_id": "UCU0RB5iVFW3LbmshiC_Kf-Q",
-      "niche": "no-code-ai",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "NoCode AI Builders",
-      "channel_id": "UCdD-LpmkLjIz6j6E_tABIHQ",
-      "niche": "no-code-ai",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Peter Yang",
-      "channel_id": "UCnpBg7yqNauHtlNSpOl5-cg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Tech With Tim",
-      "channel_id": "UC4JX40jDee_tINbkjycV4Sg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 2",
-      "priority": 2,
-      "max_videos": 5,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Vision IA",
-      "channel_id": "UCyc03X3uRuxM9n7fyRH_gIw",
-      "niche": "ai-fr",
+      "handle": "FinTales_",
+      "channel_id": "UCefQC4Y-X9MBRuYBKc2waiQ",
+      "niche": "finance-fr-macro",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "minutora",
-      "channel_id": "UCzVO5MB9c4DAiD6kgQBI0oA",
-      "niche": "ai-fr",
+      "handle": "Matthieu Louvet - S'investir",
+      "channel_id": "UCjKvFMbYVKOnBDarCtXfEww",
+      "niche": "finance-fr-investors",
       "market": "FR",
       "tier": "Tier 2",
       "priority": 2,
       "max_videos": 5,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Agent Zero",
-      "channel_id": "UCm4Sy7W36u_ZFOZWX9cd07w",
-      "niche": "ai-agents",
-      "market": "US",
-      "tier": "Tier 3",
-      "priority": 3,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Ahmad | AI Automation",
-      "channel_id": "UCndJsCumRxIZJ2W_i8y9dxw",
-      "niche": "ai-automation",
-      "market": "US",
-      "tier": "Tier 3",
-      "priority": 3,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Business IA - Elgoz Media",
-      "channel_id": "UC-uDbxeYgjwtM9Z-TwEWlyQ",
-      "niche": "ai-fr",
+      "handle": "Lexa Moon Crypto",
+      "channel_id": "UCI7iMpDhy_PtgY656Rfzc0Q",
+      "niche": "crypto-fr-analysis",
       "market": "FR",
       "tier": "Tier 3",
       "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Easy AI Coding",
-      "channel_id": "UCXjJHDUDF8vWVHiFq91qyfg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 3",
-      "priority": 3,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Kunaal Naik | AI Agents",
-      "channel_id": "UCZN-xTV6lFwfJHl6ZId_dOg",
-      "niche": "ai-agents",
-      "market": "US",
-      "tier": "Tier 3",
-      "priority": 3,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
-    },
-    {
-      "handle": "Ludo Salenne",
-      "channel_id": "UCnnYqSNKKygemgmxC9PyLTw",
-      "niche": "ai-fr",
+      "handle": "Crypto Logique",
+      "channel_id": "UCBHGsOXyqnCAxjUEnHllbDQ",
+      "niche": "crypto-fr-analysis",
       "market": "FR",
       "tier": "Tier 3",
       "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "corbin",
-      "channel_id": "UCJFMlSxcvlZg5yZUYJT0Pug",
-      "niche": "ai-tools",
+      "handle": "bitcoin fr",
+      "channel_id": "UCNS6lmVZ-Oo1-qP8wTgjYAQ",
+      "niche": "crypto-fr-education",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Cryptorecherche / Financerecherche",
+      "channel_id": "UCUIgNPX9Xzln2kuD6pMhqrg",
+      "niche": "crypto-fr-investing",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Alex Doyon | Crypto, Trading, Investir",
+      "channel_id": "UCcmDweQNlhx0ltLDqQgGgPg",
+      "niche": "crypto-fr-investing",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Milenium Finance",
+      "channel_id": "UCmKzNnR-PonNUKZU_2TZXuA",
+      "niche": "crypto-fr-analysis",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "K-Bour Crypto",
+      "channel_id": "UCZL_vS9bsLI4maA4Oja9zyg",
+      "niche": "crypto-fr-altcoins-early",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Seiya | Crypto & Finance",
+      "channel_id": "UCe1FEjngCtPc0lvnB1ZlFVw",
+      "niche": "crypto-fr-altcoins-early",
+      "market": "FR",
+      "tier": "Tier 3",
+      "priority": 3,
+      "max_videos": 3,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Coin Bureau",
+      "channel_id": "UCqK_GSMbpiV8spgD3ZGloSw",
+      "niche": "crypto-education",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Altcoin Daily",
+      "channel_id": "UCbLhGKVY-bJPcawebgtNfbw",
+      "niche": "crypto-altcoins-early",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Lark Davis",
+      "channel_id": "UCl2oCaw8hdR_kbqyqd2klIA",
+      "niche": "crypto-altcoins-early",
+      "market": "US",
+      "tier": "Tier 1",
+      "priority": 1,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Bankless",
+      "channel_id": "UCAl9Ld79qaZxp9JzEOwd3aA",
+      "niche": "crypto-onchain",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Benjamin Cowen",
+      "channel_id": "UCRvqjQPSeaWn-uEx-w0XOIg",
+      "niche": "crypto-macro",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "Raoul Pal The Journey Man",
+      "channel_id": "UCVFSzL3VuZKP3cN9IXdLOtw",
+      "niche": "crypto-macro",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "On-Chain Mind",
+      "channel_id": "UCbs3kIX9ddwnDmGEo3Mwbew",
+      "niche": "crypto-onchain",
+      "market": "US",
+      "tier": "Tier 2",
+      "priority": 2,
+      "max_videos": 5,
+      "added_at": "2026-10-07"
+    },
+    {
+      "handle": "EllioTrades",
+      "channel_id": "UCMtJYS0PrtiUwlk6zjGDEMA",
+      "niche": "crypto-altcoins-early",
       "market": "US",
       "tier": "Tier 3",
       "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Claude",
-      "channel_id": "UCV03SRZXJEz-hchIAogeJOg",
-      "niche": "ai-tools",
+      "handle": "Ivan on Tech",
+      "channel_id": "UCrYmtJBtLdtm2ov84ulV-yg",
+      "niche": "crypto-investing",
       "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
+      "tier": "Tier 3",
+      "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Cursor",
-      "channel_id": "UC6YYHJzM6PhZ2Yey9BQiUaw",
-      "niche": "ai-tools",
+      "handle": "The Defiant",
+      "channel_id": "UCL0J4MLEdLP0-UyLu0hCktg",
+      "niche": "crypto-onchain",
       "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
+      "tier": "Tier 3",
+      "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Dify",
-      "channel_id": "UC2JZCsZSOudXA08cMMRCL9g",
-      "niche": "ai-tools",
+      "handle": "Checkonchain",
+      "channel_id": "UCGldOK1JzL_SMYwpie4A5fQ",
+      "niche": "crypto-onchain",
       "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
+      "tier": "Tier 3",
+      "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
     },
     {
-      "handle": "Duncan Rogoff | AI Automation",
-      "channel_id": "UC37JpWP5PxLSma2lh79HU9A",
-      "niche": "ai-automation",
+      "handle": "99Bitcoins",
+      "channel_id": "UCQQ_fGcMDxlKre3SEqEWrLA",
+      "niche": "crypto-altcoins-early",
       "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
+      "tier": "Tier 3",
+      "priority": 3,
       "max_videos": 3,
-      "added_at": "2026-04-04"
+      "added_at": "2026-10-07"
+    }
+  ],
+  "a_verifier": [
+    {
+      "handle": "Crypto Matrix (FR, 'Enter The Crypto Matrix')",
+      "channel_id": null,
+      "raison": "Cité dans les classements FR, mais aucun handle/ID retrouvé (@CryptoMatrix = un trader US homonyme). Trouver l'URL officielle avant d'ajouter."
     },
     {
-      "handle": "Fireship",
-      "channel_id": "UCsBjURrPoezykLs9EqgamOA",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Grand Angle Crypto (chaîne principale)",
+      "channel_id": null,
+      "raison": "Seules trouvées : @grandanglecrypto-daily3484 (UCBb2Q1Ycldq3VjQyr5PacKg, 3,2 k abonnés, aucune vidéo listée) et @grandanglecrypto5709 (94 abonnés). Vérifier si la chaîne est devenue Grand Angle Bitcoin (déjà suivie)."
     },
     {
-      "handle": "Hashtag No Code & IA",
-      "channel_id": "UCyHnA-g1oUHzGALhobCoO_w",
-      "niche": "no-code-ai",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Taiki Maeda",
+      "channel_id": "UC7B3Y1yrg4S7mmgoR-NsfxA",
+      "raison": "ID vérifié. Profil 'DeFi degen' (airdrops, early) mais pratique aussi le trading à levier : valider le halal avant d'activer."
     },
     {
-      "handle": "Jack Roberts",
-      "channel_id": "UCA00QTLGuJ0I0wpEjLGAm9Q",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "InvestAnswers",
+      "channel_id": "UClgJyzwGs-GyaNxUHcLZrkg",
+      "raison": "ID vérifié. Description mentionne dérivés/options ; publication irrégulière (dernière vidéo il y a 2 semaines, avant ça 2 mois)."
     },
     {
-      "handle": "Ken Voss | AI Automation",
-      "channel_id": "UCafrZHMEVAky2G-ZtB6_E4g",
-      "niche": "ai-automation",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Quentin Chapeaux (Bitcoin trésorerie / investisseurs)",
+      "channel_id": "UCUqWFSJDHtRDUsp1KG-kxgA",
+      "raison": "ID vérifié. Très proche de l'avatar (investisseurs, entreprise, maison vendue pour du BTC) mais aucune vidéo depuis ~4 mois."
     },
     {
-      "handle": "Leonardo Grigorio | Build & Ship with AI",
-      "channel_id": "UC0BHO4AbCeBpghWNifMbH5Q",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "BFM Crypto",
+      "channel_id": "UC9jq6tr49rHZTUK-Jm1hV4w",
+      "raison": "ID vérifié. Aucune vidéo depuis ~2 mois."
     },
     {
-      "handle": "Manus AI",
-      "channel_id": "UCQgFQdqiFQ_LfFBGP6z9dqQ",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Token Coulisses",
+      "channel_id": "UCP7UREsIq1kFXDneTiNT6ZQ",
+      "raison": "ID vérifié. Aucune vidéo depuis ~2 mois."
     },
     {
-      "handle": "Mark Kashef",
-      "channel_id": "UCHkzp52CldSPZqU5T49mOnA",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Whiteboard Crypto",
+      "channel_id": "UCsYYksPHiGqXHPoHI-fm5sg",
+      "raison": "ID vérifié. Excellente pédagogie débutant (animations) mais inactive depuis ~1 an."
     },
     {
-      "handle": "Net Ninja",
-      "channel_id": "UCW5YeuERMmlnqo4oq8vwUpg",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Crypto Monnaie Analyse FR",
+      "channel_id": "UCSxTTYUDDMC_niaBKYqOQPQ",
+      "raison": "ID vérifié. Analyse technique pure, 1 vidéo en 7 mois."
+    }
+  ],
+  "exclus": [
+    {
+      "handle": "Crypto Banter",
+      "channel_id": "UCN9Nj4tjXbVTLYWN0EKly_Q",
+      "raison": "Live trading, culture levier/futures."
     },
     {
-      "handle": "Sabrina Ramonov",
-      "channel_id": "UCiGWNa6QK6CiKPvv5-YPv8g",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Merov Crypto",
+      "channel_id": "UCh5c8Tl4tBn6JIA_qoKaSEA",
+      "raison": "Live trading hebdo + tutos 'prendre un trade sur OKX' (dérivés)."
     },
     {
-      "handle": "Sean Kochel",
-      "channel_id": "UCFig7skuwYrCIGy0tuZHA2Q",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Benjamin Deleuze - Trading",
+      "channel_id": "UCL88WfaGEe5_cNzkJs2blgA",
+      "raison": "Chaîne de trading."
     },
     {
-      "handle": "Serop | AI Automation",
-      "channel_id": "UCL9S_mHsL0ihkXQMh80WYtg",
-      "niche": "ai-automation",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "Thibaut Crypto",
+      "channel_id": "UCCE0kurqUvovr3Ri700fUPg",
+      "raison": "Live trading quotidien (gold, forex)."
     },
     {
-      "handle": "leerob",
-      "channel_id": "UCZMli3czZnd1uoc1ShTouQw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Non classé",
-      "priority": 4,
-      "max_videos": 3,
-      "added_at": "2026-04-04"
+      "handle": "DataDash",
+      "channel_id": "UCCatR7nWbYrkVXdxXb4cGXw",
+      "raison": "Analyse technique orientée traders."
     },
     {
-      "handle": "Zeyneb Madi",
-      "channel_id": "UC3HXrI_uzpOLm4b0BcYbn6g",
-      "niche": "ai-tools",
-      "market": "FR",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-09"
+      "handle": "Miles Deutscher Finance",
+      "channel_id": "UCVVX-7tHff75fRAEEEnZiAQ",
+      "raison": "Pivot vers les bots de trading IA, plus vraiment crypto/early."
     },
     {
-      "handle": "Julian Goldie SEO",
-      "channel_id": "UCGpsgNbzdF7BECCVbB1COHw",
-      "niche": "ai-tools",
-      "market": "US",
-      "tier": "Tier 1",
-      "priority": 1,
-      "max_videos": 5,
-      "added_at": "2026-04-09"
+      "handle": "Docteur Crypto / Czero / Les Cryptos de Caro / Professeur Crypto / Cointribune / Fricoben",
+      "channel_id": null,
+      "raison": "Inactives (5 mois à 3 ans sans vidéo)."
     }
   ]
 }
