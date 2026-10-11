@@ -4,7 +4,10 @@
       "video_slug": "2000e-1h-vibecoding",
       "date": "2026-03-18",
       "concept_chosen": "The Laptop Reveal",
-      "concepts_rejected": ["The Stripe Dashboard Shock", "The Timer + Cash"],
+      "concepts_rejected": [
+        "The Stripe Dashboard Shock",
+        "The Timer + Cash"
+      ],
       "has_face": true,
       "face_size_pct": 35,
       "face_expression": "surprise",
@@ -22,7 +25,10 @@
       "video_slug": "associe-oussama-amar",
       "date": "2026-03-30",
       "concept_chosen": "The Power Duo",
-      "concepts_rejected": ["The Handshake", "The Reveal"],
+      "concepts_rejected": [
+        "The Handshake",
+        "The Reveal"
+      ],
       "has_face": true,
       "face_size_pct": 40,
       "face_expression": "confident-smile",
@@ -36,6 +42,82 @@
       "background_style": "dark-subtle-stars",
       "title_thumbnail_synergy": "complement",
       "notes": "Format dual-face collab. Texte VibeCoding centré entre les deux visages. Background fourni en référence à Gemini plutôt que généré. Rendu validé par Nass.",
+      "performance": null
+    },
+    {
+      "video_slug": "pourquoi-investir-2026",
+      "date": "2026-10-04",
+      "concept_chosen": "Billet déchiré 40/30/15/15 (D v17 : pose poing sous le menton, t-shirt blanc, plan taille)",
+      "concepts_rejected": [
+        "Le Secret camembert",
+        "Karting vs F1",
+        "Escalier de pièces",
+        "CryptoPunk 6995"
+      ],
+      "has_face": true,
+      "face_size_pct": 34,
+      "face_expression": "thinking-fist-under-chin",
+      "dominant_color": "multi",
+      "color_name": "red-green-yellow-blue",
+      "text_on_thumbnail": true,
+      "text_word_count": 4,
+      "text_content": "FAIS ÇA / AVANT D'INVESTIR",
+      "num_focal_points": 2,
+      "has_border_glow": false,
+      "background_style": "torn-banknote-high-key",
+      "title_thumbnail_synergy": "complement",
+      "notes": "Pipeline visage réel : fond généré + détourage studio t-shirt blanc + greffe visage v9 sur buste v10 + composite.py. 11 itérations, retours : visage fidèle, yeux ouverts, barbe pas orange, pas de dents, épaules visibles. Puis v12→v17 : Nass rejette les têtes « même émotion que les autres vidéos » ; pose de référence (poing sous le menton) générée en 1:1 plan taille avec marges pour garder épaules/coudes ; fond v2b avec le « 100 » vert conservé.",
+      "performance": null
+    },
+    {
+      "video_slug": "comment-devenir-riche",
+      "date": "2026-10-04",
+      "concept_chosen": "Mur de billets + flèche orange (A v3 wall)",
+      "concepts_rejected": [
+        "Billet → tour de liasses (fond vide)",
+        "Escalier de liasses",
+        "Le Secret coffre-fort"
+      ],
+      "has_face": true,
+      "face_size_pct": 46,
+      "face_expression": "serious-closed-mouth",
+      "dominant_color": "#1DB954",
+      "color_name": "green",
+      "text_on_thumbnail": true,
+      "text_word_count": 3,
+      "text_content": "UTILISE / CETTE MÉTHODE (haut / bas)",
+      "num_focal_points": 2,
+      "has_border_glow": false,
+      "background_style": "banknote-wall-high-key",
+      "title_thumbnail_synergy": "complement",
+      "notes": "T-shirt noir, fond densifié après retour « trop vide ». Pipeline visage réel. 2026-10-07 : titre changé en « Utilise cette méthode », scindé haut (blanc) / bas (orange), plus gros — Nass voulait le titre plus visible et plus haut.",
+      "performance": null
+    },
+    {
+      "video_slug": "investissement-on-chain",
+      "date": "2026-10-04",
+      "concept_chosen": "Salle de trading coucher de soleil (F)",
+      "concepts_rejected": [
+        "La Formule 1",
+        "×230 chart choqué",
+        "F1 avant le peloton",
+        "Far West illustré",
+        "Entrée VIP blazer",
+        "Fusée"
+      ],
+      "has_face": true,
+      "face_size_pct": 46,
+      "face_expression": "serious-closed-mouth",
+      "dominant_color": "#FF6B35",
+      "color_name": "orange",
+      "text_on_thumbnail": true,
+      "text_word_count": 4,
+      "text_content": "ACHETER AVANT / LES AUTRES",
+      "num_focal_points": 2,
+      "has_border_glow": false,
+      "background_style": "photoreal-trading-floor-sunset",
+      "title_thumbnail_synergy": "complement",
+      "notes": "Chemise en jean validée « banger ». Fond illustré rejeté : Nass veut du photo-réaliste. Texte haut blanc + bas orange.",
       "performance": null
     }
   ]
