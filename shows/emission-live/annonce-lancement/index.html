@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <!-- Convergence — annonce du lancement (9:16, 18 s) : old money × new money qui convergent. Live lundi 05/10 à 8h30. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }
+      @font-face { font-family: 'Plex Mono'; src: url('assets/fonts/IBMPlexMono-Medium.ttf') format('truetype'); font-weight: 500; }
+      @font-face { font-family: 'Plex Mono'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #F2EFE8; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #F2EFE8; color: #0B0E11; font-family: 'Inter Tight', sans-serif; }
+      #grid { position: absolute; inset: 0; background-image: linear-gradient(#E3DED2 1px, transparent 1px), linear-gradient(90deg, #E3DED2 1px, transparent 1px); background-size: 90px 90px; }
+      .or { color: #A87308; } .vert { color: #0F8A5F; }
+      .mono { font-family: 'Plex Mono', monospace; }
+
+      /* deux moitiés */
+      .half { position: absolute; left: 0; width: 1080px; height: 960px; }
+      #top { top: 0; } #bot { top: 960px; }
+      .tint { position: absolute; inset: 0; }
+      #top .tint { background: linear-gradient(180deg, rgba(201,138,11,.10), rgba(201,138,11,.02)); }
+      #bot .tint { background: linear-gradient(0deg, rgba(15,138,95,.10), rgba(15,138,95,.02)); }
+      .big { position: absolute; left: 0; right: 0; text-align: center; font-weight: 800; font-size: 150px; letter-spacing: -.035em; line-height: 1; white-space: nowrap; }
+      .big span { display: inline-block; }
+      .sub { position: absolute; left: 0; right: 0; text-align: center; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 30px; letter-spacing: .28em; color: #4B5563; white-space: nowrap; }
+      .pill { position: absolute; left: 50%; padding: 14px 30px; border-radius: 8px; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 34px; letter-spacing: .22em; color: #fff; white-space: nowrap; }
+      #pillS { top: 790px; background: #A87308; } #pillN { top: 760px; background: #0F8A5F; }
+      #wOld { top: 520px; color: #A87308; } #sOld { top: 690px; }
+      #wNew { top: 500px; color: #0F8A5F; } #sNew { top: 668px; }
+      #bars { position: absolute; left: 330px; top: 210px; width: 420px; height: 250px; overflow: visible; }
+      #chartOld { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; overflow: visible; }
+
+      /* punk + chaîne de blocs */
+      #punkBox { position: absolute; left: 370px; top: 100px; width: 340px; height: 340px; border-radius: 28px; overflow: hidden; border: 8px solid #0F8A5F; box-shadow: 14px 14px 0 #0B0E11; }
+      #punkBox img { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+      #cells { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(24, 1fr); grid-template-rows: repeat(24, 1fr); }
+      #cells i { display: block; background: #E8F2EC; }
+      .blk { position: absolute; width: 64px; height: 64px; border-radius: 12px; border: 5px solid #0F8A5F; background: #FBFAF6; }
+      .lnk { position: absolute; height: 5px; background: #0F8A5F; transform-origin: 0 50%; }
+
+      /* ligne de séparation + carte du milieu */
+      #divider { position: absolute; left: 0; top: 957px; width: 1080px; height: 6px; background: #0B0E11; transform-origin: 50% 50%; }
+      .card { position: absolute; left: 50%; top: 960px; padding: 30px 46px; background: #FBFAF6; border: 4px solid #0B0E11; border-radius: 18px; box-shadow: 12px 12px 0 #0B0E11;
+        font-weight: 700; font-size: 74px; letter-spacing: -.02em; white-space: nowrap; }
+
+      /* V + logo */
+      #bigV { position: absolute; left: 270px; top: 452px; width: 540px; height: 576px; overflow: visible; }
+      #ring { position: absolute; left: 540px; top: 974px; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; border: 5px solid; border-color: #C98A0B #0F8A5F #0F8A5F #C98A0B; opacity: 0; }
+      #lock { position: absolute; left: 0; right: 0; top: 600px; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+      #wm { display: flex; align-items: center; font-weight: 600; font-size: 86px; letter-spacing: .32em; line-height: 1; margin-right: -.32em; }
+      #wm .l { display: inline-block; opacity: 0; }
+      #wm svg { height: .8em; width: auto; margin-right: .32em; overflow: visible; opacity: 0; }
+      #tag { font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 30px; letter-spacing: .26em; color: #4B5563; opacity: 0; white-space: nowrap; }
+
+      /* rendez-vous */
+      #when { position: absolute; left: 0; right: 0; top: 940px; display: flex; flex-direction: column; align-items: center; }
+      #day { font-weight: 800; font-size: 112px; letter-spacing: -.03em; line-height: 1; }
+      #hour { margin-top: 18px; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 250px; letter-spacing: -.02em; line-height: 1; display: flex; }
+      #hour span { display: inline-block; }
+      #stamp { margin-top: 44px; display: flex; align-items: center; gap: 18px; padding: 18px 38px; border-radius: 8px; background: #0B0E11; color: #F2EFE8; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 38px; letter-spacing: .24em; white-space: nowrap; }
+      #stamp i { display: block; width: 22px; height: 22px; border-radius: 50%; background: #C8323F; }
+      #with { margin-top: 40px; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 34px; letter-spacing: .24em; color: #4B5563; white-space: nowrap; }
+      #when > * { opacity: 0; }
+      #root::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, rgba(11,14,17,0) 60%, rgba(11,14,17,.12) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="18" data-width="1080" data-height="1920">
+      <div id="grid"></div>
+
+      <!-- OLD MONEY -->
+      <div class="half" id="top">
+        <div class="tint"></div>
+        <svg id="chartOld" viewBox="0 0 1080 960"><path id="pOld" fill="none" stroke="#C98A0B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity=".35" /></svg>
+        <svg id="bars" viewBox="0 0 420 250">
+          <defs><linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0C25A" /><stop offset="1" stop-color="#C98A0B" /></linearGradient></defs>
+          <g id="bar1"><polygon points="30,240 200,240 180,170 50,170" fill="url(#gold)" stroke="#8A5E06" stroke-width="5" stroke-linejoin="round" /></g>
+          <g id="bar2"><polygon points="220,240 390,240 370,170 240,170" fill="url(#gold)" stroke="#8A5E06" stroke-width="5" stroke-linejoin="round" /></g>
+          <g id="bar3"><polygon points="125,160 295,160 275,90 145,90" fill="url(#gold)" stroke="#8A5E06" stroke-width="5" stroke-linejoin="round" /></g>
+        </svg>
+        <div class="big" id="wOld"></div>
+        <div class="sub" id="sOld">OR · BOURSE · PATRIMOINE</div>
+        <div class="pill" id="pillS">SADEK</div>
+      </div>
+
+      <!-- NEW MONEY -->
+      <div class="half" id="bot">
+        <div class="tint"></div>
+        <div id="chain"></div>
+        <div id="punkBox"><img src="assets/punk6995.jpg" alt="Barbossa" /><div id="cells"></div></div>
+        <div class="big" id="wNew"></div>
+        <div class="sub" id="sNew">CRYPTO · ON-CHAIN · TOKENS</div>
+        <div class="pill" id="pillN">NASS</div>
+      </div>
+
+      <div id="divider"></div>
+      <div class="card" id="c1">Deux mondes qu'on oppose.</div>
+      <div class="card" id="c2">Ici, ils <span class="or">con</span><span class="vert">vergent</span>.</div>
+
+      <div id="ring"></div>
+      <svg id="bigV" viewBox="0 0 60 64">
+        <line id="bvO" x1="5" y1="5" x2="30" y2="58" stroke="#C98A0B" stroke-width="10" stroke-linecap="round" pathLength="1" />
+        <line id="bvG" x1="55" y1="5" x2="30" y2="58" stroke="#0F8A5F" stroke-width="10" stroke-linecap="round" pathLength="1" />
+      </svg>
+
+      <div id="lock">
+        <div id="wm"></div>
+        <div id="tag"><span class="or">OLD MONEY</span> × <span class="vert">NEW MONEY</span></div>
+      </div>
+
+      <div id="when">
+        <div id="day">LUNDI 05/10</div>
+        <div id="hour"><span>8</span><span>H</span><span>3</span><span>0</span></div>
+        <div id="stamp"><i></i>PREMIER LIVE</div>
+        <div id="with">AVEC <span class="or">SADEK</span> &amp; <span class="vert">NASS</span></div>
+      </div>
+    </div>
+
+    <script>
+      // RNG déterministe
+      let seed = 11;
+      const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+      const letters = (id, txt) => document.getElementById(id).innerHTML = [...txt].map(c => `<span>${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+      letters('wOld', 'OLD MONEY'); letters('wNew', 'NEW MONEY');
+
+      // courbe « marché classique » discrète derrière les lingots
+      let y = 470, d = 'M-20,470';
+      for (let k = 1; k <= 22; k++) { y += (rnd() - 0.58) * 46; y = Math.max(300, Math.min(560, y)); d += ` L${(k * 52 - 20).toFixed(0)},${y.toFixed(0)}`; }
+      document.getElementById('pOld').setAttribute('d', d);
+
+      // pixels qui couvrent le punk (24 × 24, comme l'image)
+      const CELLS = document.getElementById('cells');
+      CELLS.innerHTML = '<i></i>'.repeat(576);
+
+      // chaîne de blocs de part et d'autre du punk
+      const CH = document.getElementById('chain');
+      [[60, 240], [200, 170], [810, 170], [950, 240]].forEach(([x, yy], i) => {
+        CH.insertAdjacentHTML('beforeend', `<div class="blk" id="k${i}" style="left:${x - 32}px;top:${yy - 32}px"></div>`);
+      });
+      [[92, 240, 76, -27], [232, 170, 138, 0], [710, 170, 68, 0], [842, 170, 76, 27]].forEach(([x, yy, w, a], i) =>
+        CH.insertAdjacentHTML('beforeend', `<div class="lnk" id="n${i}" style="left:${x}px;top:${yy - 2}px;width:${w}px;transform:rotate(${a}deg)"></div>`));
+
+      // wordmark
+      document.getElementById('wm').innerHTML =
+        [...'CON'].map(c => `<span class="l L">${c}</span>`).join('') +
+        `<svg id="wmV" viewBox="0 0 60 64"><line x1="5" y1="5" x2="30" y2="58" stroke="#C98A0B" stroke-width="10" stroke-linecap="round"/><line x1="55" y1="5" x2="30" y2="58" stroke="#0F8A5F" stroke-width="10" stroke-linecap="round"/></svg>` +
+        [...'ERGENCE'].map(c => `<span class="l R">${c}</span>`).join('');
+
+      // ---------- timeline (100 BPM : 1 temps = 0,6 s) ----------
+      const B = 0.6;
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+
+      gsap.set(['.card', '.pill'], { xPercent: -50 });
+      gsap.set('.card', { yPercent: -50, opacity: 0 });
+      gsap.set('.pill', { opacity: 0 });
+      gsap.set('#divider', { scaleX: 0 });
+      gsap.set(['#bar1', '#bar2', '#bar3'], { opacity: 0 });
+      gsap.set('.big span', { opacity: 0 });
+      gsap.set('.sub', { opacity: 0 });
+      gsap.set(['.blk', '.lnk'], { opacity: 0 });
+      gsap.set('#punkBox', { opacity: 0, scale: 0.9 });
+      const LO = document.getElementById('pOld').getTotalLength();
+      gsap.set('#pOld', { strokeDasharray: `${LO} ${LO + 40}`, strokeDashoffset: LO + 20 });
+      gsap.set(['#bvO', '#bvG'], { strokeDasharray: '1 1.2', strokeDashoffset: 1.1 });
+
+      // 0 → 2,4 : OLD MONEY (Sadek)
+      tl.to('#divider', { scaleX: 1, duration: 0.7, ease: 'expo.out' }, 0.05);
+      tl.to('#pOld', { strokeDashoffset: 0, duration: 2.6, ease: 'power1.inOut' }, 0.2);
+      ['#bar1', '#bar2', '#bar3'].forEach((b, i) =>
+        tl.fromTo(b, { opacity: 0, y: -90 }, { opacity: 1, y: 0, duration: 0.45, ease: 'back.out(1.8)', immediateRender: false }, 0.15 + i * B * 0.5));
+      tl.fromTo('#wOld span', { opacity: 0, y: 40, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out', stagger: 0.04, immediateRender: false }, 2 * B);
+      tl.fromTo('#sOld', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, 3 * B);
+
+      // 2,4 → 4,8 : NEW MONEY (Nass) — le punk apparaît pixel par pixel
+      const T2 = 4 * B;
+      tl.to('#punkBox', { opacity: 1, scale: 1, duration: 0.4, ease: 'expo.out' }, T2);
+      [...CELLS.children].forEach((c, i) => tl.to(c, { opacity: 0, duration: 0.06 }, T2 + 0.1 + rnd() * 1.0));
+      tl.fromTo('#wNew span', { opacity: 0, y: 40, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out', stagger: 0.04, immediateRender: false }, T2 + 2 * B);
+      tl.fromTo('#sNew', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, T2 + 3 * B);
+      ['#k1', '#n1', '#k0', '#n0', '#k2', '#n2', '#k3', '#n3'].forEach((id, i) =>
+        tl.fromTo(id, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)', immediateRender: false }, T2 + 1.0 + (i % 4) * 0.15 + (i >= 4 ? 0.08 : 0)));
+
+      // 4,8 : les prénoms
+      const T3 = 8 * B;
+      tl.fromTo('#pillS', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(2.2)', immediateRender: false }, T3);
+      tl.fromTo('#pillN', { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: 'back.out(2.2)', immediateRender: false }, T3 + B / 2);
+
+      // 6,0 → 8,4 : « Deux mondes qu'on oppose. » — les moitiés s'écartent un peu
+      const T4 = 10 * B;
+      tl.fromTo('#c1', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.8)', immediateRender: false }, T4);
+      tl.to('#top', { y: -50, duration: 1.6, ease: 'power2.inOut' }, T4);
+      tl.to('#bot', { y: 50, duration: 1.6, ease: 'power2.inOut' }, T4);
+      tl.to('#c1', { opacity: 0, scale: 0.92, duration: 0.3, ease: 'power2.in' }, 13 * B);
+
+      // 8,4 → 9,6 : « Ici, ils convergent. » — les moitiés glissent l'une vers l'autre et s'effacent
+      const T5 = 14 * B;
+      tl.fromTo('#c2', { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.8)', immediateRender: false }, T5);
+      tl.to('#top', { y: 380, opacity: 0, scale: 0.8, duration: 1.1, ease: 'power3.inOut' }, T5 + 0.5);
+      tl.to('#bot', { y: -380, opacity: 0, scale: 0.8, duration: 1.1, ease: 'power3.inOut' }, T5 + 0.5);
+      tl.to('#divider', { scaleX: 0, duration: 0.6, ease: 'power3.in' }, T5 + 0.9);
+      tl.to('#c2', { opacity: 0, scale: 0.9, duration: 0.35, ease: 'power2.in' }, 17 * B);
+
+      // 9,6 → 11,4 : le V se dessine, les deux traits se rejoignent en douceur
+      const T6 = 16 * B;
+      tl.to('#bvO', { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' }, T6 + 0.3);
+      tl.to('#bvG', { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' }, T6 + 0.3);
+      tl.fromTo('#ring', { opacity: 0.9, scale: 0.4, rotation: -45 }, { opacity: 0, scale: 7, rotation: 45, duration: 1.0, ease: 'expo.out', immediateRender: false }, T6 + 1.6);
+      tl.fromTo('#bigV', { scale: 1 }, { scale: 1.04, duration: 0.4, ease: 'power2.out', yoyo: true, repeat: 1, transformOrigin: '50% 90%', immediateRender: false }, T6 + 1.6);
+
+      // 12,0 : le V se range dans le logo
+      const T7 = 20 * B;
+      const toLogo = () => {
+        const r = document.getElementById('wmV').getBoundingClientRect(), s = r.height / 576;
+        return { s, x: r.left - 270, y: r.top - 452 };
+      };
+      tl.to('#bigV', { scale: () => toLogo().s, x: () => toLogo().x, y: () => toLogo().y, transformOrigin: '0 0', duration: 0.7, ease: 'expo.inOut' }, T7);
+      tl.set('#wmV', { opacity: 1 }, T7 + 0.7);
+      tl.set('#bigV', { opacity: 0 }, T7 + 0.71);
+      const Ls = [...document.querySelectorAll('#wm .L')].reverse(), Rs = [...document.querySelectorAll('#wm .R')];
+      Ls.forEach((el, i) => tl.fromTo(el, { opacity: 0, x: 50, filter: 'blur(8px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out', immediateRender: false }, T7 + 0.5 + i * 0.05));
+      Rs.forEach((el, i) => tl.fromTo(el, { opacity: 0, x: -50, filter: 'blur(8px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out', immediateRender: false }, T7 + 0.5 + i * 0.05));
+      tl.fromTo('#tag', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, T7 + 1.1);
+
+      // 13,8 → 18 : le rendez-vous
+      const T8 = 23 * B;
+      tl.fromTo('#day', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, T8);
+      tl.set('#hour', { opacity: 1 }, T8 + B);
+      tl.fromTo('#hour span', { opacity: 0, y: 90, filter: 'blur(10px)' }, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.45, ease: 'expo.out', stagger: 0.07, immediateRender: false }, T8 + B);
+      tl.fromTo('#stamp', { opacity: 0, scale: 1.7, rotation: -5 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.25, ease: 'back.out(2.5)', immediateRender: false }, 25 * B);
+      tl.fromTo('#with', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, 26 * B);
+      tl.fromTo('#stamp i', { opacity: 1 }, { opacity: 0.25, duration: 0.3, repeat: 4, yoyo: true, ease: 'steps(1)', immediateRender: false }, 26 * B);
+      tl.to({}, { duration: 0.01 }, 17.99);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

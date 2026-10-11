@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Émission live — Emblèmes (version claire)</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--papier:#F2EFE8;--carte:#FBFAF6;--encre:#0B0E11;--gris:#55606C;--trait:#D9D4C8;
+  --ambre:#E89B00;--vert:#00A86B;--rouge:#D7263D;
+  --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;--body:'Inter',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--papier);color:var(--encre);font-family:var(--body);padding:clamp(16px,3vw,48px);}
+.wrap{max-width:1280px;margin:0 auto;}
+h1{font-family:var(--cond);font-weight:800;font-size:clamp(2rem,4.6vw,3.6rem);text-transform:uppercase;}
+.lede{color:var(--gris);max-width:780px;margin:.6rem 0 2rem;line-height:1.6;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px;}
+.opt{background:var(--carte);border:1px solid var(--trait);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.stage{display:flex;align-items:center;justify-content:center;gap:28px;padding:40px 20px 28px;min-height:230px;}
+.mark{width:120px;height:120px;}
+.small{display:flex;align-items:center;gap:14px;}
+.small .mark{width:44px;height:44px;}
+.small .mark.xs{width:24px;height:24px;}
+.lock{display:flex;align-items:center;gap:16px;padding:0 20px 26px;justify-content:center;}
+.lock .mark{width:58px;height:58px;}
+.nm{font-family:var(--cond);font-weight:800;font-size:2.6rem;line-height:.9;text-transform:uppercase;}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;color:var(--gris);text-transform:uppercase;margin-top:4px;}
+.tag b{color:var(--ambre);font-weight:500;}.tag i{color:var(--vert);font-style:normal;}
+.lbl{border-top:1px solid var(--trait);padding:14px 18px;}
+.lbl h3{font-family:var(--mono);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.35rem;}
+.lbl h3 span{color:var(--gris);font-weight:400;}
+.lbl p{font-size:.9rem;color:#3A434D;line-height:1.55;}
+.rec{border:2px solid var(--encre);}
+.badge{display:inline-block;font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;background:var(--encre);color:var(--papier);padding:.2em .6em;border-radius:3px;margin-left:.4em;vertical-align:middle;}
+/* animations */
+.anim-cross .la{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 3s ease-in-out infinite;}
+.anim-cross .lv{stroke-dasharray:200;stroke-dashoffset:200;animation:draw 3s ease-in-out .3s infinite;}
+.anim-cross .dot{animation:pop 3s ease-in-out infinite;transform-origin:50px 50px;transform-box:fill-box;}
+@keyframes draw{0%{stroke-dashoffset:200;}45%,85%{stroke-dashoffset:0;}100%{stroke-dashoffset:-200;}}
+@keyframes pop{0%,40%{opacity:0;}50%,85%{opacity:1;}100%{opacity:0;}}
+.anim-candle .c1{animation:grow 2.4s ease-in-out infinite alternate;transform-origin:bottom;transform-box:fill-box;}
+.anim-candle .c2{animation:grow 2.4s ease-in-out .6s infinite alternate;transform-origin:bottom;transform-box:fill-box;}
+@keyframes grow{from{transform:scaleY(.7);}to{transform:scaleY(1);}}
+.anim-cursor .cur{animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.anim-pulse .pl{stroke-dasharray:260;stroke-dashoffset:260;animation:draw2 2.6s linear infinite;}
+@keyframes draw2{to{stroke-dashoffset:-260;}}
+.anim-coin .spin{animation:coin 4s ease-in-out infinite;transform-origin:50px 50px;transform-box:view-box;}
+@keyframes coin{0%,40%{transform:scaleX(1);}50%{transform:scaleX(.05);}60%,100%{transform:scaleX(1);}}
+.anim-iso .top{animation:shine 3s ease-in-out infinite;}
+@keyframes shine{50%{opacity:.6;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Emblèmes · version claire</h1>
+<p class="lede">Même direction « salle des marchés », passée en blanc : fond papier, encre noire, <b style="color:var(--ambre)">ambre</b> pour les marchés traditionnels et l'or, <b style="color:var(--vert)">vert</b> pour la crypto (un vert plus profond, pour rester lisible sur le blanc). Six emblèmes à la place du radar. Chacun est montré en grand, en petit (avatar, favicon) et avec le nom.</p>
+
+<div class="grid" id="g"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- 1. Le croisement (golden cross) -->
+    <symbol id="m1" viewBox="0 0 100 100">
+      <rect x="2" y="2" width="96" height="96" rx="14" fill="none" stroke="#0B0E11" stroke-width="4"/>
+      <polyline class="la" points="12,74 32,64 50,50 70,40 88,22" fill="none" stroke="#E89B00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline class="lv" points="12,30 30,38 50,50 68,62 88,70" fill="none" stroke="#00A86B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle class="dot" cx="50" cy="50" r="7" fill="#0B0E11"/>
+    </symbol>
+    <!-- 2. Les deux bougies -->
+    <symbol id="m2" viewBox="0 0 100 100">
+      <line x1="36" y1="10" x2="36" y2="90" stroke="#0B0E11" stroke-width="4"/>
+      <rect class="c1" x="24" y="26" width="24" height="52" rx="3" fill="#E89B00"/>
+      <line x1="66" y1="6" x2="66" y2="86" stroke="#0B0E11" stroke-width="4"/>
+      <rect class="c2" x="54" y="16" width="24" height="56" rx="3" fill="#00A86B"/>
+    </symbol>
+    <!-- 3. Lingot / bloc (isométrique) -->
+    <symbol id="m3" viewBox="0 0 100 100">
+      <polygon class="top" points="50,12 88,32 50,52 12,32" fill="#F2C14E" stroke="#0B0E11" stroke-width="3.5" stroke-linejoin="round"/>
+      <polygon points="12,32 50,52 50,90 12,70" fill="#E89B00" stroke="#0B0E11" stroke-width="3.5" stroke-linejoin="round"/>
+      <polygon points="50,52 88,32 88,70 50,90" fill="#00A86B" stroke="#0B0E11" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M62,50 l14,-7 M62,60 l14,-7 M62,70 l14,-7" stroke="#FBFAF6" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <!-- 4. Prompt de terminal -->
+    <symbol id="m4" viewBox="0 0 100 100">
+      <rect x="2" y="2" width="96" height="96" rx="14" fill="#0B0E11"/>
+      <polyline points="22,34 40,50 22,66" fill="none" stroke="#E89B00" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect class="cur" x="50" y="60" width="28" height="9" rx="2" fill="#00A86B"/>
+    </symbol>
+    <!-- 5. Le pouls du marché -->
+    <symbol id="m5" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="none" stroke="#0B0E11" stroke-width="4"/>
+      <polyline points="8,56 30,56 38,40 46,70 54,24 62,62 68,50 92,50" fill="none" stroke="#D9D4C8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <polyline class="pl" points="8,56 30,56 38,40 46,70 54,24 62,62 68,50 92,50" fill="none" stroke="#00A86B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="54" cy="24" r="5" fill="#E89B00"/>
+    </symbol>
+    <!-- 6. La pièce à deux faces -->
+    <symbol id="m6" viewBox="0 0 100 100">
+      <g class="spin">
+        <circle cx="50" cy="50" r="44" fill="#FBFAF6" stroke="#0B0E11" stroke-width="4"/>
+        <path d="M50,10 A40,40 0 0 0 50,90 Z" fill="#E89B00"/>
+        <path d="M50,10 A40,40 0 0 1 50,90 Z" fill="#00A86B"/>
+        <path d="M58,30 h12 M58,42 h18 M58,54 h10 M58,66 h16" stroke="#FBFAF6" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="32" cy="50" r="10" fill="none" stroke="#FBFAF6" stroke-width="3.5"/>
+        <line x1="50" y1="8" x2="50" y2="92" stroke="#0B0E11" stroke-width="3"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+const OPTS=[
+ {id:'m1',cls:'anim-cross',t:'Le croisement',s:'golden cross',rec:true,d:"Deux courbes se croisent : l'ambre monte, la verte descend. En trading, le « golden cross » est un signal fort. Ici, il raconte vos deux mondes qui se rencontrent chaque semaine."},
+ {id:'m2',cls:'anim-candle',t:'Les deux bougies',s:'chandeliers',d:"Deux bougies de graphique côte à côte, une par animateur. L'icône universelle des marchés, lisible même minuscule."},
+ {id:'m3',cls:'anim-iso',t:'Lingot / bloc',s:'or × blockchain',d:"Un seul volume : vu d'un côté c'est un lingot d'or, vu de l'autre un bloc de blockchain. L'or et la crypto dans la même forme."},
+ {id:'m4',cls:'anim-cursor',t:'Le prompt',s:'terminal',d:"Le chevron et le curseur d'un terminal. Ultra minimal, très « salle des marchés », marche en noir sur blanc comme en tampon."},
+ {id:'m5',cls:'anim-pulse',t:'Le pouls',s:'battement du marché',d:"Une ligne de cours qui bat comme un cœur, avec un point d'or au sommet. Le marché vivant, chaque semaine."},
+ {id:'m6',cls:'anim-coin',t:'La pièce à deux faces',s:'or | crypto',d:"Une pièce coupée en deux : face or (gravée), face crypto (circuit). Elle tourne sur elle-même. Le duo dans un objet."},
+];
+const SV=id=>{const s=document.getElementById(id);return {vb:s.getAttribute('viewBox'),inner:s.innerHTML};};
+document.getElementById('g').innerHTML=OPTS.map((o,i)=>`
+ <div class="opt ${o.rec?'rec':''}">
+  <div class="stage ${o.cls}">
+    <svg class="mark" viewBox="${SV(o.id).vb}">${SV(o.id).inner}</svg>
+    <div class="small"><svg class="mark" viewBox="${SV(o.id).vb}">${SV(o.id).inner}</svg><svg class="mark xs" viewBox="${SV(o.id).vb}">${SV(o.id).inner}</svg></div>
+  </div>
+  <div class="lock ${o.cls}"><svg class="mark" viewBox="${SV(o.id).vb}">${SV(o.id).inner}</svg><div><div class="nm">NOM</div><div class="tag"><b>Marchés · Or</b> × <i>Crypto</i></div></div></div>
+  <div class="lbl"><h3>${i+1}. ${o.t} <span>· ${o.s}</span>${o.rec?'<span class="badge">MA RECO</span>':''}</h3><p>${o.d}</p></div>
+ </div>`).join('');
+</script>
+</body>
+</html>

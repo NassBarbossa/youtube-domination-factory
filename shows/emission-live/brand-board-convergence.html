@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convergence — Branding</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--papier:#F2EFE8;--carte:#FBFAF6;--encre:#0B0E11;--gris:#55606C;--trait:#D9D4C8;--grille:#E4DFD3;
+  --ambre:#E89B00;--vert:#00A86B;--rouge:#D7263D;
+  --mono:'IBM Plex Mono',monospace;--cond:'Barlow Condensed',sans-serif;--body:'Inter',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--papier);color:var(--encre);font-family:var(--body);padding:clamp(16px,3vw,48px);}
+.wrap{max-width:1280px;margin:0 auto;}
+h1{font-family:var(--cond);font-weight:800;font-size:clamp(2.4rem,6vw,5rem);text-transform:uppercase;line-height:.95;}
+.lede{color:var(--gris);max-width:780px;margin:.8rem 0 0;line-height:1.6;}
+h2{font-family:var(--mono);font-weight:700;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;margin:3.2rem 0 1.2rem;display:flex;align-items:center;gap:.8rem;}
+h2::before{content:'>';color:var(--vert);}
+.note{color:var(--gris);font-size:.9rem;margin:-.6rem 0 1.2rem;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:20px;}
+.card{background:var(--carte);border:1px solid var(--trait);border-radius:12px;overflow:hidden;}
+.card.dark{background:var(--encre);border-color:#222;}
+.lbl{padding:12px 16px;border-top:1px solid var(--trait);font-family:var(--mono);font-size:.78rem;color:var(--gris);display:flex;justify-content:space-between;gap:1rem;}
+.card.dark .lbl{border-color:#222;}
+.lbl b{color:var(--encre);font-weight:500;} .card.dark .lbl b{color:#E6EDF3;}
+.stage{display:flex;align-items:center;justify-content:center;gap:28px;padding:48px 24px;min-height:280px;}
+
+/* ===== Emblème : le croisement ===== */
+.mark{display:block;}
+.mark .frame{fill:none;stroke:var(--encre);stroke-width:4;}
+.dark .mark .frame{stroke:#E6EDF3;}
+.mark .la,.mark .lv{fill:none;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;}
+.mark .la{stroke:var(--ambre);} .mark .lv{stroke:var(--vert);}
+.mark .dot{fill:var(--encre);} .dark .mark .dot{fill:#E6EDF3;}
+.mark.anim .la,.mark.anim .lv{stroke-dasharray:110;stroke-dashoffset:110;animation:draw 3.6s ease-in-out infinite;}
+.mark.anim .lv{animation-delay:.25s;}
+.mark.anim .dot{opacity:0;animation:pop 3.6s ease-in-out infinite;transform-origin:50px 50px;transform-box:view-box;}
+.mark.anim .ring{fill:none;stroke:var(--encre);stroke-width:2;opacity:0;animation:ring 3.6s ease-out infinite;transform-origin:50px 50px;transform-box:view-box;}
+@keyframes draw{0%{stroke-dashoffset:110;}40%,85%{stroke-dashoffset:0;}100%{stroke-dashoffset:-110;}}
+@keyframes pop{0%,36%{opacity:0;transform:scale(.2);}44%{opacity:1;transform:scale(1.3);}50%,85%{opacity:1;transform:scale(1);}100%{opacity:0;}}
+@keyframes ring{0%,42%{opacity:0;transform:scale(.3);}46%{opacity:.8;}70%,100%{opacity:0;transform:scale(1.4);}}
+
+.lock{display:flex;align-items:center;gap:22px;}
+.word .nm{font-family:var(--cond);font-weight:800;font-size:clamp(2.6rem,5vw,4rem);line-height:.88;letter-spacing:.01em;text-transform:uppercase;}
+.word .nm .cur{display:inline-block;width:.4em;height:.1em;background:var(--vert);margin-left:.1em;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.word .tag{margin-top:8px;font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;color:var(--gris);text-transform:uppercase;}
+.word .tag b{color:var(--ambre);font-weight:500;} .word .tag i{color:var(--vert);font-style:normal;}
+.dark .word .nm{color:#E6EDF3;} .dark .word .tag{color:#8B949E;}
+.stack{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+
+/* ===== Palette ===== */
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+.sw{border-radius:10px;overflow:hidden;border:1px solid var(--trait);background:var(--carte);}
+.sw .c{height:86px;border-bottom:1px solid var(--trait);}
+.sw .i{padding:10px 12px;font-family:var(--mono);font-size:.74rem;line-height:1.6;}
+.sw .i b{display:block;font-weight:500;} .sw .i span{color:var(--gris);}
+
+/* ===== Typo ===== */
+.type{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:14px;}
+.ty{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:22px;}
+.ty .s1{font-family:var(--cond);font-weight:800;font-size:3rem;text-transform:uppercase;line-height:1;}
+.ty .s2{font-family:var(--mono);font-size:1.4rem;font-weight:500;line-height:1.5;}
+.ty .s3{font-size:1.05rem;line-height:1.6;color:#2E3740;}
+.ty .meta{margin-top:12px;font-family:var(--mono);font-size:.72rem;color:var(--gris);}
+.up{color:var(--vert);} .dn{color:var(--rouge);} .au{color:var(--ambre);}
+
+/* ===== Écrans 16:9 ===== */
+.screen{position:relative;aspect-ratio:16/9;background:var(--papier);overflow:hidden;font-family:var(--mono);}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--grille) 1px,transparent 1px),linear-gradient(90deg,var(--grille) 1px,transparent 1px);background-size:40px 40px;}
+.topbar{position:absolute;left:0;right:0;top:0;height:7%;display:flex;align-items:center;justify-content:space-between;padding:0 2.2%;border-bottom:1px solid var(--trait);background:rgba(251,250,246,.92);font-size:clamp(7px,1vw,12px);color:var(--gris);z-index:3;}
+.topbar .brand{display:flex;align-items:center;gap:.6em;color:var(--encre);font-weight:700;letter-spacing:.12em;}
+.topbar .brand svg{width:1.6em;height:1.6em;}
+.live{display:inline-flex;align-items:center;gap:.5em;color:#fff;background:var(--rouge);padding:.25em .7em;border-radius:3px;font-weight:700;letter-spacing:.12em;}
+.live::before{content:'';width:.6em;height:.6em;border-radius:50%;background:#fff;animation:blink 1s steps(1) infinite;}
+.ticker{position:absolute;left:0;right:0;bottom:0;height:7.5%;border-top:1px solid var(--encre);background:var(--encre);color:#E6EDF3;overflow:hidden;z-index:3;display:flex;align-items:center;}
+.ticker-track{display:flex;gap:3em;white-space:nowrap;animation:tick 30s linear infinite;font-size:clamp(8px,1.1vw,13px);}
+@keyframes tick{to{transform:translateX(-50%);}}
+.ticker .up{color:#2EE59D;} .ticker .dn{color:#FF5A6A;}
+.tk b{font-weight:500;margin-right:.6em;}
+.center{position:absolute;inset:7% 0 7.5% 0;display:flex;align-items:center;justify-content:center;gap:5%;}
+.center .mark{width:26%;}
+.ctxt{display:flex;flex-direction:column;gap:.5em;}
+.ctxt .k{font-size:clamp(8px,1.1vw,13px);letter-spacing:.25em;color:var(--ambre);font-weight:700;}
+.ctxt .t{font-family:var(--cond);font-weight:800;font-size:clamp(22px,4.6vw,58px);line-height:.95;text-transform:uppercase;}
+.ctxt .cd{font-size:clamp(20px,4vw,50px);color:var(--vert);font-weight:700;}
+.ctxt .s{font-size:clamp(8px,1vw,12px);color:var(--gris);}
+.cams{position:absolute;inset:9% 2.2% 10% 2.2%;display:grid;grid-template-columns:1fr 1fr .62fr;gap:1.6%;}
+.cam{position:relative;border:2px solid var(--trait);border-radius:6px;background:linear-gradient(160deg,#E9E5DB,#DCD7CB);display:flex;align-items:center;justify-content:center;color:var(--gris);font-size:clamp(7px,1vw,12px);}
+.cam .tagc{position:absolute;left:4%;bottom:4%;padding:.3em .6em;border-radius:3px;font-weight:700;letter-spacing:.1em;font-size:clamp(6px,.85vw,11px);color:#fff;}
+.cam.a{border-color:var(--ambre);} .cam.a .tagc{background:var(--ambre);}
+.cam.v{border-color:var(--vert);} .cam.v .tagc{background:var(--vert);}
+.side{display:flex;flex-direction:column;gap:6%;}
+.panel{border:1px solid var(--trait);border-radius:6px;background:var(--carte);padding:7%;font-size:clamp(6px,.85vw,11px);}
+.panel .ph{color:var(--ambre);letter-spacing:.15em;margin-bottom:.6em;font-weight:700;}
+.panel .row{display:flex;justify-content:space-between;padding:.25em 0;border-bottom:1px dashed var(--trait);}
+.panel .mark{width:55%;margin:0 auto;}
+.topic{position:absolute;inset:7% 0 7.5% 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.4%;text-align:center;}
+.topic .num{font-size:clamp(9px,1.3vw,16px);letter-spacing:.3em;color:var(--vert);font-weight:700;}
+.topic .ttl{font-family:var(--cond);font-weight:800;font-size:clamp(26px,6vw,76px);line-height:.95;text-transform:uppercase;}
+.topic .bar{width:40%;height:4px;background:linear-gradient(90deg,var(--ambre),var(--vert));}
+.chips{display:flex;gap:1em;font-size:clamp(8px,1.1vw,13px);}
+.chip{border:1px solid var(--trait);background:var(--carte);padding:.35em .8em;border-radius:3px;}
+
+/* miniature */
+.thumb{position:relative;aspect-ratio:16/9;background:var(--papier);overflow:hidden;}
+.thumb .gridbg{background-size:30px 30px;}
+.face{position:absolute;bottom:0;width:30%;height:82%;border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center;color:var(--gris);font-family:var(--mono);font-size:clamp(7px,1vw,12px);text-align:center;}
+.face.a{left:2%;background:linear-gradient(180deg,rgba(232,155,0,.22),rgba(232,155,0,.05));border:3px solid var(--ambre);}
+.face.v{right:2%;background:linear-gradient(180deg,rgba(0,168,107,.2),rgba(0,168,107,.04));border:3px solid var(--vert);}
+.thumb .hl{position:absolute;left:33%;right:33%;top:12%;display:flex;flex-direction:column;align-items:center;gap:4%;text-align:center;}
+.thumb .hl .mark{width:22%;}
+.thumb .big{font-family:var(--cond);font-weight:800;font-size:clamp(20px,4.6vw,58px);line-height:.92;text-transform:uppercase;}
+.thumb .num{font-family:var(--mono);font-weight:700;font-size:clamp(14px,3vw,40px);white-space:nowrap;}
+.thumb .ep{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);font-family:var(--mono);font-size:clamp(7px,1vw,12px);letter-spacing:.2em;font-weight:700;color:var(--papier);background:var(--encre);padding:.35em .9em;border-radius:3px;white-space:nowrap;}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;}
+.rule{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:18px;font-size:.92rem;line-height:1.6;color:#2E3740;}
+.rule b{display:block;font-family:var(--mono);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4em;}
+.rule.ok b{color:var(--vert);} .rule.no b{color:var(--rouge);}
+footer{margin:4rem 0 1rem;color:var(--gris);font-family:var(--mono);font-size:.75rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lock" style="margin-bottom:1rem">
+  <svg class="mark anim" viewBox="0 0 100 100" style="width:110px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="ring" cx="50" cy="50" r="16"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+  <h1>Convergence</h1>
+</div>
+<p class="lede">Émission live hebdomadaire, en replay sur YouTube. Les marchés traditionnels et l'or (<b style="color:var(--ambre)">ambre</b>) d'un côté, la crypto (<b style="color:var(--vert)">vert</b>) de l'autre. Chaque semaine, les deux courbes se croisent : c'est l'emblème, et c'est le nom. Le style reste celui d'un terminal de salle des marchés, en version claire.</p>
+
+<!-- LOGO -->
+<h2>Logo</h2>
+<p class="note">L'emblème : deux courbes qui se croisent, le « golden cross » du trading. Animé, les courbes se tracent et le point de croisement s'allume.</p>
+<div class="grid2">
+  <div class="card"><div class="stage"><div class="lock">
+    <svg class="mark anim" viewBox="0 0 100 100" style="width:120px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="ring" cx="50" cy="50" r="16"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+    <div class="word"><div class="nm">Convergence<span class="cur"></span></div><div class="tag"><b>Marchés · Or</b> × <i>Crypto</i> — chaque semaine</div></div>
+  </div></div><div class="lbl"><b>Logo horizontal · version claire</b><span>principale</span></div></div>
+
+  <div class="card dark"><div class="stage"><div class="lock">
+    <svg class="mark anim" viewBox="0 0 100 100" style="width:120px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+    <div class="word"><div class="nm">Convergence<span class="cur"></span></div><div class="tag"><b>Marchés · Or</b> × <i>Crypto</i> — chaque semaine</div></div>
+  </div></div><div class="lbl"><b>Version sombre</b><span>fonds photo, vidéo</span></div></div>
+
+  <div class="card"><div class="stage"><div class="stack">
+    <svg class="mark anim" viewBox="0 0 100 100" style="width:150px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="ring" cx="50" cy="50" r="16"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+    <div class="word"><div class="nm" style="font-size:2.6rem">Convergence</div><div class="tag">Là où les marchés se croisent</div></div>
+  </div></div><div class="lbl"><b>Version empilée + accroche</b><span>écrans, affiches</span></div></div>
+
+  <div class="card"><div class="stage" style="gap:34px">
+    <svg class="mark" viewBox="0 0 100 100" style="width:110px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+    <svg class="mark" viewBox="0 0 100 100" style="width:56px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+    <svg class="mark" viewBox="0 0 100 100" style="width:28px"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+  </div><div class="lbl"><b>Avatar · icône · favicon</b><span>tient jusqu'à 28 px</span></div></div>
+</div>
+
+<!-- COULEURS -->
+<h2>Couleurs</h2>
+<p class="note">Fond papier, encre noire, deux couleurs de signal : une par animateur. Le rouge est réservé aux baisses et au badge LIVE.</p>
+<div class="sw-grid">
+  <div class="sw"><div class="c" style="background:#F2EFE8"></div><div class="i"><b>Papier</b>#F2EFE8<br><span>fond principal</span></div></div>
+  <div class="sw"><div class="c" style="background:#FBFAF6"></div><div class="i"><b>Carte</b>#FBFAF6<br><span>panneaux, encadrés</span></div></div>
+  <div class="sw"><div class="c" style="background:#0B0E11"></div><div class="i"><b>Encre</b>#0B0E11<br><span>texte, logo, bandeau cours</span></div></div>
+  <div class="sw"><div class="c" style="background:#E89B00"></div><div class="i"><b>Ambre</b>#E89B00<br><span>marchés · or · co-host</span></div></div>
+  <div class="sw"><div class="c" style="background:#00A86B"></div><div class="i"><b>Vert</b>#00A86B<br><span>crypto · hausses · Nass</span></div></div>
+  <div class="sw"><div class="c" style="background:#D7263D"></div><div class="i"><b>Rouge</b>#D7263D<br><span>baisses · LIVE</span></div></div>
+  <div class="sw"><div class="c" style="background:#55606C"></div><div class="i"><b>Gris</b>#55606C<br><span>légendes, sources</span></div></div>
+  <div class="sw"><div class="c" style="background:#E4DFD3"></div><div class="i"><b>Grille</b>#E4DFD3<br><span>quadrillage, traits</span></div></div>
+</div>
+
+<!-- TYPO -->
+<h2>Typographies</h2>
+<div class="type">
+  <div class="ty"><div class="s1">L'or casse<br>son record</div><div class="meta">Titres · Barlow Condensed 800 · capitales</div></div>
+  <div class="ty"><div class="s2"><span class="up">BTC 84 375 $ ▲ 2,1 %</span><br><span class="au">OR 4 321 $ ▲ 0,4 %</span></div><div class="meta">Chiffres · IBM Plex Mono 500</div></div>
+  <div class="ty"><div class="s3">Chaque semaine, deux regards sur les marchés : les actifs traditionnels et l'or d'un côté, la crypto de l'autre. Les tendances qui comptent, sans bruit.</div><div class="meta">Texte courant · Inter 400</div></div>
+</div>
+
+<!-- ÉCRANS -->
+<h2>Écrans du live</h2>
+<p class="note">Format 16:9 pour OBS ou StreamYard. Le bandeau de cours, en noir, défile en permanence en bas. Toutes les valeurs affichées sont des exemples.</p>
+<div class="grid2">
+  <div class="card"><div class="screen"><div class="gridbg"></div>
+    <div class="topbar"><span class="brand">CONVERGENCE</span><span>MARCHÉS · OR × CRYPTO</span></div>
+    <div class="center">
+      <svg class="mark anim" viewBox="0 0 100 100"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="ring" cx="50" cy="50" r="16"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+      <div class="ctxt"><span class="k">LE LIVE COMMENCE DANS</span><span class="cd" id="cd">04:59</span><span class="t">Les marchés<br>se croisent</span><span class="s">Pose tes questions dans le chat</span></div>
+    </div>
+    <div class="ticker"><div class="ticker-track"></div></div>
+  </div><div class="lbl"><b>Écran d'attente</b><span>emblème animé + compte à rebours</span></div></div>
+
+  <div class="card"><div class="screen"><div class="gridbg"></div>
+    <div class="topbar"><span class="live">LIVE</span><span class="brand">CONVERGENCE · ÉP. 01</span><span>TENDANCES DE LA SEMAINE</span></div>
+    <div class="cams">
+      <div class="cam a">CAMÉRA CO-HOST<span class="tagc">MARCHÉS · OR</span></div>
+      <div class="cam v">CAMÉRA NASS<span class="tagc">CRYPTO</span></div>
+      <div class="side">
+        <div class="panel"><svg class="mark anim" viewBox="0 0 100 100"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg></div>
+        <div class="panel"><div class="ph">CETTE SEMAINE</div>
+          <div class="row"><span>OR</span><span class="up">+1,8 %</span></div>
+          <div class="row"><span>S&amp;P 500</span><span class="up">+0,6 %</span></div>
+          <div class="row"><span>BTC</span><span class="dn">−2,4 %</span></div>
+          <div class="row"><span>SOL</span><span class="up">+6,1 %</span></div></div>
+      </div>
+    </div>
+    <div class="ticker"><div class="ticker-track"></div></div>
+  </div><div class="lbl"><b>Écran live · 2 caméras</b><span>ambre = co-host · vert = Nass</span></div></div>
+
+  <div class="card"><div class="screen"><div class="gridbg"></div>
+    <div class="topbar"><span class="live">LIVE</span><span class="brand">CONVERGENCE</span><span>SUJET 02 / 05</span></div>
+    <div class="topic"><span class="num">&gt; TENDANCE N°2</span><span class="ttl">L'<span class="au">or</span> casse<br>son record</span><span class="bar"></span>
+      <div class="chips"><span class="chip au">OR</span><span class="chip">BANQUES CENTRALES</span><span class="chip up">BTC</span></div></div>
+    <div class="ticker"><div class="ticker-track"></div></div>
+  </div><div class="lbl"><b>Carte de sujet</b><span>entre deux tendances</span></div></div>
+
+  <div class="card"><div class="screen"><div class="gridbg"></div>
+    <div class="topbar"><span class="brand">CONVERGENCE</span><span>FIN DU LIVE</span></div>
+    <div class="center">
+      <svg class="mark anim" viewBox="0 0 100 100" style="width:20%"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+      <div class="ctxt"><span class="k">PROCHAIN CROISEMENT</span><span class="t">Même heure,<br>la semaine pro</span><span class="s">Abonne-toi · active la cloche · replay sur YouTube</span></div>
+    </div>
+    <div class="ticker"><div class="ticker-track"></div></div>
+  </div><div class="lbl"><b>Écran de fin</b><span>rendez-vous suivant</span></div></div>
+</div>
+
+<!-- MINIATURES -->
+<h2>Miniature YouTube du replay</h2>
+<p class="note">Gabarit 1280 × 720 : chaque animateur dans sa couleur, l'emblème au centre, l'accroche et le chiffre choc de la semaine.</p>
+<div class="grid2">
+  <div class="card"><div class="thumb"><div class="gridbg"></div>
+    <div class="face a">PHOTO<br>CO-HOST</div><div class="face v">PHOTO<br>NASS</div>
+    <div class="hl"><svg class="mark" viewBox="0 0 100 100"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+      <span class="big">Or vs<br>Bitcoin</span><span class="num"><span class="up">+6 %</span> / <span class="dn">−2 %</span></span></div>
+    <span class="ep">CONVERGENCE · ÉP. 01</span>
+  </div><div class="lbl"><b>Miniature · version duel</b><span>données d'exemple</span></div></div>
+
+  <div class="card"><div class="thumb"><div class="gridbg"></div>
+    <div class="face a">PHOTO<br>CO-HOST</div><div class="face v">PHOTO<br>NASS</div>
+    <div class="hl"><svg class="mark" viewBox="0 0 100 100"><rect class="frame" x="2" y="2" width="96" height="96" rx="14"/><polyline class="la" points="12,74 32,64 50,50 70,40 88,22"/><polyline class="lv" points="12,30 30,38 50,50 68,62 88,70"/><circle class="dot" cx="50" cy="50" r="7"/></svg>
+      <span class="big">Le krach<br>arrive ?</span><span class="num au">S&amp;P <span class="dn">▼</span></span></div>
+    <span class="ep">CONVERGENCE · ÉP. 02</span>
+  </div><div class="lbl"><b>Miniature · version question</b><span>données d'exemple</span></div></div>
+</div>
+
+<!-- RÈGLES -->
+<h2>Règles d'usage</h2>
+<div class="rules">
+  <div class="rule ok"><b>✓ À faire</b>L'ambre pour le co-host et les marchés traditionnels, le vert pour la crypto. Un écran = l'encre, ces deux couleurs, et le rouge seulement pour les baisses.</div>
+  <div class="rule ok"><b>✓ À faire</b>Tous les chiffres en IBM Plex Mono, avec le signe et la flèche (▲ +2,1 % / ▼ −2,4 %). Toujours afficher la source et la date.</div>
+  <div class="rule ok"><b>✓ À faire</b>L'animation du croisement ouvre chaque séquence : début du live, changement de sujet, fin. C'est la signature de l'émission.</div>
+  <div class="rule no"><b>✕ À éviter</b>Les néons, les dégradés colorés, les emojis fusées. Le style tient parce qu'il reste sobre, comme un vrai terminal.</div>
+  <div class="rule no"><b>✕ À éviter</b>Le rouge en décoration : il est réservé aux baisses et au badge LIVE.</div>
+  <div class="rule no"><b>✕ À éviter</b>Les promesses de gain dans les titres et les miniatures (« x100 », « devenir riche »). Le ton : analyse, pas hype.</div>
+</div>
+
+<footer>Convergence · board de travail · toutes les valeurs de marché affichées sont des exemples</footer>
+</div>
+<script>
+const T=[["OR","4 321 $","+0,4 %","up"],["ARGENT","52,10 $","+1,2 %","up"],["S&P 500","6 612","+0,6 %","up"],["CAC 40","8 104","−0,3 %","dn"],["BTC","84 375 $","−2,4 %","dn"],["ETH","3 108 $","−1,1 %","dn"],["SOL","182 $","+6,1 %","up"],["EUR/USD","1,140","+0,2 %","up"],["PÉTROLE","71,40 $","−0,8 %","dn"]];
+const html=T.map(t=>`<span class="tk"><b>${t[0]}</b>${t[1]} <span class="${t[3]}">${t[3]=='up'?'▲':'▼'} ${t[2]}</span></span>`).join('');
+document.querySelectorAll('.ticker-track').forEach(el=>el.innerHTML=html+html);
+let s=299;setInterval(()=>{s=s>0?s-1:299;document.getElementById('cd').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');},1000);
+</script>
+</body>
+</html>

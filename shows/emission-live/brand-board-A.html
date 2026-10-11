@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Émission live — Direction A</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0B0E11; --panel:#12171D; --grid:#1E2630; --line:#2A3440;
+  --ambre:#FFB000; --vert:#00FF9C; --rouge:#FF3B3B;
+  --txt:#E6EDF3; --muted:#7D8590;
+  --mono:'IBM Plex Mono',monospace; --cond:'Barlow Condensed',sans-serif; --body:'Inter',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--noir);color:var(--txt);font-family:var(--body);padding:clamp(16px,3vw,48px);}
+.wrap{max-width:1280px;margin:0 auto;}
+h1{font-family:var(--cond);font-weight:800;font-size:clamp(2.2rem,5vw,4rem);letter-spacing:.01em;text-transform:uppercase;}
+.lede{color:var(--muted);max-width:760px;margin:.6rem 0 0;line-height:1.6;}
+h2{font-family:var(--mono);font-weight:700;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ambre);margin:3.2rem 0 1.2rem;display:flex;align-items:center;gap:.8rem;}
+h2::before{content:'>';color:var(--vert);}
+.sec-note{color:var(--muted);font-size:.9rem;margin:-.6rem 0 1.2rem;}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:20px;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+.card-lbl{padding:12px 16px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;gap:1rem;}
+.card-lbl b{color:var(--txt);font-weight:500;}
+.placeholder-name{font-family:var(--mono);color:var(--muted);border:1px dashed var(--line);padding:.05em .4em;border-radius:4px;}
+
+/* ===== Radar (logo mark) ===== */
+.radar{position:relative;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,255,156,.06),transparent 70%),var(--noir);
+  border:1.5px solid rgba(0,255,156,.55);box-shadow:0 0 40px rgba(0,255,156,.12),inset 0 0 40px rgba(0,255,156,.06);overflow:hidden;}
+.radar .rings{position:absolute;inset:0;border-radius:50%;
+  background:repeating-radial-gradient(circle,transparent 0 calc(25% - 1px),rgba(0,255,156,.22) calc(25% - 1px) 25%);}
+.radar .cross{position:absolute;inset:0;background:
+  linear-gradient(90deg,transparent calc(50% - .5px),rgba(0,255,156,.22) calc(50% - .5px),rgba(0,255,156,.22) calc(50% + .5px),transparent calc(50% + .5px)),
+  linear-gradient(0deg,transparent calc(50% - .5px),rgba(0,255,156,.22) calc(50% - .5px),rgba(0,255,156,.22) calc(50% + .5px),transparent calc(50% + .5px));}
+.radar .sweep{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(0,255,156,0) 0deg,rgba(0,255,156,0) 300deg,rgba(0,255,156,.35) 355deg,rgba(0,255,156,.9) 360deg);
+  animation:sweep 4s linear infinite;}
+@keyframes sweep{to{transform:rotate(360deg);}}
+.radar .ticks{position:absolute;inset:0;}
+.blip{position:absolute;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;opacity:0;animation:blip 4s linear infinite;}
+.blip.a{background:var(--ambre);box-shadow:0 0 12px var(--ambre);}
+.blip.v{background:var(--vert);box-shadow:0 0 12px var(--vert);}
+.blip span{position:absolute;left:12px;top:-6px;font-family:var(--mono);font-size:10px;white-space:nowrap;}
+.blip.a span{color:var(--ambre);} .blip.v span{color:var(--vert);}
+@keyframes blip{0%{opacity:0;}2%{opacity:1;}60%{opacity:.85;}90%,100%{opacity:0;}}
+
+/* Logo lockups */
+.logo-stage{display:flex;align-items:center;justify-content:center;gap:28px;padding:48px 24px;min-height:300px;}
+.lockup{display:flex;align-items:center;gap:22px;}
+.lockup .radar{width:120px;}
+.word{display:flex;flex-direction:column;gap:6px;}
+.word .nm{font-family:var(--cond);font-weight:800;font-size:3.4rem;line-height:.9;letter-spacing:.02em;text-transform:uppercase;}
+.word .nm .cur{display:inline-block;width:.45em;height:.12em;background:var(--vert);margin-left:.12em;vertical-align:baseline;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.word .tag{font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
+.word .tag b{color:var(--ambre);font-weight:500;} .word .tag i{color:var(--vert);font-style:normal;}
+.light{background:#F2EFE8;color:#0B0E11;}
+.light .radar{background:#F2EFE8;border-color:#0B0E11;box-shadow:none;}
+.light .radar .rings{background:repeating-radial-gradient(circle,transparent 0 calc(25% - 1px),rgba(11,14,17,.25) calc(25% - 1px) 25%);}
+.light .radar .cross{background:linear-gradient(90deg,transparent calc(50% - .5px),rgba(11,14,17,.25) calc(50% - .5px),rgba(11,14,17,.25) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(0deg,transparent calc(50% - .5px),rgba(11,14,17,.25) calc(50% - .5px),rgba(11,14,17,.25) calc(50% + .5px),transparent calc(50% + .5px));}
+.light .radar .sweep{background:conic-gradient(from 0deg,transparent 0 300deg,rgba(11,14,17,.25) 355deg,#0B0E11 360deg);}
+.light .word .tag{color:#55606C;}
+.light .word .nm .cur{background:#0B0E11;}
+
+/* ===== Palette ===== */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+.sw{border-radius:10px;overflow:hidden;border:1px solid var(--line);}
+.sw .c{height:90px;}
+.sw .i{padding:10px 12px;background:var(--panel);font-family:var(--mono);font-size:.75rem;line-height:1.6;}
+.sw .i b{display:block;color:var(--txt);font-weight:500;}
+.sw .i span{color:var(--muted);}
+
+/* ===== Typo ===== */
+.type{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:14px;}
+.ty{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;}
+.ty .s1{font-family:var(--cond);font-weight:800;font-size:3rem;text-transform:uppercase;line-height:1;}
+.ty .s2{font-family:var(--mono);font-size:1.5rem;font-weight:500;}
+.ty .s3{font-family:var(--body);font-size:1.05rem;line-height:1.6;color:#C9D1D9;}
+.ty .meta{margin-top:12px;font-family:var(--mono);font-size:.72rem;color:var(--muted);}
+
+/* ===== Écrans 16:9 ===== */
+.screen{position:relative;aspect-ratio:16/9;background:var(--noir);overflow:hidden;font-family:var(--mono);}
+.screen .gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;opacity:.5;}
+.topbar{position:absolute;left:0;right:0;top:0;height:7%;display:flex;align-items:center;justify-content:space-between;padding:0 2.2%;border-bottom:1px solid var(--line);background:rgba(11,14,17,.85);font-size:clamp(7px,1vw,12px);color:var(--muted);z-index:3;}
+.live{display:inline-flex;align-items:center;gap:.5em;color:#fff;background:var(--rouge);padding:.25em .7em;border-radius:3px;font-weight:700;letter-spacing:.12em;}
+.live::before{content:'';width:.6em;height:.6em;border-radius:50%;background:#fff;animation:blink 1s steps(1) infinite;}
+.ticker{position:absolute;left:0;right:0;bottom:0;height:7.5%;border-top:1px solid var(--line);background:#07090B;overflow:hidden;z-index:3;display:flex;align-items:center;}
+.ticker-track{display:flex;gap:3em;white-space:nowrap;animation:tick 30s linear infinite;font-size:clamp(8px,1.1vw,13px);}
+@keyframes tick{to{transform:translateX(-50%);}}
+.tk b{color:var(--txt);font-weight:500;margin-right:.6em;}
+.up{color:var(--vert);} .dn{color:var(--rouge);} .au{color:var(--ambre);}
+
+/* écran d'attente */
+.wait{position:absolute;inset:7% 0 7.5% 0;display:flex;align-items:center;justify-content:center;gap:5%;}
+.wait .radar{width:34%;}
+.wait-txt{display:flex;flex-direction:column;gap:.5em;}
+.wait-txt .k{font-size:clamp(8px,1.1vw,13px);letter-spacing:.25em;color:var(--ambre);}
+.wait-txt .t{font-family:var(--cond);font-weight:800;font-size:clamp(22px,4.6vw,58px);line-height:.95;text-transform:uppercase;color:#fff;}
+.wait-txt .cd{font-size:clamp(20px,4vw,50px);color:var(--vert);font-weight:700;letter-spacing:.05em;}
+.wait-txt .s{font-size:clamp(8px,1vw,12px);color:var(--muted);}
+
+/* live 2 cams */
+.cams{position:absolute;inset:9% 2.2% 10% 2.2%;display:grid;grid-template-columns:1fr 1fr .62fr;gap:1.6%;}
+.cam{position:relative;border:1px solid var(--line);border-radius:6px;background:linear-gradient(160deg,#151B22,#0E1217);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:clamp(7px,1vw,12px);}
+.cam .tagc{position:absolute;left:4%;bottom:4%;padding:.3em .6em;border-radius:3px;font-weight:700;letter-spacing:.1em;font-size:clamp(6px,.85vw,11px);color:#0B0E11;}
+.cam.a{border-color:rgba(255,176,0,.5);} .cam.a .tagc{background:var(--ambre);}
+.cam.v{border-color:rgba(0,255,156,.5);} .cam.v .tagc{background:var(--vert);}
+.side{display:flex;flex-direction:column;gap:6%;}
+.panel{border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:7%;font-size:clamp(6px,.85vw,11px);}
+.panel .ph{color:var(--ambre);letter-spacing:.15em;margin-bottom:.6em;}
+.panel .row{display:flex;justify-content:space-between;padding:.25em 0;border-bottom:1px dashed var(--line);}
+.mini-radar{width:62%;margin:0 auto;}
+
+/* carte sujet */
+.topic{position:absolute;inset:7% 0 7.5% 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2%;text-align:center;}
+.topic .num{font-size:clamp(9px,1.3vw,16px);letter-spacing:.3em;color:var(--vert);}
+.topic .ttl{font-family:var(--cond);font-weight:800;font-size:clamp(26px,6vw,76px);line-height:.95;text-transform:uppercase;}
+.topic .ttl .au{color:var(--ambre);}
+.topic .bar{width:40%;height:3px;background:linear-gradient(90deg,var(--ambre),var(--vert));transform-origin:left;animation:barIn 2.5s ease-in-out infinite alternate;}
+@keyframes barIn{from{transform:scaleX(.1);}to{transform:scaleX(1);}}
+.topic .chips{display:flex;gap:1em;font-size:clamp(8px,1.1vw,13px);}
+.chip{border:1px solid var(--line);padding:.35em .8em;border-radius:3px;}
+
+/* miniature */
+.thumb{position:relative;aspect-ratio:16/9;background:var(--noir);overflow:hidden;}
+.thumb .gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:30px 30px;opacity:.6;}
+.face{position:absolute;bottom:0;width:30%;height:82%;border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--mono);font-size:clamp(7px,1vw,12px);text-align:center;}
+.face.a{left:2%;background:linear-gradient(180deg,rgba(255,176,0,.25),rgba(255,176,0,.05));border:2px solid var(--ambre);}
+.face.v{right:2%;background:linear-gradient(180deg,rgba(0,255,156,.22),rgba(0,255,156,.04));border:2px solid var(--vert);}
+.thumb .hl{position:absolute;left:34%;right:34%;top:14%;display:flex;flex-direction:column;align-items:center;gap:4%;text-align:center;}
+.thumb .big{font-family:var(--cond);font-weight:800;font-size:clamp(20px,4.6vw,58px);line-height:.92;text-transform:uppercase;color:#fff;}
+.thumb .num{font-family:var(--mono);font-weight:700;font-size:clamp(16px,3.6vw,46px);}
+.thumb .ep{position:absolute;left:50%;bottom:6%;transform:translateX(-50%);font-family:var(--mono);font-size:clamp(7px,1vw,12px);letter-spacing:.2em;color:var(--muted);border:1px solid var(--line);padding:.3em .8em;border-radius:3px;background:var(--noir);}
+.thumb .arrow{font-size:1.2em;}
+
+/* règles */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px;}
+.rule{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;font-size:.92rem;line-height:1.6;color:#C9D1D9;}
+.rule b{display:block;font-family:var(--mono);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4em;}
+.rule.ok b{color:var(--vert);} .rule.no b{color:var(--rouge);}
+footer{margin:4rem 0 1rem;color:var(--muted);font-family:var(--mono);font-size:.75rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Direction A · Salle des marchés</h1>
+  <p class="lede">Émission live hebdomadaire, en replay sur YouTube. Un terminal d'analyste : sobre, data, crédible. Le geste signature, c'est un <b style="color:var(--vert)">balayage radar</b> qui fait apparaître les tendances de la semaine. <b style="color:var(--ambre)">Ambre</b> pour l'or et les marchés traditionnels, <b style="color:var(--vert)">vert</b> pour la crypto. Le nom n'est pas encore choisi : il apparaît ici en <span class="placeholder-name">NOM</span>.</p>
+
+  <!-- ===== LOGO ===== -->
+  <h2>Logo</h2>
+  <p class="sec-note">L'emblème radar fonctionne seul, sans le nom : avatar YouTube, favicon, filigrane. Les points ambre = marchés et or, les points verts = crypto.</p>
+  <div class="grid2">
+    <div class="card"><div class="logo-stage">
+      <div class="lockup">
+        <div class="radar"><div class="rings"></div><div class="cross"></div><div class="sweep"></div>
+          <span class="blip a" style="left:68%;top:30%;animation-delay:.55s"></span>
+          <span class="blip v" style="left:30%;top:64%;animation-delay:2.6s"></span>
+          <span class="blip v" style="left:72%;top:70%;animation-delay:1.4s"></span>
+        </div>
+        <div class="word"><span class="nm">NOM<span class="cur"></span></span><span class="tag"><b>Marchés · Or</b> × <i>Crypto</i> — chaque semaine</span></div>
+      </div>
+    </div><div class="card-lbl"><b>Logo horizontal · fond sombre</b><span>emblème + nom + signature</span></div></div>
+
+    <div class="card light"><div class="logo-stage light">
+      <div class="lockup">
+        <div class="radar"><div class="rings"></div><div class="cross"></div><div class="sweep"></div></div>
+        <div class="word"><span class="nm">NOM<span class="cur"></span></span><span class="tag">Marchés · Or × Crypto — chaque semaine</span></div>
+      </div>
+    </div><div class="card-lbl"><b>Version claire · une couleur</b><span>documents, presse, partenaires</span></div></div>
+
+    <div class="card"><div class="logo-stage">
+      <div class="radar" style="width:200px">
+        <div class="rings"></div><div class="cross"></div><div class="sweep"></div>
+        <span class="blip a" style="left:66%;top:28%;animation-delay:.5s"><span>OR +1,8 %</span></span>
+        <span class="blip v" style="left:26%;top:60%;animation-delay:2.7s"><span>BTC −2,4 %</span></span>
+        <span class="blip v" style="left:70%;top:72%;animation-delay:1.4s"><span>SOL +6,1 %</span></span>
+        <span class="blip a" style="left:36%;top:24%;animation-delay:3.4s"><span>S&amp;P +0,6 %</span></span>
+      </div>
+    </div><div class="card-lbl"><b>Emblème animé · le geste signature</b><span>données d'exemple</span></div></div>
+
+    <div class="card"><div class="logo-stage" style="gap:36px">
+      <div class="radar" style="width:110px;border-radius:24px"><div class="rings"></div><div class="cross"></div><div class="sweep"></div></div>
+      <div class="radar" style="width:64px"><div class="rings"></div><div class="cross"></div><div class="sweep"></div></div>
+      <div class="radar" style="width:32px"><div class="rings"></div><div class="sweep"></div></div>
+    </div><div class="card-lbl"><b>Avatar · icône · favicon</b><span>tient jusqu'à 32 px</span></div></div>
+  </div>
+
+  <!-- ===== PALETTE ===== -->
+  <h2>Couleurs</h2>
+  <p class="sec-note">Fond très sombre, deux couleurs de signal, une par animateur. Le rouge sert uniquement aux baisses et au badge LIVE.</p>
+  <div class="swatches">
+    <div class="sw"><div class="c" style="background:#0B0E11"></div><div class="i"><b>Noir terminal</b>#0B0E11<br><span>fond principal</span></div></div>
+    <div class="sw"><div class="c" style="background:#12171D"></div><div class="i"><b>Panneau</b>#12171D<br><span>cartes, encadrés</span></div></div>
+    <div class="sw"><div class="c" style="background:#1E2630"></div><div class="i"><b>Grille</b>#1E2630<br><span>quadrillage, séparateurs</span></div></div>
+    <div class="sw"><div class="c" style="background:#FFB000"></div><div class="i"><b>Ambre</b>#FFB000<br><span>marchés tradi · or · co-host</span></div></div>
+    <div class="sw"><div class="c" style="background:#00FF9C"></div><div class="i"><b>Vert phosphore</b>#00FF9C<br><span>crypto · hausses · Nass</span></div></div>
+    <div class="sw"><div class="c" style="background:#FF3B3B"></div><div class="i"><b>Rouge signal</b>#FF3B3B<br><span>baisses · LIVE</span></div></div>
+    <div class="sw"><div class="c" style="background:#E6EDF3"></div><div class="i"><b>Texte</b>#E6EDF3<br><span>titres, chiffres</span></div></div>
+    <div class="sw"><div class="c" style="background:#7D8590"></div><div class="i"><b>Gris secondaire</b>#7D8590<br><span>légendes, sources</span></div></div>
+  </div>
+
+  <!-- ===== TYPO ===== -->
+  <h2>Typographies</h2>
+  <div class="type">
+    <div class="ty"><div class="s1">L'or casse<br>son record</div><div class="meta">Titres · Barlow Condensed 800 · capitales</div></div>
+    <div class="ty"><div class="s2"><span class="up">BTC 84 375 $ ▲ 2,1 %</span><br><span class="au">OR 4 321 $ ▲ 0,4 %</span></div><div class="meta">Chiffres et données · IBM Plex Mono 500</div></div>
+    <div class="ty"><div class="s3">Chaque semaine, deux regards sur les marchés : les actifs traditionnels et l'or d'un côté, la crypto de l'autre. Les tendances qui comptent, sans bruit.</div><div class="meta">Texte courant · Inter 400</div></div>
+  </div>
+
+  <!-- ===== ÉCRANS DU LIVE ===== -->
+  <h2>Écrans du live</h2>
+  <p class="sec-note">Format 16:9, prêts pour OBS ou StreamYard. Le bandeau de cours défile en permanence en bas. Toutes les valeurs affichées sont des exemples.</p>
+  <div class="grid2">
+
+    <div class="card"><div class="screen">
+      <div class="gridbg"></div>
+      <div class="topbar"><span>NOM · ÉMISSION HEBDO</span><span>MARCHÉS · OR × CRYPTO</span></div>
+      <div class="wait">
+        <div class="radar"><div class="rings"></div><div class="cross"></div><div class="sweep"></div>
+          <span class="blip a" style="left:68%;top:30%;animation-delay:.55s"></span><span class="blip v" style="left:28%;top:62%;animation-delay:2.6s"></span></div>
+        <div class="wait-txt"><span class="k">LE LIVE COMMENCE DANS</span><span class="cd" id="cd">04:59</span><span class="t">On scanne<br>les marchés</span><span class="s">Pose tes questions dans le chat</span></div>
+      </div>
+      <div class="ticker"><div class="ticker-track" id="tk1"></div></div>
+    </div><div class="card-lbl"><b>Écran d'attente</b><span>radar + compte à rebours</span></div></div>
+
+    <div class="card"><div class="screen">
+      <div class="gridbg"></div>
+      <div class="topbar"><span class="live">LIVE</span><span>NOM · ÉPISODE 01</span><span>TENDANCES DE LA SEMAINE</span></div>
+      <div class="cams">
+        <div class="cam a">CAMÉRA CO-HOST<span class="tagc">MARCHÉS · OR</span></div>
+        <div class="cam v">CAMÉRA NASS<span class="tagc">CRYPTO</span></div>
+        <div class="side">
+          <div class="panel"><div class="mini-radar radar"><div class="rings"></div><div class="cross"></div><div class="sweep"></div></div></div>
+          <div class="panel"><div class="ph">SUR LE RADAR</div>
+            <div class="row"><span>OR</span><span class="up">+1,8 %</span></div>
+            <div class="row"><span>S&amp;P 500</span><span class="up">+0,6 %</span></div>
+            <div class="row"><span>BTC</span><span class="dn">−2,4 %</span></div>
+            <div class="row"><span>SOL</span><span class="up">+6,1 %</span></div></div>
+        </div>
+      </div>
+      <div class="ticker"><div class="ticker-track" id="tk2"></div></div>
+    </div><div class="card-lbl"><b>Écran live · 2 caméras</b><span>ambre = co-host · vert = Nass</span></div></div>
+
+    <div class="card"><div class="screen">
+      <div class="gridbg"></div>
+      <div class="topbar"><span class="live">LIVE</span><span>NOM</span><span>SUJET 02 / 05</span></div>
+      <div class="topic">
+        <span class="num">&gt; TENDANCE N°2</span>
+        <span class="ttl">L'<span class="au">or</span> casse<br>son record</span>
+        <span class="bar"></span>
+        <div class="chips"><span class="chip au">OR</span><span class="chip">BANQUES CENTRALES</span><span class="chip up">BTC</span></div>
+      </div>
+      <div class="ticker"><div class="ticker-track" id="tk3"></div></div>
+    </div><div class="card-lbl"><b>Carte de sujet</b><span>entre deux tendances</span></div></div>
+
+    <div class="card"><div class="screen">
+      <div class="gridbg"></div>
+      <div class="topbar"><span>NOM</span><span>FIN DU LIVE</span></div>
+      <div class="wait">
+        <div class="radar" style="width:26%"><div class="rings"></div><div class="cross"></div><div class="sweep"></div></div>
+        <div class="wait-txt"><span class="k">PROCHAIN SCAN</span><span class="t">Même heure,<br>la semaine pro</span><span class="s">Abonne-toi · active la cloche · replay sur YouTube</span></div>
+      </div>
+      <div class="ticker"><div class="ticker-track" id="tk4"></div></div>
+    </div><div class="card-lbl"><b>Écran de fin</b><span>rendez-vous suivant</span></div></div>
+  </div>
+
+  <!-- ===== MINIATURE ===== -->
+  <h2>Miniature YouTube du replay</h2>
+  <p class="sec-note">Gabarit 1280 × 720 : chaque animateur dans sa couleur, une accroche au centre et le chiffre choc de la semaine.</p>
+  <div class="grid2">
+    <div class="card"><div class="thumb">
+      <div class="gridbg"></div>
+      <div class="face a">PHOTO<br>CO-HOST</div>
+      <div class="face v">PHOTO<br>NASS</div>
+      <div class="hl"><span class="big">Or vs<br>Bitcoin</span><span class="num"><span class="up">+6 %</span> <span style="color:var(--muted)">/</span> <span class="dn">−2 %</span></span></div>
+      <span class="ep">NOM · ÉP. 01</span>
+    </div><div class="card-lbl"><b>Miniature · version duel</b><span>données d'exemple</span></div></div>
+
+    <div class="card"><div class="thumb">
+      <div class="gridbg"></div>
+      <div class="face a">PHOTO<br>CO-HOST</div>
+      <div class="face v">PHOTO<br>NASS</div>
+      <div class="hl"><span class="big">Le krach<br>arrive ?</span><span class="num au">S&amp;P <span class="dn">▼</span></span></div>
+      <span class="ep">NOM · ÉP. 02</span>
+    </div><div class="card-lbl"><b>Miniature · version question</b><span>données d'exemple</span></div></div>
+  </div>
+
+  <!-- ===== RÈGLES ===== -->
+  <h2>Règles d'usage</h2>
+  <div class="rules">
+    <div class="rule ok"><b>✓ À faire</b>L'ambre pour tout ce qui concerne le co-host et les marchés traditionnels, le vert pour la crypto. Un écran = au maximum ces deux couleurs plus le rouge pour les baisses.</div>
+    <div class="rule ok"><b>✓ À faire</b>Tous les chiffres en IBM Plex Mono, avec le signe et la flèche (▲ +2,1 % / ▼ −2,4 %). Toujours indiquer la source et la date à l'écran.</div>
+    <div class="rule ok"><b>✓ À faire</b>Le balayage radar ouvre chaque séquence : début du live, changement de sujet, fin. C'est la signature sonore et visuelle de l'émission.</div>
+    <div class="rule no"><b>✕ À éviter</b>Les dégradés colorés, les néons partout, les emojis fusées. Le style tient parce qu'il reste sobre, comme un vrai terminal.</div>
+    <div class="rule no"><b>✕ À éviter</b>Le rouge en décoration. Il est réservé aux baisses et au badge LIVE, sinon il perd son sens.</div>
+    <div class="rule no"><b>✕ À éviter</b>Les promesses de gain dans les titres et les miniatures (« x100 », « devenir riche »). Le ton : analyse, pas hype.</div>
+  </div>
+
+  <footer>Direction A · board de travail · le nom de l'émission reste à choisir · toutes les valeurs de marché affichées sont des exemples</footer>
+</div>
+
+<script>
+const T=[["OR","4 321 $","+0,4 %","up"],["ARGENT","52,10 $","+1,2 %","up"],["S&P 500","6 612","+0,6 %","up"],["CAC 40","8 104","−0,3 %","dn"],["BTC","84 375 $","−2,4 %","dn"],["ETH","3 108 $","−1,1 %","dn"],["SOL","182 $","+6,1 %","up"],["EUR/USD","1,140","+0,2 %","up"],["PÉTROLE","71,40 $","−0,8 %","dn"]];
+const html=T.map(t=>`<span class="tk"><b>${t[0]}</b>${t[1]} <span class="${t[3]}">${t[3]=='up'?'▲':'▼'} ${t[2]}</span></span>`).join('');
+['tk1','tk2','tk3','tk4'].forEach(id=>{const el=document.getElementById(id);el.innerHTML=html+html;});
+let s=299;setInterval(()=>{s=s>0?s-1:299;document.getElementById('cd').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');},1000);
+</script>
+</body>
+</html>

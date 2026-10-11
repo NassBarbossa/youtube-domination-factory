@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <!-- Convergence — intro 15 s « Le Terminal » : deux marchés qui se percutent et forment le V. -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }
+      @font-face { font-family: 'Plex Mono'; src: url('assets/fonts/IBMPlexMono-Medium.ttf') format('truetype'); font-weight: 500; }
+      @font-face { font-family: 'Plex Mono'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0B0E11; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #F2EFE8; color: #0B0E11; font-family: 'Inter Tight', sans-serif; }
+      .mono { font-family: 'Plex Mono', monospace; }
+      .or { color: #C98A0B; } .vert { color: #0F8A5F; } .rouge { color: #C8323F; }
+
+      /* caméra : tout le décor bouge ensemble */
+      #cam { position: absolute; inset: 0; transform-origin: 960px 560px; }
+      #grid { position: absolute; left: -400px; top: -400px; width: 2720px; height: 1880px;
+        background-image: linear-gradient(#E1DBCD 1px, transparent 1px), linear-gradient(90deg, #E1DBCD 1px, transparent 1px);
+        background-size: 96px 96px; }
+
+      /* ---- 0 · boot terminal ---- */
+      #boot { position: absolute; inset: 0; background: #0B0E11; display: flex; flex-direction: column; justify-content: center; padding-left: 260px; gap: 22px; z-index: 50; }
+      #boot .ln { font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 40px; color: #8B949E; letter-spacing: .04em; white-space: nowrap; overflow: hidden; width: 0; }
+      #boot .ln b { font-weight: 600; } #boot .ok { color: #2BB37C; } #boot .go { color: #E2A93B; }
+      #boot .cur { display: inline-block; width: 22px; height: 40px; background: #2BB37C; vertical-align: -6px; margin-left: 6px; }
+
+      /* ---- 1 · bandeaux de cours ---- */
+      .tape { position: absolute; display: flex; gap: 70px; align-items: center; white-space: nowrap; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 34px; letter-spacing: .06em; height: 84px; padding: 0 40px; }
+      .tape.dark { background: #0B0E11; color: #E6EDF3; }
+      .tape.light { background: #FBFAF6; color: #0B0E11; border-top: 2px solid #0B0E11; border-bottom: 2px solid #0B0E11; }
+      .tape .u { color: #2EE59D; } .tape.light .u { color: #0F8A5F; }
+      .tape .d { color: #FF6B76; } .tape.light .d { color: #C8323F; }
+      #tapeA { top: 70px; left: 0; }
+      #tapeB { top: 926px; left: 0; }
+      #tapeC { top: 0; left: 0; transform-origin: 0 0; }
+
+      /* ---- 1 · panneaux de données ---- */
+      #panels { position: absolute; left: 230px; top: 230px; width: 1460px; height: 620px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 26px; }
+      .pnl { background: #FBFAF6; border: 2px solid #0B0E11; border-radius: 16px; padding: 26px 30px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 10px 10px 0 #0B0E11; }
+      .pnl .top { display: flex; justify-content: space-between; align-items: center; }
+      .pnl .nm { font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 30px; letter-spacing: .12em; }
+      .pnl .ar { font-size: 38px; font-weight: 800; }
+      .pnl svg { width: 100%; height: 150px; overflow: visible; }
+      .pnl .cat { font-family: 'Plex Mono', monospace; font-size: 18px; letter-spacing: .2em; color: #6B7280; }
+
+      /* ---- 2 · mots en rafale ---- */
+      .word { position: absolute; top: 50%; left: 50%; font-weight: 800; font-size: 250px; letter-spacing: -.045em; line-height: 1; white-space: nowrap; opacity: 0; }
+      .word.or { color: #C98A0B; } .word.vert { color: #0F8A5F; }
+      .wtag { position: absolute; left: 50%; top: 720px; transform: translateX(-50%); font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 30px; letter-spacing: .32em; white-space: nowrap; opacity: 0; }
+      #slab { position: absolute; top: 0; bottom: 0; width: 960px; opacity: 0; }
+
+      /* ---- 3 · la course ---- */
+      #race { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; }
+      #race path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .streak { position: absolute; height: 4px; border-radius: 2px; opacity: 0; }
+      .rlabel { position: absolute; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 34px; letter-spacing: .26em; opacity: 0; }
+
+      /* ---- 4 · drop ---- */
+      #flash { position: absolute; inset: 0; background: #0B0E11; opacity: 0; z-index: 40; }
+      #ring { position: absolute; left: 960px; top: 640px; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; border: 6px solid #0B0E11; opacity: 0; z-index: 30; }
+      #bigV { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: visible; z-index: 20; }
+
+      /* ---- 5 · logo ---- */
+      #lock { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 46px; z-index: 25; }
+      #wm { display: flex; align-items: center; font-weight: 600; font-size: 150px; letter-spacing: .32em; line-height: 1; margin-right: -.32em; }
+      #wm .l { display: inline-block; opacity: 0; }
+      #wm svg { height: .8em; width: auto; margin-right: .32em; overflow: visible; opacity: 0; }
+      #sig { font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 30px; letter-spacing: .26em; color: #6B7280; opacity: 0; }
+      #stamp { position: absolute; left: 50%; top: 760px; display: flex; align-items: center; gap: 18px; padding: 14px 30px; border-radius: 6px; background: #0B0E11; color: #F2EFE8; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 30px; letter-spacing: .24em; opacity: 0; z-index: 26; white-space: nowrap; }
+      #stamp i { display: block; width: 18px; height: 18px; border-radius: 50%; background: #C8323F; }
+      #band { position: absolute; left: 0; right: 0; bottom: 0; height: 78px; background: #0B0E11; overflow: hidden; z-index: 26; }
+      #bandT { display: flex; gap: 70px; white-space: nowrap; align-items: center; height: 78px; padding-left: 40px; font-family: 'Plex Mono', monospace; font-weight: 600; font-size: 26px; letter-spacing: .1em; color: #9AA3AD; }
+      #bandT .u { color: #2EE59D; } #bandT .d { color: #FF6B76; } #bandT b { color: #E6EDF3; font-weight: 600; }
+      #root::after { content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 60;
+        background: radial-gradient(ellipse at center, rgba(11,14,17,0) 58%, rgba(11,14,17,.16) 100%); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="15" data-width="1920" data-height="1080">
+      <div id="cam">
+        <div id="grid"></div>
+        <div class="tape dark" id="tapeA"></div>
+        <div class="tape light" id="tapeB"></div>
+        <div id="panels"></div>
+        <div id="slab"></div>
+        <div id="words"></div>
+        <svg id="race" viewBox="0 0 1920 1080">
+          <path id="lineOr" stroke="#C98A0B" stroke-width="12" />
+          <path id="lineVert" stroke="#0F8A5F" stroke-width="12" />
+          <circle id="headOr" r="14" fill="#C98A0B" />
+          <circle id="headVert" r="14" fill="#0F8A5F" />
+        </svg>
+        <div id="streaks"></div>
+        <div class="rlabel or" id="rlA" style="left:120px;top:250px" data-layout-allow-overlap>MARCHÉS · OR</div>
+        <div class="rlabel vert" id="rlB" style="right:120px;top:250px" data-layout-allow-overlap>CRYPTO</div>
+      </div>
+
+      <div id="ring"></div>
+      <svg id="bigV" viewBox="0 0 1920 1080">
+        <line id="bvOr" x1="960" y1="640" x2="710" y2="110" stroke="#C98A0B" stroke-width="84" stroke-linecap="round" />
+        <line id="bvVert" x1="960" y1="640" x2="1210" y2="110" stroke="#0F8A5F" stroke-width="84" stroke-linecap="round" />
+      </svg>
+
+      <div id="lock">
+        <div id="wm"></div>
+        <div id="sig"><span class="or">MARCHÉS · OR</span> × <span class="vert">CRYPTO</span> — CHAQUE SEMAINE</div>
+      </div>
+      <div id="stamp"><i></i>LIVE · CHAQUE SEMAINE</div>
+      <div id="band"><div id="bandT"></div></div>
+
+      <div id="flash"></div>
+      <div id="boot">
+        <div class="ln" id="b1">&gt; connexion marchés <b class="ok">OK</b></div>
+        <div class="ln" id="b2">&gt; connexion crypto <b class="ok">OK</b></div>
+        <div class="ln" id="b3">&gt; <b class="go">convergence</b><span class="cur" id="bcur"></span></div>
+      </div>
+    </div>
+
+    <script>
+      // ---------- données (noms d'actifs uniquement : l'intro reste valable chaque semaine) ----------
+      const ASSETS = [['OR', 'u', 'OR · MÉTAUX'], ['S&P 500', 'u', 'ACTIONS US'], ['BTC', 'u', 'CRYPTO'],
+                      ['ARGENT', 'd', 'OR · MÉTAUX'], ['CAC 40', 'd', 'ACTIONS FR'], ['SOL', 'u', 'CRYPTO']];
+      const TAPE = ['OR ▲', 'BTC ▲', 'S&P 500 ▲', 'ETH ▼', 'CAC 40 ▼', 'SOL ▲', 'ARGENT ▲', 'EUR/USD ▼', 'PÉTROLE ▼', 'NASDAQ ▲'];
+      const tapeHTML = (n) => Array.from({ length: n }, (_, i) => {
+        const t = TAPE[i % TAPE.length]; const up = t.endsWith('▲');
+        return `<span>${t.slice(0, -2)} <span class="${up ? 'u' : 'd'}">${t.slice(-1)}</span></span>`;
+      }).join('');
+      document.getElementById('tapeA').innerHTML = tapeHTML(26);
+      document.getElementById('tapeB').innerHTML = tapeHTML(26);
+      document.getElementById('bandT').innerHTML = TAPE.concat(TAPE).map(t => {
+        const up = t.endsWith('▲'); return `<span><b>${t.slice(0, -2)}</b> <span class="${up ? 'u' : 'd'}">${t.slice(-1)}</span></span>`;
+      }).join('');
+
+      // RNG déterministe
+      let seed = 7;
+      const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+
+      // panneaux + sparklines
+      const P = document.getElementById('panels');
+      ASSETS.forEach(([nm, dir, cat], i) => {
+        let y = 75, pts = [];
+        for (let k = 0; k <= 22; k++) { y += (rnd() - (dir === 'u' ? 0.62 : 0.38)) * 22; y = Math.max(10, Math.min(140, y)); pts.push(`${k * 20},${y.toFixed(1)}`); }
+        const col = dir === 'u' ? '#0F8A5F' : '#C8323F';
+        P.insertAdjacentHTML('beforeend', `<div class="pnl" id="p${i}"><div class="top"><span class="nm">${nm}</span><span class="ar" style="color:${col}">${dir === 'u' ? '▲' : '▼'}</span></div>
+          <svg viewBox="0 0 440 150" preserveAspectRatio="none"><polyline class="spark" points="${pts.join(' ')}" fill="none" stroke="${col}" stroke-width="5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+          <span class="cat">${cat}</span></div>`);
+      });
+
+      // mots en rafale (alternance or / vert)
+      const WORDS = [['OR', 'or'], ['BITCOIN', 'vert'], ['ACTIONS', 'or'], ['ON-CHAIN', 'vert'], ['TAUX', 'or'], ['TOKENS', 'vert'], ['LINGOTS', 'or'], ['BLOCKCHAIN', 'vert']];
+      const W = document.getElementById('words');
+      WORDS.forEach(([w, c], i) => W.insertAdjacentHTML('beforeend', `<div class="word ${c}" id="w${i}">${w}</div>`));
+
+      // courbes de la course : or depuis la gauche, vert depuis la droite, vers le point de contact (960, 640)
+      function marketPath(x0, x1, yBase, dirSign) {
+        let d = `M${x0},${yBase}`, y = yBase; const n = 26;
+        for (let k = 1; k <= n; k++) {
+          const x = x0 + (x1 - x0) * k / n;
+          const amp = 120 * (1 - k / n) + 12;
+          y = 640 + (rnd() - 0.5) * 2 * amp + dirSign * 160 * (1 - k / n);
+          if (k === n) y = 640;
+          d += ` L${x.toFixed(1)},${y.toFixed(1)}`;
+        }
+        return d;
+      }
+      document.getElementById('lineOr').setAttribute('d', marketPath(120, 960, 900, 1));
+      document.getElementById('lineVert').setAttribute('d', marketPath(1800, 960, 380, -1));
+
+      // traits de vitesse
+      const ST = document.getElementById('streaks');
+      for (let i = 0; i < 14; i++) {
+        const top = 120 + rnd() * 840, w = 180 + rnd() * 420, c = i % 2 ? '#0F8A5F' : '#C98A0B';
+        ST.insertAdjacentHTML('beforeend', `<div class="streak" id="s${i}" data-dir="${i % 2 ? -1 : 1}" style="top:${top.toFixed(0)}px;width:${w.toFixed(0)}px;background:${c}"></div>`);
+      }
+
+      // wordmark CON V ERGENCE
+      document.getElementById('wm').innerHTML =
+        [...'CON'].map(c => `<span class="l L">${c}</span>`).join('') +
+        `<svg id="wmV" viewBox="0 0 60 64"><line x1="5" y1="5" x2="30" y2="58" stroke="#C98A0B" stroke-width="10" stroke-linecap="round"/><line x1="55" y1="5" x2="30" y2="58" stroke="#0F8A5F" stroke-width="10" stroke-linecap="round"/></svg>` +
+        [...'ERGENCE'].map(c => `<span class="l R">${c}</span>`).join('');
+
+      // ---------- timeline ----------
+      const B = 60 / 128;                 // 1 temps à 128 BPM
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+
+      // états initiaux
+      gsap.set('#tapeA', { x: 1920 }); gsap.set('#tapeB', { x: -2600 });
+      gsap.set('.pnl', { opacity: 0, scale: 0.6, y: 40 });
+      document.querySelectorAll('.spark').forEach(s => { const L = 600; gsap.set(s, { strokeDasharray: '600 640', strokeDashoffset: 620 }); });
+      ['#lineOr', '#lineVert'].forEach(id => { const L = document.querySelector(id).getTotalLength(); gsap.set(id, { strokeDasharray: `${L} ${L + 40}`, strokeDashoffset: L + 20 }); });
+      gsap.set(['#headOr', '#headVert'], { opacity: 0 });
+      gsap.set('.word', { xPercent: -50, yPercent: -50 });
+      gsap.set(['#bvOr', '#bvVert'], { attr: { x2: 960, y2: 640 }, opacity: 0 });
+      gsap.set('#band', { yPercent: 100 });
+      gsap.set('#stamp', { xPercent: -50 });
+
+      // 0 · boot (0 → 0,94)
+      tl.to('#b1', { width: 760, duration: 0.22, ease: 'steps(18)' }, 0.04);
+      tl.to('#b2', { width: 760, duration: 0.22, ease: 'steps(18)' }, 0.3);
+      tl.to('#b3', { width: 520, duration: 0.18, ease: 'steps(12)' }, 0.58);
+      tl.to('#bcur', { opacity: 0, duration: 0.01, repeat: 3, yoyo: true, repeatDelay: 0.07 }, 0.62);
+      tl.to('#boot', { opacity: 0, duration: 0.05 }, 2 * B - 0.03);
+
+      // 1 · bandeaux qui claquent + panneaux sur les temps (0,94 → 3,75)
+      const T1 = 2 * B;
+      tl.fromTo('#cam', { scale: 1.08 }, { scale: 1, duration: 0.5, ease: 'expo.out', immediateRender: false }, T1);
+      tl.to('#tapeA', { x: -900, duration: 0.45, ease: 'expo.out' }, T1);
+      tl.to('#tapeA', { x: -2400, duration: 2.4, ease: 'none' }, T1 + 0.45);
+      tl.to('#tapeB', { x: -1300, duration: 0.45, ease: 'expo.out' }, T1 + 0.05);
+      tl.to('#tapeB', { x: 0, duration: 2.4, ease: 'none' }, T1 + 0.5);
+      ASSETS.forEach((_, i) => {
+        const t = T1 + B * (i + 1) * 0.86;
+        tl.to(`#p${i}`, { opacity: 1, scale: 1, y: 0, duration: 0.32, ease: 'back.out(2.2)' }, t);
+        tl.to(`#p${i} .spark`, { strokeDashoffset: 0, duration: 0.55, ease: 'power2.out' }, t + 0.06);
+      });
+      tl.to('#grid', { y: -96, duration: 2.8, ease: 'none' }, T1);
+      // sortie de la phase 1
+      const T2 = 8 * B;   // 3,75
+      tl.to('.pnl', { opacity: 0, scale: 0.5, duration: 0.18, stagger: 0.02, ease: 'power3.in' }, T2 - 0.2);
+      tl.to(['#tapeA', '#tapeB'], { opacity: 0, duration: 0.15 }, T2 - 0.1);
+
+      // 2 · mots en rafale, un par temps (3,75 → 7,5)
+      WORDS.forEach((_, i) => {
+        const t = T2 + i * B, side = i % 2 === 0 ? -1 : 1;
+        tl.fromTo(`#w${i}`, { opacity: 0, x: side * 900, scale: 1.25, skewX: side * -12 },
+          { opacity: 1, x: 0, scale: 1, skewX: 0, duration: 0.2, ease: 'expo.out', immediateRender: false }, t);
+        tl.to(`#w${i}`, { opacity: 0, x: -side * 160, scale: 0.9, duration: 0.12, ease: 'power2.in' }, t + B - 0.12);
+        tl.fromTo('#cam', { x: side * -14 }, { x: 0, duration: 0.25, ease: 'power2.out', immediateRender: false }, t);
+      });
+      tl.to('#grid', { y: -288, duration: 3.75, ease: 'none' }, T2);
+
+      // 3 · la course : les deux courbes foncent l'une vers l'autre (7,5 → 11,25)
+      const T3 = 16 * B;  // 7,5
+      const T4 = 24 * B;  // 11,25 — drop
+      const lenOr = document.querySelector('#lineOr').getTotalLength(), lenV = document.querySelector('#lineVert').getTotalLength();
+      const prog = { p: 0 };
+      tl.to(prog, { p: 1, duration: T4 - T3, ease: 'power1.in', onUpdate: () => {
+        const p = prog.p;
+        gsap.set('#lineOr', { strokeDashoffset: p > 0 ? lenOr * (1 - p) : lenOr + 20 });
+        gsap.set('#lineVert', { strokeDashoffset: p > 0 ? lenV * (1 - p) : lenV + 20 });
+        const a = document.querySelector('#lineOr').getPointAtLength(lenOr * p), b = document.querySelector('#lineVert').getPointAtLength(lenV * p);
+        gsap.set('#headOr', { attr: { cx: a.x, cy: a.y }, opacity: p > 0.001 ? 1 : 0 });
+        gsap.set('#headVert', { attr: { cx: b.x, cy: b.y }, opacity: p > 0.001 ? 1 : 0 });
+      } }, T3);
+      tl.fromTo('#cam', { scale: 1 }, { scale: 1.12, rotation: -1.2, duration: T4 - T3, ease: 'power2.in', immediateRender: false }, T3);
+      tl.fromTo('#rlA', { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: 'expo.out', immediateRender: false }, T3 + 0.1);
+      tl.fromTo('#rlB', { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: 'expo.out', immediateRender: false }, T3 + 0.1 + B);
+      tl.to(['#rlA', '#rlB'], { opacity: 0, duration: 0.2 }, T4 - 0.6);
+      document.querySelectorAll('.streak').forEach((s, i) => {
+        const dir = +s.dataset.dir, t = T3 + 0.5 + i * 0.22;
+        tl.fromTo(s, { x: dir > 0 ? -700 : 2400, opacity: 0 }, { x: dir > 0 ? 2400 : -700, opacity: 0.8, duration: 0.55, ease: 'power1.in', immediateRender: false }, t);
+        tl.to(s, { opacity: 0, duration: 0.15 }, t + 0.45);
+      });
+      tl.to('#grid', { y: -672, duration: T4 - T3, ease: 'power3.in' }, T3);
+
+      // 4 · DROP : contact → flash → onde → le V jaillit
+      tl.to('#flash', { opacity: 1, duration: 0.04 }, T4 - 0.02);
+      tl.to('#flash', { opacity: 0, duration: 0.22, ease: 'power2.out' }, T4 + 0.06);
+      tl.to(['#race', '#streaks'], { opacity: 0, duration: 0.05 }, T4);
+      tl.set('#cam', { scale: 1, rotation: 0, x: 0 }, T4);
+      tl.fromTo('#ring', { opacity: 0.9, scale: 1 }, { opacity: 0, scale: 48, duration: 0.9, ease: 'expo.out', immediateRender: false }, T4);
+      tl.set(['#bvOr', '#bvVert'], { opacity: 1 }, T4);
+      tl.to('#bvOr', { attr: { x2: 710, y2: 110 }, duration: 0.32, ease: 'expo.out' }, T4 + 0.02);
+      tl.to('#bvVert', { attr: { x2: 1210, y2: 110 }, duration: 0.32, ease: 'expo.out' }, T4 + 0.06);
+      tl.to(['#bigV', '#ring'], { keyframes: [{ x: -18, y: 10, duration: 0.04 }, { x: 14, y: -8, duration: 0.04 }, { x: -8, y: 4, duration: 0.04 }, { x: 0, y: 0, duration: 0.05 }] }, T4 + 0.02);
+      tl.to('#cam', { opacity: 0.25, duration: 0.3 }, T4);
+
+      // 5 · le grand V se range dans le logo, les lettres s'écartent (11,6 → 12,6)
+      const T5 = T4 + 0.55;
+      const toLogo = () => {
+        const r = document.getElementById('wmV').getBoundingClientRect();
+        // grand V : boîte (710→1210, 110→640) + demi-épaisseur 42 → 584 × 614, centre (960, 375)
+        const s = r.height / 614, cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        return { s, dx: cx - 960 * s, dy: cy - 375 * s };
+      };
+      tl.to('#bigV', { scale: () => toLogo().s, x: () => toLogo().dx, y: () => toLogo().dy, transformOrigin: '0 0', duration: 0.55, ease: 'expo.inOut' }, T5);
+      tl.set('#wmV', { opacity: 1 }, T5 + 0.55);
+      tl.set('#bigV', { opacity: 0 }, T5 + 0.56);
+      const Ls = [...document.querySelectorAll('#wm .L')].reverse(), Rs = [...document.querySelectorAll('#wm .R')];
+      Ls.forEach((el, i) => tl.fromTo(el, { opacity: 0, x: 90, filter: 'blur(10px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out', immediateRender: false }, T5 + 0.42 + i * 0.05));
+      Rs.forEach((el, i) => tl.fromTo(el, { opacity: 0, x: -90, filter: 'blur(10px)' }, { opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.5, ease: 'expo.out', immediateRender: false }, T5 + 0.42 + i * 0.05));
+      tl.to('#cam', { opacity: 0.55, duration: 0.6 }, T5 + 0.4);
+      tl.fromTo('#sig', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: 'expo.out', immediateRender: false }, T5 + 1.0);
+
+      // 6 · tampon LIVE + bandeau (13,1 → 15)
+      const T6 = 28 * B;  // 13,125
+      tl.fromTo('#stamp', { opacity: 0, scale: 1.7, rotation: -4 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.22, ease: 'back.out(2.5)', immediateRender: false }, T6);
+      tl.to('#band', { yPercent: 0, duration: 0.4, ease: 'expo.out' }, T6 + 0.25);
+      tl.fromTo('#bandT', { x: 0 }, { x: -700, duration: 1.7, ease: 'none', immediateRender: false }, T6 + 0.25);
+      tl.to({}, { duration: 0.01 }, 14.99);
+      tl.seek(0);
+    </script>
+  </body>
+</html>

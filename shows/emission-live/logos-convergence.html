@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convergence — 5 logos</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{--papier:#F2EFE8;--carte:#FBFAF6;--encre:#0B0E11;--gris:#6B7280;--trait:#D9D4C8;--ambre:#C98A0B;--vert:#0F8A5F;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--papier);color:var(--encre);font-family:'Inter Tight',sans-serif;padding:clamp(16px,3vw,48px);}
+.wrap{max-width:1280px;margin:0 auto;}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(2.4rem,5vw,4rem);}
+.lede{color:var(--gris);max-width:760px;margin:.6rem 0 2.4rem;line-height:1.6;}
+.opt{margin-bottom:28px;background:var(--carte);border:1px solid var(--trait);border-radius:16px;overflow:hidden;}
+.row{display:grid;grid-template-columns:1.4fr 1fr .55fr;}
+.cell{display:flex;align-items:center;justify-content:center;min-height:240px;padding:28px;}
+.cell.dark{background:#0B0E11;color:#F2EFE8;}
+.cell.icons{gap:18px;border-left:1px solid var(--trait);}
+.lbl{border-top:1px solid var(--trait);padding:14px 20px;display:flex;gap:1.5rem;align-items:baseline;flex-wrap:wrap;}
+.lbl h3{font-family:'IBM Plex Mono',monospace;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;}
+.lbl p{font-size:.92rem;color:#3A434D;line-height:1.5;flex:1;min-width:280px;}
+.rec{outline:2px solid var(--encre);}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.14em;background:var(--encre);color:var(--papier);padding:.2em .6em;border-radius:3px;margin-left:.5em;}
+@media(max-width:900px){.row{grid-template-columns:1fr;}.cell.icons{border-left:none;border-top:1px solid var(--trait);}}
+
+/* --- 1. Le V --- */
+.w1{font-family:'Inter Tight',sans-serif;font-weight:600;font-size:clamp(2rem,4vw,3.2rem);letter-spacing:.32em;display:flex;align-items:center;}
+.w1 svg{height:.78em;width:auto;margin:0 .32em 0 0;}
+/* --- 2. Venn --- */
+.l2{display:flex;align-items:center;gap:22px;}
+.w2{font-family:'Instrument Serif',serif;font-size:clamp(2.4rem,4.6vw,3.8rem);line-height:1;}
+.w2 small{display:block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.24em;color:var(--gris);margin-top:.5em;text-transform:uppercase;}
+.dark .w2 small{color:#9AA3AD;}
+/* --- 3. C monogramme --- */
+.l3{display:flex;align-items:center;gap:20px;}
+.w3{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2.2rem,4.4vw,3.4rem);letter-spacing:-.01em;}
+/* --- 4. Point de fuite --- */
+.l4{display:flex;align-items:center;gap:18px;}
+.w4{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.8vw,3rem);letter-spacing:-.02em;text-transform:uppercase;}
+/* --- 5. Ruban --- */
+.l5{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.w5{font-family:'Inter Tight',sans-serif;font-weight:500;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:.5em;margin-right:-.5em;}
+
+.draw{stroke-dasharray:400;stroke-dashoffset:400;animation:dr 4s ease-in-out infinite;}
+.draw.d2{animation-delay:.3s;}
+@keyframes dr{0%{stroke-dashoffset:400;}40%,85%{stroke-dashoffset:0;}100%{stroke-dashoffset:-400;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Convergence — 5 pistes de logo</h1>
+<p class="lede">Plus sobre, plus « maison financière ». Même code couleur (ambre = marchés et or, vert = crypto), mais des tons plus profonds, des traits fins et de vraies typos de marque. Chaque piste : version claire, version sombre, icône en petit.</p>
+
+<!-- 1. LE V -->
+<div class="opt rec">
+  <div class="row">
+    <div class="cell"><div class="w1">CON<svg viewBox="0 0 60 64"><line class="draw" x1="4" y1="4" x2="30" y2="60" stroke="#C98A0B" stroke-width="10" stroke-linecap="round"/><line class="draw d2" x1="56" y1="4" x2="30" y2="60" stroke="#0F8A5F" stroke-width="10" stroke-linecap="round"/></svg>ERGENCE</div></div>
+    <div class="cell dark"><div class="w1" style="font-size:clamp(1.4rem,2.6vw,2.1rem)">CON<svg viewBox="0 0 60 64"><line x1="4" y1="4" x2="30" y2="60" stroke="#E2A93B" stroke-width="10" stroke-linecap="round"/><line x1="56" y1="4" x2="30" y2="60" stroke="#2BB37C" stroke-width="10" stroke-linecap="round"/></svg>ERGENCE</div></div>
+    <div class="cell icons">
+      <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B0E11"/><line x1="16" y1="14" x2="32" y2="50" stroke="#E2A93B" stroke-width="6" stroke-linecap="round"/><line x1="48" y1="14" x2="32" y2="50" stroke="#2BB37C" stroke-width="6" stroke-linecap="round"/></svg>
+      <svg width="28" height="28" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B0E11"/><line x1="16" y1="14" x2="32" y2="50" stroke="#E2A93B" stroke-width="7" stroke-linecap="round"/><line x1="48" y1="14" x2="32" y2="50" stroke="#2BB37C" stroke-width="7" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div class="lbl"><h3>1. Le V <span class="badge">MA RECO</span></h3><p>Le logo, c'est le mot. Le « V » de con<b>V</b>ergence est fait de deux traits qui se rejoignent en un point : l'ambre et le vert. Typo large et espacée, très marque de luxe. L'icône seule (le V) marche partout.</p></div>
+</div>
+
+<!-- 2. VENN -->
+<div class="opt">
+  <div class="row">
+    <div class="cell"><div class="l2">
+      <svg width="96" height="64" viewBox="0 0 96 64"><circle cx="34" cy="32" r="26" fill="none" stroke="#C98A0B" stroke-width="3"/><circle cx="62" cy="32" r="26" fill="none" stroke="#0F8A5F" stroke-width="3"/><path d="M48,10.3 A26,26 0 0 1 48,53.7 A26,26 0 0 1 48,10.3 Z" fill="#0B0E11"/></svg>
+      <div class="w2">Convergence<small>Marchés · Or × Crypto</small></div></div></div>
+    <div class="cell dark"><div class="l2">
+      <svg width="72" height="48" viewBox="0 0 96 64"><circle cx="34" cy="32" r="26" fill="none" stroke="#E2A93B" stroke-width="3"/><circle cx="62" cy="32" r="26" fill="none" stroke="#2BB37C" stroke-width="3"/><path d="M48,10.3 A26,26 0 0 1 48,53.7 A26,26 0 0 1 48,10.3 Z" fill="#F2EFE8"/></svg>
+      <div class="w2" style="font-size:clamp(1.8rem,3vw,2.6rem)">Convergence<small>Marchés · Or × Crypto</small></div></div></div>
+    <div class="cell icons">
+      <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="32" fill="#FBFAF6" stroke="#D9D4C8"/><circle cx="25" cy="32" r="16" fill="none" stroke="#C98A0B" stroke-width="3"/><circle cx="39" cy="32" r="16" fill="none" stroke="#0F8A5F" stroke-width="3"/><path d="M32,17.6 A16,16 0 0 1 32,46.4 A16,16 0 0 1 32,17.6 Z" fill="#0B0E11"/></svg>
+      <svg width="28" height="28" viewBox="0 0 64 64"><circle cx="25" cy="32" r="18" fill="none" stroke="#C98A0B" stroke-width="5"/><circle cx="39" cy="32" r="18" fill="none" stroke="#0F8A5F" stroke-width="5"/><path d="M32,15.3 A18,18 0 0 1 32,48.7 A18,18 0 0 1 32,15.3 Z" fill="#0B0E11"/></svg>
+    </div>
+  </div>
+  <div class="lbl"><h3>2. L'intersection</h3><p>Deux cercles (or et crypto) qui se chevauchent ; la zone commune, en noir, c'est l'émission. Le symbole universel de la convergence, avec un serif élégant à côté. Très « institution ».</p></div>
+</div>
+
+<!-- 3. C MONOGRAMME -->
+<div class="opt">
+  <div class="row">
+    <div class="cell"><div class="l3">
+      <svg width="70" height="70" viewBox="0 0 70 70"><path class="draw" d="M58,16 A28,28 0 0 0 9,35" fill="none" stroke="#C98A0B" stroke-width="6" stroke-linecap="round"/><path class="draw d2" d="M58,54 A28,28 0 0 1 9,35" fill="none" stroke="#0F8A5F" stroke-width="6" stroke-linecap="round"/><circle cx="9" cy="35" r="5.5" fill="#0B0E11"/></svg>
+      <div class="w3">Convergence</div></div></div>
+    <div class="cell dark"><div class="l3">
+      <svg width="54" height="54" viewBox="0 0 70 70"><path d="M58,16 A28,28 0 0 0 9,35" fill="none" stroke="#E2A93B" stroke-width="6" stroke-linecap="round"/><path d="M58,54 A28,28 0 0 1 9,35" fill="none" stroke="#2BB37C" stroke-width="6" stroke-linecap="round"/><circle cx="9" cy="35" r="5.5" fill="#F2EFE8"/></svg>
+      <div class="w3" style="font-size:clamp(1.7rem,3vw,2.5rem)">Convergence</div></div></div>
+    <div class="cell icons">
+      <svg width="64" height="64" viewBox="0 0 70 70"><rect width="70" height="70" rx="16" fill="#0B0E11"/><path d="M54,20 A23,23 0 0 0 14,35" fill="none" stroke="#E2A93B" stroke-width="6" stroke-linecap="round"/><path d="M54,50 A23,23 0 0 1 14,35" fill="none" stroke="#2BB37C" stroke-width="6" stroke-linecap="round"/><circle cx="14" cy="35" r="5" fill="#F2EFE8"/></svg>
+      <svg width="28" height="28" viewBox="0 0 70 70"><rect width="70" height="70" rx="16" fill="#0B0E11"/><path d="M54,20 A23,23 0 0 0 14,35" fill="none" stroke="#E2A93B" stroke-width="8" stroke-linecap="round"/><path d="M54,50 A23,23 0 0 1 14,35" fill="none" stroke="#2BB37C" stroke-width="8" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div class="lbl"><h3>3. Le monogramme C</h3><p>Un « C » dessiné par deux arcs, l'or en haut, la crypto en bas, qui se rejoignent en un point. Monogramme de marque, comme une maison de gestion. Typo serif moderne (Fraunces).</p></div>
+</div>
+
+<!-- 4. POINT DE FUITE -->
+<div class="opt">
+  <div class="row">
+    <div class="cell"><div class="l4">
+      <svg width="80" height="56" viewBox="0 0 80 56"><line x1="4" y1="6" x2="70" y2="28" stroke="#C98A0B" stroke-width="5" stroke-linecap="round"/><line x1="4" y1="18" x2="70" y2="28" stroke="#C98A0B" stroke-width="3" stroke-linecap="round" opacity=".5"/><line x1="4" y1="50" x2="70" y2="28" stroke="#0F8A5F" stroke-width="5" stroke-linecap="round"/><line x1="4" y1="38" x2="70" y2="28" stroke="#0F8A5F" stroke-width="3" stroke-linecap="round" opacity=".5"/><circle cx="72" cy="28" r="6" fill="#0B0E11"/></svg>
+      <div class="w4">Convergence</div></div></div>
+    <div class="cell dark"><div class="l4">
+      <svg width="60" height="42" viewBox="0 0 80 56"><line x1="4" y1="6" x2="70" y2="28" stroke="#E2A93B" stroke-width="5" stroke-linecap="round"/><line x1="4" y1="18" x2="70" y2="28" stroke="#E2A93B" stroke-width="3" stroke-linecap="round" opacity=".5"/><line x1="4" y1="50" x2="70" y2="28" stroke="#2BB37C" stroke-width="5" stroke-linecap="round"/><line x1="4" y1="38" x2="70" y2="28" stroke="#2BB37C" stroke-width="3" stroke-linecap="round" opacity=".5"/><circle cx="72" cy="28" r="6" fill="#F2EFE8"/></svg>
+      <div class="w4" style="font-size:clamp(1.4rem,2.6vw,2.1rem)">Convergence</div></div></div>
+    <div class="cell icons">
+      <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B0E11"/><line x1="12" y1="16" x2="48" y2="32" stroke="#E2A93B" stroke-width="5" stroke-linecap="round"/><line x1="12" y1="48" x2="48" y2="32" stroke="#2BB37C" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="32" r="5" fill="#F2EFE8"/></svg>
+      <svg width="28" height="28" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0B0E11"/><line x1="12" y1="16" x2="48" y2="32" stroke="#E2A93B" stroke-width="7" stroke-linecap="round"/><line x1="12" y1="48" x2="48" y2="32" stroke="#2BB37C" stroke-width="7" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div class="lbl"><h3>4. Le point de fuite</h3><p>Plusieurs lignes d'or et de crypto qui convergent toutes vers un même point, comme un faisceau. Dynamique, orienté vers l'avant : l'idée d'arriver à une conclusion chaque semaine.</p></div>
+</div>
+
+<!-- 5. RUBAN -->
+<div class="opt">
+  <div class="row">
+    <div class="cell"><div class="l5">
+      <svg width="130" height="60" viewBox="0 0 130 60"><path class="draw" d="M4,46 C40,46 50,14 65,30 C80,46 90,14 126,14" fill="none" stroke="#C98A0B" stroke-width="5" stroke-linecap="round"/><path class="draw d2" d="M4,14 C40,14 50,46 65,30 C80,14 90,46 126,46" fill="none" stroke="#0F8A5F" stroke-width="5" stroke-linecap="round"/></svg>
+      <div class="w5">CONVERGENCE</div></div></div>
+    <div class="cell dark"><div class="l5">
+      <svg width="100" height="46" viewBox="0 0 130 60"><path d="M4,46 C40,46 50,14 65,30 C80,46 90,14 126,14" fill="none" stroke="#E2A93B" stroke-width="5" stroke-linecap="round"/><path d="M4,14 C40,14 50,46 65,30 C80,14 90,46 126,46" fill="none" stroke="#2BB37C" stroke-width="5" stroke-linecap="round"/></svg>
+      <div class="w5" style="font-size:clamp(1rem,1.9vw,1.5rem)">CONVERGENCE</div></div></div>
+    <div class="cell icons">
+      <svg width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="32" fill="#0B0E11"/><path d="M10,42 C24,42 26,22 32,32 C38,42 40,22 54,22" fill="none" stroke="#E2A93B" stroke-width="4" stroke-linecap="round"/><path d="M10,22 C24,22 26,42 32,32 C38,22 40,42 54,42" fill="none" stroke="#2BB37C" stroke-width="4" stroke-linecap="round"/></svg>
+      <svg width="28" height="28" viewBox="0 0 64 64"><rect width="64" height="64" rx="32" fill="#0B0E11"/><path d="M10,42 C24,42 26,22 32,32 C38,42 40,22 54,22" fill="none" stroke="#E2A93B" stroke-width="6" stroke-linecap="round"/><path d="M10,22 C24,22 26,42 32,32 C38,22 40,42 54,42" fill="none" stroke="#2BB37C" stroke-width="6" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+  <div class="lbl"><h3>5. Le ruban</h3><p>Deux courbes souples qui se croisent et s'entrelacent, comme deux cours de marché qui se répondent. Plus fluide et élégant que le « X » d'avant, avec un nom très espacé dessous.</p></div>
+</div>
+
+</div>
+</body>
+</html>

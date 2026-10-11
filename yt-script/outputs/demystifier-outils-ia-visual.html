@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Démystifier les Outils d'IA — Nass Riviera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* === THEME — Nass Riviera Brand === */
+:root {
+    --bg: #0A0A0A;
+    --orange: #FF6B35;
+    --cyan: #00E5FF;
+    --text: #FFFFFF;
+    --text-secondary: rgba(255,255,255,0.75);
+    --text-muted: rgba(255,255,255,0.4);
+    --glow-orange: rgba(255,107,53,0.12);
+    --glow-cyan: rgba(0,229,255,0.08);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --title-size: clamp(2rem, 6vw, 5rem);
+    --h2-size: clamp(1.5rem, 3.5vw, 3rem);
+    --body-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    --stat-size: clamp(3rem, 8vw, 7rem);
+    --slide-num-size: clamp(0.65rem, 1vw, 0.85rem);
+    --slide-padding: clamp(2rem, 5vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.6s;
+}
+
+/* === VIEWPORT BASE === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--bg); }
+body { font-family: var(--font-body); color: var(--text); background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('bg-nass.png') center top / 100% auto fixed no-repeat, var(--bg); -webkit-font-smoothing: antialiased; }
+
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; background: transparent; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); position: relative; z-index: 1; }
+.slide-num { position: absolute; top: clamp(1rem, 2vw, 2rem); right: clamp(1rem, 2vw, 2rem); font-family: var(--font-body); font-size: var(--slide-num-size); color: rgba(255,255,255,0.3); letter-spacing: 0.1em; z-index: 10; }
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; z-index: 100; background: linear-gradient(90deg, var(--orange), var(--cyan)); width: 0%; transition: width 0.3s ease; }
+.watermark { position: fixed; bottom: clamp(1rem, 2vw, 2rem); left: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-display); font-weight: 800; font-size: clamp(0.65rem, 1vw, 0.85rem); color: rgba(255,255,255,0.25); z-index: 50; pointer-events: none; }
+
+/* === TYPOGRAPHY === */
+h1 { font-family: var(--font-display); font-weight: 800; font-size: var(--title-size); line-height: 1.1; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--h2-size); line-height: 1.2; }
+h3 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 2vw, 1.5rem); line-height: 1.2; color: var(--text); }
+p, li { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-secondary); }
+.divider { width: 80px; height: 4px; background: linear-gradient(90deg, var(--orange), var(--cyan)); border-radius: 2px; margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem); }
+
+/* === SECTION TITLE === */
+.section-number { font-family: var(--font-display); font-weight: 800; font-size: clamp(4rem, 12vw, 10rem); line-height: 1; background: linear-gradient(135deg, var(--orange), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; position: absolute; top: clamp(1rem, 3vw, 3rem); left: clamp(2rem, 5vw, 6rem); }
+.section-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.8rem, 4.5vw, 4rem); color: var(--text); line-height: 1.15; }
+.section-subtitle { font-size: clamp(0.9rem, 1.5vw, 1.2rem); color: var(--text-muted); margin-top: clamp(0.5rem, 1vw, 1rem); }
+.section-line { width: clamp(40px, 8vw, 100px); height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem); }
+
+/* === KEY STATEMENT + GRADIENT SHIFT === */
+.key-statement { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.5rem); line-height: 1.3; color: var(--text); text-align: center; max-width: 800px; margin: 0 auto; }
+.gradient-shift { background: linear-gradient(90deg, var(--orange), var(--cyan), var(--orange)); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradient-shift 4s ease infinite; }
+@keyframes gradient-shift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
+
+/* === DEFINITION === */
+.def-term { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 4vw, 3.5rem); color: var(--cyan); margin-bottom: clamp(0.5rem, 1vw, 1rem); }
+.def-explanation { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-secondary); max-width: 700px; line-height: 1.5; }
+
+/* === COMPARE === */
+.compare-row { display: flex; gap: clamp(1rem, 3vw, 3rem); align-items: stretch; justify-content: center; flex-wrap: wrap; margin-top: var(--content-gap); }
+.compare-card { flex: 1; min-width: 250px; max-width: 400px; border-radius: 12px; padding: clamp(1rem, 2vw, 2rem); display: flex; flex-direction: column; gap: clamp(0.5rem, 1vw, 1rem); }
+.compare-card.old { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); }
+.compare-card.new { background: rgba(0,229,255,0.05); border: 1px solid rgba(0,229,255,0.2); }
+.compare-card h3 { font-size: clamp(1rem, 2vw, 1.4rem); }
+.compare-card .compare-flow { font-size: clamp(0.85rem, 1.4vw, 1.1rem); color: var(--text-secondary); line-height: 1.5; }
+.compare-arrow-center { font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--orange); display: flex; align-items: center; }
+
+/* === LOGO GRID === */
+.logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.75rem, 2vw, 1.5rem); width: 100%; max-width: 700px; margin: 0 auto; }
+.logo-card { background: rgba(255,255,255,0.95); border-radius: 12px; padding: clamp(0.8rem, 2vw, 1.5rem); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(0.4rem, 0.8vw, 0.7rem); aspect-ratio: 4/3; transition: transform 0.3s var(--ease-out-expo); }
+.logo-card:hover { transform: scale(1.05); }
+.logo-card .logo-name { font-family: var(--font-display); font-weight: 800; font-size: clamp(0.7rem, 1.3vw, 1rem); color: #111; }
+.logo-card img { width: clamp(36px, 5vw, 56px); height: clamp(36px, 5vw, 56px); object-fit: contain; }
+
+/* === BULLET LIST === */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.4rem, 1vh, 1rem); }
+.bullet-list li { padding-left: 1.5em; position: relative; font-size: var(--body-size); color: var(--text-secondary); }
+.bullet-list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.bullet-list li strong { color: var(--text); }
+
+/* === WORKFLOW STEPS === */
+.workflow-steps { display: flex; flex-direction: column; gap: clamp(0.6rem, 1.5vw, 1.2rem); max-width: 700px; margin: 0 auto; width: 100%; }
+.workflow-step { display: flex; align-items: center; gap: clamp(0.8rem, 1.5vw, 1.5rem); }
+.step-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.5rem); color: var(--orange); flex-shrink: 0; width: clamp(40px, 5vw, 56px); text-align: center; }
+.step-content { flex: 1; }
+.step-content .step-label { font-family: var(--font-display); font-weight: 700; font-size: clamp(0.9rem, 1.5vw, 1.2rem); color: var(--text); }
+.step-content .step-desc { font-size: clamp(0.75rem, 1.2vw, 0.95rem); color: var(--text-muted); margin-top: 0.15rem; }
+.step-arrow { color: var(--text-muted); font-size: clamp(1rem, 1.5vw, 1.3rem); text-align: center; padding-left: clamp(40px, 5vw, 56px); }
+
+/* === CTA === */
+.cta-box { border: 2px solid var(--orange); border-radius: 12px; padding: clamp(1.5rem, 3vw, 3rem); text-align: center; background: rgba(255,107,53,0.05); animation: cta-pulse 2.5s ease-in-out infinite; }
+@keyframes cta-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,0.3)}50%{box-shadow:0 0 30px 8px rgba(255,107,53,0.15)} }
+
+/* === MOOD OVERLAYS === */
+.glow-orange { background: linear-gradient(135deg, rgba(10,10,10,0.4) 0%, rgba(255,107,53,0.06) 100%); }
+.glow-cyan { background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, rgba(10,10,10,0.4) 100%); }
+.glow-both { background: transparent; }
+
+/* === ANIMATIONS === */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(1){transition-delay:.1s}.reveal:nth-child(2){transition-delay:.2s}.reveal:nth-child(3){transition-delay:.3s}.reveal:nth-child(4){transition-delay:.4s}.reveal:nth-child(5){transition-delay:.5s}.reveal:nth-child(6){transition-delay:.6s}
+
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo); }
+.slide.visible .reveal-left { opacity: 1; transform: translateX(0); }
+.reveal-left:nth-child(1){transition-delay:.15s}.reveal-left:nth-child(2){transition-delay:.3s}.reveal-left:nth-child(3){transition-delay:.45s}.reveal-left:nth-child(4){transition-delay:.6s}
+
+.reveal-scale { opacity: 0; transform: scale(0.7); transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo); }
+.slide.visible .reveal-scale { opacity: 1; transform: scale(1); }
+
+.reveal-blur { opacity: 0; filter: blur(12px); transition: opacity 0.8s var(--ease-out-expo), filter 0.8s var(--ease-out-expo); }
+.slide.visible .reveal-blur { opacity: 1; filter: blur(0); }
+
+/* === RESPONSIVE === */
+@media(max-height:700px){:root{--slide-padding:clamp(0.75rem,3vw,2rem);--content-gap:clamp(0.4rem,1.5vw,1rem);--title-size:clamp(1.25rem,4.5vw,2.5rem);--h2-size:clamp(1rem,3vw,1.75rem)}}
+@media(max-height:600px){:root{--slide-padding:clamp(0.5rem,2.5vw,1.5rem);--title-size:clamp(1.1rem,4vw,2rem);--body-size:clamp(0.7rem,1.2vw,0.95rem)}.slide-num{display:none}}
+@media(max-height:500px){:root{--slide-padding:clamp(0.4rem,2vw,1rem);--title-size:clamp(1rem,3.5vw,1.5rem)}}
+@media(max-width:600px){.logo-grid{grid-template-columns:repeat(2,1fr)}.compare-row{flex-direction:column}.compare-arrow-center{transform:rotate(90deg)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.2s!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="watermark">Nass Riviera</div>
+
+<!-- =====================================================
+     SECTION 1 — Comprendre l'IA en 6 minutes
+     ===================================================== -->
+
+<!-- 01 — SECTION TITLE -->
+<section class="slide glow-both">
+    <span class="section-number reveal-blur">01</span>
+    <span class="slide-num">01 / 18</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="section-line reveal"></div>
+        <h1 class="section-title reveal" style="transition-delay: 0.15s;">Notre premier projet<br>VibeCoding</h1>
+        <p class="section-subtitle reveal" style="transition-delay: 0.3s;">Avant de construire, il faut comprendre les briques</p>
+    </div>
+</section>
+
+<!-- 02 — STATEMENT: hook -->
+<section class="slide glow-orange">
+    <span class="slide-num">02 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <h2 class="reveal" style="font-size: clamp(1.5rem, 3.5vw, 2.8rem);">Tu utilises ChatGPT tous les jours.</h2>
+        <p class="reveal-blur" style="font-size: clamp(1.2rem, 2.5vw, 2rem); margin-top: clamp(1rem, 2vw, 2rem); color: var(--orange); transition-delay: 0.4s;">Mais tu sais pas ce que c'est réellement.</p>
+    </div>
+</section>
+
+<!-- 03 — DEFINITION: LLM -->
+<section class="slide glow-cyan">
+    <span class="slide-num">03 / 18</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <!-- Brain/network icon -->
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><path d="M12 2a5 5 0 0 1 5 5c0 1.5-.5 2.8-1.4 3.8A5 5 0 0 1 18 15c0 1.2-.4 2.3-1 3.2" fill="rgba(0,229,255,0.06)"/><path d="M12 2a5 5 0 0 0-5 5c0 1.5.5 2.8 1.4 3.8A5 5 0 0 0 6 15c0 1.2.4 2.3 1 3.2"/><circle cx="12" cy="7" r="2"/><circle cx="8" cy="15" r="2"/><circle cx="16" cy="15" r="2"/><line x1="12" y1="9" x2="8" y2="13"/><line x1="12" y1="9" x2="16" y2="13"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s;">LLM</div>
+        <p class="reveal" style="font-size: clamp(0.85rem, 1.4vw, 1.1rem); color: var(--text-muted); margin-bottom: 0.5rem; transition-delay: 0.3s;">Large Language Model</p>
+        <p class="def-explanation reveal" style="transition-delay: 0.4s;">Un modèle qui prend du texte → calcule → prédit la meilleure suite de mots.<br><br><strong style="color: var(--text);">Il ne "fait" rien tout seul.</strong> C'est un cerveau statistique.</p>
+    </div>
+</section>
+
+<!-- 04 — LOGOS: Exemples de LLM -->
+<section class="slide glow-orange">
+    <span class="slide-num">04 / 18</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <h2 class="reveal" style="margin-bottom: var(--content-gap);">Exemples de LLM</h2>
+        <div class="logo-grid">
+            <div class="logo-card reveal-scale" style="transition-delay: 0.1s;"><img src="logos/chatgpt.png" alt="ChatGPT"><span class="logo-name">ChatGPT</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.2s;"><img src="logos/gemini.png" alt="Gemini"><span class="logo-name">Gemini</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.3s;"><img src="logos/claude.png" alt="Claude"><span class="logo-name">Claude</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.4s;"><img src="logos/mistral.png" alt="Mistral AI"><span class="logo-name">Mistral AI</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.5s;"><img src="logos/deepseek.png" alt="DeepSeek"><span class="logo-name">DeepSeek</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.6s;"><img src="logos/perplexity.png" alt="Perplexity"><span class="logo-name">Perplexity</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- 05 — STATEMENT: transition agent -->
+<section class="slide glow-both">
+    <span class="slide-num">05 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem);">Ok, mais alors c'est quoi<br>un <span style="color: var(--cyan);">Agent IA</span> ?</h1>
+    </div>
+</section>
+
+<!-- 06 — DEFINITION: Agent IA -->
+<section class="slide glow-cyan">
+    <span class="slide-num">06 / 18</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <!-- Robot icon -->
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><rect x="3" y="8" width="18" height="12" rx="3" fill="rgba(0,229,255,0.06)"/><circle cx="9" cy="14" r="1.5" fill="var(--cyan)"/><circle cx="15" cy="14" r="1.5" fill="var(--cyan)"/><line x1="12" y1="4" x2="12" y2="8"/><circle cx="12" cy="3" r="1"/><line x1="1" y1="14" x2="3" y2="14"/><line x1="21" y1="14" x2="23" y2="14"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s;">Agent IA</div>
+        <p class="def-explanation reveal" style="transition-delay: 0.5s;">Une IA capable de <strong style="color: var(--text);">planifier</strong>, <strong style="color: var(--text);">prendre des décisions</strong> et <strong style="color: var(--text);">exécuter des actions</strong> pour atteindre un objectif.</p>
+    </div>
+</section>
+
+<!-- 07 — COMPARE: LLM vs Agent -->
+<section class="slide glow-orange">
+    <span class="slide-num">07 / 18</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <h2 class="reveal" style="text-align: center; margin-bottom: var(--content-gap);">LLM vs Agent IA</h2>
+        <div class="compare-row">
+            <div class="compare-card old reveal-left" style="transition-delay: 0.2s;">
+                <h3 style="color: var(--text-muted);">LLM</h3>
+                <p class="compare-flow">Tu poses une question<br>↓<br><strong style="color: var(--text);">Il répond</strong></p>
+                <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); font-style: italic; margin-top: auto;">Échange passif</p>
+            </div>
+            <div class="compare-arrow-center reveal" style="transition-delay: 0.35s;">→</div>
+            <div class="compare-card new reveal-left" style="transition-delay: 0.5s;">
+                <h3 style="color: var(--cyan);">Agent IA</h3>
+                <p class="compare-flow">Tu donnes un objectif<br>↓ planifie<br>↓ exécute<br>↓ teste & corrige<br><strong style="color: var(--cyan);">Il livre le résultat</strong></p>
+                <p style="font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--cyan); font-style: italic; margin-top: auto;">Autonomie</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 08 — STATEMENT: transition skill -->
+<section class="slide glow-both">
+    <span class="slide-num">08 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem);">Et un <span style="color: var(--orange);">Skill</span><br>dans tout ça ?</h1>
+    </div>
+</section>
+
+<!-- 09 — DEFINITION: Skill -->
+<section class="slide glow-orange">
+    <span class="slide-num">09 / 18</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <!-- Tool/wrench icon -->
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" fill="rgba(255,107,53,0.08)"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s; color: var(--orange);">Skill</div>
+        <p class="def-explanation reveal" style="transition-delay: 0.5s;">Une capacité précise appelée par l'agent.<br><br><strong style="color: var(--text);">Fait UNE chose. La fait bien.</strong></p>
+        <div class="reveal" style="display: flex; gap: clamp(0.5rem, 1.5vw, 1.5rem); margin-top: clamp(1rem, 2vw, 2rem); transition-delay: 0.7s;">
+            <span style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.5vw, 1.2rem); font-family: var(--font-display); font-weight: 700; font-size: clamp(0.7rem, 1.2vw, 0.95rem);">Explore</span>
+            <span style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.5vw, 1.2rem); font-family: var(--font-display); font-weight: 700; font-size: clamp(0.7rem, 1.2vw, 0.95rem);">Plan</span>
+            <span style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); border-radius: 8px; padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.5vw, 1.2rem); font-family: var(--font-display); font-weight: 700; font-size: clamp(0.7rem, 1.2vw, 0.95rem);">Build</span>
+        </div>
+    </div>
+</section>
+
+<!-- 10 — WORKFLOW: Le Workflow du VibeCoder -->
+<section class="slide glow-cyan">
+    <span class="slide-num">10 / 18</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <h2 class="reveal" style="text-align: center; margin-bottom: var(--content-gap);">Le Workflow du VibeCoder</h2>
+        <div class="workflow-steps">
+            <div class="workflow-step reveal-left" style="transition-delay: 0.15s;">
+                <div class="step-num">1</div>
+                <div class="step-content"><div class="step-label">Toi</div><div class="step-desc">Tu diriges l'Agent IA</div></div>
+            </div>
+            <div class="step-arrow reveal" style="transition-delay: 0.25s;">↓</div>
+            <div class="workflow-step reveal-left" style="transition-delay: 0.35s;">
+                <div class="step-num">2</div>
+                <div class="step-content"><div class="step-label">L'Agent</div><div class="step-desc">Appelle des Skills (Explore, Plan, Build)</div></div>
+            </div>
+            <div class="step-arrow reveal" style="transition-delay: 0.45s;">↓</div>
+            <div class="workflow-step reveal-left" style="transition-delay: 0.55s;">
+                <div class="step-num">3</div>
+                <div class="step-content"><div class="step-label">Les Skills</div><div class="step-desc">Exécutent les tâches</div></div>
+            </div>
+            <div class="step-arrow reveal" style="transition-delay: 0.65s;">↓</div>
+            <div class="workflow-step reveal-left" style="transition-delay: 0.75s;">
+                <div class="step-num">4</div>
+                <div class="step-content"><div class="step-label" style="color: var(--cyan);">Résultat</div><div class="step-desc">Livré.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 11 — STATEMENT: Tu parles, tu ne codes pas -->
+<section class="slide glow-both">
+    <span class="slide-num">11 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="key-statement reveal-scale" style="font-size: clamp(1.5rem, 3.5vw, 3rem);">Tu parles. Tu ne codes pas.<br><br><span style="color: var(--text-muted); font-size: 0.7em;">L'agent fait le reste.</span></p>
+    </div>
+</section>
+
+<!-- =====================================================
+     SECTION 2 — Construisons notre 1er site
+     ===================================================== -->
+
+<!-- 12 — SECTION TITLE -->
+<section class="slide glow-orange">
+    <span class="section-number reveal-blur">02</span>
+    <span class="slide-num">12 / 18</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="section-line reveal"></div>
+        <h1 class="section-title reveal" style="transition-delay: 0.15s;">Construisons notre<br>1er site</h1>
+        <p class="section-subtitle reveal" style="transition-delay: 0.3s;">En live, avec Claude Code</p>
+    </div>
+</section>
+
+<!-- 13 — BULLETS: Ce qu'on va construire -->
+<section class="slide glow-cyan">
+    <span class="slide-num">13 / 18</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <h2 class="reveal" style="margin-bottom: var(--content-gap);">Ce qu'on va construire</h2>
+        <ul class="bullet-list">
+            <li class="reveal-left" style="transition-delay: 0.15s;"><strong>Landing page moderne</strong> — design sombre et élégant</li>
+            <li class="reveal-left" style="transition-delay: 0.3s;"><strong>Design responsive</strong> — desktop, tablette, mobile</li>
+            <li class="reveal-left" style="transition-delay: 0.45s;"><strong>Sections complètes</strong> — hero + features + CTA</li>
+            <li class="reveal-left" style="transition-delay: 0.6s;"><strong>Déployé et accessible</strong> — en ligne en quelques minutes</li>
+        </ul>
+    </div>
+</section>
+
+<!-- 14 — STATEMENT: Pas de slide pendant la démo -->
+<section class="slide glow-both">
+    <span class="slide-num">14 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <!-- Terminal icon -->
+        <svg class="reveal" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><rect x="2" y="4" width="20" height="16" rx="2" fill="rgba(0,229,255,0.06)"/><polyline points="6 10 10 14 6 18"/><line x1="14" y1="18" x2="18" y2="18"/></svg>
+        <h2 class="reveal-blur" style="transition-delay: 0.2s; font-size: clamp(1.5rem, 3vw, 2.5rem);">Démo en live</h2>
+        <p class="reveal" style="transition-delay: 0.5s; font-size: clamp(1rem, 1.8vw, 1.3rem); color: var(--text-muted); margin-top: 1rem;">Je vais construire ce site en parlant à Claude Code.<br>Sans écrire une seule ligne de code.</p>
+    </div>
+</section>
+
+<!-- 15 — STATEMENT: Le résultat -->
+<section class="slide glow-orange">
+    <span class="slide-num">15 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <!-- Check/trophy icon -->
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><path d="M6 9H4a2 2 0 0 1-2-2V4h4"/><path d="M18 9h2a2 2 0 0 0 2-2V4h-4"/><rect x="6" y="2" width="12" height="12" rx="2" fill="rgba(255,107,53,0.08)"/><path d="M12 14v4"/><path d="M8 22h8"/><path d="M9 18h6"/></svg>
+        <h2 class="reveal-blur" style="transition-delay: 0.2s; font-size: clamp(1.5rem, 3.5vw, 2.8rem);">Le résultat</h2>
+        <p class="reveal" style="transition-delay: 0.5s; font-size: clamp(1rem, 1.8vw, 1.3rem); color: var(--text-secondary); margin-top: 1rem;">Un site complet. En quelques minutes.<br><strong style="color: var(--text);">Sans écrire une seule ligne de code.</strong></p>
+    </div>
+</section>
+
+<!-- =====================================================
+     TRANSITION + CTA
+     ===================================================== -->
+
+<!-- 16 — STATEMENT: avantage compétitif -->
+<section class="slide glow-cyan">
+    <span class="slide-num">16 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="key-statement reveal-scale" style="font-size: clamp(1.2rem, 2.8vw, 2.2rem);">Les gens qui comprennent la différence entre un LLM et un agent<br><br><span class="gradient-shift" style="font-size: 1.1em;">vont prendre une avance massive.</span></p>
+    </div>
+</section>
+
+<!-- 17 — TEASER: VibeCoding -->
+<section class="slide glow-both">
+    <span class="slide-num">17 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="reveal" style="font-size: clamp(1.2rem, 2.5vw, 2rem); color: var(--text-secondary); margin-bottom: clamp(1rem, 2vw, 2rem);">Mais surtout pour piloter l'IA</p>
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem); transition-delay: 0.3s;">nous allons apprendre le...</h1>
+        <h1 class="reveal-scale gradient-shift" style="font-size: clamp(2.5rem, 7vw, 6rem); transition-delay: 0.8s; margin-top: clamp(0.5rem, 1.5vw, 1.5rem);">VibeCoding</h1>
+    </div>
+</section>
+
+<!-- 18 — CTA -->
+<section class="slide glow-orange">
+    <span class="slide-num">18 / 18</span>
+    <div class="slide-content" style="align-items: center; justify-content: center;">
+        <div class="cta-box reveal-scale">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1rem;"><path d="M22 10l-10-6L2 10l10 6 10-6z" fill="rgba(255,107,53,0.1)"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/><line x1="22" y1="10" x2="22" y2="16"/></svg>
+            <h2 style="margin-bottom: 1rem;">Formation Gratuite</h2>
+            <p style="font-size: clamp(1rem, 1.8vw, 1.4rem);">Apprends à utiliser l'IA et les agents IA dans ton quotidien.</p>
+            <p style="margin-top: 1.5rem; color: var(--orange); font-weight: 600; font-size: clamp(1rem, 1.5vw, 1.3rem);">Lien dans la description.</p>
+        </div>
+    </div>
+</section>
+
+<!-- === JAVASCRIPT === -->
+<script>
+class SlidePresentation {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.currentSlide = 0;
+        this.progressBar = document.getElementById('progressBar');
+        this.setupIntersectionObserver();
+        this.setupKeyboardNav();
+        this.setupTouchNav();
+    }
+    setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    this.currentSlide = [...this.slides].indexOf(entry.target);
+                    this.updateProgress();
+                }
+            });
+        }, { threshold: 0.5 });
+        this.slides.forEach(slide => observer.observe(slide));
+    }
+    setupKeyboardNav() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowRight') { e.preventDefault(); this.goTo(this.currentSlide + 1); }
+            else if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft') { e.preventDefault(); this.goTo(this.currentSlide - 1); }
+        });
+    }
+    setupTouchNav() {
+        let startY = 0;
+        document.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; });
+        document.addEventListener('touchend', (e) => {
+            const diff = startY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) { diff > 0 ? this.goTo(this.currentSlide + 1) : this.goTo(this.currentSlide - 1); }
+        });
+    }
+    goTo(index) { if (index >= 0 && index < this.slides.length) { this.slides[index].scrollIntoView({ behavior: 'smooth' }); } }
+    updateProgress() { this.progressBar.style.width = ((this.currentSlide + 1) / this.slides.length * 100) + '%'; }
+}
+new SlidePresentation();
+</script>
+</body>
+</html>

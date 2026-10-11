@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>Convergence — Intro du V</title>
+<style>
+@font-face{font-family:'Inter Tight';src:url('../fonts/InterTight-var.ttf');font-weight:100 900;}
+@font-face{font-family:'IBM Plex Mono';src:url('../fonts/IBMPlexMono-Medium.ttf');font-weight:500;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100vw;height:100vh;overflow:hidden;}
+body{background:#F2EFE8;display:flex;align-items:center;justify-content:center;font-family:'Inter Tight',sans-serif;color:#0B0E11;}
+body.transparent{background:transparent;}
+body.dark{background:#0B0E11;color:#F2EFE8;}
+.stage{display:flex;flex-direction:column;align-items:center;gap:2.9vw;}
+.wm{display:flex;align-items:center;font-weight:600;font-size:7.8vw;letter-spacing:.32em;line-height:1;margin-right:-.32em;}
+.wm svg{height:.8em;width:auto;margin-right:.32em;overflow:visible;}
+.l{display:inline-block;opacity:0;}
+.vo,.vv{fill:none;stroke-width:10;stroke-linecap:round;stroke-dasharray:64;stroke-dashoffset:64;}
+.vo{stroke:#C98A0B;} .vv{stroke:#0F8A5F;}
+.dark .vo{stroke:#E2A93B;} .dark .vv{stroke:#2BB37C;}
+.vp{fill:#0B0E11;opacity:0;transform-box:fill-box;transform-origin:center;}
+.vr{fill:none;stroke:#0B0E11;stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center;}
+.dark .vp{fill:#F2EFE8;} .dark .vr{stroke:#F2EFE8;}
+.sig{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:1.56vw;letter-spacing:.24em;color:#6B7280;text-transform:uppercase;opacity:0;}
+.sig b{color:#C98A0B;font-weight:500;} .sig i{color:#0F8A5F;font-style:normal;}
+.dark .sig{color:#9AA3AD;} .dark .sig b{color:#E2A93B;} .dark .sig i{color:#2BB37C;}
+@media (max-aspect-ratio:1/1){.sig{font-size:2.6vw;text-align:center;line-height:1.8;}}
+</style></head>
+<body>
+<!-- Intro 4,5 s. Paramètres : ?t=1.25 (fige à ce temps, pour le rendu image par image) · ?bg=transparent | dark -->
+<div class="stage">
+  <div class="wm" id="wm"></div>
+  <div class="sig" id="sig"><b>Marchés · Or</b> × <i>Crypto</i> — chaque semaine</div>
+</div>
+<script>
+const p = new URLSearchParams(location.search);
+if (p.get('bg')) document.body.classList.add(p.get('bg'));
+const left = 'CON', right = 'ERGENCE';
+document.getElementById('wm').innerHTML =
+  [...left].map(c => `<span class="l L">${c}</span>`).join('') +
+  `<svg viewBox="0 0 60 64"><line class="vo" x1="5" y1="5" x2="30" y2="58"/><line class="vv" x1="55" y1="5" x2="30" y2="58"/><circle class="vr" cx="30" cy="58" r="5"/><circle class="vp" cx="30" cy="58" r="5.5"/></svg>` +
+  [...right].map(c => `<span class="l R">${c}</span>`).join('');
+
+const ease = 'cubic-bezier(.65,0,.35,1)', out = 'cubic-bezier(.2,.8,.2,1)';
+const A = [];
+const add = (el, kf, o) => A.push(el.animate(kf, { fill: 'both', ...o }));
+// 1. Le V se trace (0 → 1,0 s)
+add(document.querySelector('.vo'), [{ strokeDashoffset: 64 }, { strokeDashoffset: 0 }], { duration: 900, easing: ease });
+add(document.querySelector('.vv'), [{ strokeDashoffset: 64 }, { strokeDashoffset: 0 }], { duration: 900, delay: 120, easing: ease });
+// 2. Le point de rencontre s'allume (1,0 s)
+add(document.querySelector('.vp'), [{ opacity: 0, transform: 'scale(.2)' }, { opacity: 1, transform: 'scale(1.6)', offset: .5 }, { opacity: 1, transform: 'scale(1)' }], { duration: 450, delay: 1000, easing: 'ease-out' });
+add(document.querySelector('.vr'), [{ opacity: 0, transform: 'scale(.4)' }, { opacity: .9, transform: 'scale(1)', offset: .15 }, { opacity: 0, transform: 'scale(4)' }], { duration: 900, delay: 1020, easing: 'ease-out' });
+// 3. Les lettres s'écartent depuis le V (1,25 s → 2,2 s)
+const Ls = [...document.querySelectorAll('.L')].reverse(), Rs = [...document.querySelectorAll('.R')];
+Ls.forEach((el, i) => add(el, [{ opacity: 0, transform: 'translateX(60px)', filter: 'blur(6px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 650, delay: 1250 + i * 70, easing: out }));
+Rs.forEach((el, i) => add(el, [{ opacity: 0, transform: 'translateX(-60px)', filter: 'blur(6px)' }, { opacity: 1, transform: 'none', filter: 'blur(0)' }], { duration: 650, delay: 1250 + i * 70, easing: out }));
+// 4. La signature (2,4 s)
+add(document.getElementById('sig'), [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay: 2400, easing: out });
+
+if (p.get('t') !== null) {
+  const t = parseFloat(p.get('t')) * 1000;
+  A.forEach(a => { a.pause(); a.currentTime = t; });
+  document.fonts.ready.then(() => { A.forEach(a => { a.currentTime = t; }); document.body.dataset.ready = '1'; });
+} else {
+  A.forEach(a => a.pause());
+  document.fonts.ready.then(() => A.forEach(a => { a.currentTime = 0; a.play(); }));
+}
+</script>
+</body></html>

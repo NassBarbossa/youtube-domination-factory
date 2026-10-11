@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><title>Convergence — Écran d'attente</title>
+<link rel="stylesheet" href="convergence.css">
+<style>
+.center{position:absolute;inset:80px 0 76px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:52px;text-align:center;}
+.center .wm{font-size:104px;}
+.k{font-family:var(--mono);font-size:24px;letter-spacing:.3em;color:var(--or);font-weight:600;}
+.cd{font-family:var(--mono);font-size:96px;color:var(--vert);font-weight:600;line-height:1;margin-top:-28px;}
+.s{font-family:var(--mono);font-size:20px;color:var(--gris);letter-spacing:.12em;}
+</style></head>
+<body>
+<!-- Source navigateur OBS : 1920 × 1080. Paramètre : ?min=5 (durée du compte à rebours, en minutes) · ?min=0 = version sans chrono -->
+<div class="gridbg"></div>
+<div class="topbar"><span>ÉMISSION HEBDO</span><span>MARCHÉS · OR × CRYPTO</span></div>
+<div class="center">
+  <span data-wm="anim"></span>
+  <span class="k" id="k">LE LIVE COMMENCE DANS</span>
+  <span class="cd" id="cd">05:00</span>
+  <span class="s">POSE TES QUESTIONS DANS LE CHAT</span>
+</div>
+<div class="ticker"><div class="ticker-track"></div></div>
+<script src="convergence.js"></script>
+<script>
+let s = Math.round(parseFloat(new URLSearchParams(location.search).get('min') || '5') * 60);
+const el = document.getElementById('cd');
+const f = () => {
+  if (s > 0) { el.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'); }
+  else { document.getElementById('k').textContent = 'ON COMMENCE'; el.textContent = 'DANS UN INSTANT'; }
+};
+f(); setInterval(() => { if (s > 0) s--; f(); }, 1000);
+</script>
+</body></html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Tips Claude Code — Nass Riviera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg: #0A0A0A;
+    --orange: #FF6B35;
+    --cyan: #00E5FF;
+    --text: #FFFFFF;
+    --text-secondary: rgba(255,255,255,0.75);
+    --text-muted: rgba(255,255,255,0.4);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --title-size: clamp(2rem, 6vw, 5rem);
+    --h2-size: clamp(1.5rem, 3.5vw, 3rem);
+    --body-size: clamp(0.85rem, 1.5vw, 1.25rem);
+    --stat-size: clamp(3rem, 8vw, 7rem);
+    --slide-num-size: clamp(0.65rem, 1vw, 0.85rem);
+    --slide-padding: clamp(2rem, 5vw, 6rem);
+    --content-gap: clamp(1rem, 2.5vw, 2.5rem);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-normal: 0.6s;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; background: var(--bg); }
+body { font-family: var(--font-body); color: var(--text); background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('bg-nass.png') center top / 100% auto fixed no-repeat, var(--bg); -webkit-font-smoothing: antialiased; }
+
+.slide { width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; scroll-snap-align: start; display: flex; flex-direction: column; position: relative; background: transparent; }
+.slide-content { flex: 1; display: flex; flex-direction: column; justify-content: center; max-height: 100%; overflow: hidden; padding: var(--slide-padding); position: relative; z-index: 1; }
+.slide-num { position: absolute; top: clamp(1rem, 2vw, 2rem); right: clamp(1rem, 2vw, 2rem); font-family: var(--font-body); font-size: var(--slide-num-size); color: rgba(255,255,255,0.3); letter-spacing: 0.1em; z-index: 10; }
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; z-index: 100; background: linear-gradient(90deg, var(--orange), var(--cyan)); width: 0%; transition: width 0.3s ease; }
+.watermark { position: fixed; bottom: clamp(1rem, 2vw, 2rem); left: clamp(1.5rem, 3vw, 3rem); font-family: var(--font-display); font-weight: 800; font-size: clamp(0.65rem, 1vw, 0.85rem); color: rgba(255,255,255,0.25); z-index: 50; pointer-events: none; }
+
+h1 { font-family: var(--font-display); font-weight: 800; font-size: var(--title-size); line-height: 1.1; }
+h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--h2-size); line-height: 1.2; }
+p, li { font-family: var(--font-body); font-size: var(--body-size); line-height: 1.6; color: var(--text-secondary); }
+.divider { width: 80px; height: 4px; background: linear-gradient(90deg, var(--orange), var(--cyan)); border-radius: 2px; margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem); }
+
+/* === TIP NUMBER — big background number === */
+.tip-number { font-family: var(--font-display); font-weight: 800; font-size: clamp(5rem, 14vw, 12rem); line-height: 1; background: linear-gradient(135deg, var(--orange), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.12; position: absolute; top: clamp(0.5rem, 2vw, 2rem); left: clamp(2rem, 5vw, 6rem); }
+.tip-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3.5vw, 3rem); color: var(--text); line-height: 1.15; }
+.tip-subtitle { font-size: clamp(0.9rem, 1.5vw, 1.2rem); color: var(--text-muted); margin-top: clamp(0.3rem, 0.8vw, 0.7rem); }
+.tip-line { width: clamp(40px, 8vw, 100px); height: 3px; background: var(--orange); border-radius: 2px; margin-bottom: clamp(0.75rem, 1.5vw, 1.5rem); }
+
+/* === KEY STATEMENT + GRADIENT SHIFT === */
+.key-statement { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.5rem); line-height: 1.3; color: var(--text); text-align: center; max-width: 800px; margin: 0 auto; }
+.gradient-shift { background: linear-gradient(90deg, var(--orange), var(--cyan), var(--orange)); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradient-shift 4s ease infinite; }
+@keyframes gradient-shift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
+
+/* === DEFINITION === */
+.def-term { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 4vw, 3.5rem); color: var(--cyan); margin-bottom: clamp(0.5rem, 1vw, 1rem); }
+.def-explanation { font-size: clamp(1rem, 2vw, 1.5rem); color: var(--text-secondary); max-width: 700px; line-height: 1.5; }
+
+/* === BULLET LIST === */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: clamp(0.4rem, 1vh, 1rem); }
+.bullet-list li { padding-left: 1.5em; position: relative; font-size: var(--body-size); color: var(--text-secondary); }
+.bullet-list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); }
+.bullet-list li strong { color: var(--text); }
+
+/* === COMMAND BADGES === */
+.cmd-grid { display: flex; flex-direction: column; gap: clamp(0.5rem, 1.2vh, 0.9rem); max-width: 750px; margin: 0 auto; width: 100%; }
+.cmd-row { display: flex; align-items: center; gap: clamp(0.6rem, 1.5vw, 1.2rem); }
+.cmd-badge { font-family: 'Courier New', monospace; font-weight: 700; font-size: clamp(0.75rem, 1.3vw, 1.05rem); color: var(--cyan); background: rgba(0,229,255,0.08); border: 1px solid rgba(0,229,255,0.2); border-radius: 6px; padding: clamp(0.25rem, 0.5vw, 0.4rem) clamp(0.5rem, 1vw, 0.8rem); white-space: nowrap; flex-shrink: 0; min-width: clamp(80px, 12vw, 160px); }
+.cmd-badge.flag { color: var(--orange); background: rgba(255,107,53,0.08); border-color: rgba(255,107,53,0.2); }
+.cmd-desc { font-size: clamp(0.75rem, 1.2vw, 1rem); color: var(--text-secondary); }
+
+/* === SHORTCUT GRID === */
+.shortcut-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.4rem, 1vw, 0.8rem); max-width: 750px; margin: 0 auto; width: 100%; }
+.shortcut-item { display: flex; align-items: center; gap: clamp(0.4rem, 1vw, 0.8rem); }
+.key { font-family: 'Courier New', monospace; font-weight: 700; font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 5px; padding: clamp(0.2rem, 0.4vw, 0.3rem) clamp(0.4rem, 0.8vw, 0.6rem); white-space: nowrap; }
+.shortcut-label { font-size: clamp(0.7rem, 1.1vw, 0.9rem); color: var(--text-muted); }
+
+/* === LOGO GRID === */
+.logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(0.75rem, 2vw, 1.5rem); width: 100%; max-width: 600px; margin: 0 auto; }
+.logo-card { background: rgba(255,255,255,0.95); border-radius: 12px; padding: clamp(0.6rem, 1.5vw, 1.2rem); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(0.3rem, 0.6vw, 0.5rem); aspect-ratio: 4/3; transition: transform 0.3s var(--ease-out-expo); }
+.logo-card:hover { transform: scale(1.05); }
+.logo-card .logo-name { font-family: var(--font-display); font-weight: 800; font-size: clamp(0.6rem, 1.1vw, 0.85rem); color: #111; }
+.logo-card img { width: clamp(30px, 4vw, 48px); height: clamp(30px, 4vw, 48px); object-fit: contain; }
+
+/* === WORKFLOW STEPS === */
+.workflow-steps { display: flex; flex-direction: column; gap: clamp(0.4rem, 1vh, 0.7rem); max-width: 700px; margin: 0 auto; width: 100%; }
+.wf-step { display: flex; align-items: center; gap: clamp(0.6rem, 1.2vw, 1rem); }
+.wf-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.2rem, 2.2vw, 1.8rem); color: var(--orange); flex-shrink: 0; width: clamp(32px, 4vw, 44px); text-align: center; }
+.wf-label { font-family: var(--font-display); font-weight: 700; font-size: clamp(0.8rem, 1.3vw, 1.05rem); color: var(--text); }
+.wf-desc { font-size: clamp(0.7rem, 1.1vw, 0.85rem); color: var(--text-muted); margin-left: 0.5rem; }
+.wf-arrow { color: var(--text-muted); font-size: clamp(0.8rem, 1.2vw, 1rem); padding-left: clamp(32px, 4vw, 44px); }
+
+/* === BONUS BANNER === */
+.bonus-badge { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: clamp(0.7rem, 1.2vw, 1rem); color: var(--bg); background: var(--orange); border-radius: 6px; padding: clamp(0.2rem, 0.4vw, 0.4rem) clamp(0.6rem, 1.2vw, 1rem); margin-bottom: clamp(0.5rem, 1vw, 1rem); letter-spacing: 0.05em; }
+
+/* === TITLE BANGER + GLITCH === */
+.title-banger { font-family: var(--font-display); font-weight: 800; font-size: clamp(4rem, 12vw, 10rem); line-height: 1; letter-spacing: -0.02em; position: relative; display: inline-block; color: var(--text); }
+.title-banger .letter { display: inline-block; animation: letter-color 4s ease infinite; }
+.title-banger .letter:nth-child(1) { animation-delay: 0s; }
+.title-banger .letter:nth-child(2) { animation-delay: 0.3s; }
+.title-banger .letter:nth-child(3) { animation-delay: 0.6s; }
+.title-banger .letter:nth-child(4) { animation-delay: 0.9s; }
+.title-banger .letter:nth-child(5) { animation-delay: 1.2s; }
+.title-banger .letter:nth-child(6) { animation-delay: 1.5s; }
+.title-banger .letter:nth-child(7) { animation-delay: 1.8s; }
+@keyframes letter-color {
+    0%, 100% { color: var(--orange); text-shadow: 0 0 20px rgba(255,107,53,0.4); }
+    33% { color: var(--cyan); text-shadow: 0 0 20px rgba(0,229,255,0.4); }
+    66% { color: var(--text); text-shadow: 0 0 10px rgba(255,255,255,0.2); }
+}
+/* Glitch layers */
+.title-banger::before, .title-banger::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; }
+.title-banger::before { left: 3px; text-shadow: -3px 0 var(--cyan); clip-path: inset(0 0 100% 0); animation: glitch-hard-top 3s infinite linear; }
+.title-banger::after { left: -3px; text-shadow: 3px 0 var(--orange); clip-path: inset(100% 0 0 0); animation: glitch-hard-bottom 2.5s infinite linear; }
+@keyframes glitch-hard-top { 0%,90%{clip-path:inset(0 0 100% 0)}91%{clip-path:inset(15% 0 60% 0)}92%{clip-path:inset(50% 0 20% 0)}93%{clip-path:inset(70% 0 5% 0)}94%{clip-path:inset(10% 0 75% 0)}95%{clip-path:inset(40% 0 30% 0)}96%,100%{clip-path:inset(0 0 100% 0)} }
+@keyframes glitch-hard-bottom { 0%,88%{clip-path:inset(100% 0 0 0)}89%{clip-path:inset(60% 0 15% 0)}90%{clip-path:inset(20% 0 50% 0)}91%{clip-path:inset(5% 0 70% 0)}92%{clip-path:inset(75% 0 10% 0)}93%{clip-path:inset(30% 0 40% 0)}94%,100%{clip-path:inset(100% 0 0 0)} }
+.title-badge { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: clamp(0.8rem, 1.5vw, 1.2rem); color: var(--bg); background: var(--cyan); border-radius: 8px; padding: clamp(0.3rem, 0.5vw, 0.5rem) clamp(0.8rem, 1.5vw, 1.5rem); margin-bottom: clamp(1rem, 2vw, 2rem); letter-spacing: 0.15em; animation: badge-glow 3s ease-in-out infinite; }
+@keyframes badge-glow { 0%,100%{box-shadow:0 0 15px rgba(0,229,255,0.3)}50%{box-shadow:0 0 35px rgba(0,229,255,0.6)} }
+.title-line { width: clamp(60px, 10vw, 120px); height: 4px; background: linear-gradient(90deg, var(--orange), var(--cyan)); border-radius: 2px; margin: clamp(0.8rem, 1.5vw, 1.5rem) 0; }
+.title-sub { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.2rem, 2.5vw, 2rem); color: var(--text-muted); letter-spacing: 0.05em; }
+#particleCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+/* === CTA === */
+.cta-box { border: 2px solid var(--orange); border-radius: 12px; padding: clamp(1.5rem, 3vw, 3rem); text-align: center; background: rgba(255,107,53,0.05); animation: cta-pulse 2.5s ease-in-out infinite; }
+@keyframes cta-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,107,53,0.3)}50%{box-shadow:0 0 30px 8px rgba(255,107,53,0.15)} }
+
+/* === MOOD OVERLAYS === */
+.glow-orange { background: linear-gradient(135deg, rgba(10,10,10,0.4) 0%, rgba(255,107,53,0.06) 100%); }
+.glow-cyan { background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, rgba(10,10,10,0.4) 100%); }
+.glow-both { background: transparent; }
+
+/* === ANIMATIONS === */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity var(--duration-normal) var(--ease-out-expo), transform var(--duration-normal) var(--ease-out-expo); }
+.slide.visible .reveal { opacity: 1; transform: translateY(0); }
+.reveal:nth-child(1){transition-delay:.1s}.reveal:nth-child(2){transition-delay:.2s}.reveal:nth-child(3){transition-delay:.3s}.reveal:nth-child(4){transition-delay:.4s}.reveal:nth-child(5){transition-delay:.5s}.reveal:nth-child(6){transition-delay:.6s}.reveal:nth-child(7){transition-delay:.7s}
+
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo); }
+.slide.visible .reveal-left { opacity: 1; transform: translateX(0); }
+.reveal-left:nth-child(1){transition-delay:.1s}.reveal-left:nth-child(2){transition-delay:.2s}.reveal-left:nth-child(3){transition-delay:.3s}.reveal-left:nth-child(4){transition-delay:.4s}.reveal-left:nth-child(5){transition-delay:.5s}.reveal-left:nth-child(6){transition-delay:.6s}
+
+.reveal-scale { opacity: 0; transform: scale(0.7); transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo); }
+.slide.visible .reveal-scale { opacity: 1; transform: scale(1); }
+
+.reveal-blur { opacity: 0; filter: blur(12px); transition: opacity 0.8s var(--ease-out-expo), filter 0.8s var(--ease-out-expo); }
+.slide.visible .reveal-blur { opacity: 1; filter: blur(0); }
+
+/* === RESPONSIVE === */
+@media(max-height:700px){:root{--slide-padding:clamp(0.75rem,3vw,2rem);--content-gap:clamp(0.4rem,1.5vw,1rem);--title-size:clamp(1.25rem,4.5vw,2.5rem);--h2-size:clamp(1rem,3vw,1.75rem)}}
+@media(max-height:600px){:root{--slide-padding:clamp(0.5rem,2.5vw,1.5rem);--title-size:clamp(1.1rem,4vw,2rem);--body-size:clamp(0.7rem,1.2vw,0.95rem)}.slide-num{display:none}}
+@media(max-height:500px){:root{--slide-padding:clamp(0.4rem,2vw,1rem);--title-size:clamp(1rem,3.5vw,1.5rem)}}
+@media(max-width:600px){.shortcut-grid{grid-template-columns:1fr}.logo-grid{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.2s!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="watermark">Nass Riviera</div>
+
+<!-- 01 — TITLE BANGER -->
+<section class="slide glow-both" id="titleSlide">
+    <canvas id="particleCanvas"></canvas>
+    <span class="slide-num">01 / 16</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <div class="title-badge reveal-scale">CLAUDE CODE</div>
+        <h1 class="title-banger reveal-blur" data-text="5 TIPS" style="transition-delay: 0.3s;"><span class="letter">5</span><span class="letter" style="margin-left: 0.15em;"> </span><span class="letter">T</span><span class="letter">I</span><span class="letter">P</span><span class="letter">S</span></h1>
+        <div class="title-line reveal" style="transition-delay: 0.5s;"></div>
+        <p class="title-sub reveal" style="transition-delay: 0.7s;">pour les débutants</p>
+    </div>
+</section>
+
+<!-- =====================================================
+     TIP 1 — Le Contexte + CLAUDE.md
+     ===================================================== -->
+
+<!-- 02 — TIP 1 TITLE -->
+<section class="slide glow-orange">
+    <span class="tip-number reveal-blur">01</span>
+    <span class="slide-num">02 / 16</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="tip-line reveal"></div>
+        <h1 class="tip-title reveal" style="transition-delay: 0.15s;">Le Contexte +<br>CLAUDE.md</h1>
+        <p class="tip-subtitle reveal" style="transition-delay: 0.3s;">Comprends ta mémoire de travail</p>
+    </div>
+</section>
+
+<!-- 03 — DEFINITION: Contexte -->
+<section class="slide glow-cyan">
+    <span class="slide-num">03 / 16</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><rect x="2" y="3" width="20" height="18" rx="2" fill="rgba(0,229,255,0.06)"/><line x1="2" y1="8" x2="22" y2="8"/><rect x="5" y="11" width="14" height="3" rx="1" fill="rgba(0,229,255,0.15)"/><rect x="5" y="16" width="8" height="3" rx="1" fill="rgba(0,229,255,0.1)"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s;">Contexte</div>
+        <p class="def-explanation reveal" style="transition-delay: 0.5s;">La mémoire de travail de Claude Code.<br><strong style="color: var(--text);">Plus elle se remplit, moins il est performant.</strong><br><br><span style="color: var(--text-muted); font-size: 0.9em;">Tape <code style="color: var(--cyan); background: rgba(0,229,255,0.08); padding: 2px 6px; border-radius: 4px;">/context</code> pour voir où tu en es.</span></p>
+    </div>
+</section>
+
+<!-- 04 — DEFINITION: CLAUDE.md -->
+<section class="slide glow-orange">
+    <span class="slide-num">04 / 16</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1.5rem;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="rgba(255,107,53,0.06)"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+        <div class="def-term reveal-blur" style="transition-delay: 0.2s; color: var(--orange);">CLAUDE.md</div>
+        <p class="def-explanation reveal" style="transition-delay: 0.5s;">La carte d'identité de ton projet.<br><br>Tape <code style="color: var(--orange); background: rgba(255,107,53,0.08); padding: 2px 6px; border-radius: 4px;">/init</code> → Claude génère le fichier.<br>Prochaine session, il sait déjà tout. <strong style="color: var(--text);">Zéro token gaspillé.</strong></p>
+    </div>
+</section>
+
+<!-- =====================================================
+     TIP 2 — Commandes & Flags
+     ===================================================== -->
+
+<!-- 05 — TIP 2 TITLE -->
+<section class="slide glow-cyan">
+    <span class="tip-number reveal-blur">02</span>
+    <span class="slide-num">05 / 16</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="tip-line reveal" style="background: var(--cyan);"></div>
+        <h1 class="tip-title reveal" style="transition-delay: 0.15s;">Les Commandes &<br>Flags Essentiels</h1>
+        <p class="tip-subtitle reveal" style="transition-delay: 0.3s;">5 commandes qui changent tout</p>
+    </div>
+</section>
+
+<!-- 06 — COMMANDS LIST -->
+<section class="slide glow-orange">
+    <span class="slide-num">06 / 16</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <div class="cmd-grid">
+            <div class="cmd-row reveal-left" style="transition-delay: 0.1s;"><span class="cmd-badge">/compact</span><span class="cmd-desc">Résume ta conversation — libère du contexte <strong style="color:var(--text);">sans tout perdre</strong></span></div>
+            <div class="cmd-row reveal-left" style="transition-delay: 0.2s;"><span class="cmd-badge">/model</span><span class="cmd-desc">Change de modèle à la volée — Opus pour coder, Sonnet pour les questions</span></div>
+            <div class="cmd-row reveal-left" style="transition-delay: 0.3s;"><span class="cmd-badge">/voice</span><span class="cmd-desc">Parle au lieu de taper — confort sur les longues sessions</span></div>
+            <div class="cmd-row reveal-left" style="transition-delay: 0.4s;"><span class="cmd-badge flag">--dangerously-skip-permissions</span><span class="cmd-desc">Claude fonce sans demander — rapide mais attention</span></div>
+            <div class="cmd-row reveal-left" style="transition-delay: 0.5s;"><span class="cmd-badge flag">-r</span><span class="cmd-desc">Reprendre une session précédente</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     TIP 3 — Raccourcis Clavier
+     ===================================================== -->
+
+<!-- 07 — TIP 3 TITLE -->
+<section class="slide glow-both">
+    <span class="tip-number reveal-blur">03</span>
+    <span class="slide-num">07 / 16</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="tip-line reveal"></div>
+        <h1 class="tip-title reveal" style="transition-delay: 0.15s;">Les Raccourcis<br>Clavier</h1>
+        <p class="tip-subtitle reveal" style="transition-delay: 0.3s;">Navigue sans jamais toucher la souris</p>
+    </div>
+</section>
+
+<!-- 08 — SHORTCUTS GRID -->
+<section class="slide glow-cyan">
+    <span class="slide-num">08 / 16</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <div class="shortcut-grid">
+            <div class="shortcut-item reveal-left" style="transition-delay: 0.1s;"><span class="key">Esc</span><span class="shortcut-label">Arrêter la génération</span></div>
+            <div class="shortcut-item reveal-left" style="transition-delay: 0.2s;"><span class="key">Esc × 2</span><span class="shortcut-label">Effacer tout le prompt</span></div>
+            <div class="shortcut-item reveal-left" style="transition-delay: 0.3s;"><span class="key">Tab</span><span class="shortcut-label">Auto-complétion</span></div>
+            <div class="shortcut-item reveal-left" style="transition-delay: 0.4s;"><span class="key">Space</span><span class="shortcut-label">Push-to-talk (voice)</span></div>
+            <div class="shortcut-item reveal-left" style="transition-delay: 0.5s;"><span class="key">↑</span><span class="shortcut-label">Prompt précédent</span></div>
+            <div class="shortcut-item reveal-left" style="transition-delay: 0.6s;"><span class="key">Ctrl+C × 2</span><span class="shortcut-label">Quitter Claude Code</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     TIP 4 — MCP
+     ===================================================== -->
+
+<!-- 09 — TIP 4 TITLE -->
+<section class="slide glow-orange">
+    <span class="tip-number reveal-blur">04</span>
+    <span class="slide-num">09 / 16</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="tip-line reveal"></div>
+        <h1 class="tip-title reveal" style="transition-delay: 0.15s;">MCP</h1>
+        <p class="tip-subtitle reveal" style="transition-delay: 0.3s;">Model Context Protocol — connecte Claude Code à tout</p>
+    </div>
+</section>
+
+<!-- 10 — MCP DEFINITION + LOGOS -->
+<section class="slide glow-cyan">
+    <span class="slide-num">10 / 16</span>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <svg class="reveal" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" style="margin-bottom: 1rem;"><circle cx="12" cy="12" r="3" fill="rgba(0,229,255,0.1)"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
+        <h2 class="reveal" style="margin-bottom: var(--content-gap); transition-delay: 0.15s;">Ce que tu peux connecter</h2>
+        <div class="logo-grid">
+            <div class="logo-card reveal-scale" style="transition-delay: 0.2s;"><span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">📝</span><span class="logo-name">Notion</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.3s;"><span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">🎨</span><span class="logo-name">Figma</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.4s;"><span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">📄</span><span class="logo-name">Google Docs</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.5s;"><span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">📊</span><span class="logo-name">Google Sheets</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.6s;"><span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">🌐</span><span class="logo-name">Navigateur</span></div>
+            <div class="logo-card reveal-scale" style="transition-delay: 0.7s;"><span style="font-size: clamp(1.5rem, 2.5vw, 2rem);">🗄️</span><span class="logo-name">Base de données</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     TIP 5 — GitHub
+     ===================================================== -->
+
+<!-- 11 — TIP 5 TITLE -->
+<section class="slide glow-both">
+    <span class="tip-number reveal-blur">05</span>
+    <span class="slide-num">11 / 16</span>
+    <div class="slide-content" style="justify-content: center;">
+        <div class="tip-line reveal" style="background: var(--cyan);"></div>
+        <h1 class="tip-title reveal" style="transition-delay: 0.15s;">GitHub</h1>
+        <p class="tip-subtitle reveal" style="transition-delay: 0.3s;">Ton code dans le cloud — sauvegardé, synchronisé, collaboratif</p>
+    </div>
+</section>
+
+<!-- 12 — GITHUB 3 AVANTAGES -->
+<section class="slide glow-orange">
+    <span class="slide-num">12 / 16</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <h2 class="reveal" style="margin-bottom: var(--content-gap); text-align: center;">Pourquoi GitHub</h2>
+        <ul class="bullet-list">
+            <li class="reveal-left" style="transition-delay: 0.15s;"><strong>Backup</strong> — ton code est hébergé, même si ton PC meurt</li>
+            <li class="reveal-left" style="transition-delay: 0.3s;"><strong>Synchronisation</strong> — bureau → maison, tu reprends où t'en es</li>
+            <li class="reveal-left" style="transition-delay: 0.45s;"><strong>Collaboration</strong> — branches pour travailler en équipe sans se marcher dessus</li>
+            <li class="reveal-left" style="transition-delay: 0.6s;"><strong>Natif dans Claude Code</strong> — "pousse ça sur GitHub", il le fait</li>
+        </ul>
+    </div>
+</section>
+
+<!-- =====================================================
+     BONUS — Le Workflow Idéal
+     ===================================================== -->
+
+<!-- 13 — BONUS TRANSITION -->
+<section class="slide glow-both">
+    <span class="slide-num">13 / 16</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <span class="bonus-badge reveal-scale">BONUS</span>
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem); transition-delay: 0.3s;">Et en cadeau...</h1>
+        <p class="reveal" style="font-size: clamp(1.2rem, 2.5vw, 2rem); color: var(--orange); margin-top: clamp(0.5rem, 1.5vw, 1.5rem); transition-delay: 0.6s;">Le workflow idéal</p>
+    </div>
+</section>
+
+<!-- 14 — WORKFLOW STEPS -->
+<section class="slide glow-cyan">
+    <span class="slide-num">14 / 16</span>
+    <div class="slide-content" style="align-items: center;">
+        <div class="divider reveal"></div>
+        <h2 class="reveal" style="text-align: center; margin-bottom: var(--content-gap);">Le Workflow Idéal</h2>
+        <div class="workflow-steps">
+            <div class="wf-step reveal-left" style="transition-delay: 0.1s;"><div class="wf-num">1</div><div><span class="wf-label">Explore → Plan → Build</span><span class="wf-desc">— le triptyque</span></div></div>
+            <div class="wf-arrow reveal" style="transition-delay: 0.15s;">↓</div>
+            <div class="wf-step reveal-left" style="transition-delay: 0.2s;"><div class="wf-num">2</div><div><span class="wf-label">Push sur GitHub</span><span class="wf-desc">— sauvegarde</span></div></div>
+            <div class="wf-arrow reveal" style="transition-delay: 0.25s;">↓</div>
+            <div class="wf-step reveal-left" style="transition-delay: 0.3s;"><div class="wf-num">3</div><div><span class="wf-label">/init</span><span class="wf-desc">— CLAUDE.md à jour</span></div></div>
+            <div class="wf-arrow reveal" style="transition-delay: 0.35s;">↓</div>
+            <div class="wf-step reveal-left" style="transition-delay: 0.4s;"><div class="wf-num">4</div><div><span class="wf-label">Connecter les MCP</span><span class="wf-desc">— décupler la productivité</span></div></div>
+            <div class="wf-arrow reveal" style="transition-delay: 0.45s;">↓</div>
+            <div class="wf-step reveal-left" style="transition-delay: 0.5s;"><div class="wf-num">5</div><div><span class="wf-label">/compact</span><span class="wf-desc">— vérifier les tokens</span></div></div>
+            <div class="wf-arrow reveal" style="transition-delay: 0.55s;">↓</div>
+            <div class="wf-step reveal-left" style="transition-delay: 0.6s;"><div class="wf-num">6</div><div><span class="wf-label">/clear ou nouvelle session</span><span class="wf-desc">— si besoin</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     TEASER + CTA
+     ===================================================== -->
+
+<!-- 15 — TEASER VIBECODING -->
+<section class="slide glow-both">
+    <span class="slide-num">15 / 16</span>
+    <div class="slide-content" style="align-items: center; justify-content: center; text-align: center;">
+        <p class="reveal" style="font-size: clamp(1.2rem, 2.5vw, 2rem); color: var(--text-secondary); margin-bottom: clamp(1rem, 2vw, 2rem);">Mais surtout pour piloter l'IA</p>
+        <h1 class="reveal-blur" style="font-size: clamp(1.8rem, 4.5vw, 4rem); transition-delay: 0.3s;">nous allons apprendre le...</h1>
+        <h1 class="reveal-scale gradient-shift" style="font-size: clamp(2.5rem, 7vw, 6rem); transition-delay: 0.8s; margin-top: clamp(0.5rem, 1.5vw, 1.5rem);">VibeCoding</h1>
+    </div>
+</section>
+
+<!-- 16 — CTA -->
+<section class="slide glow-orange">
+    <span class="slide-num">16 / 16</span>
+    <div class="slide-content" style="align-items: center; justify-content: center;">
+        <div class="cta-box reveal-scale">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" style="margin-bottom: 1rem;"><path d="M22 10l-10-6L2 10l10 6 10-6z" fill="rgba(255,107,53,0.1)"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/><line x1="22" y1="10" x2="22" y2="16"/></svg>
+            <h2 style="margin-bottom: 1rem;">Formation Gratuite</h2>
+            <p style="font-size: clamp(1rem, 1.8vw, 1.4rem);">Apprends à maîtriser Claude Code et les agents IA.</p>
+            <p style="margin-top: 1.5rem; color: var(--orange); font-weight: 600; font-size: clamp(1rem, 1.5vw, 1.3rem);">Lien dans la description.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+class SlidePresentation {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.currentSlide = 0;
+        this.progressBar = document.getElementById('progressBar');
+        this.setupIntersectionObserver();
+        this.setupKeyboardNav();
+        this.setupTouchNav();
+    }
+    setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    this.currentSlide = [...this.slides].indexOf(entry.target);
+                    this.updateProgress();
+                }
+            });
+        }, { threshold: 0.5 });
+        this.slides.forEach(slide => observer.observe(slide));
+    }
+    setupKeyboardNav() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowRight') { e.preventDefault(); this.goTo(this.currentSlide + 1); }
+            else if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft') { e.preventDefault(); this.goTo(this.currentSlide - 1); }
+        });
+    }
+    setupTouchNav() {
+        let startY = 0;
+        document.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; });
+        document.addEventListener('touchend', (e) => {
+            const diff = startY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) { diff > 0 ? this.goTo(this.currentSlide + 1) : this.goTo(this.currentSlide - 1); }
+        });
+    }
+    goTo(index) { if (index >= 0 && index < this.slides.length) { this.slides[index].scrollIntoView({ behavior: 'smooth' }); } }
+    updateProgress() { this.progressBar.style.width = ((this.currentSlide + 1) / this.slides.length * 100) + '%'; }
+}
+new SlidePresentation();
+
+class ParticleSystem {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particles = [];
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.init();
+        this.animate();
+    }
+    resize() { this.canvas.width = this.canvas.offsetWidth; this.canvas.height = this.canvas.offsetHeight; }
+    init() {
+        const count = Math.min(150, Math.floor(this.canvas.width / 8));
+        for (let i = 0; i < count; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width, y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 0.6, vy: Math.random() * 1.5 + 0.5,
+                size: Math.random() * 4 + 1, opacity: Math.random() * 0.7 + 0.2,
+                color: Math.random() > 0.4 ? '255,107,53' : '0,229,255',
+                trail: Math.random() * 15 + 5
+            });
+        }
+    }
+    animate() {
+        this.ctx.fillStyle = 'rgba(10,10,10,0.15)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        this.particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.y > this.canvas.height) { p.y = -10; p.x = Math.random() * this.canvas.width; }
+            if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
+            // Trail
+            this.ctx.beginPath();
+            this.ctx.moveTo(p.x, p.y);
+            this.ctx.lineTo(p.x - p.vx * p.trail, p.y - p.vy * p.trail);
+            this.ctx.strokeStyle = `rgba(${p.color},${p.opacity * 0.3})`;
+            this.ctx.lineWidth = p.size * 0.5;
+            this.ctx.stroke();
+            // Dot
+            this.ctx.beginPath(); this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            this.ctx.fillStyle = `rgba(${p.color},${p.opacity})`;
+            this.ctx.shadowColor = `rgba(${p.color},0.5)`;
+            this.ctx.shadowBlur = p.size * 3;
+            this.ctx.fill();
+            this.ctx.shadowBlur = 0;
+        });
+        requestAnimationFrame(() => this.animate());
+    }
+}
+const pc = document.getElementById('particleCanvas');
+if (pc) new ParticleSystem(pc);
+</script>
+</body>
+</html>
