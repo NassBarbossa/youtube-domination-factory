@@ -53,7 +53,7 @@ Pas un conseil en investissement.
 
 [OFFRES — l'offre du funnel en premier]
 Formation offerte en 3 vidéos (Pourquoi investir en 2026 · Comment devenir riche · L'investissement on-chain) : [lien formation]
-La communauté privée : [lien communauté]
+La communauté privée (Telegram) : https://t.me/punk6995trades
 Convergence, le live hebdo avec Sadek (crypto × or) : [lien Convergence]
 
 [RESSOURCES & LIENS]
@@ -72,13 +72,14 @@ Je suis Nass Riviera. Ici, je t'explique la crypto depuis zéro et je te montre 
 
 [RÉSEAUX]
 Site : https://nassriviera.com
-X : [lien]
-Instagram : [lien]
-Twitch : [lien]
-YouTube : [lien chaîne]
+Telegram : https://t.me/punk6995trades
+X : https://x.com/punk6995
+Instagram : https://www.instagram.com/nass.riviera
+YouTube : https://www.youtube.com/@NassinCrypto
+Twitch : [lien Twitch]
 ```
 
-Les `[lien …]` restent des placeholders tant que Nass n'a pas donné l'URL exacte : ne jamais inventer d'URL.
+Les liens viennent de la table « Liens » du cadre. Ceux qui y manquent encore (formation, Convergence, Twitch) restent des placeholders `[lien …]` : ne jamais inventer d'URL.
 
 ### Hook (lignes 1-3) : un framework par description
 

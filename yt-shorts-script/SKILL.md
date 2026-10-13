@@ -70,7 +70,7 @@ Marqueurs `VISUEL` reconnus par le montage : `[FACE CAM IA]` (avatar IA), `[SCRE
 
 Mouvements nommés (vocabulaire commun avec le montage, définis dans `yt-shorts-montage/references/motion-graphics-guide.md`) : **Kinetic Type, Rise, Pop, Count-up, Checklist, Typewriter, Slide-in, Blur-in, Punch-in, Reframe, Bar fill**. Ex. : `VISUEL : [TEXTE] Kinetic Type, puis Punch-in sur « jamais »`.
 
-CTA de fin : selon le funnel du cadre (formation offerte, sa suite, ou communauté privée / Convergence), liens en placeholder `[lien …]`.
+CTA de fin : selon le funnel du cadre (formation offerte, sa suite, ou communauté privée / Convergence), liens pris dans la table « Liens » du cadre, placeholder `[lien …]` pour ceux qui manquent.
 
 ## Ce que le montage attend du script
 - **Timecodes précis** : ils deviennent le bloc `<timing>` du brief XML du montage.

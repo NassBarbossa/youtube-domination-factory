@@ -38,7 +38,7 @@ Structure de départ. À adapter selon le format, le sujet et le niveau de funne
 
 ### CTA + OUTRO (30 dernières secondes)
 
-[Un seul CTA selon le funnel : TOP → formation offerte (3 vidéos) [lien formation] · MIDDLE → la suite de la formation offerte [lien vidéo suivante] · BOTTOM → communauté privée [lien communauté] + live Convergence [lien Convergence]]
+[Un seul CTA selon le funnel : TOP → formation offerte (3 vidéos) [lien formation] · MIDDLE → la suite de la formation offerte [lien vidéo suivante] · BOTTOM → communauté privée (Telegram, lien dans le cadre) + live Convergence [lien Convergence]]
 [Teaser de la prochaine vidéo si pertinent]
 [« Pas un conseil en investissement. »]
 

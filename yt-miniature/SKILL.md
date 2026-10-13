@@ -50,7 +50,7 @@ Une miniature qui :
 **Visuel principal** : [visage de Nass, punk pixel, vrai graphique, logo de token, carte crème]
 **Texte** : [aucun, ou 5 mots max]
 **Police** : [Archivo Black par défaut]
-**Palette** : [2-3 couleurs de la charte]
+**Palette** : blanc + orange `#FF6B35` + bleus (charte miniatures du cadre)
 **Expression** : [si Nass apparaît, expression précise + photo de référence]
 **Émotion transmise** : [ce que le spectateur doit ressentir]
 **Astuce de contraste** : [ce qui le fait ressortir dans un fil]
@@ -84,7 +84,7 @@ Les 3 concepts classés, le gagnant recommandé et pourquoi. Si Nass le demande,
 ### Texte
 - **Aucun texte, ou 5 mots max**, très gros, lisible sur téléphone, en une ou deux lignes (les miniatures validées par Nass en octobre 2026 portaient 3 à 4 mots, texte haut / texte bas, et il a demandé un texte plus gros et plus haut).
 - Le texte ajoute du contexte, il ne répète pas le titre.
-- Archivo Black, crème `#F4EFE7` ou sable `#DBB17F` sur fond noir (ou noir sur carte crème).
+- Archivo Black, blanc en haut, orange `#FF6B35` en bas (charte miniatures du cadre).
 - Pas de jargon que l'avatar ne connaît pas (« DEX » ou « on-chain » seuls ne lui parlent pas).
 - Hypothèse à tester : « texte sur miniature = moins de vues » (1of10.com, toutes niches).
 
@@ -107,7 +107,8 @@ Les 3 concepts classés, le gagnant recommandé et pourquoi. Si Nass le demande,
 - Contraste ≥ 4,5:1 entre sujet et fond ; tester à 256×144 px, simplifier si ce n'est pas clair.
 
 ### Couleurs
-- Dominante sable/or `#DBB17F` sur noir `#0B0B0B` ; crème `#F4EFE7` pour cartes et texte ; accent possible bleu punk `#648596`.
+- Charte miniatures du cadre (validée le 2026-10-13) : photo réaliste, texte haut **blanc**, texte bas **orange `#FF6B35`**, tons **bleus** dans l'image (chemise, écrans, ville). Référence : `outputs/investissement-on-chain-f-trading-v2-final.jpg` et `outputs/comment-devenir-riche-a-wall-v3-final.jpg`.
+- Le sable/or `#DBB17F` reste réservé aux slides ; ne pas l'imposer sur les miniatures.
 - Sujet très lumineux sur fond sombre : un visage ou un punk sombre ne marche pas.
 - Performance de la charte à recalibrer sur les données de la chaîne (A/B tests).
 

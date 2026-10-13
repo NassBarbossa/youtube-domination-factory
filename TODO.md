@@ -55,10 +55,11 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 
 ## 3. À trancher par Nass
 
-- [ ] Positionnement du site « spot, zéro levier, wallet public » : le « wallet public » reste-t-il sans le challenge ? (retiré des skills)
-- [ ] Miniatures : les miniatures validées de la formation sont orange/vert, pas sable/or. Charte stricte ou souple ?
+- [x] Wallet public : abandonné (2026-10-13), on ne le donne plus. Reste à retirer du site nassriviera.com (`~/nassriviera-challenge/public/index.html`, hors de ce repo) et de la page challenge.
+- [x] Miniatures : charte à part validée (2026-10-13) : blanc + orange + bleus, photo réaliste (voir cadre). Sable/or réservé aux slides.
 - [ ] Mix de contenus proposé dans `yt-calendrier` : éducation 35 % · acheter hors échanges 25 % · reconnaître un bon coin 20 % · actu + Convergence 15 % · communauté 5 % ; rythme 3 vidéos/semaine.
-- [ ] Vrais liens : formation offerte, communauté privée, Convergence, X, Instagram, Twitch, chaîne (placeholders `[lien …]` pour l'instant).
+- [x] Liens donnés (2026-10-13) : Telegram, X, Instagram, site, chaîne → table « Liens » du cadre.
+- [ ] Liens encore manquants : formation offerte, Convergence, Twitch.
 - [ ] Email de partage des Google Docs (actuellement `quentin.riviere69@gmail.com`).
 - [ ] Bio « À propos » de la description (`yt-description`), écrite d'après le cadre : à valider.
 - [ ] Hashtags LinkedIn : 3-5 ou aucun.

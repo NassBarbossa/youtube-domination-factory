@@ -29,7 +29,7 @@ Chaque plateforme a son langage : jamais de copier-coller, jamais le titre de la
 - Pas de « spot, zéro levier, halal » plaqué dans les contenus ; pas d'appel à acheter un token précis, jamais d'adresse de contrat (CA) présentée comme une invitation à acheter.
 - Chiffres affichés = réels et datés, source notée (transaction on-chain, bougies d'exchange, CoinGecko/DexScreener/CoinStats).
 - Un token jeune évoqué = position de petite taille, risque de tout perdre dit clairement. Un sujet qui touche aux memecoins : le signaler à Nass au lieu de le traiter.
-- CTA selon `request.funnel` : TOP → formation offerte · MIDDLE → suite de la formation offerte · BOTTOM → communauté privée + Convergence. Liens en placeholders `[lien …]`, jamais inventés.
+- CTA selon `request.funnel` : TOP → formation offerte · MIDDLE → suite de la formation offerte · BOTTOM → communauté privée + Convergence. Liens pris dans la table « Liens » du cadre, placeholder `[lien …]` pour ceux qui manquent, jamais inventés.
 
 ## Workflow
 

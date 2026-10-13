@@ -14,6 +14,8 @@ La chaîne est **100 % crypto**. Le cœur du message :
 
 **Abandonné : le challenge public 10K → 100K $.** Ne plus en parler, ne plus le proposer comme sujet, CTA, exemple ou preuve. Le vocabulaire de trader (« mes trades de la semaine », « trade du jour ») sort aussi : on parle d'**achats**, rares et réfléchis.
 
+**Abandonné aussi : le « wallet public ».** On ne donne plus l'adresse du wallet (décision de Nass, 2026-10-13). Le positionnement devient « Investisseur on-chain · spot, zéro levier ». Ne plus promettre ni montrer un wallet à suivre.
+
 ## Avatar client (mots de Nass, à ne jamais reformuler)
 
 > « C'est des hommes entre 25 et 40 ans. Ils sont débutants, voire débutants plus. C'est déjà des investisseurs, principalement en immobilier avec crédit, mais ils n'ont pas commencé encore à investir dans la crypto. Peut-être un peu de bourse, mais pas de crypto. Et il n'y comprend rien, il ne connaît rien. Et nous, du coup, on vend le fait qu'on achète des cryptos en dehors des échanges avant qu'elles soient connues de tous. »
@@ -27,6 +29,21 @@ Avatar visuel : le punk pixel @punk6995 (Barbossa).
 - **Live hebdo « Convergence »** avec le co-host Sadek (crypto × or).
 
 CTA par funnel : TOP → formation offerte · MIDDLE → la suite de la formation offerte · BOTTOM → communauté privée et Convergence.
+
+## Liens (donnés par Nass le 2026-10-13)
+
+| Quoi | Lien |
+|---|---|
+| Site | https://nassriviera.com |
+| Telegram (communauté) | https://t.me/punk6995trades |
+| X / Twitter | https://x.com/punk6995 |
+| Instagram | https://www.instagram.com/nass.riviera |
+| Chaîne YouTube | https://www.youtube.com/@NassinCrypto |
+| Formation offerte | `[lien formation]` (pas encore donné) |
+| Convergence | `[lien Convergence]` (pas encore donné) |
+| Twitch | `[lien Twitch]` (pas encore donné) |
+
+Règles : on utilise ces liens tels quels, jamais une URL inventée ; un lien absent de la table reste un placeholder `[lien …]`. L'ancien lien `nassriviera.com/challenge/` n'est plus utilisé (challenge abandonné). Ordre dans une description : offre du funnel d'abord, puis réseaux.
 
 ## Ton
 
@@ -51,7 +68,8 @@ Le seul rappel visible : le disclaimer **« Pas un conseil en investissement. »
 - Fond noir `#0B0B0B` ; sable/or `#DBB17F` (clair `#F3D6A8`, foncé `#9C7748`) ; crème `#F4EFE7` ; bleu punk `#648596` / `#4F6C7B` ; gris `#3B3A37` / `#9A968D`.
 - Polices : **Archivo Black** (titres) + **Public Sans** (texte).
 - Univers : punk pixel @punk6995, montagnes au crépuscule, cartes crème à bord noir 3px avec ombre pleine 8px `#9C7748` (néo-brutal doux).
-- Abandonnée : l'ancienne charte orange `#FF6B35` / cyan `#00E5FF` / `#0A0A0A`, Syne + Inter.
+- **Miniatures : charte à part**, validée par Nass le 2026-10-13 sur les miniatures de la formation : photo réaliste de Nass, texte haut en blanc, texte bas en orange `#FF6B35`, tons bleus dans l'image (chemise, écrans, ville). Pas de sable/or sur les miniatures.
+- Abandonnée partout ailleurs : l'ancienne charte orange `#FF6B35` / cyan `#00E5FF` / `#0A0A0A`, Syne + Inter.
 
 ## La voix de Nass
 
