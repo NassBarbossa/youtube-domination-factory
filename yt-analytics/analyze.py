@@ -14,6 +14,7 @@ Requires: OAuth token in token.json (run setup once to authorize)
 """
 
 import json
+import re
 import sys
 import webbrowser
 import argparse
@@ -58,8 +59,17 @@ def get_credentials():
     return creds
 
 
+def parse_iso_duration(d):
+    """PT9M29S → 569 s."""
+    m = re.match(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", d or "")
+    if not m:
+        return None
+    h, mi, se = (int(x) if x else 0 for x in m.groups())
+    return h * 3600 + mi * 60 + se
+
+
 def get_latest_videos(yt_data, count=4):
-    """Get the latest uploaded videos with titles and publish dates."""
+    """Get the latest uploaded videos with titles, publish dates and durations."""
     channels = yt_data.channels().list(part="contentDetails", mine=True).execute()
     upload_playlist = channels["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
@@ -75,7 +85,13 @@ def get_latest_videos(yt_data, count=4):
             "title": snippet["title"],
             "published_at": snippet["publishedAt"],
             "thumbnail": snippet["thumbnails"].get("high", snippet["thumbnails"]["default"])["url"],
+            "duration_sec": None,
         })
+    if videos:
+        details = yt_data.videos().list(part="contentDetails", id=",".join(v["id"] for v in videos)).execute()
+        durations = {it["id"]: parse_iso_duration(it["contentDetails"].get("duration")) for it in details.get("items", [])}
+        for v in videos:
+            v["duration_sec"] = durations.get(v["id"])
     return videos
 
 
@@ -209,7 +225,8 @@ def format_duration(seconds):
     return f"{seconds // 3600}:{(seconds % 3600) // 60:02d}:{seconds % 60:02d}"
 
 
-MIN_AGE_DAYS = 4  # retard de l'API YouTube Analytics : avant ça, une vidéo remonte 0 ou 1 vue
+from report_html import generate_html, age_days, MIN_AGE_DAYS  # noqa: E402
+
 STUDIO_CTR = SCRIPT_DIR / "history" / "studio-ctr.json"  # écrit par studio_ctr.py (YouTube Studio, seule source du CTR)
 PERIOD_LABEL = {"lifetime": "depuis la mise en ligne", "default": "28 derniers jours"}
 
@@ -224,208 +241,6 @@ def studio_ctr_for(video_id):
     e = entries[-1]
     return {"impressions": e["impressions"], "ctr": e["ctr"], "source": "YouTube Studio", "period": e["period"], "fetched_at": e["fetched_at"]}
 
-
-def age_days(published_at):
-    return (datetime.now(timezone.utc) - datetime.fromisoformat(published_at.replace("Z", "+00:00"))).days
-
-
-def bars_html(sources, limit, with_views=False):
-    out = ""
-    for src in sources[:limit]:
-        label = f"{src['views']} · {src['percent']}%" if with_views else f"{src['percent']}%"
-        out += f"""
-        <div class="traffic-row">
-          <span class="traffic-name">{src['source']}</span>
-          <div class="traffic-bar-container"><div class="traffic-bar" style="width: {src['percent']}%"></div></div>
-          <span class="traffic-pct">{label}</span>
-        </div>"""
-    return out
-
-
-def generate_html(videos_data, channel_traffic, notes=None):
-    """Rapport HTML à la charte du cadre. `notes` (optionnel) = analyse écrite par Claude, voir --notes."""
-    notes = notes or {}
-    now = datetime.now().strftime("%d/%m/%Y à %H:%M")
-    reliable = [v for v in videos_data if v["metrics"] and age_days(v["published_at"]) >= MIN_AGE_DAYS]
-    fresh = [v for v in videos_data if v["metrics"] and age_days(v["published_at"]) < MIN_AGE_DAYS]
-
-    views_list = [v["metrics"]["views"] for v in reliable]
-    median_views = statistics.median(views_list) if views_list else 0
-    total_views = sum(views_list)
-    total_subs = sum(v["metrics"]["subscribers_gained"] for v in reliable)
-    avg_ret = round(statistics.mean(v["metrics"]["retention_pct"] for v in reliable), 1) if reliable else 0
-    max_views = max(views_list) if views_list else 0
-    max_ret = max((v["metrics"]["retention_pct"] for v in reliable), default=0)
-    max_subs = max((v["metrics"]["subscribers_gained"] for v in reliable), default=0)
-    max_ctr = max((v["ctr_official"]["ctr"] for v in reliable if v.get("ctr_official")), default=None)
-
-    def verdict_badge(v):
-        n = notes.get("videos", {}).get(v["id"], {})
-        if n.get("verdict_label"):
-            cls = {"réussite": "good", "moyenne": "mid", "échec": "bad"}.get(n.get("verdict_kind", ""), "mid")
-            return f'<span class="badge {cls}">{n["verdict_label"]}</span>'
-        return ""
-
-    video_cards = ""
-    for v in videos_data:
-        m = v["metrics"]
-        if not m:
-            continue
-        n = notes.get("videos", {}).get(v["id"], {})
-        is_fresh = age_days(v["published_at"]) < MIN_AGE_DAYS
-        idx = round(m["views"] / median_views, 2) if (median_views and not is_fresh) else None
-        conv = round(m["subscribers_gained"] / m["views"] * 100, 1) if m["views"] else 0
-        like_rate = round(m["likes"] / m["views"] * 100, 1) if m["views"] else 0
-        c = v.get("ctr_official")
-        ctr_html = (f"""<div class="metric{' best' if c['ctr'] == max_ctr else ''}"><div class="metric-label">CTR</div><div class="metric-value">{c['ctr']}%</div><div class="metric-sub">{c['impressions']:,} impressions · {PERIOD_LABEL.get(c.get('period'), '')}</div></div>"""
-                    if c else
-                    """<div class="metric"><div class="metric-label">CTR</div><div class="metric-value muted">n/d</div><div class="metric-sub">lance studio_ctr.py</div></div>""")
-        if is_fresh:
-            body = f"""
-      <div class="fresh">Publiée il y a {age_days(v['published_at'])} jour(s) : l'API a 2 à 3 jours de retard, ces chiffres ne veulent encore rien dire. Hors moyennes.</div>"""
-        else:
-            analysis = ""
-            if n:
-                worked = "".join(f"<li>{x}</li>" for x in n.get("worked", []))
-                failed = "".join(f"<li>{x}</li>" for x in n.get("failed", []))
-                analysis = f"""
-      <div class="two-col">
-        <div class="col good-col"><h3>Ce qui a marché</h3><ul>{worked or '<li>Rien de net.</li>'}</ul></div>
-        <div class="col bad-col"><h3>Ce qui n'a pas marché</h3><ul>{failed or '<li>Rien de net.</li>'}</ul></div>
-      </div>
-      {f'<div class="verdict"><strong>Verdict.</strong> {n["verdict"]}</div>' if n.get("verdict") else ''}"""
-            body = f"""
-      <div class="metrics-grid">
-        <div class="metric{' best' if m['views'] == max_views else ''}"><div class="metric-label">Vues</div><div class="metric-value">{m['views']:,}</div><div class="metric-sub">{f'{idx}× la médiane' if idx else ''}</div></div>
-        {ctr_html}
-        <div class="metric{' best' if m['retention_pct'] == max_ret else ''}"><div class="metric-label">Rétention</div><div class="metric-value">{m['retention_pct']}%</div><div class="metric-sub">{format_duration(m['avg_view_duration_sec'])} par vue</div></div>
-        <div class="metric{' best' if m['subscribers_gained'] == max_subs else ''}"><div class="metric-label">Abonnés</div><div class="metric-value">+{m['subscribers_gained']}</div><div class="metric-sub">{conv}% des vues</div></div>
-        <div class="metric"><div class="metric-label">Likes</div><div class="metric-value">{m['likes']}</div><div class="metric-sub">{like_rate}% des vues</div></div>
-        <div class="metric"><div class="metric-label">Commentaires</div><div class="metric-value">{m['comments']}</div><div class="metric-sub">{m['shares']} partage(s)</div></div>
-        <div class="metric"><div class="metric-label">Temps regardé</div><div class="metric-value">{m['watch_time_min']:,.0f} min</div><div class="metric-sub">cumulé</div></div>
-      </div>
-      <div class="traffic-section"><h3>D'où viennent les vues</h3>{bars_html(v.get('traffic_sources', []), 5)}</div>
-      {analysis}"""
-        video_cards += f"""
-    <section class="card video-card">
-      <div class="video-header">
-        <img src="{v['thumbnail']}" alt="" class="video-thumb">
-        <div class="video-info">
-          <h2>{v['title']}</h2>
-          <div class="video-meta">Publiée le {v['published_at'][:10]} · <a href="https://www.youtube.com/watch?v={v['id']}">youtube.com/watch?v={v['id']}</a></div>
-        </div>
-        {verdict_badge(v)}
-      </div>
-      {body}
-    </section>
-"""
-
-    recos_html = ""
-    for i, r in enumerate(notes.get("recommendations", []), 1):
-        recos_html += f"""
-      <div class="reco">
-        <div class="reco-num">{i}</div>
-        <div>
-          <h3>{r['title']}</h3>
-          <p><strong>Basée sur :</strong> {r['based_on']}</p>
-          <p><strong>Action :</strong> {r['action']}</p>
-          <p><strong>Impact attendu :</strong> {r['impact']}</p>
-        </div>
-      </div>"""
-    recos_section = f"""
-    <section class="card">
-      <h2 class="section-title">Recommandations</h2>
-      {recos_html}
-    </section>""" if recos_html else ""
-
-    overview_note = notes.get("overview", "")
-    html = f"""<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nassin Crypto · analytics du {datetime.now().strftime('%d/%m/%Y')}</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {{ --bg:#0B0B0B; --sand:#DBB17F; --sand-light:#F3D6A8; --sand-dark:#9C7748; --cream:#F4EFE7; --punk:#648596; --punk-dark:#4F6C7B; --grey-dark:#3B3A37; --grey:#9A968D; --good:#2E8B57; --bad:#C0392B; }}
-  * {{ margin:0; padding:0; box-sizing:border-box; }}
-  body {{ background:var(--bg); color:var(--cream); font-family:'Public Sans', Helvetica, Arial, sans-serif; padding:40px 20px; line-height:1.45; }}
-  .container {{ max-width:1400px; margin:0 auto; }}
-  h1, h2, h3, .metric-value, .reco-num {{ font-family:'Archivo Black', Impact, 'Arial Black', sans-serif; font-weight:400; }}
-  .page-header {{ display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:32px; padding-bottom:20px; border-bottom:3px solid var(--sand); flex-wrap:wrap; }}
-  .page-header h1 {{ font-size:34px; color:var(--sand); line-height:1.1; }}
-  .page-header h1 small {{ display:block; font-family:'Public Sans', sans-serif; font-weight:600; font-size:14px; color:var(--grey); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }}
-  .page-header .date {{ font-size:13px; color:var(--grey); text-align:right; }}
-  .card {{ background:var(--cream); color:var(--bg); border:3px solid var(--bg); box-shadow:8px 8px 0 var(--sand-dark); padding:28px; margin-bottom:28px; }}
-  .section-title {{ font-size:22px; margin-bottom:18px; }}
-  .overview {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:14px; margin-bottom:18px; }}
-  .stat {{ background:var(--bg); color:var(--cream); padding:16px; }}
-  .stat .metric-label {{ color:var(--grey); }}
-  .stat .metric-value {{ color:var(--sand); }}
-  .overview-note {{ font-size:15px; margin-top:6px; }}
-  .video-header {{ display:flex; gap:20px; align-items:center; margin-bottom:22px; }}
-  .video-thumb {{ width:200px; height:112px; object-fit:cover; border:3px solid var(--bg); flex-shrink:0; }}
-  .video-info {{ flex:1; }}
-  .video-info h2 {{ font-size:20px; line-height:1.25; margin-bottom:6px; }}
-  .video-meta {{ font-size:13px; color:var(--grey-dark); }}
-  .video-meta a {{ color:var(--punk-dark); }}
-  .badge {{ font-weight:700; font-size:12px; letter-spacing:1px; text-transform:uppercase; padding:8px 12px; border:3px solid var(--bg); white-space:nowrap; }}
-  .badge.good {{ background:var(--good); color:#fff; }} .badge.mid {{ background:var(--sand-dark); color:#fff; }} .badge.bad {{ background:var(--bad); color:#fff; }}
-  .metrics-grid {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:12px; margin-bottom:22px; }}
-  .metric {{ background:#fff; border:2px solid var(--bg); padding:14px; text-align:center; }}
-  .metric.best {{ background:var(--sand-light); }}
-  .metric-label {{ font-size:11px; color:var(--grey-dark); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; font-weight:700; }}
-  .metric-value {{ font-size:26px; }}
-  .metric-value.muted {{ color:var(--grey); }}
-  .metric-sub {{ font-size:11px; color:var(--grey-dark); margin-top:4px; }}
-  .traffic-section h3 {{ font-size:13px; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }}
-  .traffic-row {{ display:flex; align-items:center; gap:12px; margin-bottom:7px; }}
-  .traffic-name {{ font-size:13px; width:170px; flex-shrink:0; font-weight:600; }}
-  .traffic-bar-container {{ flex:1; height:12px; background:#fff; border:2px solid var(--bg); overflow:hidden; }}
-  .traffic-bar {{ height:100%; background:var(--punk); min-width:2px; }}
-  .traffic-pct {{ font-size:13px; width:110px; text-align:right; flex-shrink:0; }}
-  .two-col {{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }}
-  .col {{ background:#fff; border:2px solid var(--bg); padding:16px 18px; }}
-  .col h3 {{ font-size:14px; margin-bottom:10px; }}
-  .good-col h3 {{ color:var(--good); }} .bad-col h3 {{ color:var(--bad); }}
-  .col ul {{ padding-left:18px; font-size:14px; }} .col li {{ margin-bottom:6px; }}
-  .verdict {{ margin-top:16px; padding:14px 18px; background:var(--bg); color:var(--cream); font-size:15px; border-left:6px solid var(--sand); }}
-  .fresh {{ padding:14px 18px; background:var(--sand-light); border:2px dashed var(--sand-dark); font-size:14px; }}
-  .reco {{ display:flex; gap:18px; padding:18px 0; border-top:2px solid var(--bg); }}
-  .reco:first-of-type {{ border-top:none; padding-top:0; }}
-  .reco-num {{ font-size:30px; color:var(--punk-dark); width:44px; flex-shrink:0; line-height:1; }}
-  .reco h3 {{ font-size:17px; margin-bottom:8px; }} .reco p {{ font-size:14px; margin-bottom:4px; }}
-  .footer {{ text-align:center; padding-top:24px; font-size:12px; color:var(--grey); }}
-  @media (max-width:800px) {{ .two-col {{ grid-template-columns:1fr; }} .video-header {{ flex-wrap:wrap; }} }}
-</style>
-</head>
-<body>
-<div class="container">
-  <div class="page-header">
-    <h1><small>Nassin Crypto · nouvelle chaîne</small>Analytics des {len(videos_data)} dernières vidéos</h1>
-    <div class="date">Données API YouTube Analytics (2 à 3 jours de retard)<br>Rapport généré le {now}</div>
-  </div>
-
-  <section class="card">
-    <h2 class="section-title">La chaîne en un coup d'œil</h2>
-    <div class="overview">
-      <div class="stat"><div class="metric-label">Vidéos fiables</div><div class="metric-value">{len(reliable)}</div><div class="metric-sub">{len(fresh)} trop récente(s)</div></div>
-      <div class="stat"><div class="metric-label">Vues cumulées</div><div class="metric-value">{total_views:,}</div><div class="metric-sub">médiane {median_views:.0f} par vidéo</div></div>
-      <div class="stat"><div class="metric-label">Rétention moyenne</div><div class="metric-value">{avg_ret}%</div><div class="metric-sub">de la vidéo regardée</div></div>
-      <div class="stat"><div class="metric-label">Abonnés gagnés</div><div class="metric-value">+{total_subs}</div><div class="metric-sub">par ces vidéos</div></div>
-    </div>
-    <div class="traffic-section"><h3>D'où viennent les vues de la chaîne (30 derniers jours)</h3>{bars_html(channel_traffic, 8, with_views=True)}</div>
-    {f'<p class="overview-note">{overview_note}</p>' if overview_note else ''}
-  </section>
-
-  {video_cards}
-  {recos_section}
-
-  <div class="footer">yt-analytics · youtube-domination-factory · CTR absent de l'API : il vient de l'export CSV de YouTube Studio (parse_youtube_csv.py)</div>
-</div>
-</body>
-</html>"""
-    return html
 
 
 def main():
@@ -494,6 +309,7 @@ def main():
             "title": v["title"],
             "published_at": v["published_at"],
             "thumbnail": v["thumbnail"],
+            "duration_sec": v.get("duration_sec"),
             "metrics": metrics,
             "traffic_sources": traffic,
             "ctr_official": studio_ctr_for(v["id"]) or ctr_data.get(v["id"]),

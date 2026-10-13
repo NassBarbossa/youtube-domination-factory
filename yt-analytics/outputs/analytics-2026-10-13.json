@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-10-13T21:12:08.930559",
+  "generated_at": "2026-10-13T21:37:13.534500",
   "videos": [
     {
       "id": "71HX4YUNrNs",
       "title": "Investis en cryptos avec cette méthode !!",
       "published_at": "2026-10-11T15:00:30Z",
       "thumbnail": "https://i.ytimg.com/vi/71HX4YUNrNs/hqdefault.jpg",
+      "duration_sec": 601,
       "metrics": {
         "views": 1,
         "watch_time_min": 0,
@@ -27,7 +28,8 @@
         "impressions": 73,
         "ctr": 34.3,
         "source": "YouTube Studio",
-        "period": "lifetime"
+        "period": "lifetime",
+        "fetched_at": "2026-10-13T21:25:09"
       }
     },
     {
@@ -35,6 +37,7 @@
       "title": "CONVERGENCE [EP.01] : Podcast investissement w/ Sadek",
       "published_at": "2026-10-08T11:46:24Z",
       "thumbnail": "https://i.ytimg.com/vi/ZjNa7wxwFkM/hqdefault.jpg",
+      "duration_sec": 2291,
       "metrics": {
         "views": 125,
         "watch_time_min": 544,
@@ -86,7 +89,8 @@
         "impressions": 328,
         "ctr": 10.7,
         "source": "YouTube Studio",
-        "period": "lifetime"
+        "period": "lifetime",
+        "fetched_at": "2026-10-13T21:25:13"
       }
     },
     {
@@ -94,6 +98,7 @@
       "title": "Comment devenir riche grâce à l'investissement ?",
       "published_at": "2026-10-07T13:18:21Z",
       "thumbnail": "https://i.ytimg.com/vi/FVajDtrHsPU/hqdefault.jpg",
+      "duration_sec": 670,
       "metrics": {
         "views": 119,
         "watch_time_min": 253,
@@ -150,7 +155,8 @@
         "impressions": 585,
         "ctr": 9.9,
         "source": "YouTube Studio",
-        "period": "lifetime"
+        "period": "lifetime",
+        "fetched_at": "2026-10-13T21:25:17"
       }
     },
     {
@@ -158,6 +164,7 @@
       "title": "Pourquoi il faut investir en 2026 ? (Formation Offerte)",
       "published_at": "2026-10-05T10:51:55Z",
       "thumbnail": "https://i.ytimg.com/vi/njfEJFd7hQ8/hqdefault.jpg",
+      "duration_sec": 569,
       "metrics": {
         "views": 248,
         "watch_time_min": 489,
@@ -209,7 +216,8 @@
         "impressions": 426,
         "ctr": 16.0,
         "source": "YouTube Studio",
-        "period": "lifetime"
+        "period": "lifetime",
+        "fetched_at": "2026-10-13T21:25:21"
       }
     }
   ],

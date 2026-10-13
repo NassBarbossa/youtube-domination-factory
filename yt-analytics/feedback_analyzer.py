@@ -84,6 +84,12 @@ def write_json(path, data):
         f.write("\n")
 
 
+def keep_manual(lessons_path):
+    """Leçons écrites à la main (`manual: true`) : conservées quand le script réécrit lessons.json."""
+    data = read_json(str(lessons_path), {"lessons": []})
+    return [l for l in data.get("lessons", []) if l.get("manual")]
+
+
 def get_video_performance(yt_analytics, video_id):
     """Fetch key performance metrics for a video."""
     try:
@@ -286,7 +292,7 @@ def extract_lessons_titres(memory_path):
     lessons_data = {
         "last_updated": datetime.now().strftime("%Y-%m-%d"),
         "sample_size": len(completed),
-        "lessons": lessons,
+        "lessons": keep_manual(memory_path / "lessons.json") + lessons,
         "style_performance": style_summary,
     }
     write_json(str(memory_path / "lessons.json"), lessons_data)
@@ -356,7 +362,7 @@ def extract_lessons_miniature(memory_path):
     lessons_data = {
         "last_updated": datetime.now().strftime("%Y-%m-%d"),
         "sample_size": len(completed),
-        "lessons": lessons,
+        "lessons": keep_manual(memory_path / "lessons.json") + lessons,
         "concept_performance": concept_summary,
     }
     write_json(str(memory_path / "lessons.json"), lessons_data)
@@ -443,7 +449,7 @@ def extract_lessons_script(memory_path):
     lessons_data = {
         "last_updated": datetime.now().strftime("%Y-%m-%d"),
         "sample_size": len(completed),
-        "lessons": lessons,
+        "lessons": keep_manual(memory_path / "lessons.json") + lessons,
         "structure_performance": struct_summary,
     }
     write_json(str(memory_path / "lessons.json"), lessons_data)
@@ -535,7 +541,7 @@ def extract_lessons_veille(memory_path):
     lessons_data = {
         "last_updated": datetime.now().strftime("%Y-%m-%d"),
         "sample_size": len(completed),
-        "lessons": lessons,
+        "lessons": keep_manual(memory_path / "lessons.json") + lessons,
         "topic_performance": topic_summary,
         "hit_rate": round(hit_rate, 2),
         "avg_days_lag": round(avg_lag, 1) if avg_lag else None,
