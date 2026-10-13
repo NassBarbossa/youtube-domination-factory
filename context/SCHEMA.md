@@ -1,6 +1,6 @@
 # Contrat de `context/video-context.json`
 
-Source unique du format du fichier partagé par le pipeline vidéo. Structure vide : `context/video-context.template.json`. Les chemins sont relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+Source unique du format du fichier partagé par le pipeline vidéo. Structure vide : `context/video-context.template.json`. Les chemins sont relatifs à la racine du repo ; `{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`).
 
 ## Règles d'écriture
 

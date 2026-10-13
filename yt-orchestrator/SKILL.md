@@ -5,9 +5,9 @@ description: Pilote la production complète d'une vidéo YouTube de la chaîne c
 
 # yt-orchestrator
 
-**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
+**Cadre** : lis d'abord `{repo}/_shared/cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
-Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`. Contrat du fichier partagé : `context/SCHEMA.md` (sections, champs, statuts). Structure vide : `context/video-context.template.json`.
+`{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là. Contrat du fichier partagé : `context/SCHEMA.md` (sections, champs, statuts). Structure vide : `context/video-context.template.json`.
 
 Tu enchaînes les skills dans l'ordre, tu es le **seul à écrire** dans `context/video-context.json`, et tu t'arrêtes là où Nass doit décider.
 
@@ -55,7 +55,7 @@ Puis écris `veille.ideas[]` et `veille.selected_idea` (`{title, format, angle, 
 
 Lance un agent avec ce prompt (remplace `<slug>`) :
 
-> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-transcript\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request`, `veille.selected_idea`). Cherche 3 à 5 vidéos concurrentes sur le sujet : DB veille sur le VPS si elle répond ; sinon (DB injoignable, vide ou sans résultat sur ce sujet), recherche YouTube via le web ou yt-dlp. Ne relance pas la veille automatique. Récupère les transcripts, écris le brief dans `context/transcripts/<slug>/research-brief.md` et la section `research` dans `context/runs/<slug>/research.json` (chaque `key_facts[]` = `{fact, verified, source}` ; `verified: true` seulement avec une source primaire). N'écris jamais dans `context/video-context.json`. Ne pose aucune question : ce qui manque va dans `open_questions[]`. Renvoie le JSON de la section dans ton message final.
+> Mode autonome, lancé par yt-orchestrator. Lis `{repo}/yt-transcript/SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request`, `veille.selected_idea`). Cherche 3 à 5 vidéos concurrentes sur le sujet : DB veille sur le VPS si elle répond ; sinon (DB injoignable, vide ou sans résultat sur ce sujet), recherche YouTube via le web ou yt-dlp. Ne relance pas la veille automatique. Récupère les transcripts, écris le brief dans `context/transcripts/<slug>/research-brief.md` et la section `research` dans `context/runs/<slug>/research.json` (chaque `key_facts[]` = `{fact, verified, source}` ; `verified: true` seulement avec une source primaire). N'écris jamais dans `context/video-context.json`. Ne pose aucune question : ce qui manque va dans `open_questions[]`. Renvoie le JSON de la section dans ton message final.
 
 Fusion, puis `pipeline_step = "0.75"`. Si aucune vidéo concurrente n'est trouvée, c'est une info (terrain vierge) : la phase est quand même terminée.
 
@@ -69,7 +69,7 @@ yt-script a besoin de Nass (structure 1a → validation → écriture 1b, hook, 
 
 ## Phase 2a — Titres (agent)
 
-> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-titres-seo\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request`, `script`, `research.angles_missing`). Produis le nombre de titres défini dans yt-titres-seo, choisis `winning_title`, donne `primary_keyword` et `secondary_keywords[]`. Écris la section dans `context/runs/<slug>/titres_seo.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+> Mode autonome, lancé par yt-orchestrator. Lis `{repo}/yt-titres-seo/SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request`, `script`, `research.angles_missing`). Produis le nombre de titres défini dans yt-titres-seo, choisis `winning_title`, donne `primary_keyword` et `secondary_keywords[]`. Écris la section dans `context/runs/<slug>/titres_seo.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
 
 Fusion, puis `pipeline_step = "2a"`.
 
@@ -77,9 +77,9 @@ Fusion, puis `pipeline_step = "2a"`.
 
 Lance les deux agents dans le même message, une fois `titres_seo` fusionné.
 
-> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-miniature\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`script`, `titres_seo.winning_title`, `titres_seo.primary_keyword`). Le texte de la miniature complète le titre, il ne le répète pas ; tout chiffre affiché est réel, avec `figure_source`. Écris la section dans `context/runs/<slug>/miniature.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+> Mode autonome, lancé par yt-orchestrator. Lis `{repo}/yt-miniature/SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`script`, `titres_seo.winning_title`, `titres_seo.primary_keyword`). Le texte de la miniature complète le titre, il ne le répète pas ; tout chiffre affiché est réel, avec `figure_source`. Écris la section dans `context/runs/<slug>/miniature.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
 
-> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-description\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request.funnel`, `script`, `research`, `titres_seo`). Liens d'offres en placeholders `[lien …]`. Écris la section dans `context/runs/<slug>/description.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+> Mode autonome, lancé par yt-orchestrator. Lis `{repo}/yt-description/SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request.funnel`, `script`, `research`, `titres_seo`). Liens d'offres en placeholders `[lien …]`. Écris la section dans `context/runs/<slug>/description.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
 
 Attends les deux notifications de fin, fusionne les deux sections, puis `pipeline_step = "2bc"`. Si un seul des deux échoue, relance-le seul (voir Erreurs).
 
@@ -107,7 +107,7 @@ Attends les deux notifications de fin, fusionne les deux sections, puis `pipelin
 
 ## Phase 4 — Repurposing (agent)
 
-> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-repurposing\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request.funnel`, `script`, `titres_seo`, `miniature`, `description`, tous validés). Produis `shorts[]`, `x_thread_full`, `linkedin_full` et les autres champs de la section. Écris-la dans `context/runs/<slug>/repurposing.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+> Mode autonome, lancé par yt-orchestrator. Lis `{repo}/yt-repurposing/SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request.funnel`, `script`, `titres_seo`, `miniature`, `description`, tous validés). Produis `shorts[]`, `x_thread_full`, `linkedin_full` et les autres champs de la section. Écris-la dans `context/runs/<slug>/repurposing.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
 
 Fusion, puis `pipeline_step = "4"`.
 

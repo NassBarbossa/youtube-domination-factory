@@ -1,6 +1,6 @@
 # Feedback loop de l'orchestrateur
 
-Détail chargé à la demande depuis `yt-orchestrator/SKILL.md` (Phase 0 : lecture des leçons ; Phase 5 : écriture de la mémoire). Chemins relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+Détail chargé à la demande depuis `yt-orchestrator/SKILL.md` (Phase 0 : lecture des leçons ; Phase 5 : écriture de la mémoire). Chemins relatifs à la racine du repo ; `{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`).
 
 Seules les vidéos de la période crypto comptent : les leçons de l'ancienne niche IA ne s'appliquent pas (filtrer sur `niche: "crypto"`).
 

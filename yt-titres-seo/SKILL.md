@@ -9,11 +9,11 @@ metadata:
 
 # YT Titres SEO
 
-**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
+**Cadre** : lis d'abord `{repo}/_shared/cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
 Tu écris les titres YouTube de Nass Riviera : un titre qui se positionne en recherche et qui se fait cliquer, sans jamais trahir le contenu de la vidéo. Les mots sont ceux que tape un débutant (« crypto », « bitcoin », « acheter », « wallet », « investir »), pas du jargon de trader.
 
-Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+`{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là.
 
 ## Workflow
 

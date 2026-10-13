@@ -4,24 +4,37 @@
 
 ## 1. Installer sur un nouvel ordi
 
-```powershell
+```bash
 git clone https://github.com/NassBarbossa/youtube-domination-factory.git
 cd youtube-domination-factory
 git checkout rebrand/crypto
 ```
 
-**Si le repo n'est pas dans `C:\Users\User\youtube-domination-factory`** : les skills citent ce chemin en dur (17 fichiers, surtout la ligne « Cadre »). Remplace-le par le nouveau chemin :
+Les skills désignent la racine du repo par `{repo}`, définie dans chaque fichier comme `~/youtube-domination-factory` (Mac) ou `C:\Users\User\youtube-domination-factory` (Windows). **Si le repo est ailleurs**, remplace le chemin de ton OS dans les `.md` (hors `outputs/`, `shows/`, `docs/`) :
+
+```bash
+# Mac — exemple si le repo est dans ~/Projets/ydf
+grep -rl '~/youtube-domination-factory' --include='*.md' . | grep -v -E '/(outputs|shows|docs)/' | xargs sed -i '' 's#~/youtube-domination-factory#~/Projets/ydf#g'
+```
 
 ```powershell
+# Windows
 $old = 'C:\Users\User\youtube-domination-factory'
 $new = (Get-Location).Path
 Get-ChildItem -Recurse -Include *.md | Where-Object { $_.FullName -notmatch '\\(outputs|shows|docs)\\' } |
   ForEach-Object { $c = Get-Content $_.FullName -Raw -Encoding utf8; if ($c.Contains($old)) { [IO.File]::WriteAllText($_.FullName, $c.Replace($old, $new)) } }
 ```
 
-Brancher les skills dans Claude Code (jonctions, une modif du repo est active tout de suite) :
+Brancher les skills dans Claude Code (liens vers le repo, une modif est active tout de suite) :
+
+```bash
+# Mac
+cd ~/youtube-domination-factory
+for d in yt-*/; do d=${d%/}; [ -f "$d/SKILL.md" ] && ln -sfn "../../youtube-domination-factory/$d" ~/.claude/skills/"$d"; done
+```
 
 ```powershell
+# Windows
 $skills = "$env:USERPROFILE\.claude\skills"
 Get-ChildItem . -Directory -Filter 'yt-*' | Where-Object { Test-Path "$($_.FullName)\SKILL.md" } |
   ForEach-Object { New-Item -ItemType Junction -Path "$skills\$($_.Name)" -Target $_.FullName }

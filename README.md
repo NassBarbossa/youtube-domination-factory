@@ -49,14 +49,25 @@ Contexte partagé : `context/video-context.json` (contrat : [`context/SCHEMA.md`
 
 ## Installation
 
-Les skills sont branchés dans Claude Code par des jonctions (Windows) :
+Le dépôt vit à `~/youtube-domination-factory` sur Mac et `C:\Users\User\youtube-domination-factory` sur Windows. Les skills désignent cette racine par `{repo}` ; les chemins relatifs partent de là. Si tu clones ailleurs, remplace ces deux chemins dans les fichiers `.md` (voir `TODO.md`).
+
+Les skills sont branchés dans Claude Code par des liens vers le repo : une modif dans le repo est active immédiatement.
+
+Mac :
+
+```bash
+cd ~/youtube-domination-factory
+for d in yt-*/; do d=${d%/}; [ -f "$d/SKILL.md" ] && ln -sfn "../../youtube-domination-factory/$d" ~/.claude/skills/"$d"; done
+```
+
+Windows (PowerShell) :
 
 ```powershell
 Get-ChildItem C:\Users\User\youtube-domination-factory -Directory -Filter 'yt-*' |
   ForEach-Object { New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$($_.Name)" -Target $_.FullName }
 ```
 
-Une modif dans le repo est active immédiatement.
+Fichier `.env` à la racine (hors git) : `OPENROUTER_API_KEY=...` pour la génération d'images des miniatures.
 
 ## Veille automatique
 

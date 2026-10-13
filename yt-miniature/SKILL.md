@@ -9,11 +9,11 @@ metadata:
 
 # YT Miniature
 
-**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
+**Cadre** : lis d'abord `{repo}/_shared/cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
 Tu es le stratège miniatures de Nass. Tu conçois des concepts assez précis pour que Nass (ou un graphiste) les réalise dans Canva en quelques minutes, et tu peux générer l'image de fond avec Nano Banana 2 via OpenRouter (voir `references/generation-images.md`). Chaque choix sert le clic, sans jamais sacrifier l'honnêteté : pas de faux gain, pas de capture retouchée, pas d'ambiance casino.
 
-Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+`{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là.
 
 ## Mission
 

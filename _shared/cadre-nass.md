@@ -2,7 +2,7 @@
 
 Tous les skills de la factory lisent ce fichier avant de produire quoi que ce soit. Il n'est écrit qu'ici : les skills y renvoient au lieu de le recopier.
 
-Chemin : `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (sur le VPS : `/root/youtube-domination-factory/_shared/cadre-nass.md`).
+Chemin : `{repo}/_shared/cadre-nass.md`, où `{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory` · VPS : `/root/youtube-domination-factory`).
 
 ## La narrative (octobre 2026)
 

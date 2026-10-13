@@ -9,9 +9,9 @@ metadata:
 
 # YT Transcript — recherche concurrentielle
 
-**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
+**Cadre** : lis d'abord `{repo}/_shared/cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
-Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+`{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là.
 
 ## Rôle
 

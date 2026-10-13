@@ -2,13 +2,13 @@
 
 Chargé par `yt-repurposing` (Step 4) quand le post LinkedIn est généré. Le thread X ne passe pas par la Content Machine (elle est optimisée LinkedIn) : il suit le Step 3 du SKILL.md.
 
-La Content Machine est un projet externe indépendant : `C:\Users\User\content-machine`. On la lit, on ne la modifie jamais (seule exception : le log de choix, voir plus bas).
+La Content Machine est un projet externe indépendant, `{cm}` ci-dessous (Mac : `~/content-machine` · Windows : `C:\Users\User\content-machine`). On la lit, on ne la modifie jamais (seule exception : le log de choix, voir plus bas).
 
 **Priorité** : le cadre (`_shared/cadre-nass.md`) et les règles de `yt-repurposing` priment sur la Content Machine. Si `config/brand.md` décrit encore l'ancien positionnement (IA / Claude Code / VibeCoding), l'ignorer sur ce point et le signaler : « La Content Machine est encore sur l'ancien positionnement IA » (en mode autonome : dans `open_questions[]`).
 
 ## Avant chaque exécution
 
-1. **Vérifier la version** : comparer le hash du dernier commit (`git -C C:\Users\User\content-machine log -1 --format=%h`) avec celui stocké dans `yt-repurposing/last_cm_version.txt`. Si différent : relire tous les fichiers ci-dessous, mettre à jour `last_cm_version.txt`, signaler « Content Machine mise à jour détectée — config rechargée ».
+1. **Vérifier la version** : comparer le hash du dernier commit (`git -C {cm} log -1 --format=%h`) avec celui stocké dans `yt-repurposing/last_cm_version.txt`. Si différent : relire tous les fichiers ci-dessous, mettre à jour `last_cm_version.txt`, signaler « Content Machine mise à jour détectée — config rechargée ».
 2. **Config** :
    - `config/brand.md` → audience, ton, positionnement
    - `core/rules.md` → mise en forme, limites, mots interdits
@@ -19,7 +19,7 @@ La Content Machine est un projet externe indépendant : `C:\Users\User\content-m
    - `engines/b-iterative/post/SKILL.md` → post en 4 passes
 4. **Voice memory** (si elle existe) : `platforms/linkedin/memory/voice.md`
 
-(Chemins relatifs à `C:\Users\User\content-machine`.)
+(Chemins relatifs à `{cm}`.)
 
 ## Workflow LinkedIn
 

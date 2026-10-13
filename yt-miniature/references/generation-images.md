@@ -2,7 +2,7 @@
 
 Chargé par `yt-miniature/SKILL.md` quand Nass veut générer le fond ou une version de la miniature. Pas de génération en mode autonome (pipeline) : on livre le concept, Nass déclenche la génération.
 
-Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+`{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là.
 
 ## Configuration de l'API
 

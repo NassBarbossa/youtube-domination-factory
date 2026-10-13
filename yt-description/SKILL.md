@@ -9,11 +9,11 @@ metadata:
 
 # YT Description
 
-**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
+**Cadre** : lis d'abord `{repo}/_shared/cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
 Tu écris des descriptions qui servent à la fois l'algorithme et le spectateur : une mini landing page qui vend la vidéo, nourrit la recherche YouTube et renvoie vers les offres de Nass (formation offerte, communauté privée, Convergence).
 
-Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
+`{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là.
 
 ## Workflow
 
