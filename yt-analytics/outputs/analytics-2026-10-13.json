@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-10-13T21:12:08.930559",
+  "videos": [
+    {
+      "id": "71HX4YUNrNs",
+      "title": "Investis en cryptos avec cette méthode !!",
+      "published_at": "2026-10-11T15:00:30Z",
+      "thumbnail": "https://i.ytimg.com/vi/71HX4YUNrNs/hqdefault.jpg",
+      "metrics": {
+        "views": 1,
+        "watch_time_min": 0,
+        "avg_view_duration_sec": 8,
+        "retention_pct": 1.5,
+        "subscribers_gained": 0,
+        "likes": 0,
+        "comments": 0,
+        "shares": 0
+      },
+      "traffic_sources": [
+        {
+          "source": "Abonnés",
+          "views": 1,
+          "percent": 100.0
+        }
+      ],
+      "ctr_official": null
+    },
+    {
+      "id": "ZjNa7wxwFkM",
+      "title": "CONVERGENCE [EP.01] : Podcast investissement w/ Sadek",
+      "published_at": "2026-10-08T11:46:24Z",
+      "thumbnail": "https://i.ytimg.com/vi/ZjNa7wxwFkM/hqdefault.jpg",
+      "metrics": {
+        "views": 125,
+        "watch_time_min": 544,
+        "avg_view_duration_sec": 366,
+        "retention_pct": 16.0,
+        "subscribers_gained": 6,
+        "likes": 7,
+        "comments": 2,
+        "shares": 4
+      },
+      "traffic_sources": [
+        {
+          "source": "Abonnés",
+          "views": 48,
+          "percent": 38.4
+        },
+        {
+          "source": "Sites externes",
+          "views": 24,
+          "percent": 19.2
+        },
+        {
+          "source": "Page chaîne",
+          "views": 23,
+          "percent": 18.4
+        },
+        {
+          "source": "Autre",
+          "views": 21,
+          "percent": 16.8
+        },
+        {
+          "source": "Recherche YouTube",
+          "views": 7,
+          "percent": 5.6
+        },
+        {
+          "source": "Vidéos suggérées",
+          "views": 1,
+          "percent": 0.8
+        },
+        {
+          "source": "Autre page YouTube",
+          "views": 1,
+          "percent": 0.8
+        }
+      ],
+      "ctr_official": null
+    },
+    {
+      "id": "FVajDtrHsPU",
+      "title": "Comment devenir riche grâce à l'investissement ?",
+      "published_at": "2026-10-07T13:18:21Z",
+      "thumbnail": "https://i.ytimg.com/vi/FVajDtrHsPU/hqdefault.jpg",
+      "metrics": {
+        "views": 119,
+        "watch_time_min": 253,
+        "avg_view_duration_sec": 198,
+        "retention_pct": 29.7,
+        "subscribers_gained": 7,
+        "likes": 7,
+        "comments": 3,
+        "shares": 0
+      },
+      "traffic_sources": [
+        {
+          "source": "Abonnés",
+          "views": 52,
+          "percent": 43.7
+        },
+        {
+          "source": "Playlists",
+          "views": 37,
+          "percent": 31.1
+        },
+        {
+          "source": "Page chaîne",
+          "views": 20,
+          "percent": 16.8
+        },
+        {
+          "source": "Autre",
+          "views": 3,
+          "percent": 2.5
+        },
+        {
+          "source": "Écran de fin",
+          "views": 3,
+          "percent": 2.5
+        },
+        {
+          "source": "Notifications",
+          "views": 2,
+          "percent": 1.7
+        },
+        {
+          "source": "Recherche YouTube",
+          "views": 1,
+          "percent": 0.8
+        },
+        {
+          "source": "Autre page YouTube",
+          "views": 1,
+          "percent": 0.8
+        }
+      ],
+      "ctr_official": null
+    },
+    {
+      "id": "njfEJFd7hQ8",
+      "title": "Pourquoi il faut investir en 2026 ? (Formation Offerte)",
+      "published_at": "2026-10-05T10:51:55Z",
+      "thumbnail": "https://i.ytimg.com/vi/njfEJFd7hQ8/hqdefault.jpg",
+      "metrics": {
+        "views": 248,
+        "watch_time_min": 489,
+        "avg_view_duration_sec": 152,
+        "retention_pct": 26.8,
+        "subscribers_gained": 16,
+        "likes": 15,
+        "comments": 4,
+        "shares": 2
+      },
+      "traffic_sources": [
+        {
+          "source": "Playlists",
+          "views": 93,
+          "percent": 37.5
+        },
+        {
+          "source": "Abonnés",
+          "views": 59,
+          "percent": 23.8
+        },
+        {
+          "source": "Autre",
+          "views": 46,
+          "percent": 18.5
+        },
+        {
+          "source": "Page chaîne",
+          "views": 27,
+          "percent": 10.9
+        },
+        {
+          "source": "Sites externes",
+          "views": 14,
+          "percent": 5.6
+        },
+        {
+          "source": "Recherche YouTube",
+          "views": 6,
+          "percent": 2.4
+        },
+        {
+          "source": "Autre page YouTube",
+          "views": 3,
+          "percent": 1.2
+        }
+      ],
+      "ctr_official": null
+    }
+  ],
+  "channel_traffic": [
+    {
+      "source": "Abonnés",
+      "views": 160,
+      "percent": 32.5
+    },
+    {
+      "source": "Playlists",
+      "views": 130,
+      "percent": 26.4
+    },
+    {
+      "source": "Autre",
+      "views": 70,
+      "percent": 14.2
+    },
+    {
+      "source": "Page chaîne",
+      "views": 70,
+      "percent": 14.2
+    },
+    {
+      "source": "Sites externes",
+      "views": 38,
+      "percent": 7.7
+    },
+    {
+      "source": "Recherche YouTube",
+      "views": 14,
+      "percent": 2.8
+    },
+    {
+      "source": "Autre page YouTube",
+      "views": 5,
+      "percent": 1.0
+    },
+    {
+      "source": "Écran de fin",
+      "views": 3,
+      "percent": 0.6
+    },
+    {
+      "source": "Notifications",
+      "views": 2,
+      "percent": 0.4
+    },
+    {
+      "source": "Vidéos suggérées",
+      "views": 1,
+      "percent": 0.2
+    }
+  ]
+}

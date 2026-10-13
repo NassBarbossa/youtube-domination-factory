@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nassin Crypto · analytics du 13/10/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0B0B0B; --sand:#DBB17F; --sand-light:#F3D6A8; --sand-dark:#9C7748; --cream:#F4EFE7; --punk:#648596; --punk-dark:#4F6C7B; --grey-dark:#3B3A37; --grey:#9A968D; --good:#2E8B57; --bad:#C0392B; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--cream); font-family:'Public Sans', Helvetica, Arial, sans-serif; padding:40px 20px; line-height:1.45; }
+  .container { max-width:1400px; margin:0 auto; }
+  h1, h2, h3, .metric-value, .reco-num { font-family:'Archivo Black', Impact, 'Arial Black', sans-serif; font-weight:400; }
+  .page-header { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:32px; padding-bottom:20px; border-bottom:3px solid var(--sand); flex-wrap:wrap; }
+  .page-header h1 { font-size:34px; color:var(--sand); line-height:1.1; }
+  .page-header h1 small { display:block; font-family:'Public Sans', sans-serif; font-weight:600; font-size:14px; color:var(--grey); letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+  .page-header .date { font-size:13px; color:var(--grey); text-align:right; }
+  .card { background:var(--cream); color:var(--bg); border:3px solid var(--bg); box-shadow:8px 8px 0 var(--sand-dark); padding:28px; margin-bottom:28px; }
+  .section-title { font-size:22px; margin-bottom:18px; }
+  .overview { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:14px; margin-bottom:18px; }
+  .stat { background:var(--bg); color:var(--cream); padding:16px; }
+  .stat .metric-label { color:var(--grey); }
+  .stat .metric-value { color:var(--sand); }
+  .overview-note { font-size:15px; margin-top:6px; }
+  .video-header { display:flex; gap:20px; align-items:center; margin-bottom:22px; }
+  .video-thumb { width:200px; height:112px; object-fit:cover; border:3px solid var(--bg); flex-shrink:0; }
+  .video-info { flex:1; }
+  .video-info h2 { font-size:20px; line-height:1.25; margin-bottom:6px; }
+  .video-meta { font-size:13px; color:var(--grey-dark); }
+  .video-meta a { color:var(--punk-dark); }
+  .badge { font-weight:700; font-size:12px; letter-spacing:1px; text-transform:uppercase; padding:8px 12px; border:3px solid var(--bg); white-space:nowrap; }
+  .badge.good { background:var(--good); color:#fff; } .badge.mid { background:var(--sand-dark); color:#fff; } .badge.bad { background:var(--bad); color:#fff; }
+  .metrics-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:12px; margin-bottom:22px; }
+  .metric { background:#fff; border:2px solid var(--bg); padding:14px; text-align:center; }
+  .metric.best { background:var(--sand-light); }
+  .metric-label { font-size:11px; color:var(--grey-dark); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; font-weight:700; }
+  .metric-value { font-size:26px; }
+  .metric-value.muted { color:var(--grey); }
+  .metric-sub { font-size:11px; color:var(--grey-dark); margin-top:4px; }
+  .traffic-section h3 { font-size:13px; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+  .traffic-row { display:flex; align-items:center; gap:12px; margin-bottom:7px; }
+  .traffic-name { font-size:13px; width:170px; flex-shrink:0; font-weight:600; }
+  .traffic-bar-container { flex:1; height:12px; background:#fff; border:2px solid var(--bg); overflow:hidden; }
+  .traffic-bar { height:100%; background:var(--punk); min-width:2px; }
+  .traffic-pct { font-size:13px; width:110px; text-align:right; flex-shrink:0; }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
+  .col { background:#fff; border:2px solid var(--bg); padding:16px 18px; }
+  .col h3 { font-size:14px; margin-bottom:10px; }
+  .good-col h3 { color:var(--good); } .bad-col h3 { color:var(--bad); }
+  .col ul { padding-left:18px; font-size:14px; } .col li { margin-bottom:6px; }
+  .verdict { margin-top:16px; padding:14px 18px; background:var(--bg); color:var(--cream); font-size:15px; border-left:6px solid var(--sand); }
+  .fresh { padding:14px 18px; background:var(--sand-light); border:2px dashed var(--sand-dark); font-size:14px; }
+  .reco { display:flex; gap:18px; padding:18px 0; border-top:2px solid var(--bg); }
+  .reco:first-of-type { border-top:none; padding-top:0; }
+  .reco-num { font-size:30px; color:var(--punk-dark); width:44px; flex-shrink:0; line-height:1; }
+  .reco h3 { font-size:17px; margin-bottom:8px; } .reco p { font-size:14px; margin-bottom:4px; }
+  .footer { text-align:center; padding-top:24px; font-size:12px; color:var(--grey); }
+  @media (max-width:800px) { .two-col { grid-template-columns:1fr; } .video-header { flex-wrap:wrap; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="page-header">
+    <h1><small>Nassin Crypto · nouvelle chaîne</small>Analytics des 4 dernières vidéos</h1>
+    <div class="date">Données API YouTube Analytics (2 à 3 jours de retard)<br>Rapport généré le 13/10/2026 à 21:12</div>
+  </div>
+
+  <section class="card">
+    <h2 class="section-title">La chaîne en un coup d'œil</h2>
+    <div class="overview">
+      <div class="stat"><div class="metric-label">Vidéos fiables</div><div class="metric-value">3</div><div class="metric-sub">1 trop récente(s)</div></div>
+      <div class="stat"><div class="metric-label">Vues cumulées</div><div class="metric-value">492</div><div class="metric-sub">médiane 125 par vidéo</div></div>
+      <div class="stat"><div class="metric-label">Rétention moyenne</div><div class="metric-value">24.2%</div><div class="metric-sub">de la vidéo regardée</div></div>
+      <div class="stat"><div class="metric-label">Abonnés gagnés</div><div class="metric-value">+29</div><div class="metric-sub">par ces vidéos</div></div>
+    </div>
+    <div class="traffic-section"><h3>D'où viennent les vues de la chaîne (30 derniers jours)</h3>
+        <div class="traffic-row">
+          <span class="traffic-name">Abonnés</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 32.5%"></div></div>
+          <span class="traffic-pct">160 · 32.5%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Playlists</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 26.4%"></div></div>
+          <span class="traffic-pct">130 · 26.4%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Autre</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 14.2%"></div></div>
+          <span class="traffic-pct">70 · 14.2%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Page chaîne</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 14.2%"></div></div>
+          <span class="traffic-pct">70 · 14.2%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Sites externes</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 7.7%"></div></div>
+          <span class="traffic-pct">38 · 7.7%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Recherche YouTube</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 2.8%"></div></div>
+          <span class="traffic-pct">14 · 2.8%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Autre page YouTube</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 1.0%"></div></div>
+          <span class="traffic-pct">5 · 1.0%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Écran de fin</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 0.6%"></div></div>
+          <span class="traffic-pct">3 · 0.6%</span>
+        </div></div>
+    <p class="overview-note">Quatre vidéos en huit jours sur une chaîne neuve : trop tôt pour parler de tendance, on compare chaque vidéo à la médiane de la chaîne (125 vues). Le point qui saute aux yeux : presque aucune découverte. Les vues viennent des abonnés (32 %), de la playlist formation (26 %) et de la page de la chaîne (14 %). La recherche YouTube pèse 3 % et les suggestions n'apparaissent même pas. La chaîne tourne sur sa base existante, YouTube ne la pousse pas encore à des inconnus.</p>
+  </section>
+
+  
+    <section class="card video-card">
+      <div class="video-header">
+        <img src="https://i.ytimg.com/vi/71HX4YUNrNs/hqdefault.jpg" alt="" class="video-thumb">
+        <div class="video-info">
+          <h2>Investis en cryptos avec cette méthode !!</h2>
+          <div class="video-meta">Publiée le 2026-10-11 · <a href="https://www.youtube.com/watch?v=71HX4YUNrNs">youtube.com/watch?v=71HX4YUNrNs</a></div>
+        </div>
+        
+      </div>
+      
+      <div class="fresh">Publiée il y a 1 jour(s) : l'API a 2 à 3 jours de retard, ces chiffres ne veulent encore rien dire. Hors moyennes.</div>
+    </section>
+
+    <section class="card video-card">
+      <div class="video-header">
+        <img src="https://i.ytimg.com/vi/ZjNa7wxwFkM/hqdefault.jpg" alt="" class="video-thumb">
+        <div class="video-info">
+          <h2>CONVERGENCE [EP.01] : Podcast investissement w/ Sadek</h2>
+          <div class="video-meta">Publiée le 2026-10-08 · <a href="https://www.youtube.com/watch?v=ZjNa7wxwFkM">youtube.com/watch?v=ZjNa7wxwFkM</a></div>
+        </div>
+        <span class="badge mid">moyenne</span>
+      </div>
+      
+      <div class="metrics-grid">
+        <div class="metric"><div class="metric-label">Vues</div><div class="metric-value">125</div><div class="metric-sub">1.0× la médiane</div></div>
+        <div class="metric"><div class="metric-label">CTR</div><div class="metric-value muted">n/d</div><div class="metric-sub">export YouTube Studio requis</div></div>
+        <div class="metric"><div class="metric-label">Rétention</div><div class="metric-value">16.0%</div><div class="metric-sub">6:06 par vue</div></div>
+        <div class="metric"><div class="metric-label">Abonnés</div><div class="metric-value">+6</div><div class="metric-sub">4.8% des vues</div></div>
+        <div class="metric"><div class="metric-label">Likes</div><div class="metric-value">7</div><div class="metric-sub">5.6% des vues</div></div>
+        <div class="metric"><div class="metric-label">Commentaires</div><div class="metric-value">2</div><div class="metric-sub">4 partage(s)</div></div>
+        <div class="metric"><div class="metric-label">Temps regardé</div><div class="metric-value">544 min</div><div class="metric-sub">cumulé</div></div>
+      </div>
+      <div class="traffic-section"><h3>D'où viennent les vues</h3>
+        <div class="traffic-row">
+          <span class="traffic-name">Abonnés</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 38.4%"></div></div>
+          <span class="traffic-pct">38.4%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Sites externes</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 19.2%"></div></div>
+          <span class="traffic-pct">19.2%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Page chaîne</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 18.4%"></div></div>
+          <span class="traffic-pct">18.4%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Autre</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 16.8%"></div></div>
+          <span class="traffic-pct">16.8%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Recherche YouTube</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 5.6%"></div></div>
+          <span class="traffic-pct">5.6%</span>
+        </div></div>
+      
+      <div class="two-col">
+        <div class="col good-col"><h3>Ce qui a marché</h3><ul><li>4 partages, le record de la chaîne, et 19 % des vues depuis des sites externes : le live circule hors YouTube, sans doute via Sadek et Telegram.</li><li>6 abonnés pour 125 vues (4,8 %) : un format live qui convertit presque aussi bien que les vidéos éditées.</li><li>5,6 % de recherche YouTube, la seule vidéo où la recherche pèse : « podcast investissement » et le nom de Sadek se cherchent.</li></ul></div>
+        <div class="col bad-col"><h3>Ce qui n'a pas marché</h3><ul><li>Rétention 16 % : 6 minutes regardées en moyenne sur un live long. Normal pour un replay, mais ça pèse sur la moyenne de la chaîne.</li><li>Le titre ne dit pas de quoi parle l'épisode : « Podcast investissement » ne donne aucune raison de cliquer à un inconnu.</li></ul></div>
+      </div>
+      <div class="verdict"><strong>Verdict.</strong> Dans la médiane (1,0×). Le live vaut par ce qu'il fait circuler, pas par sa rétention : à découper en extraits.</div>
+    </section>
+
+    <section class="card video-card">
+      <div class="video-header">
+        <img src="https://i.ytimg.com/vi/FVajDtrHsPU/hqdefault.jpg" alt="" class="video-thumb">
+        <div class="video-info">
+          <h2>Comment devenir riche grâce à l'investissement ?</h2>
+          <div class="video-meta">Publiée le 2026-10-07 · <a href="https://www.youtube.com/watch?v=FVajDtrHsPU">youtube.com/watch?v=FVajDtrHsPU</a></div>
+        </div>
+        <span class="badge mid">moyenne</span>
+      </div>
+      
+      <div class="metrics-grid">
+        <div class="metric"><div class="metric-label">Vues</div><div class="metric-value">119</div><div class="metric-sub">0.95× la médiane</div></div>
+        <div class="metric"><div class="metric-label">CTR</div><div class="metric-value muted">n/d</div><div class="metric-sub">export YouTube Studio requis</div></div>
+        <div class="metric best"><div class="metric-label">Rétention</div><div class="metric-value">29.7%</div><div class="metric-sub">3:18 par vue</div></div>
+        <div class="metric"><div class="metric-label">Abonnés</div><div class="metric-value">+7</div><div class="metric-sub">5.9% des vues</div></div>
+        <div class="metric"><div class="metric-label">Likes</div><div class="metric-value">7</div><div class="metric-sub">5.9% des vues</div></div>
+        <div class="metric"><div class="metric-label">Commentaires</div><div class="metric-value">3</div><div class="metric-sub">0 partage(s)</div></div>
+        <div class="metric"><div class="metric-label">Temps regardé</div><div class="metric-value">253 min</div><div class="metric-sub">cumulé</div></div>
+      </div>
+      <div class="traffic-section"><h3>D'où viennent les vues</h3>
+        <div class="traffic-row">
+          <span class="traffic-name">Abonnés</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 43.7%"></div></div>
+          <span class="traffic-pct">43.7%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Playlists</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 31.1%"></div></div>
+          <span class="traffic-pct">31.1%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Page chaîne</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 16.8%"></div></div>
+          <span class="traffic-pct">16.8%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Autre</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 2.5%"></div></div>
+          <span class="traffic-pct">2.5%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Écran de fin</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 2.5%"></div></div>
+          <span class="traffic-pct">2.5%</span>
+        </div></div>
+      
+      <div class="two-col">
+        <div class="col good-col"><h3>Ce qui a marché</h3><ul><li>La meilleure rétention des quatre : 29,7 %, soit 3 min 18 par vue. Le contenu DCA tient mieux que la vidéo 1.</li><li>7 abonnés pour 119 vues (5,9 %), conversion presque identique à la vidéo 1 : le public qui reste est le bon.</li><li>Playlist 31 % + écran de fin 2,5 % : l'enchaînement vidéo 1 → vidéo 2 marche.</li></ul></div>
+        <div class="col bad-col"><h3>Ce qui n'a pas marché</h3><ul><li>Deux fois moins de vues que la vidéo 1 : classique sur une vidéo 2 de série, mais 44 % des vues viennent des abonnés, donc presque aucun nouveau venu.</li><li>Zéro partage.</li></ul></div>
+      </div>
+      <div class="verdict"><strong>Verdict.</strong> Dans la médiane de la chaîne (0,95×). Bonne vidéo pour ceux qui suivent, invisible pour les autres.</div>
+    </section>
+
+    <section class="card video-card">
+      <div class="video-header">
+        <img src="https://i.ytimg.com/vi/njfEJFd7hQ8/hqdefault.jpg" alt="" class="video-thumb">
+        <div class="video-info">
+          <h2>Pourquoi il faut investir en 2026 ? (Formation Offerte)</h2>
+          <div class="video-meta">Publiée le 2026-10-05 · <a href="https://www.youtube.com/watch?v=njfEJFd7hQ8">youtube.com/watch?v=njfEJFd7hQ8</a></div>
+        </div>
+        <span class="badge good">réussite</span>
+      </div>
+      
+      <div class="metrics-grid">
+        <div class="metric best"><div class="metric-label">Vues</div><div class="metric-value">248</div><div class="metric-sub">1.98× la médiane</div></div>
+        <div class="metric"><div class="metric-label">CTR</div><div class="metric-value muted">n/d</div><div class="metric-sub">export YouTube Studio requis</div></div>
+        <div class="metric"><div class="metric-label">Rétention</div><div class="metric-value">26.8%</div><div class="metric-sub">2:32 par vue</div></div>
+        <div class="metric best"><div class="metric-label">Abonnés</div><div class="metric-value">+16</div><div class="metric-sub">6.5% des vues</div></div>
+        <div class="metric"><div class="metric-label">Likes</div><div class="metric-value">15</div><div class="metric-sub">6.0% des vues</div></div>
+        <div class="metric"><div class="metric-label">Commentaires</div><div class="metric-value">4</div><div class="metric-sub">2 partage(s)</div></div>
+        <div class="metric"><div class="metric-label">Temps regardé</div><div class="metric-value">489 min</div><div class="metric-sub">cumulé</div></div>
+      </div>
+      <div class="traffic-section"><h3>D'où viennent les vues</h3>
+        <div class="traffic-row">
+          <span class="traffic-name">Playlists</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 37.5%"></div></div>
+          <span class="traffic-pct">37.5%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Abonnés</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 23.8%"></div></div>
+          <span class="traffic-pct">23.8%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Autre</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 18.5%"></div></div>
+          <span class="traffic-pct">18.5%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Page chaîne</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 10.9%"></div></div>
+          <span class="traffic-pct">10.9%</span>
+        </div>
+        <div class="traffic-row">
+          <span class="traffic-name">Sites externes</span>
+          <div class="traffic-bar-container"><div class="traffic-bar" style="width: 5.6%"></div></div>
+          <span class="traffic-pct">5.6%</span>
+        </div></div>
+      
+      <div class="two-col">
+        <div class="col good-col"><h3>Ce qui a marché</h3><ul><li>Deux fois la médiane de la chaîne, et la meilleure machine à abonnés : 16 abonnés pour 248 vues, soit 6,5 % des spectateurs. Le sujet « pourquoi investir » parle à l'avatar qui n'a pas encore commencé.</li><li>15 likes pour 248 vues (6 %), le meilleur ratio des quatre.</li><li>37 % des vues arrivent par la playlist : la formation en trois vidéos fonctionne comme un parcours, les gens entrent par la porte 1.</li></ul></div>
+        <div class="col bad-col"><h3>Ce qui n'a pas marché</h3><ul><li>Rétention 26,8 % : en moyenne, 2 min 32 regardées sur 9 min 29. Les trois quarts de la vidéo ne sont pas vus. À localiser sur la courbe de rétention dans YouTube Studio.</li><li>Recherche YouTube quasi absente dans les sources : le titre et la miniature n'attirent personne de l'extérieur pour l'instant.</li></ul></div>
+      </div>
+      <div class="verdict"><strong>Verdict.</strong> Réussite relative pour une première vidéo : c'est celle qui convertit le mieux en abonnés, mais elle n'est vue que par des gens qui connaissent déjà Nass.</div>
+    </section>
+
+  
+    <section class="card">
+      <h2 class="section-title">Recommandations</h2>
+      
+      <div class="reco">
+        <div class="reco-num">1</div>
+        <div>
+          <h3>Aller chercher le CTR dans YouTube Studio avant de toucher aux miniatures</h3>
+          <p><strong>Basée sur :</strong> L'API ne renvoie ni impressions ni CTR : les quatre cartes affichent « n/d ». Sans ce chiffre, impossible de savoir si le problème de découverte vient de la miniature ou de la distribution.</p>
+          <p><strong>Action :</strong> YouTube Studio → Analytics → Télécharger (CSV) pour chaque vidéo, puis <code>python3 yt-analytics/parse_youtube_csv.py &lt;fichier&gt;</code> puis <code>generate_report.py</code> : le repo lit l'export français.</p>
+          <p><strong>Impact attendu :</strong> Un CTR réel par vidéo, et la première calibration des seuils de la chaîne.</p>
+        </div>
+      </div>
+      <div class="reco">
+        <div class="reco-num">2</div>
+        <div>
+          <h3>Donner à YouTube une raison de pousser la prochaine vidéo</h3>
+          <p><strong>Basée sur :</strong> Recherche 2,8 % du trafic, suggestions absentes, 32 % abonnés + 26 % playlist : les quatre vidéos vivent sur la base existante.</p>
+          <p><strong>Action :</strong> Pour la première vidéo hors série, passer par yt-titres-seo avec un mot-clé réellement tapé par l'avatar (« acheter crypto hors exchange », « première crypto on-chain »), et viser un titre qui se comprend sans connaître Nass.</p>
+          <p><strong>Impact attendu :</strong> Une part de recherche et de suggestions qui décolle de zéro ; c'est le seul levier de croissance au-delà des abonnés actuels.</p>
+        </div>
+      </div>
+      <div class="reco">
+        <div class="reco-num">3</div>
+        <div>
+          <h3>Trouver où les gens décrochent dans les trois premières minutes</h3>
+          <p><strong>Basée sur :</strong> Rétention 26,8 % et 29,7 % sur des vidéos de 9 à 11 min : la durée moyenne de visionnage est de 2 min 32 et 3 min 18.</p>
+          <p><strong>Action :</strong> Ouvrir la courbe de rétention des deux vidéos dans YouTube Studio et noter la minute du premier gros décrochage. Si c'est avant 1 min, c'est le hook ; si c'est entre 2 et 4 min, c'est la promesse qui tarde.</p>
+          <p><strong>Impact attendu :</strong> Un script hors série qui met la promesse plus tôt, et une rétention qui passe au-dessus de 30 %.</p>
+        </div>
+      </div>
+      <div class="reco">
+        <div class="reco-num">4</div>
+        <div>
+          <h3>Capitaliser sur la playlist, elle est déjà le deuxième moteur de la chaîne</h3>
+          <p><strong>Basée sur :</strong> Playlists : 26 % du trafic de la chaîne, 37 % sur la vidéo 1, 31 % sur la vidéo 2.</p>
+          <p><strong>Action :</strong> Playlist formation épinglée sur la page de la chaîne, en écran de fin de chaque vidéo, et en premier lien de chaque description (déjà dans le cadre). Créer la prochaine playlist dès la première vidéo hors série.</p>
+          <p><strong>Impact attendu :</strong> Plus de vues en chaîne par spectateur, donc plus de temps regardé par visite.</p>
+        </div>
+      </div>
+      <div class="reco">
+        <div class="reco-num">5</div>
+        <div>
+          <h3>Découper le live Convergence plutôt que compter sur sa rétention</h3>
+          <p><strong>Basée sur :</strong> Convergence EP.01 : 125 vues, 16 % de rétention (6 min sur un long live), mais 4 partages, le record de la chaîne, et 19 % de vues depuis des sites externes.</p>
+          <p><strong>Action :</strong> Passer le replay dans yt-repurposing : 3 à 5 extraits courts avec Sadek, publiés en Shorts, en renvoyant vers le replay.</p>
+          <p><strong>Impact attendu :</strong> Le live devient une source de contenus courts, et les partages hors YouTube ramènent des gens vers la chaîne.</p>
+        </div>
+      </div>
+    </section>
+
+  <div class="footer">yt-analytics · youtube-domination-factory · CTR absent de l'API : il vient de l'export CSV de YouTube Studio (parse_youtube_csv.py)</div>
+</div>
+</body>
+</html>

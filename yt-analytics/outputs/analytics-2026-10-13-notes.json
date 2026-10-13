@@ -1,0 +1,80 @@
+{
+  "overview": "Quatre vidéos en huit jours sur une chaîne neuve : trop tôt pour parler de tendance, on compare chaque vidéo à la médiane de la chaîne (125 vues). Le point qui saute aux yeux : presque aucune découverte. Les vues viennent des abonnés (32 %), de la playlist formation (26 %) et de la page de la chaîne (14 %). La recherche YouTube pèse 3 % et les suggestions n'apparaissent même pas. La chaîne tourne sur sa base existante, YouTube ne la pousse pas encore à des inconnus.",
+  "videos": {
+    "njfEJFd7hQ8": {
+      "verdict_label": "réussite",
+      "verdict_kind": "réussite",
+      "worked": [
+        "Deux fois la médiane de la chaîne, et la meilleure machine à abonnés : 16 abonnés pour 248 vues, soit 6,5 % des spectateurs. Le sujet « pourquoi investir » parle à l'avatar qui n'a pas encore commencé.",
+        "15 likes pour 248 vues (6 %), le meilleur ratio des quatre.",
+        "37 % des vues arrivent par la playlist : la formation en trois vidéos fonctionne comme un parcours, les gens entrent par la porte 1."
+      ],
+      "failed": [
+        "Rétention 26,8 % : en moyenne, 2 min 32 regardées sur 9 min 29. Les trois quarts de la vidéo ne sont pas vus. À localiser sur la courbe de rétention dans YouTube Studio.",
+        "Recherche YouTube quasi absente dans les sources : le titre et la miniature n'attirent personne de l'extérieur pour l'instant."
+      ],
+      "verdict": "Réussite relative pour une première vidéo : c'est celle qui convertit le mieux en abonnés, mais elle n'est vue que par des gens qui connaissent déjà Nass."
+    },
+    "FVajDtrHsPU": {
+      "verdict_label": "moyenne",
+      "verdict_kind": "moyenne",
+      "worked": [
+        "La meilleure rétention des quatre : 29,7 %, soit 3 min 18 par vue. Le contenu DCA tient mieux que la vidéo 1.",
+        "7 abonnés pour 119 vues (5,9 %), conversion presque identique à la vidéo 1 : le public qui reste est le bon.",
+        "Playlist 31 % + écran de fin 2,5 % : l'enchaînement vidéo 1 → vidéo 2 marche."
+      ],
+      "failed": [
+        "Deux fois moins de vues que la vidéo 1 : classique sur une vidéo 2 de série, mais 44 % des vues viennent des abonnés, donc presque aucun nouveau venu.",
+        "Zéro partage."
+      ],
+      "verdict": "Dans la médiane de la chaîne (0,95×). Bonne vidéo pour ceux qui suivent, invisible pour les autres."
+    },
+    "71HX4YUNrNs": {},
+    "ZjNa7wxwFkM": {
+      "verdict_label": "moyenne",
+      "verdict_kind": "moyenne",
+      "worked": [
+        "4 partages, le record de la chaîne, et 19 % des vues depuis des sites externes : le live circule hors YouTube, sans doute via Sadek et Telegram.",
+        "6 abonnés pour 125 vues (4,8 %) : un format live qui convertit presque aussi bien que les vidéos éditées.",
+        "5,6 % de recherche YouTube, la seule vidéo où la recherche pèse : « podcast investissement » et le nom de Sadek se cherchent."
+      ],
+      "failed": [
+        "Rétention 16 % : 6 minutes regardées en moyenne sur un live long. Normal pour un replay, mais ça pèse sur la moyenne de la chaîne.",
+        "Le titre ne dit pas de quoi parle l'épisode : « Podcast investissement » ne donne aucune raison de cliquer à un inconnu."
+      ],
+      "verdict": "Dans la médiane (1,0×). Le live vaut par ce qu'il fait circuler, pas par sa rétention : à découper en extraits."
+    }
+  },
+  "recommendations": [
+    {
+      "title": "Aller chercher le CTR dans YouTube Studio avant de toucher aux miniatures",
+      "based_on": "L'API ne renvoie ni impressions ni CTR : les quatre cartes affichent « n/d ». Sans ce chiffre, impossible de savoir si le problème de découverte vient de la miniature ou de la distribution.",
+      "action": "YouTube Studio → Analytics → Télécharger (CSV) pour chaque vidéo, puis <code>python3 yt-analytics/parse_youtube_csv.py &lt;fichier&gt;</code> puis <code>generate_report.py</code> : le repo lit l'export français.",
+      "impact": "Un CTR réel par vidéo, et la première calibration des seuils de la chaîne."
+    },
+    {
+      "title": "Donner à YouTube une raison de pousser la prochaine vidéo",
+      "based_on": "Recherche 2,8 % du trafic, suggestions absentes, 32 % abonnés + 26 % playlist : les quatre vidéos vivent sur la base existante.",
+      "action": "Pour la première vidéo hors série, passer par yt-titres-seo avec un mot-clé réellement tapé par l'avatar (« acheter crypto hors exchange », « première crypto on-chain »), et viser un titre qui se comprend sans connaître Nass.",
+      "impact": "Une part de recherche et de suggestions qui décolle de zéro ; c'est le seul levier de croissance au-delà des abonnés actuels."
+    },
+    {
+      "title": "Trouver où les gens décrochent dans les trois premières minutes",
+      "based_on": "Rétention 26,8 % et 29,7 % sur des vidéos de 9 à 11 min : la durée moyenne de visionnage est de 2 min 32 et 3 min 18.",
+      "action": "Ouvrir la courbe de rétention des deux vidéos dans YouTube Studio et noter la minute du premier gros décrochage. Si c'est avant 1 min, c'est le hook ; si c'est entre 2 et 4 min, c'est la promesse qui tarde.",
+      "impact": "Un script hors série qui met la promesse plus tôt, et une rétention qui passe au-dessus de 30 %."
+    },
+    {
+      "title": "Capitaliser sur la playlist, elle est déjà le deuxième moteur de la chaîne",
+      "based_on": "Playlists : 26 % du trafic de la chaîne, 37 % sur la vidéo 1, 31 % sur la vidéo 2.",
+      "action": "Playlist formation épinglée sur la page de la chaîne, en écran de fin de chaque vidéo, et en premier lien de chaque description (déjà dans le cadre). Créer la prochaine playlist dès la première vidéo hors série.",
+      "impact": "Plus de vues en chaîne par spectateur, donc plus de temps regardé par visite."
+    },
+    {
+      "title": "Découper le live Convergence plutôt que compter sur sa rétention",
+      "based_on": "Convergence EP.01 : 125 vues, 16 % de rétention (6 min sur un long live), mais 4 partages, le record de la chaîne, et 19 % de vues depuis des sites externes.",
+      "action": "Passer le replay dans yt-repurposing : 3 à 5 extraits courts avec Sadek, publiés en Shorts, en renvoyant vers le replay.",
+      "impact": "Le live devient une source de contenus courts, et les partages hors YouTube ramènent des gens vers la chaîne."
+    }
+  ]
+}
