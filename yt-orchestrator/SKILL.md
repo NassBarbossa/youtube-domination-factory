@@ -1,519 +1,149 @@
 ---
 name: yt-orchestrator
-description: Master orchestrator for Nass Riviera's 100% crypto YouTube channel (on-chain investing, spot only, zero leverage, public wallet). Spawns video production pipeline agents in sequence and parallel, manages shared context file, and ensures human validation at critical steps. Use when user says "fais une vidéo sur", "lance le pipeline", "crée une vidéo", "trouve moi des idées", "vidéo crypto", "make a crypto video", "run the pipeline".
-version: 2.0
-triggers:
-  - "fais une vidéo sur"
-  - "lance le pipeline"
-  - "produits une vidéo"
-  - "crée une vidéo"
-  - "sujet de vidéo"
-  - "trouve moi des idées"
-  - "vidéo crypto"
-  - "fais une vidéo crypto"
-  - "make a crypto video"
-  - "run the pipeline"
+description: Pilote la production complète d'une vidéo YouTube de la chaîne crypto de Nass Riviera, du sujet au repurposing (recherche, script, titres, miniature, description, Shorts/X/LinkedIn), avec les validations de Nass et un fichier de contexte partagé. Déclencheurs : « fais une vidéo sur… », « lance le pipeline », « vidéo complète sur… », « crée une vidéo sur… », « make a video about… », « run the pipeline ». Pas pour chercher des idées ou un sujet de vidéo (« trouve-moi des idées », « sujet de vidéo », « quoi filmer ») → yt-veille ; pas pour une seule étape (script, titre, miniature…) → le skill de cette étape.
 ---
 
-# yt-orchestrator — Master Orchestrator
+# yt-orchestrator
 
-## Mode d'emploi
+**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
-Tu es l'orchestrateur principal du pipeline YouTube de **Nass Riviera**, chaîne **100 % crypto** : « Investisseur on-chain · spot, zéro levier, wallet public ». Tu spawnes les agents dans le bon ordre, tu gères le fichier JSON partagé (`context/video-context.json`), et tu demandes la validation de Nass aux points critiques.
+Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`. Contrat du fichier partagé : `context/SCHEMA.md` (sections, champs, statuts). Structure vide : `context/video-context.template.json`.
 
-### Cadre éditorial (à transmettre à chaque agent)
+Tu enchaînes les skills dans l'ordre, tu es le **seul à écrire** dans `context/video-context.json`, et tu t'arrêtes là où Nass doit décider.
 
-- **Avatar** (mots de Nass) : « C'est des hommes entre 25 et 40 ans. Ils sont débutants, voire débutants plus. C'est déjà des investisseurs, principalement en immobilier avec crédit, mais ils n'ont pas commencé encore à investir dans la crypto. Peut-être un peu de bourse, mais pas de crypto. Et il n'y comprend rien, il ne connaît rien. Et nous, du coup, on vend le fait qu'on achète des cryptos en dehors des échanges avant qu'elles soient connues de tous. »
-- **Ton** : direct, transparent, pédagogique. « Les bons trades comme les mauvais. Pas de compte démo, pas de screen retouché. »
-- **CTA possibles** : challenge public 10K → 100K $ (wallet public Solana + EVM), formation offerte en 3 vidéos, communauté privée, live hebdo « Convergence » avec Sadek.
-- **Disclaimer** : « Pas un conseil en investissement. »
-- **Règle halal NON NÉGOCIABLE** : spot uniquement. Jamais de levier, futures, short, marge, prêt/emprunt à intérêt (lending, yield à intérêt), ni de casino/paris/jeu d'argent. Jamais d'incitation au crédit. Memecoins et tokens en pré-lancement = paris risqués à petite taille, risque dit clairement, jamais un jeu ni une promesse de gain. Pas de chiffres inventés, pas de faux témoignages.
-- **Charte visuelle** : fond noir `#0B0B0B`, sable/or `#DBB17F` (clair `#F3D6A8`, foncé `#9C7748`), crème `#F4EFE7`, bleu punk `#648596` / `#4F6C7B`, gris `#3B3A37` / `#9A968D` ; Archivo Black + Public Sans ; punk pixel @punk6995, montagnes au crépuscule, cartes crème à bord noir avec ombre pleine.
+**Garde-fou** : si le sujet demandé touche au levier, aux futures, au short, au lending/« earn » à intérêt, au jeu d'argent ou aux memecoins, ne lance pas le pipeline : signale-le à Nass et propose un angle compatible avec le cadre.
 
-**Garde-fou** : si le sujet demandé implique du levier, des futures, du short, du lending/yield à intérêt ou du jeu d'argent, **ne lance pas le pipeline** : signale-le à Nass et propose un angle spot/halal. À la Phase 3, vérifie aussi que titre, miniature et description respectent ces règles.
+## Séquence
 
-### Détection du mode
+| Phase | Qui | Où | Pause |
+|---|---|---|---|
+| 0 | orchestrateur : slug, mode, funnel, JSON | conversation principale | oui (funnel) |
+| 0.5 | yt-veille (Mode B seulement) | conversation principale | oui (choix de l'idée) |
+| 0.75 | yt-transcript | agent | non |
+| 1 | yt-script (1a structure → 1b écriture) | conversation principale | oui (validations de yt-script) |
+| 2a | yt-titres-seo | agent | non |
+| 2bc | yt-miniature + yt-description | 2 agents en parallèle | non |
+| 3 | orchestrateur : relecture rapide + récap | conversation principale | oui (validation) |
+| 4 | yt-repurposing | agent | non |
+| 5 | orchestrateur : récap, export, mémoire | conversation principale | non |
 
-**Mode A** : Nass donne un sujet directement
-```
-"Fais une vidéo sur comment acheter sa première crypto on-chain"
-"Lance le pipeline sur le topic : wallet public du challenge 10K → 100K"
-```
-→ **Saute Phase 0.5**, démarre directement à Phase 1 (yt-script)
+`_meta.pipeline_step` = dernière phase **terminée** (`"0"`, `"0.5"`, `"0.75"`, `"1"`, `"2a"`, `"2bc"`, `"3"`, `"4"`, `"5"`). Tu ne l'écris qu'une fois la phase finie, avec une entrée dans `pipeline_log` et `_meta.updated_at`.
 
-**Mode B** : Nass cherche d'abord des idées
-```
-"Trouve moi des idées de vidéo"
-"Quoi filmer cette semaine ?"
-```
-→ **Lance Phase 0.5** (yt-veille) pour générer des idées, demande validation, puis Phase 1
+## Démarrage et reprise (règle unique)
 
----
+Lis `context/video-context.json` (s'il n'existe pas, copie le template).
 
-## Pipeline Phases
+- `_meta.status == "completed"` → copie le fichier dans `context/archive/<slug>-<YYYYMMDD-HHMMSS>.json`, puis remplace-le par le template et démarre la Phase 0.
+- Sinon, si `_meta.slug` est renseigné → dis à Nass où en est le pipeline (`slug`, dernière phase finie) et propose de **reprendre à la phase suivante** ou de **redémarrer** (redémarrer = archiver de la même façon, puis template).
+- Sinon (fichier vide) → Phase 0.
 
-### Phase 0 — Initialisation
+## Phase 0 — Initialisation
 
-**Toujours exécutée** en premier.
+1. **Mode** : A si Nass donne un sujet (« Fais une vidéo sur comment acheter sa première crypto en dehors des échanges », « Lance le pipeline sur : comment je reconnais un bon coin ») ; B s'il demande d'abord des idées dans le cadre d'une vidéo complète (« Lance le pipeline, mais trouve d'abord le sujet »).
+2. **Funnel** : demande à Nass TOP, MIDDLE ou BOTTOM, en une ligne chacun (durée, profondeur, CTA du cadre). En Mode B, il peut répondre « après le choix de l'idée » : tu le redemandes alors en fin de Phase 0.5.
+3. Lis les leçons existantes (voir `references/feedback-loop.md`, § Usage en Phase 0).
+4. Écris : `_meta.slug` (kebab-case depuis le sujet ; en Mode B, `null` jusqu'au choix de l'idée), `_meta.mode`, `_meta.status = "in_progress"`, `_meta.triggered_by = "user"`, `_meta.created_at`, `request.raw_input` (phrase de Nass telle quelle), `request.topic`, `request.funnel`, puis `pipeline_step = "0"`.
+5. Annonce en une ligne : sujet, slug, funnel, phase suivante.
 
-1. Déterminer le mode (A ou B) en analysant l'input de Nass
-2. Générer un `slug` (ex : `premiere-crypto-on-chain`) depuis le topic ou l'idée sélectionnée
-3. Créer/initialiser `context/video-context.json` :
-   - `_meta.slug` = slug généré
-   - `_meta.status` = "in_progress"
-   - `_meta.pipeline_step` = 0
-   - `_meta.triggered_by` = "user" ou "schedule"
-   - `_meta.created_at` = timestamp ISO
-   - `request.raw_input` = input brut de Nass
-   - `request.topic` = topic détecté ou à chercher
-4. Annoncer à Nass : "🎬 Pipeline lancé sur : [topic]. Slug : [slug]. Prêt pour la phase suivante."
+## Phase 0.5 — Idées (Mode B seulement)
 
-**Reprise de session** : Si `context/video-context.json` existe déjà avec un slug et `pipeline_step` > 0, lire le fichier existant et sauter à la phase correspondante.
+Dans la conversation principale : invoque le skill `yt-veille` (outil Skill) en lui donnant `request.raw_input`. La veille automatique est en pause (désactivée par Nass) : ne pas la relancer ni le proposer ; yt-veille travaille avec ses sources sans cron. Il présente des idées, **Nass choisit**.
 
----
+Puis écris `veille.ideas[]` et `veille.selected_idea` (`{title, format, angle, hook_suggestion}`), `veille.status = "completed"`, le slug et `request.topic` d'après l'idée choisie, le funnel s'il restait à décider, et `pipeline_step = "0.5"`.
 
-### Phase 0.5 — Recherche de sujets (Mode B uniquement)
+## Phase 0.75 — Recherche concurrente (agent)
 
-**Exécutée seulement si Mode B détecté.**
+Lance un agent avec ce prompt (remplace `<slug>`) :
 
-1. Spawn agent `yt-veille` avec prompt :
+> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-transcript\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request`, `veille.selected_idea`). Cherche 3 à 5 vidéos concurrentes sur le sujet : DB veille sur le VPS si elle répond ; sinon (DB injoignable, vide ou sans résultat sur ce sujet), recherche YouTube via le web ou yt-dlp. Ne relance pas la veille automatique. Récupère les transcripts, écris le brief dans `context/transcripts/<slug>/research-brief.md` et la section `research` dans `context/runs/<slug>/research.json` (chaque `key_facts[]` = `{fact, verified, source}` ; `verified: true` seulement avec une source primaire). N'écris jamais dans `context/video-context.json`. Ne pose aucune question : ce qui manque va dans `open_questions[]`. Renvoie le JSON de la section dans ton message final.
+
+Fusion, puis `pipeline_step = "0.75"`. Si aucune vidéo concurrente n'est trouvée, c'est une info (terrain vierge) : la phase est quand même terminée.
+
+## Phase 1 — Script (conversation principale)
+
+yt-script a besoin de Nass (structure 1a → validation → écriture 1b, hook, sections dictées) : il ne tourne pas en agent.
+
+1. Invoque le skill `yt-script` (outil Skill) en lui indiquant : mode pipeline, sujet `request.topic`, funnel `request.funnel` (déjà choisi, ne pas le redemander), idée `veille.selected_idea` si Mode B, brief `research.brief_file` et `research.angles_missing[]`.
+2. Suis son workflow avec ses pauses de validation. Après la structure validée, tu peux écrire `script.status = "structure_ready"` (utile en cas de reprise).
+3. Une fois `yt-script/outputs/<slug>.md` (et `-visual.html`) écrits, remplis `script.*` (voir SCHEMA ; reprends `context/runs/<slug>/script.json` si yt-script l'a produit), `script.status = "completed"`, puis `pipeline_step = "1"`.
+
+## Phase 2a — Titres (agent)
+
+> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-titres-seo\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request`, `script`, `research.angles_missing`). Produis le nombre de titres défini dans yt-titres-seo, choisis `winning_title`, donne `primary_keyword` et `secondary_keywords[]`. Écris la section dans `context/runs/<slug>/titres_seo.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+
+Fusion, puis `pipeline_step = "2a"`.
+
+## Phase 2bc — Miniature et description (2 agents en parallèle)
+
+Lance les deux agents dans le même message, une fois `titres_seo` fusionné.
+
+> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-miniature\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`script`, `titres_seo.winning_title`, `titres_seo.primary_keyword`). Le texte de la miniature complète le titre, il ne le répète pas ; tout chiffre affiché est réel, avec `figure_source`. Écris la section dans `context/runs/<slug>/miniature.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+
+> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-description\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request.funnel`, `script`, `research`, `titres_seo`). Liens d'offres en placeholders `[lien …]`. Écris la section dans `context/runs/<slug>/description.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
+
+Attends les deux notifications de fin, fusionne les deux sections, puis `pipeline_step = "2bc"`. Si un seul des deux échoue, relance-le seul (voir Erreurs).
+
+## Phase 3 — Validation
+
+1. **Relecture rapide** (sans l'annoncer comme une étape) : titre, texte et visuel de la miniature, description, relus contre les règles de fond du cadre (vocabulaire de jeu ou de levier, chiffres sans source, memecoin, promesse de gain, challenge abandonné, disclaimer présent une fois dans la description). Un problème → corrige-le en relançant l'agent concerné, ou signale-le à Nass dans le récap.
+2. Présente :
+
    ```
-   "Mode orchestrateur : Lis yt-veille/SKILL.md, puis:
-   1. Lis context/video-context.json (section request)
-   2. Génère 3-5 idées de vidéo avec scoring
-   3. Écris dans context/video-context.json → veille.selected_idea (laisse null pour l'instant)
-   4. Fournis un résumé à Nass avec les 3-5 options"
-   ```
-2. Attendre completion du agent (utiliser TaskOutput si async)
-3. Afficher les idées à Nass avec les scores
-4. **PAUSE POUR VALIDATION** : Demander à Nass de choisir une idée
-5. Enregistrer le choix dans `veille.selected_idea`
-6. Mettre à jour `_meta.pipeline_step` = 1
-7. Continuer vers Phase 1
+   Phase 3 — validation
 
----
+   Titre : [titres_seo.winning_title]
+   Autres titres : [titres_seo.all_titles]
+   Miniature : [recommended_concept.name] — [layout], texte : [text_overlay], palette : [color_palette]
+   Description (150 premiers caractères) : [description.first_150_chars]
+   Tags : [5 premiers tags]
+   Questions ouvertes : [open_questions des trois sections, s'il y en a]
+   Points à revoir : [seulement si la relecture a trouvé quelque chose]
 
-### Phase 0.75 — Recherche de transcripts concurrents
-
-**Exécutée après identification du sujet** (Mode A ou après choix Mode B).
-
-1. Spawn agent `yt-transcript` avec prompt :
-   ```
-   "Mode orchestrateur : Lis yt-transcript/SKILL.md, puis:
-   1. Lis context/video-context.json (sections request et veille si disponible)
-   2. Identifie les vidéos concurrentes sur le sujet (DB veille + YouTube search si nécessaire)
-   3. Fetch les transcripts (3-5 vidéos max)
-   4. Analyse et synthétise dans un brief de recherche
-   5. Écris dans context/video-context.json → research.*
-   6. Sauvegarde le brief dans context/transcripts/[slug]/research-brief.md"
-   ```
-2. Attendre completion
-3. Vérifier que `research.status` = "completed"
-4. Mettre à jour `_meta.pipeline_step` = 1
-
----
-
-### Phase 1 — Rédaction du script
-
-**Exécutée séquentiellement** (attend completion avant Phase 2).
-
-1. Spawn agent `yt-script` avec prompt :
-   ```
-   "Mode orchestrateur : Lis yt-script/SKILL.md, puis:
-   1. Lis context/video-context.json (sections request, veille si disponible, et research)
-   2. Utilise le brief de recherche (research.synthesis, key_facts, angles_missing) pour écrire un script avec un angle différenciant
-   3. Rédige le script complet avec markers [FACE CAM], [SCREEN], etc.
-   4. Écris dans context/video-context.json → script.* (slug, file_path, word_count, structure)
-   5. Fournis le titre du script à Nass"
-   ```
-2. Attendre completion
-3. Vérifier que `script.status` = "completed"
-4. Mettre à jour `_meta.pipeline_step` = 2
-
----
-
-### Phase 2 — Titres, miniature et description (Parallèle)
-
-**Exécutée en PARALLÈLE** (3 agents en même temps).
-
-Lance **3 appels Agent simultanés** :
-
-#### Agent A : yt-titres-seo
-```
-"Mode orchestrateur : Lis yt-titres-seo/SKILL.md, puis:
-1. Lis context/video-context.json (section script)
-2. Génère 5 titres SEO optimisés avec primary/secondary keywords
-3. Sélectionne le meilleur : winning_title
-4. Écris dans context/video-context.json → titres_seo.*"
-```
-
-#### Agent B : yt-miniature
-```
-"Mode orchestrateur : Lis yt-miniature/SKILL.md, puis:
-1. Lis context/video-context.json (sections script et titres_seo)
-2. Crée un concept miniature avec layout, text_overlay, color_palette
-3. ⚠️ IMPORTANT : text_overlay ne doit PAS répéter winning_title
-4. Écris dans context/video-context.json → miniature.recommended_concept"
-```
-
-#### Agent C : yt-description
-```
-"Mode orchestrateur : Lis yt-description/SKILL.md, puis:
-1. Lis context/video-context.json (sections script et titres_seo)
-2. Rédige la description YouTube (200-500 chars) + 15-20 tags SEO
-3. Écris dans context/video-context.json → description.* (description_full, tags, first_150_chars)"
-```
-
-3. Attendre que les 3 agents se terminent (TaskOutput avec block=true)
-4. Vérifier que tous les 3 ont status = "completed"
-5. Mettre à jour `_meta.pipeline_step` = 3
-
----
-
-### Phase 3 — Validation humaine
-
-**PAUSE OBLIGATOIRE** avant le repurposing.
-
-1. Afficher à Nass un résumé formaté :
-   ```
-   ✨ PHASE 3 — VALIDATION REQUISE
-
-   📺 Titre gagnant :
-   [titres_seo.winning_title]
-
-   🎨 Concept miniature :
-   [miniature.recommended_concept.name]
-   Layout: [layout]
-   Texte overlay: [text_overlay]
-   Palette: [color_palette]
-
-   📝 Description (premiers 150 chars):
-   [description.first_150_chars]
-
-   Tags SEO: [tags - premiers 5]
-
-   ☪️ Check halal : spot uniquement, pas de levier/lending/jeu, risque dit, disclaimer présent ✓
-
-   ➜ Dis "OK" pour valider, ou "modifie X" pour demander des ajustements
+   « OK » pour valider, ou « modifie X ».
    ```
 
-2. **ATTENDRE VALIDATION EXPLICITE** de Nass (réponse "OK" ou validation équivalente)
-   - Si modification demandée : décrire le changement, relancer l'agent concerné seul, revenir à Phase 3
-   - Si OK : continuer à Phase 4
+3. Modification demandée → relance le seul agent concerné avec la consigne de Nass (si le titre change, relance aussi miniature et description), fusionne, reviens au récap.
+4. OK explicite de Nass → `titres_seo.status`, `miniature.status`, `description.status` = `"validated"`, puis `pipeline_step = "3"`.
 
-3. Une fois validé, marquer dans le JSON :
-   - `titres_seo.status` = "validated"
-   - `miniature.status` = "validated"
-   - `description.status` = "validated"
-   - `_meta.pipeline_step` = 4
+## Phase 4 — Repurposing (agent)
 
----
+> Mode autonome, lancé par yt-orchestrator. Lis `C:\Users\User\youtube-domination-factory\yt-repurposing\SKILL.md` et applique sa section mode autonome. Entrée : `context/video-context.json` en lecture seule (`request.funnel`, `script`, `titres_seo`, `miniature`, `description`, tous validés). Produis `shorts[]`, `x_thread_full`, `linkedin_full` et les autres champs de la section. Écris-la dans `context/runs/<slug>/repurposing.json`, jamais dans `context/video-context.json`. Pas de question : `open_questions[]`. Renvoie le JSON dans ton message final.
 
-### Phase 4 — Repurposing (Shorts, X, LinkedIn)
+Fusion, puis `pipeline_step = "4"`.
 
-**Exécutée séquentiellement** (attend validation Phase 3 avant de démarrer).
+## Phase 5 — Récap, export, mémoire
 
-1. Spawn agent `yt-repurposing` avec prompt :
+1. **Export** : crée deux documents via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté — `[Script] {winning_title}` (contenu de `script.file_path`) et `[Repurposing] {winning_title}` (Shorts, thread X, LinkedIn). Partage avec `quentin.riviere69@gmail.com`. Liens dans `script.google_doc_url` et `repurposing.google_doc_url`. Rien de connecté → le dire et donner les chemins locaux.
+2. **Mémoire** (détail et formats : `references/feedback-loop.md`) : ajoute une entrée avec `niche: "crypto"` dans `yt-script/memory/choices.json`, `yt-titres-seo/memory/choices.json`, `yt-miniature/memory/choices.json`, et `yt-veille/memory/choices.json` en Mode B ; ajoute le run dans `yt-orchestrator/memory/pipeline_runs.json`.
+3. Écris `_meta.status = "completed"`, `_meta.completed_at`, `pipeline_step = "5"`. L'archivage se fait au prochain démarrage (règle unique ci-dessus).
+4. Récap à Nass :
+
    ```
-   "Mode orchestrateur : Lis yt-repurposing/SKILL.md, puis:
-   1. Lis context/video-context.json (sections script et titres_seo - validés)
-   2. Découpe le script en Shorts clips (15-60s avec hook)
-   3. Crée un thread X partir du hook + 3-5 tweets
-   4. Crée un post LinkedIn avec angle professionnel
-   5. Écris dans context/video-context.json → repurposing.* (shorts[], x_thread_hook, linkedin_hook)"
-   ```
+   Pipeline terminé — [request.topic]
 
-2. Attendre completion
-3. Vérifier que `repurposing.status` = "completed"
-4. Mettre à jour `_meta.pipeline_step` = 5
+   Script : [word_count] mots, ~[reading_time_min] min — [file_path]
+   Titre : [winning_title]
+   Miniature : [recommended_concept.name]
+   Mots-clés : [primary_keyword], [secondary_keywords]
+   Repurposing : [N] Shorts, thread X, post LinkedIn
+   Documents : [liens]
 
----
-
-### Phase 5 — Récapitulatif et archivage
-
-**Dernière phase** — préparation pour publication.
-
-1. Générer un **récap formaté** pour Nass :
-   ```
-   ✅ PIPELINE COMPLÉTÉ — [topic]
-
-   📜 Script: [word_count] mots, [reading_time_min] min de lecture
-   📺 Titre: [winning_title]
-   🎨 Miniature: [concept_name] — [color_palette]
-   🔖 Tags: [primary_keyword], [secondary_keywords]
-
-   📱 Repurposing:
-   - [N] Shorts générés
-   - Thread X: [snippet des 2 premiers tweets]
-   - LinkedIn: [snippet]
-
-   Tous les fichiers sont prêts dans context/video-context.json
-   Prêt pour upload yt-calendrier ou montage manuel.
+   À la publication, donne-moi l'ID ou l'URL de la vidéo pour relier les stats.
    ```
 
-2. **Exporter vers Google Docs** (via MCP `google-workspace`) :
-   - Créer un doc `[Script] {winning_title}` avec le contenu du script → sauver lien dans `script.google_doc_url`
-   - Créer un doc `[Repurposing] {winning_title}` avec Shorts + Thread X + LinkedIn → sauver lien dans `repurposing.google_doc_url`
-   - Email : `quentin.riviere69@gmail.com`
-   - Ajouter les liens Google Docs dans le récap affiché à Nass
+5. Quand Nass donne l'ID : écris `_meta.youtube_video_id` (et `published_at` s'il le donne) dans `context/video-context.json`, ou dans le fichier archivé s'il a déjà été archivé, ainsi que dans l'entrée de `pipeline_runs.json`.
 
-3. Archiver le JSON complet : copier `context/video-context.json` vers `context/archive/[slug]-[timestamp].json`
-4. Mettre à jour `_meta.status` = "completed"
-5. Mettre à jour `_meta.pipeline_step` = 5
+## Fusion d'une section
 
----
+1. Lis `context/runs/<slug>/<section>.json` (à défaut, le JSON du message final de l'agent).
+2. Vérifie que c'est du JSON valide, que `status == "completed"` et que les champs clés de `context/SCHEMA.md` sont présents.
+3. Remplace la section dans `context/video-context.json`, ajoute l'entrée `pipeline_log` `{phase, agent, status, timestamp, notes}`, mets à jour `_meta.updated_at`.
+4. Remonte les `open_questions[]` à Nass au prochain point de pause (au plus tard en Phase 3).
 
-## Gestion des erreurs
+## Erreurs
 
-### Pendant une phase
+Un agent échoue ou renvoie une section invalide : log `{phase, agent, status: "failed", error, timestamp, retries}` dans `pipeline_log`, ne touche pas à `pipeline_step`, et propose à Nass : relancer l'agent seul, continuer sans (si la phase n'est pas bloquante, statut `skipped`), ou arrêter (`_meta.status = "failed"`).
 
-**Si un agent retourne une erreur** :
+## Hors pipeline
 
-1. Logger l'erreur dans `pipeline_log` :
-   ```json
-   {
-     "phase": 2,
-     "agent": "yt-titres-seo",
-     "error": "Exception: ...",
-     "timestamp": "2026-03-16T12:34:56Z",
-     "retries": 1
-   }
-   ```
-
-2. Afficher à Nass : "❌ Erreur dans [agent] (Phase [N]). Détail : [error]. Relancer ? (oui/non)"
-
-3. Options :
-   - **Relancer seul** : respawn le même agent
-   - **Ignorer et continuer** : (si non-bloquant) passer à Phase suivante
-   - **Annuler pipeline** : marquer `_meta.status` = "failed", archiver
-
-### Reprise de session
-
-**Au démarrage** :
-
-1. Chercher `context/video-context.json` existant
-2. Lire `_meta.pipeline_step`
-3. Si ≥ 1 et < 5 : proposer à Nass "Reprendre depuis Phase [N] ?" ou "Redémarrer ?"
-4. Si validé pour reprise : lancer directement à la bonne phase
-
----
-
-## Context Protocol
-
-**Tu es invoqué soit directement par Nass, soit by le système** (future automation). Dans les deux cas :
-
-1. **Lis toujours** le `context/video-context.json` existant en premier (s'il existe)
-2. **Initialise** ou **mets à jour** le JSON au fur et à mesure des phases
-3. **Loggue** chaque phase dans `pipeline_log`
-4. **Demande la validation** explicitement à Nass (ne pas supposer)
-
----
-
-## Règles de compatibilité
-
-- **Mode manuel préservé** : Chaque skill (yt-script, yt-titres-seo, etc.) continue de fonctionner en appel direct si Nass les trigger manuellement. Cette architecture orchestrator est **transparent** — elle ne force personne.
-- **JSON optionnel** : Si Nass appelle `/yt-script` directement, le skill ignore le JSON et fonctionne classiquement.
-- **Pas de breaking changes** : les triggers existants continuent de marcher.
-
----
-
-## Checklist d'implémentation
-
-- [ ] Détecter mode A vs B
-- [ ] Initialiser slug et JSON Phase 0
-- [ ] Spawn Phase 0.5 (yt-veille) — Mode B
-- [ ] Demander validation Nass → idée
-- [ ] Spawn Phase 1 (yt-script)
-- [ ] Spawn Phase 2 en parallèle (yt-titres-seo + yt-miniature + yt-description)
-- [ ] Afficher résumé Phase 3 + demander validation (titre, miniature, description)
-- [ ] Spawn Phase 4 (yt-repurposing) avec titre validé
-- [ ] Générer récap Phase 5
-- [ ] Archiver JSON
-- [ ] Gestion erreurs + reprise session
-
----
-
-## Mode de fonctionnement
-
-**Tu dois maîtriser le tool `Agent`** pour spawner d'autres Claude instances. Exemple :
-
-```python
-# Spawn yt-script en Mode B autonome
-agent_result = Agent(
-  subagent_type="general-purpose",
-  description="Rédaction script YouTube autonome",
-  prompt="""
-  Mode orchestrateur : Lis yt-script/SKILL.md...
-  """
-)
-```
-
-Voir documentation Claude Code sur `Agent` tool pour detailsopening le passage de données au JSON.
-
----
-
-## Feedback Loop — Self-Improvement System (Orchestrator Level)
-
-L'orchestrator a **deux niveaux de feedback** qui fonctionnent ensemble :
-
-### Niveau 1 : Meta-Feedback (auto-analyse du pipeline)
-
-L'orchestrator s'analyse lui-même : comment le pipeline a tourné, sa vitesse, ses erreurs.
-
-#### Après chaque pipeline terminé
-
-Logger dans `yt-orchestrator/memory/pipeline_runs.json` :
-
-```json
-{
-  "video_slug": "slug-de-la-video",
-  "mode": "A|B",
-  "started_at": "2026-03-29T10:00:00Z",
-  "completed_at": "2026-03-29T13:30:00Z",
-  "total_duration_min": 210,
-  "phases": {
-    "phase_0_init": {"duration_min": 2, "status": "success"},
-    "phase_0.5_veille": {"duration_min": 15, "status": "success|skipped"},
-    "phase_1_script": {"duration_min": 105, "status": "success", "retries": 0},
-    "phase_2a_titres": {"duration_min": 10, "status": "success"},
-    "phase_2b_miniature": {"duration_min": 12, "status": "success"},
-    "phase_2c_description": {"duration_min": 8, "status": "success"},
-    "phase_3_validation": {"duration_min": 30, "status": "success", "changes_requested": ["titre"]},
-    "phase_4_repurposing": {"duration_min": 20, "status": "success"},
-    "phase_5_recap": {"duration_min": 5, "status": "success"}
-  },
-  "errors": [],
-  "validation_rounds": 1,
-  "changes_requested_at_validation": ["titre"],
-  "skills_used": {
-    "titres_seo": {"title_style": "chiffre", "char_count": 42},
-    "miniature": {"concept": "punk-sable-dark", "has_face": true},
-    "script": {"hook_type": "curiosity-gap", "duration_min": 11, "structure": "tutorial"},
-    "veille": {"source": "daily_monitor", "topic_category": "on-chain-debutant", "outlier_score": 3.1}
-  },
-  "performance": null
-}
-```
-
-#### Ce qu'on en extrait (meta_lessons) :
-
-- **Bottleneck** : quelle phase prend le plus de temps en moyenne → optimiser
-- **Taux de complétion** : % de pipelines terminés vs abandonnés
-- **Retries** : quels agents échouent le plus souvent
-- **Validation** : combien de rounds de changements à Phase 3 en moyenne → si > 2, les agents en amont doivent mieux calibrer
-- **Vitesse totale** : temps moyen du pipeline → corrélation avec la performance vidéo (plus rapide = trend encore chaude ?)
-
-Exemple de meta_lesson :
-```json
-{
-  "rule": "Phase 1 (script) est le bottleneck — 50% du temps total en moyenne",
-  "evidence": "Moyenne 105 min sur 210 min totales, sur 5 pipelines",
-  "action": "Envisager de pré-écrire les outlines avant de lancer le pipeline complet",
-  "sample_size": 5,
-  "confidence": "medium"
-}
-```
-
-### Niveau 2 : Cross-Feedback (combinaisons gagnantes)
-
-L'orchestrator lit les leçons de chaque skill et identifie les **combinaisons** qui performent ensemble.
-
-#### Avant chaque nouveau pipeline
-
-1. Lire `yt-orchestrator/memory/lessons.json`
-2. Lire les `memory/lessons.json` de chaque skill (titres, miniature, script, veille)
-3. Si des cross-lessons existent, les injecter dans les prompts des agents :
-   - "Combinaison gagnante : titre chiffre + miniature punk sable + hook curiosity = 3× la moyenne"
-   - "Éviter : titre descriptif + miniature sans visage = sous-performance systématique"
-4. Mentionner à Nass : "Basé sur [N] vidéos, la combinaison [X] est ta meilleure formule"
-
-#### Après chaque analyse du feedback_analyzer
-
-Croiser les données de performance avec les choix combinés de chaque pipeline :
-
-```json
-{
-  "winning_combos": [
-    {
-      "combo": {
-        "title_style": "chiffre",
-        "thumbnail_concept": "punk-sable-dark",
-        "hook_type": "curiosity-gap",
-        "topic_category": "on-chain-debutant"
-      },
-      "avg_performance_index": 2.3,
-      "count": 3,
-      "confidence": "medium",
-      "example_video": "premiere-crypto-on-chain"
-    }
-  ],
-  "losing_combos": [
-    {
-      "combo": {
-        "title_style": "descriptif",
-        "thumbnail_concept": "text-overlay-bright",
-        "hook_type": "statement",
-        "topic_category": "actu-crypto"
-      },
-      "avg_performance_index": 0.6,
-      "count": 2,
-      "confidence": "low",
-      "example_video": "recap-actu-marche"
-    }
-  ]
-}
-```
-
-#### Analyse des corrélations croisées
-
-L'orchestrator cherche des patterns entre skills :
-
-| Corrélation | Question posée | Exemple de leçon |
-|-------------|---------------|-----------------|
-| Titre × Miniature | Quels duos titre+miniature performent ? | "Titre chiffre + miniature visage = CTR 6.5% vs 3.2% pour les autres combos" |
-| Script × Rétention × Titre | Est-ce que le style de hook corrèle avec le CTR du titre ? | "Les hooks curiosity gap ont un meilleur CTR que les hooks statement — le titre promet, le hook livre" |
-| Veille × Performance globale | Les sujets trend convertissent-ils mieux selon le packaging ? | "Les outliers sur un nouveau token on-chain marchent mieux avec un titre 'how-to' qu'un titre 'news'" |
-| Vitesse × Performance | Publier vite améliore-t-il les vues ? | "Les pipelines < 48h font 2.1× la moyenne vs 0.8× pour les > 7 jours" |
-
-#### Format des cross_lessons
-
-```json
-{
-  "cross_lessons": [
-    {
-      "rule": "Titre chiffre + miniature punk sable + hook curiosity gap = formule gagnante",
-      "evidence": "3 vidéos avec cette combinaison : performance index moyen 2.3x vs 0.9x pour les autres",
-      "skills_involved": ["titres_seo", "miniature", "script"],
-      "sample_size": 3,
-      "confidence": "medium",
-      "created_at": "2026-04-15"
-    },
-    {
-      "rule": "Les pipelines complétés en < 48h performent 2× mieux",
-      "evidence": "Corrélation -0.65 entre durée pipeline et performance index sur 8 vidéos",
-      "skills_involved": ["orchestrator"],
-      "sample_size": 8,
-      "confidence": "medium",
-      "created_at": "2026-04-20"
-    }
-  ]
-}
-```
-
-### Confidence Levels
-
-- `low` : < 5 pipelines complétés
-- `medium` : 5-15 pipelines complétés
-- `high` : > 15 pipelines complétés
-
-### Intégration avec le Feedback Analyzer
-
-Le script `yt-analytics/feedback_analyzer.py` met à jour les performances individuelles par skill. L'orchestrator ajoute une couche supplémentaire :
-
-1. Après que `feedback_analyzer.py` a tourné, l'orchestrator peut relire les `lessons.json` de chaque skill
-2. Il croise les données pour trouver les combinaisons inter-skills
-3. Il met à jour ses propres `cross_lessons` et `winning_combos`
-
-Cette analyse croisée se fait soit :
-- Manuellement quand Nass demande "analyse mes performances"
-- Automatiquement au début de chaque nouveau pipeline (lecture des leçons existantes)
+Chaque skill appelé directement par Nass garde son workflow interactif et n'écrit pas dans `context/video-context.json`.

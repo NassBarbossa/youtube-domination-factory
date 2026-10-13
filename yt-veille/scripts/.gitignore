@@ -1,3 +1,4 @@
 .env
 data/veille.db
 __pycache__/
+data/veille.db*

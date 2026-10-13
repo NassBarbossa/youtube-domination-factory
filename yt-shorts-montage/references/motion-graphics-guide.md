@@ -3,9 +3,10 @@
 Source : PDF « Motion Graphics with Claude Code » fourni par Nass le 2026-10-08 (14 prompts testés, même outil que nous : HyperFrames + Claude Code). Seul ce qui sert nos Shorts est repris ici.
 
 ## Règles Nass (priment sur le guide)
-- **9:16 vertical, 1080×1920, 30 fps.**
+- **9:16 vertical, 1080×1920, rendu à 60 i/s.**
 - **Jamais de musique, mais des sound effects** sur les animations (voir « Son »).
-- Charte, règle halal et chiffres réels : voir `CLAUDE.md`.
+- **Rythme** : transitions fluides d'environ 0,6 s ; 1 plan par ~0,8 s max.
+- Charte, règles de fond et chiffres réels : voir `_shared/cadre-nass.md`.
 
 ## 1. Principe : un prompt de base + un bloc STYLE interchangeable
 Le prompt de base décrit le contenu (script, durée, format) ; le bloc STYLE, collé en dessous, décrit le look. On change de look sans toucher au contenu. **Notre bloc par défaut (validé par Nass le 2026-10-08 : « le même branding que les slides » + Editorial Grain) :**
@@ -39,11 +40,12 @@ STYLE: Nass Riviera (Editorial Grain) — mêmes tokens que les slides (yt-scrip
 - Render with --crf 23 (grain makes big files).
 ```
 
-## 2. Les 10 mouvements nommés (vocabulaire commun script ↔ montage)
-À utiliser tels quels dans les lignes `VISUEL` des scripts.
+## 2. Les mouvements nommés (vocabulaire commun script ↔ montage)
+À utiliser tels quels dans les lignes `VISUEL` des scripts. Les 10 du guide, plus **Kinetic Type** (repris du bloc STYLE ci-dessus).
 
 | Mouvement | Effet |
 |---|---|
+| **Kinetic Type** | les mots claquent un par un (hook et récap) |
 | **Rise** | apparaît en fondu en montant un peu |
 | **Pop** | grossit depuis petit avec un léger dépassement |
 | **Count-up** | un nombre défile jusqu'à sa valeur (toute statistique) |
@@ -57,7 +59,7 @@ STYLE: Nass Riviera (Editorial Grain) — mêmes tokens que les slides (yt-scrip
 
 ## 3. Short 100 % texte (cas principal, adapté du prompt 08)
 ```
-Make a [N]-second vertical video (1080x1920, 30 fps) with HyperFrames in this folder, made only of
+Make a [N]-second vertical video (1080x1920, 60 fps) with HyperFrames in this folder, made only of
 animated text and simple icons. No footage. No music.
 Script: [lignes ÉCRAN du script validé, dans l'ordre, avec leurs timecodes]
 Use my exact words. Don't rewrite or shorten the script. Show one sentence per screen, big enough
@@ -83,7 +85,7 @@ Each screen stays up long enough to read. Keep all text inside the middle 80% of
 **Règle Nass : pas de musique, mais des sound effects.** Le guide d'origine limite aux petits clics sans whoosh ; chez Nass, les whoosh / impacts de transition sont permis, tant que c'est équilibré et normalisé. Repères du guide : un *tick* quand un élément de liste / une coche apparaît, un *counter* pendant qu'un nombre défile, un *chime* sur la dernière carte. Environ **20 dB sous la voix** quand il y a une voix ; sans voix, rester discret (pics vers −20 dBFS). Sons générés en code (pas de licence) ou Freesound CC0 / Kenney.
 
 ## 7. Export et dépannage
-- Autres formats : `--fps 60`, `--resolution 4k`, `--format mov` (ProRes), `--format png-sequence`.
+- Rendu par défaut : `--fps 60`. Autres formats : `--resolution 4k`, `--format mov` (ProRes), `--format png-sequence`.
 - Fichier trop lourd (grain, texture) : re-rendre avec `--crf 23`. **Testé sur le Short wallets/02 (grain)** : `--crf 28` = 1,6 Mo mais trop compressé, `--crf 20` = 70 Mo ; le bon compromis = rendu `--crf 20` puis ré-encodage ffmpeg `-c:v libx264 -preset slow -crf 25 -tune grain -movflags +faststart` (≈ 20 Mo pour 22 s).
 - Export transparent pour Premiere / After Effects : retirer le fond, et utiliser une **carte pleine** (le verre dépoli perd son flou sans rien derrière).
 - Police de remplacement à l'écran : mettre le fichier de police dans `assets/fonts` et le citer.

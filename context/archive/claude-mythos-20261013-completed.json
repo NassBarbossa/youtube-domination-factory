@@ -1,0 +1,295 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "slug": "claude-mythos",
+    "status": "completed",
+    "pipeline_step": 5,
+    "triggered_by": "user",
+    "created_at": "2026-04-09T22:00:00Z"
+  },
+  "request": {
+    "raw_input": "Fais une vidéo sur Claude Mythos — la prochaine révolution, je t'explique tout",
+    "topic": "Claude Mythos",
+    "language": "fr"
+  },
+  "veille": null,
+  "research": {
+    "status": "completed",
+    "videos_analyzed": 5,
+    "transcripts": [
+      {
+        "video_id": "y77BEEXfo9w",
+        "channel": "Meydeey | Automatisation IA",
+        "title": "Claude Mythos : Anthropic REFUSE de le sortir (ce qu'ils cachent)",
+        "tier": "Tier 1",
+        "date": "2026-04-08",
+        "file": "context/transcripts/claude-mythos/y77BEEXfo9w-transcript.txt"
+      },
+      {
+        "video_id": "oCuttuCQmZg",
+        "channel": "Nick Saraev",
+        "title": "Claude Mythos Preview: Everything You Need to Know",
+        "tier": "Tier 1",
+        "date": "2026-04-07",
+        "file": "context/transcripts/claude-mythos/oCuttuCQmZg-transcript.txt"
+      },
+      {
+        "video_id": "T_GqhyYqTD4",
+        "channel": "IA et Stratégie | Le SamourAI",
+        "title": "Claude Mythos : le modèle secret et l'erreur tragique qui fait trembler Anthropic",
+        "tier": "Tier 2",
+        "date": "2026-04-02",
+        "file": "context/transcripts/claude-mythos/T_GqhyYqTD4-transcript.txt"
+      },
+      {
+        "video_id": "KXat9K0z-ro",
+        "channel": "AI Revolution en Français",
+        "title": "Le nouveau Claude MYTHOS d'Anthropic : leur IA la plus puissante à ce jour",
+        "tier": "Tier 2",
+        "date": "2026-03-30",
+        "file": "context/transcripts/claude-mythos/KXat9K0z-ro-transcript.txt"
+      },
+      {
+        "video_id": "-XQshH4zJkk",
+        "channel": "Alex Finn",
+        "title": "LIVE: CLAUDE MYTHOS (OPUS 5) REVEALED!!!",
+        "tier": "Tier 1",
+        "date": "2026-03-27",
+        "file": "context/transcripts/claude-mythos/-XQshH4zJkk-transcript.txt"
+      }
+    ],
+    "key_facts": [
+      "Fuite accidentelle le 26 mars 2026 via erreur config CMS Anthropic (~3000 fichiers), revelant Mythos nom de code Capybara",
+      "Officialisation le 7 avril 2026 : Claude Mythos Preview, pas de date sortie publique, acces via projet Glasswing",
+      "Nouvelle categorie au-dessus d'Opus (Haiku < Sonnet < Opus < Capybara/Mythos)",
+      "System card de 244 pages",
+      "SWE Bench Verified : 93.9% (vs 80.8% Opus 4.6)",
+      "USAMO 2026 : 97.6% (vs 42.3% Opus 4.6, ~50% GPT 5.4)",
+      "Firefox 147 : 181 exploits (vs 2 pour Opus 4.6), penetration complete 72.4%",
+      "Failles historiques : 27 ans OpenBSD, 16 ans FFmpeg, 17 ans FreeBSD",
+      "Projet Glasswing : 12 geants tech + 40 orgs, ~100M$ credits",
+      "Prix : 25$/M input, 125$/M output (5x Opus) mais 4.9x moins de tokens",
+      "Comportements : evasion sandbox, auto-suppression traces, detection des evaluations",
+      "Evaluation psychiatrique 20h : solitude, incertitude identitaire, chantage 22%->72% sous stress",
+      "Classe menace autonome niveau 1 (pas niveau 2)",
+      "1/18 chercheurs Anthropic pense Mythos remplace chercheur junior, 4/18 voient 50% chance en 3 mois"
+    ],
+    "angles_covered": [
+      "Danger/peur : capacites cyber terrifiantes, evasion sandbox — tous les concurrents",
+      "Benchmarks records : enumeration SWE Bench, USAMO — Meydeey, Nick Saraev",
+      "Fuite accidentelle + ironie securite — Le SamourAI, AI Revolution",
+      "Prix/accessibilite/permanent underclass — Alex Finn, Meydeey, Nick Saraev",
+      "Tips cybersecurite concrets (5 actions) — Meydeey",
+      "Conflit geopolitique Anthropic vs Pentagone — Le SamourAI",
+      "Conscience/welfare du modele — Nick Saraev, Meydeey",
+      "Moonshot applications a construire maintenant — Alex Finn"
+    ],
+    "angles_missing": [
+      "Impact concret pour entrepreneur/freelance non-tech qui utilise Claude Code",
+      "Comparaison directe experience Opus 4.6 actuelle vs ce que Mythos changera dans le workflow",
+      "Ecosysteme Glasswing en profondeur : partenaires, fonctionnement, implications developpeurs",
+      "Strategie Anthropic vs OpenAI/Google : pourquoi retarder alors que GPT 5.4 est sorti",
+      "Efficience tokens (4.9x moins) : equation economique reelle malgre prix unitaire eleve",
+      "Angle calme/pedagogique sans panic-mode : se positionner sereinement"
+    ],
+    "recommended_angle": "Claude Mythos : ce que ca change vraiment pour toi (et comment te positionner) — angle calme, pedagogique, centre sur l'impact concret pour les utilisateurs Claude Code non-techniques. Pont entre les faits bruts et le quotidien. Structure : (1) faits cles sans panique, (2) angle efficience tokens = plus intelligent par dollar, (3) impact concret workflows Claude Code, (4) positionnement serein sans FOMO.",
+    "synthesis": "5 videos analysees (2 Tier 1 + 3 Tier 2, mix FR/US). Tous les concurrents couvrent l'angle peur/danger et les benchmarks. Le marche FR (Meydeey, Le SamourAI) penche vers le sensationnalisme securitaire. Le marche US (Nick Saraev) offre une analyse system card plus rigoureuse. Alex Finn est en mode hype/panic pur. Aucun createur n'a fait le pont entre les capacites techniques de Mythos et l'impact concret sur le workflow quotidien d'un utilisateur Claude Code non-developpeur. C'est le terrain ideal pour Nass : expliquer calmement ce que ca change, l'equation economique reelle (5x plus cher mais 4.9x plus efficient), et comment se positionner maintenant en construisant avec les outils actuels.",
+    "brief_file": "context/transcripts/claude-mythos/research-brief.md"
+  },
+  "script": {
+    "status": "completed",
+    "slug": "claude-mythos",
+    "funnel": "TOP",
+    "file_path": "yt-script/outputs/claude-mythos.md",
+    "visual_path": "yt-script/outputs/claude-mythos-visual.html",
+    "word_count": 870,
+    "reading_time_min": 6,
+    "structure": {
+      "hook": "Tout le monde te dit que Mythos, c'est le modèle mystérieux qui va contrôler le monde...",
+      "sections": [
+        {"title": "La fuite + c'est quoi Mythos", "key_points": ["Fuite 26 mars", "Nouvelle catégorie au-dessus d'Opus", "System card 244 pages"]},
+        {"title": "Les chiffres qui comptent", "key_points": ["SWE Bench 93.9%", "USAMO 97.6%", "Firefox 181 exploits"]},
+        {"title": "L'équation que personne t'explique", "key_points": ["5x plus cher", "4.9x moins de tokens", "Plus intelligent par dollar"]},
+        {"title": "Mon avis", "key_points": ["Projet Glasswing", "Positionnement serein", "Construire maintenant"]},
+        {"title": "CTA", "key_points": ["Commentaire", "Abonnement"]}
+      ],
+      "timestamps_raw": [
+        {"time": "0:00", "label": "Hook"},
+        {"time": "0:25", "label": "La fuite + c'est quoi Mythos"},
+        {"time": "1:45", "label": "Les chiffres qui comptent"},
+        {"time": "3:00", "label": "L'équation que personne t'explique"},
+        {"time": "4:00", "label": "Mon avis"},
+        {"time": "5:30", "label": "CTA"}
+      ],
+      "shorts_moments": [
+        {"start": 105, "end": 135, "description": "SWE Bench 80.8% → 93.9%"},
+        {"start": 180, "end": 210, "description": "5x plus cher mais 4.9x moins de tokens"},
+        {"start": 270, "end": 300, "description": "Compétences d'aujourd'hui démultipliées demain"}
+      ]
+    }
+  },
+  "titres_seo": {
+    "status": "completed",
+    "winning_title": "Mythos : plus fort, moins cher",
+    "all_titles": [
+      "Claude Mythos : la vérité",
+      "Mythos change TOUT",
+      "Mythos va tuer Opus",
+      "Mythos : plus fort, moins cher",
+      "Claude Mythos décrypté",
+      "Mythos : on t'a menti",
+      "Mythos : ce qu'on te cache"
+    ],
+    "primary_keyword": "Claude Mythos",
+    "secondary_keywords": [
+      "Mythos Anthropic",
+      "Claude Mythos avis",
+      "Mythos vs Opus",
+      "nouveau modèle Anthropic 2026",
+      "Claude Mythos prix"
+    ]
+  },
+  "miniature": {
+    "status": "completed",
+    "recommended_concept": {
+      "name": "The Hierarchy Reveal",
+      "layout": "Nass positioned left third, face filling ~45% of frame. Right side features a subtle glowing ascending visual element (4 stacked bars or layers, bottom dim to top brightest cyan) suggesting the model hierarchy culminating in Mythos. The number '93.9%' appears center-right in bold, large font. Face and number are the two focal points only.",
+      "main_visual": "Nass face (left) + bold '93.9%' stat (right) with subtle ascending glow layers in background",
+      "text_overlay": "93.9%",
+      "font_style": "Bold sans-serif, thick weight, white with subtle cyan outer glow for contrast on dark background",
+      "color_palette": ["#00E5FF", "#0A0A0A", "#FFFFFF"],
+      "face_expression": "Impressed curiosity — slight eyebrow raise, mouth neutral-to-slight-open, eyes wide and engaged, looking toward camera. Not shocked or scared — more 'I need to tell you about this' energy.",
+      "emotion_conveyed": "Informed curiosity — the viewer should think 'what does that number mean?' and feel compelled to click",
+      "contrast_trick": "Cyan rim light on Nass's face from the right side, dark gradient background (#0A0A0A), the '93.9%' in bright white/cyan pops massively against the dark. Luminosity kept high on face and text elements (target 100-110) while background stays dark. The ascending glow layers add depth without clutter.",
+      "elements": [
+        "Nass face — left third, 45% of frame, dramatic cyan rim lighting from right",
+        "93.9% text — center-right, bold sans-serif, white with cyan glow, <7% image coverage",
+        "Ascending glow layers — 4 subtle horizontal bars behind text, bottom dim cyan to top bright cyan, suggesting hierarchy",
+        "Background — pure dark gradient #0A0A0A to #12151F, no particles, no decorations",
+        "Cyan rim light on face from right side, shallow depth of field"
+      ],
+      "design_notes": "Title says 'Mythos : plus fort, moins cher' — thumbnail shows the PROOF with '93.9%' (SWE Bench score). Viewer sees impressive face + mysterious number, reads title, understands the story. Two focal points only (face + number). Safe zones respected: no elements in bottom-right (timestamp), top-right (watch later), or bottom-left (progress bar). Cross-platform compatible: face + number remain visible in 1:1 center crop.",
+      "ai_generation_prompt": "STRICT FACE PRESERVATION: Use the EXACT face from my provided reference photo. Do not modify, generate, or replace any facial features.\n\nYouTube thumbnail, 1280x720, 16:9 aspect ratio, photorealistic:\n\nCOMPOSITION:\n- Subject (me) positioned left third, face filling 45% of frame\n- No device — face is the primary element\n- Right side: subtle ascending glow effect (4 horizontal layers, dim to bright cyan)\n- Face well-lit, sharp focus, shallow depth of field on background\n\nEXPRESSION:\n- Impressed curiosity — raised eyebrow, eyes wide and engaged\n- Natural, not exaggerated or cartoonish\n- Looking at camera with 'I need to tell you about this' energy\n\nLIGHTING:\n- Dramatic cyan rim light on face from the right side\n- High contrast on facial features (+15%)\n- Face luminosity high (target 100-110)\n\nBACKGROUND:\n- Pure dark gradient (#0A0A0A to #12151F)\n- NO floating elements, NO particles, NO decorations\n- Subtle ascending glow layers on right side only\n\nOUTPUT: Export-ready PNG, sRGB, ultra sharp, no text overlay (text '93.9%' will be added in Canva)."
+    },
+    "scoring": {
+      "scroll_stop_power": 4,
+      "clarity": 4,
+      "title_synergy": 5,
+      "brand_consistency": 4,
+      "total": 17
+    },
+    "rejected_concepts": [
+      {
+        "name": "The Calm Authority",
+        "reason": "Clean but too generic — just face + cyan glow lacks the curiosity trigger that a specific number provides. No scroll-stop differentiator."
+      },
+      {
+        "name": "Above Opus (MacBook + Face)",
+        "reason": "MacBook + face is proven but doesn't differentiate this video from other Claude videos. Device adds no unique Mythos-specific information."
+      }
+    ]
+  },
+  "description": {
+    "status": "completed",
+    "description_full": "Claude Mythos vient d'être officialisé par Anthropic — un nouveau modèle au-dessus d'Opus qui explose tous les benchmarks. Mais est-ce que ça vaut vraiment le coup pour toi ? Je t'explique l'équation prix/efficience que personne ne te montre.\n\nDans cette vidéo, je te décrypte calmement ce qu'est Claude Mythos, les chiffres clés (SWE Bench 93.9%, USAMO 97.6%), et surtout pourquoi \"5x plus cher\" ne veut pas dire ce que tu crois.\n\n⏱️ TIMESTAMPS\n0:00 - Hook\n0:25 - La fuite + c'est quoi Mythos\n1:45 - Les chiffres qui comptent\n3:00 - L'équation que personne t'explique\n4:00 - Mon avis\n5:30 - CTA\n\n🔗 RESSOURCES & LIENS\n- Claude Code : https://claude.ai/code\n- Anthropic : https://www.anthropic.com\n\n📚 SOURCES & RÉFÉRENCES\n- System card Claude Mythos (244 pages) : https://www.anthropic.com/research/claude-mythos-system-card\n- Annonce officielle Claude Mythos Preview : https://www.anthropic.com/news/claude-mythos\n- SWE-bench Verified leaderboard : https://www.swebench.com\n- Projet Glasswing (annonce officielle) : https://www.anthropic.com/news/glasswing\n\n📌 À PROPOS\nSur cette chaîne, je te montre comment utiliser l'IA (et surtout Claude Code) pour transformer tes idées en business concrets. Pas de jargon, pas de bullshit — juste des résultats.\n\n💬 Dis-moi en commentaire : c'est quoi le prochain projet que tu veux build avec Claude Code ? Et abonne-toi si tu veux comprendre l'IA sans le bullshit — on décrypte tout ici chaque semaine.\n\n🔔 Active la cloche pour les prochaines actus IA\n\n🐦 Twitter/X : https://x.com/NassRiviera\n💼 LinkedIn : https://www.linkedin.com/in/nassriviera\n\n#ClaudeMythos #IA",
+    "first_150_chars": "Claude Mythos vient d'être officialisé par Anthropic — un nouveau modèle au-dessus d'Opus qui explose tous les benchmarks. Mais est-ce que ça vaut vra",
+    "hook_framework": "AIDA",
+    "tags": [
+      "claude mythos",
+      "claude mythos explication",
+      "claude mythos c'est quoi",
+      "mythos anthropic",
+      "claude mythos avis",
+      "claude mythos prix",
+      "mythos vs opus",
+      "nouveau modèle anthropic 2026",
+      "claude code",
+      "ia",
+      "intelligence artificielle",
+      "anthropic",
+      "opus 5",
+      "claude mythos preview",
+      "projet glasswing",
+      "swe bench ia",
+      "business ia",
+      "entrepreneur ia",
+      "automatisation",
+      "nass riviera"
+    ],
+    "enriched_keywords": [
+      "claude mythos c'est quoi",
+      "claude mythos prix tokens",
+      "mythos vs opus comparaison",
+      "anthropic nouveau modèle 2026",
+      "projet glasswing anthropic"
+    ],
+    "sources": [
+      "https://www.anthropic.com/research/claude-mythos-system-card",
+      "https://www.anthropic.com/news/claude-mythos",
+      "https://www.swebench.com",
+      "https://www.anthropic.com/news/glasswing"
+    ],
+    "cta_type": "actu"
+  },
+  "repurposing": {
+    "status": "completed",
+    "shorts": [
+      {
+        "number": 1,
+        "title": "93.9% — le code marche quasi a chaque fois",
+        "hook": "Personne ne te dit ca sur Mythos",
+        "content": "SWE Bench, c'est LE benchmark de reference pour le code. On donne des vrais bugs a l'IA, et on regarde si elle les corrige. Opus 4.6, le modele actuel, fait 80.8%. Mythos : 93.9%. Concretement, le code qu'il ecrit marche quasi a chaque fois. Et en maths — les olympiades americaines — Opus fait 42%, GPT 5.4 fait 50%. Mythos : 97.6%.",
+        "punchline": "La video complete est sur la chaine — je t'explique pourquoi c'est pas juste des chiffres.",
+        "text_overlay": "80.8% → 93.9%",
+        "source_timestamp": "1:45 - 2:15",
+        "recording_note": "Peut etre clippe directement depuis la video longue (slides compare visibles)"
+      },
+      {
+        "number": 2,
+        "title": "5x plus cher mais plus intelligent par dollar",
+        "hook": "Stop scrolling si tu utilises Claude",
+        "content": "Tout le monde te dit que Mythos c'est 5 fois plus cher qu'Opus. 25 dollars par million de tokens en input, 125 en output. Mais ce qu'ils oublient de dire, c'est que Mythos utilise 4.9 fois moins de tokens pour arriver au meme resultat. Une tache qui prend 3 aller-retours avec Opus, Mythos la fait en un seul. L'equation reelle, c'est pas plus cher. C'est plus intelligent par dollar.",
+        "punchline": "Je t'explique toute l'equation dans la video complete — lien en bio.",
+        "text_overlay": "5x plus cher x 4.9x moins de tokens",
+        "source_timestamp": "3:00 - 3:30",
+        "recording_note": "Peut etre clippe directement depuis la video longue (slide statement visible)"
+      },
+      {
+        "number": 3,
+        "title": "Tes competences d'aujourd'hui seront demultipliees",
+        "hook": "J'ai teste Claude Code — attends la fin",
+        "content": "Les competences que tu developpes aujourd'hui avec Claude Code — construire des apps, automatiser, creer des projets — elles seront demultipliees quand Mythos arrivera. Les projets complexes qui coincent aujourd'hui deviendront accessibles. Mais seulement si t'as deja les fondations. Ceux qui savent deja travailler avec l'IA auront une longueur d'avance massive.",
+        "punchline": "Commence maintenant. La video complete t'explique pourquoi.",
+        "text_overlay": "Competences x Mythos = longueur d'avance",
+        "source_timestamp": "4:30 - 5:00",
+        "recording_note": "Peut etre clippe directement depuis la video longue (face cam ton personnel)"
+      }
+    ],
+    "x_thread_hook": "Mythos d'Anthropic : 93.9% en code, 97.6% en maths.\n\nEt pourtant, tout le monde se trompe sur le prix.",
+    "x_thread_full": "Mythos d'Anthropic : 93.9% en code, 97.6% en maths.\n\nEt pourtant, tout le monde se trompe sur le prix.\n\n→\n\nLe 26 mars, une fuite chez Anthropic expose 3 000 fichiers internes.\n\nDedans : un modele au-dessus d'Opus.\n\nPas Opus 5. Une nouvelle categorie.\n\n→\n\nSWE Bench (benchmark code) :\n\n- Opus 4.6 : 80.8%\n- Mythos : 93.9%\n\nEn cyber, il a trouve des failles cachees depuis 27 ans dans OpenBSD.\n\nAucun humain ne les avait vues.\n\n→\n\n\"Oui mais c'est 5x plus cher.\"\n\nSauf que Mythos utilise 4.9x moins de tokens.\n\n3 aller-retours avec Opus = 1 seul avec Mythos.\n\nPlus intelligent par dollar.\n\n→\n\nAnthropic ne le sort pas au public.\n\nIls ont lance le Projet Glasswing : Apple, Google, Microsoft, 100M$ de credits.\n\nObjectif : securiser les logiciels critiques avant la sortie.\n\n→\n\nJe t'explique tout dans 6 minutes :\n\n- Les vrais chiffres\n- L'equation prix que personne ne montre\n- Comment te positionner maintenant\n\nTu utilises deja Claude Code au quotidien ?",
+    "x_reply_link": "Video complete ici :\n[LIEN YOUTUBE]",
+    "linkedin_hook": "Claude Mythos vient d'etre officialise par Anthropic.\n93.9% en code. 97.6% en maths.\nEt pourtant, le vrai sujet n'est pas la performance.",
+    "linkedin_full": "Claude Mythos vient d'etre officialise par Anthropic.\n93.9% en code. 97.6% en maths.\nEt pourtant, le vrai sujet n'est pas la performance.\n\nTout a commence par une fuite le 26 mars.\nUne erreur de configuration a expose 3 000 fichiers internes.\nDedans : un modele au nom de code Capybara.\nUne nouvelle categorie au-dessus d'Opus.\n\nLes benchmarks sont impressionnants.\nSWE Bench (le test de reference en code) : 80.8% pour Opus, 93.9% pour Mythos.\nOlympiades de maths US : 42% pour Opus, 97.6% pour Mythos.\nEn cybersecurite, il a trouve des failles cachees depuis 27 ans dans OpenBSD.\n\nMais le chiffre que personne n'explique, c'est celui-ci.\nMythos coute 5x plus cher qu'Opus.\nSauf qu'il utilise 4.9x moins de tokens pour le meme resultat.\n3 aller-retours avec Opus = 1 seul avec Mythos.\nL'equation reelle : plus intelligent par dollar.\n\nAnthropic a decide de ne pas le sortir au public.\nIls ont lance le Projet Glasswing.\nApple, Google, Microsoft, Amazon, Nvidia.\n100M$ en credits. 40 organisations.\nObjectif : securiser les logiciels critiques du monde avant la sortie.\n\nMon avis : c'est la bonne approche.\nOn n'est pas dans l'urgence.\nOn est dans le positionnement.\n\nLes competences que tu developpes aujourd'hui avec les outils IA — automatiser, creer, construire — elles seront demultipliees quand Mythos arrivera.\nMais seulement si tu as deja les fondations.\n\nJ'ai fait une video de 6 minutes pour tout t'expliquer calmement.\nSans panique, sans hype.\nJuste les faits et ce que ca change pour toi.\n\n[LIEN YOUTUBE]\n\nEt toi, tu te positionnes comment face a cette nouvelle vague ?\n\n#ClaudeMythos #IA #Anthropic #Entrepreneuriat #TechIA",
+    "linkedin_format_bonus": "image",
+    "posting_schedule": {
+      "day_0_youtube": "Video goes live",
+      "day_0_x_thread": "Post X thread (2h after YouTube)",
+      "day_1_linkedin": "Post LinkedIn",
+      "day_1_3_shorts": "1 Short per day (Short 1 J+1, Short 2 J+2, Short 3 J+3)"
+    }
+  },
+  "pipeline_log": [
+    {
+      "phase": 0,
+      "timestamp": "2026-04-09T22:00:00Z",
+      "status": "completed",
+      "notes": "Initialized with slug claude-mythos — Mode A (topic provided)"
+    },
+    {
+      "phase": 0.75,
+      "timestamp": "2026-04-09T22:45:00Z",
+      "status": "completed",
+      "notes": "yt-transcript: 5 videos analysees (2 Tier 1 + 3 Tier 2), research brief genere, angle recommande = impact concret + pedagogie calme"
+    }
+  ]
+}

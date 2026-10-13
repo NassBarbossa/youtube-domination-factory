@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "slug": null,
+    "status": null,
+    "pipeline_step": null,
+    "mode": null,
+    "triggered_by": null,
+    "created_at": null,
+    "updated_at": null,
+    "completed_at": null,
+    "youtube_video_id": null,
+    "published_at": null
+  },
+  "request": {
+    "raw_input": null,
+    "topic": null,
+    "funnel": null,
+    "language": "fr"
+  },
+  "veille": {
+    "status": null,
+    "ideas": [],
+    "selected_idea": null,
+    "open_questions": []
+  },
+  "research": {
+    "status": null,
+    "videos_analyzed": 0,
+    "transcripts": [],
+    "key_facts": [],
+    "angles_covered": [],
+    "angles_missing": [],
+    "recommended_angle": null,
+    "synthesis": null,
+    "brief_file": null,
+    "open_questions": []
+  },
+  "script": {
+    "status": null,
+    "slug": null,
+    "funnel": null,
+    "file_path": null,
+    "visual_path": null,
+    "word_count": null,
+    "reading_time_min": null,
+    "structure": {
+      "hook": null,
+      "sections": [],
+      "timestamps_raw": [],
+      "shorts_moments": []
+    },
+    "google_doc_url": null,
+    "open_questions": []
+  },
+  "titres_seo": {
+    "status": null,
+    "winning_title": null,
+    "all_titles": [],
+    "primary_keyword": null,
+    "secondary_keywords": [],
+    "open_questions": []
+  },
+  "miniature": {
+    "status": null,
+    "recommended_concept": null,
+    "rejected_concepts": [],
+    "scoring": null,
+    "open_questions": []
+  },
+  "description": {
+    "status": null,
+    "description_full": null,
+    "first_150_chars": null,
+    "hook_framework": null,
+    "tags": [],
+    "enriched_keywords": [],
+    "sources": [],
+    "cta_type": null,
+    "open_questions": []
+  },
+  "repurposing": {
+    "status": null,
+    "shorts": [],
+    "x_thread_hook": null,
+    "x_thread_full": null,
+    "x_reply_link": null,
+    "linkedin_hook": null,
+    "linkedin_full": null,
+    "linkedin_format_bonus": null,
+    "posting_schedule": null,
+    "google_doc_url": null,
+    "open_questions": []
+  },
+  "pipeline_log": []
+}

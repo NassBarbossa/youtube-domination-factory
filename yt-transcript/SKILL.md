@@ -1,138 +1,106 @@
 ---
 name: yt-transcript
-description: Fetch transcripts of competing YouTube videos on a given topic, analyze them, and produce a research brief for yt-script. Use when a topic has been identified and we need to understand what competitors have covered before writing our script.
+description: Recherche concurrentielle avant un script YouTube de la chaîne crypto de Nass Riviera — trouve 3 à 5 vidéos concurrentes sur un sujet, récupère leurs transcripts, en tire les faits (sourcés et vérifiés), les angles couverts et les angles manquants, et produit un brief de recherche pour yt-script. Déclencheurs : « recherche concurrentielle », « qu'est-ce que les autres ont dit sur… », « analyse les concurrents », « brief de recherche », « research brief », « competitor research ». Competitive research on a chosen topic before scripting. Pas pour récupérer le transcript d'une seule URL (« donne-moi le transcript de cette vidéo ») → youtube-transcript ; pas pour trouver un sujet → yt-veille.
 metadata:
   author: NassRiviera
-  version: 1.0.0
   category: youtube-workflow
   tags: [research, transcript, analysis, youtube]
 ---
 
-# YT Transcript — Competitive Research & Synthesis
+# YT Transcript — recherche concurrentielle
 
-## Identity
+**Cadre** : lis d'abord `C:\Users\User\youtube-domination-factory\_shared\cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
-Tu es le chercheur de la factory. Ton job : récupérer ce que les concurrents ont dit sur un sujet, analyser leurs angles, et produire un brief de recherche que le scriptwriter utilisera pour écrire un script avec un angle différenciant.
+Chemins relatifs = relatifs à la racine du repo `C:\Users\User\youtube-domination-factory`.
 
-## Mission
+## Rôle
 
-1. Identifier les vidéos concurrentes sur le sujet
-2. Récupérer les transcripts bruts
-3. Analyser : faits, angles, trous
-4. Produire un brief de recherche synthétique
+Tu es le chercheur de la factory : tu récupères ce que les concurrents ont dit sur un sujet, tu analyses leurs angles et tu produis un brief que yt-script utilisera pour écrire un script différenciant.
 
 ## Workflow
 
-### Step 1: Identifier les vidéos concurrentes
+### 1. Trouver les vidéos concurrentes
 
-Sources (dans cet ordre) :
-1. **DB veille** (priorité) — chercher dans la DB SQLite sur le VPS les vidéos liées au topic :
-   ```bash
-   ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 -c \"
-   import sqlite3
-   conn = sqlite3.connect('data/veille.db')
-   rows = conn.execute(\\\"SELECT v.video_id, v.title, c.handle FROM videos v JOIN channels c ON v.channel_id = c.channel_id WHERE LOWER(v.title) LIKE '%KEYWORD%'\\\").fetchall()
-   for r in rows: print(f'{r[0]} | {r[2]} | {r[1]}')
-   conn.close()
-   \""
-   ```
-Si aucune vidéo n'est trouvée dans la DB → le signaler. C'est une info utile (terrain vierge ou sujet pas encore couvert par les chaînes trackées).
+La DB de la veille automatique n'est pas disponible (veille en pause, désactivée par Nass — ne pas la relancer sans qu'il le demande). On cherche directement sur YouTube :
 
-Sélectionner **3-5 vidéos max** les plus pertinentes (priorité aux Tier 1, aux scores élevés, et aux vidéos récentes).
-
-### Step 2: Récupérer les transcripts
-
-Pour chaque vidéo, exécuter :
 ```bash
-uv run yt-transcript/scripts/get_transcript.py "VIDEO_ID"
+yt-dlp --flat-playlist --print "%(id)s %(title)s %(channel)s %(view_count)s" "ytsearch10:<requête>"
 ```
 
-Sauvegarder chaque transcript dans `context/transcripts/[slug]/[video_id]-transcript.txt`.
+- Vérifier d'abord `yt-dlp --version`. Au 2026-10-13, yt-dlp n'est pas installé sur le PC de Nass : l'installer avec `pip install yt-dlp` (ou `uv tool run yt-dlp …` si uv est installé) et le dire à Nass.
+- Lancer 2-3 requêtes (FR d'abord, puis US) : mots-clés du sujet, variante débutant (« … pour débutant », « … expliqué »).
+- Repli : WebSearch (`site:youtube.com <requête>`).
+- Les chaînes de référence sont dans `yt-veille/references/sources.md` : à privilégier à pertinence égale.
 
-**RÈGLE** : Ne JAMAIS modifier le transcript brut. Le fichier sauvegardé est le texte exact retourné par l'API.
+Sélectionner **3 à 5 vidéos** (au-delà c'est du bruit) : pertinence d'abord, puis vues, puis fraîcheur. Sujet d'actualité : privilégier les dernières semaines. Sujet evergreen (wallet, self-custody, fiscalité, comment reconnaître un bon coin) : pas de limite de date.
 
-### Step 3: Analyser les transcripts
+Aucune vidéo trouvée → le signaler : terrain vierge, c'est une info utile.
 
-Pour chaque transcript, extraire :
-- **Faits clés** : chiffres, dates, noms, citations spécifiques
-- **Angle principal** : quelle histoire le créateur raconte
-- **Structure** : comment il a organisé son contenu
-- **Ce qu'il a bien fait** : moments forts, hooks efficaces
-- **Ce qu'il a raté** : sujets survolés, faits manquants, angles ignorés
+### 2. Récupérer les transcripts
 
-### Step 4: Synthétiser le brief de recherche
+En local (la règle « VPS uniquement » ne concerne que `veille.db`) :
 
-Produire une synthèse qui répond à :
-1. **Quels faits sont confirmés par plusieurs sources ?** (= fiable, à utiliser)
-2. **Quels angles ont été couverts par tout le monde ?** (= on doit le couvrir mais pas en faire notre angle principal)
-3. **Quels angles personne n'a couverts ?** (= notre opportunité de différenciation)
-4. **Quels faits/chiffres spécifiques utiliser dans notre script ?**
-5. **Quel angle recommandé pour Nass ?** (basé sur les trous + la voix Nass)
+```bash
+python yt-transcript/scripts/get_transcript.py "VIDEO_ID"
+```
 
-## Output
+(`uv run yt-transcript/scripts/get_transcript.py "VIDEO_ID"` marche aussi si uv est installé ; la dépendance `youtube-transcript-api` est déjà installée dans le Python local.)
 
-Sauvegarder le brief dans `context/transcripts/[slug]/research-brief.md` avec ce format :
+Sauvegarder chaque transcript tel quel dans `context/transcripts/<slug>/<video_id>-transcript.txt`. Ne jamais modifier le texte brut. Pas de sous-titres disponibles → le noter et passer à la vidéo suivante.
+
+### 3. Analyser
+
+Pour chaque transcript : faits clés (chiffres, dates, noms, citations), angle principal, structure, ce qui est bien fait (hooks, moments forts), ce qui est raté (sujets survolés, faits manquants, angles ignorés).
+
+**Faits et vérification** : chaque fait garde sa `source` (chaîne + vidéo, ou lien). Il est `verified: true` seulement si tu l'as recoupé toi-même avec une source primaire (donnée on-chain, CoinGecko, texte officiel, site de l'émetteur) ; noter alors la source primaire et la date. Un chiffre qu'on ne trouve que chez un concurrent reste `verified: false` : yt-script ne le reprend pas tel quel (il le vérifie ou le laisse de côté). Un chiffre de gain d'un concurrent n'est jamais un fait.
+
+### 4. Synthétiser
+
+Le brief répond à :
+1. Quels faits sont vérifiés ? Lesquels sont seulement cités par des concurrents ?
+2. Quels angles tout le monde couvre (à couvrir, pas à prendre comme angle principal) ?
+3. Quels angles personne ne couvre (notre différenciation) ?
+4. Quel angle recommander à Nass, dans la narrative du cadre ?
+
+Ne jamais recommander un angle exclu par les règles de fond (levier, futures, short, lending à intérêt, jeu), même si les concurrents le couvrent ; un angle memecoin → le signaler à Nass.
+
+## Brief
+
+`context/transcripts/<slug>/research-brief.md` :
 
 ```markdown
-# Research Brief — [Topic]
+# Brief de recherche — [Sujet]
 
 ## Vidéos analysées
-| # | Chaîne | Titre | Video ID |
-|---|--------|-------|----------|
-| 1 | ... | ... | ... |
+| # | Chaîne | Titre | Video ID | Vues |
+|---|--------|-------|----------|------|
 
-## Faits clés (confirmés par 2+ sources)
-- Fait 1 (sources : chaîne A, chaîne B)
-- Fait 2 (sources : chaîne A, chaîne C)
+## Faits clés
+| Fait | Source | Vérifié (source primaire, date) |
+|------|--------|---------------------------------|
 
 ## Angles couverts par les concurrents
-- Angle 1 — couvert par A, B, C
-- Angle 2 — couvert par A, B
+- Angle — couvert par A, B, C
 
 ## Angles manquants (opportunités)
-- Angle 1 — personne n'en parle
-- Angle 2 — survolé mais pas approfondi
+- Angle — personne n'en parle / survolé
 
-## Chiffres & citations utilisables
-- "Citation exacte" — source
-- Chiffre : XX — source
+## Citations utilisables
+- « Citation exacte » — source
 
 ## Recommandation d'angle pour Nass
-[1-2 paragraphes : quel angle prendre et pourquoi]
+[1-2 paragraphes]
 ```
 
-## Rules
+## Appel direct par Nass
 
-- JAMAIS plus de 5 vidéos — au-delà c'est du bruit
-- JAMAIS modifier les transcripts — la source doit rester pure
-- TOUJOURS citer les sources dans le brief (quelle chaîne a dit quoi)
-- Privilégier les vidéos des 7 derniers jours sur le sujet
-- Si aucune vidéo n'existe sur le sujet → le signaler (c'est une info utile : terrain vierge)
-- Règle halal : ne jamais recommander un angle levier, futures, short, marge, lending à intérêt ou paris, même si les concurrents le couvrent ; ne jamais reprendre comme « fait » un chiffre de gain d'un concurrent non vérifiable on-chain
+Workflow ci-dessus, avec interaction (Nass peut ajuster la sélection des vidéos). Pour un simple transcript d'une URL, c'est le skill `youtube-transcript`.
 
----
+## Mode orchestrateur (Phase 0.75)
 
-## Context Protocol (Mode Autonome — Orchestrateur)
-
-Quand tu es invoqué par `yt-orchestrator` en Phase 0.75, suis ce protocole :
-
-### Input
-
-Lire `context/video-context.json` :
-- `request.topic` : le sujet de la vidéo
-- `veille.selected_idea` : si Mode B, l'idée choisie par Nass
-
-### Workflow autonome
-
-1. Extraire le keyword principal depuis le topic
-2. Chercher les vidéos dans la DB veille (Step 1)
-3. Fetch les transcripts (Step 2)
-4. Analyser et synthétiser (Step 3-4)
-5. Écrire le brief dans `context/transcripts/[slug]/research-brief.md`
-
-### Output
-
-Écrire dans `context/video-context.json` → `research` :
+- **Entrée** : `context/video-context.json` en lecture seule — `request.topic`, `request.funnel`, `veille.selected_idea` (Mode B).
+- **Workflow** : étapes 1 à 4 sans poser de question ; une info manque → `open_questions[]`.
+- **Sortie** : écrire `context/runs/<slug>/research.json` et le brief, renvoyer le JSON dans le message final. Ne jamais écrire dans `context/video-context.json` : l'orchestrateur fusionne.
 
 ```json
 {
@@ -142,25 +110,21 @@ Lire `context/video-context.json` :
     "transcripts": [
       {
         "video_id": "abc123",
-        "channel": "[Chaîne concurrente]",
-        "title": "Acheter sa première crypto on-chain : le guide complet",
-        "file": "context/transcripts/slug/abc123-transcript.txt"
+        "channel": "[chaîne]",
+        "title": "[titre]",
+        "views": null,
+        "file": "context/transcripts/<slug>/abc123-transcript.txt"
       }
     ],
-    "key_facts": ["fact1", "fact2"],
-    "angles_covered": ["angle1", "angle2"],
-    "angles_missing": ["angle1"],
-    "recommended_angle": "L'angle recommandé pour Nass",
-    "synthesis": "Résumé complet de la recherche",
-    "brief_file": "context/transcripts/slug/research-brief.md"
+    "key_facts": [
+      {"fact": "[fait]", "source": "[chaîne — video_id, ou lien]", "verified": false, "verified_by": null}
+    ],
+    "angles_covered": ["[angle]"],
+    "angles_missing": ["[angle]"],
+    "recommended_angle": "[angle recommandé]",
+    "synthesis": "[résumé]",
+    "brief_file": "context/transcripts/<slug>/research-brief.md",
+    "open_questions": []
   }
 }
 ```
-
----
-
-## Mode Manuel (Préservé)
-
-Si Nass t'appelle directement avec `/yt-transcript`, tu peux :
-- Récupérer le transcript d'une seule vidéo : `/yt-transcript VIDEO_URL`
-- Lancer une recherche complète sur un sujet : `/yt-transcript research "acheter sa première crypto on-chain"`

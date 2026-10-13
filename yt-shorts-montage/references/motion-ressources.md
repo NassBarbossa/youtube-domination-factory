@@ -17,7 +17,7 @@ Consigne de la source : donner le projet à Claude, lui demander de l'étudier, 
 | [p5.brush](https://github.com/acamposuribe/p5.brush#core-concepts-in-1-minute) | Crayon, fusain, marqueur, aquarelle, hachures : textures faites main. | [teaser](https://editor.p5js.org/acamposuribe/sketches/bkb_CyJyi) · [Brush Maker](https://acamposuribe.github.io/p5.brush/tools/brush-maker.html) |
 | [thinking-orbs](https://github.com/RareFormLabs/thinking-orbs) | Orbes en points animées (réflexion, recherche, chargement). | https://rareformlabs.github.io/thinking-orbs/ |
 
-⚠️ Dans HyperFrames, tout effet doit rester **seekable et déterministe** (pas de `Math.random()` / `Date.now()`, simulation physique pilotée par le temps de la timeline, ou pré-calculée). Voir `/hyperframes-core`.
+Dans HyperFrames, tout effet doit rester **seekable et déterministe** (pas de `Math.random()` / `Date.now()`, simulation physique pilotée par le temps de la timeline, ou pré-calculée). Voir `/hyperframes-core`.
 
 ### Inspiration : 400+ vidéos faites avec Claude
 Pour trouver un mouvement à adapter (révélation de texte, transition, rythme) :
@@ -74,7 +74,7 @@ Pipeline « rushes bruts → Reel Instagram monté » :
 | Transcription + timings | Deepgram Nova-3 FR (payant) | `npx hyperframes transcribe` (Whisper local, gratuit) ; Deepgram en option |
 | Cadrage / zoom sur le visage | MediaPipe | MediaPipe si besoin d'un suivi auto ; sinon punch-in HyperFrames (`/hyperframes-keyframes`) |
 | Bruitages | Kenney, Pixabay, Freesound (CC0), Mixkit | Idem, **Freesound CC0 / Kenney en priorité** (licence claire) + SFX bundlés media-use |
-| Musique | Pixabay Music (sans voix) | Pixabay Music ou synthé numpy (playbook) |
+| Musique | Pixabay Music (sans voix) | **Aucune dans les Shorts** (règle de Nass : jamais de musique, des sound effects sur les animations) |
 | Polices / icônes | Google Fonts / Iconify | Idem (Archivo Black + Public Sans) |
 
 **Règle clé** : « Les timings de Deepgram ratent les vrais silences de 200 à 300 ms. » → **couper sur la forme d'onde du son, jamais sur les timestamps de la transcription.**

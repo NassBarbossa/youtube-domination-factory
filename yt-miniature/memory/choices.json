@@ -3,6 +3,7 @@
     {
       "video_slug": "2000e-1h-vibecoding",
       "date": "2026-03-18",
+      "niche": "ia",
       "concept_chosen": "The Laptop Reveal",
       "concepts_rejected": [
         "The Stripe Dashboard Shock",
@@ -24,6 +25,7 @@
     {
       "video_slug": "associe-oussama-amar",
       "date": "2026-03-30",
+      "niche": "ia",
       "concept_chosen": "The Power Duo",
       "concepts_rejected": [
         "The Handshake",
@@ -47,6 +49,7 @@
     {
       "video_slug": "pourquoi-investir-2026",
       "date": "2026-10-04",
+      "niche": "crypto",
       "concept_chosen": "Billet déchiré 40/30/15/15 (D v17 : pose poing sous le menton, t-shirt blanc, plan taille)",
       "concepts_rejected": [
         "Le Secret camembert",
@@ -72,6 +75,7 @@
     {
       "video_slug": "comment-devenir-riche",
       "date": "2026-10-04",
+      "niche": "crypto",
       "concept_chosen": "Mur de billets + flèche orange (A v3 wall)",
       "concepts_rejected": [
         "Billet → tour de liasses (fond vide)",
@@ -96,6 +100,7 @@
     {
       "video_slug": "investissement-on-chain",
       "date": "2026-10-04",
+      "niche": "crypto",
       "concept_chosen": "Salle de trading coucher de soleil (F)",
       "concepts_rejected": [
         "La Formule 1",

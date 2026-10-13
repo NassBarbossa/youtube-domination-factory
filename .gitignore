@@ -10,3 +10,7 @@ yt-shorts-montage/projects/**/snapshots/
 # Shorts : audio régénérable (sfx/build.py) et sources lourdes (extraits de la formation)
 yt-shorts-montage/projects/**/sfx/track.wav
 yt-shorts-montage/projects/**/source/*.wav
+
+# Contexte du pipeline : sorties intermédiaires des agents
+context/runs/*/
+context/veille-top*.json

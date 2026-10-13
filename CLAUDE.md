@@ -1,338 +1,69 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guide pour Claude Code dans ce repo.
 
-## Project Overview
+## Projet
 
-YouTube Domination Factory est un **système modulaire de skills** pour Claude Code qui orchestre toute la production des vidéos YouTube de la chaîne de **Nass Riviera**. La chaîne est **100 % crypto** : investissement on-chain, spot, zéro levier, wallet public. Public francophone : hommes de 25 à 40 ans, déjà investisseurs (surtout immobilier), débutants en crypto (voir « Positionnement & avatar »).
+YouTube Domination Factory : un ensemble de skills Claude Code qui produit les vidéos de la chaîne YouTube de **Nass Riviera**, chaîne **100 % crypto**. Chaque module `yt-*/` contient un `SKILL.md` (frontmatter `name` + `description`) et parfois `references/` (détails chargés à la demande) et `memory/` (choix passés).
 
-The project is a collection of SKILL.md files loaded into Claude's skill system, plus Python scripts for automated veille (yt-veille) and analytics (yt-analytics) that run on a VPS.
+**Cadre éditorial : `_shared/cadre-nass.md`** (narrative, avatar, offres, ton, règles de fond halal, charte, disclaimer). C'est la source unique : tous les skills le lisent, aucun ne le recopie. Le modifier là, et seulement là.
 
-## Positionnement & avatar
+En deux lignes : on achète les cryptos en dehors des échanges, on achète les bons coins, et on ne les achète pas tous les jours. Le challenge 10K → 100K est abandonné.
 
-**Positionnement** (site nassriviera.com) : « Nass Riviera · Investisseur on-chain · spot, zéro levier, wallet public ».
+## Skills
 
-**Offres à mettre en avant (CTA)** :
-- **Challenge public 10K → 100K $** : wallet public (Solana + EVM), chaque trade expliqué en live avant le résultat. « Les bons trades comme les mauvais. Pas de compte démo, pas de screen retouché. »
-- **Formation offerte en 3 vidéos** : « Pourquoi investir en 2026 », « Comment devenir riche », « L'investissement on-chain ».
-- **Communauté privée** : les trades du challenge en direct.
-- **Live hebdo « Convergence »** avec le co-host Sadek (marchés / or).
+| Skill | Rôle |
+|---|---|
+| `yt-orchestrator` | Pipeline complet d'une vidéo (« fais une vidéo sur… ») |
+| `yt-veille` | Idées de vidéos (veille automatique en pause, voir plus bas) |
+| `yt-transcript` | Recherche concurrentielle avant un script |
+| `yt-script` | Script + slides HTML (mode dictée « slide après ») |
+| `yt-titres-seo` | Titres et mots-clés |
+| `yt-miniature` | Briefs de miniatures |
+| `yt-description` | Description et tags |
+| `yt-repurposing` | Découpe d'une vidéo longue : Shorts, thread X, LinkedIn |
+| `yt-shorts-script` / `yt-shorts-montage` | Shorts natifs 30-60 s (fondations, méthode de Nass à venir dans `references/`) |
+| `yt-analytics` / `yt-calendrier` | Analyse des stats, calendrier éditorial |
 
-**Avatar visuel** : le punk pixel @punk6995 (Barbossa).
-
-**Avatar client** (mots de Nass, à ne pas reformuler) :
-> « C'est des hommes entre 25 et 40 ans. Ils sont débutants, voire débutants plus. C'est déjà des investisseurs, principalement en immobilier avec crédit, mais ils n'ont pas commencé encore à investir dans la crypto. Peut-être un peu de bourse, mais pas de crypto. Et il n'y comprend rien, il ne connaît rien. Et nous, du coup, on vend le fait qu'on achète des cryptos en dehors des échanges avant qu'elles soient connues de tous. »
-
-**Disclaimer obligatoire** (script, description, posts) : « Pas un conseil en investissement. »
-
-## Règle halal (NON NÉGOCIABLE)
-
-S'applique à tous les skills et à tous les contenus produits (scripts, titres, miniatures, descriptions, Shorts, threads, posts, slides) :
-
-- **Spot uniquement.** Jamais de levier, futures, short, marge, ni de prêt/emprunt à intérêt (lending, yield à intérêt).
-- **Jamais de casino, de paris ou de jeu d'argent**, ni de vocabulaire qui présente l'investissement comme un jeu.
-- **Ne jamais encourager le crédit** (même si l'avatar investit déjà en immobilier avec crédit : on n'en fait jamais la promotion).
-- **Tokens très spéculatifs** (memecoins, pré-lancement) : toujours présentés comme des **paris risqués à petite taille**, avec le risque dit clairement. Jamais comme un jeu, jamais comme une promesse de gain.
-- **Pas de chiffres inventés, pas de faux témoignages.** Toute performance citée doit être réelle et vérifiable (wallet public, données on-chain, bougies d'exchange datées).
-- En cas de doute sur un sujet (protocole, produit, mécanisme de rendement), le signaler à Nass plutôt que de le traiter.
-
-## VPS Execution Rule
-
-**All Python scripts (daily_monitor.py, report.py, scoring.py, etc.) MUST be executed on the VPS via SSH, never locally.**
-
-The SQLite database (`veille.db`) lives exclusively on the VPS. The local copy is empty and gitignored.
-
-```bash
-# Correct — run on VPS
-ssh root@72.62.253.227 "cd /root/youtube-domination-factory/yt-veille/scripts && python3 report.py"
-
-# Wrong — will fail (empty local DB)
-python3 yt-veille/scripts/report.py
-```
-
-This applies to all pipeline phases that need veille data, analytics data, or any DB access.
-
-## Architecture
-
-Nine skills form a production pipeline:
+## Pipeline (yt-orchestrator)
 
 ```
-yt-veille (Trend Research — automated daily scraping + scoring)
-    ↓
-yt-script (Script Writing)
-    ├→ yt-titres-seo (SEO Titles) ──→ yt-miniature (Thumbnail Briefs)
-    │                              └→ yt-description (Description & Tags)
-    ├→ yt-montage (Editing Briefs)
-    └→ yt-repurposing (Shorts, X threads, LinkedIn)
-
-yt-analytics (Performance Analysis) ──→ yt-calendrier (Editorial Calendar)
-
-yt-shorts-script (Shorts natifs) ──→ yt-shorts-montage (vidéo 1080×1920)
+0     Init : slug, funnel (TOP/MIDDLE/BOTTOM), JSON depuis le template      conversation principale
+0.5   yt-veille (Mode B seulement) → Nass choisit l'idée                    conversation principale, pause
+0.75  yt-transcript → brief de recherche                                    agent
+1     yt-script, avec les validations de Nass                               conversation principale, pauses
+2a    yt-titres-seo                                                         agent
+2b/c  yt-miniature + yt-description (ont besoin du titre gagnant)           agents en parallèle
+3     Validation titre / miniature / description                           pause
+4     yt-repurposing                                                        agent
+5     Récap, archive, mémoire des choix                                     conversation principale
 ```
 
-**Shorts natifs** (fondations, oct. 2026) : `yt-shorts-script` écrit des Shorts originaux de 30-60 s, `yt-shorts-montage` les fabrique (HyperFrames, sous-titres, disclaimer). À ne pas confondre avec `yt-repurposing`, qui découpe des Shorts dans une vidéo longue. Les méthodes de script et de montage arrivent via les ressources de Nass dans `references/`.
+- **Contexte partagé** : `context/video-context.json`, contrat dans `context/SCHEMA.md`, modèle vide dans `context/video-context.template.json`.
+- **Un seul écrivain** : les agents lisent le JSON et écrivent leur section dans `context/runs/<slug>/<section>.json` ; l'orchestrateur fusionne. Personne d'autre n'écrit dans `video-context.json`.
+- Chaque skill marche aussi seul, appelé directement (workflow interactif).
+- Chemins relatifs = relatifs à la racine du repo.
 
-Each module contains a single `SKILL.md` with YAML frontmatter (name, description, version, triggers) and markdown instructions. Some modules have a `references/` subfolder with templates or source lists.
+## Veille automatique : en pause
 
-## Key Inter-Skill Data Flows
+Nass a désactivé le cron de la veille sur le VPS. **Ne pas la relancer, ne pas le proposer**, sauf demande de sa part. `yt-veille` et `yt-transcript` fonctionnent sans (sources web, yt-dlp, questions de l'audience).
 
-- **yt-titres-seo → yt-miniature**: Title and thumbnail must COMPLEMENT each other, never duplicate
-- **yt-titres-seo → yt-description**: Primary/secondary keywords are shared for SEO consistency
-- **yt-transcript → yt-script**: Research `angles_missing[]` feed the Information Gain Check (Step 2b) — each script section must cover angles competitors missed
-- **yt-script → yt-repurposing**: Scripts must contain extractable Shorts moments
-- **yt-miniature → yt-repurposing**: Thumbnail source file (1280×720) provides cross-platform crops for X (1200×675), LinkedIn (1200×627), carousel (1200×1200)
-- **yt-analytics → yt-calendrier**: Performance data drives the content mix (tutoriels, actus, deep dives, comparatifs, communauté — répartition à recalibrer sur les données de la chaîne crypto)
+Pour mémoire : scripts dans `yt-veille/scripts/`, base `veille.db` uniquement sur le VPS (`ssh root@72.62.253.227`, repo dans `/root/youtube-domination-factory`). Les scripts qui lisent `veille.db` s'exécutent sur le VPS ; les autres (yt-analytics, `get_transcript.py`) en local.
 
-## Content Voice
+## Slides (HTML)
 
-- **Ton** : direct, transparent, pédagogique (la voix de Nass Riviera). Jamais hype, jamais « to the moon », jamais corporate.
-- **Transparence** : on montre les bons trades comme les mauvais, sur un wallet public. Pas de compte démo, pas de screen retouché.
-- **Langue** : français d'abord, accents corrects, accessible à un débutant complet en crypto. Chaque terme technique (wallet, DEX, on-chain, seed phrase, gas…) est expliqué la première fois.
-- **Règle** : pas de remplissage, chaque phrase sert le spectateur.
-- **Angle** : partir de ce que l'avatar connaît déjà (immobilier, un peu de bourse) pour expliquer la crypto, et montrer l'avantage concret de l'achat on-chain, en dehors des échanges, avant qu'un actif soit connu de tous. Toujours avec le risque dit clairement.
-- **Halal** : voir « Règle halal » ci-dessus. Disclaimer « Pas un conseil en investissement. » sur chaque contenu.
+Règles complètes dans `yt-script/SKILL.md` et `yt-script/references/slides.md`. L'essentiel :
 
-## Script Markers
+- Mode dictée : « …slide d'après… » = une slide, mots exacts de Nass ; ce qu'il n'a pas demandé est marqué `[PROP]`.
+- Une animation sur mesure par slide clé ; toujours centré ; charte du cadre.
+- `[slug].md` synchronisé avec le deck à chaque changement.
+- Graphiques de prix : données réelles, date sous chaque prix.
+- Vérifier avant de livrer : captures Playwright + Chrome (chevauchements, contraste, mots orphelins, erreurs JS), `deck.html#N` pour ouvrir la slide N.
+- Formation offerte = 3 vidéos : `pourquoi-investir-2026`, `comment-devenir-riche`, `investissement-on-chain` (jamais « Vidéo 3 » sur les slides).
 
-Scripts use visual markers: `[FACE CAM]`, `[SCREEN]`, `[DEMO]`, `[B-ROLL]` to indicate shot types for the editing team.
+Marqueurs de script : `[FACE CAM]`, `[SCREEN]`, `[DEMO]`, `[B-ROLL]`.
 
-## Slides (HTML decks) — guidelines
+## Maintenance
 
-Full rules live in `yt-script/SKILL.md` (Step 4 → "Mode dictée « slide après »"). The essentials:
-
-- **Dictation mode**: when Nass dictates "…slide d'après…", each one is exactly one slide. Keep his exact words (fix only spelling/obvious dictation errors, and say so). Anything he didn't ask for is marked `[PROP]` in the `.md` script.
-- **Every key slide gets a custom animation** that tells the sentence (superhero transformation, slam + flash + shake, Far West scene, token swarm…). Reference deck: `yt-script/outputs/investissement-on-chain-visual.html` — reuse its patterns.
-- **Always centered** (`slide center` + `slide-content center`), charte Nass Riviera :
-  - Fond noir `#0B0B0B` ; sable/or `#DBB17F` (clair `#F3D6A8`, foncé `#9C7748`) ; crème `#F4EFE7` ; bleu punk `#648596` / `#4F6C7B` ; gris `#3B3A37` / `#9A968D`.
-  - Polices : **Archivo Black** (titres) + **Public Sans** (texte).
-  - Univers : punk pixel (@punk6995), montagnes au crépuscule, cartes crème à bord noir avec ombre pleine (néo-brutal doux).
-  - L'ancienne charte (orange `#FF6B35` / cyan `#00E5FF` / `#0A0A0A`, Syne + Inter) est abandonnée : ne plus l'utiliser.
-- **Keep `[slug].md` in sync** with the HTML deck on every change.
-- **Real data only**: price charts show the date under each price label, sourced from real data (exchange candles, on-chain timestamps), never from memory.
-- **Verify before delivering**: screenshot changed slides with Playwright + Chrome and look at them (overlaps, contrast, orphan words, JS errors). Open a deck on slide N with `deck.html#N`.
-- **Series naming**: the free training ("formation offerte") is 3 videos — `pourquoi-investir-2026`, `comment-devenir-riche`, `investissement-on-chain` (never write "Vidéo 3" on the last one's slides).
-
----
-
-# Multi-Agent Architecture v2.0
-
-Starting from March 2026, the system supports **automated multi-agent orchestration** in addition to manual skill-by-skill workflows. This dramatically reduces manual copy-paste between skills and enables end-to-end pipeline automation.
-
-## How It Works
-
-### The Orchestrator
-
-One master skill (`yt-orchestrator`) manages the entire pipeline:
-- Detects user intent (Mode A: topic provided, Mode B: find ideas first)
-- Creates a shared JSON context file (`context/video-context.json`)
-- Spawns agent instances using Claude Code's `Agent` tool
-- Passes context to each agent, collects outputs, feeds them to the next agent
-- Pauses for human validation at critical steps (Phase 3: title, thumbnail, description)
-- Handles errors and session recovery
-
-### Shared Context File
-
-**Location**: `context/video-context.json`
-
-This single JSON file is the "bus" through which all agents communicate:
-```json
-{
-  "_meta": {version, slug, status, pipeline_step, ...},
-  "request": {raw_input, topic, language},
-  "veille": {selected_idea, status, ...},
-  "research": {videos_analyzed, transcripts[], key_facts[], angles_covered[], angles_missing[], synthesis},
-  "script": {slug, file_path, word_count, structure, ...},
-  "titres_seo": {winning_title, keywords, ...},
-  "miniature": {recommended_concept, ...},
-  "description": {description_full, hook_framework, tags, enriched_keywords, sources, cta_type, ...},
-  "repurposing": {shorts[], x_thread_full, x_reply_link, linkedin_full, linkedin_format_bonus, ...},
-  "pipeline_log": [...]
-}
-```
-
-Each agent:
-1. **Reads** from its input section (e.g., yt-script reads `request.topic` and `veille.selected_idea`)
-2. **Writes** to its output section (e.g., yt-script writes `script.*`)
-3. **Ignores** sections it doesn't care about
-
-### Two Modes of Operation
-
-#### Mode A: Topic Provided
-User says: *"Fais une vidéo sur comment acheter sa première crypto on-chain"*
-
-```
-yt-orchestrator
-├─ Phase 0.75 → yt-transcript (fetch transcripts concurrents, analyse, brief recherche)
-├─ Phase 1 → yt-script (writes script.* using research brief)
-├─ Phase 2 → [parallel] yt-titres-seo + yt-miniature + yt-description
-├─ Phase 3 → PAUSE for human validation (title ✓ thumbnail ✓ description ✓)
-└─ Phase 4 → yt-repurposing (writes shorts, threads, LinkedIn posts)
-```
-
-#### Mode B: Find Ideas First
-User says: *"Trouve moi un sujet de vidéo"*
-
-```
-yt-orchestrator
-├─ Phase 0.5 → yt-veille (generates 3-5 ideas, PAUSE for choice)
-├─ Phase 0.75 → yt-transcript (fetch transcripts concurrents, analyse, brief recherche)
-├─ Phase 1 → yt-script (writes script.* using research brief)
-├─ Phase 2 → [parallel] yt-titres-seo + yt-miniature + yt-description
-├─ Phase 3 → PAUSE for human validation
-└─ Phase 4 → yt-repurposing
-```
-
-### Pipeline Phases
-
-| Phase | Agent(s) | Action | Pause? |
-|-------|----------|--------|--------|
-| 0 | orchestrator | Init slug, create JSON | No |
-| 0.5 | yt-veille | Generate ideas (Mode B only) | **Yes** — user chooses |
-| 0.75 | yt-transcript | Fetch transcripts concurrents, analyse, brief recherche | No |
-| 1 | yt-script | Write full script using research brief | No |
-| 2a | yt-titres-seo | Generate titles & keywords | No |
-| 2b | yt-miniature | Design thumbnail concept | No (parallel with 2a/2c) |
-| 2c | yt-description | Write description & tags | No (parallel with 2a/2b) |
-| 3 | orchestrator | Present validation summary | **Yes** — user validates title, thumbnail, description |
-| 4 | yt-repurposing | Create shorts, threads, LinkedIn posts | No |
-| 5 | orchestrator | Generate recap, archive JSON | No |
-
-### Context Protocol (in Each Skill)
-
-Each skill now has a **Context Protocol** section that defines:
-- **Autonomous mode**: How to read from JSON, process without user interaction, write back to JSON
-- **Manual mode**: Traditional workflow (preserved for backward compatibility)
-
-When `yt-orchestrator` spawns an agent, it provides:
-```
-"Read context/video-context.json as input.
-Operate autonomously (no interactive validation).
-Write your outputs directly to context/video-context.json.
-Report completion."
-```
-
-### Session Recovery
-
-If the pipeline is interrupted:
-1. `yt-orchestrator` reads `_meta.pipeline_step`
-2. Offers to resume from that step or restart
-3. Agents read the existing JSON and continue from where it left off
-
----
-
-## Manual Mode (Fully Preserved)
-
-**Every skill continues to work 100% normally if called directly.**
-
-Examples:
-- `/yt-script "écris le script sur le wallet public du challenge 10K → 100K"` → Uses classic workflow (Step 1-6 with interaction)
-- `/yt-titres-seo` → Presents 5 title options for choice
-- `/yt-miniature` → Shows 3 concepts for selection
-
-The Context Protocol is **transparent** — it only activates when:
-1. An agent is spawned by `yt-orchestrator` (detected via prompt)
-2. `context/video-context.json` exists and is passed as input
-
-Manual invocation is never forced. Nass can still:
-- Mix orchestrated and manual workflows
-- Call individual skills directly
-- Manually copy-paste between skills (old way still works)
-
----
-
-## Key Design Decisions
-
-1. **One-way data flow from script to repurposing** — ensures dependencies are met
-2. **Parallel Phase 2** — faster turnaround (3 agents at once instead of sequentially)
-3. **Validation pause before repurposing** — title/thumbnail/description must be approved before creating multi-platform content
-4. **Archive versioning** — each completed pipeline is saved to `context/archive/[slug]-[timestamp].json` for history
-5. **No breaking changes** — manual mode still works, orchestrator is optional
-
----
-
-## Implementation Checklist
-
-- [x] Create `context/video-context.json` template
-- [x] Create `yt-orchestrator/SKILL.md` (master orchestrator)
-- [x] Add Context Protocol to `yt-script/SKILL.md`
-- [x] Add Context Protocol to `yt-titres-seo/SKILL.md`
-- [x] Add Context Protocol to `yt-miniature/SKILL.md`
-- [x] Add Context Protocol to `yt-description/SKILL.md`
-- [x] Add Context Protocol to `yt-repurposing/SKILL.md`
-- [x] Add Context Protocol to `yt-veille/SKILL.md`
-- [x] Delete `yt-montage/` (replaced by better tooling)
-- [ ] Update `yt-analytics/SKILL.md` (Sprint 2)
-- [x] Implement cron job for `yt-veille` — daily scraping at 5h30 SGT
-- [x] SQLite database (veille.db) — channels, videos, snapshots tables
-- [x] Composite scoring (views abs 30%, velocity 25%, outlier 15%, views/subs 15%, engagement 15%)
-- [x] Tier-based channel weighting (Tier 1-3 + Non classé ; liste des chaînes suivies en refonte pour la niche crypto)
-- [x] Time decay for video freshness
-- [x] report.py — top 25 → Notion + JSON (context/veille-top25.json)
-- [x] Upgraded slide system for yt-script (responsive, animations, keyboard nav)
-- [x] Slide dictation mode ("slide après") + custom animation patterns library + Playwright visual check + `#N` deep-link (sept. 2026, formation offerte)
-- [x] Competitive analysis vs kostja94/marketing-skills (160+ skills) — enhanced yt-description, yt-miniature, yt-repurposing, yt-script to v1.1.0
-
----
-
-## Testing the v2.0
-
-**Quick Test**:
-```
-User: "Fais une vidéo sur comment acheter sa première crypto on-chain"
-
-Expected:
-1. yt-orchestrator detects Mode A
-2. Generates slug "premiere-crypto-on-chain"
-3. Spawns yt-script
-4. Spawns yt-titres-seo, yt-miniature, yt-description in parallel
-5. Presents validation summary
-6. Awaits "OK" from user
-7. Spawns yt-repurposing
-8. Presents final recap
-```
-
-All intermediate data should be visible in `context/video-context.json`.
-
----
-
-## Maintenance & GitHub
-
-### When Pushing to GitHub
-
-**Important:** Every time you make architecture changes and push to GitHub, **update README.md** to keep documentation in sync.
-
-**Checklist before `git push`:**
-
-- [ ] Architecture changes? → Update [README.md](README.md) sections:
-  - "The Pipeline" (if phases change)
-  - "Skills Included" (if skills are added/removed)
-  - "Data Flow Example" (if context structure changes)
-
-- [ ] New skill added? → Add row to "Skills Included" table in README
-
-- [ ] Phase changes or orchestrator logic modified? → Update "The Pipeline" diagram in README
-
-- [ ] New features? → Update "Key Features" checklist
-
-- [ ] Sprint 2 progress? → Update "Sprint 2 (Planned)" section
-
-**Example commit message:**
-```
-git commit -m "feat: Add new Phase X
-
-- Modified yt-orchestrator/SKILL.md (Phase X logic)
-- Updated CLAUDE.md (architecture section)
-- Updated README.md (pipeline diagram + data flow)"
-```
-
-### README Structure
-
-The README.md is the **public-facing documentation**. Keep these sections up-to-date:
-- Quick Start (if triggers change)
-- Architecture v2.0 → The Pipeline (if phases change)
-- Skills Included (if skills change)
-- Data Flow Example (if context.json structure changes)
-- Key Features (if capabilities change)
-- Sprint 2 (if roadmap updates)
-
-CLAUDE.md is the **internal guidance** for developers. It's more detailed but README is what users see first.
+- Les skills installés (`~/.claude/skills/yt-*`) sont des jonctions vers ce repo : une modif ici est active tout de suite.
+- Ajout/suppression de skill ou changement de phase → mettre à jour ce fichier et `README.md`.
