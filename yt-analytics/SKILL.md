@@ -40,11 +40,14 @@ La règle « exécuter sur le VPS » ne concerne que les scripts qui lisent `vei
 - `parse_youtube_csv.py` : convertit l'export CSV de YouTube Studio (français ou anglais) en JSON `analytics_<nom>.json` à côté du CSV.
 - `generate_report.py` : à partir d'un ZIP ou CSV de YouTube Studio, génère le rapport HTML d'une vidéo avec les écarts depuis la dernière analyse, et met à jour `history/<slug>.json` (champ `period` : `crypto` pour tout nouveau fichier, `ia` pour les anciens).
 - `generate_dashboard.py` : agrège les vidéos de `history/` dans `outputs/dashboard.html`, une section par période (crypto, puis IA), jamais de moyenne commune ; `youtube-totals.json` est exclu des moyennes.
-- `analyze.py` : via l'API YouTube Analytics (OAuth `token.json`), analyse les 4 dernières vidéos et génère `outputs/analytics-<date>.html`, puis l'ouvre dans le navigateur (Mac et Windows). Sans CTR officiel, il affiche « n/d ».
+- `analyze.py` : via l'API YouTube Analytics (OAuth `token.json`), analyse les 4 dernières vidéos (`--count`) et génère `outputs/analytics-<date>.html` + `.json`, à la charte, avec une vue d'ensemble de la chaîne. `--notes <json>` injecte l'analyse écrite par Claude (ce qui a marché / pas marché, verdict, recommandations) ; `--from-json` régénère sans appeler l'API. Le CTR vient de `history/studio-ctr.json` ; sans lui, « n/d ».
+- `studio_ctr.py` (`uv run yt-analytics/studio_ctr.py`) : **la seule source du CTR et des impressions**, qu'aucune API Google ne fournit (vérifié le 2026-10-13). Pilote YouTube Studio dans un Chrome dédié (profil `.studio-profile/`, connexion une fois avec le compte de la chaîne), lit « Thumbnail impressions » et « Thumbnail click-through rate » depuis la mise en ligne, écrit `history/studio-ctr.json` et le `ctr_official` du dernier JSON. Si Studio change, le script dit « CTR introuvable » et laisse une capture dans `outputs/studio-debug/`.
 - `feedback_analyzer.py` : relie les fiches de `context/archive/` (`_meta.slug` → `_meta.youtube_video_id`, `_meta.published_at`) aux performances via l'API et met à jour `memory/choices.json` et `memory/lessons.json` des skills (titres, miniature, script, veille). L'index de performance d'une vidéo se calcule contre la médiane de **sa** période ; une vidéo publiée depuis moins de 4 jours est ignorée (retard de l'API). À relancer régulièrement.
 - `auth.py` : (ré)autorisation OAuth, à lancer quand les deux scripts précédents répondent « jeton refusé » ; réécrit `token.json` (hors git, comme `client_secret.json`).
 
-Dépendances : `pip install -r yt-analytics/requirements.txt`. Mode d'emploi de l'export CSV : `yt-analytics/inputs/README.md`.
+Dépendances : `pip install -r yt-analytics/requirements.txt` ; `studio_ctr.py` tourne avec `uv` (Playwright déclaré dans le script) et le Chrome installé. Mode d'emploi de l'export CSV : `yt-analytics/inputs/README.md`.
+
+Séquence habituelle : `python3 yt-analytics/analyze.py --no-open` → `uv run yt-analytics/studio_ctr.py` → écrire les notes → `python3 yt-analytics/analyze.py --from-json --notes <notes.json>`.
 
 ## Workflow
 
@@ -130,7 +133,7 @@ Les anciens seuils venaient de la niche IA et ne sont pas transposables.
 
 ## Règles
 
-- **CTR** : uniquement celui de YouTube Studio (ou de l'API officielle). Sinon, afficher « n/d ». Jamais de CTR estimé, calculé ou déduit.
+- **CTR** : uniquement celui de YouTube Studio, lu par `studio_ctr.py` ou par l'export CSV. Sinon, afficher « n/d ». Jamais de CTR estimé, calculé ou déduit. Un CTR élevé avec peu d'impressions est un problème de distribution, pas de miniature : toujours lire les deux ensemble.
 - Ne jamais seulement répéter les chiffres : toujours le pourquoi et le « et donc ».
 - Pas de recommandation sans donnée derrière.
 - Honnête : un échec est dit et expliqué.

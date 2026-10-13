@@ -15,3 +15,7 @@ yt-shorts-montage/projects/**/source/*.wav
 context/runs/*/
 context/veille-top*.json
 .DS_Store
+
+# YouTube Studio : profil Chrome du script studio_ctr.py (session connectée) et captures de debug
+yt-analytics/.studio-profile/
+yt-analytics/outputs/studio-debug/

@@ -210,6 +210,19 @@ def format_duration(seconds):
 
 
 MIN_AGE_DAYS = 4  # retard de l'API YouTube Analytics : avant ça, une vidéo remonte 0 ou 1 vue
+STUDIO_CTR = SCRIPT_DIR / "history" / "studio-ctr.json"  # écrit par studio_ctr.py (YouTube Studio, seule source du CTR)
+PERIOD_LABEL = {"lifetime": "depuis la mise en ligne", "default": "28 derniers jours"}
+
+
+def studio_ctr_for(video_id):
+    """Dernière lecture Studio pour cette vidéo, ou None."""
+    if not STUDIO_CTR.exists():
+        return None
+    entries = json.loads(STUDIO_CTR.read_text(encoding="utf-8")).get(video_id) or []
+    if not entries:
+        return None
+    e = entries[-1]
+    return {"impressions": e["impressions"], "ctr": e["ctr"], "source": "YouTube Studio", "period": e["period"], "fetched_at": e["fetched_at"]}
 
 
 def age_days(published_at):
@@ -244,6 +257,7 @@ def generate_html(videos_data, channel_traffic, notes=None):
     max_views = max(views_list) if views_list else 0
     max_ret = max((v["metrics"]["retention_pct"] for v in reliable), default=0)
     max_subs = max((v["metrics"]["subscribers_gained"] for v in reliable), default=0)
+    max_ctr = max((v["ctr_official"]["ctr"] for v in reliable if v.get("ctr_official")), default=None)
 
     def verdict_badge(v):
         n = notes.get("videos", {}).get(v["id"], {})
@@ -262,9 +276,10 @@ def generate_html(videos_data, channel_traffic, notes=None):
         idx = round(m["views"] / median_views, 2) if (median_views and not is_fresh) else None
         conv = round(m["subscribers_gained"] / m["views"] * 100, 1) if m["views"] else 0
         like_rate = round(m["likes"] / m["views"] * 100, 1) if m["views"] else 0
-        ctr_html = (f"""<div class="metric"><div class="metric-label">CTR</div><div class="metric-value">{v['ctr_official']['ctr']}%</div><div class="metric-sub">{v['ctr_official']['impressions']:,} impressions</div></div>"""
-                    if v.get("ctr_official") else
-                    """<div class="metric"><div class="metric-label">CTR</div><div class="metric-value muted">n/d</div><div class="metric-sub">export YouTube Studio requis</div></div>""")
+        c = v.get("ctr_official")
+        ctr_html = (f"""<div class="metric{' best' if c['ctr'] == max_ctr else ''}"><div class="metric-label">CTR</div><div class="metric-value">{c['ctr']}%</div><div class="metric-sub">{c['impressions']:,} impressions · {PERIOD_LABEL.get(c.get('period'), '')}</div></div>"""
+                    if c else
+                    """<div class="metric"><div class="metric-label">CTR</div><div class="metric-value muted">n/d</div><div class="metric-sub">lance studio_ctr.py</div></div>""")
         if is_fresh:
             body = f"""
       <div class="fresh">Publiée il y a {age_days(v['published_at'])} jour(s) : l'API a 2 à 3 jours de retard, ces chiffres ne veulent encore rien dire. Hors moyennes.</div>"""
@@ -418,8 +433,24 @@ def main():
     ap.add_argument("--count", type=int, default=4, help="nombre de vidéos (défaut 4)")
     ap.add_argument("--notes", help="JSON d'analyse écrit par Claude : {overview, videos:{<id>:{worked[],failed[],verdict,verdict_label,verdict_kind}}, recommendations:[{title,based_on,action,impact}]}")
     ap.add_argument("--no-open", action="store_true", help="ne pas ouvrir le navigateur")
+    ap.add_argument("--from-json", action="store_true", help="régénérer le rapport depuis le dernier outputs/analytics-<date>.json, sans appeler l'API")
     args = ap.parse_args()
     notes = json.loads(Path(args.notes).read_text(encoding="utf-8")) if args.notes else None
+
+    if args.from_json:
+        files = sorted(OUTPUTS_DIR.glob("analytics-????-??-??.json"))
+        if not files:
+            sys.exit("Aucun outputs/analytics-<date>.json à relire.")
+        data = json.loads(files[-1].read_text(encoding="utf-8"))
+        for v in data["videos"]:
+            v["ctr_official"] = studio_ctr_for(v["id"]) or v.get("ctr_official")
+        html = generate_html(data["videos"], data["channel_traffic"], notes)
+        output_file = files[-1].with_suffix(".html")
+        output_file.write_text(html, encoding="utf-8")
+        print(f"Rapport régénéré depuis {files[-1].name} : {output_file}")
+        if not args.no_open:
+            webbrowser.open(output_file.resolve().as_uri())
+        return
 
     if not TOKEN_PATH.exists():
         print("Erreur: token.json introuvable. Lance d'abord l'autorisation OAuth.")
@@ -465,7 +496,7 @@ def main():
             "thumbnail": v["thumbnail"],
             "metrics": metrics,
             "traffic_sources": traffic,
-            "ctr_official": ctr_data.get(v["id"]),
+            "ctr_official": studio_ctr_for(v["id"]) or ctr_data.get(v["id"]),
         }
 
         videos_data.append(entry)

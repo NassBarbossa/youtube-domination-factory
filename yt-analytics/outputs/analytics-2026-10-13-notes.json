@@ -1,17 +1,18 @@
 {
-  "overview": "Quatre vidéos en huit jours sur une chaîne neuve : trop tôt pour parler de tendance, on compare chaque vidéo à la médiane de la chaîne (125 vues). Le point qui saute aux yeux : presque aucune découverte. Les vues viennent des abonnés (32 %), de la playlist formation (26 %) et de la page de la chaîne (14 %). La recherche YouTube pèse 3 % et les suggestions n'apparaissent même pas. La chaîne tourne sur sa base existante, YouTube ne la pousse pas encore à des inconnus.",
+  "overview": "Quatre vidéos en huit jours sur une chaîne neuve : trop tôt pour parler de tendance, on compare chaque vidéo à la médiane de la chaîne (125 vues). Les CTR sont élevés, entre 10 et 16 % sur les trois vidéos fiables, là où YouTube situe la moitié des chaînes entre 2 et 10 %. Les miniatures et les titres font cliquer. Ce qui manque, ce sont les impressions : 328 à 585 par vidéo depuis la mise en ligne. YouTube montre très peu les vidéos, et surtout à des gens qui connaissent déjà Nass : abonnés 32 %, playlist 26 %, page de la chaîne 14 % des vues, recherche 3 %. Le problème est la distribution, pas le clic.",
   "videos": {
     "njfEJFd7hQ8": {
       "verdict_label": "réussite",
       "verdict_kind": "réussite",
       "worked": [
+        "CTR de 16 % sur 426 impressions : une personne sur six qui voit la miniature clique. Le billet déchiré 40/30/15/15 et le titre font leur travail.",
         "Deux fois la médiane de la chaîne, et la meilleure machine à abonnés : 16 abonnés pour 248 vues, soit 6,5 % des spectateurs. Le sujet « pourquoi investir » parle à l'avatar qui n'a pas encore commencé.",
         "15 likes pour 248 vues (6 %), le meilleur ratio des quatre.",
         "37 % des vues arrivent par la playlist : la formation en trois vidéos fonctionne comme un parcours, les gens entrent par la porte 1."
       ],
       "failed": [
         "Rétention 26,8 % : en moyenne, 2 min 32 regardées sur 9 min 29. Les trois quarts de la vidéo ne sont pas vus. À localiser sur la courbe de rétention dans YouTube Studio.",
-        "Recherche YouTube quasi absente dans les sources : le titre et la miniature n'attirent personne de l'extérieur pour l'instant."
+        "426 impressions seulement depuis la mise en ligne : la miniature est bonne, mais YouTube la montre peu. Le plafond de la vidéo, c'est sa distribution."
       ],
       "verdict": "Réussite relative pour une première vidéo : c'est celle qui convertit le mieux en abonnés, mais elle n'est vue que par des gens qui connaissent déjà Nass."
     },
@@ -19,11 +20,13 @@
       "verdict_label": "moyenne",
       "verdict_kind": "moyenne",
       "worked": [
+        "585 impressions, le plus gros volume des quatre : YouTube a davantage montré cette vidéo que la première.",
         "La meilleure rétention des quatre : 29,7 %, soit 3 min 18 par vue. Le contenu DCA tient mieux que la vidéo 1.",
         "7 abonnés pour 119 vues (5,9 %), conversion presque identique à la vidéo 1 : le public qui reste est le bon.",
         "Playlist 31 % + écran de fin 2,5 % : l'enchaînement vidéo 1 → vidéo 2 marche."
       ],
       "failed": [
+        "CTR 9,9 %, le plus bas des trois vidéos fiables : à volume égal, la miniature « Utilise cette méthode » sur mur de billets fait moins cliquer que le billet déchiré de la vidéo 1. C'est la première comparaison utile pour yt-miniature.",
         "Deux fois moins de vues que la vidéo 1 : classique sur une vidéo 2 de série, mais 44 % des vues viennent des abonnés, donc presque aucun nouveau venu.",
         "Zéro partage."
       ],
@@ -34,6 +37,7 @@
       "verdict_label": "moyenne",
       "verdict_kind": "moyenne",
       "worked": [
+        "CTR 10,7 % sur 328 impressions : correct pour un replay de live au titre peu vendeur.",
         "4 partages, le record de la chaîne, et 19 % des vues depuis des sites externes : le live circule hors YouTube, sans doute via Sadek et Telegram.",
         "6 abonnés pour 125 vues (4,8 %) : un format live qui convertit presque aussi bien que les vidéos éditées.",
         "5,6 % de recherche YouTube, la seule vidéo où la recherche pèse : « podcast investissement » et le nom de Sadek se cherchent."
@@ -47,14 +51,14 @@
   },
   "recommendations": [
     {
-      "title": "Aller chercher le CTR dans YouTube Studio avant de toucher aux miniatures",
-      "based_on": "L'API ne renvoie ni impressions ni CTR : les quatre cartes affichent « n/d ». Sans ce chiffre, impossible de savoir si le problème de découverte vient de la miniature ou de la distribution.",
-      "action": "YouTube Studio → Analytics → Télécharger (CSV) pour chaque vidéo, puis <code>python3 yt-analytics/parse_youtube_csv.py &lt;fichier&gt;</code> puis <code>generate_report.py</code> : le repo lit l'export français.",
-      "impact": "Un CTR réel par vidéo, et la première calibration des seuils de la chaîne."
+      "title": "Ne pas toucher aux miniatures, elles font cliquer : le manque est en amont",
+      "based_on": "CTR 16 %, 9,9 % et 10,7 % depuis la mise en ligne, pour 426, 585 et 328 impressions. Une vidéo à 16 % de CTR qui ne fait que 248 vues n'a pas un problème de miniature, elle a un problème d'exposition.",
+      "action": "Garder la charte miniatures validée. Relancer <code>uv run yt-analytics/studio_ctr.py</code> chaque semaine pour suivre le CTR et les impressions, et lire la part d'impressions « YouTube recommending your content » dans Studio (48,8 % sur la vidéo 1).",
+      "impact": "Une décision de miniature prise sur des chiffres, et une courbe d'impressions à faire monter plutôt qu'un CTR à chasser."
     },
     {
       "title": "Donner à YouTube une raison de pousser la prochaine vidéo",
-      "based_on": "Recherche 2,8 % du trafic, suggestions absentes, 32 % abonnés + 26 % playlist : les quatre vidéos vivent sur la base existante.",
+      "based_on": "Recherche 2,8 % du trafic, 328 à 585 impressions par vidéo : les quatre vidéos vivent sur la base existante, YouTube ne les propose pas encore à des inconnus.",
       "action": "Pour la première vidéo hors série, passer par yt-titres-seo avec un mot-clé réellement tapé par l'avatar (« acheter crypto hors exchange », « première crypto on-chain »), et viser un titre qui se comprend sans connaître Nass.",
       "impact": "Une part de recherche et de suggestions qui décolle de zéro ; c'est le seul levier de croissance au-delà des abonnés actuels."
     },

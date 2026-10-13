@@ -189,6 +189,7 @@ Get-ChildItem . -Directory -Filter 'yt-*' | Where-Object { Test-Path "$($_.FullN
 | `.env` (racine) | `OPENROUTER_API_KEY=…` pour générer les images de miniatures | clé OpenRouter |
 | `yt-analytics/client_secret.json` | identifiants OAuth de l'API YouTube | console Google Cloud, application de bureau |
 | `yt-analytics/token.json` | jeton OAuth | `python3 yt-analytics/auth.py` |
+| `yt-analytics/.studio-profile/` | session Chrome pour lire le CTR dans Studio | se connecter une fois au premier `uv run yt-analytics/studio_ctr.py` |
 
 Outils utiles : Python 3.10+, `uv` (transcripts), Node + Playwright + Chrome (vérification des slides), HyperFrames (Shorts).
 
@@ -200,7 +201,7 @@ Les skills sont du Markdown. Autour, un peu de Python, local, pour les tâches r
 
 | Dossier | Scripts | Installer |
 |---|---|---|
-| `yt-analytics/` | `parse_youtube_csv.py` (export YouTube Studio FR ou EN), `generate_report.py`, `generate_dashboard.py`, `analyze.py` et `feedback_analyzer.py` (API YouTube Analytics), `auth.py` | `pip install -r yt-analytics/requirements.txt` |
+| `yt-analytics/` | `analyze.py` (rapport à la charte depuis l'API), `studio_ctr.py` (CTR et impressions lus dans YouTube Studio, qu'aucune API ne donne), `feedback_analyzer.py` (relie les stats aux choix), `parse_youtube_csv.py`, `generate_report.py`, `generate_dashboard.py`, `auth.py` | `pip install -r yt-analytics/requirements.txt`, `uv` pour `studio_ctr.py` |
 | `yt-miniature/scripts/` | `generate.py` (OpenRouter), `composite.py` (incrustation fond vert), `overlay.py` (texte), `banner.py`, `pfp.py`, `check.py` (contrôle 256 px) | `pip install -r yt-miniature/scripts/requirements.txt` |
 | `yt-veille/scripts/` | veille automatique, en pause (SQLite sur le VPS, scoring, rapport), 58 tests | `pip install -r yt-veille/scripts/requirements.txt` |
 | `yt-transcript/scripts/` | `get_transcript.py` | `uv` (dépendance déclarée dans le script) |

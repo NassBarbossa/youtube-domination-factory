@@ -85,6 +85,7 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [x] Dépendances épinglées : `yt-veille/scripts`, `yt-analytics`, `yt-miniature/scripts` (2026-10-13).
 - [x] `context/backlog.json` vidé, les 81 sujets IA sont dans `context/archive/backlog-ia-2026-03-31.json` (2026-10-13).
 - [x] `yt-miniature/scripts/` (dont `composite.py`) et les polices `yt-miniature/assets/fonts/` ajoutés au repo (2026-10-13).
+- [x] CTR automatisé (2026-10-13) : `studio_ctr.py` lit YouTube Studio avec Playwright, aucune API ne fournit impressions/CTR (testé). Premier rapport : CTR 16 % / 9,9 % / 10,7 %, 328 à 585 impressions.
 - [x] OAuth YouTube refait le 2026-10-13 avec le compte de la nouvelle chaîne (ajouté comme utilisateur test de l'app OAuth « Claude Code », projet `gen-lang-client-0972819873`). `feedback_analyzer.py` tourne ; relancer quand `investissement-on-chain` aura plus de 4 jours.
 - [ ] Repo lourd (110 Mo de `.git`, 131 Mo de fichiers suivis dont ~100 Mo de vidéos dans `shows/`) : Git LFS n'est installé sur aucune machine. Décision de Nass : installer LFS des deux côtés, ou sortir les rendus du repo.
 - [ ] `scripts/export_script.py` : export .docx figé sur un script IA de mars (contenu en dur). À supprimer ou à généraliser.

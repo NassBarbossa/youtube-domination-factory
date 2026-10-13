@@ -23,7 +23,12 @@
           "percent": 100.0
         }
       ],
-      "ctr_official": null
+      "ctr_official": {
+        "impressions": 73,
+        "ctr": 34.3,
+        "source": "YouTube Studio",
+        "period": "lifetime"
+      }
     },
     {
       "id": "ZjNa7wxwFkM",
@@ -77,7 +82,12 @@
           "percent": 0.8
         }
       ],
-      "ctr_official": null
+      "ctr_official": {
+        "impressions": 328,
+        "ctr": 10.7,
+        "source": "YouTube Studio",
+        "period": "lifetime"
+      }
     },
     {
       "id": "FVajDtrHsPU",
@@ -136,7 +146,12 @@
           "percent": 0.8
         }
       ],
-      "ctr_official": null
+      "ctr_official": {
+        "impressions": 585,
+        "ctr": 9.9,
+        "source": "YouTube Studio",
+        "period": "lifetime"
+      }
     },
     {
       "id": "njfEJFd7hQ8",
@@ -190,7 +205,12 @@
           "percent": 1.2
         }
       ],
-      "ctr_official": null
+      "ctr_official": {
+        "impressions": 426,
+        "ctr": 16.0,
+        "source": "YouTube Studio",
+        "period": "lifetime"
+      }
     }
   ],
   "channel_traffic": [

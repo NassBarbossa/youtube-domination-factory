@@ -14,7 +14,7 @@ En deux lignes : on achète les cryptos en dehors des échanges, on achète les 
 
 Le repo vit à `~/youtube-domination-factory` (Mac) ou `C:\Users\User\youtube-domination-factory` (Windows). Les skills désignent cette racine par `{repo}` et chaque fichier redonne les deux emplacements : une session Claude lit le bon chemin quelle que soit la machine. Les chemins relatifs partent de la racine. Les skills installés (`~/.claude/skills/yt-*`) sont des liens (symlinks Mac, jonctions Windows) vers ce repo : une modif ici est active tout de suite.
 
-Hors git, à recréer sur chaque machine : `.env` à la racine (`OPENROUTER_API_KEY`), `yt-analytics/client_secret.json` et `yt-analytics/token.json` (OAuth YouTube, `python3 yt-analytics/auth.py` pour le refaire, en choisissant le compte de la nouvelle chaîne ; il doit être « utilisateur test » de l'application OAuth dans la console Google Cloud).
+Hors git, à recréer sur chaque machine : `yt-analytics/.studio-profile/` (session Chrome de `studio_ctr.py`, connexion une fois), `.env` à la racine (`OPENROUTER_API_KEY`), `yt-analytics/client_secret.json` et `yt-analytics/token.json` (OAuth YouTube, `python3 yt-analytics/auth.py` pour le refaire, en choisissant le compte de la nouvelle chaîne ; il doit être « utilisateur test » de l'application OAuth dans la console Google Cloud).
 
 ## Skills
 
@@ -58,7 +58,7 @@ Les vidéos crypto sont sur une **nouvelle chaîne, Nassin Crypto** ; l'ancienne
 
 | Dossier | Scripts | Dépendances |
 |---|---|---|
-| `yt-analytics/` | `parse_youtube_csv.py` (export FR ou EN), `generate_report.py`, `generate_dashboard.py`, `analyze.py` et `feedback_analyzer.py` (API, OAuth), `auth.py` | `yt-analytics/requirements.txt` |
+| `yt-analytics/` | `parse_youtube_csv.py` (export FR ou EN), `generate_report.py`, `generate_dashboard.py`, `analyze.py` et `feedback_analyzer.py` (API, OAuth), `auth.py`, `studio_ctr.py` (CTR et impressions lus dans YouTube Studio via Playwright, `uv run`) | `yt-analytics/requirements.txt`, uv |
 | `yt-miniature/scripts/` | `generate.py` (OpenRouter, stdlib), `composite.py`, `overlay.py`, `banner.py`, `pfp.py`, `check.py` | `yt-miniature/scripts/requirements.txt` (Pillow) |
 | `yt-veille/scripts/` | veille automatique, tests `pytest` (58 tests) | `yt-veille/scripts/requirements.txt` |
 | `yt-transcript/scripts/` | `get_transcript.py` (`uv run`, dépendance inline) | uv |
