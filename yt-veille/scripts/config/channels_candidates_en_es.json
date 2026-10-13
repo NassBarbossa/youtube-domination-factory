@@ -251,6 +251,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCoOae5nYA7VqaXzerajD0lg",
+   "name": "Ali Abdaal",
+   "handle": "@aliabdaal",
+   "lang": "en",
+   "subs": 6700000,
+   "tier": "Tier 1",
+   "median_views": 32023,
+   "max_views": 229778,
+   "videos_per_month": 22.5,
+   "days_since_last": 0,
+   "crypto_share": 0.0,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UCGRryxFxjXbVAtBPE9EbyMg",
    "name": "Joe Bartolozzi",
    "handle": "@JoeBartolozzi",
@@ -384,6 +403,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCKDjjeeBmdaiicey2nImISw",
+   "name": "Brasil Paralelo",
+   "handle": "@brasilparalelo",
+   "lang": "es",
+   "subs": 5290000,
+   "tier": "Tier 1",
+   "median_views": 33252,
+   "max_views": 457782,
+   "videos_per_month": 150.0,
+   "days_since_last": 0,
+   "crypto_share": 0.0,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UCUBIrDsIVzRpKsClMlSlTpQ",
    "name": "BBC News Mundo",
    "handle": "@BBCMundo",
@@ -506,6 +544,25 @@
    "max_views": 70467,
    "videos_per_month": 0.4,
    "days_since_last": 86,
+   "crypto_share": 0.0,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
+   "channel_id": "UCr3cBLTYmIK9kY0F_OdFWFQ",
+   "name": "Casually Explained",
+   "handle": "@CasuallyExplained",
+   "lang": "en",
+   "subs": 4210000,
+   "tier": "Tier 1",
+   "median_views": 85130,
+   "max_views": 1224985,
+   "videos_per_month": 23.7,
+   "days_since_last": 13,
    "crypto_share": 0.0,
    "flags": [
     "pas centré crypto"
@@ -811,9 +868,7 @@
    "videos_per_month": 64.3,
    "days_since_last": 0,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": "déjà référencée",
    "search_hits": 20,
    "seed": "Coin Bureau Podcast"
@@ -1076,9 +1131,7 @@
    "videos_per_month": 3.2,
    "days_since_last": 11,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 8,
    "seed": "Brian Jung"
@@ -1406,6 +1459,45 @@
    "seed": null
   },
   {
+   "channel_id": "UCTQuKo8v0PaPCvk5aRxc_Yg",
+   "name": "Charlie Chang",
+   "handle": "@CharlieChang",
+   "lang": "en",
+   "subs": 1460000,
+   "tier": "Tier 1",
+   "median_views": 13771,
+   "max_views": 302320,
+   "videos_per_month": 5.5,
+   "days_since_last": 6,
+   "crypto_share": 0.0,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
+   "channel_id": "UCoUxsWakJucWg46KW5RsvPw",
+   "name": "Financial Times",
+   "handle": "@FinancialTimes",
+   "lang": "en",
+   "subs": 1460000,
+   "tier": "Tier 1",
+   "median_views": 6201,
+   "max_views": 417664,
+   "videos_per_month": 75.0,
+   "days_since_last": 0,
+   "crypto_share": 0.0,
+   "flags": [
+    "levier/trading",
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UCo7a6riBFJ3tkeHjvkXPn1g",
    "name": "CNBC International",
    "handle": "@CNBCi",
@@ -1591,6 +1683,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCEc3bAbOtPEUIgpNkViF_PQ",
+   "name": "Karlton Dennis",
+   "handle": "@karltondennis",
+   "lang": "en",
+   "subs": 1140000,
+   "tier": "Tier 1",
+   "median_views": 2024,
+   "max_views": 106039,
+   "videos_per_month": 90.0,
+   "days_since_last": 1,
+   "crypto_share": 0.07,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UC_U6Wft5UemcWBBK2jfRXlA",
    "name": "Nicolas Palacios",
    "handle": "@magonicolas",
@@ -1602,9 +1713,7 @@
    "videos_per_month": 10.7,
    "days_since_last": 1,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -1629,6 +1738,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCL_v4tC26PvOFytV1_eEVSg",
+   "name": "Marko - WhiteBoard Finance",
+   "handle": "@WhiteBoardFinance",
+   "lang": "en",
+   "subs": 1030000,
+   "tier": "Tier 1",
+   "median_views": 15801,
+   "max_views": 164007,
+   "videos_per_month": 4.1,
+   "days_since_last": 21,
+   "crypto_share": 0.07,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UCsYYksPHiGqXHPoHI-fm5sg",
    "name": "Whiteboard Crypto",
    "handle": "@WhiteboardCrypto",
@@ -1641,7 +1769,6 @@
    "days_since_last": 512,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -1660,9 +1787,7 @@
    "videos_per_month": 45.0,
    "days_since_last": 1,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": "déjà référencée",
    "search_hits": 10,
    "seed": "Benjamin Cowen"
@@ -1679,9 +1804,7 @@
    "videos_per_month": 22.5,
    "days_since_last": 0,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -1903,9 +2026,7 @@
    "videos_per_month": 10.2,
    "days_since_last": 5,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 2,
    "seed": "Mark Moss"
@@ -2179,9 +2300,7 @@
    "videos_per_month": 7.9,
    "days_since_last": 4,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 2,
    "seed": "VoskCoin"
@@ -2353,6 +2472,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCCDu1S_OmR5XtM-AzL-_U1Q",
+   "name": "Jason Graystone",
+   "handle": "@JasonGraystone",
+   "lang": "en",
+   "subs": 592000,
+   "tier": "Tier 1",
+   "median_views": 19053,
+   "max_views": 67498,
+   "videos_per_month": 25.0,
+   "days_since_last": 1,
+   "crypto_share": 0.13,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 2,
+   "seed": null
+  },
+  {
    "channel_id": "UC24n6DdP2hN1OcVKVVxy_sg",
    "name": "Serg Tech",
    "handle": "@SergTech",
@@ -2427,6 +2565,23 @@
    "status": null,
    "search_hits": 1,
    "seed": "JRNY Crypto"
+  },
+  {
+   "channel_id": "UCnPDCHW3809c93ngyYx9sDA",
+   "name": "Knightron Crypto",
+   "handle": "@KnightronCrypto",
+   "lang": "en",
+   "subs": 569000,
+   "tier": "Tier 1",
+   "median_views": 61953,
+   "max_views": 111234,
+   "videos_per_month": 6.9,
+   "days_since_last": 3,
+   "crypto_share": 0.73,
+   "flags": [],
+   "status": null,
+   "search_hits": 0,
+   "seed": "Knightron Crypto"
   },
   {
    "channel_id": "UCuFZFyNNRkf28k1ORbvhHAQ",
@@ -2824,9 +2979,7 @@
    "videos_per_month": 6.5,
    "days_since_last": 7,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 0,
    "seed": "Alessio Rastani"
@@ -2901,8 +3054,7 @@
    "days_since_last": 0,
    "crypto_share": 0.4,
    "flags": [
-    "levier/trading",
-    "pas centré crypto"
+    "levier/trading"
    ],
    "status": null,
    "search_hits": 0,
@@ -3238,6 +3390,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCJWCJCWOxBYSi5DhCieLOLQ",
+   "name": "aantonop",
+   "handle": "@aantonop",
+   "lang": "en",
+   "subs": 346000,
+   "tier": "Tier 2",
+   "median_views": 9368,
+   "max_views": 95545,
+   "videos_per_month": 1.1,
+   "days_since_last": 667,
+   "crypto_share": 0.67,
+   "flags": [
+    "inactive"
+   ],
+   "status": null,
+   "search_hits": 2,
+   "seed": "aantonop"
+  },
+  {
    "channel_id": "UCtXtIISRfjzyTzpkR5on4XQ",
    "name": "Conta Fiscal Asesorías",
    "handle": "@ContaFiscalAsesorías",
@@ -3326,6 +3497,23 @@
    "status": null,
    "search_hits": 1,
    "seed": null
+  },
+  {
+   "channel_id": "UCGDjpwZV-bU-sLSnhInCfKQ",
+   "name": "Satoshi Stacker",
+   "handle": "@stackersatoshi",
+   "lang": "en",
+   "subs": 332000,
+   "tier": "Tier 2",
+   "median_views": 13866,
+   "max_views": 23693,
+   "videos_per_month": 20.5,
+   "days_since_last": 0,
+   "crypto_share": 0.8,
+   "flags": [],
+   "status": null,
+   "search_hits": 0,
+   "seed": "Satoshi Stacker"
   },
   {
    "channel_id": "UCngIhBkikUe6e7tZTjpKK7Q",
@@ -3434,6 +3622,25 @@
    "seed": "Raoul Pal The Journey Man"
   },
   {
+   "channel_id": "UCHop-jpf-huVT1IYw79ymPw",
+   "name": "Chico Crypto",
+   "handle": "@ChicoCrypto",
+   "lang": "en",
+   "subs": 305000,
+   "tier": "Tier 2",
+   "median_views": 21835,
+   "max_views": 38382,
+   "videos_per_month": 0.7,
+   "days_since_last": 220,
+   "crypto_share": 0.93,
+   "flags": [
+    "inactive"
+   ],
+   "status": null,
+   "search_hits": 0,
+   "seed": "Chico Crypto"
+  },
+  {
    "channel_id": "UCEtlXZzzllBh9x-kEiENMLg",
    "name": "Tuttle Twins",
    "handle": "@TuttleTwins",
@@ -3481,9 +3688,7 @@
    "videos_per_month": 18.8,
    "days_since_last": 1,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 5,
    "seed": null
@@ -3517,9 +3722,7 @@
    "videos_per_month": 26.5,
    "days_since_last": 0,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 2,
    "seed": null
@@ -3979,7 +4182,6 @@
    "days_since_last": 230,
    "crypto_share": 0.4,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -4153,6 +4355,23 @@
    "status": null,
    "search_hits": 1,
    "seed": null
+  },
+  {
+   "channel_id": "UCd4Ys__EL_gbJrYq6JscrAw",
+   "name": "Cheeky Crypto",
+   "handle": "@CheekyCrypto",
+   "lang": "en",
+   "subs": 227000,
+   "tier": "Tier 2",
+   "median_views": 7907,
+   "max_views": 60824,
+   "videos_per_month": 64.3,
+   "days_since_last": 0,
+   "crypto_share": 0.93,
+   "flags": [],
+   "status": null,
+   "search_hits": 0,
+   "seed": "Cheeky Crypto"
   },
   {
    "channel_id": "UCw2NDyMltL29c3h4KkidOGg",
@@ -4478,9 +4697,7 @@
    "videos_per_month": 112.5,
    "days_since_last": 3,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 0,
    "seed": "CoinDesk"
@@ -4859,9 +5076,7 @@
    "videos_per_month": 450.0,
    "days_since_last": 0,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 5,
    "seed": null
@@ -4901,6 +5116,23 @@
    "status": null,
    "search_hits": 0,
    "seed": "Token Metrics"
+  },
+  {
+   "channel_id": "UCVcMN2cHlHw1Q7wkF2GR8SQ",
+   "name": "No Bs Crypto",
+   "handle": "@NoBsCryptoOfficial",
+   "lang": "en",
+   "subs": 161000,
+   "tier": "Tier 2",
+   "median_views": 31437,
+   "max_views": 47305,
+   "videos_per_month": 20.5,
+   "days_since_last": 2,
+   "crypto_share": 0.8,
+   "flags": [],
+   "status": null,
+   "search_hits": 7,
+   "seed": null
   },
   {
    "channel_id": "UCWfHVQvljwmIivf6dSI8Vzw",
@@ -5284,9 +5516,7 @@
    "videos_per_month": 4.0,
    "days_since_last": 5,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 4,
    "seed": "Coinbase"
@@ -5502,9 +5732,7 @@
    "videos_per_month": 18.8,
    "days_since_last": 3,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -5866,9 +6094,7 @@
    "videos_per_month": 45.0,
    "days_since_last": 1,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -5993,6 +6219,25 @@
    "videos_per_month": 10.5,
    "days_since_last": 7,
    "crypto_share": 0.13,
+   "flags": [
+    "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
+   "channel_id": "UCD-QkofF-bFBAcI83U8ZZeg",
+   "name": "Willie Howe",
+   "handle": "@WillieHowe",
+   "lang": "en",
+   "subs": 96200,
+   "tier": "Tier 3",
+   "median_views": 8636,
+   "max_views": 63062,
+   "videos_per_month": 2.9,
+   "days_since_last": 26,
+   "crypto_share": 0.0,
    "flags": [
     "pas centré crypto"
    ],
@@ -6276,9 +6521,7 @@
    "videos_per_month": 5.5,
    "days_since_last": 1,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 4,
    "seed": null
@@ -6513,9 +6756,7 @@
    "videos_per_month": 5.1,
    "days_since_last": 0,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 2,
    "seed": null
@@ -6858,9 +7099,7 @@
    "videos_per_month": 10.7,
    "days_since_last": 2,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -6896,9 +7135,7 @@
    "videos_per_month": 25.0,
    "days_since_last": 1,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 2,
    "seed": null
@@ -7337,9 +7574,7 @@
    "videos_per_month": 40.9,
    "days_since_last": 0,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -7373,9 +7608,7 @@
    "videos_per_month": 150.0,
    "days_since_last": 1,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -7412,8 +7645,7 @@
    "days_since_last": 0,
    "crypto_share": 0.47,
    "flags": [
-    "levier/trading",
-    "pas centré crypto"
+    "levier/trading"
    ],
    "status": null,
    "search_hits": 2,
@@ -7647,9 +7879,7 @@
    "videos_per_month": 16.1,
    "days_since_last": 2,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -7795,9 +8025,7 @@
    "videos_per_month": 3.2,
    "days_since_last": 12,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -7865,9 +8093,7 @@
    "videos_per_month": 3.6,
    "days_since_last": 1,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -7903,9 +8129,7 @@
    "videos_per_month": 112.5,
    "days_since_last": 0,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -7956,9 +8180,7 @@
    "videos_per_month": 50.0,
    "days_since_last": 0,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 0,
    "seed": "Dollar Cost Crypto"
@@ -8083,9 +8305,7 @@
    "videos_per_month": 10.5,
    "days_since_last": 5,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -8108,6 +8328,23 @@
    "seed": "Cripto Noticias Latinoamerica"
   },
   {
+   "channel_id": "UCbs3kIX9ddwnDmGEo3Mwbew",
+   "name": "On-Chain Mind",
+   "handle": "@OnChainMind",
+   "lang": "en",
+   "subs": 32400,
+   "tier": "Tier 3",
+   "median_views": 14159,
+   "max_views": 24763,
+   "videos_per_month": 4.5,
+   "days_since_last": 6,
+   "crypto_share": 0.93,
+   "flags": [],
+   "status": "déjà référencée",
+   "search_hits": 5,
+   "seed": null
+  },
+  {
    "channel_id": "UCLUIBbVtWiasoxR5tLNFPDg",
    "name": "Valora Analitik",
    "handle": "@ValoraAnalitik",
@@ -8121,6 +8358,25 @@
    "crypto_share": 0.0,
    "flags": [
     "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
+   "channel_id": "UCrpUyLzCJs6Y4bbPXsGJlng",
+   "name": "Shadow Atlas",
+   "handle": "@ShadowofAtlas",
+   "lang": "en",
+   "subs": 31700,
+   "tier": "Tier 3",
+   "median_views": 8427,
+   "max_views": 43489,
+   "videos_per_month": 1.7,
+   "days_since_last": 153,
+   "crypto_share": 0.73,
+   "flags": [
+    "inactive"
    ],
    "status": null,
    "search_hits": 1,
@@ -8379,7 +8635,6 @@
    "crypto_share": 0.4,
    "flags": [
     "levier/trading",
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -8485,9 +8740,7 @@
    "videos_per_month": 7.3,
    "days_since_last": 1,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -8756,7 +9009,6 @@
    "days_since_last": 178,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -8776,7 +9028,6 @@
    "days_since_last": 159,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -8817,6 +9068,25 @@
    ],
    "status": null,
    "search_hits": 2,
+   "seed": null
+  },
+  {
+   "channel_id": "UCMan3nbMSj5L6nHwnZ7bKgg",
+   "name": "Crypto Ro",
+   "handle": "@CryptoRoYT",
+   "lang": "en",
+   "subs": 20400,
+   "tier": "Tier 3",
+   "median_views": 1743,
+   "max_views": 4149,
+   "videos_per_month": 25.0,
+   "days_since_last": 0,
+   "crypto_share": 0.87,
+   "flags": [
+    "memecoins"
+   ],
+   "status": null,
+   "search_hits": 1,
    "seed": null
   },
   {
@@ -9074,6 +9344,25 @@
    "seed": null
   },
   {
+   "channel_id": "UCLst_s_K7mn2B40smyb3jTg",
+   "name": "Inicia Crypto",
+   "handle": "@iniciacrypto",
+   "lang": "es",
+   "subs": 17700,
+   "tier": "petite",
+   "median_views": 239,
+   "max_views": 1127,
+   "videos_per_month": 13.6,
+   "days_since_last": 8,
+   "crypto_share": 0.47,
+   "flags": [
+    "levier/trading"
+   ],
+   "status": null,
+   "search_hits": 3,
+   "seed": null
+  },
+  {
    "channel_id": "UCfGYXvf-b4rUdpnvdWE-RVw",
    "name": "Timo-Teca",
    "handle": "@Timo-Teca",
@@ -9140,9 +9429,7 @@
    "videos_per_month": 90.0,
    "days_since_last": 1,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -9254,7 +9541,6 @@
    "days_since_last": 562,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -9396,9 +9682,7 @@
    "videos_per_month": 3.4,
    "days_since_last": 2,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -9415,9 +9699,7 @@
    "videos_per_month": 3.2,
    "days_since_last": 25,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -9656,6 +9938,23 @@
    "seed": null
   },
   {
+   "channel_id": "UCVqhPlUu5Qql-JY24RZZ8Ng",
+   "name": "Clinton Donnelly, EA | Crypto Tax & Audit Expert",
+   "handle": "@TheClintonDonnellyShow",
+   "lang": "en",
+   "subs": 12000,
+   "tier": "petite",
+   "median_views": 270,
+   "max_views": 1365,
+   "videos_per_month": 21.4,
+   "days_since_last": 0,
+   "crypto_share": 0.47,
+   "flags": [],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UCPlmssCfAR0KjGbrveK0xFQ",
    "name": "Bitfinanzas TV",
    "handle": "@BitfinanzasTV",
@@ -9705,7 +10004,6 @@
    "days_since_last": 115,
    "crypto_share": 0.4,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -10079,7 +10377,6 @@
    "days_since_last": 919,
    "crypto_share": 0.4,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -10152,7 +10449,6 @@
    "days_since_last": 164,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -10244,9 +10540,7 @@
    "videos_per_month": 4.1,
    "days_since_last": 4,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -10525,9 +10819,7 @@
    "videos_per_month": 13.2,
    "days_since_last": 0,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -10671,7 +10963,6 @@
    "days_since_last": 266,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -11186,6 +11477,25 @@
    "seed": "Marfi Analiza"
   },
   {
+   "channel_id": "UCxK0Sgqs3rZYrm0o6shk_HA",
+   "name": "Arshmeister",
+   "handle": "@arshmeister21",
+   "lang": "en",
+   "subs": 3070,
+   "tier": "petite",
+   "median_views": 945,
+   "max_views": 1538,
+   "videos_per_month": 3.2,
+   "days_since_last": 295,
+   "crypto_share": 0.8,
+   "flags": [
+    "inactive"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UChmyDYfJXg_sHQzRi6KGNGg",
    "name": "Jedu",
    "handle": "@jedu_youtube",
@@ -11408,6 +11718,26 @@
    "seed": null
   },
   {
+   "channel_id": "UCMEyWuESPR0KNpYaemtJusw",
+   "name": "MyFIntelligence",
+   "handle": "@myfintelligence3082",
+   "lang": "en",
+   "subs": 2060,
+   "tier": "petite",
+   "median_views": 2786,
+   "max_views": 67086,
+   "videos_per_month": 0.8,
+   "days_since_last": 1552,
+   "crypto_share": 0.07,
+   "flags": [
+    "pas centré crypto",
+    "inactive"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
    "channel_id": "UCQO9TTjm1hreMd6wmAMZIZw",
    "name": "Investing with MattieIce",
    "handle": "@InvestingwithMattieIce",
@@ -11456,7 +11786,6 @@
    "days_since_last": 446,
    "crypto_share": 0.43,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -11497,6 +11826,26 @@
    "flags": [],
    "status": null,
    "search_hits": 2,
+   "seed": null
+  },
+  {
+   "channel_id": "UCOrRorf3zxwq5hsQ40XcGjQ",
+   "name": "Old School Wealth",
+   "handle": "@oldschoolwealth",
+   "lang": "en",
+   "subs": 1880,
+   "tier": "petite",
+   "median_views": 910,
+   "max_views": 24505,
+   "videos_per_month": 0.8,
+   "days_since_last": 404,
+   "crypto_share": 0.07,
+   "flags": [
+    "pas centré crypto",
+    "inactive"
+   ],
+   "status": null,
+   "search_hits": 1,
    "seed": null
   },
   {
@@ -11550,7 +11899,6 @@
    "crypto_share": 0.47,
    "flags": [
     "levier/trading",
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -11608,9 +11956,7 @@
    "videos_per_month": 12.9,
    "days_since_last": 0,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -11663,9 +12009,7 @@
    "videos_per_month": 5.8,
    "days_since_last": 84,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -11683,7 +12027,6 @@
    "days_since_last": 316,
    "crypto_share": 0.47,
    "flags": [
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -12001,9 +12344,7 @@
    "videos_per_month": 3.5,
    "days_since_last": 0,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -12170,9 +12511,7 @@
    "videos_per_month": 5.3,
    "days_since_last": 63,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -12394,9 +12733,7 @@
    "videos_per_month": 2.9,
    "days_since_last": 25,
    "crypto_share": 0.47,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 4,
    "seed": null
@@ -12505,7 +12842,6 @@
    "crypto_share": 0.47,
    "flags": [
     "levier/trading",
-    "pas centré crypto",
     "inactive"
    ],
    "status": null,
@@ -12618,9 +12954,7 @@
    "videos_per_month": 1.0,
    "days_since_last": 1,
    "crypto_share": 0.4,
-   "flags": [
-    "pas centré crypto"
-   ],
+   "flags": [],
    "status": null,
    "search_hits": 1,
    "seed": null
@@ -12712,6 +13046,25 @@
    "crypto_share": 0.33,
    "flags": [
     "pas centré crypto"
+   ],
+   "status": null,
+   "search_hits": 1,
+   "seed": null
+  },
+  {
+   "channel_id": "UCXqQibevaffjlvAAnNycnAw",
+   "name": "Kevin Bat",
+   "handle": "@kevinbat4477",
+   "lang": "en",
+   "subs": 2,
+   "tier": "petite",
+   "median_views": 5,
+   "max_views": 19,
+   "videos_per_month": null,
+   "days_since_last": 1411,
+   "crypto_share": 1.0,
+   "flags": [
+    "inactive"
    ],
    "status": null,
    "search_hits": 1,
