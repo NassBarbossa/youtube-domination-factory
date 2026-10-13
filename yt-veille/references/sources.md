@@ -19,6 +19,8 @@ Liste complète, tiers et IDs : `scripts/config/channels.json` (40 chaînes acti
 - **US** : Coin Bureau, Altcoin Daily, Lark Davis (Tier 1) ; Bankless, Benjamin Cowen, Raoul Pal, On-Chain Mind (Tier 2) ; EllioTrades, Ivan on Tech, The Defiant, Checkonchain, 99Bitcoins (Tier 3)
 - **Exclues** (trading à levier / live trading) : Crypto Banter, Merov Crypto, Benjamin Deleuze, Thibaut Crypto, DataDash
 - Ancienne liste IA : `scripts/config/channels_ia_archive.json`
+- **Candidats EN/ES (collecte du 2026-10-13)** : `yt-veille/references/chaines-en-es-2026-10-13.md` (483 chaînes anglophones, 212 hispanophones, abonnés, vues médianes, cadence, signaux) et `scripts/config/channels_candidates_en_es.json`. À faire valider par Nass avant d'entrer dans `channels.json`.
+
 
 ## Sources secondaires
 - **Médias FR** : cryptoast.fr, journalducoin.com, cointribune.com, coinacademy.fr, The Big Whale
