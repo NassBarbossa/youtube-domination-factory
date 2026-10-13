@@ -37,13 +37,14 @@ Jamais de moyenne commune aux deux. Chaque rapport dit explicitement quelle pér
 
 La règle « exécuter sur le VPS » ne concerne que les scripts qui lisent `veille.db`. Ceux-ci tournent en local depuis `yt-analytics/` :
 
-- `parse_youtube_csv.py` : convertit l'export CSV de YouTube Studio (13 colonnes, export EN) en JSON `analytics_<nom>.json` à côté du CSV.
-- `generate_report.py` : à partir d'un ZIP ou CSV de YouTube Studio, génère le rapport HTML d'une vidéo avec les écarts depuis la dernière analyse, et met à jour `history/<slug>.json`.
-- `generate_dashboard.py` : agrège toutes les vidéos de `history/` dans `outputs/dashboard.html` (moyennes, meilleures et pires vidéos). Il ne sépare pas les périodes : filtrer à la lecture.
-- `analyze.py` : via l'API YouTube Analytics (OAuth `token.json`), analyse les 4 dernières vidéos et génère `outputs/analytics-<date>.html`. Quand le CTR officiel manque, il affiche un CTR « estimé » inventé à partir de l'engagement : ne jamais reprendre ce chiffre (voir règle CTR).
-- `feedback_analyzer.py` : relie les archives de production (`context/archive/`) aux performances via l'API et met à jour `memory/choices.json` et `memory/lessons.json` des skills (titres, miniature, script, veille). À lancer 48 h+ après publication.
+- `parse_youtube_csv.py` : convertit l'export CSV de YouTube Studio (français ou anglais) en JSON `analytics_<nom>.json` à côté du CSV.
+- `generate_report.py` : à partir d'un ZIP ou CSV de YouTube Studio, génère le rapport HTML d'une vidéo avec les écarts depuis la dernière analyse, et met à jour `history/<slug>.json` (champ `period` : `crypto` pour tout nouveau fichier, `ia` pour les anciens).
+- `generate_dashboard.py` : agrège les vidéos de `history/` dans `outputs/dashboard.html`, une section par période (crypto, puis IA), jamais de moyenne commune ; `youtube-totals.json` est exclu des moyennes.
+- `analyze.py` : via l'API YouTube Analytics (OAuth `token.json`), analyse les 4 dernières vidéos et génère `outputs/analytics-<date>.html`, puis l'ouvre dans le navigateur (Mac et Windows). Sans CTR officiel, il affiche « n/d ».
+- `feedback_analyzer.py` : relie les fiches de `context/archive/` (`_meta.slug` → `_meta.youtube_video_id`, `_meta.published_at`) aux performances via l'API et met à jour `memory/choices.json` et `memory/lessons.json` des skills (titres, miniature, script, veille). L'index de performance d'une vidéo se calcule contre la médiane de **sa** période. À lancer 48 h+ après publication.
+- `auth.py` : (ré)autorisation OAuth, à lancer quand les deux scripts précédents répondent « jeton refusé » ; réécrit `token.json` (hors git, comme `client_secret.json`).
 
-Mode d'emploi de l'export CSV : `yt-analytics/inputs/README.md`.
+Dépendances : `pip install -r yt-analytics/requirements.txt`. Mode d'emploi de l'export CSV : `yt-analytics/inputs/README.md`.
 
 ## Workflow
 

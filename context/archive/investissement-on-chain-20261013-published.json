@@ -1,0 +1,113 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "slug": "investissement-on-chain",
+    "status": "completed",
+    "pipeline_step": "5",
+    "mode": "A",
+    "triggered_by": "user",
+    "created_at": "2026-09-29T00:00:00Z",
+    "updated_at": "2026-10-13T00:00:00Z",
+    "completed_at": "2026-10-11T00:00:00Z",
+    "youtube_video_id": "71HX4YUNrNs",
+    "published_at": "2026-10-11T00:00:00Z",
+    "youtube_url": "https://www.youtube.com/watch?v=71HX4YUNrNs",
+    "series": "formation-offerte",
+    "imported": "Fiche créée a posteriori le 2026-10-13 : la vidéo a été produite skill par skill, hors orchestrateur."
+  },
+  "request": {
+    "raw_input": "Formation offerte vidéo 3 : investissement on-chain",
+    "topic": "L'investissement on-chain : acheter les cryptos en dehors des échanges avant qu'elles soient connues de tous (formation offerte, dernière vidéo)",
+    "funnel": "MIDDLE",
+    "language": "fr"
+  },
+  "veille": {
+    "status": "skipped",
+    "ideas": [],
+    "selected_idea": null,
+    "open_questions": []
+  },
+  "research": {
+    "status": "skipped",
+    "videos_analyzed": 0,
+    "transcripts": [],
+    "key_facts": [],
+    "angles_covered": [],
+    "angles_missing": [],
+    "recommended_angle": null,
+    "synthesis": null,
+    "brief_file": null,
+    "open_questions": []
+  },
+  "script": {
+    "status": "validated",
+    "slug": "investissement-on-chain",
+    "funnel": "MIDDLE",
+    "file_path": "yt-script/outputs/investissement-on-chain.md",
+    "visual_path": "yt-script/outputs/investissement-on-chain-visual.html",
+    "word_count": 1882,
+    "reading_time_min": null,
+    "structure": {
+      "hook": null,
+      "sections": [],
+      "timestamps_raw": [],
+      "shorts_moments": []
+    },
+    "google_doc_url": null,
+    "open_questions": [],
+    "published_duration": "10:00"
+  },
+  "titres_seo": {
+    "status": "validated",
+    "winning_title": "Investis en cryptos avec cette méthode !!",
+    "all_titles": [
+      "Investis en cryptos avec cette méthode !!"
+    ],
+    "primary_keyword": null,
+    "secondary_keywords": [],
+    "open_questions": []
+  },
+  "miniature": {
+    "status": "validated",
+    "recommended_concept": {
+      "name": "Salle de trading, ville bleue, « ACHETER AVANT LES AUTRES » (F trading v2)",
+      "final_file": "yt-miniature/outputs/investissement-on-chain-f-trading-v2-final.jpg"
+    },
+    "rejected_concepts": [],
+    "scoring": null,
+    "open_questions": []
+  },
+  "description": {
+    "status": "skipped",
+    "description_full": null,
+    "first_150_chars": null,
+    "hook_framework": null,
+    "tags": [],
+    "enriched_keywords": [],
+    "sources": [],
+    "cta_type": null,
+    "open_questions": []
+  },
+  "repurposing": {
+    "status": "skipped",
+    "shorts": [],
+    "x_thread_hook": null,
+    "x_thread_full": null,
+    "x_reply_link": null,
+    "linkedin_hook": null,
+    "linkedin_full": null,
+    "linkedin_format_bonus": null,
+    "posting_schedule": null,
+    "google_doc_url": null,
+    "open_questions": []
+  },
+  "pipeline_log": [
+    {
+      "phase": "import",
+      "agent": "manuel",
+      "status": "completed",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "notes": "Publiée le 2026-10-11 (71HX4YUNrNs). Fiche reconstituée depuis les fichiers du repo."
+    }
+  ]
+}

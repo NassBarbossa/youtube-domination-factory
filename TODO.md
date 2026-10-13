@@ -46,6 +46,10 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 
 ## 2. Ce qui a été fait (2026-10-13)
 
+- Les 3 vidéos de la formation offerte sont publiées (5, 7 et 11 octobre) : fiches dans `context/archive/<slug>-20261013-published.json` avec ID YouTube et date, en-têtes des scripts mis à jour. Prochaine vidéo = première hors série, dans la narrative.
+- Décisions prises : wallet public abandonné ; charte miniatures à part (blanc + orange + bleus, photo réaliste) ; table « Liens » complète dans le cadre.
+- Chemins portables Mac / Windows (`{repo}`), `.env` recréé sur le Mac.
+
 - Audit complet de la factory.
 - Shift de narrative : **challenge 10K → 100K abandonné**. Narrative = acheter les cryptos en dehors des échanges, acheter les bons coins, pas tous les jours. Memecoins hors sujet.
 - Cadre écrit une seule fois : `_shared/cadre-nass.md`. Les skills y renvoient ; les règles halal s'appliquent sans être répétées dans les contenus (seul rappel visible : « Pas un conseil en investissement. »).
@@ -74,12 +78,16 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 
 ## 5. Code à corriger
 
-- [ ] `yt-analytics/analyze.py` : `estimate_ctr()` invente un CTR « estimé » → afficher « n/d » ; `os.system('open …')` ne marche que sur macOS.
-- [ ] `yt-analytics/feedback_analyzer.py` : lire `_meta.youtube_video_id` (contrat `context/SCHEMA.md`) ; protéger `statistics.mean([])` et `performance_index = None` ; médiane sur toutes les vidéos ; séparer période IA / crypto (bascule 2026-10-07).
-- [ ] `yt-analytics/generate_dashboard.py` : exclure `history/youtube-totals.json` des moyennes.
-- [ ] Dépendances : épingler `yt-veille/scripts/requirements.txt`, ajouter un `requirements.txt` pour yt-analytics.
-- [ ] `context/backlog.json` : encore 81 sujets de la niche IA, à vider ou archiver.
-- [ ] Repo lourd (156 Mo de `.git`) : vidéos de `shows/` → Git LFS ou hors du repo.
+- [x] `yt-analytics/analyze.py` : plus de CTR estimé (« n/d »), ouverture du rapport portable Mac/Windows (2026-10-13).
+- [x] `yt-analytics/feedback_analyzer.py` : lit `_meta.youtube_video_id` et `_meta.published_at`, médiane sur toutes les vidéos de la période, périodes IA / crypto séparées (pivot 2026-10-07), listes vides et index `None` protégés (2026-10-13).
+- [x] `yt-analytics/generate_dashboard.py` : totaux exclus, une section par période (2026-10-13).
+- [x] `yt-analytics/parse_youtube_csv.py` : accepte l'export YouTube Studio en français (c'est le cas de Nass) et en anglais ; il refusait tous les CSV du dossier `inputs/` (2026-10-13).
+- [x] Dépendances épinglées : `yt-veille/scripts`, `yt-analytics`, `yt-miniature/scripts` (2026-10-13).
+- [x] `context/backlog.json` vidé, les 81 sujets IA sont dans `context/archive/backlog-ia-2026-03-31.json` (2026-10-13).
+- [x] `yt-miniature/scripts/` (dont `composite.py`) et les polices `yt-miniature/assets/fonts/` ajoutés au repo (2026-10-13).
+- [ ] **OAuth YouTube : le jeton est expiré (`invalid_grant`).** Nass lance `python3 yt-analytics/auth.py` (navigateur), puis `python3 yt-analytics/feedback_analyzer.py` pour rattacher les stats des 3 vidéos de la formation aux choix de miniature.
+- [ ] Repo lourd (110 Mo de `.git`, 131 Mo de fichiers suivis dont ~100 Mo de vidéos dans `shows/`) : Git LFS n'est installé sur aucune machine. Décision de Nass : installer LFS des deux côtés, ou sortir les rendus du repo.
+- [ ] `scripts/export_script.py` : export .docx figé sur un script IA de mars (contenu en dur). À supprimer ou à généraliser.
 - [ ] Merger `rebrand/crypto` dans `master` une fois validé.
 
 ## 6. Veille (seulement si Nass décide de la relancer)

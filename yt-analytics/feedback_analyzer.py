@@ -18,7 +18,7 @@ import json
 import os
 import statistics
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from google.oauth2.credentials import Credentials
@@ -28,6 +28,10 @@ from googleapiclient.discovery import build
 SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 TOKEN_PATH = SCRIPT_DIR / "token.json"
+
+# La chaîne est 100 % crypto depuis cette date : les deux périodes ne se mélangent jamais.
+CRYPTO_START = "2026-10-07"
+IA_START = "2026-01-01"
 
 # Skill memory paths
 SKILLS = {
@@ -49,11 +53,14 @@ def get_credentials():
         client_secret=token_data["client_secret"],
         scopes=token_data["scopes"],
     )
-    if creds.expired:
+    # Le fichier n'a pas de date d'expiration : on rafraîchit toujours, et on explique quoi faire si le jeton est mort.
+    try:
         creds.refresh(Request())
-        token_data["token"] = creds.token
-        with open(TOKEN_PATH, "w") as f:
-            json.dump(token_data, f, indent=2)
+    except Exception as e:
+        sys.exit(f"Jeton OAuth refusé ({e}).\nRelance l'autorisation : python3 yt-analytics/auth.py")
+    token_data["token"] = creds.token
+    with open(TOKEN_PATH, "w") as f:
+        json.dump(token_data, f, indent=2)
     return creds
 
 
@@ -101,33 +108,44 @@ def get_video_performance(yt_analytics, video_id):
         return None
 
 
-def get_channel_averages(yt_analytics):
-    """Get channel-level averages for comparison."""
+def get_channel_averages(yt_analytics, start_date, end_date):
+    """Channel averages over ALL videos with views in [start_date, end_date] (one period, never both)."""
     try:
         resp = yt_analytics.reports().query(
             ids="channel==MINE",
-            startDate="2026-01-01",
-            endDate=datetime.now().strftime("%Y-%m-%d"),
+            startDate=start_date,
+            endDate=end_date,
             metrics="views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained",
             dimensions="video",
             sort="-views",
-            maxResults=20,
+            maxResults=200,
         ).execute()
-        if not resp.get("rows"):
+        rows = resp.get("rows") or []
+        views_list = [int(r[1]) for r in rows]
+        retention_list = [float(r[4]) for r in rows]
+        if not views_list:
             return None
-        views_list = [int(r[1]) for r in resp["rows"]]
-        retention_list = [float(r[4]) for r in resp["rows"]]
         return {
+            "period": [start_date, end_date],
+            "videos": len(views_list),
             "avg_views": round(statistics.mean(views_list), 1),
             "median_views": statistics.median(views_list),
-            "avg_retention": round(statistics.mean(retention_list), 1),
+            "avg_retention": round(statistics.mean(retention_list), 1) if retention_list else None,
         }
-    except Exception:
+    except Exception as e:
+        print(f"  Erreur moyennes de la chaîne ({start_date} → {end_date}) : {e}")
         return None
 
 
-def update_skill_choices(skill_name, memory_path, yt_analytics, channel_avgs):
-    """Update performance data in a skill's choices.json."""
+def period_of(published_at):
+    """'ia' before CRYPTO_START, 'crypto' from CRYPTO_START on; unknown date = 'crypto' (current period)."""
+    if published_at and published_at[:10] < CRYPTO_START:
+        return "ia"
+    return "crypto"
+
+
+def update_skill_choices(skill_name, memory_path, yt_analytics, averages):
+    """Update performance data in a skill's choices.json. `averages` = {"ia": {...}|None, "crypto": {...}|None}."""
     choices_path = memory_path / "choices.json"
     choices = read_json(str(choices_path), {"choices": []})
 
@@ -140,14 +158,19 @@ def update_skill_choices(skill_name, memory_path, yt_analytics, channel_avgs):
         if not video_slug:
             continue
 
-        # Find video ID from context archives
-        video_id = find_video_id(video_slug)
+        # Find video ID (and publication date) from context archives
+        video_id, published_at = find_video_id(video_slug)
         if not video_id:
             continue
 
         perf = get_video_performance(yt_analytics, video_id)
         if perf:
-            perf["performance_index"] = round(perf["views"] / channel_avgs["median_views"], 2) if channel_avgs else None
+            period = period_of(published_at)
+            avgs = averages.get(period)
+            median = avgs["median_views"] if avgs else 0
+            perf["period"] = period
+            perf["youtube_video_id"] = video_id
+            perf["performance_index"] = round(perf["views"] / median, 2) if median else None
             choice["performance"] = perf
             updated += 1
             print(f"  [{skill_name}] Updated: {video_slug} — {perf['views']} views, {perf['retention_pct']}% retention")
@@ -158,22 +181,20 @@ def update_skill_choices(skill_name, memory_path, yt_analytics, channel_avgs):
 
 
 def find_video_id(video_slug):
-    """Find video ID from context archives or video-context.json."""
-    # Check current context
-    ctx_path = PROJECT_ROOT / "context" / "video-context.json"
-    ctx = read_json(str(ctx_path))
-    if ctx.get("_meta", {}).get("slug") == video_slug:
-        # Try to find video ID from YouTube Data API lookup
-        return None  # Would need video ID stored in context
-
-    # Check archives
+    """Return (youtube_video_id, published_at) from video-context.json or context/archive/ (contract: _meta.*)."""
+    candidates = [PROJECT_ROOT / "context" / "video-context.json"]
     archive_dir = PROJECT_ROOT / "context" / "archive"
     if archive_dir.exists():
-        for f in archive_dir.iterdir():
-            if f.suffix == ".json" and video_slug in f.name:
-                data = read_json(str(f))
-                return data.get("video_id")
-    return None
+        candidates += sorted(archive_dir.glob("*.json"), reverse=True)  # most recent file first
+    for f in candidates:
+        data = read_json(str(f))
+        meta = data.get("_meta") or {}
+        if meta.get("slug") != video_slug:
+            continue
+        video_id = meta.get("youtube_video_id")
+        if video_id:
+            return video_id, meta.get("published_at")
+    return None, None
 
 
 def extract_lessons_titres(memory_path):
@@ -430,14 +451,14 @@ def extract_lessons_veille(memory_path):
     lessons = []
 
     # Calculate hit rate
-    hits = [c for c in completed if c["performance"].get("performance_index", 0) > 1.5]
+    hits = [c for c in completed if (c["performance"].get("performance_index") or 0) > 1.5]
     hit_rate = len(hits) / len(completed) if completed else 0
 
     # Analyze by topic category
     topic_perf = {}
     for c in completed:
         cat = c.get("topic_category", "unknown")
-        pi = c["performance"].get("performance_index", 1.0)
+        pi = c["performance"].get("performance_index") or 0.0
         if cat not in topic_perf:
             topic_perf[cat] = {"count": 0, "pi_list": [], "hits": 0}
         topic_perf[cat]["count"] += 1
@@ -461,8 +482,8 @@ def extract_lessons_veille(memory_path):
     fast = [c for c in completed if c.get("days_lag_detect_to_publish", 99) <= 3]
     slow = [c for c in completed if c.get("days_lag_detect_to_publish", 0) > 3]
     if len(fast) >= 1 and len(slow) >= 1:
-        avg_fast_pi = statistics.mean([c["performance"].get("performance_index", 1) for c in fast])
-        avg_slow_pi = statistics.mean([c["performance"].get("performance_index", 1) for c in slow])
+        avg_fast_pi = statistics.mean([c["performance"].get("performance_index") or 0 for c in fast])
+        avg_slow_pi = statistics.mean([c["performance"].get("performance_index") or 0 for c in slow])
         if avg_fast_pi > avg_slow_pi * 1.2:
             lessons.append({
                 "rule": f"Publier dans les 3 jours donne un index de {avg_fast_pi:.1f}x vs {avg_slow_pi:.1f}x après 3 jours",
@@ -474,14 +495,13 @@ def extract_lessons_veille(memory_path):
 
     # TOAST score correlation
     toast_scores = [c.get("toast_score", {}).get("total", 0) for c in completed]
-    perf_indices = [c["performance"].get("performance_index", 1) for c in completed]
     if len(toast_scores) >= 5 and any(t > 0 for t in toast_scores):
         # Simple correlation check
         high_toast = [c for c in completed if c.get("toast_score", {}).get("total", 0) >= 18]
         low_toast = [c for c in completed if c.get("toast_score", {}).get("total", 0) < 18 and c.get("toast_score", {}).get("total", 0) > 0]
         if high_toast and low_toast:
-            avg_high = statistics.mean([c["performance"].get("performance_index", 1) for c in high_toast])
-            avg_low = statistics.mean([c["performance"].get("performance_index", 1) for c in low_toast])
+            avg_high = statistics.mean([c["performance"].get("performance_index") or 0 for c in high_toast])
+            avg_low = statistics.mean([c["performance"].get("performance_index") or 0 for c in low_toast])
             lessons.append({
                 "rule": f"Les sujets TOAST >= 18 performent {avg_high:.1f}x vs {avg_low:.1f}x pour les < 18",
                 "evidence": f"{len(high_toast)} sujets >= 18 vs {len(low_toast)} < 18",
@@ -499,7 +519,8 @@ def extract_lessons_veille(memory_path):
             "hit_rate": round(data["hits"] / data["count"], 2) if data["count"] > 0 else 0,
         }
 
-    avg_lag = statistics.mean([c.get("days_lag_detect_to_publish", 0) for c in completed if c.get("days_lag_detect_to_publish")])
+    lags = [c["days_lag_detect_to_publish"] for c in completed if c.get("days_lag_detect_to_publish")]
+    avg_lag = statistics.mean(lags) if lags else None
 
     lessons_data = {
         "last_updated": datetime.now().strftime("%Y-%m-%d"),
@@ -523,18 +544,25 @@ def main():
     creds = get_credentials()
     yt_analytics = build("youtubeAnalytics", "v2", credentials=creds)
 
-    # Get channel averages
-    print("Calcul des moyennes de la chaîne...")
-    channel_avgs = get_channel_averages(yt_analytics)
-    if channel_avgs:
-        print(f"  Moyenne: {channel_avgs['avg_views']:.0f} vues, {channel_avgs['avg_retention']:.1f}% rétention")
-        print(f"  Médiane: {channel_avgs['median_views']:.0f} vues")
+    # Channel averages, one per period (never mixed)
+    today = datetime.now().strftime("%Y-%m-%d")
+    ia_end = (datetime.strptime(CRYPTO_START, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
+    print("Calcul des moyennes de la chaîne par période...")
+    averages = {
+        "ia": get_channel_averages(yt_analytics, IA_START, ia_end),
+        "crypto": get_channel_averages(yt_analytics, CRYPTO_START, today),
+    }
+    for name, avgs in averages.items():
+        if avgs:
+            print(f"  [{name}] {avgs['videos']} vidéos · moyenne {avgs['avg_views']:.0f} vues · médiane {avgs['median_views']:.0f} vues · rétention {avgs['avg_retention']}%")
+        else:
+            print(f"  [{name}] pas de données")
 
     # Update performance data in each skill's choices
     print("\nMise à jour des performances par skill...")
     for skill_name, memory_path in SKILLS.items():
         if (memory_path / "choices.json").exists():
-            updated = update_skill_choices(skill_name, memory_path, yt_analytics, channel_avgs)
+            updated = update_skill_choices(skill_name, memory_path, yt_analytics, averages)
             if updated == 0:
                 print(f"  [{skill_name}] Aucune nouvelle donnée à mettre à jour")
 

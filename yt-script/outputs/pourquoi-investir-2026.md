@@ -4,6 +4,7 @@
 **Format :** Deep Dive pédagogique (MIDDLE funnel)
 **Durée estimée :** ~3 min (V1 — objectif MIDDLE : 18-22 min)
 **Mots :** ~425 (texte parlé)
+**Publiée :** 2026-10-05 · [Pourquoi il faut investir en 2026 ? (Formation Offerte)](https://www.youtube.com/watch?v=njfEJFd7hQ8) · 9:29 · ID `njfEJFd7hQ8`
 **Langue :** Français
 
 > **Légende de relecture**

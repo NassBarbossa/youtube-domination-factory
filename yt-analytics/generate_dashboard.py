@@ -28,6 +28,11 @@ PROJECT_ROOT = Path(__file__).parent
 HISTORY_DIR = PROJECT_ROOT / "history"
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 
+# Fichiers d'historique qui ne sont pas des vidéos (totaux de chaîne) : jamais dans les moyennes.
+EXCLUDED_SLUGS = {"youtube-totals"}
+# Période d'une vidéo : champ "period" du fichier ("ia" | "crypto") ; absent = période IA (fichiers d'avant le pivot).
+PERIOD_LABELS = {"crypto": "Période crypto (depuis le 2026-10-07)", "ia": "Période IA (avant le 2026-10-07, historique)"}
+
 def load_all_videos():
     """Load historical data for all videos."""
     videos = {}
@@ -36,12 +41,24 @@ def load_all_videos():
         print("Aucun historique trouvé")
         return videos
 
-    for history_file in HISTORY_DIR.glob("*.json"):
+    for history_file in sorted(HISTORY_DIR.glob("*.json")):
         with open(history_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            videos[data["video_slug"]] = data
+        slug = data.get("video_slug")
+        if not slug or slug in EXCLUDED_SLUGS or not isinstance(data.get("analyses"), list):
+            continue
+        data.setdefault("period", "ia")
+        videos[slug] = data
 
     return videos
+
+
+def split_by_period(videos):
+    """{"crypto": {slug: data}, "ia": {slug: data}} — jamais de moyenne commune aux deux."""
+    out = {"crypto": {}, "ia": {}}
+    for slug, data in videos.items():
+        out["crypto" if data.get("period") == "crypto" else "ia"][slug] = data
+    return out
 
 def get_latest_metrics(video_data):
     """Get the most recent analysis for a video."""
@@ -89,12 +106,12 @@ def rank_videos(latest_metrics, metric_name):
     )
     return sorted_videos
 
-def generate_dashboard_html(videos, global_stats, latest_metrics):
-    """Generate aggregated dashboard HTML."""
-
+def period_section_html(label, videos, global_stats, latest_metrics):
+    """Stats, classements et tableau d'une seule période."""
     if not global_stats:
-        return "<h1>Pas de données disponibles</h1>"
-
+        return f"""
+  <div class="period-empty"><h2>{label}</h2><p>Pas encore de vidéo analysée dans cette période.</p></div>
+"""
     stats, _ = global_stats
 
     # Get top performers
@@ -147,6 +164,37 @@ def generate_dashboard_html(videos, global_stats, latest_metrics):
         for i, (slug, metrics) in enumerate(top_views)
     ])
 
+    return f"""
+  <div class="period">
+  <h2 class="period-title">{label}</h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="label">Total Vues</div><div class="value">{stats['total_views']:,}</div><div class="subtitle">{stats['total_videos']} vidéo(s)</div></div>
+    <div class="stat-card"><div class="label">CTR Moyen</div><div class="value">{stats['avg_ctr']}%</div><div class="subtitle">YouTube Studio</div></div>
+    <div class="stat-card"><div class="label">Rétention Moyenne</div><div class="value">{stats['avg_retention']}%</div><div class="subtitle">% vidéo regardée</div></div>
+    <div class="stat-card"><div class="label">Nouveaux Abonnés</div><div class="value">+{stats['total_subscribers']}</div><div class="subtitle">sur ces vidéos</div></div>
+  </div>
+  <div class="ranking-section">
+    <div class="ranking-grid">
+      <div class="rank-container"><h3>🏆 Meilleur CTR</h3><div class="rank-cards">{top_ctr_html}</div></div>
+      <div class="rank-container"><h3>📺 Meilleure Rétention</h3><div class="rank-cards">{top_retention_html}</div></div>
+      <div class="rank-container"><h3>🚀 Plus Vues</h3><div class="rank-cards">{top_views_html}</div></div>
+    </div>
+  </div>
+  <div class="comparison-section">
+    <div class="comparison-table">
+      <table>
+        <thead><tr><th>Vidéo</th><th>Vues</th><th>CTR</th><th>Rétention</th><th>Impressions</th><th>Abonnés</th><th>Partages</th></tr></thead>
+        <tbody>{comparison_rows}</tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+"""
+
+
+def generate_dashboard_html(sections, total_videos):
+    """Page complète : une section par période, crypto d'abord, puis IA."""
+    body = "".join(sections)
     html = f"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -364,6 +412,11 @@ def generate_dashboard_html(videos, global_stats, latest_metrics):
     font-weight: 600;
   }}
 
+  .period {{ margin-bottom: 56px; }}
+  .period-title {{ font-size: 22px; font-weight: 800; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid #4a90d9; }}
+  .period-empty {{ background: #1a1a1a; border: 1px dashed #2a2a2a; border-radius: 16px; padding: 28px; margin-bottom: 40px; color: #888; }}
+  .period-empty h2 {{ font-size: 22px; color: #e8e8e8; margin-bottom: 8px; }}
+
   .footer {{
     text-align: center;
     padding-top: 30px;
@@ -376,83 +429,12 @@ def generate_dashboard_html(videos, global_stats, latest_metrics):
 <body>
 <div class="container">
 
-  <!-- Header -->
   <div class="header">
     <h1>YouTube <span>Analytics Dashboard</span></h1>
-    <div class="meta">Généré le {datetime.now().strftime('%d %B %Y')} | {stats['total_videos']} vidéos analysées</div>
+    <div class="meta">Généré le {datetime.now().strftime('%d/%m/%Y')} · {total_videos} vidéo(s) · les deux périodes ne sont jamais moyennées ensemble</div>
   </div>
 
-  <!-- Global Stats -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">Total Vues</div>
-      <div class="value">{stats['total_views']:,}</div>
-      <div class="subtitle">Toutes les vidéos</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">CTR Moyen</div>
-      <div class="value">{stats['avg_ctr']}%</div>
-      <div class="subtitle">Click-through rate global</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Rétention Moyenne</div>
-      <div class="value">{stats['avg_retention']}%</div>
-      <div class="subtitle">% vidéo regardée</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Nouveaux Abonnés</div>
-      <div class="value">+{stats['total_subscribers']}</div>
-      <div class="subtitle">Croissance total</div>
-    </div>
-  </div>
-
-  <!-- Rankings -->
-  <div class="ranking-section">
-    <h2>Top Performers</h2>
-    <div class="ranking-grid">
-      <div class="rank-container">
-        <h3>🏆 Meilleur CTR</h3>
-        <div class="rank-cards">
-          {top_ctr_html}
-        </div>
-      </div>
-      <div class="rank-container">
-        <h3>📺 Meilleure Rétention</h3>
-        <div class="rank-cards">
-          {top_retention_html}
-        </div>
-      </div>
-      <div class="rank-container">
-        <h3>🚀 Plus Vues</h3>
-        <div class="rank-cards">
-          {top_views_html}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Comparison Table -->
-  <div class="comparison-section">
-    <h2>Comparaison Complète</h2>
-    <div class="comparison-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Vidéo</th>
-            <th>Vues</th>
-            <th>CTR</th>
-            <th>Rétention</th>
-            <th>Impressions</th>
-            <th>Abonnés</th>
-            <th>Partages</th>
-          </tr>
-        </thead>
-        <tbody>
-          {comparison_rows}
-        </tbody>
-      </table>
-    </div>
-  </div>
+{body}
 
   <!-- Footer -->
   <div class="footer">
@@ -476,28 +458,27 @@ def main():
 
     print(f"✅ {len(videos)} vidéo(s) trouvée(s)")
 
-    result = calculate_global_stats(videos)
-    if not result:
-        print("Aucune analyse disponible")
-        sys.exit(1)
+    sections = []
+    by_period = split_by_period(videos)
+    for period in ("crypto", "ia"):
+        period_videos = by_period[period]
+        label = PERIOD_LABELS[period]
+        result = calculate_global_stats(period_videos) if period_videos else None
+        if result:
+            global_stats, latest_metrics = result
+            print(f"\n📈 {label} : {global_stats['total_videos']} vidéo(s), {global_stats['total_views']:,} vues, CTR moyen {global_stats['avg_ctr']}%, rétention {global_stats['avg_retention']}%")
+            sections.append(period_section_html(label, period_videos, (global_stats, latest_metrics), latest_metrics))
+        else:
+            print(f"\n📈 {label} : aucune vidéo")
+            sections.append(period_section_html(label, {}, None, {}))
 
-    global_stats, latest_metrics = result
-
-    print(f"\n📈 Statistiques globales:")
-    print(f"  Total vues: {global_stats['total_views']:,}")
-    print(f"  CTR moyen: {global_stats['avg_ctr']}%")
-    print(f"  Rétention moyenne: {global_stats['avg_retention']}%")
-    print(f"  Nouveaux abonnés: +{global_stats['total_subscribers']}")
-
-    # Generate dashboard
-    html_content = generate_dashboard_html(videos, (global_stats, latest_metrics), latest_metrics)
+    html_content = generate_dashboard_html(sections, len(videos))
+    OUTPUTS_DIR.mkdir(exist_ok=True)
     output_file = OUTPUTS_DIR / "dashboard.html"
-
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
 
     print(f"\n✅ Dashboard généré: {output_file}")
-
     return output_file
 
 if __name__ == "__main__":

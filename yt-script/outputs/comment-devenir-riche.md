@@ -4,7 +4,7 @@
 **Format :** Deep Dive pédagogique (MIDDLE funnel)
 **Idée centrale :** faire du DCA dans un actif dans lequel tu crois à long terme
 **Durée cible :** 18-22 min
-**Statut :** intro écrite + slides d'intro générées — le reste en attente des bullet points de Nass
+**Publiée :** 2026-10-07 · [Comment devenir riche grâce à l'investissement ?](https://www.youtube.com/watch?v=FVajDtrHsPU) · 11:10 · ID `FVajDtrHsPU`
 **Langue :** Français
 
 > **Légende de relecture**

@@ -14,8 +14,8 @@ Requires: OAuth token in token.json (run setup once to authorize)
 """
 
 import json
-import os
 import sys
+import webbrowser
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -44,11 +44,14 @@ def get_credentials():
         scopes=token_data["scopes"],
     )
 
-    if creds.expired:
+    # Le fichier n'a pas de date d'expiration : on rafraîchit toujours, et on explique quoi faire si le jeton est mort.
+    try:
         creds.refresh(Request())
-        token_data["token"] = creds.token
-        with open(TOKEN_PATH, "w") as f:
-            json.dump(token_data, f, indent=2)
+    except Exception as e:
+        sys.exit(f"Jeton OAuth refusé ({e}).\nRelance l'autorisation : python3 yt-analytics/auth.py")
+    token_data["token"] = creds.token
+    with open(TOKEN_PATH, "w") as f:
+        json.dump(token_data, f, indent=2)
 
     return creds
 
@@ -177,21 +180,6 @@ def get_ctr_from_reporting(yt_reporting, video_ids):
     return ctr_data
 
 
-def estimate_ctr(views, likes, comments, shares, retention_pct):
-    """Estimate CTR preview based on engagement signals."""
-    if views == 0:
-        return None
-
-    engagement_rate = (likes + comments * 3 + shares * 5) / views
-    retention_factor = retention_pct / 30.0  # 30% = baseline
-
-    # Estimated CTR between 2% and 12% based on engagement + retention
-    base_ctr = 4.0  # Average YouTube CTR
-    estimated = base_ctr * (0.5 + engagement_rate * 10) * retention_factor
-    estimated = max(1.0, min(15.0, estimated))  # Clamp between 1-15%
-
-    return round(estimated, 1)
-
 
 def format_traffic_source(source):
     """Format traffic source names for display."""
@@ -244,12 +232,12 @@ def generate_html(videos_data, channel_traffic):
               <div class="metric-value">{v['ctr_official']['ctr']}%</div>
               <div class="metric-sub">{v['ctr_official']['impressions']:,} impressions</div>
             </div>"""
-        elif v.get("ctr_preview"):
-            ctr_html = f"""
+        else:
+            ctr_html = """
             <div class="metric">
-              <div class="metric-label">CTR <span class="preview-badge">estimé</span></div>
-              <div class="metric-value preview">{v['ctr_preview']}%</div>
-              <div class="metric-sub">basé sur l'engagement</div>
+              <div class="metric-label">CTR</div>
+              <div class="metric-value">n/d</div>
+              <div class="metric-sub">pas de donnée officielle (YouTube Studio / Reporting API)</div>
             </div>"""
 
         # Highlight best values
@@ -607,15 +595,7 @@ def main():
             "metrics": metrics,
             "traffic_sources": traffic,
             "ctr_official": ctr_data.get(v["id"]),
-            "ctr_preview": None,
         }
-
-        # Estimate CTR if no official data
-        if metrics and not entry["ctr_official"]:
-            entry["ctr_preview"] = estimate_ctr(
-                metrics["views"], metrics["likes"], metrics["comments"],
-                metrics["shares"], metrics["retention_pct"],
-            )
 
         videos_data.append(entry)
 
@@ -633,7 +613,7 @@ def main():
 
     print(f"\nRapport généré: {output_file}")
     print("Ouverture dans le navigateur...")
-    os.system(f'open "{output_file}"')
+    webbrowser.open(output_file.resolve().as_uri())
 
 
 if __name__ == "__main__":

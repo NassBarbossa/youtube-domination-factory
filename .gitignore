@@ -14,3 +14,4 @@ yt-shorts-montage/projects/**/source/*.wav
 # Contexte du pipeline : sorties intermédiaires des agents
 context/runs/*/
 context/veille-top*.json
+.DS_Store

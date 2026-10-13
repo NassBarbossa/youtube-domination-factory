@@ -1,0 +1,113 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "slug": "pourquoi-investir-2026",
+    "status": "completed",
+    "pipeline_step": "5",
+    "mode": "A",
+    "triggered_by": "user",
+    "created_at": "2026-09-26T00:00:00Z",
+    "updated_at": "2026-10-13T00:00:00Z",
+    "completed_at": "2026-10-05T00:00:00Z",
+    "youtube_video_id": "njfEJFd7hQ8",
+    "published_at": "2026-10-05T00:00:00Z",
+    "youtube_url": "https://www.youtube.com/watch?v=njfEJFd7hQ8",
+    "series": "formation-offerte",
+    "imported": "Fiche créée a posteriori le 2026-10-13 : la vidéo a été produite skill par skill, hors orchestrateur."
+  },
+  "request": {
+    "raw_input": "Formation offerte vidéo 1 : pourquoi investir en 2026",
+    "topic": "Pourquoi il faut obligatoirement investir son argent en 2026 (formation offerte, vidéo 1/3)",
+    "funnel": "MIDDLE",
+    "language": "fr"
+  },
+  "veille": {
+    "status": "skipped",
+    "ideas": [],
+    "selected_idea": null,
+    "open_questions": []
+  },
+  "research": {
+    "status": "skipped",
+    "videos_analyzed": 0,
+    "transcripts": [],
+    "key_facts": [],
+    "angles_covered": [],
+    "angles_missing": [],
+    "recommended_angle": null,
+    "synthesis": null,
+    "brief_file": null,
+    "open_questions": []
+  },
+  "script": {
+    "status": "validated",
+    "slug": "pourquoi-investir-2026",
+    "funnel": "MIDDLE",
+    "file_path": "yt-script/outputs/pourquoi-investir-2026.md",
+    "visual_path": "yt-script/outputs/pourquoi-investir-2026-visual.html",
+    "word_count": 1169,
+    "reading_time_min": null,
+    "structure": {
+      "hook": null,
+      "sections": [],
+      "timestamps_raw": [],
+      "shorts_moments": []
+    },
+    "google_doc_url": null,
+    "open_questions": [],
+    "published_duration": "9:29"
+  },
+  "titres_seo": {
+    "status": "validated",
+    "winning_title": "Pourquoi il faut investir en 2026 ? (Formation Offerte)",
+    "all_titles": [
+      "Pourquoi il faut investir en 2026 ? (Formation Offerte)"
+    ],
+    "primary_keyword": null,
+    "secondary_keywords": [],
+    "open_questions": []
+  },
+  "miniature": {
+    "status": "validated",
+    "recommended_concept": {
+      "name": null,
+      "final_file": "yt-miniature/outputs/pourquoi-investir-2026-d-billet-v17-final.jpg"
+    },
+    "rejected_concepts": [],
+    "scoring": null,
+    "open_questions": []
+  },
+  "description": {
+    "status": "skipped",
+    "description_full": null,
+    "first_150_chars": null,
+    "hook_framework": null,
+    "tags": [],
+    "enriched_keywords": [],
+    "sources": [],
+    "cta_type": null,
+    "open_questions": []
+  },
+  "repurposing": {
+    "status": "skipped",
+    "shorts": [],
+    "x_thread_hook": null,
+    "x_thread_full": null,
+    "x_reply_link": null,
+    "linkedin_hook": null,
+    "linkedin_full": null,
+    "linkedin_format_bonus": null,
+    "posting_schedule": null,
+    "google_doc_url": null,
+    "open_questions": []
+  },
+  "pipeline_log": [
+    {
+      "phase": "import",
+      "agent": "manuel",
+      "status": "completed",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "notes": "Publiée le 2026-10-05 (njfEJFd7hQ8). Fiche reconstituée depuis les fichiers du repo."
+    }
+  ]
+}

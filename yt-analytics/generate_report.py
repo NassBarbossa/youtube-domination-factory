@@ -159,8 +159,10 @@ def load_history(video_slug):
         with open(history_file, 'r', encoding='utf-8') as f:
             return json.load(f)
 
+    # Nouveau fichier : période crypto si créé après le pivot du 2026-10-07 (les anciens fichiers restent IA).
     return {
         "video_slug": video_slug,
+        "period": "crypto" if datetime.now().strftime("%Y-%m-%d") >= "2026-10-07" else "ia",
         "analyses": []
     }
 

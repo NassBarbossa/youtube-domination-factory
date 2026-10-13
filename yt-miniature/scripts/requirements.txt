@@ -1,0 +1,2 @@
+# composite.py, overlay.py, banner.py, pfp.py, check.py (generate.py n'utilise que la stdlib)
+pillow==12.2.0

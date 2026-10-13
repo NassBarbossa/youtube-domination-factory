@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="YouTube Domination Factory">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B0B0B"/>
+      <stop offset="0.55" stop-color="#15120E"/>
+      <stop offset="1" stop-color="#2A2117"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3D6A8"/>
+      <stop offset="1" stop-color="#DBB17F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#DBB17F" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#DBB17F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="320" fill="url(#sky)"/>
+  <circle cx="1000" cy="230" r="220" fill="url(#glow)"/>
+  <circle cx="1000" cy="230" r="78" fill="url(#sun)"/>
+  <!-- montagnes -->
+  <polygon points="620,320 760,150 860,250 930,190 1060,320" fill="#1C1812"/>
+  <polygon points="820,320 980,180 1120,260 1200,210 1200,320" fill="#24201A"/>
+  <polygon points="560,320 700,210 800,320" fill="#2E2820"/>
+  <!-- punk pixel (silhouette 8 bits) -->
+  <g fill="#648596" transform="translate(1066,150) scale(6)">
+    <rect x="3" y="0" width="6" height="1"/><rect x="2" y="1" width="8" height="1"/>
+    <rect x="2" y="2" width="8" height="3"/><rect x="1" y="5" width="10" height="3"/>
+    <rect x="2" y="8" width="8" height="2"/><rect x="3" y="10" width="6" height="1"/>
+    <rect x="4" y="11" width="4" height="2"/><rect x="2" y="13" width="8" height="3"/>
+    <rect x="1" y="16" width="10" height="1"/>
+  </g>
+  <g fill="#0B0B0B" transform="translate(1066,150) scale(6)">
+    <rect x="4" y="5" width="2" height="1"/><rect x="8" y="5" width="2" height="1"/>
+  </g>
+  <!-- carte crème néo-brutale -->
+  <rect x="56" y="64" width="560" height="192" fill="#9C7748"/>
+  <rect x="48" y="56" width="560" height="192" fill="#F4EFE7" stroke="#0B0B0B" stroke-width="3"/>
+  <text x="76" y="118" font-family="Archivo Black, Impact, 'Arial Black', Helvetica, Arial, sans-serif" font-size="44" fill="#0B0B0B">YouTube Domination</text>
+  <text x="76" y="168" font-family="Archivo Black, Impact, 'Arial Black', Helvetica, Arial, sans-serif" font-size="44" fill="#9C7748">Factory</text>
+  <text x="76" y="212" font-family="'Public Sans', Helvetica, Arial, sans-serif" font-size="18" fill="#3B3A37">Skills Claude Code · chaîne crypto de Nass Riviera</text>
+  <!-- chips -->
+  <g font-family="'Public Sans', Helvetica, Arial, sans-serif" font-size="14" font-weight="700">
+    <rect x="48" y="272" width="86" height="28" rx="14" fill="#DBB17F"/><text x="91" y="291" text-anchor="middle" fill="#0B0B0B">script</text>
+    <rect x="142" y="272" width="86" height="28" rx="14" fill="#DBB17F"/><text x="185" y="291" text-anchor="middle" fill="#0B0B0B">slides</text>
+    <rect x="236" y="272" width="86" height="28" rx="14" fill="#DBB17F"/><text x="279" y="291" text-anchor="middle" fill="#0B0B0B">titres</text>
+    <rect x="330" y="272" width="104" height="28" rx="14" fill="#DBB17F"/><text x="382" y="291" text-anchor="middle" fill="#0B0B0B">miniature</text>
+    <rect x="442" y="272" width="116" height="28" rx="14" fill="#DBB17F"/><text x="500" y="291" text-anchor="middle" fill="#0B0B0B">description</text>
+    <rect x="566" y="272" width="86" height="28" rx="14" fill="#648596"/><text x="609" y="291" text-anchor="middle" fill="#F4EFE7">shorts</text>
+    <rect x="660" y="272" width="86" height="28" rx="14" fill="#648596"/><text x="703" y="291" text-anchor="middle" fill="#F4EFE7">stats</text>
+  </g>
+</svg>

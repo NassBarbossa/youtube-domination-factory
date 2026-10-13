@@ -4,8 +4,7 @@
 **Format :** Deep Dive (MIDDLE funnel)
 **Idée centrale :** acheter des cryptos on-chain, sur des exchanges décentralisés, avant qu'elles soient listées sur les exchanges centralisés — la « Formule 1 » de la série
 **Méthode :** IOC — Investissement On-Chain
-**Titre :** `[À COMPLÉTER]`
-**Statut :** hook écrit + slides d'intro générées — le reste en attente des bullet points de Nass
+**Publiée :** 2026-10-11 · [Investis en cryptos avec cette méthode !!](https://www.youtube.com/watch?v=71HX4YUNrNs) · 10:00 · ID `71HX4YUNrNs`
 **Langue :** Français
 
 > **Légende de relecture**
