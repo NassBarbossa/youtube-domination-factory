@@ -36,9 +36,9 @@ Voix : « tu » (français) ou « you » décontracté (anglais), humour subtil 
 
 | Funnel | Durée | Mots FR | Mots EN | Slides | Objectif | Style | CTA |
 |---|---|---|---|---|---|---|---|
-| **TOP** | 5-12 min | 750-1800 | 650-1550 | 12-18 | Attirer des inconnus : actu crypto, achat on-chain réel expliqué, étude de cas courte | Punchy, résultat d'entrée, pas de détour | **Formation offerte** (3 vidéos) `[lien formation]` |
+| **TOP** | 5-12 min | 750-1800 | 650-1550 | 12-18 | Attirer des inconnus : actu crypto, achat on-chain réel expliqué, étude de cas courte | Punchy, résultat d'entrée, pas de détour | **Formation offerte** (3 vidéos) (playlist, lien dans le cadre) |
 | **MIDDLE** | 18-22 min | 2700-3300 | 2350-2850 | 20-28 | Convertir en abonnés : tutoriels on-chain, deep dives, « pourquoi j'ai acheté ce coin » | Profond, pédagogique : c'est ici que Nass installe son expertise | **La suite de la formation offerte** `[lien vidéo suivante]` |
-| **BOTTOM** | 25+ min | 3750+ | 3250+ | 30+ | Communauté : live Convergence avec Sadek, Q&A, coulisses | Authentique, personnel | **Communauté privée** (Telegram, lien dans le cadre) + **Convergence** `[lien Convergence]` |
+| **BOTTOM** | 25+ min | 3750+ | 3250+ | 30+ | Communauté : live Convergence avec Sadek, Q&A, coulisses | Authentique, personnel | **Communauté privée** (Telegram, lien dans le cadre) + **Convergence** (lives de la chaîne, lien dans le cadre) |
 
 Débit de lecture : ~150 mots/min en français, ~130 en anglais. Ne jamais étirer une vidéo TOP à 18-22 min. Hypothèses à tester (à recalibrer sur les données de la chaîne crypto via `memory/lessons.json`) : rétention > 70 % à 30 s ; completion rate TOP 45-55 %, MIDDLE 40-50 %, BOTTOM 35-45 % ; pic de performance du MIDDLE vers 18-24 min (1of10.com, données hors niche).
 

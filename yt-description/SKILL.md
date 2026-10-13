@@ -52,9 +52,9 @@ X:XX - [Titre de section]
 Pas un conseil en investissement.
 
 [OFFRES — l'offre du funnel en premier]
-Formation offerte en 3 vidéos (Pourquoi investir en 2026 · Comment devenir riche · L'investissement on-chain) : [lien formation]
+Formation offerte en 3 vidéos (Pourquoi investir en 2026 · Comment devenir riche · L'investissement on-chain) : https://youtube.com/playlist?list=PLH8HsDRAJ7R8
 La communauté privée (Telegram) : https://t.me/punk6995trades
-Convergence, le live hebdo avec Sadek (crypto × or) : [lien Convergence]
+Convergence, le live hebdo avec Sadek (crypto × or), en direct sur la chaîne : https://www.youtube.com/@NassinCrypto/streams
 
 [RESSOURCES & LIENS]
 - Outil / wallet / explorateur mentionné : [URL]
@@ -76,10 +76,10 @@ Telegram : https://t.me/punk6995trades
 X : https://x.com/punk6995
 Instagram : https://www.instagram.com/nass.riviera
 YouTube : https://www.youtube.com/@NassinCrypto
-Twitch : [lien Twitch]
+Twitch : https://www.twitch.tv/punk6995
 ```
 
-Les liens viennent de la table « Liens » du cadre. Ceux qui y manquent encore (formation, Convergence, Twitch) restent des placeholders `[lien …]` : ne jamais inventer d'URL.
+Les liens viennent de la table « Liens » du cadre : ne jamais inventer d'URL. Seuls les liens propres à la vidéo (outils, explorateur, vidéo liée, sources) sont à remplir à chaque fois.
 
 ### Hook (lignes 1-3) : un framework par description
 

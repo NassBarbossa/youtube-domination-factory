@@ -39,11 +39,11 @@ CTA par funnel : TOP → formation offerte · MIDDLE → la suite de la formatio
 | X / Twitter | https://x.com/punk6995 |
 | Instagram | https://www.instagram.com/nass.riviera |
 | Chaîne YouTube | https://www.youtube.com/@NassinCrypto |
-| Formation offerte | `[lien formation]` (pas encore donné) |
-| Convergence | `[lien Convergence]` (pas encore donné) |
-| Twitch | `[lien Twitch]` (pas encore donné) |
+| Formation offerte (playlist « Investir en cryptos ») | https://youtube.com/playlist?list=PLH8HsDRAJ7R8 |
+| Convergence (live sur la chaîne) | https://www.youtube.com/@NassinCrypto/streams |
+| Twitch | https://www.twitch.tv/punk6995 |
 
-Règles : on utilise ces liens tels quels, jamais une URL inventée ; un lien absent de la table reste un placeholder `[lien …]`. L'ancien lien `nassriviera.com/challenge/` n'est plus utilisé (challenge abandonné). Ordre dans une description : offre du funnel d'abord, puis réseaux.
+Règles : on utilise ces liens tels quels, jamais une URL inventée. Convergence se passe sur la chaîne YouTube : on renvoie vers les lives de la chaîne, ou vers la vidéo du live quand elle existe. L'ancien lien `nassriviera.com/challenge/` n'est plus utilisé (challenge abandonné). Ordre dans une description : offre du funnel d'abord, puis réseaux.
 
 ## Ton
 
