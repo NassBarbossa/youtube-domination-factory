@@ -14,7 +14,7 @@ En deux lignes : on achète les cryptos en dehors des échanges, on achète les 
 
 Le repo vit à `~/youtube-domination-factory` (Mac) ou `C:\Users\User\youtube-domination-factory` (Windows). Les skills désignent cette racine par `{repo}` et chaque fichier redonne les deux emplacements : une session Claude lit le bon chemin quelle que soit la machine. Les chemins relatifs partent de la racine. Les skills installés (`~/.claude/skills/yt-*`) sont des liens (symlinks Mac, jonctions Windows) vers ce repo : une modif ici est active tout de suite.
 
-Hors git, à recréer sur chaque machine : `.env` à la racine (`OPENROUTER_API_KEY`), `yt-analytics/client_secret.json` et `yt-analytics/token.json` (OAuth YouTube, `python3 yt-analytics/auth.py` pour le refaire).
+Hors git, à recréer sur chaque machine : `.env` à la racine (`OPENROUTER_API_KEY`), `yt-analytics/client_secret.json` et `yt-analytics/token.json` (OAuth YouTube, `python3 yt-analytics/auth.py` pour le refaire, en choisissant le compte de la nouvelle chaîne ; il doit être « utilisateur test » de l'application OAuth dans la console Google Cloud).
 
 ## Skills
 
@@ -52,7 +52,7 @@ Hors git, à recréer sur chaque machine : `.env` à la racine (`OPENROUTER_API_
 
 ## Vidéos publiées (période crypto)
 
-Formation offerte, playlist dans le cadre : `pourquoi-investir-2026` (2026-10-05, `njfEJFd7hQ8`), `comment-devenir-riche` (2026-10-07, `FVajDtrHsPU`), `investissement-on-chain` (2026-10-11, `71HX4YUNrNs`). Tout ce qui précède le 2026-10-07 est la période IA : historique, jamais mélangé aux moyennes crypto.
+Les vidéos crypto sont sur une **nouvelle chaîne, Nassin Crypto** ; l'ancienne chaîne Nass Riviera (période IA) est de l'historique, jamais mélangé aux moyennes crypto. Formation offerte, playlist dans le cadre : `pourquoi-investir-2026` (2026-10-05, `njfEJFd7hQ8`), `comment-devenir-riche` (2026-10-07, `FVajDtrHsPU`), `investissement-on-chain` (2026-10-11, `71HX4YUNrNs`).
 
 ## Code (Python 3, local)
 

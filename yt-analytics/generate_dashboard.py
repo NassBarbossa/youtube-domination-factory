@@ -31,7 +31,7 @@ OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 # Fichiers d'historique qui ne sont pas des vidéos (totaux de chaîne) : jamais dans les moyennes.
 EXCLUDED_SLUGS = {"youtube-totals"}
 # Période d'une vidéo : champ "period" du fichier ("ia" | "crypto") ; absent = période IA (fichiers d'avant le pivot).
-PERIOD_LABELS = {"crypto": "Période crypto (depuis le 2026-10-07)", "ia": "Période IA (avant le 2026-10-07, historique)"}
+PERIOD_LABELS = {"crypto": "Nassin Crypto (nouvelle chaîne, depuis octobre 2026)", "ia": "Ancienne chaîne Nass Riviera (période IA, historique)"}
 
 def load_all_videos():
     """Load historical data for all videos."""

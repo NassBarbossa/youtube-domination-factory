@@ -215,6 +215,11 @@
     font-weight: 600;
   }
 
+  .period { margin-bottom: 56px; }
+  .period-title { font-size: 22px; font-weight: 800; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid #4a90d9; }
+  .period-empty { background: #1a1a1a; border: 1px dashed #2a2a2a; border-radius: 16px; padding: 28px; margin-bottom: 40px; color: #888; }
+  .period-empty h2 { font-size: 22px; color: #e8e8e8; margin-bottom: 8px; }
+
   .footer {
     text-align: center;
     padding-top: 30px;
@@ -227,82 +232,50 @@
 <body>
 <div class="container">
 
-  <!-- Header -->
   <div class="header">
     <h1>YouTube <span>Analytics Dashboard</span></h1>
-    <div class="meta">Généré le 16 March 2026 | 2 vidéos analysées</div>
+    <div class="meta">Généré le 13/10/2026 · 4 vidéo(s) · les deux périodes ne sont jamais moyennées ensemble</div>
   </div>
 
-  <!-- Global Stats -->
+
+  <div class="period-empty"><h2>Nassin Crypto (nouvelle chaîne, depuis octobre 2026)</h2><p>Pas encore de vidéo analysée dans cette période.</p></div>
+
+  <div class="period">
+  <h2 class="period-title">Ancienne chaîne Nass Riviera (période IA, historique)</h2>
   <div class="stats-grid">
-    <div class="stat-card">
-      <div class="label">Total Vues</div>
-      <div class="value">765</div>
-      <div class="subtitle">Toutes les vidéos</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">CTR Moyen</div>
-      <div class="value">9.16%</div>
-      <div class="subtitle">Click-through rate global</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Rétention Moyenne</div>
-      <div class="value">31.85%</div>
-      <div class="subtitle">% vidéo regardée</div>
-    </div>
-    <div class="stat-card">
-      <div class="label">Nouveaux Abonnés</div>
-      <div class="value">+10</div>
-      <div class="subtitle">Croissance total</div>
-    </div>
+    <div class="stat-card"><div class="label">Total Vues</div><div class="value">998</div><div class="subtitle">4 vidéo(s)</div></div>
+    <div class="stat-card"><div class="label">CTR Moyen</div><div class="value">7.05%</div><div class="subtitle">YouTube Studio</div></div>
+    <div class="stat-card"><div class="label">Rétention Moyenne</div><div class="value">25.19%</div><div class="subtitle">% vidéo regardée</div></div>
+    <div class="stat-card"><div class="label">Nouveaux Abonnés</div><div class="value">+11</div><div class="subtitle">sur ces vidéos</div></div>
   </div>
-
-  <!-- Rankings -->
   <div class="ranking-section">
-    <h2>Top Performers</h2>
     <div class="ranking-grid">
-      <div class="rank-container">
-        <h3>🏆 Meilleur CTR</h3>
-        <div class="rank-cards">
-          <div class="rank-card rank-1"><div class="rank-number">1</div><div class="rank-name">vibecoding</div><div class="rank-value">10.89% CTR</div></div>
-<div class="rank-card rank-2"><div class="rank-number">2</div><div class="rank-name">claude-code-4</div><div class="rank-value">7.42% CTR</div></div>
-        </div>
-      </div>
-      <div class="rank-container">
-        <h3>📺 Meilleure Rétention</h3>
-        <div class="rank-cards">
-          <div class="rank-card rank-1"><div class="rank-number">1</div><div class="rank-name">claude-code-4</div><div class="rank-value">35.2% Retention</div></div>
+      <div class="rank-container"><h3>🏆 Meilleur CTR</h3><div class="rank-cards"><div class="rank-card rank-1"><div class="rank-number">1</div><div class="rank-name">vibecoding</div><div class="rank-value">10.89% CTR</div></div>
+<div class="rank-card rank-2"><div class="rank-number">2</div><div class="rank-name">on-vibecode-un-site-complet-en-20-minutes-guide-claudecode-ep02</div><div class="rank-value">8.24% CTR</div></div>
+<div class="rank-card rank-3"><div class="rank-number">3</div><div class="rank-name">claude-code-4</div><div class="rank-value">7.42% CTR</div></div></div></div>
+      <div class="rank-container"><h3>📺 Meilleure Rétention</h3><div class="rank-cards"><div class="rank-card rank-1"><div class="rank-number">1</div><div class="rank-name">claude-code-4</div><div class="rank-value">35.2% Retention</div></div>
 <div class="rank-card rank-2"><div class="rank-number">2</div><div class="rank-name">vibecoding</div><div class="rank-value">28.5% Retention</div></div>
-        </div>
-      </div>
-      <div class="rank-container">
-        <h3>🚀 Plus Vues</h3>
-        <div class="rank-cards">
-          <div class="rank-card rank-1"><div class="rank-number">1</div><div class="rank-name">claude-code-4</div><div class="rank-value">520 Views</div></div>
+<div class="rank-card rank-3"><div class="rank-number">3</div><div class="rank-name">on-vibecode-un-site-complet-en-20-minutes-guide-claudecode-ep02</div><div class="rank-value">21.42% Retention</div></div></div></div>
+      <div class="rank-container"><h3>🚀 Plus Vues</h3><div class="rank-cards"><div class="rank-card rank-1"><div class="rank-number">1</div><div class="rank-name">claude-code-4</div><div class="rank-value">520 Views</div></div>
 <div class="rank-card rank-2"><div class="rank-number">2</div><div class="rank-name">vibecoding</div><div class="rank-value">245 Views</div></div>
-        </div>
-      </div>
+<div class="rank-card rank-3"><div class="rank-number">3</div><div class="rank-name">on-vibecode-un-site-complet-en-20-minutes-guide-claudecode-ep02</div><div class="rank-value">167 Views</div></div></div></div>
     </div>
   </div>
-
-  <!-- Comparison Table -->
   <div class="comparison-section">
-    <h2>Comparaison Complète</h2>
     <div class="comparison-table">
       <table>
-        <thead>
-          <tr>
-            <th>Vidéo</th>
-            <th>Vues</th>
-            <th>CTR</th>
-            <th>Rétention</th>
-            <th>Impressions</th>
-            <th>Abonnés</th>
-            <th>Partages</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Vidéo</th><th>Vues</th><th>CTR</th><th>Rétention</th><th>Impressions</th><th>Abonnés</th><th>Partages</th></tr></thead>
         <tbody>
-          
+    <tr>
+      <td class="video-name">claude-code-10-astuces-pour-tout-changer</td>
+      <td>66</td>
+      <td><span class="metric-badge">Dernier: 1.66%</span> </td>
+      <td><span class="metric-badge">15.64%</span> </td>
+      <td>2405</td>
+      <td>+0</td>
+      <td>0</td>
+    </tr>
+
     <tr>
       <td class="video-name">claude-code-4</td>
       <td>520</td>
@@ -314,6 +287,16 @@
     </tr>
 
     <tr>
+      <td class="video-name">on-vibecode-un-site-complet-en-20-minutes-guide-claudecode-ep02</td>
+      <td>167</td>
+      <td><span class="metric-badge">Dernier: 8.24%</span> </td>
+      <td><span class="metric-badge">21.42%</span> </td>
+      <td>777</td>
+      <td>+1</td>
+      <td>5</td>
+    </tr>
+
+    <tr>
       <td class="video-name">vibecoding</td>
       <td>245</td>
       <td><span class="metric-badge">Dernier: 10.89%</span> <span class="delta-up">+2.65%</span></td>
@@ -322,11 +305,12 @@
       <td>+3</td>
       <td>12</td>
     </tr>
-
-        </tbody>
+</tbody>
       </table>
     </div>
   </div>
+  </div>
+
 
   <!-- Footer -->
   <div class="footer">

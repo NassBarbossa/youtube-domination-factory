@@ -159,10 +159,10 @@ def load_history(video_slug):
         with open(history_file, 'r', encoding='utf-8') as f:
             return json.load(f)
 
-    # Nouveau fichier : période crypto si créé après le pivot du 2026-10-07 (les anciens fichiers restent IA).
+    # Nouveau fichier : nouvelle chaîne Nassin Crypto (depuis octobre 2026) ; les anciens fichiers restent « ia ».
     return {
         "video_slug": video_slug,
-        "period": "crypto" if datetime.now().strftime("%Y-%m-%d") >= "2026-10-07" else "ia",
+        "period": "crypto" if datetime.now().strftime("%Y-%m-%d") >= "2026-10-01" else "ia",
         "analyses": []
     }
 

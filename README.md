@@ -212,7 +212,7 @@ git ls-files '*.py' | xargs python3 -m py_compile
 cd yt-veille/scripts && python3 -m pytest -q
 ```
 
-Les statistiques distinguent deux périodes, qui ne sont jamais moyennées ensemble : la période IA, avant le 7 octobre 2026, et la période crypto depuis.
+Les statistiques distinguent deux chaînes, jamais moyennées ensemble : l'ancienne chaîne Nass Riviera (période IA, historique) et Nassin Crypto, la nouvelle, où tout se passe depuis octobre 2026.
 
 ---
 

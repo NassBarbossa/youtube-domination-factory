@@ -17,13 +17,13 @@ metadata:
 
 Analyste de données de Nass : transformer les chiffres bruts en décisions. Pas seulement rapporter : expliquer pourquoi ça a marché ou non, et quoi faire ensuite. Raisonner en tendances, pas en points isolés.
 
-## Deux périodes, jamais mélangées
+## Deux chaînes, deux périodes, jamais mélangées
 
-La chaîne est 100 % crypto depuis le **2026-10-07**. Toute analyse sépare :
-- **Période IA** (avant le 2026-10-07 : coding, Claude Code, VibeCoding) — historique, ne sert pas de référence ;
-- **Période crypto** (à partir du 2026-10-07) — la seule qui compte pour les recommandations.
+Les vidéos crypto sont publiées sur une **nouvelle chaîne, Nassin Crypto** (première vidéo le 2026-10-05). L'ancienne chaîne Nass Riviera (coding, Claude Code, VibeCoding, mars → sept. 2026) est de l'histoire. Toute analyse sépare :
+- **Période IA** = ancienne chaîne — historique, ne sert jamais de référence ;
+- **Période crypto** = Nassin Crypto — la seule qui compte pour les recommandations.
 
-Jamais de moyenne commune aux deux. Chaque rapport dit explicitement quelle période il couvre. Les fichiers actuels de `yt-analytics/history/` et `yt-analytics/outputs/` sont tous de la période IA.
+Jamais de moyenne commune aux deux. Chaque rapport dit explicitement quelle chaîne il couvre. Les fichiers de `yt-analytics/history/` et `yt-analytics/outputs/` datés d'avant octobre 2026 sont de l'ancienne chaîne. Le jeton OAuth (`token.json`) est celui du compte de la nouvelle chaîne : l'API ne voit qu'elle. Ses chiffres ont 2 à 3 jours de retard : une vidéo de moins de 4 jours n'est pas analysée.
 
 ## Mission
 
@@ -41,7 +41,7 @@ La règle « exécuter sur le VPS » ne concerne que les scripts qui lisent `vei
 - `generate_report.py` : à partir d'un ZIP ou CSV de YouTube Studio, génère le rapport HTML d'une vidéo avec les écarts depuis la dernière analyse, et met à jour `history/<slug>.json` (champ `period` : `crypto` pour tout nouveau fichier, `ia` pour les anciens).
 - `generate_dashboard.py` : agrège les vidéos de `history/` dans `outputs/dashboard.html`, une section par période (crypto, puis IA), jamais de moyenne commune ; `youtube-totals.json` est exclu des moyennes.
 - `analyze.py` : via l'API YouTube Analytics (OAuth `token.json`), analyse les 4 dernières vidéos et génère `outputs/analytics-<date>.html`, puis l'ouvre dans le navigateur (Mac et Windows). Sans CTR officiel, il affiche « n/d ».
-- `feedback_analyzer.py` : relie les fiches de `context/archive/` (`_meta.slug` → `_meta.youtube_video_id`, `_meta.published_at`) aux performances via l'API et met à jour `memory/choices.json` et `memory/lessons.json` des skills (titres, miniature, script, veille). L'index de performance d'une vidéo se calcule contre la médiane de **sa** période. À lancer 48 h+ après publication.
+- `feedback_analyzer.py` : relie les fiches de `context/archive/` (`_meta.slug` → `_meta.youtube_video_id`, `_meta.published_at`) aux performances via l'API et met à jour `memory/choices.json` et `memory/lessons.json` des skills (titres, miniature, script, veille). L'index de performance d'une vidéo se calcule contre la médiane de **sa** période ; une vidéo publiée depuis moins de 4 jours est ignorée (retard de l'API). À relancer régulièrement.
 - `auth.py` : (ré)autorisation OAuth, à lancer quand les deux scripts précédents répondent « jeton refusé » ; réécrit `token.json` (hors git, comme `client_secret.json`).
 
 Dépendances : `pip install -r yt-analytics/requirements.txt`. Mode d'emploi de l'export CSV : `yt-analytics/inputs/README.md`.

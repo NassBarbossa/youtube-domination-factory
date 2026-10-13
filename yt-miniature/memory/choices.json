@@ -70,7 +70,20 @@
       "background_style": "torn-banknote-high-key",
       "title_thumbnail_synergy": "complement",
       "notes": "Pipeline visage réel : fond généré + détourage studio t-shirt blanc + greffe visage v9 sur buste v10 + composite.py. 11 itérations, retours : visage fidèle, yeux ouverts, barbe pas orange, pas de dents, épaules visibles. Puis v12→v17 : Nass rejette les têtes « même émotion que les autres vidéos » ; pose de référence (poing sous le menton) générée en 1:1 plan taille avec marges pour garder épaules/coudes ; fond v2b avec le « 100 » vert conservé.",
-      "performance": null
+      "performance": {
+        "views": 248,
+        "watch_time_min": 489,
+        "avg_view_duration_sec": 152,
+        "retention_pct": 26.8,
+        "subscribers_gained": 16,
+        "likes": 15,
+        "comments": 4,
+        "shares": 2,
+        "fetched_at": "2026-10-13T13:04:45Z",
+        "period": "crypto",
+        "youtube_video_id": "njfEJFd7hQ8",
+        "performance_index": 2.03
+      }
     },
     {
       "video_slug": "comment-devenir-riche",
@@ -95,7 +108,20 @@
       "background_style": "banknote-wall-high-key",
       "title_thumbnail_synergy": "complement",
       "notes": "T-shirt noir, fond densifié après retour « trop vide ». Pipeline visage réel. 2026-10-07 : titre changé en « Utilise cette méthode », scindé haut (blanc) / bas (orange), plus gros — Nass voulait le titre plus visible et plus haut.",
-      "performance": null
+      "performance": {
+        "views": 119,
+        "watch_time_min": 253,
+        "avg_view_duration_sec": 198,
+        "retention_pct": 29.7,
+        "subscribers_gained": 7,
+        "likes": 7,
+        "comments": 3,
+        "shares": 0,
+        "fetched_at": "2026-10-13T13:04:45Z",
+        "period": "crypto",
+        "youtube_video_id": "FVajDtrHsPU",
+        "performance_index": 0.98
+      }
     },
     {
       "video_slug": "investissement-on-chain",

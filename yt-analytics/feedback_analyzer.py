@@ -29,9 +29,14 @@ SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 TOKEN_PATH = SCRIPT_DIR / "token.json"
 
-# La chaîne est 100 % crypto depuis cette date : les deux périodes ne se mélangent jamais.
-CRYPTO_START = "2026-10-07"
+# Deux chaînes, deux périodes, jamais mélangées :
+# - « ia » = l'ancienne chaîne Nass Riviera (mars → sept. 2026), historique seulement ;
+# - « crypto » = la nouvelle chaîne Nassin Crypto, première vidéo le 2026-10-05.
+# token.json doit être celui du compte de la nouvelle chaîne (nassincrypto@…) : l'API ne voit alors qu'elle.
+CRYPTO_START = "2026-10-01"
 IA_START = "2026-01-01"
+# L'API YouTube Analytics a 2 à 3 jours de retard : avant ça, une vidéo remonte 0 ou 1 vue. On attend.
+MIN_AGE_DAYS = 4
 
 # Skill memory paths
 SKILLS = {
@@ -162,6 +167,11 @@ def update_skill_choices(skill_name, memory_path, yt_analytics, averages):
         video_id, published_at = find_video_id(video_slug)
         if not video_id:
             continue
+        if published_at:
+            age_days = (datetime.now(timezone.utc) - datetime.fromisoformat(published_at.replace("Z", "+00:00"))).days
+            if age_days < MIN_AGE_DAYS:
+                print(f"  [{skill_name}] {video_slug} : publiée il y a {age_days} j, données API pas encore fiables (attendre {MIN_AGE_DAYS} j)")
+                continue
 
         perf = get_video_performance(yt_analytics, video_id)
         if perf:
