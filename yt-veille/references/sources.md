@@ -13,10 +13,12 @@ Narrative, avatar et règles de fond : `_shared/cadre-nass.md`. On ne tire jamai
 - **1of10.com** : outliers YouTube (crypto US notamment). Compte payant, pas d'accès automatique : Nass consulte et colle ce qu'il a repéré.
 
 ## Chaînes de référence
-Liste complète, tiers et IDs : `scripts/config/channels.json` (40 chaînes actives au 2026-10-07, plus `a_verifier` et `exclus`). Aussi utilisée par la veille automatique, en pause.
+Liste complète, tiers et IDs : `scripts/config/channels.json` (77 chaînes actives au 2026-10-14 : 28 FR, 34 US, 15 ES ; plus `a_verifier` et `exclus`). Aussi utilisée par la veille automatique, en pause.
 - **FR, Tier 1** : Hasheur, Hasheur Live, Cryptoast, Journal du Coin, Grand Angle Bitcoin, Paul Finance, Finary (pont investisseurs « classiques » / crypto), CoinAcademy
 - **FR, Tier 2-3** : Julien Roman, Crypto Le Trone, Cryptoast Academy & Podcast, Monsieur-TK, Cryptolyze, Crypto Flash, Chantal Läng, Jonathan Nowak, Crypto et Bourse pour tous, FinTales, Matthieu Louvet, Lexa Moon, Crypto Logique, bitcoin fr, Cryptorecherche, Alex Doyon, Milenium Finance, K-Bour Crypto, Seiya
-- **US** : Coin Bureau, Altcoin Daily, Lark Davis (Tier 1) ; Bankless, Benjamin Cowen, Raoul Pal, On-Chain Mind (Tier 2) ; EllioTrades, Ivan on Tech, The Defiant, Checkonchain, 99Bitcoins (Tier 3)
+- **US, Tier 1** (vues médianes ≥ 30 k) : Coin Bureau, Altcoin Daily, Lark Davis, Mark Moss, Gareth Soloway, Paul Barron Network, Knightron Crypto, MMCrypto, Blockchain Backer, Alessio Rastani, The House Of Crypto, Jason Pizzino, Money Rules - Investing Tips, No Bs Crypto, Levi
+- **US, Tier 2-3** : Bankless, Benjamin Cowen, Raoul Pal, On-Chain Mind, EllioTrades, Ivan on Tech, The Defiant, Checkonchain, 99Bitcoins, Crypto Sensei, CryptosRUs, Crypto Capital Venture, What Bitcoin Did, Crypto Zombie, Good Evening Crypto, Tyler S, Adam Livingston, Crypto Rover, Boxmining
+- **ES** (ajoutées le 2026-10-14) : Plan BTC, Bitcoin y Criptos, Nico Cabrera, Sergi Andrés - Abogado Cripto, Healthy Pockets, Bitcoin hoy, Fran Ruiz, Alejo Rolls | Análisis de Bitcoin, CdeCripto, ERIKA ESPINAL, Informe Crypto, Criptoniano, Value Index · Bitcoin y Mercados, Edu Heras, KManuS88
 - **Exclues** (trading à levier / live trading) : Crypto Banter, Merov Crypto, Benjamin Deleuze, Thibaut Crypto, DataDash
 - Ancienne liste IA : `scripts/config/channels_ia_archive.json`
 - **Candidats EN/ES (collecte du 2026-10-13)** : `yt-veille/references/chaines-en-es-2026-10-13.md` (483 chaînes anglophones, 212 hispanophones, abonnés, vues médianes, cadence, signaux) et `scripts/config/channels_candidates_en_es.json`. À faire valider par Nass avant d'entrer dans `channels.json`.
