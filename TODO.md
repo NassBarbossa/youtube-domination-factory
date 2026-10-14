@@ -97,5 +97,5 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [ ] Filtre halal : n'exclut rien du top 25, rate « futures », « short x50 », « intérêts USDC », et exclut à tort les descriptions avec lien d'affiliation → filtre sur le titre avec limites de mots (`\b`), lu depuis `config/keywords.json`.
 - [ ] Vieilles vidéos IA : rester seulement sur les chaînes de `channels.json`, limiter le maintien des « anomalies » à 30 jours.
 - [ ] Cron : code de sortie ≠ 0 si trop d'échecs, `flock`, alerte en cas d'échec ; `report.py` doit charger le `.env` (Notion) et vérifier les réponses HTTP.
-- [ ] La clé API YouTube apparaît en clair dans `/var/log/yt-veille.log` (URL d'erreur) : masquer.
-- [ ] VPS encore sur `master` (`b6b1048`, chaînes IA) : `git checkout rebrand/crypto` le jour de la relance.
+- [x] Clé API masquée dans `/var/log/yt-veille.log` le 2026-10-14 ; reste à corriger `report.py` / `youtube_api.py` pour ne plus logger l'URL complète en cas d'erreur.
+- [x] VPS basculé sur `rebrand/crypto` le 2026-10-14 (77 chaînes crypto, 58 tests OK sur place). Cron toujours désactivé.
