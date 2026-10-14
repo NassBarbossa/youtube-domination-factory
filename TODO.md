@@ -1,6 +1,6 @@
 # TODO — YouTube Domination Factory
 
-État au 2026-10-13, branche `rebrand/crypto` (en avance sur `master`, pas encore mergée).
+État au 2026-10-14. Branche de travail `rebrand/crypto`, mergée dans `master` à chaque push.
 
 ## 1. Installer sur un nouvel ordi
 
@@ -89,7 +89,7 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [x] OAuth YouTube refait le 2026-10-13 avec le compte de la nouvelle chaîne (ajouté comme utilisateur test de l'app OAuth « Claude Code », projet `gen-lang-client-0972819873`). `feedback_analyzer.py` tourne ; relancer quand `investissement-on-chain` aura plus de 4 jours.
 - [ ] Repo lourd (110 Mo de `.git`, 131 Mo de fichiers suivis dont ~100 Mo de vidéos dans `shows/`) : Git LFS n'est installé sur aucune machine. Décision de Nass : installer LFS des deux côtés, ou sortir les rendus du repo.
 - [x] `scripts/export_script.py` supprimé le 2026-10-14 (export .docx figé sur un script IA de mars, cité nulle part).
-- [ ] Merger `rebrand/crypto` dans `master` une fois validé.
+- [x] `rebrand/crypto` mergé dans `master` le 2026-10-14 (fast-forward). Règle de Nass : « push » = push et merge dans master.
 
 ## 6. Veille (seulement si Nass décide de la relancer)
 
