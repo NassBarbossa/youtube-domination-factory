@@ -148,7 +148,7 @@ Dans l'ordre : Shorts (instructions de découpe + notes TikTok/Reels), thread X 
 
 ### Step 6 : Export du document
 
-Créer un document `[Repurposing] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté. Partage : `quentin.riviere69@gmail.com`. Contenu en texte brut : SHORTS (titre, hook, contenu, punchline, texte à l'écran, source), THREAD X (+ reply lien), POST LINKEDIN, PLANNING. Annoncer le lien à Nass. Si aucun connecteur n'est disponible, livrer le texte et le dire (en autonome : `open_questions[]`).
+Créer un document `[Repurposing] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté. Contenu en texte brut : SHORTS (titre, hook, contenu, punchline, texte à l'écran, source), THREAD X (+ reply lien), POST LINKEDIN, PLANNING. Annoncer le lien à Nass. Si aucun connecteur n'est disponible, livrer le texte et le dire (en autonome : `open_questions[]`).
 
 ## Limites de caractères
 

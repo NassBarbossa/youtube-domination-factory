@@ -63,7 +63,7 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [x] Miniatures : charte à part validée (2026-10-13) : blanc + orange + bleus, photo réaliste (voir cadre). Sable/or réservé aux slides.
 - [x] `yt-calendrier` supprimé le 2026-10-14 à la demande de Nass (skill, lien, références).
 - [x] Liens donnés (2026-10-13) : site, Telegram, X, Instagram, chaîne, playlist formation, Convergence (lives de la chaîne), Twitch → table « Liens » du cadre.
-- [ ] Email de partage des Google Docs (actuellement `quentin.riviere69@gmail.com`).
+- [x] Google Docs : plus d'adresse de partage imposée (Nass, 2026-10-14).
 - [x] Bio et liens de la description : bloc fixe fourni par Nass le 2026-10-14, collé tel quel dans `yt-description/SKILL.md`.
 - [ ] Hashtags LinkedIn : plus tard (Nass, 2026-10-14).
 - [ ] Shorts (plus tard, Nass 2026-10-14) : déposer la méthode de script et le style de montage dans `yt-shorts-script/references/` et `yt-shorts-montage/references/` ; choisir l'outil d'avatar/voix IA ; préciser « 1 plan par ~0,8 s max ».
@@ -73,7 +73,7 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 
 - [x] Photos de Nass : 19 références d'octobre (neutre, réfléchi, salut, surpris, sourire, versions hautes) dans `yt-miniature/references/nass/`, ajoutées au repo le 2026-10-13.
 - [x] Référence du punk @punk6995 : `yt-miniature/references/punk/punk6995-24.png` et `-960.png` (2026-10-13).
-- [ ] Les portraits `wmremove-*.png` ont le fond de l'ancienne charte : garder ou refaire ?
+- [x] Anciens portraits `wmremove-*.png` supprimés le 2026-10-14 ; référence = les 19 photos d'octobre dans `yt-miniature/references/nass/`.
 - [x] `composite.py` et les autres scripts de `yt-miniature/scripts/` sont dans le repo (2026-10-13).
 
 ## 5. Code à corriger
