@@ -55,9 +55,9 @@ sl('''<h2>Du record au creux, 2025-2026</h2><div class="pb-bars">
 <div class="pb-bar"><img src="logos/sol.png"><div class="pb-bar-fill" style="height:76%"><span>−76 %</span></div><b>Solana</b><small>254 → 60 $</small></div></div>
 <p class="pb-src">Binance, record → creux (oct. 2025 → juin / juillet 2026) · et les petits coins on-chain, encore pire</p>''')
 sl('<div class="pb-light"><span class="pb-red"></span><span></span><span></span></div><p class="key-statement">Majors en baisse = pas d\'achat on-chain.</p>')
-sl(f'''<h2>Bitcoin : des sommets et des creux de plus en plus bas</h2>
-{chart(BTC, D(2025,9,20), D(2026,7,31), [(D(2025,10,6),126200,"126 200 $"),(D(2025,10,27),116400,"116 400 $","down"),(D(2026,1,14),97924,"97 924 $"),(D(2026,5,6),82850,"82 850 $"),(D(2026,7,21),66956,"66 956 $","up"),(D(2025,11,21),80600,"80 600 $","down"),(D(2026,2,6),60000,"60 000 $","up"),(D(2026,7,1),57800,"57 800 $","down")])}
-<p class="pb-src">Binance BTC/USDT, clôtures journalières · −54 % en 268 jours</p>''')
+sl(f'''<h2>Bitcoin, du record à aujourd'hui : la structure baissière est cassée</h2>
+{chart(BTC, D(2025,9,20), D(2026,10,14), [(D(2025,10,6),126200,"126 200 $ · record"),(D(2026,1,14),97924,"97 924 $","up"),(D(2026,5,6),82850,"82 850 $","up"),(D(2026,2,6),60000,"60 000 $","up"),(D(2026,7,1),57800,"57 800 $ · creux","down"),(D(2026,8,1),62275,"62 275 $ · creux plus haut","up"),(D(2026,9,21),86620,"86 620 $ · cassure","up"),(D(2026,10,8),80394,"80 394 $","down")], line=(82850,"82 850 $ · dernier sommet baissier (6 mai)"), sma=sB)}
+<p class="pb-src">Binance BTC/USDT, clôtures journalières jusqu'au 14 octobre 2026 · sommets et creux de plus en plus bas jusqu'au 1er juillet, puis creux plus hauts et cassure le 21 septembre</p>''')
 sl('<div class="pb-def"><div class="pb-term">Structure baissière</div><p>Des sommets de plus en plus bas et des creux de plus en plus bas. Tant que ça dure, le marché baisse.</p><div class="pb-stairs pb-down"><i></i><i></i><i></i><i></i></div></div>')
 sl('<div class="pb-def"><div class="pb-term">Changement de structure</div><p>Un creux qui reste plus haut que le précédent, puis un sommet qui dépasse le précédent. Le marché arrête de baisser.</p><div class="pb-stairs pb-up"><i></i><i></i><i></i><i></i></div></div>')
 sl('<div class="divider divider-sand"></div><h2>Ce qui a cassé, et quand</h2><p>Les dates, sur les trois majors</p>', "transition")
