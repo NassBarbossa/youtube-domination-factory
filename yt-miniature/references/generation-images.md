@@ -25,8 +25,6 @@ Dossier : `yt-miniature/references/nass/` (ne pas modifier ces fichiers). Fichie
 | `confident-wide.png` | confiant, plan plus large |
 | `focused.jpg` | regard vers un écran, concentré |
 | `skeptical.jpg` | un sourcil levé, léger froncement |
-| `NassCloseSmile.png` | sourire, plan serré |
-| `NassDistantSmile.png` | sourire, plan large |
 | `*-2026-10.jpg` (19 photos : neutre, réfléchi, salut, surpris, sourire, et versions hautes) | référence actuelle, octobre 2026 |
 
 À fournir par Nass :
