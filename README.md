@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.youtube.com/@NassinCrypto"><img alt="Chaîne Nassin Crypto" src="https://img.shields.io/badge/YouTube-Nassin%20Crypto-FF0000?logo=youtube&logoColor=white"></a>
-  <img alt="12 skills Claude Code" src="https://img.shields.io/badge/skills%20Claude%20Code-12-DBB17F">
+  <img alt="12 skills Claude Code" src="https://img.shields.io/badge/skills%20Claude%20Code-11-DBB17F">
   <img alt="Python 3" src="https://img.shields.io/badge/Python-3.10%2B-648596?logo=python&logoColor=white">
   <img alt="Mac et Windows" src="https://img.shields.io/badge/Mac%20%C2%B7%20Windows-ok-F4EFE7">
   <img alt="Branche" src="https://img.shields.io/badge/branche-rebrand%2Fcrypto-9C7748">
@@ -13,7 +13,7 @@
 <h3 align="center">Une phrase en entrée. Une vidéo prête à tourner en sortie.</h3>
 
 <p align="center">
-  Douze skills Claude Code qui fabriquent les vidéos de la chaîne crypto de <a href="https://nassriviera.com">Nass Riviera</a> :<br>
+  Onze skills Claude Code qui fabriquent les vidéos de la chaîne crypto de <a href="https://nassriviera.com">Nass Riviera</a> :<br>
   recherche, script, slides animées, titres, miniature, description, Shorts, thread X, post LinkedIn, stats.<br>
   Nass valide aux étapes clés. Le reste se fait tout seul.
 </p>
@@ -110,7 +110,6 @@ Tout passe par un seul fichier, `context/video-context.json`, dont le contrat es
 | [`yt-shorts-script`](yt-shorts-script/SKILL.md) | Shorts natifs 30 à 60 s, en série | scripts de Shorts |
 | [`yt-shorts-montage`](yt-shorts-montage/SKILL.md) | Composition HyperFrames, sous-titres, SFX, rendu | MP4 1080×1920 |
 | [`yt-analytics`](yt-analytics/SKILL.md) | Stats par vidéo et par chaîne, deux périodes jamais mélangées | rapports et tableau de bord HTML |
-| [`yt-calendrier`](yt-calendrier/SKILL.md) | Calendrier éditorial et pipeline de production | planning |
 
 Chaque skill marche aussi seul, appelé directement. Les détails lourds vivent dans `references/`, chargés à la demande. Les choix passés et leurs résultats vivent dans `memory/`.
 
@@ -143,7 +142,7 @@ Pour chacune : script et deck dans `yt-script/outputs/`, miniature finale dans `
 
 ## Le cadre, source unique
 
-Tout ce qu'un skill doit savoir sur la chaîne est écrit une seule fois dans [`_shared/cadre-nass.md`](_shared/cadre-nass.md). Les skills y renvoient, aucun ne le recopie. Modifier le cadre, c'est modifier les douze skills d'un coup.
+Tout ce qu'un skill doit savoir sur la chaîne est écrit une seule fois dans [`_shared/cadre-nass.md`](_shared/cadre-nass.md). Les skills y renvoient, aucun ne le recopie. Modifier le cadre, c'est modifier les onze skills d'un coup.
 
 | Section | Contenu |
 |---|---|

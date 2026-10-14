@@ -1,6 +1,6 @@
 ---
 name: yt-veille
-description: Veille crypto et idées de vidéos YouTube pour la chaîne de Nass Riviera. Possède les demandes « trouve moi des idées », « sujet de vidéo », « quoi filmer », « prochaine vidéo », « veille crypto », « tendances crypto », « quoi de neuf en crypto », « video ideas », « what should I film ». Produit 3 à 5 idées scorées et une recommandation. Pas pour la recherche concurrentielle sur un sujet déjà choisi → yt-transcript ; pas pour le calendrier éditorial → yt-calendrier ; pas pour une vidéo complète de bout en bout → yt-orchestrator.
+description: Veille crypto et idées de vidéos YouTube pour la chaîne de Nass Riviera. Possède les demandes « trouve moi des idées », « sujet de vidéo », « quoi filmer », « prochaine vidéo », « veille crypto », « tendances crypto », « quoi de neuf en crypto », « video ideas », « what should I film ». Produit 3 à 5 idées scorées et une recommandation. Pas pour la recherche concurrentielle sur un sujet déjà choisi → yt-transcript ; pas pour une vidéo complète de bout en bout → yt-orchestrator.
 metadata:
   author: NassRiviera
   category: youtube-workflow

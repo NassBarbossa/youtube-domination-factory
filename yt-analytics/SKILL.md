@@ -1,6 +1,6 @@
 ---
 name: yt-analytics
-description: Analyse les statistiques YouTube de la chaîne de Nass Riviera (vidéo par vidéo et chaîne) et en tire des recommandations, avec un tableau de bord HTML. Déclencheurs FR/EN — « analyse mes stats », « analytics », « performance vidéo », « qu'est-ce qui marche », « CTR », « rétention », « YouTube stats », « check my numbers », ou export CSV de YouTube Studio partagé. Pas pour planifier les prochaines vidéos → yt-calendrier.
+description: Analyse les statistiques YouTube de la chaîne de Nass Riviera (vidéo par vidéo et chaîne) et en tire des recommandations, avec un tableau de bord HTML. Déclencheurs FR/EN — « analyse mes stats », « analytics », « performance vidéo », « qu'est-ce qui marche », « CTR », « rétention », « YouTube stats », « check my numbers », ou export CSV de YouTube Studio partagé.
 metadata:
   author: NassRiviera
   category: youtube-workflow
@@ -87,7 +87,7 @@ Demander à Nass (capture, export CSV ou saisie) :
 | Sujets gagnants | Sujets qui font le plus de vues | Creuser ces sujets |
 | Titres | Formules au meilleur CTR | Réutiliser |
 | Durée | Longueur à la meilleure rétention | Viser cette longueur |
-| Formats | Éducation débutant / Acheter en dehors des échanges / Reconnaître un bon coin / Actualité + Convergence / Questions de la communauté (mix de yt-calendrier) | Ajuster le mix (yt-calendrier) |
+| Formats | Éducation débutant / Acheter en dehors des échanges / Reconnaître un bon coin / Actualité + Convergence / Questions de la communauté  | Ajuster le mix |
 | Funnel des offres | Vidéos qui envoient vers la formation offerte, la communauté, Convergence | Prioriser ce qui convertit, pas seulement ce qui fait des vues |
 | Adéquation avatar | Part des hommes 25-40 ans, part des nouveaux spectateurs | Ajuster sujets et vocabulaire si l'audience dérive (trop experte, trop jeune) |
 | Miniatures | Écarts de CTR selon le style | Standardiser ce qui marche |

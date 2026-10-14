@@ -48,38 +48,37 @@ Structure :
 X:XX - [Titre de section]
 ...
 
-[DISCLAIMER]
-Pas un conseil en investissement.
-
-[OFFRES — l'offre du funnel en premier]
-Formation offerte en 3 vidéos (Pourquoi investir en 2026 · Comment devenir riche · L'investissement on-chain) : https://youtube.com/playlist?list=PLH8HsDRAJ7R8
-La communauté privée (Telegram) : https://t.me/punk6995trades
-Convergence, le live hebdo avec Sadek (crypto × or), en direct sur la chaîne : https://www.youtube.com/@NassinCrypto/streams
-
-[RESSOURCES & LIENS]
+[RESSOURCES & LIENS — propres à la vidéo]
 - Outil / wallet / explorateur mentionné : [URL]
 - Transaction montrée dans la vidéo : [lien explorateur — Solscan, Etherscan…]
 - Vidéo liée : [URL]
 
-[SOURCES & RÉFÉRENCES]
+[SOURCES & RÉFÉRENCES — propres à la vidéo]
 - [Doc officielle / donnée on-chain citée] : [URL]
 - [Article / rapport mentionné] : [URL]
 
-[À PROPOS]
-Je suis Nass Riviera. Ici, je t'explique la crypto depuis zéro et je te montre comment j'achète on-chain, en dehors des échanges, avant que les projets soient connus de tous. Les bons coins, je ne les achète pas tous les jours : seulement quand il y a une vraie opportunité.
+[BLOC FIXE — mots de Nass (2026-10-14), à coller tel quel, sans retouche]
+Je m'appelle Nass. Investisseur et entrepreneur depuis 10 ans, premiers bitcoins en 2017, je vis de mes investissements depuis 6 ans.
 
-[CTA — adapté au type de vidéo]
+Formation offerte : https://youtube.com/playlist?list=PLH8HsDRAJ7R8&si=jjiYTJrG2VJlceau
 
-[RÉSEAUX]
-Site : https://nassriviera.com
-Telegram : https://t.me/punk6995trades
-X : https://x.com/punk6995
-Instagram : https://www.instagram.com/nass.riviera
-YouTube : https://www.youtube.com/@NassinCrypto
-Twitch : https://www.twitch.tv/punk6995
+Sur cette chaîne, j'explique comment investir simplement, avec une méthode : gérer son argent, investir chaque mois (DCA) et acheter des cryptos on-chain avant les autres. Du bon sens, de vrais chiffres et mes propres résultats.
+
+Je suis actuellement entrain de réaliser un challenge 10K → 100K que tu peux suivre 👇
+📊 Suivre le challenge en direct → https://nassriviera.com/challenge/
+✈️ Telegram → https://t.me/punk6995trades
+📸 Instagram → https://www.instagram.com/nass.riviera/
+📲 X / Twitter → https://x.com/punk6995
+
+💬 Dis-moi en commentaire où tu en es : jamais investi, déjà en DCA, ou déjà on-chain ?
+👍 Abonne-toi pour la suite !!
+
+⚠️ Ceci n'est pas un conseil en investissement. Les cryptos sont des actifs volatils : n'investis que ce que tu peux te permettre de perdre.
+
+#crypto #investir #memecoins
 ```
 
-Les liens viennent de la table « Liens » du cadre : ne jamais inventer d'URL. Seuls les liens propres à la vidéo (outils, explorateur, vidéo liée, sources) sont à remplir à chaque fois.
+Le bloc fixe est la bio et les liens de Nass : il se colle tel quel, dans cet ordre, sans rien reformuler ni ajouter. Seuls le hook, les timestamps, les ressources et les sources changent d'une vidéo à l'autre. Le disclaimer est déjà dans le bloc fixe : ne pas le répéter.
 
 ### Hook (lignes 1-3) : un framework par description
 

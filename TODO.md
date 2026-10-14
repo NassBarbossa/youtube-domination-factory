@@ -61,12 +61,12 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 
 - [x] Wallet public : abandonné (2026-10-13), on ne le donne plus. Reste à retirer du site nassriviera.com (`~/nassriviera-challenge/public/index.html`, hors de ce repo) et de la page challenge.
 - [x] Miniatures : charte à part validée (2026-10-13) : blanc + orange + bleus, photo réaliste (voir cadre). Sable/or réservé aux slides.
-- [ ] Mix de contenus proposé dans `yt-calendrier` : éducation 35 % · acheter hors échanges 25 % · reconnaître un bon coin 20 % · actu + Convergence 15 % · communauté 5 % ; rythme 3 vidéos/semaine.
+- [x] `yt-calendrier` supprimé le 2026-10-14 à la demande de Nass (skill, lien, références).
 - [x] Liens donnés (2026-10-13) : site, Telegram, X, Instagram, chaîne, playlist formation, Convergence (lives de la chaîne), Twitch → table « Liens » du cadre.
 - [ ] Email de partage des Google Docs (actuellement `quentin.riviere69@gmail.com`).
-- [ ] Bio « À propos » de la description (`yt-description`), écrite d'après le cadre : à valider.
-- [ ] Hashtags LinkedIn : 3-5 ou aucun.
-- [ ] Shorts : déposer la méthode de script et le style de montage dans `yt-shorts-script/references/` et `yt-shorts-montage/references/` ; choisir l'outil d'avatar/voix IA ; préciser « 1 plan par ~0,8 s max ».
+- [x] Bio et liens de la description : bloc fixe fourni par Nass le 2026-10-14, collé tel quel dans `yt-description/SKILL.md`.
+- [ ] Hashtags LinkedIn : plus tard (Nass, 2026-10-14).
+- [ ] Shorts (plus tard, Nass 2026-10-14) : déposer la méthode de script et le style de montage dans `yt-shorts-script/references/` et `yt-shorts-montage/references/` ; choisir l'outil d'avatar/voix IA ; préciser « 1 plan par ~0,8 s max ».
 - [x] Fiscalité FR : 3916-bis (comptes d'actifs numériques à l'étranger) et 2086 (plus-values) confirmés ; flat tax 31,4 % en 2026, PLF 2027 en débat (voir `yt-veille/outputs/veille-2026-10-13.md`).
 
 ## 4. Assets à fournir

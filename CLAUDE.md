@@ -29,7 +29,7 @@ Hors git, à recréer sur chaque machine : `yt-analytics/.studio-profile/` (sess
 | `yt-description` | Description et tags |
 | `yt-repurposing` | Découpe d'une vidéo longue : Shorts, thread X, LinkedIn |
 | `yt-shorts-script` / `yt-shorts-montage` | Shorts natifs 30-60 s (fondations, méthode de Nass à venir dans `references/`) |
-| `yt-analytics` / `yt-calendrier` | Analyse des stats, calendrier éditorial |
+| `yt-analytics` | Analyse des stats YouTube |
 
 ## Pipeline (yt-orchestrator)
 
