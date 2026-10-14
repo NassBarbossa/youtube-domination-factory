@@ -27,7 +27,7 @@ Dossier : `yt-miniature/references/nass/` (ne pas modifier ces fichiers). Fichie
 | `skeptical.jpg` | un sourcil levé, léger froncement |
 | `NassCloseSmile.png` | sourire, plan serré |
 | `NassDistantSmile.png` | sourire, plan large |
-| `wmremove-resized.png`, `wmremove-transformed (1).png` | portraits studio souriants, chemise blanche, fond dégradé cyan / orange (ancienne charte) |
+| `*-2026-10.jpg` (19 photos : neutre, réfléchi, salut, surpris, sourire, et versions hautes) | référence actuelle, octobre 2026 |
 
 À fournir par Nass :
 - `neutral.*` — expression neutre de base (absente). En attendant, repli sur `confident.png`.

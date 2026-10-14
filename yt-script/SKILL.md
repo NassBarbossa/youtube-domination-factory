@@ -121,7 +121,7 @@ Script complet avec les marqueurs de plans `[FACE CAM]`, `[SCREEN]`, `[DEMO]` (w
 
 **Phase A — `yt-script/outputs/[slug].md`** : metadata (mots, durée, timestamps), marqueurs de plans, marqueurs `[SLIDE: type | contenu]`, 2-3 Shorts moments, sources (lien + date) pour chaque chiffre ou prix.
 
-**Phase B — Squelette des slides (validation)** : avant tout HTML, créer un doc `[Slides] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté ; partage à `quentin.riviere69@gmail.com`. Une entrée par slide : numéro + type, texte exact à l'écran, notes visuelles, source + date des chiffres (format : `references/slides.md` §2). Envoyer le lien à Nass, attendre son OK, reporter ses changements (ordre, ajouts, suppressions) dans les marqueurs `[SLIDE]` du `.md`.
+**Phase B — Squelette des slides (validation)** : avant tout HTML, créer un doc `[Slides] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté. Une entrée par slide : numéro + type, texte exact à l'écran, notes visuelles, source + date des chiffres (format : `references/slides.md` §2). Envoyer le lien à Nass, attendre son OK, reporter ses changements (ordre, ajouts, suppressions) dans les marqueurs `[SLIDE]` du `.md`.
 
 **Phase C — `yt-script/outputs/[slug]-visual.html`** : partir de `yt-script/references/slide-template.html` (charte du cadre en variables CSS, navigation clavier, ancre `#N`). Le skill `frontend-slides` peut servir, en sautant sa phase de style discovery. Une slide par marqueur, dans l'ordre validé, + transitions entre sections. Détail (types de slides, tableau des marqueurs, logos, fond, watermark, animations de base, bibliothèque de patterns, conversion de couleurs) : **`references/slides.md`**.
 
@@ -195,7 +195,7 @@ Parler directement à Nass pendant le process. Poser des questions si le brief e
 
 ## Export du script
 
-Après validation finale du script : créer un doc `[Script] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté, avec le contenu de `[slug].md` ; partage à `quentin.riviere69@gmail.com`. Donner le lien à Nass : « Script exporté : [lien] ». L'export est la dernière étape, après les fichiers locaux. Si aucun connecteur n'est disponible, le dire et livrer les fichiers locaux seulement.
+Après validation finale du script : créer un doc `[Script] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté, avec le contenu de `[slug].md`. Donner le lien à Nass : « Script exporté : [lien] ». L'export est la dernière étape, après les fichiers locaux. Si aucun connecteur n'est disponible, le dire et livrer les fichiers locaux seulement.
 
 ## Mode pipeline (yt-orchestrator)
 
