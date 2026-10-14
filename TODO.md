@@ -67,14 +67,14 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [ ] Bio « À propos » de la description (`yt-description`), écrite d'après le cadre : à valider.
 - [ ] Hashtags LinkedIn : 3-5 ou aucun.
 - [ ] Shorts : déposer la méthode de script et le style de montage dans `yt-shorts-script/references/` et `yt-shorts-montage/references/` ; choisir l'outil d'avatar/voix IA ; préciser « 1 plan par ~0,8 s max ».
-- [ ] Fiscalité FR dans `yt-veille/references/sources.md` : corrigé en 3916-bis (comptes à l'étranger) et 2086 (plus-values), à valider.
+- [x] Fiscalité FR : 3916-bis (comptes d'actifs numériques à l'étranger) et 2086 (plus-values) confirmés ; flat tax 31,4 % en 2026, PLF 2027 en débat (voir `yt-veille/outputs/veille-2026-10-13.md`).
 
 ## 4. Assets à fournir
 
-- [ ] Photos de Nass : neutre, sérieuse bouche fermée, poing sous le menton (`yt-miniature/references/nass/`).
-- [ ] Référence du punk @punk6995 dans `yt-miniature/references/punk/` (une copie existe dans `yt-shorts-montage/projects/wallets/02-c-est-quoi-un-wallet/assets/punk6995.jpg`).
+- [x] Photos de Nass : 19 références d'octobre (neutre, réfléchi, salut, surpris, sourire, versions hautes) dans `yt-miniature/references/nass/`, ajoutées au repo le 2026-10-13.
+- [x] Référence du punk @punk6995 : `yt-miniature/references/punk/punk6995-24.png` et `-960.png` (2026-10-13).
 - [ ] Les portraits `wmremove-*.png` ont le fond de l'ancienne charte : garder ou refaire ?
-- [ ] `composite.py` cité dans `yt-miniature/memory/choices.json` est absent du repo.
+- [x] `composite.py` et les autres scripts de `yt-miniature/scripts/` sont dans le repo (2026-10-13).
 
 ## 5. Code à corriger
 
@@ -88,7 +88,7 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [x] CTR automatisé (2026-10-13) : `studio_ctr.py` lit YouTube Studio avec Playwright, aucune API ne fournit impressions/CTR (testé). Premier rapport : CTR 16 % / 9,9 % / 10,7 %, 328 à 585 impressions.
 - [x] OAuth YouTube refait le 2026-10-13 avec le compte de la nouvelle chaîne (ajouté comme utilisateur test de l'app OAuth « Claude Code », projet `gen-lang-client-0972819873`). `feedback_analyzer.py` tourne ; relancer quand `investissement-on-chain` aura plus de 4 jours.
 - [ ] Repo lourd (110 Mo de `.git`, 131 Mo de fichiers suivis dont ~100 Mo de vidéos dans `shows/`) : Git LFS n'est installé sur aucune machine. Décision de Nass : installer LFS des deux côtés, ou sortir les rendus du repo.
-- [ ] `scripts/export_script.py` : export .docx figé sur un script IA de mars (contenu en dur). À supprimer ou à généraliser.
+- [x] `scripts/export_script.py` supprimé le 2026-10-14 (export .docx figé sur un script IA de mars, cité nulle part).
 - [ ] Merger `rebrand/crypto` dans `master` une fois validé.
 
 ## 6. Veille (seulement si Nass décide de la relancer)
