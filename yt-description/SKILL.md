@@ -64,8 +64,8 @@ Formation offerte : https://youtube.com/playlist?list=PLH8HsDRAJ7R8&si=jjiYTJrG2
 
 Sur cette chaîne, j'explique comment investir simplement, avec une méthode : gérer son argent, investir chaque mois (DCA) et acheter des cryptos on-chain avant les autres. Du bon sens, de vrais chiffres et mes propres résultats.
 
-Je suis actuellement entrain de réaliser un challenge 10K → 100K que tu peux suivre 👇
-📊 Suivre le challenge en direct → https://nassriviera.com/challenge/
+Suis-moi sur mes différents réseaux 👇
+📊 Site : https://nassriviera.com/
 ✈️ Telegram → https://t.me/punk6995trades
 📸 Instagram → https://www.instagram.com/nass.riviera/
 📲 X / Twitter → https://x.com/punk6995
