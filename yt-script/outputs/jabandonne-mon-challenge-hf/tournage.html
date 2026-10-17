@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Tournage — J'abandonne mon challenge</title>
+<script src="/player.js"></script>
+<style>
+  html, body { margin: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #stage { position: fixed; inset: 0; display: grid; place-items: center; background: #000; }
+  hyperframes-player { display: block; width: 100vw; height: 100vh; }
+  #hud { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); font: 600 13px/1.4 Inter, system-ui, sans-serif; letter-spacing: .08em; color: rgba(255,255,255,.75); background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.15); border-radius: 999px; padding: 6px 14px; z-index: 10; transition: opacity .4s; pointer-events: none; }
+  #hud.hidden { opacity: 0; }
+  #hud b { color: #FF6B35; }
+  #help { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); font: 12px/1.4 Inter, system-ui, sans-serif; color: rgba(255,255,255,.45); z-index: 10; transition: opacity .4s; pointer-events: none; }
+  #help.hidden { opacity: 0; }
+</style>
+</head>
+<body>
+<div id="stage"><hyperframes-player id="player" src="/composition/index.html"></hyperframes-player></div>
+<div id="hud">Chargement…</div>
+<div id="help">→ / Espace : suite · ← : slide précédente · R : rejouer la slide · F : plein écran · H : cacher ce bandeau</div>
+<script>
+(function () {
+  const player = document.getElementById('player'), hud = document.getElementById('hud'), help = document.getElementById('help');
+  const EPS = 0.02;
+  let slides = [], idx = -1, stopIdx = -1, target = null, playing = false, raf = null, hudTimer = null;
+
+  // 1. îlot JSON du deck (ordre des slides, fragments) + scènes du moteur (start / durée)
+  async function loadManifest() {
+    const html = await (await fetch('/composition/index.html')).text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const island = doc.querySelector('script[type="application/hyperframes-slideshow+json"]');
+    return island ? JSON.parse(island.textContent) : { slides: [] };
+  }
+  function scenes() { return player.scenes || []; }
+  function build(manifest) {
+    const byId = new Map(scenes().map(s => [s.id, s]));
+    slides = manifest.slides.map(ref => {
+      const sc = byId.get(ref.sceneId); if (!sc) return null;
+      const start = sc.start, end = sc.start + sc.duration;
+      const stops = (ref.fragments && ref.fragments.length) ? ref.fragments.slice() : [start + sc.duration * 0.5];
+      return { id: ref.sceneId, start, end, stops, notes: ref.notes || '' };
+    }).filter(Boolean);
+  }
+
+  // 2. lecture jusqu'au point d'arrêt
+  function tick() {
+    if (!playing || target == null) return;
+    if (player.currentTime >= target - EPS) { player.pause(); player.seek(target); playing = false; target = null; showHud(); return; }
+    raf = requestAnimationFrame(tick);
+  }
+  function playTo(t) { target = t; playing = true; player.play(); cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); showHud(); }
+  function enter(i, { fromEnd = false, replay = false } = {}) {
+    if (i < 0 || i >= slides.length) return;
+    idx = i; const s = slides[i];
+    if (fromEnd) { stopIdx = s.stops.length - 1; playing = false; target = null; player.pause(); player.seek(s.stops[stopIdx]); showHud(); return; }
+    stopIdx = 0; player.pause(); player.seek(s.start);
+    // laisser le moteur se caler sur la nouvelle scène avant de lancer la lecture
+    setTimeout(() => playTo(s.stops[0]), replay ? 60 : 120);
+  }
+  function next() {
+    if (idx < 0) return enter(0);
+    const s = slides[idx];
+    if (playing && target != null) { player.pause(); player.seek(target); playing = false; target = null; showHud(); return; } // clic pendant l'anim : on finit l'anim
+    if (stopIdx + 1 < s.stops.length) { stopIdx += 1; playTo(s.stops[stopIdx]); return; }
+    enter(idx + 1);
+  }
+  function prev() { if (idx > 0) enter(idx - 1, { fromEnd: true }); }
+
+  // 3. HUD discret
+  function showHud() {
+    if (idx < 0) return;
+    const s = slides[idx];
+    hud.innerHTML = `<b>${String(idx + 1).padStart(2, '0')}</b> / ${slides.length} · ${s.id}${s.stops.length > 1 ? ` · arrêt ${stopIdx + 1}/${s.stops.length}` : ''}${playing ? ' · ▶' : ''}`;
+    hud.classList.remove('hidden'); clearTimeout(hudTimer); hudTimer = setTimeout(() => hud.classList.add('hidden'), 1800);
+  }
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === 'r' || e.key === 'R') { enter(idx, { replay: true }); }
+    else if (e.key === 'f' || e.key === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+    else if (e.key === 'h' || e.key === 'H') { help.classList.toggle('hidden'); hud.classList.toggle('hidden'); }
+    else if (e.key === 'Home') { enter(0); }
+  });
+  document.addEventListener('click', e => { if (e.clientX > innerWidth * 0.2) next(); else prev(); });
+
+  // 4. démarrage : scènes connues → première slide
+  const manifestP = loadManifest();
+  async function start() {
+    const manifest = await manifestP; build(manifest);
+    if (!slides.length) { hud.textContent = 'Scènes non résolues (recharger)'; return; }
+    window.__tournage = { slides, next, prev, enter, player };
+    enter(0);
+  }
+  if (scenes().length) start(); else player.addEventListener('scenes', () => { if (!slides.length) start(); }, { once: true });
+  setTimeout(() => { if (!slides.length && scenes().length) start(); }, 3000);
+})();
+</script>
+</body>
+</html>

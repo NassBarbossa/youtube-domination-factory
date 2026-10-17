@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>s17 — CTA formation offerte</title></head>
+<body>
+<template>
+<style>
+@font-face { font-family: 'Syne'; src: url('assets/fonts/syne-800.woff2') format('woff2'); font-weight: 400 800; font-style: normal; font-display: block; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: block; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #FFFFFF; }
+.veil { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.30), rgba(10,10,10,.72)); }
+.veil.light { background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.10), rgba(10,10,10,.5)); }
+.clip { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 96px 120px; gap: 36px; }
+.glow { position: absolute; width: 640px; height: 640px; border-radius: 50%; z-index: 2; pointer-events: none; }
+.glow.o { background: radial-gradient(circle, rgba(255,107,53,.14), transparent 70%); }
+.glow.c { background: radial-gradient(circle, rgba(0,229,255,.12), transparent 70%); }
+.glow.u { background: radial-gradient(circle, rgba(22,199,132,.16), transparent 70%); }
+.glow.d { background: radial-gradient(circle, rgba(234,57,67,.16), transparent 70%); }
+.num { position: absolute; top: 36px; right: 44px; font-size: 16px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.62); z-index: 4; }
+.h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 108px; line-height: 1.05; letter-spacing: -.02em; }
+.h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 68px; line-height: 1.12; letter-spacing: -.01em; }
+.h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
+.p { font-size: 28px; line-height: 1.5; color: rgba(255,255,255,.78); }
+.sub { font-size: 30px; line-height: 1.5; color: rgba(255,255,255,.78); max-width: 1200px; }
+.src { font-size: 22px; color: rgba(255,255,255,.62); max-width: 1300px; line-height: 1.45; }
+.kicker { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .35em; text-transform: uppercase; color: #FF6B35; }
+.divider { width: 88px; height: 4px; border-radius: 2px; }
+.divider.o { background: #FF6B35; box-shadow: 0 0 20px rgba(255,107,53,.5); }
+.divider.c { background: #00E5FF; box-shadow: 0 0 20px rgba(0,229,255,.4); }
+.divider.u { background: #16C784; box-shadow: 0 0 20px rgba(22,199,132,.5); }
+.t-up { color: #16C784; } .t-down { color: #EA3943; } .t-o { color: #FF6B35; }
+.card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 40px 44px; }
+.ph { font-weight: 800; color: #FF6B35; background: rgba(255,107,53,.1); border: 2px dashed rgba(255,107,53,.7); border-radius: 8px; padding: .1em .5em; white-space: nowrap; }
+.key { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 64px; line-height: 1.25; max-width: 1400px; }
+.ghost { position: absolute; top: 50%; left: 50%; width: 1100px; height: 560px; line-height: 560px; white-space: nowrap; text-align: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 560px; z-index: 2; background: linear-gradient(135deg, #FF6B35, #00E5FF); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -.03em; user-select: none; }
+.stat { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 170px; line-height: .95; letter-spacing: -.04em; }
+.cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; width: 1440px; }
+.cards3 .card { min-width: 0; }
+
+
+.cta { border-radius: 28px; padding: 64px 80px; border: 2px solid rgba(255,107,53,.6); background: rgba(10,10,10,.45); max-width: 1300px; }
+.cta p { font-size: 30px; color: rgba(255,255,255,.78); line-height: 1.5; }
+.desc { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-size: 24px; color: #0A0A0A; background: #FF6B35; border-radius: 999px; padding: 14px 30px; box-shadow: 0 0 24px rgba(255,107,53,.5); }
+.desc span { display: inline-block; }
+.disc { font-size: 20px; color: rgba(255,255,255,.42); letter-spacing: .04em; }
+
+</style>
+<div data-hf-id="hf-vo9g" id="root" data-composition-id="s17" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-h5f4" class="veil"></div>
+  <div data-hf-id="hf-r8ls" class="glow o" style="top:10%;left:20%"></div><div data-hf-id="hf-z252" class="glow c" style="bottom:20%;right:20%"></div>
+  <span data-hf-id="hf-qn36" class="num">17 / 17</span>
+  <section data-hf-id="hf-h4dj" class="clip" id="s17-clip" data-start="0" data-duration="8" data-track-index="1">
+<div data-hf-id="hf-5787" class="cta" id="s17-box"><h2 data-hf-id="hf-23fp" class="h2" style="margin-bottom:18px">La formation offerte</h2><p data-hf-id="hf-9s9t">3 vidéos pour comprendre comment on achète en dehors des échanges, avant que les coins soient connus de tous.</p></div>
+<span data-hf-id="hf-w816" class="desc" id="s17-desc">Lien dans la description <span data-hf-id="hf-4x42" id="s17-arrow">↓</span></span>
+<p data-hf-id="hf-2g07" class="disc" id="s17-disc">Pas un conseil en investissement.</p>
+  </section>
+</div>
+<script>
+(function () {
+
+const E = 'power3.out';
+const $ = (id) => document.getElementById(id);
+function up(tl, el, at, d = .6, y = 30) { tl.fromTo(el, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: E }, at); }
+function pop(tl, el, at, d = .5) { tl.fromTo(el, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: d, ease: 'back.out(2.2)' }, at); }
+function draw(tl, el, at, d, ease = 'power2.inOut') { const L = el.getTotalLength(); tl.fromTo(el, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease }, at); }
+function count(tl, el, target, at, d = 1.2) { const o = { v: 0 }; tl.to(o, { v: target, duration: d, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v); } }, at); }
+
+const tl = gsap.timeline({ paused: true });
+tl.fromTo($('s17-box'), { opacity: 0, scale: .94 }, { opacity: 1, scale: 1, duration: .7, ease: E }, .3);
+tl.to($('s17-box'), { boxShadow: '0 0 48px rgba(255,107,53,.35)', duration: 1.2, yoyo: true, repeat: 5, ease: 'sine.inOut' }, .8);
+up(tl, $('s17-desc'), .9); up(tl, $('s17-disc'), 1.2, .5, 10);
+tl.to($('s17-arrow'), { y: 5, duration: .7, yoyo: true, repeat: 9, ease: 'sine.inOut' }, 1.0);
+window.__timelines["s17"] = tl;
+})();
+</script>
+</template>
+</body></html>

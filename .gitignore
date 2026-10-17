@@ -19,3 +19,8 @@ context/veille-top*.json
 # YouTube Studio : profil Chrome du script studio_ctr.py (session connectée) et captures de debug
 yt-analytics/.studio-profile/
 yt-analytics/outputs/studio-debug/
+
+# HyperFrames (pilote abandonné) : cache et rendus MP4, régénérables
+yt-script/outputs/*-hf/.hyperframes/
+yt-script/outputs/*-hf/renders/
+yt-script/outputs/*-hf/.thumbnails/

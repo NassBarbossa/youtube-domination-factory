@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>s14 — Pas le moment</title></head>
+<body>
+<template>
+<style>
+@font-face { font-family: 'Syne'; src: url('assets/fonts/syne-800.woff2') format('woff2'); font-weight: 400 800; font-style: normal; font-display: block; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: block; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #FFFFFF; }
+.veil { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.30), rgba(10,10,10,.72)); }
+.veil.light { background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.10), rgba(10,10,10,.5)); }
+.clip { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 96px 120px; gap: 36px; }
+.glow { position: absolute; width: 640px; height: 640px; border-radius: 50%; z-index: 2; pointer-events: none; }
+.glow.o { background: radial-gradient(circle, rgba(255,107,53,.14), transparent 70%); }
+.glow.c { background: radial-gradient(circle, rgba(0,229,255,.12), transparent 70%); }
+.glow.u { background: radial-gradient(circle, rgba(22,199,132,.16), transparent 70%); }
+.glow.d { background: radial-gradient(circle, rgba(234,57,67,.16), transparent 70%); }
+.num { position: absolute; top: 36px; right: 44px; font-size: 16px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.62); z-index: 4; }
+.h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 108px; line-height: 1.05; letter-spacing: -.02em; }
+.h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 68px; line-height: 1.12; letter-spacing: -.01em; }
+.h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
+.p { font-size: 28px; line-height: 1.5; color: rgba(255,255,255,.78); }
+.sub { font-size: 30px; line-height: 1.5; color: rgba(255,255,255,.78); max-width: 1200px; }
+.src { font-size: 22px; color: rgba(255,255,255,.62); max-width: 1300px; line-height: 1.45; }
+.kicker { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .35em; text-transform: uppercase; color: #FF6B35; }
+.divider { width: 88px; height: 4px; border-radius: 2px; }
+.divider.o { background: #FF6B35; box-shadow: 0 0 20px rgba(255,107,53,.5); }
+.divider.c { background: #00E5FF; box-shadow: 0 0 20px rgba(0,229,255,.4); }
+.divider.u { background: #16C784; box-shadow: 0 0 20px rgba(22,199,132,.5); }
+.t-up { color: #16C784; } .t-down { color: #EA3943; } .t-o { color: #FF6B35; }
+.card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 40px 44px; }
+.ph { font-weight: 800; color: #FF6B35; background: rgba(255,107,53,.1); border: 2px dashed rgba(255,107,53,.7); border-radius: 8px; padding: .1em .5em; white-space: nowrap; }
+.key { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 64px; line-height: 1.25; max-width: 1400px; }
+.ghost { position: absolute; top: 50%; left: 50%; width: 1100px; height: 560px; line-height: 560px; white-space: nowrap; text-align: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 560px; z-index: 2; background: linear-gradient(135deg, #FF6B35, #00E5FF); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -.03em; user-select: none; }
+.stat { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 170px; line-height: .95; letter-spacing: -.04em; }
+.cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; width: 1440px; }
+.cards3 .card { min-width: 0; }
+
+
+.gauge { position: relative; width: 640px; height: 340px; }
+.gauge svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.glab { display: flex; justify-content: space-between; width: 640px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; font-size: 20px; }
+
+</style>
+<div data-hf-id="hf-ok6p" id="root" data-composition-id="s14" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-h5f4" class="veil"></div>
+  <div data-hf-id="hf-qdnb" class="glow d" style="top:-10%;left:10%"></div>
+  <span data-hf-id="hf-df25" class="num">14 / 17</span>
+  <section data-hf-id="hf-vd1e" class="clip" id="s14-clip" data-start="0" data-duration="8" data-track-index="1">
+<p data-hf-id="hf-fff2" class="key" id="s14-key">Pour le moment, c'est pas le moment de prendre beaucoup de risques.</p>
+<div data-hf-id="hf-bpqp" class="gauge"><svg data-hf-id="hf-8mcw" viewBox="0 0 320 170">
+<defs data-hf-id="hf-mh0t"><linearGradient data-hf-id="hf-f7zg" id="s14-gg" x1="0" x2="1"><stop data-hf-id="hf-mbkv" offset="0" stop-color="#16C784"/><stop data-hf-id="hf-lzn5" offset=".5" stop-color="#FF6B35"/><stop data-hf-id="hf-wg0q" offset="1" stop-color="#EA3943"/></linearGradient></defs>
+<path data-hf-id="hf-d217" d="M20,150 A140,140 0 0 1 300,150" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="22" stroke-linecap="round"/>
+<path data-hf-id="hf-9gec" d="M20,150 A140,140 0 0 1 300,150" fill="none" stroke="url(#s14-gg)" stroke-width="22" stroke-linecap="round" opacity=".85"/>
+<g data-hf-id="hf-nghv" id="s14-needle"><line data-hf-id="hf-274c" x1="160" y1="150" x2="160" y2="40" stroke="#fff" stroke-width="6" stroke-linecap="round"/><circle data-hf-id="hf-0ytf" cx="160" cy="150" r="12" fill="#fff"/></g></svg></div>
+<div data-hf-id="hf-6a1o" class="glab" id="s14-lab"><span data-hf-id="hf-23z5" class="t-up">Risque faible</span><span data-hf-id="hf-rhp6" class="t-down">Risque élevé</span></div>
+  </section>
+</div>
+<script>
+(function () {
+
+const E = 'power3.out';
+const $ = (id) => document.getElementById(id);
+function up(tl, el, at, d = .6, y = 30) { tl.fromTo(el, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: E }, at); }
+function pop(tl, el, at, d = .5) { tl.fromTo(el, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: d, ease: 'back.out(2.2)' }, at); }
+function draw(tl, el, at, d, ease = 'power2.inOut') { const L = el.getTotalLength(); tl.fromTo(el, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease }, at); }
+function count(tl, el, target, at, d = 1.2) { const o = { v: 0 }; tl.to(o, { v: target, duration: d, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v); } }, at); }
+
+const tl = gsap.timeline({ paused: true });
+up(tl, $('s14-key'), .3, .7, 30);
+tl.fromTo($('s14-needle'), { rotation: 80, svgOrigin: '160 150' }, { rotation: -78, svgOrigin: '160 150', duration: 1.8, ease: 'back.out(1.2)' }, 1.0); up(tl, $('s14-lab'), .6);
+window.__timelines["s14"] = tl;
+})();
+</script>
+</template>
+</body></html>

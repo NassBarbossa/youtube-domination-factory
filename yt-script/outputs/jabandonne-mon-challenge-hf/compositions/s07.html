@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>s07 — Les vrais chiffres</title></head>
+<body>
+<template>
+<style>
+@font-face { font-family: 'Syne'; src: url('assets/fonts/syne-800.woff2') format('woff2'); font-weight: 400 800; font-style: normal; font-display: block; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: block; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #FFFFFF; }
+.veil { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.30), rgba(10,10,10,.72)); }
+.veil.light { background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.10), rgba(10,10,10,.5)); }
+.clip { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 96px 120px; gap: 36px; }
+.glow { position: absolute; width: 640px; height: 640px; border-radius: 50%; z-index: 2; pointer-events: none; }
+.glow.o { background: radial-gradient(circle, rgba(255,107,53,.14), transparent 70%); }
+.glow.c { background: radial-gradient(circle, rgba(0,229,255,.12), transparent 70%); }
+.glow.u { background: radial-gradient(circle, rgba(22,199,132,.16), transparent 70%); }
+.glow.d { background: radial-gradient(circle, rgba(234,57,67,.16), transparent 70%); }
+.num { position: absolute; top: 36px; right: 44px; font-size: 16px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.62); z-index: 4; }
+.h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 108px; line-height: 1.05; letter-spacing: -.02em; }
+.h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 68px; line-height: 1.12; letter-spacing: -.01em; }
+.h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
+.p { font-size: 28px; line-height: 1.5; color: rgba(255,255,255,.78); }
+.sub { font-size: 30px; line-height: 1.5; color: rgba(255,255,255,.78); max-width: 1200px; }
+.src { font-size: 22px; color: rgba(255,255,255,.62); max-width: 1300px; line-height: 1.45; }
+.kicker { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .35em; text-transform: uppercase; color: #FF6B35; }
+.divider { width: 88px; height: 4px; border-radius: 2px; }
+.divider.o { background: #FF6B35; box-shadow: 0 0 20px rgba(255,107,53,.5); }
+.divider.c { background: #00E5FF; box-shadow: 0 0 20px rgba(0,229,255,.4); }
+.divider.u { background: #16C784; box-shadow: 0 0 20px rgba(22,199,132,.5); }
+.t-up { color: #16C784; } .t-down { color: #EA3943; } .t-o { color: #FF6B35; }
+.card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 40px 44px; }
+.ph { font-weight: 800; color: #FF6B35; background: rgba(255,107,53,.1); border: 2px dashed rgba(255,107,53,.7); border-radius: 8px; padding: .1em .5em; white-space: nowrap; }
+.key { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 64px; line-height: 1.25; max-width: 1400px; }
+.ghost { position: absolute; top: 50%; left: 50%; width: 1100px; height: 560px; line-height: 560px; white-space: nowrap; text-align: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 560px; z-index: 2; background: linear-gradient(135deg, #FF6B35, #00E5FF); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -.03em; user-select: none; }
+.stat { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 170px; line-height: .95; letter-spacing: -.04em; }
+.cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; width: 1440px; }
+.cards3 .card { min-width: 0; }
+
+
+.bars { width: 1200px; display: flex; flex-direction: column; gap: 22px; }
+.bar { display: grid; grid-template-columns: 330px 1fr 150px; align-items: center; gap: 24px; text-align: left; }
+.bar .lab { font-weight: 600; font-size: 26px; color: rgba(255,255,255,.78); white-space: nowrap; }
+.bar .trk { height: 40px; background: rgba(255,255,255,.07); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+.bar .fil { display: block; height: 100%; border-radius: 8px; transform-origin: left center; }
+.fil.d { background: #EA3943; box-shadow: 0 0 14px rgba(234,57,67,.5); }
+.fil.u { background: #16C784; box-shadow: 0 0 14px rgba(22,199,132,.5); }
+.fil.u2 { background: linear-gradient(90deg, #16C784, #00E5FF); }
+.fil.o { background: #FF6B35; box-shadow: 0 0 14px rgba(255,107,53,.55); }
+.bar .val { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 40px; text-align: right; white-space: nowrap; }
+
+</style>
+<div data-hf-id="hf-w6kl" id="root" data-composition-id="s07" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-h5f4" class="veil"></div>
+  <div data-hf-id="hf-i27t" class="glow u" style="top:-10%;right:0"></div>
+  <span data-hf-id="hf-3w61" class="num">07 / 17</span>
+  <section data-hf-id="hf-t4j6" class="clip" id="s07-clip" data-start="0" data-duration="8" data-track-index="1">
+<div data-hf-id="hf-zd8r" class="divider u" id="s07-d"></div><h2 data-hf-id="hf-pm0l" class="h2" id="s07-h">Ce que disent les vrais chiffres</h2>
+<p data-hf-id="hf-pvd5" class="sub" id="s07-s">Pump.fun · août 2026 · résultat réalisé par wallet dans le mois</p>
+<div data-hf-id="hf-umx2" class="bars">
+<div data-hf-id="hf-ufsv" class="bar"><span data-hf-id="hf-0jpc" class="lab">Ont perdu de l'argent</span><div data-hf-id="hf-l3rt" class="trk"><i data-hf-id="hf-2bje" class="fil d" id="s07-f1" style="width:40.2%"></i></div><span data-hf-id="hf-92u2" class="val t-down" id="s07-v1">40,2 %</span></div>
+<div data-hf-id="hf-c51b" class="bar"><span data-hf-id="hf-h7id" class="lab">Ont gagné 1 à 500 $</span><div data-hf-id="hf-wqi5" class="trk"><i data-hf-id="hf-keiz" class="fil u" id="s07-f2" style="width:51.5%"></i></div><span data-hf-id="hf-yb2t" class="val t-up" id="s07-v2">51,5 %</span></div>
+<div data-hf-id="hf-bqqa" class="bar"><span data-hf-id="hf-j6zx" class="lab">Ont gagné 500 à 1&nbsp;000&nbsp;$</span><div data-hf-id="hf-xxf8" class="trk"><i data-hf-id="hf-wcur" class="fil u2" id="s07-f3" style="width:3.1%"></i></div><span data-hf-id="hf-5rtp" class="val" id="s07-v3">3,1 %</span></div>
+<div data-hf-id="hf-bcf9" class="bar"><span data-hf-id="hf-nyv9" class="lab">Ont gagné plus de 1&nbsp;000&nbsp;$</span><div data-hf-id="hf-xj47" class="trk"><i data-hf-id="hf-gld2" class="fil o" id="s07-f4" style="width:5.3%"></i></div><span data-hf-id="hf-drt8" class="val t-o" id="s07-v4">5,3 %</span></div>
+</div>
+<p data-hf-id="hf-6p9u" class="src" id="s07-src">Source : Dune, dashboard CoinGecko « Pump.fun Trader Profitability », août 2026 (862 734 wallets), consulté le 16 oct. 2026. PnL réalisé · un wallet n'est pas une personne.</p>
+  </section>
+</div>
+<script>
+(function () {
+
+const E = 'power3.out';
+const $ = (id) => document.getElementById(id);
+function up(tl, el, at, d = .6, y = 30) { tl.fromTo(el, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: E }, at); }
+function pop(tl, el, at, d = .5) { tl.fromTo(el, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: d, ease: 'back.out(2.2)' }, at); }
+function draw(tl, el, at, d, ease = 'power2.inOut') { const L = el.getTotalLength(); tl.fromTo(el, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease }, at); }
+function count(tl, el, target, at, d = 1.2) { const o = { v: 0 }; tl.to(o, { v: target, duration: d, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v); } }, at); }
+
+const tl = gsap.timeline({ paused: true });
+tl.fromTo($('s07-d'), { scaleX: 0 }, { scaleX: 1, duration: .5, ease: E }, .1); up(tl, $('s07-h'), .2); up(tl, $('s07-s'), .4);
+[[1, .8], [2, 1.6], [3, 2.1], [4, 2.6]].forEach(([i, a]) => { tl.fromTo($('s07-f' + i), { scaleX: 0 }, { scaleX: 1, duration: 1.0, ease: 'power3.out' }, a); tl.fromTo($('s07-v' + i), { opacity: 0 }, { opacity: 1, duration: .4 }, a + .5); });
+up(tl, $('s07-src'), 3.3, .5, 10);
+window.__timelines["s07"] = tl;
+})();
+</script>
+</template>
+</body></html>

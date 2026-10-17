@@ -1,0 +1,14 @@
+{
+  "name": "jabandonne-mon-challenge-hf",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.8.164 present .",
+    "check": "npx --yes hyperframes@0.8.164 check",
+    "render": "npx --yes hyperframes@0.8.164 render",
+    "publish": "npx --yes hyperframes@0.8.164 publish",
+    "present": "npx --yes hyperframes@0.8.164 present .",
+    "build": "python3 build-deck.py",
+    "tournage": "npx --yes hyperframes@0.8.164 present . --no-open --port 3004 & sleep 6 && open \"http://localhost:3004/composition/tournage.html\""
+  }
+}

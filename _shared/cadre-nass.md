@@ -69,7 +69,8 @@ Le seul rappel visible : le disclaimer **« Pas un conseil en investissement. »
 - Polices : **Archivo Black** (titres) + **Public Sans** (texte).
 - Univers : punk pixel @punk6995, montagnes au crépuscule, cartes crème à bord noir 3px avec ombre pleine 8px `#9C7748` (néo-brutal doux).
 - **Miniatures : charte à part**, validée par Nass le 2026-10-13 sur les miniatures de la formation : photo réaliste de Nass, texte haut en blanc, texte bas en orange `#FF6B35`, tons bleus dans l'image (chemise, écrans, ville). Pas de sable/or sur les miniatures.
-- Abandonnée partout ailleurs : l'ancienne charte orange `#FF6B35` / cyan `#00E5FF` / `#0A0A0A`, Syne + Inter.
+- **Slides vidéo : retour à la charte orange / cyan** (décision de Nass, 2026-10-16, « le bleu et orange, ça c'était bien ») : fond `#0A0A0A` + image `yt-script/outputs/bg-nass-v2.jpg` (grille orange/cyan, signature Nass Riviera incluse en bas à gauche, donc pas de watermark texte), orange `#FF6B35`, cyan `#00E5FF`, ambre `#FFB020`, **Syne** (titres, 800) + **Inter** (texte), cartes verre (`rgba(255,255,255,.04)`, bord `rgba(255,255,255,.14)`, rayon 22px). Deck de référence : `yt-script/outputs/investissement-on-chain-visual.html`, repris tel quel, sans conversion de couleurs. Premier deck dans cette charte après la décision : `jabandonne-mon-challenge-visual.html`.
+- La charte sable/or ci-dessus reste pour le reste (site, visuels hors slides) tant que Nass ne dit pas le contraire.
 
 ## La voix de Nass
 

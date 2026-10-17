@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>s13 — courbe (bloc mk-line-graph adapté)</title></head>
+<body>
+<template>
+<style>
+@font-face { font-family: 'Syne'; src: url('assets/fonts/syne-800.woff2') format('woff2'); font-weight: 400 800; font-style: normal; font-display: block; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: block; }
+#root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #fff;
+  --mk-font: 'Inter', sans-serif; --mk-ink: #FFFFFF; --mk-ink-dim: rgba(255,255,255,.72); --mk-accent: #16C784; --mk-paper: #0A0A0A; --mk-blob-2: #00E5FF; --mk-axis: rgba(255,255,255,.25); }
+.veil { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.30), rgba(10,10,10,.72)); }
+.num { position: absolute; top: 36px; right: 44px; font-size: 16px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.62); z-index: 4; }
+#s13-svg { position: absolute; inset: 0; z-index: 2; }
+#s13-labels { position: absolute; inset: 0; z-index: 3; }
+.mk-lg-line { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 10px rgba(22,199,132,.6)); }
+.mk-lg-dot { stroke-width: 4; fill: var(--mk-paper); }
+.mk-lg-axis { stroke: var(--mk-axis); stroke-width: 2; }
+.mk-lg-value { position: absolute; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -0.01em; color: var(--mk-ink); font-variant-numeric: tabular-nums; transform: translate(-50%, 0); line-height: 44px; white-space: nowrap; }
+.mk-lg-value.first { color: #EA3943; } .mk-lg-value.peak { color: #16C784; }
+.mk-lg-xlabel { position: absolute; font-weight: 600; font-size: 24px; color: #FFB020; transform: translateX(-50%); white-space: nowrap; }
+.mk-lg-legend { position: absolute; display: flex; gap: 40px; }
+.mk-lg-legend-item { display: flex; align-items: center; gap: 12px; font-weight: 500; font-size: 26px; color: var(--mk-ink-dim); }
+.mk-lg-legend-dot { width: 14px; height: 14px; border-radius: 50%; }
+.s13-title { position: absolute; left: 0; right: 0; top: 110px; text-align: center; white-space: nowrap; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 58px; line-height: 1.12; letter-spacing: -.01em; z-index: 3; }
+.s13-sub { position: absolute; left: 0; right: 0; top: 200px; text-align: center; font-size: 30px; color: rgba(255,255,255,.78); z-index: 3; }
+.s13-src { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; font-size: 22px; color: rgba(255,255,255,.62); z-index: 3; padding: 0 200px; line-height: 1.45; }
+.s13-area { fill: url(#s13-grad); opacity: 0; }
+</style>
+<div data-hf-id="hf-vbj4" id="root" data-composition-id="s13" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-h5f4" class="veil"></div>
+  <span data-hf-id="hf-iqum" class="num">13 / 17</span>
+  <h2 data-hf-id="hf-wkjm" class="s13-title" id="s13-title">Le moment compte plus que la méthode</h2>
+  <p data-hf-id="hf-2052" class="s13-sub" id="s13-sub">Part de wallets gagnants sur Pump.fun, par mois</p>
+  <svg data-hf-id="hf-54gq" id="s13-svg" viewBox="0 0 1920 1080"><defs data-hf-id="hf-mh0t"><linearGradient data-hf-id="hf-yf32" id="s13-grad" x1="0" y1="0" x2="0" y2="1"><stop data-hf-id="hf-cv9i" offset="0" stop-color="#16C784" stop-opacity=".35"/><stop data-hf-id="hf-mfxd" offset="1" stop-color="#16C784" stop-opacity="0"/></linearGradient></defs></svg>
+  <div data-hf-id="hf-65fc" id="s13-labels"></div>
+  <p data-hf-id="hf-ttif" class="s13-src" id="s13-src">Source : Dune, dashboard CoinGecko « Pump.fun Trader Profitability », PnL réalisé par mois, consulté le 16 oct. 2026. Mêmes outils, même plateforme : seul le marché a changé.</p>
+  <div data-hf-id="hf-kjq4" id="s13-clip" class="clip" data-start="0" data-duration="8" data-track-index="1" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></div>
+</div>
+<script>
+(function () {
+  /* mk-line-graph (registre HyperFrames), adapté : une série, valeurs en %, charte Nass */
+  var CONFIG = {
+    series: [{ name: "Wallets gagnants dans le mois", color: null, values: [30.1, 73.3, 79.5, 75.4, 59.8] }],
+    xLabels: ["juin 2025", "avril 2026", "juin 2026", "juil. 2026", "août 2026"],
+    showValues: true, area: { x: 300, y: 320, w: 1320, h: 440 }, animationIn: true, animationOut: false
+  };
+  var NS = "http://www.w3.org/2000/svg";
+  var root = document.getElementById("root") || document.querySelector('[data-composition-id="s13"]');
+  var svg = document.getElementById("s13-svg"), labels = document.getElementById("s13-labels"), A = CONFIG.area;
+  var accent = "#16C784";
+  var max = 100; var n = CONFIG.series[0].values.length;
+  function px(i) { return A.x + (i / (n - 1)) * A.w; }
+  function py(v) { return A.y + A.h - (v / max) * A.h; }
+  function fr(v) { return String(v).replace('.', ',') + " %"; }
+  var axis = document.createElementNS(NS, "line"); axis.setAttribute("class", "mk-lg-axis");
+  axis.setAttribute("x1", A.x - 20); axis.setAttribute("y1", A.y + A.h); axis.setAttribute("x2", A.x + A.w + 20); axis.setAttribute("y2", A.y + A.h); axis.id = "s13-axis"; svg.appendChild(axis);
+  var s = CONFIG.series[0], color = accent;
+  var d = s.values.map(function (v, i) { return (i === 0 ? "M" : "L") + px(i) + " " + py(v); }).join(" ");
+  var area = document.createElementNS(NS, "path"); area.setAttribute("class", "s13-area"); area.id = "s13-areapath";
+  area.setAttribute("d", d + " L" + px(n - 1) + " " + (A.y + A.h) + " L" + px(0) + " " + (A.y + A.h) + " Z"); svg.appendChild(area);
+  var path = document.createElementNS(NS, "path"); path.setAttribute("class", "mk-lg-line"); path.setAttribute("d", d); path.setAttribute("stroke", color); path.id = "s13-path"; svg.appendChild(path);
+  var dots = [], vals = [];
+  s.values.forEach(function (v, i) {
+    var dot = document.createElementNS(NS, "circle"); dot.setAttribute("class", "mk-lg-dot"); dot.setAttribute("cx", px(i)); dot.setAttribute("cy", py(v)); dot.setAttribute("r", 10);
+    dot.setAttribute("stroke", i === 0 ? "#EA3943" : color); dot.id = "s13-dot-" + i; svg.appendChild(dot); dots.push(dot);
+    var val = document.createElement("div"); val.className = "mk-lg-value" + (i === 0 ? " first" : (i === 2 ? " peak" : "")); val.id = "s13-val-" + i; val.textContent = fr(v);
+    val.style.left = px(i) + "px"; val.style.top = py(v) - 66 + "px"; labels.appendChild(val); vals.push(val);
+  });
+  CONFIG.xLabels.forEach(function (t, i) { var xl = document.createElement("div"); xl.className = "mk-lg-xlabel"; xl.id = "s13-xl-" + i; xl.textContent = t; xl.style.left = px(i) + "px"; xl.style.top = A.y + A.h + 24 + "px"; labels.appendChild(xl); });
+  var legend = document.createElement("div"); legend.className = "mk-lg-legend"; legend.id = "s13-legend"; legend.style.left = A.x + "px"; legend.style.top = A.y + A.h + 80 + "px";
+  var item = document.createElement("div"); item.className = "mk-lg-legend-item"; var ld = document.createElement("span"); ld.className = "mk-lg-legend-dot"; ld.style.background = color; item.appendChild(ld); item.appendChild(document.createTextNode(s.name)); legend.appendChild(item); labels.appendChild(legend);
+
+  var tl = gsap.timeline({ paused: true }); var DRAW = 2.2;
+  tl.fromTo("#s13-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6, ease: "power3.out" }, .1);
+  tl.fromTo("#s13-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: .6, ease: "power3.out" }, .3);
+  tl.fromTo(axis, { opacity: 0 }, { opacity: 1, duration: .5, ease: "power2.out" }, .4);
+  CONFIG.xLabels.forEach(function (t, i) { tl.fromTo("#s13-xl-" + i, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4, ease: "power2.out" }, .45 + i * .06); });
+  var t0 = .7, len = path.getTotalLength();
+  tl.fromTo(path, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: DRAW, ease: "power2.inOut" }, t0);
+  s.values.forEach(function (v, i) {
+    var td = t0 + (i / (n - 1)) * DRAW * 0.92;
+    tl.fromTo(dots[i], { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: .35, ease: "back.out(1.2)" }, td);
+    tl.fromTo(vals[i], { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .35, ease: "power2.out" }, td + .06);
+  });
+  tl.to(area, { opacity: 1, duration: .8 }, t0 + DRAW);
+  tl.fromTo(legend, { opacity: 0 }, { opacity: 1, duration: .5, ease: "power2.out" }, t0 + DRAW);
+  tl.fromTo("#s13-src", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .5 }, t0 + DRAW + .3);
+  window.__timelines["s13"] = tl;
+})();
+</script>
+</template>
+</body></html>

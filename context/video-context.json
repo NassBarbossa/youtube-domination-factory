@@ -1,22 +1,30 @@
 {
   "_meta": {
     "version": "3.0",
-    "slug": null,
-    "status": null,
-    "pipeline_step": null,
-    "mode": null,
-    "triggered_by": null,
-    "created_at": null,
-    "updated_at": null,
+    "slug": "jabandonne-mon-challenge",
+    "status": "in_progress",
+    "pipeline_step": "1",
+    "mode": "A",
+    "triggered_by": "user",
+    "created_at": "2026-10-16T21:10:50+08:00",
+    "updated_at": "2026-10-17T12:43:34+08:00",
     "completed_at": null,
     "youtube_video_id": null,
     "published_at": null
   },
   "request": {
-    "raw_input": null,
-    "topic": null,
-    "funnel": null,
-    "language": "fr"
+    "raw_input": "Et, euh, le titre de la vidéo, c'est « J'abandonne mon challenge ». La miniature, ça sera « j'ai tout perdu ? ». Et donc un univers ultra vert, rouge, tout ça derrière. Donc au début, dire : dans cette vidéo (et comme à mon habitude, slide après ; au lieu que je dise slide après tout le temps, je vais dire next, ok ?) je vais vous partager les raisons de pourquoi j'arrête mon challenge. Next. En toute transparence. Fais la slide banger là. Et après, vas-y, fais le plan en gros. Donc en gros, les grandes lignes, c'est d'expliquer que j'arrête le challenge, en montrant qu'en gros j'ai fait du surplace en 4 semaines de challenge parce qu'il faut s'adapter. Le marché a changé et moi je connais ma ligue, et ma ligue d'ailleurs, justement parlons-en. Pour simplifier, on va dire qu'il y a 80 % de perdants et 20 % de gagnants, même si les stats officielles… et trouve-moi les stats officielles et on montre sur combien les gens perdent sur PumpFun. Ouais, dire pour simplifier, il y a quatre-vingts pour cent, donc c'est perdant. Le top vingt pour cent, c'est des mecs qui sont légèrement au-dessus de break-even, ils font quelques centaines de dollars par mois. Il y a des personnes ensuite, le top 10 %, c'est des gens qui vont faire à partir de 5-10K et plus par mois. Le top 1 %, c'est les mecs qui vont faire 6 figs par mois. Et le top 0,1 %, c'est ceux qui vont faire des millions par mois. Et après, on va prendre des exemples, tout ça. Et donc, c'est important de connaître ma ligue. Et ensuite, après, dire que… étant dans la ligue dans laquelle je suis, je sais que pour le moment, c'est pas le moment où je dois prendre des risques beaucoup sur le marché. Je dois plutôt être patient et attendre les meilleures conditions de marché, là où je serai performant.",
+    "topic": "J'abandonne mon challenge : pourquoi j'arrête après 4 semaines de surplace, ma ligue (80 % de perdants, stats PumpFun), et pourquoi je choisis la patience en attendant de meilleures conditions de marché",
+    "funnel": "TOP",
+    "language": "fr",
+    "notes": {
+      "title_imposed": "J'abandonne mon challenge",
+      "thumbnail_imposed": "J'ai tout perdu ?",
+      "thumbnail_universe": "ultra vert / rouge en fond",
+      "dictation_keyword": "« next » = nouvelle slide (équivalent de « slide après »)",
+      "funnel_assumed": "Nass ne veut pas raisonner en funnel. CTA confirmé : formation offerte. 'TOP' gardé pour le schéma seulement, sans contrainte de durée.",
+      "cta": "formation offerte"
+    }
   },
   "veille": {
     "status": null,
@@ -25,33 +33,290 @@
     "open_questions": []
   },
   "research": {
-    "status": null,
-    "videos_analyzed": 0,
-    "transcripts": [],
-    "key_facts": [],
-    "angles_covered": [],
-    "angles_missing": [],
-    "recommended_angle": null,
-    "synthesis": null,
-    "brief_file": null,
-    "open_questions": []
+    "status": "completed",
+    "videos_analyzed": 5,
+    "transcripts": [
+      {
+        "video_id": "VS96nwO_P_g",
+        "channel": "Falco",
+        "title": "CES 7 ERREURS M'ont Fait PERDRE -23,468€ en TRADING MEMECOIN (ne fais pas pareil...)",
+        "views": 4434,
+        "date": "2024-11-27",
+        "language": "fr",
+        "file": "context/transcripts/jabandonne-mon-challenge/VS96nwO_P_g-transcript.txt",
+        "note": "sous-titres auto FR via yt-dlp (API transcript refusée), texte aplati sans modification"
+      },
+      {
+        "video_id": "uN1aJOZwWQQ",
+        "channel": "Morgano2.0",
+        "title": "Day 13 memecoin trading: I lost everything",
+        "views": 30277,
+        "date": "2026-10-03",
+        "language": "en",
+        "file": "context/transcripts/jabandonne-mon-challenge/uN1aJOZwWQQ-transcript.txt"
+      },
+      {
+        "video_id": "RCqgK2R7jqs",
+        "channel": "Khye (Khye Unscripted)",
+        "title": "I Quit *MEMECOINS*, Here's Why.",
+        "views": 1933,
+        "date": "2025-11-11",
+        "language": "en",
+        "file": "context/transcripts/jabandonne-mon-challenge/RCqgK2R7jqs-transcript.txt"
+      },
+      {
+        "video_id": "8BAgtuL7-ss",
+        "channel": "OnChain Education",
+        "title": "The Memecoin Era is Over (Stop Trading Memecoins)",
+        "views": 3182,
+        "date": "2025-11-06",
+        "language": "en",
+        "file": "context/transcripts/jabandonne-mon-challenge/8BAgtuL7-ss-transcript.txt"
+      },
+      {
+        "video_id": "2WX5kk_XYng",
+        "channel": "Ethan Prosper",
+        "title": "5 Things I Wish I Knew Before Trading Memecoins (Learn From My Mistakes)",
+        "views": 29399,
+        "date": "2025-11-03",
+        "language": "en",
+        "file": "context/transcripts/jabandonne-mon-challenge/2WX5kk_XYng-transcript.txt"
+      }
+    ],
+    "key_facts": [
+      {
+        "fact": "Part mensuelle des wallets Pump.fun en profit réalisé : plancher 30,08 % en juin 2025, sommet 79,54 % en juin 2026, 75,38 % en juillet 2026, 59,84 % en août 2026 (mois incomplet, 862 734 wallets). Soit 40 à 70 % de wallets perdants selon le mois.",
+        "verified": true,
+        "verified_by": "Dune, dashboard « Pump.fun Trader Profitability » (coingecko_content), ouvert le 2026-10-16",
+        "source": "https://dune.com/coingecko_content/pump-fun-annual-trader-profitability"
+      },
+      {
+        "fact": "Distribution août 2026 : profit 0-500 $ = 51,45 % ; 500-1 000 $ = 3,08 % ; > 1 000 $ = 5,31 % ; perte < 500 $ = 38,80 % ; perte 500-1 000 $ = 0,64 % ; perte > 1 000 $ = 0,71 %.",
+        "verified": true,
+        "verified_by": "Même dashboard Dune, 2026-10-16, pourcentages recalculés à partir des comptes",
+        "source": "https://dune.com/coingecko_content/pump-fun-annual-trader-profitability"
+      },
+      {
+        "fact": "Avril 2026 : 73,28 % de wallets profitables sur 3 142 559 ; 65,14 % ont gagné 1 à 500 $ ; 5,37 % plus de 1 000 $ ; 25,23 % ont perdu moins de 500 $.",
+        "verified": true,
+        "verified_by": "Dashboard Dune ouvert ; chiffres d'avril repris de l'article de CoinGecko, auteur du dashboard (màj 2026-05-07)",
+        "source": "https://www.coingecko.com/research/publications/pump-fun-traders-are-making-a-comeback"
+      },
+      {
+        "fact": "Méthode du dashboard CoinGecko : PnL réalisé uniquement (positions non vendues exclues, pertes sous-estimées), flux nettés par wallet, bots et wash trading non filtrés ; 1 wallet n'est pas 1 personne.",
+        "verified": true,
+        "verified_by": "Notes de méthodologie du dashboard et de l'article CoinGecko",
+        "source": "https://www.coingecko.com/research/publications/pump-fun-traders-are-making-a-comeback"
+      },
+      {
+        "fact": "Cumul depuis le lancement, janvier 2025 : 13,55 M de wallets Pump.fun ; 55 296 (0,41 %) ont réalisé plus de 10 000 $ ; 0,048 % plus de 100 000 $ ; 293 (0,002 %) plus de 1 M$. « Réaliser 10 000 $ fait de vous un wallet du top 0,412 % » (Adam Tehc).",
+        "verified": false,
+        "verified_by": null,
+        "source": "Cointelegraph 2025-01-11 citant le Dune d'Adam Tehc ; dashboard adam_tehc ouvert le 2026-10-16 mais n'affiche que revenus/frais, vue Alpha Wallets non lue. Critique d'Alon (Pump.fun) : achats post-bonding et non-réalisé exclus. https://cointelegraph.com/news/pump-fun-crypto-traders-majority-do-not-realize-profits-dune-data"
+      },
+      {
+        "fact": "Fenêtre 6 mois, juin 2025 : 62,5 % des wallets Pump.fun en perte sur plus de 4,2 M ; profits 1-10 k$ ≈ 4,5 % ; 10-100 k$ ≈ 1 % ; 100 k$-1 M$ = 4 705 wallets (0,1 %) ; > 1 M$ = 311 wallets (< 0,01 %).",
+        "verified": false,
+        "verified_by": null,
+        "source": "crypto.news 2025-06-05 citant Dune jhackworth (query 5233371) ; dashboard jhackworth/pumpfun ouvert le 2026-10-16 sans PnL ; incohérences internes dans l'article. https://crypto.news/over-60-pump-fun-traders-saw-losses-less-than-0-01-made-over-1m/"
+      },
+      {
+        "fact": "Mars 2026 : ~1,4 M de wallets, 49 à 50,6 % en perte dans le mois ; 96 % en perte OU sous 500 $ de profit (le « 96 % de perdants » viral est une erreur de lecture) ; 2 wallets > 1 M$ dans le mois.",
+        "verified": false,
+        "verified_by": null,
+        "source": "BeInCrypto, DailyCoin, mexc citant le Dune de @oladee (dashboard non localisé). https://beincrypto.com/pump-fun-trading-data-majority-lose-money/"
+      },
+      {
+        "fact": "Août 2026, étude 90 jours memecoins Solana : 304 161 wallets actifs, 19 003 (6,25 %) en profit, soit ~94 % de perdants ; 88 % des gagnants sous 100 $ ; 25 wallets > 10 000 $ (données FOMO app) ; perte médiane 120 $ ; pertes totales estimées 1,26 Md$.",
+        "verified": false,
+        "verified_by": null,
+        "source": "Cointribune 2026-08-20, Cryptopolitan, HTX ; aucune source primaire nommée pour le dataset. https://www.cointribune.com/en/crypto-solana-memecoins-trap-nearly-94-of-traders"
+      },
+      {
+        "fact": "3 % des utilisateurs Pump.fun ont gagné plus de 1 000 $ en cumul ; taux de graduation historique ~1,4 % (0,7 % fin février 2025, pic 2,1 % juin 2024).",
+        "verified": false,
+        "verified_by": null,
+        "source": "The Defiant ; Solana Compass 2026-06-10 citant Dune adam_tehc ; The Block févr. 2025. https://solanacompass.com/news/pumpfun-launched-42000-tokens-in-one-day-fewer-than-2-will-ever-reach-a-dex"
+      },
+      {
+        "fact": "Pump.fun : ~34,7 M d'adresses cumulées, ~22,9 M de tokens lancés, 20 208 tokens lancés le jour consulté ; 1,546 Md$ de revenus cumulés ; ~1,5 M$/jour de frais pumpdotfun + ~1 M$/jour pumpswap début octobre 2026.",
+        "verified": true,
+        "verified_by": "Dune jhackworth/pumpfun et Dune adam_tehc « Pump.Fun », ouverts le 2026-10-16 (ordres de grandeur)",
+        "source": "https://dune.com/jhackworth/pumpfun ; https://dune.com/adam_tehc/pumpfun"
+      },
+      {
+        "fact": "AMF, étude 2009-2012 sur 14 799 clients actifs de prestataires agréés (Forex, CFD) : plus de 89 % de clients perdants sur 4 ans ; résultat moyen -10 887 € ; médian -1 843 € ; 13 224 clients ont perdu 175 M€, 1 575 ont gagné 13,8 M€. « Entre 2009 et 2012, 90 % des clients ont été perdants. »",
+        "verified": true,
+        "verified_by": "PDF AMF lu le 2026-10-16",
+        "source": "AMF, Lettre de l'Observatoire de l'épargne n° 10, octobre 2014 — https://www.amf-france.org/sites/institutionnel/files/contenu_simple/lettre_ou_cahier/lettre_observatoire/La%20lettre%20de%20l%27Observatoire%20de%20l%27epargne%20de%20l%27AMF%20-%20ndeg%2010%20-%20Octobre%202014.pdf"
+      },
+      {
+        "fact": "AMF, même étude : plus on est actif, plus on perd. ≥ 250 ordres en 4 ans (52 % des clients) : -18 741 € en moyenne ; ≥ 1 000 ordres (23 %) : -31 349 €. Pas d'apprentissage : chez les traders actifs les 4 ans, taux de perdants de 82 % (2009) à 88 % (2009-2012), perte moyenne 26 745 €.",
+        "verified": true,
+        "verified_by": "PDF AMF lu le 2026-10-16",
+        "source": "AMF, Lettre de l'Observatoire de l'épargne n° 10, octobre 2014"
+      },
+      {
+        "fact": "ESMA, 27 mars 2018 : « 74-89 % of retail accounts typically lose money on their investments » sur les CFD, pertes moyennes de 1 600 à 29 000 € par client.",
+        "verified": true,
+        "verified_by": "Communiqué ESMA lu le 2026-10-16",
+        "source": "https://www.esma.europa.eu/node/84933"
+      },
+      {
+        "fact": "La pyramide de Nass (80 % perdants / top 20 % quelques centaines $ / top 10 % 5-10 k$ par mois / top 1 % six chiffres par mois / top 0,1 % millions par mois) n'est PAS confirmée au-delà du premier étage : > 1 000 $ dans le mois ≈ 5 % des wallets ; > 10 000 $ réalisés ≈ 0,4 à 1 % ; > 100 000 $ ≈ 0,05 à 0,1 % ; > 1 M$ ≈ 0,002 à 0,01 %, en cumul et non par mois. Le « 80 % de perdants » lui-même varie de 27 % à 94 % selon la fenêtre et la méthode.",
+        "verified": true,
+        "verified_by": "Comparaison des sources ci-dessus (dashboard Dune CoinGecko vérifié ; étages > 10 k$ issus de sources secondaires)",
+        "source": "Voir brief, section « La pyramide de Nass face aux données »"
+      },
+      {
+        "fact": "« 99 % des traders sont non rentables » (Ethan Prosper, Falco) et « 1 SOL → 700 000 $ en 7 mois » (Ethan Prosper) : chiffres de concurrents, non sourcés ; un chiffre de gain d'un concurrent n'est jamais un fait.",
+        "verified": false,
+        "verified_by": null,
+        "source": "Ethan Prosper — 2WX5kk_XYng ; Falco — VS96nwO_P_g"
+      }
+    ],
+    "angles_covered": [
+      "Émotions, FOMO, revenge trading comme cause n°1 des pertes (Falco, Morgano2.0)",
+      "Over-trading : fixer un objectif et fermer l'ordinateur (Falco)",
+      "Le marché a changé : PvP, bundles, insiders, KOLs et streamers qui vendent sur leurs abonnés (Khye, OnChain Education)",
+      "« Tu es le produit / l'exit liquidity », le jeu est truqué contre le petit porteur (OnChain Education, Khye, Falco)",
+      "Arrêter les new pairs et pivoter : coins migrés (Khye) ou tokens utilitaires + DCA long terme (OnChain Education)",
+      "Transparence comme différenciation : pas de side wallets ni de copy-traders (Khye)",
+      "Confession brute à chaud, « j'ai tout perdu » (Morgano2.0)",
+      "Savoir quitter la table, métaphore poker (OnChain Education ; exclue par les règles de fond)",
+      "« 99 % des traders perdent » affirmé sans source (Ethan Prosper, Falco)",
+      "Upsell d'outils, bots, Discord et groupes payants (Falco, Ethan Prosper)"
+    ],
+    "angles_missing": [
+      "Un vrai chiffre sourcé à l'écran : aucun concurrent ne montre un dashboard Dune, l'AMF ou l'ESMA",
+      "La pyramide des gains chiffrée par étage (> 1 k$, > 10 k$, > 100 k$, > 1 M$) : terrain vide",
+      "Le lien résultat ↔ régime de marché : part de gagnants de 30 % à 80 % selon le mois sur le même dashboard, donc le moment compte plus que la méthode",
+      "La version « officielle » d'un régulateur : AMF 89 % de perdants, les plus actifs perdent le plus, pas d'apprentissage avec le temps",
+      "Parler à l'investisseur classique (immobilier, un peu de bourse) : on n'achète pas un appartement par semaine",
+      "La réserve wallet ≠ personne et PnL réalisé ≠ réel, dite honnêtement",
+      "Arrêter sans vendre un outil ou un Discord derrière",
+      "Aucune vidéo FR sur « j'arrête mon challenge crypto »"
+    ],
+    "recommended_angle": "« J'arrête, et voici les chiffres qui m'ont décidé » : fermer le challenge avec le tableau de bord réel (bilan 4 semaines daté et sourcé), montrer « ma ligue » avec la pyramide corrigée par les données (garder 80/20 à l'oral, afficher 5 % > 1 000 $, 0,4 % > 10 000 $, 0,01 % millionnaires, réserve wallets/personnes), prouver que le moment compte plus que la méthode (part de gagnants Pump.fun de 30 % à 80 % selon le mois ; AMF : les plus actifs perdent le plus), et conclure dans la narrative : on achète rarement, quand les conditions sont là, comme un bien immobilier. CTA TOP : formation offerte en 3 vidéos. Sans métaphore de jeu, sans upsell d'outil.",
+    "synthesis": "Terrain FR vierge : aucune vidéo française « j'arrête mon challenge crypto » ; la seule vidéo FR memecoin à bilan chiffré (Falco) sert à vendre un Discord. Côté EN, les concurrents expliquent l'échec par les émotions (Falco, Morgano2.0) ou par un marché devenu PvP dominé par insiders et KOLs (Khye, OnChain Education), balancent « 99 % perdent » sans source, et terminent presque tous sur un upsell. Personne ne montre une donnée primaire. Les stats demandées par Nass existent et sont vérifiables : le dashboard Dune de CoinGecko (PnL réalisé mensuel Pump.fun) donne 40 à 70 % de wallets perdants selon le mois (plancher de gagnants 30 % en juin 2025, sommet 80 % en juin 2026), avec 51 à 65 % des wallets qui gagnent moins de 500 $ et seulement ~5 % au-dessus de 1 000 $ dans le mois ; l'AMF (2014, source primaire lue) donne 89 % de perdants sur 4 ans chez 14 799 clients CFD/Forex, les plus actifs perdant le plus et sans apprentissage ; l'ESMA (2018) confirme 74-89 %. Les étages hauts de la pyramide de Nass ne sont PAS confirmés : > 10 000 $ réalisés concerne ~0,4 à 1 % des wallets (pas le top 10 %), > 100 000 $ ~0,05 à 0,1 % (pas le top 1 %), > 1 M$ ~0,002 à 0,01 % (pas le top 0,1 %), et ce sont des cumuls, pas des montants mensuels ; le « 80 % de perdants » lui-même oscille entre 27 % et 94 % selon la fenêtre. L'angle différenciant : expliquer l'arrêt par le régime de marché et sa place réelle dans la distribution, chiffres primaires à l'appui, ce qui mène naturellement à la narrative « on achète rarement, au bon moment ». Réserves cadre : le sujet touche aux memecoins/Pump.fun et au challenge abandonné (vidéo de clôture), à valider avec Nass.",
+    "brief_file": "context/transcripts/jabandonne-mon-challenge/research-brief.md",
+    "open_questions": [
+      "Les chiffres du bilan de Nass sur 4 semaines (capital de départ, capital d'arrivée, dates, achats) sont nécessaires et doivent être datés et sourcés (transactions on-chain ou captures d'exchange) : non fournis dans la demande.",
+      "Nass garde-t-il la simplification « 80 % de perdants / top 20-10-1-0,1 % » à l'oral alors que les données contredisent les étages hauts ? Proposition : garder 80/20 à l'oral et afficher les vrais étages à l'écran, avec la réserve wallets/personnes.",
+      "Le sujet touche aux memecoins et à Pump.fun, hors narrative de la chaîne, et parle du challenge abandonné : confirmer que cette vidéo est bien l'exception de clôture voulue, et jusqu'où nommer Pump.fun à l'écran.",
+      "Quel visuel source pour la slide stats : le dashboard Dune de CoinGecko (vérifié, courbe mensuelle 2024-2026) est le plus solide ; les étages > 10 k$ / > 100 k$ / > 1 M$ viennent de sources secondaires (Cointelegraph/Adam Tehc, crypto.news/jhackworth) non recoupées sur le dashboard d'origine. Si Nass veut les afficher, un accès Dune pour relancer la query 5233371 ou la vue « Alpha Wallets » d'adam_tehc permettrait de les vérifier.",
+      "Pas de veille.db trouvée sur le VPS (commande muette) ; recherche faite via yt-dlp et le web uniquement, veille automatique non relancée.",
+      "Le script get_transcript.py a besoin de `uv run` (la lib youtube-transcript-api n'est pas dans le Python système, pip refuse hors venv) ; pour Falco, l'API a refusé et les sous-titres auto yt-dlp ont été utilisés."
+    ]
   },
   "script": {
-    "status": null,
-    "slug": null,
-    "funnel": null,
-    "file_path": null,
-    "visual_path": null,
-    "word_count": null,
-    "reading_time_min": null,
+    "status": "completed",
+    "slug": "jabandonne-mon-challenge",
+    "funnel": "TOP",
+    "file_path": "yt-script/outputs/jabandonne-mon-challenge.md",
+    "visual_path": "yt-script/outputs/jabandonne-mon-challenge-visual.html",
+    "word_count": 620,
+    "reading_time_min": 4,
     "structure": {
-      "hook": null,
-      "sections": [],
-      "timestamps_raw": [],
-      "shorts_moments": []
+      "hook": "Dans cette vidéo, je vais vous",
+      "sections": [
+        {
+          "title": "Hook",
+          "key_points": [
+            "J'arrête mon challenge (titre imposé)",
+            "En toute transparence (slide banger)"
+          ]
+        },
+        {
+          "title": "Le constat : 4 semaines de surplace",
+          "key_points": [
+            "Bilan départ → arrivée [À COMPLÉTER]",
+            "Le marché a changé, il faut s'adapter"
+          ]
+        },
+        {
+          "title": "Ma ligue",
+          "key_points": [
+            "80 % perdants / 20 % gagnants (simplification orale)",
+            "Vrais chiffres Dune CoinGecko août 2026 : 40 % perdants, 51 % gagnent 1-500 $, 5 % > 1 000 $",
+            "Échelle sourcée : 0,41 % > 10 k$, 0,05 % > 100 k$, 293 wallets > 1 M$ (cumul)",
+            "AMF : 89 % de perdants sur 4 ans, les plus actifs perdent le plus",
+            "Exemples [À COMPLÉTER]",
+            "Connaître sa ligue"
+          ]
+        },
+        {
+          "title": "Pourquoi j'attends",
+          "key_points": [
+            "Part de gagnants de 30 % (juin 2025) à 80 % (juin 2026) : le moment compte plus que la méthode",
+            "Pas le moment de prendre beaucoup de risques",
+            "Patience, attendre les conditions où je suis performant",
+            "On n'achète pas un appartement par semaine"
+          ]
+        },
+        {
+          "title": "CTA",
+          "key_points": [
+            "Formation offerte (3 vidéos)",
+            "Pas un conseil en investissement."
+          ]
+        }
+      ],
+      "timestamps_raw": [
+        {
+          "time": "0:00",
+          "label": "Pourquoi j'arrête"
+        },
+        {
+          "time": "0:30",
+          "label": "4 semaines de surplace"
+        },
+        {
+          "time": "1:30",
+          "label": "Ma ligue : 80 / 20"
+        },
+        {
+          "time": "2:30",
+          "label": "Les vrais chiffres (Pump.fun, AMF)"
+        },
+        {
+          "time": "4:30",
+          "label": "Pourquoi j'attends"
+        },
+        {
+          "time": "6:00",
+          "label": "Formation offerte"
+        }
+      ],
+      "shorts_moments": [
+        {
+          "start": 0,
+          "end": 45,
+          "description": "J'arrête mon challenge, en toute transparence, 80/20"
+        },
+        {
+          "start": 270,
+          "end": 320,
+          "description": "Juin 2025 30 % de gagnants, juin 2026 80 % : le moment compte plus que la méthode"
+        },
+        {
+          "start": 330,
+          "end": 355,
+          "description": "On n'achète pas un appartement par semaine"
+        }
+      ]
     },
     "google_doc_url": null,
-    "open_questions": []
+    "open_questions": [
+      "Bilan 4 semaines : capital de départ, capital d'arrivée, dates, et source (captures d'exchange ou transactions on-chain) — slide 03.",
+      "Exemples de « ligue » (qui, résultat, source datée) — slide 10 ; étage de Nass — slide 11.",
+      "Pyramide orale (top 20/10/1/0,1 %) non confirmée par les données : la slide 08 affiche les étages sourcés ; Nass garde-t-il sa simplification à l'oral ?",
+      "Les 3 étages hauts de la slide 08 viennent d'une source secondaire (Cointelegraph citant Dune Adam Tehc, janv. 2025) : à confirmer ou à retirer.",
+      "Pump.fun est nommé à l'écran (slides 07, 13) : OK pour Nass ?",
+      "Retours de Nass sur le deck attendus (génération faite avec placeholders à sa demande, sans validation préalable de la structure).",
+      "Pilote HyperFrames : deck converti (17 scènes, fragments, notes présentateur) dans yt-script/outputs/jabandonne-mon-challenge-hf. Nass compare avec le deck HTML classique et tranche : si validé, basculer yt-script sur HyperFrames."
+    ],
+    "visual_path_hyperframes": "ABANDONNÉ 2026-10-17 (Nass garde le deck HTML classique) — archive : yt-script/outputs/jabandonne-mon-challenge-hf/"
   },
   "titres_seo": {
     "status": null,
@@ -92,5 +357,111 @@
     "google_doc_url": null,
     "open_questions": []
   },
-  "pipeline_log": []
+  "pipeline_log": [
+    {
+      "phase": "0",
+      "agent": "yt-orchestrator",
+      "status": "completed",
+      "timestamp": "2026-10-16T21:10:50+08:00",
+      "notes": "Mode A, sujet dicté, titre et miniature imposés par Nass, funnel TOP par défaut"
+    },
+    {
+      "phase": "0.75",
+      "agent": "yt-transcript",
+      "status": "completed",
+      "timestamp": "2026-10-16T21:21:07+08:00",
+      "notes": "5 vidéos (1 FR, 4 EN), terrain FR vierge ; stats Pump.fun vérifiées (Dune CoinGecko), AMF, ESMA ; pyramide de Nass non confirmée au-delà du 1er étage"
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "completed",
+      "timestamp": "2026-10-16T21:33:20+08:00",
+      "notes": "Script + deck 17 slides générés à la demande de Nass avec placeholders ; vérif Playwright OK, 0 erreur JS ; retours de Nass en attente"
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "completed",
+      "timestamp": "2026-10-16T21:44:38+08:00",
+      "notes": "Deck rebasculé sur la charte orange/cyan (Syne+Inter, bg-nass-v2.jpg) à la demande de Nass ; 17 slides revérifiées, 0 erreur JS ; cadre-nass.md mis à jour"
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script + hyperframes/slideshow",
+      "status": "completed",
+      "timestamp": "2026-10-16T22:23:41+08:00",
+      "notes": "Pilote HyperFrames : conversion du deck en slideshow (racine + 17 sous-compositions, GSAP, fragments, notes), check 0 erreur, navigation vérifiée en navigateur"
+    },
+    {
+      "phase": "1",
+      "agent": "hyperframes/slideshow",
+      "status": "completed",
+      "timestamp": "2026-10-16T22:34:56+08:00",
+      "notes": "Pilote v2 : 2 slides refaites avec des blocs du registre (char-slam-explode pour « Transparence », mk-line-graph pour la courbe). Constat : le mode present (v0.8.164) fait des seek vers les images d'arrêt, il ne joue pas les animations ; animations visibles en Studio (lecture) et au rendu MP4."
+    },
+    {
+      "phase": "1",
+      "agent": "orchestrateur",
+      "status": "decision",
+      "timestamp": "2026-10-17T09:51:37+08:00",
+      "notes": "Nass tranche : on reste sur le deck HTML classique (jabandonne-mon-challenge-visual.html). Pilote HyperFrames abandonné, dossier -hf conservé en archive. Demande : améliorer effets et rendu visuel des slides classiques."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T10:04:57+08:00",
+      "notes": "Essai GSAP sur le deck classique : slides 01, 02, 09, 13 refaites en timelines GSAP (lettres, compteur, DrawSVG), couche grain/vignette/lueurs sur tout le deck, touche R pour rejouer. Vérifié Playwright+Chrome (0 erreur). Nass juge avant intégration au template yt-script."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T11:15:58+08:00",
+      "notes": "Nass : challenge du 28 sept. au 17 oct. 2026, captures CoinStats fournies. Slide 03 = teaser (dates + courbe floue + « Quel est le verdict ? »), nouvelle slide 04 = bilan CoinStats (10 322 $ → 10 449 $, bas 9 426 $ le 2 oct., haut 11 968 $ le 6 oct., + 1,2 % en 19 jours, « Du surplace. »). Deck à 18 slides, .md synchronisé. À confirmer par Nass : les mouvements de fonds hors challenge (35-50 K$ avant le 28 sept., ~43 K$ après le 16 oct.) ne sont pas tracés."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T11:38:32+08:00",
+      "notes": "Dictée de Nass : slide 05 « Pourquoi est-ce que j'ai fait du surplace ? », 06 « Deux grandes raisons. », 07 banger « Première raison · Le marché a changé. » (ex-slide marché, refaite en GSAP), 08 « Deuxième raison · Sous les projecteurs. » [PROP, à la place de « le faire en public », alternatives proposées]. Deck à 21 slides, .md synchronisé, vérifié Playwright (0 erreur)."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T11:42:46+08:00",
+      "notes": "Retour Nass : slide 06 refaite (« 2 » géant dégradé + « grandes raisons. » + barres 01/02, plus de cartes « ? »). Slide 08 = deuxième raison corrigée : « Je sors de mon style de trading. » / « Je me force à trader à des moments où je ne devrais pas. », visuel 14 moments (2 verts = ses moments, 4 rouges = trades forcés). « Sous les projecteurs » abandonné. .md synchronisé."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T11:51:40+08:00",
+      "notes": "Dictée : slide 09 « Et d'ailleurs, suis-je un trader rentable ? », slide 10 banger « Quelle ligue ? » (pyramide fantôme, lettres qui tombent, ondes de choc, flash, éclat orange/cyan, balayage). Deck à 23 slides, .md synchronisé, Playwright 0 erreur. Correctif : textes banger forcés en blanc (p à 78 % laissait transparaître l'ombre orange)."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T12:02:51+08:00",
+      "notes": "Nass fournit l'étude Bitquery (3 in 4 Solana memecoin buyers lose money, vérifiée 15 oct. 2026). Slide 11 (transition « Ma ligue ») remplacée par une slide de données : 74 % perdants, −269 M$, −13 $ médiane, 56 % des gains au top 1 %. Source ajoutée au .md. Point ouvert : Bitquery contredit le dashboard CoinGecko (slides 13, 14, 19)."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T12:34:44+08:00",
+      "notes": "Dictée : slide 13 (barres CoinGecko) supprimée, échelle remplacée par 5 bangers dédiés : 13 « 80 % des perdants » (ultra banger rouge), 14 Top 20 % (+100 → +2 000 $/mois, cyan), 15 Top 10 % (+5 000 → +50 000 $/mois, orange), 16 Top 1 % (+100 000 $/mois, doré, rayons), 17 Top 0,1 % (des millions/mois, blanc). Kicker « Ma ligue · mon estimation » (chiffres de Nass, sans source). Deck à 26 slides. Il reste 2 slides CoinGecko (14 → 22 courbe) à trancher."
+    },
+    {
+      "phase": "1",
+      "agent": "yt-script",
+      "status": "updated",
+      "timestamp": "2026-10-17T12:43:34+08:00",
+      "notes": "Nass : slides 18 à 25 supprimées (AMF, exemples, ancienne « ma ligue », section « Pourquoi j'attends » : courbe CoinGecko, jauge, patience, immobilier), remplacées par un banger 18 « C'est important de connaître sa ligue. » (repère qui saute de marche en marche puis retombe). CTA = slide 19. Deck à 19 slides. Sections retirées archivées dans context/transcripts/jabandonne-mon-challenge/sections-retirees-2026-10-17.md. Plus aucune donnée CoinGecko dans le deck."
+    }
+  ]
 }

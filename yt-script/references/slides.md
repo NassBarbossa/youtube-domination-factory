@@ -130,7 +130,7 @@ Deck de référence : `yt-script/outputs/investissement-on-chain-visual.html` (v
 | Fin / validation | Drapeau à damier, gros ✓ | `flag`, `ok-check` |
 | CTA description | Pastille « Lien dans la description » + flèche ↓ qui rebondit | `desc-cta` |
 
-### Conversion ancienne charte → charte du cadre
+### Conversion ancienne charte → charte du cadre (OBSOLÈTE depuis le 2026-10-16 : Nass a remis la charte orange / cyan pour les slides, voir `_shared/cadre-nass.md` ; on reprend le deck de référence tel quel, tableau gardé pour mémoire)
 
 À appliquer à chaque pattern copié depuis le deck de référence :
 

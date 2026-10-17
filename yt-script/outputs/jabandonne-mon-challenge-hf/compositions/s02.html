@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="UTF-8" /><title>s02 — En toute transparence</title></head>
+<body>
+<template>
+<style>
+@font-face { font-family: 'Syne'; src: url('assets/fonts/syne-800.woff2') format('woff2'); font-weight: 400 800; font-style: normal; font-display: block; }
+@font-face { font-family: 'Inter'; src: url('assets/fonts/inter-400.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: block; }
+
+#root { position: absolute; inset: 0; overflow: hidden; font-family: 'Inter', sans-serif; color: #FFFFFF; }
+.veil { position: absolute; inset: 0; pointer-events: none; z-index: 1; background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.30), rgba(10,10,10,.72)); }
+.veil.light { background: radial-gradient(circle at 50% 45%, rgba(10,10,10,.10), rgba(10,10,10,.5)); }
+.clip { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 96px 120px; gap: 36px; }
+.glow { position: absolute; width: 640px; height: 640px; border-radius: 50%; z-index: 2; pointer-events: none; }
+.glow.o { background: radial-gradient(circle, rgba(255,107,53,.14), transparent 70%); }
+.glow.c { background: radial-gradient(circle, rgba(0,229,255,.12), transparent 70%); }
+.glow.u { background: radial-gradient(circle, rgba(22,199,132,.16), transparent 70%); }
+.glow.d { background: radial-gradient(circle, rgba(234,57,67,.16), transparent 70%); }
+.num { position: absolute; top: 36px; right: 44px; font-size: 16px; font-weight: 600; letter-spacing: .1em; color: rgba(255,255,255,.62); z-index: 4; }
+.h1 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 108px; line-height: 1.05; letter-spacing: -.02em; }
+.h2 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 68px; line-height: 1.12; letter-spacing: -.01em; }
+.h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
+.p { font-size: 28px; line-height: 1.5; color: rgba(255,255,255,.78); }
+.sub { font-size: 30px; line-height: 1.5; color: rgba(255,255,255,.78); max-width: 1200px; }
+.src { font-size: 22px; color: rgba(255,255,255,.62); max-width: 1300px; line-height: 1.45; }
+.kicker { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: .35em; text-transform: uppercase; color: #FF6B35; }
+.divider { width: 88px; height: 4px; border-radius: 2px; }
+.divider.o { background: #FF6B35; box-shadow: 0 0 20px rgba(255,107,53,.5); }
+.divider.c { background: #00E5FF; box-shadow: 0 0 20px rgba(0,229,255,.4); }
+.divider.u { background: #16C784; box-shadow: 0 0 20px rgba(22,199,132,.5); }
+.t-up { color: #16C784; } .t-down { color: #EA3943; } .t-o { color: #FF6B35; }
+.card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.14); border-radius: 22px; padding: 40px 44px; }
+.ph { font-weight: 800; color: #FF6B35; background: rgba(255,107,53,.1); border: 2px dashed rgba(255,107,53,.7); border-radius: 8px; padding: .1em .5em; white-space: nowrap; }
+.key { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 64px; line-height: 1.25; max-width: 1400px; }
+.ghost { position: absolute; top: 50%; left: 50%; width: 1100px; height: 560px; line-height: 560px; white-space: nowrap; text-align: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 560px; z-index: 2; background: linear-gradient(135deg, #FF6B35, #00E5FF); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -.03em; user-select: none; }
+.stat { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 170px; line-height: .95; letter-spacing: -.04em; }
+.cards3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; width: 1440px; }
+.cards3 .card { min-width: 0; }
+
+
+.rays { position: absolute; left: 50%; top: 50%; width: 4400px; height: 4400px; margin: -2200px 0 0 -2200px; z-index: 2; pointer-events: none;
+  background: repeating-conic-gradient(from 0deg, rgba(22,199,132,.18) 0 6deg, transparent 6deg 18deg, rgba(234,57,67,.18) 18deg 24deg, transparent 24deg 36deg); border-radius: 50%;
+  -webkit-mask: radial-gradient(circle, #000 0, #000 18%, transparent 55%); mask: radial-gradient(circle, #000 0, #000 18%, transparent 55%); }
+.flash { position: absolute; inset: 0; background: #fff; z-index: 6; pointer-events: none; opacity: 0; }
+.bang { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 150px; line-height: 1.02; }
+.bang span { display: inline-block; }
+.bang .w2 { background: linear-gradient(90deg, #FF6B35, #FFB020, #FF6B35); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.bangsub { font-weight: 600; font-size: 30px; color: rgba(255,255,255,.78); }
+.wrap { display: flex; flex-direction: column; align-items: center; gap: 36px; }
+
+</style>
+<div data-hf-id="hf-m6ce" id="root" data-composition-id="s02" data-width="1920" data-height="1080">
+  <div data-hf-id="hf-sjto" class="veil light"></div>
+  <div data-hf-id="hf-51io" class="rays" id="s02-rays"></div><div data-hf-id="hf-b1lg" class="flash" id="s02-flash"></div>
+  <span data-hf-id="hf-e2l0" class="num">02 / 17</span>
+  <section data-hf-id="hf-1iq5" class="clip" id="s02-clip" data-start="0" data-duration="8" data-track-index="1">
+<div data-hf-id="hf-8cxw" class="wrap" id="s02-wrap"><p data-hf-id="hf-qu2p" class="bang"><span data-hf-id="hf-1p6x" class="w1" id="s02-w1">En toute</span> <span data-hf-id="hf-vep3" class="w2" id="s02-w2">transparence.</span></p><p data-hf-id="hf-fy9j" class="bangsub" id="s02-sub">Les chiffres, les raisons, et ce que je fais maintenant.</p></div>
+  </section>
+</div>
+<script>
+(function () {
+
+const E = 'power3.out';
+const $ = (id) => document.getElementById(id);
+function up(tl, el, at, d = .6, y = 30) { tl.fromTo(el, { opacity: 0, y }, { opacity: 1, y: 0, duration: d, ease: E }, at); }
+function pop(tl, el, at, d = .5) { tl.fromTo(el, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: d, ease: 'back.out(2.2)' }, at); }
+function draw(tl, el, at, d, ease = 'power2.inOut') { const L = el.getTotalLength(); tl.fromTo(el, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: d, ease }, at); }
+function count(tl, el, target, at, d = 1.2) { const o = { v: 0 }; tl.to(o, { v: target, duration: d, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v); } }, at); }
+
+const tl = gsap.timeline({ paused: true });
+tl.set($('s02-rays'), { scale: 0, opacity: 0 }, 0);
+tl.fromTo($('s02-w1'), { opacity: 0, scale: 3, filter: 'blur(12px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .45, ease: 'back.out(1.4)' }, .4);
+tl.fromTo($('s02-w2'), { opacity: 0, scale: 3, filter: 'blur(12px)' }, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: .5, ease: 'back.out(1.4)' }, .95);
+tl.fromTo($('s02-flash'), { opacity: .55 }, { opacity: 0, duration: .5, ease: 'power2.out' }, 1.0);
+tl.to($('s02-rays'), { scale: 1, opacity: 1, duration: .7, ease: 'back.out(1.4)' }, 1.0);
+tl.to($('s02-rays'), { rotation: 90, duration: 7, ease: 'none' }, 1.0);
+tl.fromTo($('s02-wrap'), { x: 0, y: 0 }, { keyframes: [{ x: -10, y: 6, rotation: -1 }, { x: 9, y: -5, rotation: 1 }, { x: -6, y: 3, rotation: 0 }, { x: 0, y: 0, rotation: 0 }], duration: .45, ease: 'power1.inOut' }, 1.0);
+up(tl, $('s02-sub'), 1.9);
+window.__timelines["s02"] = tl;
+})();
+</script>
+</template>
+</body></html>
