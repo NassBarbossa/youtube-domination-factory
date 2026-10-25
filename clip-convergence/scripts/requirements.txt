@@ -1,0 +1,3 @@
+numpy
+opencv-python>=4.8   # FaceDetectorYN (YuNet) : face_track.py, presence.py
+faster-whisper       # transcribe.py, qa_voice.py

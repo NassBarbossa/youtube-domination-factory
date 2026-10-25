@@ -23,6 +23,8 @@ Transformer une vidéo YouTube longue en :
 
 Chaque plateforme a son langage : jamais de copier-coller, jamais le titre de la vidéo repris tel quel.
 
+Épisode du live Convergence (Nass + Sadek) : le choix et le montage des Shorts passent par `clip-convergence` ; ce skill garde le thread X, le post LinkedIn et le planning.
+
 ## Application du cadre à ce skill
 
 - Disclaimer « Pas un conseil en investissement. » une fois par contenu : overlay ou légende du Short, dernier tweet du thread, fin du post LinkedIn.

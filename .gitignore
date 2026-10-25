@@ -10,6 +10,28 @@ yt-shorts-montage/projects/**/snapshots/
 # Shorts : audio régénérable (sfx/build.py) et sources lourdes (extraits de la formation)
 yt-shorts-montage/projects/**/sfx/track.wav
 yt-shorts-montage/projects/**/source/*.wav
+# Shorts recyclés : médias régénérables depuis les enregistrements (recadrages, voix montée, fenêtres audio), caches HyperFrames
+yt-shorts-montage/projects/recycles/**/assets/video/
+yt-shorts-montage/projects/recycles/**/assets/audio/
+yt-shorts-montage/projects/recycles/**/assets/sfx/*-n.wav
+yt-shorts-montage/projects/recycles/windows/*.wav
+yt-shorts-montage/projects/**/.hyperframes/
+yt-shorts-montage/projects/**/.thumbnails/
+yt-shorts-montage/projects/**/.waveform-cache/
+yt-shorts-montage/projects/**/.media/
+
+# Clips Convergence : rendus, médias régénérables par clip-convergence/scripts, caches HyperFrames
+clip-convergence/exports/
+clip-convergence/projects/**/node_modules/
+clip-convergence/projects/**/renders/
+clip-convergence/projects/**/snapshots/
+clip-convergence/projects/**/assets/video/
+clip-convergence/projects/**/assets/audio/
+clip-convergence/projects/**/assets/sfx/*-n.wav
+clip-convergence/projects/**/.hyperframes/
+clip-convergence/projects/**/.thumbnails/
+clip-convergence/projects/**/.waveform-cache/
+clip-convergence/projects/**/.media/
 
 # Contexte du pipeline : sorties intermédiaires des agents
 context/runs/*/

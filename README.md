@@ -109,6 +109,7 @@ Tout passe par un seul fichier, `context/video-context.json`, dont le contrat es
 | [`yt-repurposing`](yt-repurposing/SKILL.md) | Découpe d'une vidéo longue | Shorts, thread X, post LinkedIn |
 | [`yt-shorts-script`](yt-shorts-script/SKILL.md) | Shorts natifs 30 à 60 s, en série | scripts de Shorts |
 | [`yt-shorts-montage`](yt-shorts-montage/SKILL.md) | Composition HyperFrames, sous-titres, SFX, rendu | MP4 1080×1920 |
+| [`clip-convergence`](clip-convergence/SKILL.md) | Clips du live Convergence : deux caméras, vraies voix, DA « Les deux droites » | MP4 1080×1920 + légende |
 | [`yt-analytics`](yt-analytics/SKILL.md) | Stats par vidéo et par chaîne, deux périodes jamais mélangées | rapports et tableau de bord HTML |
 
 Chaque skill marche aussi seul, appelé directement. Les détails lourds vivent dans `references/`, chargés à la demande. Les choix passés et leurs résultats vivent dans `memory/`.
@@ -142,7 +143,7 @@ Pour chacune : script et deck dans `yt-script/outputs/`, miniature finale dans `
 
 ## Le cadre, source unique
 
-Tout ce qu'un skill doit savoir sur la chaîne est écrit une seule fois dans [`_shared/cadre-nass.md`](_shared/cadre-nass.md). Les skills y renvoient, aucun ne le recopie. Modifier le cadre, c'est modifier les onze skills d'un coup.
+Tout ce qu'un skill doit savoir sur la chaîne est écrit une seule fois dans [`_shared/cadre-nass.md`](_shared/cadre-nass.md). Les skills y renvoient, aucun ne le recopie. Modifier le cadre, c'est modifier les douze skills d'un coup.
 
 | Section | Contenu |
 |---|---|
@@ -169,7 +170,7 @@ Les skills sont branchés dans Claude Code par des liens vers le dépôt. Une mo
 ```bash
 git clone https://github.com/NassBarbossa/youtube-domination-factory.git ~/youtube-domination-factory
 cd ~/youtube-domination-factory && git checkout rebrand/crypto
-for d in yt-*/; do d=${d%/}; [ -f "$d/SKILL.md" ] && ln -sfn "../../youtube-domination-factory/$d" ~/.claude/skills/"$d"; done
+for d in */; do d=${d%/}; [ -f "$d/SKILL.md" ] && ln -sfn "../../youtube-domination-factory/$d" ~/.claude/skills/"$d"; done
 ```
 
 **Windows (PowerShell)**
@@ -177,7 +178,7 @@ for d in yt-*/; do d=${d%/}; [ -f "$d/SKILL.md" ] && ln -sfn "../../youtube-domi
 ```powershell
 git clone https://github.com/NassBarbossa/youtube-domination-factory.git C:\Users\User\youtube-domination-factory
 cd C:\Users\User\youtube-domination-factory; git checkout rebrand/crypto
-Get-ChildItem . -Directory -Filter 'yt-*' | Where-Object { Test-Path "$($_.FullName)\SKILL.md" } |
+Get-ChildItem . -Directory | Where-Object { Test-Path "$($_.FullName)\SKILL.md" } |
   ForEach-Object { New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\$($_.Name)" -Target $_.FullName }
 ```
 
@@ -202,8 +203,9 @@ Les skills sont du Markdown. Autour, un peu de Python, local, pour les tâches r
 |---|---|---|
 | `yt-analytics/` | `analyze.py` (rapport à la charte depuis l'API), `studio_ctr.py` (CTR et impressions lus dans YouTube Studio, qu'aucune API ne donne), `feedback_analyzer.py` (relie les stats aux choix), `parse_youtube_csv.py`, `generate_report.py`, `generate_dashboard.py`, `auth.py` | `pip install -r yt-analytics/requirements.txt`, `uv` pour `studio_ctr.py` |
 | `yt-miniature/scripts/` | `generate.py` (OpenRouter), `composite.py` (incrustation fond vert), `overlay.py` (texte), `banner.py`, `pfp.py`, `check.py` (contrôle 256 px) | `pip install -r yt-miniature/scripts/requirements.txt` |
-| `yt-veille/scripts/` | veille automatique, en pause (SQLite sur le VPS, scoring, rapport), 58 tests | `pip install -r yt-veille/scripts/requirements.txt` |
+| `yt-veille/scripts/` | `outliers_rss.py` (outliers des chaînes de référence par flux RSS, sans dépendance), veille automatique en pause (SQLite sur le VPS, scoring, rapport), 75 tests | `pip install -r yt-veille/scripts/requirements.txt` (inutile pour `outliers_rss.py`) |
 | `yt-transcript/scripts/` | `get_transcript.py` | `uv` (dépendance déclarée dans le script) |
+| `clip-convergence/scripts/` | `transcribe.py`, `words.py`, `offset.py` (recalage audio), `presence.py` (fauteuil vide), `build_media.py`, `qa_voice.py`, `face_track.py` (YuNet), `build_screen.py`, `qa_render.py` | `pip install -r clip-convergence/scripts/requirements.txt`, ffmpeg |
 
 Vérifier que tout tient après une modification :
 
@@ -229,8 +231,9 @@ context/SCHEMA.md                contrat du contexte
 context/archive/                 vidéos terminées, avec ID YouTube
 yt-analytics/*.py                stats (local)
 yt-miniature/scripts/*.py        montage des miniatures (local)
-yt-veille/scripts/               veille automatique (VPS, en pause)
+yt-veille/scripts/               outliers RSS (local), veille automatique (VPS, en pause)
 shows/                           assets de l'émission live Convergence
+clip-convergence/                clips du live : skill, scripts, fiches épisode, projets (médias hors git)
 docs/                            specs et plans d'origine, visuels du README
 CLAUDE.md                        guide de travail pour Claude Code
 TODO.md                          décisions en attente, dette technique

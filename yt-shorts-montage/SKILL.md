@@ -1,6 +1,6 @@
 ---
 name: yt-shorts-montage
-description: Fabrique les Shorts verticaux (1080×1920, YouTube Shorts, TikTok, Reels) de la chaîne crypto de Nass Riviera à partir d'un script yt-shorts-script validé : composition HyperFrames, sous-titres, sound effects, disclaimer, rendu. Déclencheurs : « monte le short », « montage short », « fais la vidéo du short », « sous-titres short », « rends le short », « edit short », « render short ». Pas pour écrire ou modifier le texte d'un Short → yt-shorts-script ; pas pour découper une vidéo longue → yt-repurposing.
+description: Fabrique les Shorts verticaux (1080×1920, YouTube Shorts, TikTok, Reels) de la chaîne crypto de Nass Riviera à partir d'un script yt-shorts-script validé : composition HyperFrames, sous-titres, sound effects, disclaimer, rendu. Déclencheurs : « monte le short », « montage short », « fais la vidéo du short », « sous-titres short », « rends le short », « edit short », « render short ». Pas pour écrire ou modifier le texte d'un Short → yt-shorts-script ; pas pour découper une vidéo longue → yt-repurposing ; pas pour un clip du live Convergence → clip-convergence.
 metadata:
   author: NassRiviera
   category: youtube-workflow

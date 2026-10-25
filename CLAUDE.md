@@ -4,7 +4,7 @@ Guide pour Claude Code dans ce repo.
 
 ## Projet
 
-YouTube Domination Factory : un ensemble de skills Claude Code qui produit les vidéos de la chaîne YouTube de **Nass Riviera** ([Nassin Crypto](https://www.youtube.com/@NassinCrypto)), chaîne **100 % crypto**. Chaque module `yt-*/` contient un `SKILL.md` (frontmatter `name` + `description`) et parfois `references/` (détails chargés à la demande), `memory/` (choix passés) et `scripts/`.
+YouTube Domination Factory : un ensemble de skills Claude Code qui produit les vidéos de la chaîne YouTube de **Nass Riviera** ([Nassin Crypto](https://www.youtube.com/@NassinCrypto)), chaîne **100 % crypto**. Chaque module `yt-*/` (et `clip-convergence/`) contient un `SKILL.md` (frontmatter `name` + `description`) et parfois `references/` (détails chargés à la demande), `memory/` (choix passés) et `scripts/`.
 
 **Cadre éditorial : `_shared/cadre-nass.md`.** Narrative, avatar, offres, table des liens, ton, règles de fond halal, charte des slides, charte des miniatures, disclaimer. C'est la source unique : tous les skills le lisent, aucun ne le recopie. Le modifier là, et seulement là.
 
@@ -12,7 +12,7 @@ En deux lignes : on achète les cryptos en dehors des échanges, on achète les 
 
 ## Chemins
 
-Le repo vit à `~/youtube-domination-factory` (Mac) ou `C:\Users\User\youtube-domination-factory` (Windows). Les skills désignent cette racine par `{repo}` et chaque fichier redonne les deux emplacements : une session Claude lit le bon chemin quelle que soit la machine. Les chemins relatifs partent de la racine. Les skills installés (`~/.claude/skills/yt-*`) sont des liens (symlinks Mac, jonctions Windows) vers ce repo : une modif ici est active tout de suite.
+Le repo vit à `~/youtube-domination-factory` (Mac) ou `C:\Users\User\youtube-domination-factory` (Windows). Les skills désignent cette racine par `{repo}` et chaque fichier redonne les deux emplacements : une session Claude lit le bon chemin quelle que soit la machine. Les chemins relatifs partent de la racine. Les skills installés (`~/.claude/skills/yt-*`, `~/.claude/skills/clip-convergence`) sont des liens (symlinks Mac, jonctions Windows) vers ce repo : une modif ici est active tout de suite.
 
 Hors git, à recréer sur chaque machine : `yt-analytics/.studio-profile/` (session Chrome de `studio_ctr.py`, connexion une fois), `.env` à la racine (`OPENROUTER_API_KEY`), `yt-analytics/client_secret.json` et `yt-analytics/token.json` (OAuth YouTube, `python3 yt-analytics/auth.py` pour le refaire, en choisissant le compte de la nouvelle chaîne ; il doit être « utilisateur test » de l'application OAuth dans la console Google Cloud).
 
@@ -29,6 +29,7 @@ Hors git, à recréer sur chaque machine : `yt-analytics/.studio-profile/` (sess
 | `yt-description` | Description et tags |
 | `yt-repurposing` | Découpe d'une vidéo longue : Shorts, thread X, LinkedIn |
 | `yt-shorts-script` / `yt-shorts-montage` | Shorts natifs 30-60 s (fondations, méthode de Nass à venir dans `references/`) |
+| `clip-convergence` | Shorts tirés du live Convergence : deux caméras, vraies voix, DA « Les deux droites » (pilote EP.03 validé le 2026-10-25) |
 | `yt-analytics` | Analyse des stats YouTube |
 
 ## Pipeline (yt-orchestrator)
@@ -60,14 +61,15 @@ Les vidéos crypto sont sur une **nouvelle chaîne, Nassin Crypto** ; l'ancienne
 |---|---|---|
 | `yt-analytics/` | `parse_youtube_csv.py` (export FR ou EN), `generate_report.py`, `generate_dashboard.py`, `analyze.py` et `feedback_analyzer.py` (API, OAuth), `auth.py`, `studio_ctr.py` (CTR et impressions lus dans YouTube Studio via Playwright, `uv run`) | `yt-analytics/requirements.txt`, uv |
 | `yt-miniature/scripts/` | `generate.py` (OpenRouter, stdlib), `composite.py`, `overlay.py`, `banner.py`, `pfp.py`, `check.py` | `yt-miniature/scripts/requirements.txt` (Pillow) |
-| `yt-veille/scripts/` | veille automatique, tests `pytest` (58 tests) | `yt-veille/scripts/requirements.txt` |
+| `yt-veille/scripts/` | `outliers_rss.py` (outliers des chaînes de référence par flux RSS, stdlib), veille automatique (en pause), tests `pytest` (75 tests) | `yt-veille/scripts/requirements.txt` (inutile pour `outliers_rss.py`) |
 | `yt-transcript/scripts/` | `get_transcript.py` (`uv run`, dépendance inline) | uv |
+| `clip-convergence/scripts/` | `transcribe.py`, `words.py`, `offset.py` (recalage audio), `presence.py` (fauteuil vide), `build_media.py`, `qa_voice.py`, `face_track.py` (YuNet), `build_screen.py`, `qa_render.py` ; sources = enregistrements OBS du PC Windows | `clip-convergence/scripts/requirements.txt`, ffmpeg |
 
 Vérification rapide après une modif : `git ls-files '*.py' | xargs python3 -m py_compile`, puis `python3 -m pytest -q` dans `yt-veille/scripts`. Les scripts qui lisent `veille.db` tournent sur le VPS ; tous les autres en local.
 
 ## Veille automatique : en pause
 
-Nass a désactivé le cron de la veille sur le VPS. **Ne pas la relancer, ne pas le proposer**, sauf demande de sa part. `yt-veille` et `yt-transcript` fonctionnent sans (sources web, yt-dlp, questions de l'audience).
+Nass a désactivé le cron de la veille sur le VPS. **Ne pas la relancer, ne pas le proposer**, sauf demande de sa part. `yt-veille` et `yt-transcript` fonctionnent sans (flux RSS des chaînes de référence via `outliers_rss.py`, sources web, yt-dlp, questions de l'audience).
 
 Pour mémoire : scripts dans `yt-veille/scripts/`, base `veille.db` uniquement sur le VPS (`ssh root@72.62.253.227`, repo dans `/root/youtube-domination-factory`). `context/backlog.json` est vide ; les 81 sujets IA sont archivés dans `context/archive/backlog-ia-2026-03-31.json`.
 

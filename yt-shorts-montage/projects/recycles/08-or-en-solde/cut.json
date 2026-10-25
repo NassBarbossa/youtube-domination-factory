@@ -1,0 +1,21 @@
+{
+  "short": "08 — L'or est en solde (Convergence EP.03)",
+  "source": "C:/Users/User/Videos/2026-10-19 15-13-23 vertical - son egalise.mkv",
+  "transcript": "C:/Users/User/Videos/montage-ep03/transcript.json",
+  "raw_to_source": -1.76,
+  "prescale": 1.45,
+  "crops": {
+    "nass": [26, 26, 1028, 514],
+    "sadek": [26, 1284, 1028, 516]
+  },
+  "segments": [
+    {"id": "s1", "speaker": "sadek", "a": 1690.88, "b": 1701.00, "text": "acheter de l'or alors que l'ATH est à 5 600, à 4 180, c'est un très bon prix. Vous avez un discount de presque 30 %. Il n'y a aucune raffinerie d'or au monde qui vous le donnera."},
+    {"id": "s2", "speaker": "sadek", "a": 1715.02, "b": 1718.08, "text": "il y a un gros truc à comprendre entre le prix et le moment"},
+    {"id": "s3a", "speaker": "nass", "a": 1816.82, "b": 1818.94, "text": "on est sur une correction de 30 %"},
+    {"id": "s3b", "speaker": "nass", "a": 1823.00, "b": 1825.48, "text": "c'est les soldes de 30 %, entre guillemets"},
+    {"id": "s4a", "speaker": "nass", "a": 1827.12, "b": 1829.86, "text": "dans une optique d'achat long terme"},
+    {"id": "s4b", "speaker": "nass", "a": 1832.94, "b": 1836.66, "text": "vous prenez pas trop de risque de vous positionner à ce niveau-là"},
+    {"id": "s5a", "speaker": "nass", "a": 1853.08, "b": 1864.14, "text": "si vous êtes investisseur, bah si vous achetez là, vu que votre objectif c'est que ça remonte à ce niveau-là, vous n'avez pas grand-chose à faire que vous achetiez à ce niveau-là, plus bas de moins 5 %"},
+    {"id": "s5b", "speaker": "nass", "a": 1866.42, "b": 1870.54, "text": "c'est pas le plus important, quand vous êtes des investisseurs"}
+  ]
+}
