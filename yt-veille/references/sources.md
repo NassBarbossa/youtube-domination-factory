@@ -13,7 +13,7 @@ Narrative, avatar et règles de fond : `_shared/cadre-nass.md`. On ne tire jamai
 - **1of10.com** : outliers YouTube (crypto US notamment). Compte payant, pas d'accès automatique : Nass consulte et colle ce qu'il a repéré.
 
 ## Chaînes de référence
-Liste complète, tiers et IDs : `scripts/config/channels.json` (77 chaînes actives au 2026-10-14 : 28 FR, 34 US, 15 ES ; plus `a_verifier` et `exclus`). Aussi utilisée par la veille automatique, en pause.
+Liste complète, tiers et IDs : `scripts/config/channels.json` (77 chaînes actives au 2026-10-14 : 28 FR, 34 US, 15 ES ; plus `a_verifier` et `exclus`, que les scripts ignorent). Outliers du moment : `python {repo}/yt-veille/scripts/outliers_rss.py` lit le flux RSS de chaque chaîne (sans clé API) et écrit `outputs/veille-<date>-outliers.md` ; méthode et seuils dans `SKILL.md`, étape 1. La liste sert aussi à la veille automatique, en pause.
 - **FR, Tier 1** : Hasheur, Hasheur Live, Cryptoast, Journal du Coin, Grand Angle Bitcoin, Paul Finance, Finary (pont investisseurs « classiques » / crypto), CoinAcademy
 - **FR, Tier 2-3** : Julien Roman, Crypto Le Trone, Cryptoast Academy & Podcast, Monsieur-TK, Cryptolyze, Crypto Flash, Chantal Läng, Jonathan Nowak, Crypto et Bourse pour tous, FinTales, Matthieu Louvet, Lexa Moon, Crypto Logique, bitcoin fr, Cryptorecherche, Alex Doyon, Milenium Finance, K-Bour Crypto, Seiya
 - **US, Tier 1** (vues médianes ≥ 30 k) : Coin Bureau, Altcoin Daily, Lark Davis, Mark Moss, Gareth Soloway, Paul Barron Network, Knightron Crypto, MMCrypto, Blockchain Backer, Alessio Rastani, The House Of Crypto, Jason Pizzino, Money Rules - Investing Tips, No Bs Crypto, Levi

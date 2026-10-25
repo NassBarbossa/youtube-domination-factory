@@ -33,15 +33,17 @@ Des sujets qui :
 
 ### 1. Collecte
 
-Sources détaillées dans `references/sources.md` :
-- **Actu crypto FR et US** (médias, chaînes de référence, recherche YouTube via `yt-dlp "ytsearch10:<requête>"` ou WebSearch).
+**Chaînes de référence** : lancer `python {repo}/yt-veille/scripts/outliers_rss.py` (sans clé API ni dépendance, une dizaine de secondes). Il lit le flux RSS des chaînes de `scripts/config/channels.json` et écrit `outputs/veille-<date>-outliers.md`, outliers triés par ratio. Lire le tableau produit, en tirer les thèmes (FR, US, ES ensemble) et les rédiger à la place de la ligne « À rédiger » du fichier (exemple : `outputs/veille-2026-10-14-outliers.md`).
+
+Autres sources, détaillées dans `references/sources.md` :
+- **Actu crypto FR et US** (médias, recherche YouTube via `yt-dlp "ytsearch10:<requête>"` ou WebSearch).
 - **Données on-chain** : DexScreener (nouvelles paires, volumes), Dune, Arkham ; prix et capitalisations via CoinGecko (ou CoinStats si connecté). Ce qui commence à bouger avant d'être connu de tous.
 - **Régulation et fiscalité FR/UE** (MiCA, AMF, déclaration des comptes) : les questions concrètes de l'avatar.
 - **Questions de l'audience** : commentaires YouTube, communauté privée, live Convergence.
 - **Sujets apportés par Nass** : toujours prioritaires.
 - **1of10.com** (optionnel, manuel) : compte payant, pas d'accès automatique. Si Nass y a repéré un outlier, il le colle ici et on l'adapte.
 
-**Outlier** : une vidéo qui fait plus de 3× la médiane des vues de sa chaîne. Noter sujet, titre, miniature, hook, puis l'adapter en FR dans la narrative.
+**Outlier** (définition du script) : vidéo publiée il y a 2 à 30 jours, avec au moins 2 000 vues et au moins 2× la médiane des vues de sa chaîne (médiane des 15 vidéos du flux, Shorts compris). Seuils réglables : `--ratio` (ex. `--ratio 3` pour ne garder que les plus forts), `--min-views`, `--min-days`, `--max-days`. Pour un outlier retenu : noter sujet, titre, miniature, hook, puis l'adapter en FR dans la narrative.
 
 ### 2. Filtrage et score
 
@@ -149,3 +151,5 @@ Avant une session : lire `memory/lessons.json` ; après la décision de sujet : 
 Désactivée par Nass : ne pas la relancer, ne pas proposer de la relancer, sauf demande de sa part. Le skill fonctionne sans.
 
 Pour mémoire, ce qui existe : un cron quotidien sur le VPS (`daily_monitor.py`, chaînes dans `scripts/config/channels.json`), une base `veille.db` qui n'existe que sur le VPS (`/root/youtube-domination-factory/yt-veille/scripts/`), un scoring composite, et `report.py` qui produisait un top 25 vers Notion et `context/veille-top25.json`. Les scripts qui lisent `veille.db` s'exécutent sur le VPS, jamais en local.
+
+`scripts/outliers_rss.py` n'en fait pas partie : lancé à la main (étape 1), en local, il ne touche ni au cron ni à `veille.db`.

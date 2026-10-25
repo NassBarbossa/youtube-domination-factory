@@ -2,7 +2,7 @@
 
 **Méthode.** 40 requêtes en anglais et 32 en espagnol sur YouTube (20 résultats chacune : 1 418 résultats, 743 chaînes), plus les chaînes citées par les classements publiés (Feedspot, Milk Road, Cronista, TreceBits, CriptoNoticias), résolues en identifiant. Pour chaque chaîne, le flux RSS officiel donne les titres d'origine, les vues et les dates des 15 dernières vidéos ; les abonnés viennent de la page de la chaîne. Langue détectée sur les titres d'origine (chaînes FR, PT et non latines écartées). Signaux d'après les titres : « levier/trading » et « memecoins » si au moins un quart des titres, « pas centré crypto » si moins d'un tiers, « inactive » si plus de 90 jours sans vidéo. Tier proposé par abonnés : Tier 1 ≥ 500 k, Tier 2 ≥ 100 k, Tier 3 ≥ 20 k, sinon « petite ».
 
-**Effectifs.** 505 chaînes anglophones (220 sans signal), 214 hispanophones (80 sans signal). Vues médianes = ce que fait une vidéo normale de la chaîne aujourd'hui, c'est la référence pour repérer un outlier (> 3× la médiane).
+**Effectifs.** 505 chaînes anglophones (220 sans signal), 214 hispanophones (80 sans signal). Vues médianes = ce que fait une vidéo normale de la chaîne aujourd'hui, c'est la référence pour repérer un outlier (au moins 2× la médiane, définition dans `SKILL.md`).
 
 ## Shortlist à valider par Nass
 
