@@ -4,21 +4,25 @@ Structure de départ. À adapter selon le format, le sujet et le niveau de funne
 
 ## Titre de la vidéo : [TITRE]
 ## Format : [Tutoriel / Actu / Deep Dive / Comparaison / Réaction / Pourquoi j'ai acheté ce coin (et pourquoi j'achète rarement) / Acheter en dehors des échanges, pas à pas / Comment je reconnais un bon coin]
-## Funnel : [TOP / MIDDLE / BOTTOM]
-## Durée cible : [X min] (~X mots)
+## Funnel : [TOP / MIDDLE / BOTTOM] (déduit du CTA, jamais demandé)
+## Promesse de titre : [une ligne, reprise dans les trois premières slides]
+## Durée visée : [X min] (~30-45 mots dictés et 3,5-4,5 slides par minute)
 
 ---
 
-### HOOK (0:00 - 0:15)
+### HOOK (les trois premières slides)
 
-[0:00-0:05 — Commence par le résultat ou la situation réelle (ex. une transaction on-chain datée, un graphique de prix daté), jamais par « salut c'est Nass »]
-[0:05-0:15 — Ce que le spectateur va comprendre ou savoir faire (jamais une promesse de gain)]
+[Slide 1 ou 2 : la promesse du titre, reprise mot pour mot ou presque ; une affirmation concrète ou un chiffre réel daté (transaction on-chain, graphique de prix) ; jamais « salut c'est Nass »]
+[Slide 2 ou 3 : la raison de rester, ce que la vidéo va montrer (jamais une promesse de gain) ; aucun bloc de contexte ni de légitimité avant le premier payoff]
 
-### ENJEUX (0:15 - 0:30)
+### ENJEUX (juste après)
 
 [Pourquoi ça compte maintenant + ce que le spectateur (investisseur débutant en crypto) y gagne en compréhension]
 
-### POINT 1 : [SOUS-TITRE] (0:30 - X:XX)
+### LÉGITIMITÉ (optionnel, une slide au plus, après le premier payoff)
+[Qui je suis pour dire ça : une seule slide, jamais avant que la promesse ait commencé à être tenue]
+
+### POINT 1 : [SOUS-TITRE] (X:XX - X:XX)
 
 [Affirmation]
 [Preuve / démonstration — donnée réelle datée, transaction on-chain, écran du wallet]
@@ -46,8 +50,8 @@ Structure de départ. À adapter selon le format, le sujet et le niveau de funne
 
 ## Metadata
 
-- **Nombre de mots** : X mots
-- **Durée de lecture estimée** : X min
+- **Mots dictés** : X
+- **Durée visée** : X min (durée réelle lue au tournage)
 - **Timestamps suggérés** :
   - 0:00 - Hook
   - 0:15 - Enjeux

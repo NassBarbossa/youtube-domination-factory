@@ -1,3 +1,33 @@
 {
-  "choices": []
+  "choices": [
+    {
+      "video_slug": "convergence-ep03",
+      "date": "2026-10-20",
+      "niche": "crypto",
+      "youtube_video_id": "PJaScgDfiMk",
+      "title_chosen": "Or ou Bitcoin en 2026 , que choisir ? CONVERGENCE [EP.03]",
+      "title_proposed": "Or ou Bitcoin en 2026 ?",
+      "titles_rejected": [
+        "Ce que les traders cachent",
+        "Trading débutant : la vérité",
+        "Acheter de l'or maintenant ?",
+        "L'erreur du trader débutant",
+        "Stop trader tous les jours",
+        "Trop tard pour le Bitcoin ?"
+      ],
+      "formula": "T3",
+      "style": "question",
+      "char_count": 57,
+      "word_count": 10,
+      "has_number": true,
+      "number_type": "even",
+      "has_power_words": false,
+      "power_words_used": [],
+      "has_brackets": true,
+      "keyword_position": 1,
+      "framing": "neutral",
+      "notes": "Nass a pris le titre 1 du top 3 et l'a allongé avec « que choisir ? » + suffixe de marque « CONVERGENCE [EP.03] » (même gabarit que l'ép. 01). Miniature : « Le trading est un jeu de menteurs » (v6-final).",
+      "performance": null
+    }
+  ]
 }

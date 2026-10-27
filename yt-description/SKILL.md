@@ -126,7 +126,7 @@ Consigne interne : jamais de tags, de mots-clés ou de liens liés au levier, au
 
 ## Règles
 
-- **Les 150 premiers caractères** s'affichent dans les résultats : mot-clé principal et valeur en tête. Le titre gagnant fait ≤ 30 caractères, la description compense en SEO.
+- **Les 150 premiers caractères** s'affichent dans les résultats : mot-clé principal et valeur en tête. Le titre gagnant fait 30 à 60 caractères, la description compense en SEO.
 - **Disclaimer** : « Pas un conseil en investissement. », une seule fois, juste après les timestamps (visible sans dérouler).
 - **Longueur** : 300 à 500 mots, et sous 5 000 caractères (limite YouTube).
 - Écrire pour les humains d'abord : pas de bourrage de mots-clés.

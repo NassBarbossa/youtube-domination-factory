@@ -54,11 +54,11 @@ Reprise (règle unique, appliquée par l'orchestrateur au démarrage) : si `_met
 
 ### `script` — yt-script, conversation principale (Phase 1)
 
-`slug`, `funnel` (copie de `request.funnel`), `file_path` (`yt-script/outputs/<slug>.md`), `visual_path` (`yt-script/outputs/<slug>-visual.html`), `word_count`, `reading_time_min`, `structure` `{hook, sections[{title, key_points[]}], timestamps_raw[{time, label}], shorts_moments[{start, end, description}]}`, `google_doc_url`, `open_questions[]`.
+`slug`, `funnel` (copie de `request.funnel`), `file_path` (`yt-script/outputs/<slug>.md`), `visual_path` (`yt-script/outputs/<slug>-visual.html`), `word_count`, `reading_time_min`, `structure` `{title_promise, hook, sections[{title, key_points[]}], timestamps_raw[{time, label}], shorts_moments[{start, end, description}]}`, `google_doc_url`, `open_questions[]`.
 
 ### `titres_seo` — yt-titres-seo, agent (Phase 2a)
 
-`all_titles[]` (le nombre défini dans yt-titres-seo), `winning_title`, `primary_keyword`, `secondary_keywords[]`, `open_questions[]`.
+`all_titles[]` (le nombre défini dans yt-titres-seo), `winning_title`, `title_type` (`searchable` ou `intriguing`), `primary_keyword`, `secondary_keywords[]`, `open_questions[]`.
 
 ### `miniature` — yt-miniature, agent (Phase 2b)
 

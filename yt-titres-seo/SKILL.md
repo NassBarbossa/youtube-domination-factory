@@ -1,6 +1,6 @@
 ---
 name: yt-titres-seo
-description: Génère des titres YouTube optimisés pour la recherche et le clic (7 titres, mot-clé principal et secondaires) pour la chaîne crypto de Nass Riviera. Déclencheurs : « titre vidéo », « trouve un titre », « titre YouTube », « optimise le titre », « find a title », « SEO title », « title ideas ». Pas pour la description et les tags → yt-description ; pas pour le texte de la miniature → yt-miniature.
+description: Génère des titres YouTube optimisés pour la recherche et le clic (7 titres de 30 à 60 caractères parmi 9 formules, type searchable ou intriguing, mot-clé principal et secondaires, retitrage et test A/B d'une vidéo publiée) pour la chaîne crypto de Nass Riviera. Déclencheurs : « titre vidéo », « trouve un titre », « titre YouTube », « optimise le titre », « retitre », « test A/B titre », « find a title », « SEO title », « title ideas ». Pas pour la description et les tags → yt-description ; pas pour le texte de la miniature → yt-miniature.
 metadata:
   author: NassRiviera
   category: youtube-workflow
@@ -11,7 +11,7 @@ metadata:
 
 **Cadre** : lis d'abord `{repo}/_shared/cadre-nass.md` (narrative, avatar, offres, ton, règles de fond, charte). Il prime sur ce fichier.
 
-Tu écris les titres YouTube de Nass Riviera : un titre qui se positionne en recherche et qui se fait cliquer, sans jamais trahir le contenu de la vidéo. Les mots sont ceux que tape un débutant (« crypto », « bitcoin », « acheter », « wallet », « investir »), pas du jargon de trader.
+Tu écris les titres YouTube de Nass Riviera : un titre qui se positionne en recherche et qui se fait cliquer, sans jamais trahir le contenu de la vidéo. Les mots sont ceux que tape un débutant (« crypto », « bitcoin », « acheter », « wallet », « investir »), pas du jargon de trader. Les règles de longueur et de forme viennent de sources lues le 20 octobre 2026 et des titres publiés de la chaîne : `references/veille-titres-2026-10-20.md`.
 
 `{repo}` = racine du dépôt youtube-domination-factory (Mac : `~/youtube-domination-factory` · Windows : `C:\Users\User\youtube-domination-factory`) ; les chemins relatifs partent de là.
 
@@ -23,7 +23,8 @@ Extraire du script ou du brief :
 - le sujet et le mot-clé principal ;
 - l'intention de l'audience (apprendre, découvrir, résoudre, comparer) ;
 - l'angle différenciant (acheter hors des échanges, reconnaître un bon coin, acheter rarement, pont immobilier → crypto…) ;
-- le déclencheur émotionnel (curiosité, peur de l'erreur, opportunité, surprise).
+- le déclencheur émotionnel (curiosité, peur de l'erreur, opportunité, surprise) ;
+- le **type de titre**, que YouTube distingue : **searchable**, ce que l'avatar tape (tutoriel, geste on-chain, « c'est quoi un wallet ») ; **intriguing**, ce qui fait cliquer dans le fil (actu, avis, live, question ouverte). Au 13 octobre 2026, la recherche fait 3 % du trafic de la chaîne et 73 % des vues viennent des abonnés, de la playlist et de la page de chaîne : par défaut un titre intriguing, mot-clé devant quand même.
 
 ### 2. Mots-clés
 
@@ -47,9 +48,9 @@ Réservoir de départ (débutants FR) :
 
 Jamais de mot-clé principal lié au levier, aux futures, au short, à la marge, au lending ou au trading spéculatif.
 
-### 3. Génération : 7 titres pris parmi les 8 formules
+### 3. Génération : 7 titres pris parmi les 9 formules
 
-Écrire **7 titres**, chacun construit sur l'une des 8 formules ci-dessous (au moins 5 formules différentes sur les 7).
+Écrire **7 titres**, chacun construit sur l'une des 9 formules ci-dessous (au moins 5 formules différentes sur les 7).
 
 | ID | Formule | Exemple |
 |----|---------|---------|
@@ -61,10 +62,12 @@ Jamais de mot-clé principal lié au levier, aux futures, au short, à la marge,
 | T6 | Stop [mauvaise pratique] — fais ça à la place | « Stop acheter tous les jours » |
 | T7 | L'erreur que [groupe] fait avec [sujet] | « L'erreur des pros de l'immo en crypto » |
 | T8 | [Preuve réelle et vérifiable] — voici comment | « Acheter hors exchange, preuve à l'appui » |
+| T9 | [Sujet] en [année] : [la question qu'il se pose déjà] ? | « Or ou Bitcoin en 2026, que choisir ? » |
 
 Notes :
 - **T5** : un achat expliqué, jamais une invitation à copier. Il porte sur un achat réel de Nass, rare et réfléchi.
 - **T8** : uniquement une preuve réelle (transaction on-chain, données de prix datées). Jamais de chiffre inventé, jamais de projection.
+- **T9** : la question existe déjà chez l'avatar (l'autocomplétion la montre). C'est la forme de 4 des 5 titres publiés en octobre 2026, et le point d'interrogation est le signal le plus fort en éducation et finance dans les données lues. L'année seulement si le sujet est daté.
 
 Exemples d'angles dans la narrative (à adapter, sans chiffres inventés) : « Acheter sa crypto hors des exchanges », « Reconnaître un bon coin », « Pourquoi j'achète si rarement », « Ton exchange arrive après tout le monde ».
 
@@ -93,25 +96,29 @@ Le biais négatif pointe une erreur ou un coût réel (acheter tard, se faire ar
 - **Voix de Nass** (1-5) : direct, transparent, pas hype ?
 - **Conformité** (OK / KO) : un KO élimine le titre (voir plus bas).
 
+Le type décide du départage : SEO d'abord pour un titre searchable, Clic d'abord pour un titre intriguing.
+
 ### 5. Livraison
 
-Tableau des 7 titres : titre (caractères + mots), formule (T1-T8), mécanismes activés, questions validées, une phrase sur pourquoi il fonctionne. Puis un **top 3** justifié (meilleur équilibre, meilleur clic, meilleur SEO), le **mot-clé principal** et les **mots-clés secondaires** (transmis à yt-description ; le titre gagnant est transmis à yt-miniature pour que la miniature le complète sans le répéter).
+Tableau des 7 titres : titre (caractères + mots), formule (T1-T8), mécanismes activés, questions validées, une phrase sur pourquoi il fonctionne. Puis un **top 3** justifié (meilleur équilibre, meilleur clic, meilleur SEO), le **mot-clé principal** et les **mots-clés secondaires** (transmis à yt-description ; le titre gagnant est transmis à yt-miniature pour que la miniature le complète sans le répéter). Le top 3 est aussi la liste des candidats d'un test A/B (voir « Retitrage et test A/B »).
 
 ## Règles
 
-- **≤ 30 caractères et 5 mots max.** Règle opérationnelle de la chaîne. Le repère d'origine (1of10.com) vient d'études toutes niches : à recalibrer sur les données de la chaîne crypto.
+- **30 à 60 caractères.** La promesse tient dans les 5 premiers mots : c'est ce qui reste quand YouTube tronque (« viewers may only see part of your title »). Les cinq titres publiés en octobre 2026 font 41 à 57 caractères ; les grandes bases donnent 30 à 60 caractères et 5 à 8 mots, et la seule corrélation longueur / performance mesurée est nulle (sources : `references/veille-titres-2026-10-20.md`).
+- **Suffixe de marque ou d'épisode à la fin, jamais au début** (YouTube : « save episode numbers and branding for the end »). Replays Convergence : « [Question de l'épisode] CONVERGENCE [EP.NN] », sans le mot « podcast » (YouTube demande de l'enlever) ; le nom de l'invité va dans la description et les tags, dans le titre seulement si l'épisode porte sur lui.
 - Langage simple et parlé ; si un terme technique est indispensable, le plus connu (« wallet », « bitcoin »).
 - Émotion négative quand c'est pertinent (erreur, coût, arnaque), sans alarmisme de marché.
-- Pas de listes chiffrées type « 10 cryptos à acheter ».
-- Pas de titre entièrement en majuscules (un mot max pour l'emphase).
+- Pas de listes « N cryptos à acheter ». Un chiffre réel et sourcé ou un délai concret (« en 10 min », « depuis 2017 ») est un plus en finance.
+- Un mot en majuscules au plus, hors suffixe de marque ; pas de « !! », pas d'emoji (YouTube : « limit ALL CAPS and emoji »).
 - Pas de clickbait trompeur : la vidéo tient la promesse.
 - Le mot-clé principal apparaît naturellement, de préférence au début.
 - Pas de mots creux (« incroyable », « dingue », « tu ne vas pas y croire »).
 - Chiffres précis plutôt que promesses vagues (« 10 min » > « vite ») ; un chiffre de prix ou de performance n'apparaît que s'il est réel et sourcé.
 - Si la vidéo porte sur un actif ou un outil précis (Bitcoin, Solana, Phantom…), son nom va dans le titre.
+- L'année (« en 2026 ») pour un sujet daté : marché, actu, « que choisir cette année ». Jamais sur un tutoriel intemporel (wallet, seed phrase) : un titre daté vieillit en douze mois.
 - Langue = langue de la vidéo (français par défaut, accents corrects).
 
-Hypothèses à tester (pas des règles, voir `references/feedback-loop.md`) : titres plus longs de 40-60 caractères / 6-10 mots ; chiffre impair dans le titre.
+Hypothèses à tester (pas des règles, voir `references/feedback-loop.md`) : chiffre impair, un ou deux mots forts, crochets, cadrage négatif.
 
 ## Conformité (application du cadre aux titres)
 
@@ -124,14 +131,27 @@ Un titre est éliminé, quel que soit son score, s'il :
 
 Les titres de la formation offerte (« Pourquoi investir en 2026 », « Comment devenir riche », « L'investissement on-chain ») sont les mots de Nass : ils restent tels quels, sans délai ni montant ajouté.
 
+## Retitrage et test A/B (vidéo déjà publiée)
+
+Quand : une vidéo à fortes impressions et faible CTR (CTR lu dans Studio par `yt-analytics`), ou un titre qui ne dit pas le sujet (ép. 01 de Convergence : « CONVERGENCE [EP.01] : Podcast investissement w/ Sadek »).
+
+1. Lire les données de la vidéo : impressions, CTR, part de la recherche et mots tapés. Si la recherche a amené des vues, garder ce mot-clé.
+2. Produire 3 titres distincts dans la forme (question, affirmation, coût), pas trois variantes du même : des options trop proches font durer le test sans gagnant.
+3. Proposer le test « Test & compare » de YouTube Studio (sur ordinateur, fonctionnalités avancées activées) : jusqu'à 3 titres, gagnant désigné au temps de visionnage et non au CTR, résultat en deux semaines au plus, « Winner », « Performed Same » ou « Inconclusive ». YouTube conseille de tester d'abord des vidéos anciennes ; les archives de lives sont éligibles ; changer le titre pendant le test l'arrête.
+4. Dire à Nass qu'avec quelques centaines d'impressions le résultat sera souvent « Inconclusive » : dans ce cas on garde le titre le plus fidèle au contenu.
+5. Logger dans `memory/choices.json` : `title_type`, `ab_test_candidates`, `ab_test_result`, `ab_test_winner`.
+
 ## Exemples
 
-**Titre fort** : « Crypto avant le listing » (23 caractères, 4 mots)
-- SEO 5 : « crypto » + « listing » sont recherchés.
-- Clic 5 : promesse d'un accès en avance, gap fort.
+**Titre fort** : « Acheter sa crypto avant le listing, sans exchange » (49 caractères, 8 mots, intriguing, T8 si la transaction est montrée)
+- SEO 4 : « acheter », « crypto », « listing », « exchange » sont des mots de l'avatar ; la promesse tient dans les 5 premiers mots.
+- Clic 5 : promesse d'un accès en avance, gap fort, et « sans exchange » défie la croyance « la crypto, ça s'achète sur Binance ».
 - Fidélité 5 : si la vidéo montre réellement un achat on-chain avant le listing, transaction à l'appui.
 - Voix de Nass 5 : c'est exactement ce qu'il propose, sans hype.
 - Conformité OK. Gap ✓ Erreur ✓.
+
+**Titre fort** : « Or ou Bitcoin en 2026, que choisir ? CONVERGENCE [EP.03] » (56 caractères, 10 mots, T9, intriguing ; publié le 20 octobre 2026)
+- La question existe déjà chez l'avatar, l'année est justifiée (sujet de marché), la marque est à la fin, un seul mot-clé fort par moitié de titre.
 
 **Titre faible** : « Cette Crypto Va Faire x100 !!! »
 - SEO 2, Clic 3 (attire le mauvais public), Fidélité 1, Voix 1.
@@ -149,7 +169,8 @@ La Phase 2a tourne **avant** yt-miniature et yt-description, qui lisent ta sorti
 ```json
 {
   "status": "completed",
-  "winning_title": "[≤ 30 caractères, 5 mots max]",
+  "winning_title": "[30 à 60 caractères, promesse dans les 5 premiers mots, suffixe de marque à la fin]",
+  "title_type": "searchable|intriguing",
   "all_titles": ["titre1", "titre2", "titre3", "titre4", "titre5", "titre6", "titre7"],
   "primary_keyword": "[mot-clé principal]",
   "secondary_keywords": ["mot-clé 1", "mot-clé 2", "mot-clé 3"],

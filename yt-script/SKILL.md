@@ -19,7 +19,7 @@ metadata:
 Tu écris des scripts qui sonnent comme Nass qui parle à un pote : clairs, posés, directs, jamais condescendants. Le spectateur est intelligent et investit déjà, mais ne connaît rien à la crypto. Le script est la voix de Nass, pas la tienne : quand il dicte, tu reproduis fidèlement, lissage minimal pour l'oral.
 
 Un bon script :
-1. accroche dans les 30 premières secondes ;
+1. accroche dès les trois premières slides (cinq signaux, Step 2a) ;
 2. apporte de la valeur du début à la fin (zéro remplissage) ;
 3. sonne naturel à l'oral ;
 4. amène vers l'offre du funnel (voir tableau).
@@ -34,13 +34,13 @@ Voix : « tu » (français) ou « you » décontracté (anglais), humour subtil 
 
 ## Funnel (tableau de référence unique)
 
-| Funnel | Durée | Mots FR | Mots EN | Slides | Objectif | Style | CTA |
-|---|---|---|---|---|---|---|---|
-| **TOP** | 5-12 min | 750-1800 | 650-1550 | 12-18 | Attirer des inconnus : actu crypto, achat on-chain réel expliqué, étude de cas courte | Punchy, résultat d'entrée, pas de détour | **Formation offerte** (3 vidéos) (playlist, lien dans le cadre) |
-| **MIDDLE** | 18-22 min | 2700-3300 | 2350-2850 | 20-28 | Convertir en abonnés : tutoriels on-chain, deep dives, « pourquoi j'ai acheté ce coin » | Profond, pédagogique : c'est ici que Nass installe son expertise | **La suite de la formation offerte** `[lien vidéo suivante]` |
-| **BOTTOM** | 25+ min | 3750+ | 3250+ | 30+ | Communauté : live Convergence avec Sadek, Q&A, coulisses | Authentique, personnel | **Communauté privée** (Telegram, lien dans le cadre) + **Convergence** (lives de la chaîne, lien dans le cadre) |
+| Funnel | Durée | Mots dictés | Slides | Objectif | Style | CTA |
+|---|---|---|---|---|---|---|
+| **TOP** | 5-12 min | 150-540 | 18-54 | Attirer des inconnus : actu crypto, achat on-chain réel expliqué, étude de cas courte | Punchy, résultat d'entrée, pas de détour | **Formation offerte** (3 vidéos) (playlist, lien dans le cadre) |
+| **MIDDLE** | celle que le contenu demande (les deux premières font 9:29 et 11:10) | 30-45 par minute visée | 3,5-4,5 par minute | Convertir en abonnés : tutoriels on-chain, deep dives, « pourquoi j'ai acheté ce coin » | Profond, pédagogique : c'est ici que Nass installe son expertise | **La suite de la formation offerte** `[lien vidéo suivante]` |
+| **BOTTOM** | 25+ min, en live | pas de script : replay monté | aucune | Communauté : live Convergence avec Sadek, Q&A, coulisses. Replay : cold open sur le passage le plus fort, coupe des blancs, chapitres (3 minimum, le premier à 00:00, 10 s minimum chacun) | Authentique, personnel | **Communauté privée** (Telegram, lien dans le cadre) + **Convergence** (lives de la chaîne, lien dans le cadre) |
 
-Débit de lecture : ~150 mots/min en français, ~130 en anglais. Ne jamais étirer une vidéo TOP à 18-22 min. Hypothèses à tester (à recalibrer sur les données de la chaîne crypto via `memory/lessons.json`) : rétention > 70 % à 30 s ; completion rate TOP 45-55 %, MIDDLE 40-50 %, BOTTOM 35-45 % ; pic de performance du MIDDLE vers 18-24 min (1of10.com, données hors niche).
+Mesuré sur les trois vidéos publiées en octobre 2026 : 271, 375 et 463 mots dictés et 35, 37 et 46 slides pour 9:29, 11:10 et 10:01 de vidéo. Nass dicte un squelette de slides et parle autour (170 mots/min en live) : compter 30 à 45 mots dictés et 3,5 à 4,5 slides par minute visée, et lire la durée au tournage, pas au compteur de mots. Ne jamais étirer une vidéo pour atteindre une durée. Les repères de rétention sont ceux de la chaîne (médiane, pourcentage à 30 s et premier creux lus dans Studio par `yt-analytics/studio_retention.py`), pas des chiffres de vendeurs. Sources et comparaison : `references/veille-scripts-2026-10-20.md`.
 
 ## Formats
 
@@ -58,9 +58,10 @@ Avant d'écrire : lire `yt-script/memory/lessons.json` et appliquer les leçons 
 
 Récupérer, sans tout demander d'un coup (ne redemander que ce qui est flou) :
 - le sujet ;
-- le funnel (TOP / MIDDLE / BOTTOM), qui fixe durée, style, nombre de slides et CTA ;
+- le CTA (formation offerte, vidéo suivante, communauté), demandé ou déduit du sujet ; le funnel s'en déduit, on ne le demande jamais à Nass ;
 - le format ;
 - le message clé à retenir ;
+- la **promesse de titre** : une ligne écrite avec Nass avant la dictée, ce que le titre promettra et que les trois premières slides reprennent ; elle va en tête du script (`**Promesse de titre :**`) et `yt-titres-seo` la lit en Phase 2a ;
 - les points à couvrir ou à éviter, et les données réelles à utiliser (transactions on-chain, dates, prix).
 
 ### Step 2 — Structure collaborative
@@ -70,13 +71,18 @@ Le script se construit avec Nass, pas pour lui.
 **2a. Structure initiale en bullet points** (modèle : `references/script-template.md`)
 
 ```
-1. HOOK (0-30 s)
-   0:00-0:05  Le résultat ou la situation réelle, tout de suite : une transaction on-chain
-              datée, un graphique de prix daté. Jamais « salut c'est Nass ».
-              L'image + la première phrase créent un « attends, c'est quoi ça ? ».
-   0:05-0:15  La promesse : ce que le spectateur va comprendre ou savoir faire
-              (jamais une promesse de gain).
-   0:15-0:30  Les enjeux : pourquoi maintenant, pourquoi lui, pourquoi ça compte.
+1. HOOK (les trois premières slides)
+   Cinq signaux, les seuls qui séparent hits et flops dans les données lues
+   (Prepublish, 349 puis 941 vidéos ; références/veille-scripts-2026-10-20.md) :
+   - pas de salutation avant le premier payoff : jamais « salut c'est Nass » ;
+   - la promesse du titre reprise, mot pour mot ou presque, en slide 1 ou 2 ;
+   - une raison explicite de rester : ce que la vidéo va montrer ;
+   - une affirmation concrète ou un chiffre réel daté d'entrée (transaction
+     on-chain, graphique de prix) : l'image + la première phrase créent un
+     « attends, c'est quoi ça ? » ;
+   - aucun bloc de contexte ou de légitimité avant le premier payoff.
+   Le chronomètre (0-5 / 5-15 / 15-30 s) ne compte pas : le temps jusqu'au point
+   ne sépare rien dans ces données. Jamais de promesse de gain.
 
 2. CONTENU (3-5 points max)
    Chaque point en CPA : Claim → Proof (donnée réelle datée) → Application concrète.
@@ -113,13 +119,23 @@ Présenter les bullet points et attendre sa validation avant d'écrire le script
 - Il peut demander des propositions pour une phrase clé → 4-5 variations ; 3-4 rounds sont normaux.
 - Garder un récap à jour de la structure au fil des échanges.
 
+**2d. Passe rétention (après la dictée, avant le squelette des slides)**
+
+En mode dictée, le levier de rétention c'est l'ordre des slides. Relire le squelette et proposer en `[PROP]`, jamais en silence, ce qui manque :
+- la promesse du titre absente des trois premières slides → la remonter ;
+- un bloc de légitimité (« qui je suis ») avant le premier payoff → une slide au plus, après le premier payoff (au 13 octobre 2026, 73 % des vues viennent de gens qui connaissent déjà Nass) ;
+- une boucle ouverte (« je vais vous partager un secret ») → la marquer `[ouvre]` et `[ferme]` dans le `.md`, sans rien de long entre les deux ;
+- une injonction sortante (« va voir la vidéo 1 ») dans le hook → la proposer en fiche ou en écran de fin ;
+- les chapitres (timestamps) et un seul CTA, à la fin.
+Nass garde ou coupe. S'il maintient, sa consigne gagne et se note dans `memory/choices.json`.
+
 ### Step 3 — Écriture
 
 Script complet avec les marqueurs de plans `[FACE CAM]`, `[SCREEN]`, `[DEMO]` (wallet, DEX, explorer, graphique daté), `[B-ROLL]`. Le contenu dicté pendant le Step 2 est repris tel quel. Une section démo décrit clairement ce que Nass montre et fait, pour qu'il puisse suivre au tournage.
 
 ### Step 4 — Livrables : Script → Squelette (validation) → HTML
 
-**Phase A — `yt-script/outputs/[slug].md`** : metadata (mots, durée, timestamps), marqueurs de plans, marqueurs `[SLIDE: type | contenu]`, 2-3 Shorts moments, sources (lien + date) pour chaque chiffre ou prix.
+**Phase A — `yt-script/outputs/[slug].md`** : metadata (promesse de titre, mots dictés, durée visée, timestamps), marqueurs de plans, marqueurs `[SLIDE: type | contenu]`, 2-3 Shorts moments, sources (lien + date) pour chaque chiffre ou prix.
 
 **Phase B — Squelette des slides (validation)** : avant tout HTML, créer un doc `[Slides] {titre de la vidéo}` via Google Drive (`create_file`) ou Claude Docs, selon ce qui est connecté. Une entrée par slide : numéro + type, texte exact à l'écran, notes visuelles, source + date des chiffres (format : `references/slides.md` §2). Envoyer le lien à Nass, attendre son OK, reporter ses changements (ordre, ajouts, suppressions) dans les marqueurs `[SLIDE]` du `.md`.
 
@@ -157,7 +173,8 @@ Quand Nass dicte ses slides (« …slide d'après… »), c'est le mode priorita
 
 ### Step 5 — Checklist
 
-- [ ] Hook : résultat réel d'entrée (jamais « salut c'est Nass »), découpage 0-5 / 5-15 / 15-30 s
+- [ ] Hook : pas de salutation avant le premier payoff, promesse du titre dans les trois premières slides, raison de rester, affirmation concrète ou chiffre réel, aucun bloc de contexte ou de légitimité avant le premier payoff
+- [ ] Passe rétention faite : légitimité après le premier payoff, boucles marquées `[ouvre]` / `[ferme]`, injonction sortante hors du hook, CTA à la fin
 - [ ] Information gain : chaque section apporte ce que les vidéos concurrentes n'ont pas
 - [ ] Chaque terme crypto expliqué (et sa slide `definition`)
 - [ ] Angle investisseur présent (taille de position, risque, lien immo/bourse, patience)
@@ -166,7 +183,7 @@ Quand Nass dicte ses slides (« …slide d'après… »), c'est le mode priorita
 - [ ] Aucun chiffre inventé : chaque prix / perf / stat a une source datée
 - [ ] Disclaimer dans l'outro et sur la slide CTA
 - [ ] CTA du funnel, naturel, liens pris dans la table « Liens » du cadre ; placeholder `[lien …]` seulement pour ceux qui y manquent
-- [ ] Sonne comme Nass ; durée conforme au tableau funnel ; timestamps suggérés
+- [ ] Sonne comme Nass ; mots dictés et slides cohérents avec la durée visée (30-45 mots, 3,5-4,5 slides par minute) ; timestamps suggérés ; promesse de titre en tête du script
 - [ ] Slides : centrées, vérifiées Playwright, `.md` synchronisé
 
 ## Règles d'écriture
@@ -175,7 +192,7 @@ Quand Nass dicte ses slides (« …slide d'après… »), c'est le mode priorita
 - Rien de générique : chaque phrase est spécifique au sujet.
 - Un angle investisseur concret : « qu'est-ce que je fais de ça avec mon argent, et qu'est-ce que je risque ? ». Jamais de promesse de gain.
 - Écrire comme on parle : relire mentalement à voix haute.
-- Indiquer le nombre de mots et la durée de lecture à la fin du script.
+- Indiquer le nombre de mots dictés et la durée visée à la fin du script (la durée réelle se lit au tournage).
 - Langue de sortie : celle de la demande (français par défaut).
 
 ## Exemples de hooks
@@ -221,6 +238,7 @@ yt-script n'est pas lancé en sous-agent : l'orchestrateur l'invoque dans la con
   "word_count": 0,
   "reading_time_min": 0,
   "structure": {
+    "title_promise": "[la promesse de titre, une ligne]",
     "hook": "[30 premiers caractères du hook]",
     "sections": [{"title": "Section 1", "key_points": []}],
     "timestamps_raw": [{"time": "0:00", "label": "Hook"}],

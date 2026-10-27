@@ -5,7 +5,7 @@ Référence chargée depuis `yt-script/SKILL.md`. Fichiers : `yt-script/memory/l
 ## Avant chaque script
 
 1. Lire `yt-script/memory/lessons.json`.
-2. Si des leçons ont `sample_size >= 3`, les intégrer : structure du hook, pacing, longueur des sections, anti-patterns à éviter. Les citer à Nass : « Tes vidéos avec [pattern] retiennent X % vs Y % sans ».
+2. Si des leçons ont `sample_size >= 3`, les intégrer : structure du hook, longueur des sections, anti-patterns à éviter. Lire aussi, s'il existe, `yt-analytics/history/studio-retention.json` : pourcentage à 30 s et premier creux des dernières vidéos. Les citer à Nass : « Tes vidéos avec [pattern] retiennent X % vs Y % sans ».
 3. Sinon, écrire normalement.
 4. Ne retenir que les vidéos de la période crypto : les leçons des anciennes vidéos IA / Claude Code ne s'appliquent pas à la nouvelle audience.
 
@@ -22,20 +22,26 @@ Format d'une entrée :
   "script_file": "yt-script/outputs/slug.md",
   "funnel": "TOP|MIDDLE|BOTTOM",
   "hook_type": "curiosity-gap|bold-claim|question|story|stat",
+  "title_promise_slide": 1,
   "hook_length_words": 25,
   "hook_length_seconds_est": 8,
+  "credentials_position": "none|after-payoff|before-payoff",
+  "outbound_cta_in_hook": false,
   "has_branded_intro": false,
   "branded_intro_length_sec": 0,
   "num_sections": 6,
-  "total_word_count": 1650,
-  "estimated_duration_min": 11,
+  "dictated_word_count": 375,
+  "slides_count": 37,
+  "target_duration_min": 11,
+  "published_duration_sec": null,
   "open_loops_count": 3,
   "has_escalation": true,
   "cta_position": "end",
   "early_cta": false,
   "uses_conclusion_words": false,
   "structure_type": "tutorial|story|deep-dive|comparison|news|reaction",
-  "pacing_wpm_est": 160,
+  "intro_30s_pct": null,
+  "first_dip_sec": null,
   "pattern_interrupts_count": 5,
   "shorts_moments_count": 3,
   "performance": null
@@ -44,7 +50,19 @@ Format d'une entrée :
 
 ## Critères d'analyse (pour le feedback analyzer)
 
-Tous ces effets sont des **hypothèses à tester** sur la chaîne crypto : ils viennent de sources externes hors niche (vidIQ, TubeBuddy, Think Media, Paddy Galloway, Film Booth, Social Media Examiner) et n'ont pas été vérifiés sur les données de Nass. Ce sont des pistes de lecture, pas des faits.
+Ce qui a été mesuré (Prepublish : 349 vidéos de 36 chaînes de 10 k à 6,6 M d'abonnés, puis réplication préenregistrée sur 941 vidéos de 96 chaînes de 1 000 à 20 000 abonnés ; liens dans `veille-scripts-2026-10-20.md`) :
+
+| Signal d'ouverture (45 premières secondes) | Hits | Flops | Sur petites chaînes |
+|---|---|---|---|
+| Reprend la promesse du titre | 87,0 % | 77,9 % | 79,2 % contre 80,4 % : plus de différence |
+| Ne donne aucune raison de continuer | 10,2 % | 16,3 % | non mesuré |
+| Ouvre sur un bloc de contexte | 18,6 % | 26,2 % | non mesuré |
+| Affirmation concrète d'entrée | 33,3 % | 25,0 % | 22,2 % contre 19,8 % : plus de différence |
+| Salutation d'entrée | 7,3 % | 11,6 % | 16,6 % contre 23,3 % : seul signal répété |
+| Débit (mots/min) | 181 | 180 | 169 contre 170 : nul |
+| Mot du premier payoff | 14 | 15 | nul |
+
+Conclusion des auteurs pour les petites chaînes : « hook anatomy is unlikely to be why a small channel's video underperforms; topic and packaging are the prime suspects ». Le débit est donc retiré des critères, et le temps jusqu'au point aussi. Le tableau ci-dessous garde les **hypothèses à tester** venues de sources hors niche (vidIQ, TubeBuddy, Think Media, Paddy Galloway, Film Booth, Social Media Examiner) : aucun de leurs chiffres n'a été retrouvé dans une source primaire le 20 octobre 2026. Ce sont des pistes de lecture, pas des faits.
 
 | Facteur | Poids | Optimal supposé | Effet annoncé par la source (à vérifier) | Source annoncée |
 |---|---|---|---|---|
@@ -56,10 +74,9 @@ Tous ces effets sont des **hypothèses à tester** sur la chaîne crypto : ils v
 | Escalade | Élevé | Chaque section > précédente | +20-40 % rétention 2ᵉ moitié | Paddy Galloway |
 | Re-engagement hooks | Moyen | Toutes les 60-90 s | Micro-pics de rétention | Paddy Galloway |
 | Mots « en conclusion » | Élevé | Jamais | Décrochage de 15-30 % | Paddy Galloway |
-| Pacing (mots/min) | Moyen | 150-170 | < 130 = lent, > 190 = trop rapide | Social Media Examiner |
 | Sujet unique / fil rouge | Élevé | 1 sujet clair | +20-30 % vs multi-sujet | non précisée |
 | Structure numérotée | Moyen | Étapes / liste | +8-12 % rétention moyenne | vidIQ |
-| Durée vidéo éducative | Moyen | 8-12 min | Rétention 45-55 % | Think Media |
+| Durée | Moyen | celle que le contenu demande | comparer à la médiane de la chaîne (26,8 % et 29,7 % sur 9:29 et 11:10 au 13 octobre 2026), pas à un repère externe | données de la chaîne |
 | « Tu / vous » fréquent | Faible | Fréquent | +5-8 % rétention | Social Media Examiner |
 | Aperçu du contenu < 10 s | Moyen | Oui | +8-12 % rétention | Film Booth |
 
@@ -72,7 +89,7 @@ Bloquants (règles du cadre) :
 
 À surveiller (hypothèses à tester) :
 - « En conclusion » / « Pour résumer » / « Voilà » en fin de vidéo.
-- Intro brandée > 5 s.
+- Intro brandée > 5 s, ou bloc de légitimité avant le premier payoff.
 - CTA « abonne-toi » dans les 15 premières secondes.
 - Section sans nouvelle info > 15 s.
 - Pas d'open loop pendant > 5 min.
