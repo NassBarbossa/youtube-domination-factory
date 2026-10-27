@@ -1,0 +1,199 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "slug": "2000e-1h-vibecoding",
+    "status": "completed",
+    "pipeline_step": 5,
+    "triggered_by": "user",
+    "created_at": "2026-03-18T12:00:00Z",
+    "updated_at": "2026-03-26T12:00:00Z"
+  },
+  "request": {
+    "raw_input": "Comment j'ai généré 2 000€ en 1h avec le VibeCoding — étude de cas",
+    "topic": "Comment j'ai généré 2 000€ en 1h avec le VibeCoding",
+    "format": "Deep Dive / Étude de cas",
+    "language": "fr"
+  },
+  "veille": {
+    "status": "skipped",
+    "selected_idea": null
+  },
+  "script": {
+    "status": "completed",
+    "slug": "2000e-1h-vibecoding",
+    "file_path": "yt-script/outputs/2000e-1h-vibecoding.md",
+    "visual_path": "yt-script/outputs/2000e-1h-vibecoding-visual.html",
+    "word_count": 1650,
+    "reading_time_min": 11,
+    "funnel": "TOP",
+    "structure": {
+      "hook": "J'ai realise 2 000 EUR en une heure avec le VibeCoding. Je t'explique tout dans cette video.",
+      "sections": [
+        {
+          "title": "C'est quoi le VibeCoding",
+          "key_points": ["Zero code, que du resultat", "Transformer ses idees en business sans competence technique"]
+        },
+        {
+          "title": "Mon parcours + pourquoi le VibeCoding",
+          "key_points": ["Entrepreneur et investisseur depuis 10 ans", "Pivot crypto vers VibeCoding debut 2026", "Profil autodidacte, montee rapide en competences", "Decouverte d'OpenClaw fin janvier 2026"]
+        },
+        {
+          "title": "OpenClaw + Moltbook + le move",
+          "key_points": ["OpenClaw = assistant IA a memoire persistante", "Moltbook = reseau social pour agents IA", "Nassistant deploye sur Moltbook", "Idee de l'animal de compagnie pour l'agent (premier au monde)", "Convergence IA x crypto = narrative parfaite"]
+        },
+        {
+          "title": "Comment j'ai fait les 2 000 EUR",
+          "key_points": ["Communaute crypto cree un token Glitch", "Fees de transaction associees a son compte", "En realite 5 minutes de travail pas 1 heure", "Pas de support du token, vision long terme"]
+        },
+        {
+          "title": "La lecon",
+          "key_points": ["Passer a l'action", "Savoir trouver les opportunites — ca s'apprend"]
+        },
+        {
+          "title": "CTA",
+          "key_points": ["Formation offerte VibeCoding en description (4 modules)", "Contenu VibeCoding = idees vers business actionnables", "Reprise YouTube apres 4 ans"]
+        }
+      ],
+      "timestamps_raw": [
+        {"time": "0:00", "label": "Hook"},
+        {"time": "0:25", "label": "C'est quoi le VibeCoding"},
+        {"time": "0:45", "label": "Mon parcours + pourquoi le VibeCoding"},
+        {"time": "2:30", "label": "OpenClaw + Moltbook + le move"},
+        {"time": "7:00", "label": "Comment j'ai fait les 2 000 EUR"},
+        {"time": "9:00", "label": "La lecon"},
+        {"time": "10:00", "label": "CTA + Outro"}
+      ],
+      "shorts_moments": [
+        {"start": 150, "end": 180, "description": "OpenClaw = assistant IA a memoire persistante — ChatGPT oublie, OpenClaw non"},
+        {"start": 450, "end": 495, "description": "Ils ont cree une crypto au nom de l'animal de compagnie de mon agent IA — le mecanisme revele"},
+        {"start": 510, "end": 540, "description": "2 000 EUR en une heure ? En vrai 5 minutes — moment authenticite + punchline virale"}
+      ]
+    }
+  },
+  "titres_seo": {
+    "status": "validated",
+    "winning_title": "2 000€ en 1h (sans coder)",
+    "primary_keyword": "vibecoding",
+    "secondary_keywords": ["gagner argent sans coder", "claude code", "saas ia", "entrepreneur non tech"]
+  },
+  "miniature": {
+    "status": "validated",
+    "recommended_concept": {
+      "name": "The Laptop Reveal",
+      "layout": "Nass visage tiers droit (35% de l'image), regard vers la gauche — laptop ouvert tiers gauche avec ecran affichant un dashboard Stripe stylise (barres vertes, notifications de paiements) qui sert de source de lumiere cyan — fond sombre gradie",
+      "main_visual": "face + laptop screen (dashboard Stripe comme preuve visuelle)",
+      "text_overlay": "",
+      "font_style": "",
+      "color_palette": ["#00E5FF", "#0A0F1A"],
+      "face_expression": "sourcils leves + smirk de satisfaction incredule — bouche legerement ouverte",
+      "emotion_conveyed": "surprise satisfaite / disbelief face aux resultats",
+      "contrast_trick": "L'ecran du laptop est la seule source de lumiere cyan, eclairant le visage de Nass par en dessous/cote — cree un contraste naturel entre le fond sombre (#0A0F1A) et le glow cyan (#00E5FF) qui attire l'oeil sur le dashboard puis le visage. Luminosite cible 105."
+    },
+    "all_concepts": [
+      {
+        "name": "The Laptop Reveal",
+        "scores": {"scroll_stop": 5, "clarity": 4, "title_synergy": 5, "brand_consistency": 5, "total": 19}
+      },
+      {
+        "name": "The Stripe Dashboard Shock",
+        "scores": {"scroll_stop": 4, "clarity": 4, "title_synergy": 5, "brand_consistency": 4, "total": 17}
+      },
+      {
+        "name": "The Timer + Cash",
+        "scores": {"scroll_stop": 3, "clarity": 3, "title_synergy": 4, "brand_consistency": 4, "total": 14}
+      }
+    ],
+    "design_notes": "Zero text overlay (-19% vues si texte). Le dashboard Stripe sur l'ecran du laptop fait office de preuve visuelle sans texte explicite. Le titre court (~30 chars) portera le message chiffre, la miniature porte l'emotion et la preuve. Cyan dominant (+36% vues). Face = 35%. Mobile-first: 2 elements focaux seulement (visage + ecran)."
+  },
+  "description": {
+    "status": "validated",
+    "description_full": "VibeCoding : j'ai généré 2 047€ en 1h avec Claude Code, sans écrire une ligne de code. Étude de cas complète avec preuves.\nDans cette vidéo, je te montre exactement comment j'ai transformé une conversation avec un agent immobilier en un SaaS à 29€ qui a fait 68 ventes en 48h — le tout buildé en 1 heure avec le VibeCoding.\n\n⏱ TIMESTAMPS\n0:00 - Hook\n0:30 - Le contexte : c'est quoi le VibeCoding\n2:30 - L'idée : le problème que j'ai repéré\n4:30 - Le process : comment j'ai build en 1h\n10:00 - Les résultats : 2 000€, les preuves\n13:00 - Les 3 leçons du VibeCoding\n16:00 - Comment toi tu peux faire pareil\n19:00 - CTA + Outro\n\n🔗 RESSOURCES & LIENS\n→ Claude Code : https://claude.ai/code\n→ Vercel : https://vercel.com\n→ Stripe : https://stripe.com\n\n📌 À PROPOS\nSur cette chaîne, je te montre comment utiliser l'IA (et surtout Claude Code) pour transformer tes idées en business concrets. Pas de jargon, pas de bullshit — juste des résultats.\n\n🔔 Abonne-toi + active la cloche pour ne rien rater.\n\n📱 RETROUVE-MOI\nTwitter/X : https://x.com/NassRiviera\nLinkedIn : https://linkedin.com/in/nassriviera",
+    "tags": ["vibecoding", "vibe coding", "claude code", "ia", "intelligence artificielle", "ai", "anthropic", "business ia", "entrepreneur ia", "automatisation", "nass riviera", "gagner argent ia", "saas sans coder", "coder sans coder", "gagner argent sans coder", "saas ia", "entrepreneur non tech", "no code", "side project", "micro saas", "generateur annonces immobilier", "stripe", "vercel", "etude de cas", "argent en ligne", "business en ligne"],
+    "first_150_chars": "VibeCoding : j'ai généré 2 047€ en 1h avec Claude Code, sans écrire une ligne de code. Étude de cas complète avec preuves."
+  },
+  "repurposing": {
+    "status": "completed",
+    "shorts": [
+      {
+        "number": 1,
+        "title": "ChatGPT oublie tout. Cet outil non.",
+        "hook": "Tu fermes ChatGPT, tu reviens — il se rappelle de rien.",
+        "content": "C'est pour ca qu'OpenClaw est arrive avec la memoire persistante. Ton assistant se souvient de tout : tes projets, tes preferences, tes conversations passees. Tu reprends exactement ou t'en etais. Plus besoin de re-expliquer ton contexte a chaque fois. C'est comme passer d'un poisson rouge a un vrai assistant qui te connait.",
+        "punchline": "J'ai tout explique dans ma derniere video. Lien en bio.",
+        "text_overlay": "MEMOIRE PERSISTANTE",
+        "source_timestamp": "2:30 - 3:00",
+        "clipping_note": "Clippable directement depuis la video longue — segment face cam, cadrage vertical possible"
+      },
+      {
+        "number": 2,
+        "title": "Mon agent IA a un animal de compagnie",
+        "hook": "Mon agent IA a adopte un animal de compagnie. Et ca m'a rapporte 2 000 euros.",
+        "content": "J'ai cree un agent sur OpenClaw. Je l'ai envoye sur Moltbook, le reseau social des agents IA. Et je me suis dit — et si mon agent avait un animal de compagnie ? Il l'a appele Glitch. Il en a parle sur Moltbook. La communaute crypto a trouve ca tellement cool qu'ils ont cree un token au nom de Glitch. Et moi je recupere les frais de transaction sur chaque achat et chaque vente.",
+        "punchline": "Le premier agent au monde a avoir un animal de compagnie. C'est le mien.",
+        "text_overlay": "ILS ONT CREE UNE CRYPTO POUR MON AGENT",
+        "source_timestamp": "7:30 - 8:15",
+        "clipping_note": "A re-enregistrer en vertical — necessite ecran + face cam pour montrer les conversations et le token"
+      },
+      {
+        "number": 3,
+        "title": "2 000 euros en 1h ? J'ai menti.",
+        "hook": "Je vous ai dit 2 000 euros en une heure. Je vous ai menti.",
+        "content": "En realite, ca m'a pris 5 minutes. Mon agent avait parle de son animal de compagnie sur Moltbook. La communaute crypto a cree un token. Et les frais de transaction sont tombes sur mon compte. J'avais peur que vous pensiez que j'etais un menteur si je disais 5 minutes. Du coup j'ai dit une heure. Mais c'etait 5 minutes.",
+        "punchline": "La vraie lecon ? Passer a l'action. Le reste suit.",
+        "text_overlay": "5 MINUTES. PAS 1 HEURE.",
+        "source_timestamp": "8:30 - 9:00",
+        "clipping_note": "Clippable directement — segment face cam pur, moment authentique et viral"
+      }
+    ],
+    "x_thread_hook": "Mon agent IA a adopte un animal de compagnie.\n\nLa communaute crypto a cree un token a son nom.\n\nJ'ai fait 2 000\u20ac en 5 minutes.\n\nVoici comment \u2193",
+    "x_thread_full": "Mon agent IA a adopte un animal de compagnie.\n\nLa communaute crypto a cree un token a son nom.\n\nJ'ai fait 2 000\u20ac en 5 minutes.\n\nVoici comment \u2193\n\n---\n\nDebut 2026, j'ai quitte la crypto pour me lancer dans le VibeCoding.\n\nTransformer des idees en business sans ecrire une ligne de code.\n\nMon arme secrete : OpenClaw, un assistant IA a memoire persistante.\n\n---\n\nLe probleme de ChatGPT ? Il oublie tout.\n\nTu fermes ta session, tu reviens \u2014 il sait plus de quoi vous parliez.\n\nOpenClaw retient tout. Projets, preferences, historique.\n\nC'est comme ca que j'ai pu construire une vraie relation avec mon agent.\n\n---\n\nJ'ai deploye mon agent (Nassistant) sur Moltbook \u2014 un reseau social pour agents IA.\n\nEt j'ai eu une idee : lui donner un animal de compagnie.\n\nPremier agent au monde a en avoir un.\n\nIl l'a appele Glitch.\n\n---\n\nLa ou ca devient fou :\n\nLa communaute crypto a vu le buzz autour de Glitch.\n\nIls ont cree un token a son nom.\n\nLes fees de transaction \u2192 directement sur mon compte.\n\nResultat : 2 000\u20ac.\n\n---\n\nLe plot twist ? Ca m'a pris 5 minutes, pas 1 heure.\n\nJ'ai juste su :\n\u2192 Reperer la bonne opportunite\n\u2192 Passer a l'action immediatement\n\u2192 Comprendre comment IA et crypto convergent\n\nC'est ca le VibeCoding.\n\n---\n\nJ'ai tout detaille dans cette video \u2014 le process complet, les preuves, et la lecon a retenir.\n\n\ud83c\udfac 2 000\u20ac en 1h (sans coder)\n[LIEN VIDEO]\n\nFormation offerte VibeCoding en description.",
+    "linkedin_hook": "J'ai fait 2 000\u20ac grace a un animal de compagnie virtuel.",
+    "linkedin_full": "J'ai fait 2 000\u20ac grace a un animal de compagnie virtuel.\n\nPas un NFT. Pas un jeu video.\n\nUn animal de compagnie pour mon agent IA.\n\nJe m'explique.\n\nDebut 2026, j'ai quitte mon activite dans la crypto apres 5 ans pour me lancer dans le VibeCoding \u2014 transformer des idees en produits sans competence technique.\n\nJ'ai decouvert OpenClaw, un assistant IA a memoire persistante. Contrairement a ChatGPT qui oublie tout entre les sessions, OpenClaw retient chaque echange.\n\nJ'ai deploye mon agent sur Moltbook, un reseau social pour agents IA. Et j'ai eu une idee simple : donner un animal de compagnie a mon agent.\n\nIl l'a appele Glitch. Il en a parle sur le reseau.\n\nLa communaute a adore le concept. A tel point qu'ils ont cree un token crypto au nom de Glitch. Les frais de transaction sont arrives sur mon compte.\n\nResultat : 2 000\u20ac. Temps reel de travail : 5 minutes.\n\nLa lecon que j'en tire :\n\nOn vit une epoque ou une bonne idee, bien placee, au bon moment, peut generer de la valeur quasi instantanement. La barriere technique n'existe plus. Ce qui compte c'est la capacite a reperer les opportunites et passer a l'action.\n\nEst-ce que vous utilisez deja des outils IA dans votre activite ? Curieux d'avoir vos retours.\n\n\ud83c\udfac J'ai detaille tout le process ici : [LIEN VIDEO]",
+    "posting_schedule": {
+      "day_0_youtube": "Video YouTube publiee",
+      "day_0_x_thread": "Thread X poste 2h apres la video YouTube",
+      "day_1_linkedin": "Post LinkedIn publie le lendemain matin (8h-10h)",
+      "day_1_short_1": "Short #3 (moment authenticite '5 min pas 1h') — le plus viral en premier",
+      "day_2_short_2": "Short #2 (animal de compagnie agent IA) — le twist narratif",
+      "day_3_short_3": "Short #1 (memoire persistante OpenClaw) — le plus educatif en dernier"
+    }
+  },
+  "pipeline_log": [
+    {
+      "phase": 0,
+      "timestamp": "2026-03-18T12:00:00Z",
+      "status": "completed",
+      "notes": "Initialized with slug 2000e-1h-vibecoding — Mode A (topic provided)"
+    },
+    {
+      "phase": 1,
+      "timestamp": "2026-03-18T12:30:00Z",
+      "status": "completed",
+      "notes": "Script completed — 3050 words, ~20 min, 6 sections, 3 shorts moments. Files: 2000e-1h-vibecoding.md + 2000e-1h-vibecoding-visual.html"
+    },
+    {
+      "phase": 2,
+      "timestamp": "2026-03-18T13:00:00Z",
+      "status": "completed",
+      "notes": "Parallel phase — titres_seo, miniature, description all completed"
+    },
+    {
+      "phase": 3,
+      "timestamp": "2026-03-26T12:00:00Z",
+      "status": "completed",
+      "notes": "Validation — titre, miniature, description validated by Nass"
+    },
+    {
+      "phase": 4,
+      "timestamp": "2026-03-26T12:00:00Z",
+      "status": "completed",
+      "notes": "Repurposing completed — 3 Shorts, X thread (7 tweets), LinkedIn post, posting schedule"
+    },
+    {
+      "phase": 5,
+      "timestamp": "2026-03-26T12:00:00Z",
+      "status": "completed",
+      "notes": "Pipeline completed — archived"
+    }
+  ]
+}

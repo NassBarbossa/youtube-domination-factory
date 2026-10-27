@@ -1,0 +1,129 @@
+{
+  "njfEJFd7hQ8": [
+    {
+      "card_found": true,
+      "card_text": "Key moments for audience retention\nIntro\nNice work! This video has a part that kept your viewers watching for longer than usual.\n0:00 / 0:00\nThis video\nTypical retention not available\nChart guide\n0:00\n4:45\n9:29\n100%\n66%\n33%\n0%\n49% of viewers are still watching at around the 0:30 mark, which is below typical. Learn more by comparing to your other videos.\nSee more\nLikes (vs. dislikes)\nSince uploaded (lifetime)\nPourquoi il faut investir en 2026 ? (Formation Offerte)\n94.1%\nChannel average\n97.5%\nSee more\nEnd screen element click rate\nSince uploaded (lifetime)\nPourquoi il faut investir en 2026 ? (Formation Offerte)\n7.0%\nChannel average\n3.4%\nSee more\nTop Remixed\nShorts created using parts of this video · Since uploaded (lifetime)\nNothing to show for these dates\nSee more",
+      "intro_30s_pct": 49.0,
+      "intro": [],
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:33:42"
+    },
+    {
+      "card_found": true,
+      "avg_view_duration": "2:46",
+      "avg_pct_viewed": 29.2,
+      "card_text": "Key moments for audience retention\nIntro\nNice work! This video has a part that kept your viewers watching for longer than usual.\n0:00 / 0:00\nThis video\nTypical retention not available\nChart guide\n0:00\n4:45\n9:29\n100%\n66%\n33%\n0%\n49% of viewers are still watching at around the 0:30 mark, which is below typical. Learn more by comparing to your other videos.",
+      "tabs": [
+        "Intro"
+      ],
+      "intro_30s_pct": 49.0,
+      "intro_vs_typical": "below",
+      "intro_sentence": "49% of viewers are still watching at around the 0:30 mark, which is below typical. Learn more by comparing to your other videos.",
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:36:00"
+    }
+  ],
+  "FVajDtrHsPU": [
+    {
+      "card_found": true,
+      "card_text": "Key moments for audience retention\nIntro\n2 dips\nNice work! This video has a part that kept your viewers watching for longer than usual.\n0:00 / 0:00\nThis video\nTypical retention not available\nChart guide\n0:00\n5:35\n11:10\n100%\n66%\n33%\n0%\n56% of viewers are still watching at around the 0:30 mark, which is typical. Learn more by comparing to your other videos.\nSee more\nLikes (vs. dislikes)\nSince uploaded (lifetime)\nComment devenir riche grâce à l'investissement ?\n100.0%\nChannel average\n97.5%\nSee more\nEnd screen element click rate\nSince uploaded (lifetime)\nComment devenir riche grâce à l'investissement ?\n0.0%\nChannel average\n3.4%\nSee more\nTop Remixed\nShorts created using parts of this video · Since uploaded (lifetime)\nNothing to show for these dates\nSee more",
+      "intro_30s_pct": 56.0,
+      "intro": [],
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:33:47"
+    },
+    {
+      "card_found": true,
+      "avg_view_duration": "3:41",
+      "avg_pct_viewed": 33.1,
+      "card_text": "Key moments for audience retention\nIntro\n2 dips\nNice work! This video has a part that kept your viewers watching for longer than usual.\n0:00 / 0:00\nThis video\nTypical retention not available\nChart guide\n0:00\n5:35\n11:10\n100%\n66%\n33%\n0%\n56% of viewers are still watching at around the 0:30 mark, which is typical. Learn more by comparing to your other videos.",
+      "tabs": [
+        "Intro",
+        "2 dips"
+      ],
+      "intro_30s_pct": 56.0,
+      "intro_vs_typical": "typical",
+      "intro_sentence": "56% of viewers are still watching at around the 0:30 mark, which is typical. Learn more by comparing to your other videos.",
+      "dips": [
+        {
+          "time": "01:48",
+          "sec": 108
+        },
+        {
+          "time": "11:10",
+          "sec": 670
+        },
+        {
+          "time": "0:30",
+          "sec": 30
+        }
+      ],
+      "dips_text": "Key moments for audience retention\nIntro\n2 dips\nNice work! This video has a part that kept your viewers watching for longer than usual.\n01:48 / 11:10\nThis video\nTypical retention not available\nChart guide\n0:00\n5:35\n11:10\n100%\n66%\n33%\n0%\n56% of viewers are still watching at around the 0:30 mark, which is typical. Learn more by comparing to your other videos.",
+      "first_dip_sec": 30,
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:36:07"
+    },
+    {
+      "card_found": true,
+      "avg_view_duration": "3:41",
+      "avg_pct_viewed": 33.1,
+      "card_text": "Key moments for audience retention\nIntro\n2 dips\nNice work! This video has a part that kept your viewers watching for longer than usual.\n00:00 / 11:10\nThis video\nTypical retention not available\nChart guide\n0:00\n5:35\n11:10\n100%\n66%\n33%\n0%\n56% of viewers are still watching at around the 0:30 mark, which is typical. Learn more by comparing to your other videos.",
+      "tabs": [
+        "Intro",
+        "2 dips"
+      ],
+      "intro_30s_pct": 56.0,
+      "intro_vs_typical": "typical",
+      "intro_sentence": "56% of viewers are still watching at around the 0:30 mark, which is typical. Learn more by comparing to your other videos.",
+      "dips": [
+        {
+          "time": "01:48",
+          "sec": 108
+        }
+      ],
+      "dips_detected": 2,
+      "dips_note": "position du lecteur après clic sur l'onglet ; les autres moments se lisent sur la capture outputs/studio-debug/<id>-retention.png",
+      "first_dip_sec": 108,
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:37:10"
+    }
+  ],
+  "71HX4YUNrNs": [
+    {
+      "card_found": false,
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:34:29"
+    },
+    {
+      "card_found": false,
+      "avg_view_duration": "3:44",
+      "avg_pct_viewed": 37.4,
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:36:25"
+    }
+  ],
+  "ZjNa7wxwFkM": [
+    {
+      "card_found": true,
+      "card_text": "Key moments for audience retention\nIntro\nNice work! This video has a part that kept your viewers watching for longer than usual.\n0:00 / 0:00\nThis video\nTypical retention not available\nChart guide\n0:00\n19:06\n38:11\n120%\n80%\n40%\n0%\n66% of viewers are still watching at around the 0:30 mark, which is above typical. Learn more by comparing to your other videos.\nSee more\nLikes (vs. dislikes)\nSince uploaded (lifetime)\nBullrun pour le Q4 2026, c'est reparti ? CONVERGENCE [EP.01]\n100.0%\nChannel average\n97.5%\nSee more\nEnd screen element click rate\nSince uploaded (lifetime)\nBullrun pour le Q4 2026, c'est reparti ? CONVERGENCE [EP.01]\n0.0%\nChannel average\n3.4%\nSee more\nTop Remixed\nShorts created using parts of this video · Since uploaded (lifetime)\nNothing to show for these dates\nSee more",
+      "intro_30s_pct": 66.0,
+      "intro": [],
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:34:33"
+    },
+    {
+      "card_found": true,
+      "avg_view_duration": "5:44",
+      "avg_pct_viewed": 15.0,
+      "card_text": "Key moments for audience retention\nIntro\nNice work! This video has a part that kept your viewers watching for longer than usual.\n0:00 / 0:00\nThis video\nTypical retention not available\nChart guide\n0:00\n19:06\n38:11\n120%\n80%\n40%\n0%\n66% of viewers are still watching at around the 0:30 mark, which is above typical. Learn more by comparing to your other videos.",
+      "tabs": [
+        "Intro"
+      ],
+      "intro_30s_pct": 66.0,
+      "intro_vs_typical": "above",
+      "intro_sentence": "66% of viewers are still watching at around the 0:30 mark, which is above typical. Learn more by comparing to your other videos.",
+      "period": "lifetime",
+      "fetched_at": "2026-10-20T23:36:28"
+    }
+  ]
+}
