@@ -1,0 +1,5 @@
+Generate a photorealistic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A bright, sunlit, high-key, poster-like YouTube thumbnail background in the style of a cinematic photograph. The main street of an old Far West frontier town at golden hour: wooden saloon facades with balconies on both sides, a dusty road leading to the horizon, a wooden sign post, tumbleweed, warm orange sunlight (#FF6B35 tones) and a bright sky with long rays. In the foreground at the bottom-right, a small pile of raw gold nuggets glints in the sun. Strong depth of field: the street is softly blurred, the nuggets sharp. The center of the frame can be busy: a person will be placed over it. The top 20% is bright sky and the bottom 20% dusty ground, both free of small details, reserved for text.
+
+Ultra sharp, sRGB, vibrant, warm, cheerful. No text, no signs with letters, no logos, no person, no horses.

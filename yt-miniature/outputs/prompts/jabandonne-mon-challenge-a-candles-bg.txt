@@ -1,0 +1,7 @@
+Generate a photorealistic YouTube thumbnail BACKGROUND image, 1280x720, 16:9 aspect ratio. NO people, NO faces, NO text, NO letters, NO numbers, NO logos, NO watermarks anywhere.
+
+Subject: a dramatic wall of giant three-dimensional candlestick bars, rendered as real physical objects: tall upright rectangular blocks of thick glossy translucent colored glass, each with a thin matching glass rod (wick) sticking out of its top and bottom, standing side by side at different heights like a skyline, filling the frame edge to edge. The LEFT half of the frame holds deep saturated RED blocks, the RIGHT half holds bright saturated GREEN blocks, with a clear vertical boundary between the two colors near the center of the frame. The blocks are lit by soft studio light with crisp glossy highlights and inner glow, photographed with a wide lens, shallow depth of field so the blocks at the far left and far right edges are softly blurred while the center is sharper. Dark charcoal background visible in the thin gaps between the blocks.
+
+Composition: the center third of the frame is slightly darker and visually simpler (lower blocks, fewer highlights) so a person can later stand in front of it; the top edge has a little dark headroom above the tallest blocks. The bottom 25% of the frame is plainer (block bases, no highlights) because a title will be added later.
+
+Strictly no chart axes, no grid lines, no price labels, no dates, no numerals, no arrows, no coins, no screens. Vibrant, punchy, high-contrast, poster-like YouTube thumbnail look. Ultra sharp, sRGB.

@@ -1,0 +1,11 @@
+Edit this photo into a professional studio portrait cutout. Portrait 3:4 aspect ratio output.
+
+Identity is sacred: the man's face must remain EXACTLY the same person as in the photo, with the same facial structure, same eyes, same nose, same mouth, same skin tone, same beard color (natural muted strawberry-blond, not orange) and same beard length, same head shape. Do not redraw, slim, smooth, beautify or alter any facial feature.
+
+Pose (classic "thinking" YouTube thumbnail pose): he looks straight into the camera with a thoughtful, slightly skeptical expression, eyebrows a touch furrowed, lips closed. His right hand is raised to his face, the fist loosely closed with the index finger curled, knuckles resting under his chin and against his jaw, elbow pointing down. Keep his real face and expression from the photo; the hand is placed under the chin, not on the cheek.
+
+Framing: head, both shoulders, the full raised arm and the hand are ENTIRELY inside the frame with clear margin on every side: nothing is cut off at the edges. Chest-up framing, centered, with empty green space around him.
+
+Retouching, like a professional would on a real photo: soft, even, bright studio lighting on the face (large softbox from the front, gentle fill, subtle rim light), neutral white balance, crisp high-resolution detail as if shot on a full-frame camera with an 85mm lens. Replace his t-shirt with a plain clean white crew-neck t-shirt with no logos. Replace everything behind him with a perfectly flat, uniform, pure bright green chroma-key background, exact color #00FF00, edge to edge, no gradient, no shadow, no green spill. Clean, crisp edges around head, hand, arm and shoulders.
+
+Ultra sharp, sRGB, no text.

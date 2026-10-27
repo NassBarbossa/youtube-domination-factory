@@ -1,0 +1,9 @@
+Edit this photo. Portrait 3:4 aspect ratio output.
+
+The man must stay EXACTLY as he is in the attached photo: same face, same eyes, same expression, same skin, same beard color and length, same head shape and position, pixel-faithful, no retouching, no beautification, no re-drawing, same lighting on the face.
+
+Change only two things:
+1. Replace his sports t-shirt with a plain dark navy crew-neck t-shirt with no logos, keeping his shoulders and chest at the same place and size.
+2. Replace everything behind him (the wall, the sofa, any background) with a perfectly flat, uniform, pure bright green chroma-key background, exact color #00FF00, edge to edge, no gradient, no shadow, no vignette, no green spill on him. Clean, crisp edges around his head, ears, neck and shoulders.
+
+Keep the framing identical to the photo (head, shoulders and chest down to the waist, same scale, same position). Ultra sharp, sRGB, no text.

@@ -1,0 +1,9 @@
+Generate a graphic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A single authentic 100 euro banknote enlarged to fill the entire frame edge to edge, flat and sharp, printed details crisp (large "100" numerals, "EURO" lettering, the baroque gateway illustration, stars, fine guilloche security patterns), rendered cleanly like a high-resolution scan with no garbled lettering. The banknote is torn into four vertical strips with realistic ragged torn-paper edges and thin dark gaps between them. From left to right the strips are tinted in flat, bold, saturated colors: strip 1 red and the widest (about 40% of the frame width), strip 2 green (about 30%), strip 3 yellow (about 15%), strip 4 blue (about 15%). The banknote details stay visible through the tints.
+
+Along the top of the frame, four large bold white labels in a clean heavy sans-serif font read exactly "40%", "30%", "15%", "15%", one centered above each strip from left to right, each with a thin white dashed line ending in a small white dot pointing down onto its strip, the dots ending around one third of the frame height.
+
+The lower half of the frame shows only plain tinted banknote texture: no large numerals, no lettering, no logos, no signatures there.
+
+Bright, high-key, vibrant poster-like YouTube thumbnail look. Ultra sharp, sRGB. No other text besides the four percentage labels. No person, no face, no silhouette.

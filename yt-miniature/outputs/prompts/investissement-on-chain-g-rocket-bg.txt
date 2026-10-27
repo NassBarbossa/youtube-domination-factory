@@ -1,0 +1,5 @@
+Generate a photorealistic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A real photograph, not an illustration: a rocket launch at sunrise, shot from a distance with a telephoto lens. The rocket is lifting off the pad on the right third of the frame, massive bright orange flames and a huge billowing white exhaust cloud at its base, the sky a bright gradient from warm orange at the horizon (#FF6B35 tones) to light blue above, sunlight and soft lens flare. On the left, flat open ground with the launch complex small in the distance, heat haze. Bright, high-key, clean. The center of the frame can be busy: a person will be placed over it. The top 20% is bright sky and the bottom 20% ground and exhaust cloud, both free of small details, reserved for text.
+
+Ultra sharp, sRGB, cinematic, realistic photography. No text, no logos, no flags, no person.

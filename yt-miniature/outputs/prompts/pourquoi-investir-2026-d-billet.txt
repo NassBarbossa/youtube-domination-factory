@@ -1,0 +1,13 @@
+Generate a photorealistic YouTube thumbnail, 1280x720, 16:9 aspect ratio.
+
+A man (use the EXACT face from my attached reference photo: do not modify, generate, or replace any facial features; keep his shaved head and his current full ginger beard exactly as in the photo) positioned dead center of the frame, head and shoulders, face filling approximately 45% of the frame height, wearing a plain dark navy crew-neck t-shirt.
+
+Looking straight into the camera with a serious, intense, slightly frowning expression: eyebrows lowered a touch, lips closed and firm, conveying "listen carefully, this is the rule" energy.
+
+Background: a single 100 euro banknote fills the entire frame edge to edge behind him, photographed flat and sharp. The banknote is torn into four vertical strips with ragged torn paper edges and thin dark gaps between them. From left to right the strips are tinted in flat, bold, saturated colors: strip 1 is red and is the widest (about 40% of the frame width), strip 2 is green (about 30%), strip 3 is yellow (about 15%), strip 4 is blue (about 15%). The banknote details (numbers, architecture, security patterns) stay visible through the color tint. The man stands in front of the torn strips, with a subtle soft shadow separating him from the background.
+
+Above the man's head, along the top of the frame, four large bold white labels in a clean heavy sans-serif font read exactly "40%", "30%", "15%", "15%", one above each strip from left to right, each with a thin white dashed line ending in a small white dot that points down onto its strip. Keep these labels clear of the man's head.
+
+Leave the bottom 22% of the frame free of labels (the banknote strips continue there) for a large title to be added later.
+
+Composition: centered portrait, symmetrical, high-key and bright, evenly lit studio flash on the face, crisp and punchy. Vibrant, saturated, poster-like YouTube thumbnail look, overall bright image (not dark, not moody). Ultra sharp, sRGB. Do not add any other text, logos or watermarks besides the four percentage labels.

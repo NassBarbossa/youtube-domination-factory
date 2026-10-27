@@ -1,0 +1,5 @@
+Generate a graphic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A bright, high-key, poster-like YouTube thumbnail background, filled edge to edge. A clean light background (soft white to pale mint gradient) with a faint fine grid. Across the whole frame, a huge, bold crypto price chart made of thick green candlesticks (#1DB954) that starts flat and tiny at the bottom-left, stays flat for a while, then explodes upward in a steep exponential rise to the top-right corner, with a bright glowing green line tracing the top of the candles. At the very start of the flat part, bottom-left, a small glowing orange circle marker (#FF6B35) with a soft glow highlights the early entry point. A few small gold coins float near the top of the rise. The center of the frame can be busy: a person will be placed over it.
+
+The bottom quarter of the frame keeps only the flat part of the chart and the light background, reserved for a title. Ultra sharp, sRGB, vibrant, cheerful. No text, no numbers, no logos, no person, no rocket.

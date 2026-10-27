@@ -1,0 +1,5 @@
+Edit this image. Keep the exact same 16:9 framing and size.
+
+Remove the man completely from the image. Fill the area where he was with the torn, color-tinted 100 euro banknote strips continuing naturally and seamlessly behind him: same four strips (red, green, yellow, blue), same torn edges, same tints, same printed details continuing consistently with the surrounding areas (the green strip's large "100" numeral and the yellow strip's gateway illustration continue through the filled area).
+
+Keep EVERYTHING else pixel-identical: the four white percentage labels "40%", "30%", "15%", "15%" at the top with their dashed lines and dots, the colors, the banknote details, the torn edges. Do not add any text, person, object or shadow. Output a background only, with no people.

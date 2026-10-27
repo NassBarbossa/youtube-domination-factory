@@ -1,0 +1,5 @@
+Generate a photorealistic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A real photograph, not an illustration: a modern high-end trading floor at golden hour, shot with a 35mm lens, shallow depth of field. In the foreground, a long dark desk with several large curved monitors showing bright green crypto price charts rising steeply, their glow reflecting on the desk. Behind, floor-to-ceiling windows with a city skyline at sunset, warm orange sunlight (#FF6B35 tones) flooding the room and casting long highlights, lens flare. Clean, expensive, bright, high-key exposure. The center of the frame can be busy: a person will be placed over it. The top 20% is bright window light and the bottom 20% dark desk surface, both free of small details, reserved for text.
+
+Ultra sharp, sRGB, cinematic, realistic photography. No text, no readable numbers on the screens, no logos, no person.

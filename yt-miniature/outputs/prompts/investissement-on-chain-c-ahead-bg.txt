@@ -1,0 +1,5 @@
+Generate a graphic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A bright, high-key, poster-like YouTube thumbnail background, filled edge to edge, same photographic style as a sunlit Formula 1 race. The scene tells "ahead of everyone else": a single modern Formula 1 racing car in vivid orange (#FF6B35) with black accents, seen from a low three-quarter front angle, blasting towards the camera on the right half of the frame, crisp and sharp, strong motion blur on its wheels. Far behind it, in the left half and the distance, the rest of the pack: six or seven other Formula 1 cars in dull grey, white and silver, small, bunched together and heavily motion-blurred, clearly left behind at the start line. Sunlit asphalt, red-and-white curbs, bright slightly overexposed sky, speed lines.
+
+The center of the frame can be busy: a person will be placed over it. The top 20% of the frame is mostly bright sky and the bottom 20% mostly blurred asphalt, both free of small details, reserved for text. Ultra sharp on the orange car, sRGB, vibrant, daylight. No text, no logos, no sponsor names, no numbers, no person, no visible helmets.

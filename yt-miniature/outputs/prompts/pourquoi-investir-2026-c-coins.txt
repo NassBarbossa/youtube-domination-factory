@@ -1,0 +1,11 @@
+Generate a photorealistic YouTube thumbnail, 1280x720, 16:9 aspect ratio.
+
+A young man (use the EXACT face from my attached reference photo: do not modify, generate, or replace any facial features; keep his shaved head and short ginger beard) positioned on the right third of the frame, face filling approximately 45% of the frame, wearing a plain dark charcoal hoodie.
+
+Looking directly at camera with a warm, confident open smile and direct steady gaze, conveying calm authority and "trust me, start here" energy.
+
+Standing against a clean dark gradient background transitioning from #0A0A0A to #141A24 with a very faint, subtle grid texture. On the left half of the frame, one single hero object: five neat stacks of shiny gold coins rising like a staircase from short on the left to tall on the right, photographed at eye level with a tiny warm reflection on a dark matte surface. The stacks glow softly with a cyan (#00E5FF) rim light from the left edge while the coins keep their warm gold. The upper-left area of the frame stays empty and dark, reserved for a title to be added later.
+
+Medium close-up shot, rule of thirds, exactly two focal points (the face and the coin staircase). Shot on an 85mm portrait lens at f/1.8, shallow depth of field: face tack-sharp, coins crisp, background softly blurred. Safe zones clear: nothing important in the bottom-right corner, top-right corner, or bottom-left corner.
+
+High-end YouTube thumbnail photography style. Cyan dominant color palette with a dramatic cyan rim light from the left side on the subject's cheek and jaw, and a soft warm key light on the face. High contrast on facial features, face bright and well-exposed. Clean, minimal composition with generous negative space: no floating elements, no particles, no decorations, no charts, no arrows. Export-ready, sRGB, ultra sharp. Do not add any text, letters, numbers or logos on the image.

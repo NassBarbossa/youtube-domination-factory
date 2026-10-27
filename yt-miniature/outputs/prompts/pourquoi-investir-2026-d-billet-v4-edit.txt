@@ -1,0 +1,15 @@
+Edit this photo into a YouTube thumbnail, 1280x720, 16:9 aspect ratio.
+
+The man in the attached photo must stay EXACTLY as he is: same face, same eyes, same expression, same skin, same beard color and length, same head shape, pixel-faithful, no retouching, no beautification, no re-drawing. Only two things change around him: the background and his t-shirt.
+
+Framing: pull the camera back a lot. He is centered, framed from the mid-chest up, and his face fills only about 22% of the frame height, with clear headroom above his head and plenty of background visible on both sides (extend the scene naturally beyond the edges of the original photo).
+
+Replace his sports t-shirt with a plain dark navy crew-neck t-shirt, no logos.
+
+Replace the white wall with this background: a single authentic 100 euro banknote enlarged to fill the entire frame edge to edge, flat and sharp, printed details crisp (large "100" numerals, "EURO" lettering, the baroque gateway illustration, stars, fine guilloche security patterns), rendered cleanly like a high-resolution scan with no garbled lettering. The banknote is torn into four vertical strips with realistic ragged torn-paper edges and thin dark gaps between them. From left to right the strips are tinted in flat, bold, saturated colors: strip 1 red and the widest (about 40% of the frame width), strip 2 green (about 30%), strip 3 yellow (about 15%), strip 4 blue (about 15%). The banknote details stay visible through the tints. A soft subtle shadow separates him from the background.
+
+Along the top of the frame, four large bold white labels in a clean heavy sans-serif font read exactly "40%", "30%", "15%", "15%", one centered above each strip from left to right, each with a thin white dashed line ending in a small white dot pointing down onto its strip. Keep the labels clear of his head.
+
+IMPORTANT: the bottom 30% of the frame must contain NO large numerals, NO lettering, NO logos and NO signatures: only plain tinted banknote texture and his chest there, because a title will be added later in that area.
+
+Bright, high-key, evenly lit, neutral white balance on his skin (the colored strips must not tint his face). Vibrant poster-like YouTube thumbnail look. Ultra sharp, sRGB. No other text besides the four percentage labels.

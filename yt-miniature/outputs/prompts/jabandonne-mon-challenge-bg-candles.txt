@@ -1,0 +1,5 @@
+Photorealistic YouTube thumbnail BACKGROUND, 16:9 landscape, 1280x720 composition. NO people, NO text, NO letters, NO numbers, NO logos, NO watermark.
+
+A dark cinematic trading-screen atmosphere: deep black and dark maroon, with a soft dark-red haze glowing in the upper-left and center. On the RIGHT 55% of the frame, a candlestick chart seen slightly out of focus as if projected on a dark wall: many thin glowing candlesticks, mostly red, falling steeply from the upper-middle toward the lower-right corner, with one short cluster of green candles in the middle of the fall, thin red dotted trend lines descending along the candles, faint horizontal scanlines like an old monitor, subtle film grain. The LEFT 45% stays dark and clean (only haze) so a person can stand there later. The top 30% above the chart stays dark and simple so a title can be placed there.
+
+No axes, no grid labels, no prices, no numbers, no arrows except the chart shapes. Dark, dramatic, moody, high-end, ultra sharp, sRGB.

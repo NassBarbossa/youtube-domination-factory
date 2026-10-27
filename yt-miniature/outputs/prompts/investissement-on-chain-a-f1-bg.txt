@@ -1,0 +1,5 @@
+Generate a graphic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A bright, high-key, poster-like YouTube thumbnail background, filled edge to edge. A modern Formula 1 racing car in vivid orange (#FF6B35) with black and white accents, seen from a low three-quarter front angle, blasting towards the camera on a sunlit asphalt racetrack, with strong motion blur on the wheels and the background, speed lines and a bright sky. The car occupies the right half of the frame; the left half shows the blurred track, red-and-white curbs and a bright, slightly overexposed sky. The center of the frame can be busy: a person will be placed over it.
+
+The bottom quarter of the frame shows mostly motion-blurred asphalt with no small details, reserved for a title. Ultra sharp on the car, sRGB, vibrant, cinematic but bright, daylight. No text, no logos, no sponsor names, no numbers, no person, no helmet visible.

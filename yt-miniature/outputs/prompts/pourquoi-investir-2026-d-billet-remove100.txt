@@ -1,0 +1,5 @@
+Edit this image. Keep the exact same 16:9 framing and size.
+
+On the GREEN strip (second strip from the left) there is a large dark "100" numeral in the upper area, between the "30%" label and the baroque gateway. Remove that large "100" numeral from the green strip completely, filling the area with the green strip's plain tinted banknote texture (fine guilloche pattern, small stars) so nothing is written there.
+
+Keep EVERYTHING else pixel-identical: the four white labels "40%", "30%", "15%", "15%" with their dashed lines and dots, the red strip, the yellow strip with its own large "100" and gateway, the blue strip, all torn edges, all colors, and the "100 EURO" at the bottom left. Do not add any text, person or object. Output a background only.

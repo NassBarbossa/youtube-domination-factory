@@ -1,0 +1,11 @@
+Generate a photorealistic YouTube thumbnail, 1280x720, 16:9 aspect ratio.
+
+A young man (use the EXACT face from my attached reference photo: do not modify, generate, or replace any facial features; keep his shaved head and short ginger beard) positioned on the right third of the frame, face filling approximately 45% of the frame, wearing a plain dark charcoal hoodie.
+
+Looking directly at camera with an amused, slightly cheeky raised-eyebrow expression and a closed-mouth smirk, conveying "you skipped the basics, didn't you?" energy.
+
+Standing against a dark, moody racetrack at dusk, heavily blurred. On the left half of the frame, one single hero object: a small, simple rental go-kart, bright orange (#FF6B35) with a black seat, shot three-quarter view, crisp and well-lit, sitting on dark asphalt. Far behind it, out of focus, a sleek Formula 1 racing car is only suggested as a blurred silhouette with warm orange trackside light flares. The upper-left area of the frame stays empty and dark, reserved for a title to be added later.
+
+Medium close-up shot, rule of thirds, exactly two focal points (the face and the go-kart). Shot on an 85mm portrait lens at f/1.8, shallow depth of field: face and kart sharp, background softly blurred. Safe zones clear: nothing important in the bottom-right corner, top-right corner, or bottom-left corner.
+
+High-end YouTube thumbnail photography style. Orange dominant warm color palette with a dramatic orange rim light from the left side on the subject's cheek and jaw, plus a soft neutral key light on the face. High contrast on facial features, face bright and well-exposed. Clean, minimal composition with generous negative space: no floating elements, no particles, no decorations, no crowd. Export-ready, sRGB, ultra sharp. Do not add any text, letters, numbers or logos on the image.

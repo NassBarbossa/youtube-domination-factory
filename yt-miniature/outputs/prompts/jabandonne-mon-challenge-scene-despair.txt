@@ -1,0 +1,11 @@
+Photorealistic YouTube thumbnail background scene with a real person, 16:9 landscape, 1280x720 composition. NO text, NO letters, NO numbers, NO logos, NO watermark anywhere in the image.
+
+The man is the EXACT same real person as in the attached reference photos: reproduce his face faithfully as a photograph of this specific person. Keep his shaved head, his exact eye shape and eye color, his nose, his short neatly trimmed beard (natural muted strawberry-blond with brown tones, desaturated, NOT orange), his skin tone, his head shape. Do not beautify, slim, smooth or redraw any facial feature. Realistic skin texture.
+
+Pose and expression: he stands on the RIGHT third of the frame, framed from the chest up, both hands pressed against the sides of his head above the temples, eyes wide open looking straight into the camera, mouth slightly open in shock and despair with no teeth visible, eyebrows raised. The top of his head has clear headroom below the top edge. He wears a plain black crew-neck t-shirt. His face fills about 38% of the frame height.
+
+Lighting: cinematic, a strong red rim light on the edges of his head, shoulders and arms, a soft neutral key light on the face so the skin keeps a natural color with no heavy red cast. Shallow depth of field.
+
+Background: pure black on the entire LEFT half of the frame, kept completely empty and dark so a title can be added there later. Behind and to the right of the man, a large glowing red stock-market crash line chart in silhouette: a jagged, spiky red line that falls steeply from upper-left to lower-right, with a translucent dark-red filled area under the line, glowing red haze, subtle fine scanlines and film grain. No axes, no grid, no price labels, no numbers, no candles.
+
+Overall: dark, dramatic, high contrast, poster-like, ultra sharp, sRGB.

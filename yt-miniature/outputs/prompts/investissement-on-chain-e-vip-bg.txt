@@ -1,0 +1,5 @@
+Generate a photorealistic background image, 1280x720, 16:9 aspect ratio, with NO people visible in focus.
+
+A bright, high-key, poster-like YouTube thumbnail background in the style of a cinematic photograph. The exclusive entrance of a modern glass building at daytime, seen from inside the entrance looking out: a red velvet rope on golden stanchions crosses the frame in the mid-ground, and behind it a long, dense queue of people waiting, all heavily motion-blurred and anonymous silhouettes (no recognizable faces), stretching into the distance. In the foreground, this side of the rope, the floor is polished and empty, bathed in warm orange light (#FF6B35 tones) coming from the right, with a bright sky and sun flare. The center of the frame can be busy: a person will be placed over it. The top 20% is bright sky and the bottom 20% polished floor, both free of small details, reserved for text.
+
+Ultra sharp on the rope, sRGB, vibrant, warm, bright. No text, no logos, no readable signs.

@@ -150,6 +150,152 @@
       "title_thumbnail_synergy": "complement",
       "notes": "Chemise en jean validée « banger ». Fond illustré rejeté : Nass veut du photo-réaliste. Texte haut blanc + bas orange.",
       "performance": null
+    },
+    {
+      "video_slug": "jabandonne-mon-challenge",
+      "date": "2026-10-18",
+      "niche": "crypto",
+      "concept_chosen": "Réplique de la référence (H) : scène one-shot GPT-Image-2, Nass en gros plan à gauche (visage ~55 %), main sur la tête, larme, bougies rouges/vertes qui descendent, texte « J'AI TOUT / PERDU ? ▼ » haut-droite",
+      "concepts_rejected": [
+        "Mur de bougies rouge/vert (A)",
+        "Krach néon plein cadre (B)",
+        "Fond PIL + silhouette (C)",
+        "D : deux mains sur la tête, texte 3 lignes gauche (rejeté : pose non validée, bras coupés)",
+        "Maquettes E/F sans API (poses de substitution)"
+      ],
+      "has_face": true,
+      "has_punk": false,
+      "face_size_pct": 55,
+      "face_expression": "devastated-one-hand-on-head-closed-mouth",
+      "dominant_color": "#C8202C",
+      "color_name": "red-black",
+      "text_on_thumbnail": true,
+      "text_word_count": 4,
+      "text_content": "J'AI TOUT / PERDU ? ▼ (haut-droite, Impact, blanc/rouge)",
+      "num_focal_points": 2,
+      "has_real_chart": false,
+      "figure_source": null,
+      "has_border_glow": false,
+      "background_style": "generated-one-shot-dark-red-falling-candles",
+      "title_thumbnail_synergy": "complement",
+      "ab_test_winner": null,
+      "performance": null,
+      "notes": "Référence Nass : miniature « visage en larmes + bougies + chiffre géant ▼ » (pose/émotion/qualité, pas le fond). Portrait généré en 1:1 plan taille avec marges, prompt avec la référence passée comme image de pose + 3 photos identité (GPT-Image-2 high, 0,24 $). Fond bougies GPT-Image-2 recadré/zoomé (0,13 $). Leçons : maquette sans API d'abord ; ne jamais garder une pose non validée ; bras et coudes entiers. Coût total session ≈ 0,95 $. Validation Nass en attente (v1 ou v2). Puis Nass : « génère-moi pareil, même position » → scène complète en un tir (réf. passée comme image de composition + 3 photos identité, 0,16 $ ×2), texte ajouté en PIL (text_tr.py). Le bras sort du cadre en haut à gauche comme sur la référence (choix de Nass)."
+    },
+    {
+      "video_slug": "convergence-ep03",
+      "date": "2026-10-20",
+      "niche": "crypto",
+      "title": "Convergence ép. 03 (live du 19 oct. 2026)",
+      "concept_chosen": "Podcast deux bustes sans micros : Nass gauche (GPT-Image-2, cut-nass3-2, lx 0,096), Sadek droite (Nano Banana 2, nb-sadek-1), fond studio sombre généré, glow vert à gauche, texte central « LE TRADING EST / UN JEU DE / MENTEURS » bloc or, corps descendus (drop 0,18, scale 1,02)",
+      "text_overlay": "LE TRADING EST UN JEU DE MENTEURS",
+      "main_visual": "face",
+      "face_size_pct": 45,
+      "variants": [
+        "cream/dark × gold/green × Sadek gauche/droite (8 fichiers outputs/convergence-ep03-*.jpg)"
+      ],
+      "notes": "Détourages GPT-Image-2 (Images API, quality high, 3:4, fond chroma vert, micro SM7B, bras entiers) : Nass 0,22 $, Sadek 0,21 $ ; fond sombre généré 0,13 $ ; fond crème PIL (scripts/bg_cream.py). 5 modèles d'expression de Sadek générés (references/sadek/*-gen-2026-10.jpg, 0,22 $ chacun). Assemblage scripts/compose_podcast.py. Choix de Nass en attente. Itérations du 2026-10-20 : v1 (cuir + lunettes de soleil refusés), v2, v3-B gardée comme mise en page, micros retirés, Sadek régénéré en Nano Banana 2 (plus ressemblant que GPT-Image-2 pour lui), v6-final = bricolage des tirages existants. Publiée le 2026-10-20 avec le titre « Or ou Bitcoin en 2026 , que choisir ? CONVERGENCE [EP.03] ».",
+      "validated_by_nass": true,
+      "youtube_video_id": "PJaScgDfiMk",
+      "final_file": "outputs/convergence-ep03-v6-final.jpg"
+    },
+    {
+      "video_slug": "convergence-ep01",
+      "date": "2026-10-27",
+      "niche": "crypto",
+      "youtube_video_id": "ZjNa7wxwFkM",
+      "title": "Convergence ép. 01 (live du 8 oct. 2026)",
+      "concept_chosen": "Face à face branding Convergence, studio sombre à grille fine : Sadek à gauche penché vers Nass, doigt pointé, demi-sourire ; Nass à droite, épaules face caméra, tête tournée vers Sadek, pas convaincu ; même taille, personne ne regarde la caméra ; lueur or derrière Sadek, verte derrière Nass ; texte « J'AI FAIT UNE / ERREUR DE DÉBUTANT » (bloc or) ; pastille logo Convergence + ÉP. 01",
+      "text_overlay": "J'AI FAIT UNE / ERREUR DE DÉBUTANT",
+      "main_visual": "face",
+      "face_size_pct": 30,
+      "final_file": "yt-miniature/outputs/convergence-ep01-final.jpg",
+      "validated_by_nass": true,
+      "notes": "Consigne de Nass qui contredit la méthode ancre : « part d'une page blanche, aucun élément donné au préalable » → nouveaux portraits générés (contradiction loggée, sa consigne gagne). Coût de cette version : 0,32 $. Total ép. 01 sur les 3 tentatives : ≈ 0,86 $. Version regards : + 0,32 $ (total ép. 01 ≈ 1,18 $). Retour de Nass : les personnes se regardent, pas la caméra (vaut pour les prochaines miniatures podcast). Validée le 2026-10-27 (version sombre, pas le fond crème) ; Nass « vraiment content des générations ». Coût total ép. 01 ≈ 1,40 $.",
+      "rejected": [
+        "convergence-ep01-v2-final.jpg (deux bustes sur fond loft, même gabarit que l'ép. 03 : « giga merde », Nass voulait une page blanche et des choix libres)",
+        "convergence-ep01-gvb-final.jpg (Nass seul, lingots + pièce : « giga merde », et Sadek obligatoire)",
+        "convergence-ep01-vs-final.jpg (regards caméra : « pas mal, mais faut pas qu'on regarde de face »)",
+        {
+          "file": "convergence-ep01-vs2-final.jpg",
+          "reason": "Nass de dos et regard de travers ; Sadek doit ressortir plus que Nass (2026-10-27)"
+        },
+        {
+          "file": "convergence-ep01-vs3-final.jpg",
+          "reason": "Nass : même taille pour les deux, Nass plus à droite, sans OR/BITCOIN, texte « erreur de débutant » (2026-10-27)"
+        }
+      ],
+      "script": "yt-miniature/scripts/compose_vs_brand.py",
+      "portraits": {
+        "sadek": "convergence-ep01-talk-sadek.jpg",
+        "nass": "convergence-ep01-talk-nass2.jpg (0,22 $, gpt-image-2 high)"
+      },
+      "current": [
+        "convergence-ep01-brand-cream.jpg",
+        "convergence-ep01-brand-dark.jpg"
+      ],
+      "feedback_2026_10_27": "Sur les miniatures Convergence, Sadek mène : plus grand, devant ; Nass plus petit, épaules face caméra, tête tournée vers Sadek. Les deux se regardent, jamais la caméra.",
+      "compose": "compose_vs_brand.py convergence-ep01-talk-sadek.jpg convergence-ep01-talk-nass2.jpg out \"J'AI FAIT UNE|ERREUR DE DÉBUTANT\" --theme dark",
+      "feedback_2026_10_27b": "vs4 « c'est pas mal » ; la version deux lignes refaite avec le branding Convergence (papier crème à grille / studio sombre, bloc or, pastille logo + ÉP.)",
+      "validated_on": "2026-10-27",
+      "anchors_now": {
+        "sadek": "outputs/convergence-ep01-talk-sadek.jpg",
+        "nass": "outputs/convergence-ep01-talk-nass2.jpg"
+      }
+    },
+    {
+      "video_slug": "convergence-ep03-v2",
+      "date": "2026-10-27",
+      "niche": "crypto",
+      "youtube_video_id": "PJaScgDfiMk",
+      "title": "Le trading est un jeu de menteurs (titre conservé, décision de Nass le 2026-10-27)",
+      "concept_chosen": "Nouvelle miniature de l'ép. 03 à postures neuves, visages conservés (ancres conversation éditées, une variable : la posture). Nass bras croisés, tête tournée vers Sadek. Sadek bras croisés, tourné vers Nass (choisi par Nass ; la version accoudée n'a pas été retenue). Fond studio sombre Convergence, texte en bas, dernière ligne en bloc or, pastille ÉP. 03.",
+      "text_overlay": "LE TRADING EST / UN JEU DE / MENTEURS",
+      "main_visual": "face",
+      "face_size_pct": 30,
+      "final_file": "yt-miniature/outputs/convergence-ep03-v2-final.jpg",
+      "candidates": [
+        "yt-miniature/outputs/convergence-ep03b-menteurs-lean-dark.jpg",
+        "yt-miniature/outputs/convergence-ep03b-menteurs-crossed-dark.jpg"
+      ],
+      "portraits": {
+        "sadek": "convergence-ep03b-crossed-sadek.jpg",
+        "nass": "convergence-ep03b-crossed-nass.jpg"
+      },
+      "validated_by_nass": true,
+      "ab_test_winner": null,
+      "notes": "Coût total de la régénération ép. 03 : 0,51 $ (Nass 0,21 + Sadek 3 × 0,10). Postures à éviter pour Sadek : mains ouvertes paumes vers le haut. Validée le 2026-10-27 (bras croisés) ; copie dans ~/Desktop/Convergence/miniature-ep03-FINAL-validee.jpg, remplace la v6 dans Studio.",
+      "rejected": [
+        {
+          "file": "convergence-ep03b-brand-dark.jpg",
+          "reason": "Posture de Sadek (mains ouvertes, haussement d'épaules) « vraiment mauvaise » ; titre « Or ou Bitcoin » abandonné, on garde « Le trading est un jeu de menteurs »"
+        }
+      ],
+      "validated_on": "2026-10-27"
+    },
+    {
+      "video_slug": "convergence-ep04-or-achat-decennie",
+      "date": "2026-10-27",
+      "niche": "crypto",
+      "youtube_video_id": null,
+      "title": "L'or, l'achat de la décennie (Convergence, Nass seul, tourné le 2026-10-26)",
+      "concept_chosen": "Solo Convergence « ultra travaillée » : ancre ép. 03 de Nass éditée (une variable : expression + regard caméra, ébloui, yeux grands ouverts, bouche fermée sans dents, 3 tirages, le 3e retenu), étoiles d'or dessinées dans les pupilles (PIL, halo + étoile 4 branches + éclat), reflet doré léger sur le bas du visage, pile de 3 lingots générée sur chroma (gpt-image-2 medium) en bas à gauche avec lueur, texte « ALL IN / GOLD ? » à gauche (bloc or), pastille logo + ÉP. 04, fond studio sombre ou papier crème à grille.",
+      "text_overlay": "ALL IN / GOLD ?",
+      "main_visual": "face",
+      "face_size_pct": 40,
+      "final_file": "yt-miniature/outputs/convergence-ep04-final.jpg",
+      "candidates": [
+        "yt-miniature/outputs/convergence-ep04-allin-dark.jpg",
+        "yt-miniature/outputs/convergence-ep04-allin-cream.jpg"
+      ],
+      "portraits": {
+        "nass": "convergence-ep04-nass-dazzled-3.jpg (tirages 1 et 2 écartés : dents visibles)"
+      },
+      "script": "yt-miniature/scripts/compose_solo_brand.py",
+      "validated_by_nass": true,
+      "ab_test_winner": null,
+      "notes": "Numéro d'épisode supposé 04 (ép. 03 = 19 oct.) à confirmer. Texte « ALL IN » demandé par Nass tel quel (le cadre range « all-in » dans le vocabulaire de jeu : signalé, sa consigne gagne). Coût : 0,68 $ (visage 3 × 0,21 + lingots 0,05). Validée le 2026-10-27, version sombre, étoiles agrandies à sa demande (« appuie un peu plus ») ; copie dans ~/Desktop/Convergence/miniature-ep04-FINAL-validee.jpg.",
+      "validated_on": "2026-10-27"
     }
   ]
 }

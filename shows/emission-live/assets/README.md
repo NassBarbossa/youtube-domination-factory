@@ -24,6 +24,7 @@ Les SVG sont en vrais tracés : le texte est converti, ils s'ouvrent partout (Fi
 | `banniere-2560x1440.png` | Bannière de chaîne. Logo et signature dans la zone visible partout (1546 × 423). |
 | `miniature.html` | **Gabarit de miniature** modifiable (voir plus bas). |
 | `miniature-exemple-1280x720.png` | Exemple rendu. |
+| `miniatures/convergence-epNN-1280x720.jpg` | Miniatures publiées, une par épisode (ép. 01 validée le 2026-10-27, ép. 03 publiée le 2026-10-20). Produites avec `yt-miniature/scripts/compose_vs_brand.py` (face à face) ou `compose_podcast.py` (bustes). |
 
 ### Faire une miniature
 1. Mettre les photos détourées (PNG transparent) dans `youtube/photos/`.

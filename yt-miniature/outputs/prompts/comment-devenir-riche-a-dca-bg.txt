@@ -1,0 +1,13 @@
+Generate a graphic background image, 1280x720, 16:9 aspect ratio, with NO people in it.
+
+A bright, high-key, poster-like YouTube thumbnail background. A clean, luminous light-gold to warm-white gradient fills the frame, with a very faint radial glow at the center.
+
+On the left third of the frame: a single authentic 100 euro banknote, photographed flat, crisp and sharp (large "100" numerals, "EURO" lettering, green tint), lying slightly tilted, small, modest, alone.
+
+On the right third of the frame: an enormous, towering, neatly bundled stack of 100 euro banknotes rising from the bottom edge almost to the top of the frame, hundreds of bills in thick bundles, crisp, sharp, with soft studio lighting and a subtle rim light. The pile should look impressive and clean, like a bank vault display.
+
+Between them, across the middle of the frame, a bold thick upward-curving arrow in deep green (#1DB954), going from the small banknote on the left up to the top of the big stack on the right, with a smooth exponential curve shape. The center of the frame stays uncluttered (a person will be placed there).
+
+The bottom 25% of the frame has no text or small details (only the gradient and the base of the stack), reserved for a title.
+
+Ultra sharp, sRGB, vibrant, bright, cheerful. No text, no numbers besides those printed on the banknotes, no logos, no person, no silhouette, no coins.

@@ -1,0 +1,13 @@
+Edit this photo into a professional studio portrait cutout. Portrait 3:4 aspect ratio output. KEEP THE FULL FRAMING OF THE PHOTO: head, both shoulders, both arms and both hands fully visible, same scale and position as the photo. Do not crop tighter.
+
+Identity is sacred: the man's face must remain EXACTLY the same person as in the photo, with the same facial structure, same eyes, same nose, same mouth, same skin tone, same beard color (natural muted strawberry-blond, not orange) and same beard length, same head shape. Do not redraw, slim, smooth, beautify or alter any facial feature.
+
+POSE IS SACRED: keep his exact expression, head tilt, eye direction and hand position from the photo, pixel for pixel. The hand touching his face or head stays exactly where it is and keeps the same shape.
+
+What to improve, like a professional retoucher would on a real photo:
+- Lighting: replace the flat phone-selfie lighting with soft, even, bright studio lighting on the face (large softbox from the front, gentle fill, subtle rim light on the sides), neutral white balance, no color cast.
+- Sharpness: crisp, high-resolution detail on the eyes, skin texture and beard, as if shot on a full-frame camera with an 85mm lens.
+- Replace his sports t-shirt with a plain clean white crew-neck t-shirt with no logos, same shoulders and chest position.
+- Replace everything behind him with a perfectly flat, uniform, pure bright green chroma-key background, exact color #00FF00, edge to edge, no gradient, no shadow, no vignette, no green spill on him. Clean, crisp edges around head, hands, arms and shoulders.
+
+Ultra sharp, sRGB, no text.

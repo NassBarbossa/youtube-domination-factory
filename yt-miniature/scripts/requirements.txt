@@ -1,2 +1,3 @@
-# composite.py, overlay.py, banner.py, pfp.py, check.py (generate.py n'utilise que la stdlib)
+# compose_podcast.py, composite.py, overlay.py, banner.py, pfp.py, bg_cream.py, check.py, compare_ref.py (generate.py n'utilise que la stdlib)
 pillow==12.2.0
+numpy>=1.26
