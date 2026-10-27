@@ -69,6 +69,10 @@ Outils utiles : Python 3 (`pip install youtube-transcript-api yt-dlp`), Node + P
 - [ ] Shorts (plus tard, Nass 2026-10-14) : déposer la méthode de script et le style de montage dans `yt-shorts-script/references/` et `yt-shorts-montage/references/` ; choisir l'outil d'avatar/voix IA ; préciser « 1 plan par ~0,8 s max ».
 - [x] Fiscalité FR : 3916-bis (comptes d'actifs numériques à l'étranger) et 2086 (plus-values) confirmés ; flat tax 31,4 % en 2026, PLF 2027 en débat (voir `yt-veille/outputs/veille-2026-10-13.md`).
 
+- **Convergence ép. 03, nouvelle miniature** (2026-10-27) : titre conservé (« Le trading est un jeu de menteurs ») ; nouvelle miniature validée (`convergence-ep03-v2-final.jpg`, Sadek bras croisés) ; à remplacer dans Studio ou en test A/B contre la v6 publiée.
+- **Titre de Convergence ép. 01** (2026-10-20) : à choisir parmi le top 3 proposé, allongé selon la règle 30-60 caractères (ex. « Bull run 2026, c'est reparti ? CONVERGENCE [EP.01] »), puis test A/B dans Studio si Nass veut (archives de lives éligibles).
+- **Durée des vidéos MIDDLE** (2026-10-20) : la cible 18-22 min a été retirée du tableau funnel de `yt-script` (jamais atteinte, jamais soutenue par une source) ; si c'est un choix de Nass, la remettre et le noter.
+
 ## 4. Assets à fournir
 
 - [x] Photos de Nass : 19 références d'octobre (neutre, réfléchi, salut, surpris, sourire, versions hautes) dans `yt-miniature/references/nass/`, ajoutées au repo le 2026-10-13.

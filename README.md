@@ -103,8 +103,8 @@ Tout passe par un seul fichier, `context/video-context.json`, dont le contrat es
 | [`yt-veille`](yt-veille/SKILL.md) | Idées de vidéos scorées (veille automatique en pause) | 3 à 5 idées, recommandation |
 | [`yt-transcript`](yt-transcript/SKILL.md) | Recherche concurrentielle : faits sourcés, angles couverts et manquants | brief de recherche |
 | [`yt-script`](yt-script/SKILL.md) | Script avec Nass, slides HTML animées, mode dictée « slide après » | `yt-script/outputs/<slug>.md` + `-visual.html` |
-| [`yt-titres-seo`](yt-titres-seo/SKILL.md) | 7 titres, mot-clé principal et secondaires | titre gagnant |
-| [`yt-miniature`](yt-miniature/SKILL.md) | 3 concepts notés, génération d'image, montage PIL | brief + JPG 1280×720 |
+| [`yt-titres-seo`](yt-titres-seo/SKILL.md) | 7 titres de 30 à 60 caractères (9 formules), mot-clé principal et secondaires, retitrage et test A/B | titre gagnant |
+| [`yt-miniature`](yt-miniature/SKILL.md) | 3 concepts notés, portraits ancres édités via OpenRouter, montage PIL | brief + JPG 1280×720 |
 | [`yt-description`](yt-description/SKILL.md) | Hook, timestamps, offres, liens, tags | description complète |
 | [`yt-repurposing`](yt-repurposing/SKILL.md) | Découpe d'une vidéo longue | Shorts, thread X, post LinkedIn |
 | [`yt-shorts-script`](yt-shorts-script/SKILL.md) | Shorts natifs 30 à 60 s, en série | scripts de Shorts |
@@ -201,8 +201,8 @@ Les skills sont du Markdown. Autour, un peu de Python, local, pour les tâches r
 
 | Dossier | Scripts | Installer |
 |---|---|---|
-| `yt-analytics/` | `analyze.py` (rapport à la charte depuis l'API), `studio_ctr.py` (CTR et impressions lus dans YouTube Studio, qu'aucune API ne donne), `feedback_analyzer.py` (relie les stats aux choix), `parse_youtube_csv.py`, `generate_report.py`, `generate_dashboard.py`, `auth.py` | `pip install -r yt-analytics/requirements.txt`, `uv` pour `studio_ctr.py` |
-| `yt-miniature/scripts/` | `generate.py` (OpenRouter), `composite.py` (incrustation fond vert), `overlay.py` (texte), `banner.py`, `pfp.py`, `check.py` (contrôle 256 px) | `pip install -r yt-miniature/scripts/requirements.txt` |
+| `yt-analytics/` | `analyze.py` (rapport à la charte depuis l'API), `studio_ctr.py` (CTR et impressions lus dans YouTube Studio, qu'aucune API ne donne), `studio_retention.py` (pourcentage encore là à 30 s, moments forts et creux de la rétention, même profil Studio), `feedback_analyzer.py` (relie les stats aux choix), `parse_youtube_csv.py`, `generate_report.py`, `generate_dashboard.py`, `auth.py` | `pip install -r yt-analytics/requirements.txt`, `uv` pour `studio_ctr.py` et `studio_retention.py` |
+| `yt-miniature/scripts/` | `generate.py` (API Images OpenRouter : génération et édition d'ancre), `compare_ref.py` (vérification du visage), `compose_podcast.py` (deux bustes Convergence), `compose_vs_brand.py` (face à face, branding Convergence crème ou sombre), `compose_solo_brand.py` (solo Convergence : étoiles dans les yeux, lingots), `compose_vs.py`, `composite.py` (incrustation fond vert), `overlay.py` (texte), `banner.py`, `pfp.py`, `bg_cream.py`, `check.py` (contrôle 256 px) | `pip install -r yt-miniature/scripts/requirements.txt` |
 | `yt-veille/scripts/` | `outliers_rss.py` (outliers des chaînes de référence par flux RSS, sans dépendance), veille automatique en pause (SQLite sur le VPS, scoring, rapport), 75 tests | `pip install -r yt-veille/scripts/requirements.txt` (inutile pour `outliers_rss.py`) |
 | `yt-transcript/scripts/` | `get_transcript.py` | `uv` (dépendance déclarée dans le script) |
 | `clip-convergence/scripts/` | `transcribe.py`, `words.py`, `offset.py` (recalage audio), `presence.py` (fauteuil vide), `build_media.py`, `qa_voice.py`, `face_track.py` (YuNet), `build_screen.py`, `qa_render.py` | `pip install -r clip-convergence/scripts/requirements.txt`, ffmpeg |
