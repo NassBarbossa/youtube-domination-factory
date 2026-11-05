@@ -54,6 +54,22 @@ Les ordonnées des droites sont données à gauche puis à droite. Pour chaque c
 - Recentrage sur le visage du morceau (`face_track.py`), avec `cam_tf()` : le cadre de Nass couvre toujours jusqu'à la droite verte, celui de Sadek depuis la droite or. Jamais de trou de papier dans un cadre.
 - En CN+, Sadek bouge aussi (1,30 → 1,36). Ainsi sa propre coupe tombe en plein mouvement, pas en image fixe.
 
+## Variante « écran + médaillons » (scène « À L'ÉCRAN », EP.01 et EP.04)
+
+Quand les caméras du live sont des ronds d'environ 330 px (scène « À L'ÉCRAN »), elles ne remplissent pas les cadres
+ci-dessus sans flou. Première application : clip 35 de l'EP.01 (`projects/ep01/35-la-meilleure-position/make_comp.py`,
+v1 du 2026-10-28, en attente du retour de Nass).
+
+- Les deux ronds deviennent des **médaillons** : crop carré à l'intérieur de l'anneau gravé (rayon − 18 px, les étiquettes
+  NASS / SADEK restent dehors), masque CSS rond, anneau de 14 px vert (Nass) ou or (Sadek). Posés sur le papier, Nass au-dessus
+  de la droite verte, Sadek sous la droite or. Grossissement total ≤ 1,6 (diamètre ≤ 1,6 × côté du crop).
+- **L'écran réel de Nass** occupe la bande quand il explique (états E / E+ : droites comme CN / CN+, boîte 34, 600, 1012 × 552,
+  Nass en haut à gauche, Sadek en bas à droite, sous-titres à 1218).
+- Sans écran : états H, N (comme B), S (comme A), médaillons centrés. Un mot clé peut remplacer le dernier sous-titre à la
+  même place (PATIENTER) : le groupe précédent s'efface 0,08 s avant.
+- Le crop de l'écran exclut la watchlist, le compte et les onglets du navigateur, et la zone où le rond de Nass mord sur le
+  graphique (x < 380 sur le brut 16:9 de l'EP.01).
+
 ## Mouvement
 
 - **Chaque coupe de parole tombe au milieu d'une bascule** de 0,6 s en `power3.inOut`. La bascule commence à couture − 0,3 s. Droites, découpes (`clip-path`), caméras, graphique et sous-titres bougent ensemble.

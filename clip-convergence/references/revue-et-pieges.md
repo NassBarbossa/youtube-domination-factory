@@ -68,3 +68,8 @@ python {repo}/clip-convergence/scripts/qa_render.py <fichier.mp4> --duration <D>
 | Décalage YouTube réutilisé tel quel | il peut changer d'un passage à l'autre : le mesurer au passage choisi |
 | Zones fausses (visage coupé à la bouche) | la mise en page OBS a changé pendant l'émission : prendre les zones de la mise en page du passage |
 | `make_comp.py` plante sur `faces` | `build_media.py` relancé sans `face_track.py` derrière |
+| Un mot clé qui remplace un sous-titre apparaît par-dessus lui | le groupe de sous-titres précédent s'efface à `PAT_T − 0,08` (clip 35) |
+| L'anneau or de Sadek mesuré trop grand (watchlist et étiquette SADEK de la même couleur) | restreindre la zone de mesure à l'intérieur du rond et au-dessus de l'étiquette, rayon = largeur / 2 |
+| `snapshot` dans une chaîne `&&` avec `grep` : la chaîne s'arrête | ne pas conditionner la suite sur un `grep` de la sortie |
+| Pas de brut OBS sur la machine | construire la v1 depuis le téléchargement YouTube 1080p (même mise en page), le dire dans SPEC / REVIEW, refaire depuis le brut ensuite : `source` et `raw_to_source` seuls changent |
+| Sur Mac, faster-whisper n'est pas installé | `qa_voice_mlx.py` (mlx-whisper, GPU) ; scripts OpenCV via `uv run --python 3.12 --with numpy,opencv-python` |

@@ -55,7 +55,7 @@ Hors git, à recréer sur chaque machine : `yt-analytics/.studio-profile/` (sess
 
 Les vidéos crypto sont sur une **nouvelle chaîne, Nassin Crypto** ; l'ancienne chaîne Nass Riviera (période IA) est de l'historique, jamais mélangé aux moyennes crypto. Formation offerte, playlist dans le cadre : `pourquoi-investir-2026` (2026-10-05, `njfEJFd7hQ8`), `comment-devenir-riche` (2026-10-07, `FVajDtrHsPU`), `investissement-on-chain` (2026-10-11, `71HX4YUNrNs`).
 
-Lives Convergence (replays sur la chaîne, miniatures validées dans `shows/emission-live/assets/youtube/miniatures/`) : ép. 01 (live du 8 oct., `ZjNa7wxwFkM`), ép. 03 « Le trading est un jeu de menteurs » (live du 19 oct., `PJaScgDfiMk`, miniature v2 validée le 27 oct.), ép. 04 « L'or, l'achat de la décennie » (Nass seul, tourné le 26 oct., ID à renseigner à la publication).
+Lives Convergence (replays sur la chaîne, miniatures validées dans `shows/emission-live/assets/youtube/miniatures/`) : ép. 01 « Bullrun pour le Q4 2026, c'est reparti ? » (live du 8 oct., `ZjNa7wxwFkM`), ép. 03 « Or ou Bitcoin en 2026, que choisir ? » (live du 19 oct., `PJaScgDfiMk`, miniature v2 validée le 27 oct.), ép. 04 « L'achat de la décennie sur le gold ? » (Nass seul, tourné le 26 oct., publié le 27 oct., `D0gALJr-y1o`). Clips : `clip-convergence/projects/epNN/EPISODE.md`.
 
 ## Code (Python 3, local)
 

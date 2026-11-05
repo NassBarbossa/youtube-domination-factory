@@ -271,13 +271,14 @@
           "reason": "Posture de Sadek (mains ouvertes, haussement d'épaules) « vraiment mauvaise » ; titre « Or ou Bitcoin » abandonné, on garde « Le trading est un jeu de menteurs »"
         }
       ],
-      "validated_on": "2026-10-27"
+      "validated_on": "2026-10-27",
+      "published_title": "Or ou Bitcoin en 2026 , que choisir ? CONVERGENCE [EP.03] (retitrée par Nass, constaté le 2026-10-27)"
     },
     {
       "video_slug": "convergence-ep04-or-achat-decennie",
       "date": "2026-10-27",
       "niche": "crypto",
-      "youtube_video_id": null,
+      "youtube_video_id": "D0gALJr-y1o",
       "title": "L'or, l'achat de la décennie (Convergence, Nass seul, tourné le 2026-10-26)",
       "concept_chosen": "Solo Convergence « ultra travaillée » : ancre ép. 03 de Nass éditée (une variable : expression + regard caméra, ébloui, yeux grands ouverts, bouche fermée sans dents, 3 tirages, le 3e retenu), étoiles d'or dessinées dans les pupilles (PIL, halo + étoile 4 branches + éclat), reflet doré léger sur le bas du visage, pile de 3 lingots générée sur chroma (gpt-image-2 medium) en bas à gauche avec lueur, texte « ALL IN / GOLD ? » à gauche (bloc or), pastille logo + ÉP. 04, fond studio sombre ou papier crème à grille.",
       "text_overlay": "ALL IN / GOLD ?",
@@ -295,7 +296,9 @@
       "validated_by_nass": true,
       "ab_test_winner": null,
       "notes": "Numéro d'épisode supposé 04 (ép. 03 = 19 oct.) à confirmer. Texte « ALL IN » demandé par Nass tel quel (le cadre range « all-in » dans le vocabulaire de jeu : signalé, sa consigne gagne). Coût : 0,68 $ (visage 3 × 0,21 + lingots 0,05). Validée le 2026-10-27, version sombre, étoiles agrandies à sa demande (« appuie un peu plus ») ; copie dans ~/Desktop/Convergence/miniature-ep04-FINAL-validee.jpg.",
-      "validated_on": "2026-10-27"
+      "validated_on": "2026-10-27",
+      "published_title": "L'achat de la décennie sur le gold ? CONVERGENCE [EP.04]",
+      "published_at": "2026-10-27"
     }
   ]
 }

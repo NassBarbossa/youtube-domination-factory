@@ -1,0 +1,52 @@
+# Convergence EP.04 — « L'achat de la décennie sur le gold ? » (Nass seul, tourné le 2026-10-26, publié le 2026-10-27)
+
+## Sources
+
+| Rôle | Fichier | Format |
+|---|---|---|
+| YouTube | `D0gALJr-y1o` (`~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4`, téléchargé le 2026-10-27 sur le Mac) | 1920 × 1080, 60 i/s, 1 215,4 s. **Repère de temps seulement**, jamais pour l'image |
+| Brut OBS 16:9 | à retrouver sur le PC Windows (`%USERPROFILE%\Videos\2026-10-26 …`) | à vérifier |
+| Vertical (Aitum) | à vérifier sur le PC Windows (`… vertical.mkv`) | à vérifier |
+
+Nass était seul : pas de caméra Sadek. La DA « Les deux droites » est prévue pour deux orateurs ; pour un épisode solo il faut une variante (voir plus bas), à proposer à Nass avant de construire.
+
+## Décalages
+
+À mesurer avec `offset.py` quand le brut est là (YouTube → brut).
+
+## Mises en page vues sur le replay (YouTube, 1080p)
+
+| Mise en page | Quand | Caméra Nass | Écran |
+|---|---|---|---|
+| cold open « carte » (« LE BTC À 60K », citation) | 0:00–0:30 env. | rond ≈ 330 px à gauche | — |
+| « à l'écran » (scène 2 · live, « ÉP. 02 · À L'ÉCRAN » gravé) | majorité de l'épisode | **rond ≈ 330 px en bas à gauche**, étiquette « NASS » | TradingView plein cadre ≈ x 176–1744, y 100–950 |
+| fullcam | fin (≈ 19:10) | grande fenêtre ≈ `[45, 105, 1425, 855]` (mesurée sur YouTube, à remesurer sur le brut) | — |
+
+Comme pour l'EP.01, le rond « à l'écran » est trop petit pour remplir un cadre des deux droites sans flou : clips à construire sur l'écran réel avec le rond en médaillon, ou sur la fullcam quand le passage y est.
+
+L'étiquette gravée dit « ÉP. 02 · À L'ÉCRAN » (OBS pas remis à jour) : à garder hors des recadrages.
+
+**Signal cadre :** vers 15:00 un écran Axiom affiche un PnL OTC (+2,31 K, @punk6995) ; la description YouTube porte `#memecoins`. Tout passage memecoin est à signaler à Nass, pas à clipper.
+
+## Transcription
+
+`projects/ep04/transcript-youtube.json` (faster-whisper medium, CPU, Mac, 2026-10-27), **en temps YouTube**. Quand le brut sera là : mesurer le décalage et le reporter dans `raw_to_source`, ou retranscrire le brut.
+
+## Candidats
+
+Repérage complet du 2026-10-27 dans `context/transcripts/passages-2026-10-27.md` (texte exact + pourquoi : `passages-detail-2026-10-27.md`) (transcription : `context/transcripts/D0gALJr-y1o-words.json`, temps YouTube). Nass choisit.
+
+| N° | Passage, idée | Minutage (YouTube) | Mise en page | Présence | Cadre | Statut |
+|---|---|---|---|---|---|---|
+| 41 | Personne n'achète le bottom parfait, « c'est uniquement par chance » | 03:19–04:24 (+ 04:29–04:38) | à l'écran (TradingView SOL) | Nass seul | couper 04:03–04:11 | à choisir |
+| 42 | « Le gold, c'est l'achat de la décennie » : BTC 60K / 45K, 3 900 ou 4 000 | 07:38–08:16 | à l'écran (TradingView or) | Nass seul | position personnelle, pas d'appel à acheter : « si tu n'achètes pas là » à trancher | à décider |
+| 43 | Réagir plutôt qu'anticiper, entrée au meilleur prix pour couper si ça s'invalide | 08:26–08:59 | à l'écran | Nass seul | ok | à choisir |
+| 44 | Milieu de zone, attendre les bords ; « je ne comprends pas d'être baissier sur un support » | 06:25–07:22 | à l'écran | Nass seul | ok | à choisir |
+| 45 | Clôture : trading très difficile, faites attention | 19:29–19:50 | fullcam | Nass seul | ok (teaser) | à choisir |
+| 46 | Ce qui définit une tendance baissière (BTC) | 01:39–02:32 | à l'écran (TradingView BTC) | Nass seul | ok | à choisir |
+| 47 | Re-rentrer une partie de ses SOL, « j'attends demain » | 04:43–05:11 | à l'écran (SOL) | Nass seul | actif précis | à décider |
+| 48 | « T'étais sûr que ça allait monter ? Non. » invalidations | 15:57–16:19 | à l'écran (Axiom, memecoin) | Nass seul | écran memecoin : caméra seule ou autre fond | à décider |
+| 49 | Baissier en TF mineur ok, en investissement non | 16:28–16:47 | à l'écran | Nass seul | ok (teaser) | à choisir |
+| 50 | Intro solo, changement d'heure, « je ne vais pas débattre tout seul » | 00:36–01:10 | cold open / fullcam | Nass seul | ok | à choisir |
+
+Écartés : trade de la semaine Axiom 10:23–16:23 (memecoin, **signalé**), Trump 17:38–18:11 (politique), « Anthropic 80 milliards » 18:40–19:16 (non vérifié), watchlist 05:13–05:49 (actifs précis).

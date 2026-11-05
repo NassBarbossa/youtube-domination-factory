@@ -1,0 +1,81 @@
+{
+  "short": "35 — La meilleure des positions (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 1.45,
+  "crops": {
+    "nass": [
+      52,
+      687,
+      298,
+      298
+    ],
+    "sadek": [
+      1564,
+      680,
+      304,
+      304
+    ]
+  },
+  "screen": {
+    "crop": [
+      380,
+      230,
+      1155,
+      630
+    ],
+    "size": [
+      1012,
+      552
+    ],
+    "segments": [
+      "s2",
+      "s3"
+    ]
+  },
+  "segments": [
+    {
+      "id": "s1",
+      "speaker": "nass",
+      "a": 1171.16,
+      "b": 1173.6,
+      "text": "si vous êtes des traders, des investisseurs"
+    },
+    {
+      "id": "s2",
+      "speaker": "nass",
+      "a": 1175.58,
+      "b": 1182.94,
+      "text": "idéalement le classique, break de structure, retest, et après on envoie, soit vous rentrez là, soit vous rentrez à la confirmation"
+    },
+    {
+      "id": "s3",
+      "speaker": "nass",
+      "a": 1187.22,
+      "b": 1194.6,
+      "text": "on est vraiment à la giga résistance. Donc, encore là, pourquoi pas ? Mais là, c'est mieux de patienter"
+    },
+    {
+      "id": "s4",
+      "speaker": "nass",
+      "a": 1196.0,
+      "b": 1201.38,
+      "text": "Comme dirait un certain philosophe, ne pas prendre de position, c'est…"
+    },
+    {
+      "id": "s5",
+      "speaker": "sadek",
+      "a": 1202.74,
+      "b": 1207.22,
+      "text": "C'est ne pas prendre des positions, c'est la meilleure des positions pour éviter de se faire prendre dans toutes les positions"
+    },
+    {
+      "id": "s6",
+      "speaker": "nass",
+      "a": 1208.44,
+      "b": 1212.98,
+      "text": "Exactement. Je suis 100 % en ligne avec cette phrase de philosophe"
+    }
+  ]
+}

@@ -105,6 +105,8 @@ Le pilote 08 a été fait avant ce skill. Il est resté dans `{repo}/yt-shorts-m
 | `presence.py` | les deux fauteuils occupés ? visages et images figées par caméra |
 | `build_media.py` | voix montée −14 LUFS, recadrages caméra, `timeline.json` |
 | `qa_voice.py` | re-transcription de la voix montée, morceau par morceau |
+| `qa_voice_mlx.py` | la même chose sur Mac Apple Silicon (mlx-whisper, GPU) |
+| `transcribe_mlx.py` | transcription mot à mot sur Mac (mlx-whisper), même format que `transcribe.py` |
 | `face_track.py` | position du visage par morceau, pour cadrer sans trou |
 | `build_screen.py` | écran réel de Nass, par morceau |
 | `qa_render.py` | contrôle final : format, durée, sonie, crête |

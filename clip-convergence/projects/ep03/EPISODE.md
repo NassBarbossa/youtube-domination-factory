@@ -48,3 +48,5 @@ Minutages : YouTube, puis brut (temps de la transcription).
 - « l'or n'ira pas à 2 100, c'est impossible » ;
 - la « guerre atomique » ;
 - le trading avec liquidation.
+
+**Repérage du 2026-10-27 (Mac, temps YouTube)** : candidats 11 à 21 dans `context/transcripts/passages-2026-10-27.md` (texte exact + pourquoi : `passages-detail-2026-10-27.md`) (« le trading est un jeu de menteurs » 40:13–41:07, deux règles anti-instinctives, budget pour commencer, supports / résistances, « l'investissement c'est facile, le trading c'est dur », range et indécision). Transcription YouTube : `context/transcripts/PJaScgDfiMk-words.json` (YouTube ≈ brut − 245,6 s au passage mesuré, à remesurer).

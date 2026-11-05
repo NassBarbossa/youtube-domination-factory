@@ -39,3 +39,7 @@ Minutages : replay, puis brut (= replay + 68,9 s).
 | 05 | « Le monde est en ATH de bullshit » | replay 11:34–12:44 · brut 12:43–13:53 | Nass | à faire (présence à vérifier sur les ronds) |
 | 06 | « Le Bitcoin ne tombait pas » | replay 14:30–15:54 · brut 15:39–17:03 | Nass | à faire |
 | 07 | « Sentiment baissier » | replay 10:22–11:02 · brut 11:31–12:11 | Sadek | à faire |
+
+| 35 | « La meilleure des positions » : break de structure, retest ; à la giga résistance, mieux vaut patienter ; la phrase du philosophe (Nass + Sadek) | YouTube 19:31–20:13 · brut ≈ 20:40–21:22 | Nass puis Sadek | **v1 rendue le 2026-10-28** depuis le YouTube 1080p (brut OBS sur le PC Windows) : projet `{repo}/clip-convergence/projects/ep01/35-la-meilleure-position/`, export `{repo}/clip-convergence/exports/ep01/35-la-meilleure-position.mp4`. Variante « écran + médaillons » à valider par Nass, puis refaire depuis le brut |
+
+**Repérage du 2026-10-27 (Mac, temps YouTube)** : candidats 20 à 35 dans `context/transcripts/passages-2026-10-27.md` (texte exact + pourquoi : `passages-detail-2026-10-27.md`) (bullrun = définition, « montrez-moi des preuves », « tant qu'il y a de la musique », the trend is your friend, « erreur classique de débutant » de Sadek à trancher, disclaimer rappeur / plombier, MSS, DXY, gap du week-end, correction de l'or à vérifier). Transcription complète : `context/transcripts/ZjNa7wxwFkM-words.json` (temps YouTube = replay ; brut = + 68,9 s à revérifier).
