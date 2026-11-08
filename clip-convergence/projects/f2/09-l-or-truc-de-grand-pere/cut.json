@@ -1,0 +1,61 @@
+{
+ "short": "F2-09 — L'or, un truc de grand-père ? (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 303.48,
+   "b": 309.98,
+   "text": "Donc la question que je te pose, c'est est -ce que tu aurais pu mettre 100 euros tous les mois dans un de ses actifs"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 309.98,
+   "b": 316.76,
+   "text": "? Tu choisis celui que tu veux, soit le bitcoin, soit l'or, d'ailleurs c'était l'or le meilleur à mettre, soit la bourse américaine."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 317.1,
+   "b": 326.58,
+   "text": "Est -ce que tu l'aurais fait ? L'or que tout le monde dit c'est un truc de grand -père et tout le machin, ça a surperformé le bitcoin sur les deux dernières années."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 327.38,
+   "b": 332.32,
+   "text": "je pense que si t'es honnête la réponse elle est logique, la réponse elle est oui, j'aurais pu mettre"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
