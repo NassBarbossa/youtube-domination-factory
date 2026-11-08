@@ -45,7 +45,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 07 | Toutes les phases, je les ai vécues (03:00 + 04:05) | fait (2026-11-09) |
 | 08 | Roberto Carlos a perdu 99 % (04:28–05:02) | fait (2026-11-09) |
 | 09 | Mets pause, prends un papier (05:02–05:30) | fait (2026-11-09) |
-| 10 | 40 %, pas plus (05:31–06:00) | à faire |
+| 10 | 40 %, pas plus (05:31–06:00) | fait (2026-11-09) |
 | 11 | Déménage (06:00–06:14) | à faire |
 | 12 | 30 % d'épargne : le matelas de sécurité (06:16–06:47) | à faire |
 | 13 | 2 000 €, ça fait 800 € (06:47–07:15) | à faire |
