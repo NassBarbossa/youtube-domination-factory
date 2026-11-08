@@ -1,0 +1,39 @@
+{
+ "short": "JA-14 — Il faut survivre (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 124.28,
+   "b": 130.4,
+   "text": "et moi je sais que vous allez dire que c'est peut -être logique c'est peut -être quoi mais avec l'expérience"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 130.4,
+   "b": 135.6,
+   "text": "je sais que je suis plus fort dans un marché qui est facile évidemment que dans un marché qui est difficile"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 398.16,
+   "b": 404.56,
+   "text": "Là pour moi, on est dans une phase où il faut survivre, il faut survivre pour pouvoir être performant quand on redeviendra en mode easy."
+  }
+ ]
+}
