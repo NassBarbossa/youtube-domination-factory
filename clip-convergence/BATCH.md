@@ -144,7 +144,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 56 | Un range bien dégoûtant (18:00–18:33) | fait (2026-11-09) |
 | 57 | Pile ou face (18:41–19:24) | fait (2026-11-09) |
 | 58 | Si les actions chutent ? (21:30–21:59) | fait (2026-11-09) |
-| 59 | Au milieu de range, on temporise (23:27–24:08) | à faire |
+| 59 | Au milieu de range, on temporise (23:27–24:08) | fait (2026-11-09) |
 | 60 | L'or est en solde (24:14–27:13) | à faire |
 | 61 | Apprends-moi à faire de l'oseille (29:28–30:46) | à faire |
 | 62 | Budget pour commencer ? (31:11–31:43) | à faire |

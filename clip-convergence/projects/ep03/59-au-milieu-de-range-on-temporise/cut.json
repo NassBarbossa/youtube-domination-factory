@@ -1,0 +1,69 @@
+{
+ "short": "59 — Au milieu de range, on temporise (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : deux ronds caméra de 210 px en bas (Nass à gauche, Sadek à droite)",
+ "prescale": 4.4,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   30,
+   448,
+   210,
+   210
+  ],
+  "sadek": [
+   1040,
+   448,
+   210,
+   210
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 1407.14,
+   "b": 1419.18,
+   "text": "Là, pour clôturer la partie investissement, ce que vous voulez en règle générale, sur les actifs, c'est assez simple. C'est acheter quand on est sur les supports et plutôt revendre"
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 1420.9,
+   "b": 1426.0,
+   "text": "sur les résistances. Quand on est au milieu de range, c'est toujours difficile parce que ça peut partir dans les deux sens."
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 1426.52,
+   "b": 1438.8,
+   "text": "Donc, que ça soit sur BTC, même si BTC rebondit plus fort que le gold, actuellement, ce n'est pas des zones où vous devez vous presser sur les trades et essayer de cliquer de partout."
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 1439.08,
+   "b": 1448.72,
+   "text": "C'est plutôt des zones où, à moins que vous savez vraiment ce que vous faites, il vaut mieux temporiser, analyser, attendre qu'il y ait une direction claire et suivre la direction qui est donnée."
+  }
+ ],
+ "screen": {
+  "crop": [
+   130,
+   105,
+   880,
+   495
+  ],
+  "size": [
+   900,
+   506
+  ],
+  "segments": [
+   "s2",
+   "s3"
+  ]
+ }
+}
