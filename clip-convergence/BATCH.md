@@ -84,7 +84,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 01 | 5 000 €, 10 000 €… ou offerte ici (00:00–01:43) | fait (2026-11-09) |
 | 02 | Plus important que l'investissement (00:15–00:47) | fait (2026-11-09) |
 | 03 | 100 % doivent le faire, la Formule 1 non (00:47–01:16) | fait (2026-11-09) |
-| 04 | Acheter avant les autres (01:52–02:22) | à faire |
+| 04 | Acheter avant les autres (01:52–02:22) | fait (2026-11-09) |
 | 05 | Concentre-toi : le CEX (02:33–03:04) | à faire |
 | 06 | Limité par le nombre d'opportunités (03:05–03:38) | à faire |
 | 07 | Le DEX, c'est le far west (03:38–04:02) | à faire |

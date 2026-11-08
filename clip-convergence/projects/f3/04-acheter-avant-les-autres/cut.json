@@ -1,0 +1,54 @@
+{
+ "short": "F3-04 — Acheter avant les autres (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 111.72,
+   "b": 120.64,
+   "text": "Je vous ai dit l'investissement, c'est le bon sens. Donc, la façon la plus facile et la plus puissante pour faire de l'argent, c'est d'acheter avant les autres."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 121.0,
+   "b": 131.36,
+   "text": "Et oui, si tu arrives à te mettre au début d'une crypto avant qu'elle explose et qu'après les autres, ils achètent après toi et que ça explose, forcément, c'est plus facile de faire de l'argent."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 131.88,
+   "b": 141.9,
+   "text": "Maintenant, si je te disais qu'avec ma méthode, tu vas pouvoir le faire, tu vas pouvoir acheter avant les autres. Tu ne vas peut -être pas être ici, mais peut -être que tu vas être à partir d'ici."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
