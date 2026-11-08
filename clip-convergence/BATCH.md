@@ -115,7 +115,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 12 | Les cracks, pas les tricheurs (05:30–05:48) | fait (2026-11-09) |
 | 13 | Connaissez votre ligue (06:19–06:38) | fait (2026-11-09) |
 | 14 | Il faut survivre (02:04–06:45) | fait (2026-11-09) |
-| 15 | Dites-moi quel sujet, je vous tourne ça (06:45–07:07) | à faire |
+| 15 | Dites-moi quel sujet, je vous tourne ça (06:45–07:07) | fait (2026-11-09) |
 
 ## Convergence EP.04 — « L'achat de la décennie sur le gold ? » `D0gALJr-y1o` (20 min, 60 i/s) — 15 clips | à faire
 ## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**) — 15 clips, en dernier | à faire

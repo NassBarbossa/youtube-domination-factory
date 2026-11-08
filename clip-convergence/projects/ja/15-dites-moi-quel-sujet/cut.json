@@ -1,0 +1,39 @@
+{
+ "short": "JA-15 — Dites-moi quel sujet, je vous tourne ça (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 405.04,
+   "b": 413.44,
+   "text": "Donc voilà les gars, petite transparence avec vous sur ce challenge, il y a ma formation offerte en bio pour ceux qui découvrent sur cette vidéo."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 413.74,
+   "b": 419.68,
+   "text": "N'hésitez pas à me dire dans les commentaires vous voulez quoi comme sujet de vidéo. Du coup, j'ai du temps là. Je suis en train de construire deux, trois trucs,"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 419.78,
+   "b": 426.94,
+   "text": "mais j'ai envie de me focus sur le contenu. Donc, dites -moi en commentaire et je vous tourne ça tout de suite. A plus les gars et surtout, que la paix soit sur vous."
+  }
+ ]
+}
