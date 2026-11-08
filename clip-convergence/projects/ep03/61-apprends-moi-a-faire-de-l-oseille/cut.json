@@ -1,0 +1,53 @@
+{
+ "short": "61 — Apprends-moi à faire de l'oseille (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : deux ronds caméra de 210 px en bas (Nass à gauche, Sadek à droite)",
+ "prescale": 4.4,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   30,
+   448,
+   210,
+   210
+  ],
+  "sadek": [
+   1040,
+   448,
+   210,
+   210
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 1768.34,
+   "b": 1775.22,
+   "text": "apprends moi à faire de l'oseille bah ça les gars il y a deux points de vue différents"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 1775.22,
+   "b": 1782.26,
+   "text": "Sadek lui il est dans une approche où il dit focalisez -vous sur le trading et faites de l'argent avec le trading."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 1782.48,
+   "b": 1790.18,
+   "text": "Moi, je suis dans une optique qui est plutôt de développer des compétences, donc des compétences qui sont monnayables,"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 1833.34,
+   "b": 1846.64,
+   "text": "il faut que vous ayez une activité digitale et pendant que vous êtes en train de charbonner sur votre activité digitale vous prenez un pourcentage de votre rentrée d'argent que vous mettez dans les marchés financiers que ça soit l'or, que ça soit le bitcoin que ça soit le SP500"
+  }
+ ]
+}
