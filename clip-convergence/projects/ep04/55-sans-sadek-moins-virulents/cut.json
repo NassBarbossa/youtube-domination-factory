@@ -1,0 +1,33 @@
+{
+ "short": "55 — Sans Sadek, vous êtes moins virulents (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 604.5,
+   "b": 609.8,
+   "text": "voilà un petit peu pour la revue du marché je pense qu'on peut parler du trade de la semaine"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 609.8,
+   "b": 622.22,
+   "text": "et après écoutez aujourd'hui on n'est pas sur TikTok avec Sadek donc vous êtes un peu moins virulent et actif dans vos questions mais si vous avez des questions sur Twitch allez -y on va répondre avec plaisir"
+  }
+ ]
+}
