@@ -85,7 +85,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 02 | Plus important que l'investissement (00:15–00:47) | fait (2026-11-09) |
 | 03 | 100 % doivent le faire, la Formule 1 non (00:47–01:16) | fait (2026-11-09) |
 | 04 | Acheter avant les autres (01:52–02:22) | fait (2026-11-09) |
-| 05 | Concentre-toi : le CEX (02:33–03:04) | à faire |
+| 05 | Concentre-toi : le CEX (02:33–03:04) | fait (2026-11-09) |
 | 06 | Limité par le nombre d'opportunités (03:05–03:38) | à faire |
 | 07 | Le DEX, c'est le far west (03:38–04:02) | à faire |
 | 08 | « C'est moi l'indien » (04:03–04:26) | à faire |

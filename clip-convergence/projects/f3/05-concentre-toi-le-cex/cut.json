@@ -1,0 +1,46 @@
+{
+ "short": "F3-05 — Concentre-toi : le CEX (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 152.82,
+   "b": 159.82,
+   "text": "Avant de t'expliquer la méthode, tu as juste besoin de comprendre une chose. Donc, les deux premières vidéos, ce n'était pas technique, ce n'était pas compliqué."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 160.34,
+   "b": 164.02,
+   "text": "Là, concentre -toi. Normalement, c'est bien expliqué, mais concentre -toi."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 164.42,
+   "b": 169.98,
+   "text": "Quand tu vas acheter tes premières cryptos, ce que tu vas faire, c'est que tu vas les acheter sur ce qu'on appelle un sexe."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 178.7,
+   "b": 184.06,
+   "text": "Un sexe, c'est ce qu'on appelle un centralized exchange ou alors un échange centralisé."
+  }
+ ]
+}
