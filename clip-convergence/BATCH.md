@@ -137,4 +137,23 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 54 | Faites attention (19:31–19:52) | fait (2026-11-09) |
 | 55 | Sans Sadek, vous êtes moins virulents (10:04–10:22) | fait (2026-11-09) |
 
-## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**) — 15 clips, en dernier | à faire
+## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**, seul le replay YouTube est sur ce Mac) — 15 clips, en dernier | en cours
+
+| N° | Clip | Statut |
+|---|---|---|
+| 56 | Un range bien dégoûtant (18:00–18:33) | fait (2026-11-09) |
+| 57 | Pile ou face (18:41–19:24) | à faire |
+| 58 | Si les actions chutent ? (21:30–21:59) | à faire |
+| 59 | Au milieu de range, on temporise (23:27–24:08) | à faire |
+| 60 | L'or est en solde (24:14–27:13) | à faire |
+| 61 | Apprends-moi à faire de l'oseille (29:28–30:46) | à faire |
+| 62 | Budget pour commencer ? (31:11–31:43) | à faire |
+| 63 | C'est quoi l'altseason ? (32:16–33:50) | à faire |
+| 64 | L'investissement c'est facile, le trading c'est dur (34:29–34:58) | à faire |
+| 65 | Payer pour apprendre ? (36:01–37:52) | à faire |
+| 66 | Vendeur de formation = arnaqueur ? (36:23–37:32) | à faire |
+| 67 | Le trading est un jeu de menteurs (40:13–41:06) | à faire |
+| 68 | Vous êtes tous meilleurs que moi (41:10–41:33) | à faire |
+| 69 | C'est quoi un carnet d'ordres ? (39:19–40:12) | à faire |
+| 70 | Une bonne situation financière ? (44:41–45:00) | à faire |
+

@@ -50,3 +50,12 @@ Minutages : YouTube, puis brut (temps de la transcription).
 - le trading avec liquidation.
 
 **Repérage du 2026-10-27 (Mac, temps YouTube)** : candidats 11 à 21 dans `context/transcripts/passages-2026-10-27.md` (texte exact + pourquoi : `passages-detail-2026-10-27.md`) (« le trading est un jeu de menteurs » 40:13–41:07, deux règles anti-instinctives, budget pour commencer, supports / résistances, « l'investissement c'est facile, le trading c'est dur », range et indécision). Transcription YouTube : `context/transcripts/PJaScgDfiMk-words.json` (YouTube ≈ brut − 245,6 s au passage mesuré, à remesurer).
+
+## Clips rendus (série du 2026-11-09, sans validation par clip, à revoir en lot)
+
+Source : replay YouTube `PJaScgDfiMk` (720p, 30 i/s), seule source présente sur ce Mac (bruts OBS sur le PC Windows). Trois mises en page selon le moment : 18:00–27:20 ronds caméra + TradingView ; 27:20–28:20 et 31:46,8–38:20 fullcam (deux fenêtres) ; 28:20–31:46,8 ronds + slide ; 38:20–fin « punk » (la fenêtre de Nass montre son avatar, Sadek seul à l'image). Caméra de Sadek noire 31:54–32:02 et 41:54–42:58 : candidats 12 (« trader moins ») et 21 (« venu au trading ») écartés pour ça, remplacés par « Payer pour apprendre ? » et « Une bonne situation financière ? ». Candidat 08 (« L'or est en solde ») refait en DA « Les deux droites » (clip 60).
+
+| N° | Clip | Coupe (YouTube) | Statut |
+|---|---|---|---|
+| 56 | « Un range bien dégoûtant » : Nass sur le graphique : depuis le 28 septembre, rien ne s'est passé, on est dans un range bien dégoûtant ; un peu de résilience acheteuse, on le casse peut-être aujourd'hui, mais « on n'est pas sorti de l'auberge ». Son écran TradingView sous lui. | 18:00–18:05 + 18:07–18:18 + 18:20–18:33 | **v1 rendue le 2026-11-09** : projet `{repo}/clip-convergence/projects/ep03/56-un-range-bien-degoutant/`, export `{repo}/clip-convergence/exports/ep03/56-un-range-bien-degoutant.mp4` |
+**Fin des clips rendus.**

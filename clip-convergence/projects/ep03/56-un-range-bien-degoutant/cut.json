@@ -1,0 +1,63 @@
+{
+ "short": "56 — Un range bien dégoûtant (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : deux ronds caméra de 210 px en bas (Nass à gauche, Sadek à droite)",
+ "prescale": 4.4,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   30,
+   448,
+   210,
+   210
+  ],
+  "sadek": [
+   1040,
+   448,
+   210,
+   210
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 1080.04,
+   "b": 1085.34,
+   "text": "en daily là tu vois bien franchement il s'est rien passé"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 1087.42,
+   "b": 1098.1,
+   "text": "depuis lundi 28 on était là c'est pas bien passé grand chose en termes de la semaine on est ce qu'on appelle en rennes on est en rennes dans un range bien dégoûtant"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 1100.16,
+   "b": 1113.86,
+   "text": "depuis le 28 septembre depuis l'immense chute qu'on a eu on n'est pas sorti du range on a un petit peu de résilience acheteuse on est en train de le casser possiblement aujourd'hui on n'est pas encore sorti du range on n'est pas sorti de l'auberge"
+  }
+ ],
+ "screen": {
+  "crop": [
+   130,
+   105,
+   880,
+   495
+  ],
+  "size": [
+   900,
+   506
+  ],
+  "segments": [
+   "s1",
+   "s2",
+   "s3"
+  ]
+ }
+}
