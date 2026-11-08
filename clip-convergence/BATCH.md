@@ -20,8 +20,8 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 36 | Arrêter le TGV en pleine route (33 + 23) | fait (v6, 2026-11-07) |
 | 20 | Bullrun = marché haussier | fait (v1, 2026-11-08) |
 | 21 | « Montrez-moi des preuves » (14:22–14:57, Nass) | fait (v1, 2026-11-08) |
-| 22a | « Tant qu'il y a de la musique, il faut danser » (16:20–16:56, Nass) | à faire |
-| 22b | Mon activité ne repose pas sur Bitcoin (17:14–17:39, Nass) | à faire |
+| 22a | « Tant qu'il y a de la musique, il faut danser » (16:20–16:56, Nass) | fait (v1, 2026-11-09) |
+| 22b | Mon activité ne repose pas sur Bitcoin (17:14–17:39, Nass) | fait (v1, 2026-11-09) |
 | 25 | Disclaimer rappeur / plombier (04:07–04:33, Nass) | à faire |
 | 32 | C'est quoi Convergence (03:19–04:03, Nass) | à faire |
 | 26 | Changement de structure (22:33–23:08, Sadek) | à faire |

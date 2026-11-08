@@ -1,0 +1,22 @@
+{
+  "short": "22a — « Tant qu'il y a de la musique, il faut danser » (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "sharpen": true,
+  "crops": {"nass": [68, 704, 264, 264], "sadek": [1582, 698, 270, 270]},
+  "segments": [
+    {"id": "s1", "speaker": "nass", "a": 980.05, "b": 982.62, "text": "Donc pour moi, il y a vraiment un adage"},
+    {"id": "s2", "speaker": "nass", "a": 991.94, "b": 997.78,
+     "text": "que je me fie beaucoup ces derniers temps dans l'investissement, qui est « tant qu'il y a de la musique, il faut danser »"},
+    {"id": "s3", "speaker": "nass", "a": 997.78, "b": 1006.56,
+     "text": "Et en fait, je trouve que c'est tellement difficile de faire des analyses étant donné que d'un point de vue macro, tout peut changer du jour au lendemain"},
+    {"id": "s4", "speaker": "nass", "a": 1006.70, "b": 1011.50,
+     "text": "que moi, j'ai mes positions sur ça et tant que ça se passe bien, je garde mes positions"},
+    {"id": "s5", "speaker": "nass", "a": 1011.80, "b": 1020.50,
+     "text": "Et après, si ça change, je suis OK de ne pas revendre au top absolu, je revendrai un peu plus bas, mais pour le moment, il y a de la musique, donc on danse"},
+    {"id": "s6", "speaker": "sadek", "a": 1022.08, "b": 1026.72,
+     "text": "C'est très bien dit et c'est très intéressant comme manière de voir les choses"}
+  ]
+}

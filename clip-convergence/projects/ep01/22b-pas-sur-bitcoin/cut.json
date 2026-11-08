@@ -1,0 +1,20 @@
+{
+  "short": "22b — Mon activité ne repose pas sur Bitcoin (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "sharpen": true,
+  "crops": {"nass": [68, 704, 264, 264], "sadek": [1582, 698, 270, 270]},
+  "segments": [
+    {"id": "s1", "speaker": "nass", "a": 1031.98, "b": 1034.08, "text": "c'est trop difficile d'essayer de comprendre quelque chose"},
+    {"id": "s2", "speaker": "nass", "a": 1034.20, "b": 1038.80,
+     "text": "Donc pour moi, et surtout, après c'est des choses qu'on va développer dans Convergence"},
+    {"id": "s3", "speaker": "nass", "a": 1041.80, "b": 1044.72, "text": "mon activité principale en crypto, elle ne repose pas sur Bitcoin"},
+    {"id": "s4", "speaker": "nass", "a": 1044.88, "b": 1047.12, "text": "elle ne repose pas sur Ethereum, elle ne repose pas sur Solana"},
+    {"id": "s5", "speaker": "nass", "a": 1047.28, "b": 1052.76,
+     "text": "elle repose sur le trading on-chain, et à savoir acheter des cryptos avant qu'elles se fassent lister sur les échanges"},
+    {"id": "s6", "speaker": "nass", "a": 1054.00, "b": 1061.56,
+     "text": "Donc tant que BTC se comporte bien, je sais que j'aurai des opportunités en dehors des échanges, donc c'est ce qui est intéressant pour moi"}
+  ]
+}
