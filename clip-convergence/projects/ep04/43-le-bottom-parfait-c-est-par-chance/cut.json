@@ -1,0 +1,55 @@
+{
+ "short": "43 — Le bottom parfait, c'est par chance (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 203.4,
+   "b": 214.16,
+   "text": "c'est très difficile d'acheter parfaitement au bottom enfin c'est très difficile c'est pas quelque chose que vous devez essayer de faire d'acheter parfaitement au bottom"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 214.16,
+   "b": 226.16,
+   "text": "genre une fois quand tu regardes tes graphiques à posteriori tu dis putain mais là c'est évident j'achète là et tout je laisse traîner un ordre mais quand t'es dans l'action bah ça se passe pas du tout comme ça tu vois"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 252.02,
+   "b": 265.82,
+   "text": "Revendre les parfaits sommets et acheter les parfaits bottom. ça c'est que quand vous regardez le graphique des semaines après que ça s'est passé. Quand vous êtes dans le feu de l'action, si vous arrivez à le faire, c'est uniquement par chance. Il faut en être conscient."
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
