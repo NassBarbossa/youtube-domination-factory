@@ -25,5 +25,6 @@ applique un facteur 0,76 aux tailles de police des mots clés et de l'accroche.
 | N° | Passage | Minutage | Statut |
 |---|---|---|---|
 | 01 | « Pas une option, une obligation » : Investir n'est pas une option, c'est une obligation : en 2027, 2028, 2029, 2030, jusqu'à la fin de votre vie, pour lutter contre l'inflation. | YouTube 00:06–00:11 + 00:20–00:32 | **v1 rendue le 2026-11-09** : projet `{repo}/clip-convergence/projects/f1/01-pas-une-option/`, export `{repo}/clip-convergence/exports/f1/01-pas-une-option.mp4` |
+| 02 | « La Formule 1 et le karting » : La métaphore qui ouvre la formation : vous voulez tous conduire la Formule 1 et vous ne savez pas conduire un karting ; on passe le code ; ne banalisez pas l'information. | YouTube 00:39–00:42 + 00:42–00:48 + 00:48–00:53 + 00:53–01:01 | **v1 rendue le 2026-11-09** : projet `{repo}/clip-convergence/projects/f1/02-formule-1-karting/`, export `{repo}/clip-convergence/exports/f1/02-formule-1-karting.mp4` |
 **Repérage du 2026-11-09** : 17 passages tirés de la transcription (le challenge 12K → 50K de 03:17–04:00 est écarté :
 contenu abandonné). Repérage F1-1…F1-5 de 2026-10-27 dans `context/transcripts/passages-detail-2026-10-27.md`.

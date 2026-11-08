@@ -37,7 +37,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | N° | Clip | Statut |
 |---|---|---|
 | 01 | Pas une option, une obligation (00:06–00:32) | fait (2026-11-09) |
-| 02 | La Formule 1 et le karting (00:40–01:01) | à faire |
+| 02 | La Formule 1 et le karting (00:40–01:01) | fait (2026-11-09) |
 | 03 | Un secret depuis 2021 (01:04 + 04:17) | à faire |
 | 04 | De quoi on ne va pas parler (01:20–01:52) | à faire |
 | 05 | Investir, la définition (01:52–02:19) | à faire |
