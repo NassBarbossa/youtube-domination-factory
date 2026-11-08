@@ -1,0 +1,62 @@
+{
+ "short": "F3-03 — 100 % doivent le faire, la Formule 1 non (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 46.84,
+   "b": 54.34,
+   "text": "Et ça, tout le monde doit le faire. Ce que je vous ai partagé dans les deux premières vidéos, tout le monde, 100 % des individus qui ont vu cette vidéo doivent le mettre en place."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 54.84,
+   "b": 60.26,
+   "text": "Maintenant, pour pouvoir piloter la Formule 1, les gars, eh bien, ça, ce n'est pas tout le monde qui doit le faire."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 60.48,
+   "b": 65.1,
+   "text": "C'est quelque chose, il y en a beaucoup qui ne vont pas aimer, il y en a beaucoup qui, ça va être trop dur pour eux."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 65.4,
+   "b": 76.44,
+   "text": "Mais dans un second temps aussi, je pense, et j'ai toujours pensé ça depuis ma tendre enfance, que tout le monde peut réussir ce qu'il veut. Si tu te donnes les moyens, si tu fais les choses, tout le monde peut réussir."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s1",
+   "s2"
+  ]
+ }
+}
