@@ -1,0 +1,53 @@
+{
+ "short": "F2-15 — Vous êtes des fainéants (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 534.64,
+   "b": 546.64,
+   "text": "la troisième raison les gars, et je te le dis, je te le dis à toi personnellement que tu regardes, je te regarde bien dans la caméra, toi, parce que vous êtes des fainéants, vous êtes tout simplement des fainéants, vous ne voulez pas faire ça"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 546.64,
+   "b": 553.2,
+   "text": "ou alors ça ne fait pas vibrer, 100 euros tous les mois mais non, moi je suis plus fort, je peux faire ça."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 553.76,
+   "b": 561.04,
+   "text": "Ou ouais, ouais, je vais le faire, ouais, ouais, t'inquiète, ouais, c'est bien ce que tu dis, Nas. Ouais, j'avoue, j'avoue, j'ai même pas fait ton exercice de la vidéo 1."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 566.3,
+   "b": 569.14,
+   "text": "Mais ouais, ouais, c'est bien, t'as raison. Et vous n'allez pas passer à l'action."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 569.8,
+   "b": 575.32,
+   "text": "Donc, raison, pourquoi, si c'est si simple, personne ne le fait, parce que vous êtes des feignants."
+  }
+ ]
+}
