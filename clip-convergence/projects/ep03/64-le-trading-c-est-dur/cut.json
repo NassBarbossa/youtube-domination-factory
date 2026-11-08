@@ -1,0 +1,46 @@
+{
+ "short": "64 — L'investissement c'est facile, le trading c'est dur (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fullcam : deux grandes fenêtres caméra côte à côte",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   36,
+   150,
+   464,
+   464
+  ],
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 2069.84,
+   "b": 2073.72,
+   "text": "Est -ce que c'est dur le trading ? L'investissement, c'est facile, le trading, c'est dur."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 2075.86,
+   "b": 2086.28,
+   "text": "Oui, je suis totalement d'accord avec ça. Le trading, c'est très difficile, les gars. Émotionnellement, si vous voyez, des fois, je suis un peu à cran, c'est que c'est très difficile, le trading."
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 2086.6,
+   "b": 2098.48,
+   "text": "Jamais de la vie, je vous dirais que c'est facile. Par contre, quand ça paye et quand justement tu sais minimiser ton exposition et faire ce qu'il faut, les gars, vous êtes... C'est génial."
+  }
+ ]
+}
