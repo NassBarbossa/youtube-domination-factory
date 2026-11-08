@@ -50,3 +50,12 @@ Repérage complet du 2026-10-27 dans `context/transcripts/passages-2026-10-27.md
 | 50 | Intro solo, changement d'heure, « je ne vais pas débattre tout seul » | 00:36–01:10 | cold open / fullcam | Nass seul | ok | à choisir |
 
 Écartés : trade de la semaine Axiom 10:23–16:23 (memecoin, **signalé**), Trump 17:38–18:11 (politique), « Anthropic 80 milliards » 18:40–19:16 (non vérifié), watchlist 05:13–05:49 (actifs précis).
+
+## Clips rendus (série du 2026-11-09, thème convergence, Nass seul)
+
+Numéros 41 à 55 à la suite des clips EP.01 (21 à 40). Monologue : états SOLO_N / SOLO_N+ et SOLO_E (écran TradingView recadré 380/160/1216/684 → 960 × 540 sous Nass). Deux scènes : « à l'écran » (rond 330 px en bas à gauche, crop 67/697/264/264, prescale 3,2, sharpen) et plein cadre (crop 330/110/700/700, prescale 1,3).
+
+| N° | Clip | Minutage (YouTube) | Statut |
+|---|---|---|---|
+| 41 | « Épisode spécial : tout seul » : L'intro de l'épisode solo : à cause du changement d'heure, Nass et Sadek ne se sont pas accordé leurs violons. Épisode mené tranquillement, pas de débat : « je ne vais pas débattre tout seul, c'est un peu bizarre ». | 00:36–00:42 + 00:43–00:54 + 00:55–01:10 | **v1 rendue le 2026-11-09** : projet `{repo}/clip-convergence/projects/ep04/41-episode-special-tout-seul/`, export `{repo}/clip-convergence/exports/ep04/41-episode-special-tout-seul.mp4` |
+**Fin des clips rendus.**

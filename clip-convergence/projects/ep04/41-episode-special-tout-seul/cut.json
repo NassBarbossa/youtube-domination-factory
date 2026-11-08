@@ -1,0 +1,40 @@
+{
+ "short": "41 — Épisode spécial : tout seul (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "plein cadre : fenêtre caméra, carré de 700 px sur le visage",
+ "prescale": 1.3,
+ "sharpen": false,
+ "crops": {
+  "nass": [
+   330,
+   110,
+   700,
+   700
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 36.56,
+   "b": 42.62,
+   "text": "Et yes les gars, bonjour à tous, bienvenue dans cet épisode 4 de Convergence."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 43.04,
+   "b": 54.46,
+   "text": "Écoutez, épisode un peu spécial parce qu'à cause de vous les Français, tout simplement le changement d'heure a fait qu'on ne s'est pas attordé nos violons avec l'ancien rappeur Sadek."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 55.06,
+   "b": 70.62,
+   "text": "Donc écoutez, épisode un peu spécial où je suis tout seul. mais écoutez ça va être un épisode que je vais mener tranquillement et on va faire tout simplement pas de débat aujourd'hui parce que je vais pas débattre tout seul c'est un peu bizarre"
+  }
+ ]
+}

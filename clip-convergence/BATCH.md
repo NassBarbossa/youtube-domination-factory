@@ -118,4 +118,23 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 15 | Dites-moi quel sujet, je vous tourne ça (06:45–07:07) | fait (2026-11-09) |
 
 ## Convergence EP.04 — « L'achat de la décennie sur le gold ? » `D0gALJr-y1o` (20 min, 60 i/s) — 15 clips | à faire
+
+| N° | Clip | Statut |
+|---|---|---|
+| 41 | Épisode spécial : tout seul (00:36–01:10) | fait (2026-11-09) |
+| 42 | Ce qui définit une tendance baissière (02:04–02:32) | à faire |
+| 43 | Le bottom parfait, c'est par chance (03:23–04:25) | à faire |
+| 44 | J'ai vendu à 115 et j'ai tenu (03:06–04:58) | à faire |
+| 45 | Milieu de zone ? On attend (06:25–06:59) | à faire |
+| 46 | Baissier sur l'or ? Je ne comprends pas (06:52–07:21) | à faire |
+| 47 | Le gold, l'achat de la décennie ? (07:49–09:07) | à faire |
+| 48 | Réagir plutôt qu'anticiper (08:26–08:58) | à faire |
+| 49 | Qui dit guerre dit pétrole (09:13–09:58) | à faire |
+| 50 | Encore un lundi noir ? (01:10–01:30) | à faire |
+| 51 | Acheter avant le listing (15:06–15:42) | à faire |
+| 52 | T'étais sûr que ça allait monter ? (15:48–16:19) | à faire |
+| 53 | Baissier ? Pas en investissement (16:34–17:03) | à faire |
+| 54 | Faites attention (19:31–19:52) | à faire |
+| 55 | Sans Sadek, vous êtes moins virulents (10:04–10:22) | à faire |
+
 ## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**) — 15 clips, en dernier | à faire
