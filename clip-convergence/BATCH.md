@@ -26,11 +26,11 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 32 | C'est quoi Convergence (03:19–04:03, Nass) | fait (v1, 2026-11-09) |
 | 26 | Changement de structure (22:33–23:08, Sadek) | à faire |
 | 27 | L'or se cote contre le dollar, DXY (23:54–24:34, Sadek) | à faire |
-| 31 | Avoir les nerfs de tenir (06:31–06:57, Sadek) | à faire |
-| 24 | Erreur classique de débutant (28:30–29:05, Sadek) — coupe du CFD | à faire |
+| 31 | Avoir les nerfs de tenir (06:31–06:57, Sadek) | fait (2026-11-09) |
+| 24 | Erreur classique de débutant (28:30–29:05, Sadek) — coupe du CFD | fait (2026-11-09) |
 | 29 | Le gap du week-end (20:46–21:23, Sadek) — coupe avant 21:44 | à faire |
-| 30 | La plus grande correction de l'or (08:56–09:22, Sadek) — chiffres à vérifier sur GC=F | à faire |
-| 34 | Le 10-10, −50 %, 200 jours de range (13:19–13:52, Nass) — chiffres à vérifier | à faire |
+| 30 | La plus grande correction de l'or (08:56–09:22, Sadek) — chiffres à vérifier sur GC=F | fait (2026-11-09) |
+| 34 | Le 10-10, −50 %, 200 jours de range (13:19–13:52, Nass) — chiffres à vérifier | fait (2026-11-09) |
 
 ## Formation 1 — « Pourquoi investir en 2026 » `njfEJFd7hQ8` (9 min 29) — 15 clips, repérage à compléter | à faire
 ## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 15 clips, repérage à compléter | à faire

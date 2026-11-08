@@ -1,0 +1,8 @@
+{"short": "30 — La plus grande correction de l'or depuis 2000 (Convergence EP.01)", "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4", "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json", "raw_to_source": 0, "prescale": 3.2, "sharpen": true, "crops": {"nass": [68, 704, 264, 264], "sadek": [1582, 698, 270, 270]},
+ "screen": {"crop": [380, 230, 1155, 630], "size": [1012, 552], "segments": ["s2", "s3"]},
+ "segments": [
+  {"id": "s1", "speaker": "sadek", "a": 537.90, "b": 544.28, "text": "Maintenant, ce qu'il faut savoir, c'est qu'on a la correction historique la plus grande annuelle sur l'or depuis les années 2000"},
+  {"id": "s2", "speaker": "sadek", "a": 544.44, "b": 547.84, "text": "donc depuis le crash Internet. Ce qui est bien avec les graphiques, c'est que vous pouvez aller vérifier les datas"},
+  {"id": "s3", "speaker": "sadek", "a": 548.88, "b": 554.32, "text": "et qu'on n'a jamais eu une correction aussi profonde. Là, on parle de plus de 18 %, si je ne dis pas de bêtises, Quentin"},
+  {"id": "s4", "speaker": "sadek", "a": 556.48, "b": 560.72, "text": "Du sommet au vraiment... Du haut de la mèche, on est à peu près à 30 %"}
+ ]}

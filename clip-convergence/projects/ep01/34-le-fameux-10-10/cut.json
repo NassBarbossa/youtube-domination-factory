@@ -1,0 +1,83 @@
+{
+ "short": "34 — Le fameux 10-10 (Convergence EP.01)",
+ "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   68,
+   704,
+   264,
+   264
+  ],
+  "sadek": [
+   1582,
+   698,
+   270,
+   270
+  ]
+ },
+ "screen": {
+  "crop": [
+   380,
+   230,
+   1155,
+   630
+  ],
+  "size": [
+   1012,
+   552
+  ],
+  "segments": [
+   "s3",
+   "s4",
+   "s5"
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 799.04,
+   "b": 805.96,
+   "text": "Et donc, pour moi, on a eu cette grosse correction qui s'est passée pas longtemps après le 10-10"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 806.14,
+   "b": 809.58,
+   "text": "Le fameux 10-10, c'est là où beaucoup de comptes ont sauté"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 811.78,
+   "b": 817.42,
+   "text": "Énorme correction sur le BTC et sur l'ensemble de la crypto. Moins 50 %"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 817.94,
+   "b": 822.18,
+   "text": "Après, il y a eu cette phase de range, cette phase-là"
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 826.4,
+   "b": 832.1,
+   "text": "qui a duré quasiment 200 jours, je crois, 200 jours qui a duré cette phase-là"
+  },
+  {
+   "id": "s6",
+   "speaker": "nass",
+   "a": 832.5,
+   "b": 836.82,
+   "text": "Donc, c'était là où même moi, j'étais plutôt bearish"
+  }
+ ]
+}

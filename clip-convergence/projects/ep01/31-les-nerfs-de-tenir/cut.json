@@ -1,0 +1,52 @@
+{
+ "short": "31 — Avoir les nerfs de tenir (Convergence EP.01)",
+ "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   68,
+   704,
+   264,
+   264
+  ],
+  "sadek": [
+   1582,
+   698,
+   270,
+   270
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 392.38,
+   "b": 398.56,
+   "text": "c'est très compliqué à trader et je comprends qu'il y ait beaucoup de traders qui vont lâcher l'affaire en fait"
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 399.04,
+   "b": 403.4,
+   "text": "tout simplement comme ce qui s'est passé sur le BTC quand on était aux environs des 60 000"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 405.72,
+   "b": 412.26,
+   "text": "Et il y a un moment où il faut avoir les nerfs de tenir ces trades et de comprendre que les actifs qu'on trade ont un historique"
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 412.26,
+   "b": 416.38,
+   "text": "et il ne faut pas se laisser déborder par le momentum actuel"
+  }
+ ]
+}

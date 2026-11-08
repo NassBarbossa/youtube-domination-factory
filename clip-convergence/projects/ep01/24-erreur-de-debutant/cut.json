@@ -1,0 +1,11 @@
+{"short": "24 — Une erreur classique de débutant (Convergence EP.01)", "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4", "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json", "raw_to_source": 0, "prescale": 3.2, "sharpen": true, "crops": {"nass": [68, 704, 264, 264], "sadek": [1582, 698, 270, 270]},
+ "segments": [
+  {"id": "s1", "speaker": "sadek", "a": 1710.30, "b": 1714.06, "text": "Parce que je ne suis pas là pour faire le mec qui a réussi de ouf aussi"},
+  {"id": "s2", "speaker": "sadek", "a": 1714.12, "b": 1718.20, "text": "J'ai perdu 11 000 dollars, c'était mercredi"},
+  {"id": "s3", "speaker": "sadek", "a": 1719.08, "b": 1726.66, "text": "justement en forçant un setup sur lequel je n'ai pas accepté d'être en perte"},
+  {"id": "s4", "speaker": "sadek", "a": 1732.56, "b": 1735.44, "text": "Et j'ai fait une erreur classique de débutant"},
+  {"id": "s5", "speaker": "sadek", "a": 1737.12, "b": 1738.78, "text": "triplé mon exposition au marché"},
+  {"id": "s6", "speaker": "sadek", "a": 1738.96, "b": 1743.06, "text": "Et sur un truc où je perdais 3 000 dollars"},
+  {"id": "s7", "speaker": "sadek", "a": 1743.88, "b": 1745.54, "text": "au final, je me retrouve à moins 11 000"},
+  {"id": "s8", "speaker": "sadek", "a": 1745.72, "b": 1749.92, "text": "Donc ne croyez pas, on reste des anciens rappeurs et des anciens plombiers aussi"}
+ ]}

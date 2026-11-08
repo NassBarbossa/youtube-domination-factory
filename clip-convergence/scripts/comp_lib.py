@@ -152,8 +152,9 @@ class Comp:
         s = d / self.VW[cam]
         return round(cx - d / 2, 1), round(cy - d / 2, 1), round(s, 4)
 
-    def kw(self, id_, html, css, t_in, t_out, anim="pop"):
-        self.kws.append(dict(id=id_, html=html, css=css, t_in=t_in, t_out=t_out, anim=anim))
+    def kw(self, id_, html, css, t_in, t_out, anim="pop", attrs=""):
+        """attrs : attributs HTML en plus (ex. 'data-layout-allow-overlap' quand deux mots clés partagent une zone sans être visibles ensemble)."""
+        self.kws.append(dict(id=id_, html=html, css=css, t_in=t_in, t_out=t_out, anim=anim, attrs=attrs))
 
     # ---------- SFX ----------
     def _sfx_files(self):
@@ -292,7 +293,7 @@ class Comp:
         logo_path = re.search(r"<path[^>]*/>", LOGO.read_text(encoding="utf-8")).group(0)
         SS = STATES[self.screen_state] if self.screen_state in STATES and STATES[self.screen_state].get("screen") else dict(sx=90, sy=1151, sw=900, sh=491)
         kw_css = "\n    ".join(f'#{k["id"]} {{ {k["css"]} }}' for k in self.kws)
-        kw_html = "\n    ".join(f'<div id="{k["id"]}" class="kw" style="opacity:0">{k["html"]}</div>' for k in self.kws)
+        kw_html = "\n    ".join(f'<div id="{k["id"]}" class="kw" style="opacity:0" {k.get("attrs", "")}>{k["html"]}</div>' for k in self.kws)
         stage = f"""<template>
   <style>
     @font-face {{ font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }}
