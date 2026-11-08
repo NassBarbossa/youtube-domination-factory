@@ -1,0 +1,39 @@
+{
+ "short": "JA-02 — Le verdict : du surplace (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 43.02,
+   "b": 53.98,
+   "text": "Donc tout simplement, quel est le verdict ? Est -ce que j'ai réussi mon challenge ? Tu as vu sur la miniature, ça ne s'est pas passé comme prévu. Est -ce que ça s'est passé aussi pire que ça ? Eh bien, c'est ce qu'on va voir."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 53.98,
+   "b": 58.08,
+   "text": "Donc, j'ai commencé avec à peu près 10 300 dollars."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 70.54,
+   "b": 76.92,
+   "text": "Donc, c'est du surplace. Tout simplement, plus 1 ,2 % en 20 jours, c'est du surplace."
+  }
+ ]
+}
