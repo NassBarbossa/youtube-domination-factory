@@ -1,0 +1,114 @@
+<template>
+  <style>
+    @font-face { font-family: 'Syne'; src: url('assets/fonts/Syne.ttf') format('truetype'); font-weight: 400 800; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter.ttf') format('truetype'); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; }
+    #capwrap { position: absolute; left: 0; right: 0; top: 0; height: 0; overflow: visible; }
+    .grp { position: absolute; left: 130px; right: 130px; top: -36px; text-align: center; font: 800 66px/1.08 'Inter';
+            letter-spacing: -0.01em; color: #FFFFFF; overflow: visible; }
+    .w { position: relative; display: inline-block; }
+    .w i { position: absolute; left: 0; right: 0; bottom: -8px; height: 9px; border-radius: 5px; transform-origin: 0 50%; transform: scaleX(0); }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="capwrap" data-motion-blur="off">
+    <div id="cg0" class="clip grp" data-start="9.195" data-duration="0.78"><span class="w" id="c0w0">vous<i style="background:#FF6B35"></i></span> <span class="w" id="c0w1">le<i style="background:#FF6B35"></i></span> <span class="w" id="c0w2">savez,<i style="background:#FF6B35"></i></span></div>
+    <div id="cg1" class="clip grp" data-start="9.975" data-duration="0.52"><span class="w" id="c1w0">ici,<i style="background:#FF6B35"></i></span></div>
+    <div id="cg2" class="clip grp" data-start="10.495" data-duration="1.14"><span class="w" id="c2w0">on<i style="background:#FF6B35"></i></span> <span class="w" id="c2w1">va<i style="background:#FF6B35"></i></span> <span class="w" id="c2w2">jouer<i style="background:#FF6B35"></i></span></div>
+    <div id="cg3" class="clip grp" data-start="11.635" data-duration="0.72"><span class="w" id="c3w0">la<i style="background:#FF6B35"></i></span> <span class="w" id="c3w1">carte<i style="background:#FF6B35"></i></span> <span class="w" id="c3w2">de<i style="background:#FF6B35"></i></span></div>
+    <div id="cg4" class="clip grp" data-start="12.355" data-duration="1.09"><span class="w" id="c4w0">la<i style="background:#FF6B35"></i></span> <span class="w" id="c4w1">transparence.<i style="background:#FF6B35"></i></span></div>
+    <div id="cg5" class="clip grp" data-start="13.515" data-duration="0.94"><span class="w" id="c5w0">Je<i style="background:#FF6B35"></i></span> <span class="w" id="c5w1">pense<i style="background:#FF6B35"></i></span> <span class="w" id="c5w2">que<i style="background:#FF6B35"></i></span></div>
+    <div id="cg6" class="clip grp" data-start="14.455" data-duration="0.42"><span class="w" id="c6w0">je<i style="background:#FF6B35"></i></span> <span class="w" id="c6w1">suis<i style="background:#FF6B35"></i></span> <span class="w" id="c6w2">l'un<i style="background:#FF6B35"></i></span></div>
+    <div id="cg7" class="clip grp" data-start="14.875" data-duration="0.38"><span class="w" id="c7w0">des<i style="background:#FF6B35"></i></span> <span class="w" id="c7w1">plus<i style="background:#FF6B35"></i></span></div>
+    <div id="cg8" class="clip grp" data-start="15.255" data-duration="0.79"><span class="w" id="c8w0">transparents.<i style="background:#FF6B35"></i></span></div>
+    <div id="cg9" class="clip grp" data-start="16.045" data-duration="0.24"><span class="w" id="c9w0">J'ai<i style="background:#FF6B35"></i></span> <span class="w" id="c9w1">tout<i style="background:#FF6B35"></i></span></div>
+    <div id="cg10" class="clip grp" data-start="16.285" data-duration="0.78"><span class="w" id="c10w0">partagé,<i style="background:#FF6B35"></i></span> <span class="w" id="c10w1">j'ai<i style="background:#FF6B35"></i></span></div>
+    <div id="cg11" class="clip grp" data-start="17.065" data-duration="0.5"><span class="w" id="c11w0">tout<i style="background:#FF6B35"></i></span> <span class="w" id="c11w1">fait.<i style="background:#FF6B35"></i></span></div>
+    <div id="cg12" class="clip grp" data-start="17.565" data-duration="0.38"><span class="w" id="c12w0">Et<i style="background:#FF6B35"></i></span> <span class="w" id="c12w1">donc<i style="background:#FF6B35"></i></span> <span class="w" id="c12w2">du<i style="background:#FF6B35"></i></span></div>
+    <div id="cg13" class="clip grp" data-start="17.945" data-duration="0.36"><span class="w" id="c13w0">coup,<i style="background:#FF6B35"></i></span></div>
+    <div id="cg14" class="clip grp" data-start="18.305" data-duration="0.58"><span class="w" id="c14w0">c'est<i style="background:#FF6B35"></i></span> <span class="w" id="c14w1">l'heure<i style="background:#FF6B35"></i></span> <span class="w" id="c14w2">de<i style="background:#FF6B35"></i></span></div>
+    <div id="cg15" class="clip grp" data-start="18.885" data-duration="0.895"><span class="w" id="c15w0">faire<i style="background:#FF6B35"></i></span> <span class="w" id="c15w1">le<i style="background:#FF6B35"></i></span> <span class="w" id="c15w2">bilan.<i style="background:#FF6B35"></i></span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cg0", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 9.195);
+    tl.fromTo("#c0w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 9.245);
+    tl.to("#c0w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 9.405);
+    tl.fromTo("#c0w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.11, ease: "power2.out" }, 9.405);
+    tl.to("#c0w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 9.525);
+    tl.fromTo("#c0w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 9.525);
+    tl.fromTo("#cg1", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 9.975);
+    tl.fromTo("#c1w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 10.025);
+    tl.fromTo("#cg2", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 10.495);
+    tl.fromTo("#c2w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 10.545);
+    tl.to("#c2w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 10.965);
+    tl.fromTo("#c2w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 10.965);
+    tl.to("#c2w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 11.145);
+    tl.fromTo("#c2w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 11.145);
+    tl.fromTo("#cg3", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 11.635);
+    tl.fromTo("#c3w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 11.685);
+    tl.to("#c3w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 11.925);
+    tl.fromTo("#c3w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 11.925);
+    tl.to("#c3w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 12.205);
+    tl.fromTo("#c3w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 12.205);
+    tl.fromTo("#cg4", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 12.355);
+    tl.fromTo("#c4w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.05, ease: "power2.out" }, 12.405);
+    tl.to("#c4w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 12.465);
+    tl.fromTo("#c4w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 12.465);
+    tl.fromTo("#cg5", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 13.515);
+    tl.fromTo("#c5w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 13.565);
+    tl.to("#c5w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 14.005);
+    tl.fromTo("#c5w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 14.005);
+    tl.to("#c5w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 14.325);
+    tl.fromTo("#c5w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 14.325);
+    tl.fromTo("#cg6", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 14.455);
+    tl.fromTo("#c6w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.11, ease: "power2.out" }, 14.505);
+    tl.to("#c6w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 14.625);
+    tl.fromTo("#c6w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.09, ease: "power2.out" }, 14.625);
+    tl.to("#c6w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 14.725);
+    tl.fromTo("#c6w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 14.725);
+    tl.fromTo("#cg7", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 14.875);
+    tl.fromTo("#c7w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 14.925);
+    tl.to("#c7w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 15.065);
+    tl.fromTo("#c7w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 15.065);
+    tl.fromTo("#cg8", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 15.255);
+    tl.fromTo("#c8w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 15.305);
+    tl.fromTo("#cg9", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 16.045);
+    tl.fromTo("#c9w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.11, ease: "power2.out" }, 16.095);
+    tl.to("#c9w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 16.215);
+    tl.fromTo("#c9w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 16.215);
+    tl.fromTo("#cg10", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 16.285);
+    tl.fromTo("#c10w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 16.335);
+    tl.to("#c10w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 16.995);
+    tl.fromTo("#c10w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 16.995);
+    tl.fromTo("#cg11", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 17.065);
+    tl.fromTo("#c11w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.115);
+    tl.to("#c11w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 17.255);
+    tl.fromTo("#c11w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.255);
+    tl.fromTo("#cg12", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 17.565);
+    tl.fromTo("#c12w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.03, ease: "power2.out" }, 17.615);
+    tl.to("#c12w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 17.655);
+    tl.fromTo("#c12w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.655);
+    tl.to("#c12w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 17.855);
+    tl.fromTo("#c12w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.855);
+    tl.fromTo("#cg13", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 17.945);
+    tl.fromTo("#c13w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.995);
+    tl.fromTo("#cg14", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 18.305);
+    tl.fromTo("#c14w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 18.355);
+    tl.to("#c14w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 18.535);
+    tl.fromTo("#c14w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 18.535);
+    tl.to("#c14w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 18.755);
+    tl.fromTo("#c14w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 18.755);
+    tl.fromTo("#cg15", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 18.885);
+    tl.fromTo("#c15w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 18.935);
+    tl.to("#c15w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 19.175);
+    tl.fromTo("#c15w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 19.175);
+    tl.to("#c15w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 19.415);
+    tl.fromTo("#c15w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 19.415);
+    tl.fromTo("#capwrap", { y: 1460, scale: 1, transformOrigin: "50% 0%" }, { y: 1460, scale: 1, duration: 0.01 }, 0);
+    tl.to("#capwrap", { y: 1600, scale: 1.25, duration: 0.6, ease: "power3.inOut" }, 8.54);
+    tl.to("#capwrap", { y: 1640, scale: 1.25, duration: 0.6, ease: "power3.inOut" }, 15.82);
+    tl.to("#capwrap", { y: 1640, scale: 1.25, duration: 0.6, ease: "power3.inOut" }, 17.26);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>

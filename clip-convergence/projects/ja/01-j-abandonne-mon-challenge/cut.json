@@ -1,0 +1,46 @@
+{
+ "short": "JA-01 — J'abandonne mon challenge (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 0.0,
+   "b": 8.72,
+   "text": "Les gars, j'abandonne mon challenge. Donc dans cette vidéo, je vais vous partager toutes les raisons de pourquoi j'arrête ce challenge 10K tous en cas."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 9.0,
+   "b": 16.26,
+   "text": "Comme vous le savez, ici, on va jouer la carte de la transparence. Je pense que je suis l'un des plus transparents."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 22.86,
+   "b": 24.28,
+   "text": "J'ai tout partagé, j'ai tout fait."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 24.76,
+   "b": 26.86,
+   "text": "Et donc du coup, c'est l'heure de faire le bilan."
+  }
+ ]
+}
