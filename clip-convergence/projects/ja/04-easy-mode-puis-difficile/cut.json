@@ -1,0 +1,32 @@
+{
+ "short": "JA-04 — Easy mode, puis difficile (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 97.64,
+   "b": 110.64,
+   "text": "Moi, je pense que je suis revenu un petit peu trop tard. En juillet 2026, c'était Easy Mode, le marché. Et après, on va parler de ma ligue et tout ça. Je suis arrivé en août, c'était encore Easy Mode."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 110.64,
+   "b": 124.28,
+   "text": "donc j'ai pu faire pas mal d'argent, pour ceux qui sont dans le canal Telegram, vous avez vu, et ensuite, début septembre, ça allait, j'ai commencé encore un peu à faire, et là, ça s'est compliqué, c'est redevenu un marché difficile."
+  }
+ ]
+}
