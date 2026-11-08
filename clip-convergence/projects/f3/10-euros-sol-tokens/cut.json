@@ -1,0 +1,62 @@
+{
+ "short": "F3-10 — Euros → SOL → tokens (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 292.38,
+   "b": 300.8,
+   "text": "Tu vas aller sur une plateforme, sur un échange centralisé du style OKEx et tu vas les convertir dans mon exemple en SOL."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 301.1,
+   "b": 308.54,
+   "text": "Tu prends tes euros, tu les convertis en crypto, en SOL. Rester concentré, ce n'est pas compliqué, juste rester concentré."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 309.02,
+   "b": 317.14,
+   "text": "Et ensuite, ces sols, tu vas les prendre et tu vas les mettre dans d'autres tokens pour les faire fructifier. OK ? On y reviendra après."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 317.44,
+   "b": 331.32,
+   "text": "Mais tu achètes parce qu'en fait, les nouvelles cryptos qui sont créées, tu vois, dans le monde décentralisé, eh bien, elles sont par exemple, là dans mon exemple, sur la blockchain Solana. OK ? Donc, tu as besoin de sols pour pouvoir acheter ces tokens."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s1",
+   "s2"
+  ]
+ }
+}

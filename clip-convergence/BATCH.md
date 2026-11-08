@@ -90,7 +90,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 07 | Le DEX, c'est le far west (03:38–04:02) | fait (2026-11-09) |
 | 08 | « C'est moi l'indien » (04:03–04:26) | fait (2026-11-09) |
 | 09 | La méthode IOC (04:26–04:52) | fait (2026-11-09) |
-| 10 | Euros → SOL → tokens (04:52–05:31) | à faire |
+| 10 | Euros → SOL → tokens (04:52–05:31) | fait (2026-11-09) |
 | 11 | En dehors des exchanges, avant les autres (07:36–08:02) | à faire |
 | 12 | Vous avez deux choix (08:03–08:32) | à faire |
 | 13 | Vous êtes un kiffeur ? C'est OK (08:33–08:55) | à faire |
