@@ -1,0 +1,53 @@
+{
+ "short": "57 — Pile ou face (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : deux ronds caméra de 210 px en bas (Nass à gauche, Sadek à droite)",
+ "prescale": 4.4,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   30,
+   448,
+   210,
+   210
+  ],
+  "sadek": [
+   1040,
+   448,
+   210,
+   210
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 1121.14,
+   "b": 1128.22,
+   "text": "? on s'est fait éclater sur la semaine pas la semaine qui est passée, la semaine d'avant"
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 1128.8,
+   "b": 1141.42,
+   "text": "parce qu'en fait ce qui se passe c'est que clairement il y a trop d'indécision, tu prennes à l'achat ou à la vente comme on a des petits stop loss tu vas être touché c'est compliqué, c'est un peu pile ou face"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 1142.0,
+   "b": 1146.3,
+   "text": "donc là on a pris la décision de se concentrer plus sur l'éducatif et bien faire comprendre aux gens"
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 1158.4,
+   "b": 1164.36,
+   "text": "j'ai pas envie de trader tant qu'on sort pas de cette zone là j'ai besoin d'une tendance"
+  }
+ ]
+}
