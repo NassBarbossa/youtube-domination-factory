@@ -1,0 +1,39 @@
+{
+ "short": "F2-10 — Imagine 200 € par mois (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 339.52,
+   "b": 353.4,
+   "text": "mais maintenant imagine imagine t'es un cadre, imagine tu gagnes un peu mieux ta vie, imagine t'as plus de capital de base, je t'avais mis juste 200 euros ou alors 500 euros certains de ma communauté ou alors les riches de ma communauté, 1000 euros"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 363.7,
+   "b": 368.56,
+   "text": "Donc, avec l'exemple juste de 200 euros, qui me semble un peu plus accessible pour la plupart des gens."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 369.36,
+   "b": 380.6,
+   "text": "Donc, cette fois -ci, tu n'aurais pas mis 12 000 euros, tu aurais mis 24 000 euros, et 54 000 pour la bourse américaine, 55 000 pour l'or, le bitcoin évidemment 300 000,"
+  }
+ ]
+}
