@@ -73,3 +73,5 @@ python {repo}/clip-convergence/scripts/qa_render.py <fichier.mp4> --duration <D>
 | `snapshot` dans une chaîne `&&` avec `grep` : la chaîne s'arrête | ne pas conditionner la suite sur un `grep` de la sortie |
 | Pas de brut OBS sur la machine | construire la v1 depuis le téléchargement YouTube 1080p (même mise en page), le dire dans SPEC / REVIEW, refaire depuis le brut ensuite : `source` et `raw_to_source` seuls changent |
 | Sur Mac, faster-whisper n'est pas installé | `qa_voice_mlx.py` (mlx-whisper, GPU) ; scripts OpenCV via `uv run --python 3.12 --with numpy,opencv-python` |
+| Une languette verte ou or sous un médaillon | l'étiquette gravée NASS / SADEK mord sur le bas du cercle : rayon du crop = haut de l'étiquette + 2 px − centre |
+| Le mot clé remplace un mot qui formait un groupe de sous-titres à lui seul | le groupe précédent reste affiché sous le mot clé (35 v5, « c'est mieux de » sous PATIENTER) | quand le groupe du mot clé est vidé, c'est le groupe précédent du même morceau qui s'efface avant le mot clé (`PAT_GI = gi - 1`) |

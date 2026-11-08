@@ -1,0 +1,24 @@
+{
+  "short": "21 — « Montrez-moi des preuves » (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "sharpen": true,
+  "crops": {"nass": [68, 704, 264, 264], "sadek": [1582, 698, 270, 270]},
+  "screen": {"crop": [380, 230, 1155, 630], "size": [1012, 552], "segments": ["s2", "s3", "s6"]},
+  "segments": [
+    {"id": "s1", "speaker": "nass", "a": 858.60, "b": 862.84,
+     "text": "le fait que l'or montait, alors que BTC c'était censé être une réserve de valeur"},
+    {"id": "s2", "speaker": "nass", "a": 862.84, "b": 870.34,
+     "text": "pendant tout ce temps là on avait l'or qui montait, on peut comparer l'indice si vous voulez pour montrer XAU à USD"},
+    {"id": "s3", "speaker": "nass", "a": 872.08, "b": 878.00,
+     "text": "pendant voilà toute cette phase là où le bitcoin il a craché, l'or faisait que de monter dans toute cette descente"},
+    {"id": "s4", "speaker": "nass", "a": 879.60, "b": 884.96,
+     "text": "pour moi quand on dit l'or, le bitcoin c'est une réserve de valeur, pour moi j'ai pas de preuves"},
+    {"id": "s5", "speaker": "nass", "a": 884.96, "b": 891.10,
+     "text": "montrez-moi des preuves pour me dire que le bitcoin c'est une réserve de valeur, moi je vous montre que c'est pas une réserve de valeur"},
+    {"id": "s6", "speaker": "nass", "a": 891.10, "b": 897.14,
+     "text": "pendant que BTC était en train de s'éclater et que Trump et l'Iran s'échauffaient, l'or, le montait"}
+  ]
+}

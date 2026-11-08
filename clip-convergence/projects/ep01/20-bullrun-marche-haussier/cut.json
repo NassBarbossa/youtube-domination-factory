@@ -1,0 +1,81 @@
+{
+  "short": "20 — Bullrun = marché haussier (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "sharpen": true,
+  "crops": {
+    "nass": [
+      68,
+      704,
+      264,
+      264
+    ],
+    "sadek": [
+      1582,
+      698,
+      270,
+      270
+    ]
+  },
+  "screen": {
+    "crop": [
+      380,
+      230,
+      1155,
+      630
+    ],
+    "size": [
+      1012,
+      552
+    ],
+    "segments": [
+      "s7"
+    ]
+  },
+  "segments": [
+    {
+      "id": "s1",
+      "speaker": "nass",
+      "a": 768.46,
+      "b": 775.28,
+      "text": "il y a quand même des choses qui me fascinent les gars sur l'investissement, encore plus sur la crypto"
+    },
+    {
+      "id": "s2",
+      "speaker": "nass",
+      "a": 775.76,
+      "b": 780.06,
+      "text": "il y a des gens qui disent tu penses qu'on va avoir un bullrun, tous les jours on m'écrit"
+    },
+    {
+      "id": "s3",
+      "speaker": "nass",
+      "a": 780.52,
+      "b": 790.76,
+      "text": "ou je ne vois pas, c'est dans des groupes, tu penses que c'est reparti le Bitcoin, les gars je rappelle pour moi c'est ma définition : bullrun pour moi c'est un marché haussier"
+    },
+    {
+      "id": "s5",
+      "speaker": "nass",
+      "a": 791.68,
+      "b": 795.08,
+      "text": "j'ai capté avec le temps, avec les années, que c'est un problème de définition"
+    },
+    {
+      "id": "s6",
+      "speaker": "nass",
+      "a": 795.18,
+      "b": 798.5,
+      "text": "Mais pour moi, un bullrun, c'est un marché haussier"
+    },
+    {
+      "id": "s7",
+      "speaker": "nass",
+      "a": 942.64,
+      "b": 951.04,
+      "text": "le bitcoin ne tombait pas, donc pour moi est-ce que le Bitcoin va repartir un jour ? Je ne sais pas, vous ne voyez pas devant vous qu'il est déjà en train de repartir"
+    }
+  ]
+}

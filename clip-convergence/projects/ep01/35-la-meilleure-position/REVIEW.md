@@ -30,4 +30,28 @@
   investisseurs ». À l'oreille de Nass.
 
 ## Retours de Nass
-- (en attente)
+- 2026-11-07 : « Mets les caméras plus grosses, les positionnements c'est pas optimisé pour les formats courts. » → v2 : médaillons
+  de 660 à 740 px pour celui qui parle (440 à 520 pour l'autre), prescale 2,4 en lanczos (échelle CSS ≈ 1), tout resserré
+  entre y 70 et 1560, accroche descendue à 740. L'image des caméras est plus douce (source de ~300 px grossie 2,4 ×) ;
+  rendu v2 mesuré bon. En attente de son avis sur la v2.
+- 2026-11-07, sur la v2 (capture d'écran) : « les écrans sont mal positionnés, les ronds des caméras sont trop petits ».
+  → v3 : pleine hauteur, celui qui parle fait 900 à 940 px, l'autre 620 à 650, plus de zone vide en bas ; prescale 3,2 +
+  accentuation légère (`sharpen` dans cut.json) ; recadrages resserrés au-dessus des étiquettes gravées (rayon 132 / 135).
+  Rendu v3 mesuré bon. En attente de son avis.
+- 2026-11-07, maquette dessinée sur la capture de la v2 (« mets comme ça ») : médaillon de Nass posé sur la droite verte,
+  droite verte en vraie diagonale (630 à gauche → 830 à droite), sous-titres dans la bande, droite or horizontale, Sadek
+  grand au milieu de la moitié basse. → v4 : états S/S+ nass=(540, 420, 620-640), vert (630, 830), cap 870, or 960, sadek=
+  (540, 1440, 800-840) ; N/N+ en miroir (Nass 800-840 à 480, vert (880, 1080), or 1210, Sadek 620-650 à 1560) ; accroche à 900.
+  Rendu v4 mesuré bon. En attente de son avis.
+- 2026-11-07, sur la v4 : « en bas il y a 10 km d'espace ; même espace au-dessus de ma caméra qu'en dessous de celle du bas,
+  même nombre de pixels entre les caméras et les droites et entre les droites ». → v5 : mise en page calculée (`sym()` dans
+  make_comp.py) : un seul écart e partout (haut, caméra→droite, bande des sous-titres, droite→caméra, bas), droites
+  horizontales. Parole : parleur 740-760 px, l'autre 660, e = 100-104. Accroche : 620/620, bande de 3e (e = 97). Écran (35) :
+  Nass 480-500, écran 900 × 491, Sadek 520, e = 66-71. Sous-titres 66 px. Rendu v5 mesuré bon. En attente de son avis.
+- 2026-11-08, « retravaille la première » après la v6 du 36 → v6 : Nass seul dès l'ouverture de l'écran (état SOLO_E : caméra
+  de 860 px en haut, écart 138, écran 900 × 491 puis sous-titres × 1,25 dans la bande, droites 1137 / 1782), puis SOLO_N sans
+  écran pour « comme dirait un certain philosophe » (guillemets « » à l'encre dans la bande, trait or sur « position »). Retour
+  aux deux caméras à 21,47 s (1,3 s avant Sadek) et les deux restent jusqu'à la fin : la chute est un échange, pas un
+  monologue. SFX : whoosh (écran), pop (PATIENTER), whoosh grave (retour des deux caméras), impact. Corrigé au passage :
+  « patienter » formait un groupe seul, le sous-titre « c'est mieux de » restait affiché sous le mot clé ; il s'efface
+  maintenant 0,08 s avant. Rendu v6 mesuré bon. En attente de son avis.

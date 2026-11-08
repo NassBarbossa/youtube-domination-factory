@@ -3,19 +3,19 @@
   "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
   "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
   "raw_to_source": 0,
-  "prescale": 1.45,
+  "prescale": 3.2,
   "crops": {
     "nass": [
-      52,
-      687,
-      298,
-      298
+      68,
+      704,
+      264,
+      264
     ],
     "sadek": [
-      1564,
-      680,
-      304,
-      304
+      1582,
+      698,
+      270,
+      270
     ]
   },
   "screen": {
@@ -77,5 +77,6 @@
       "b": 1212.98,
       "text": "Exactement. Je suis 100 % en ligne avec cette phrase de philosophe"
     }
-  ]
+  ],
+  "sharpen": true
 }

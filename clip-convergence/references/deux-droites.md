@@ -63,6 +63,13 @@ v1 du 2026-10-28, en attente du retour de Nass).
 - Les deux ronds deviennent des **médaillons** : crop carré à l'intérieur de l'anneau gravé (rayon − 18 px, les étiquettes
   NASS / SADEK restent dehors), masque CSS rond, anneau de 14 px vert (Nass) ou or (Sadek). Posés sur le papier, Nass au-dessus
   de la droite verte, Sadek sous la droite or. Grossissement total ≤ 1,6 (diamètre ≤ 1,6 × côté du crop).
+- **Taille (retours de Nass du 2026-11-07 : « caméras plus grosses », puis « les ronds sont trop petits, le bas est vide »)** :
+  pleine hauteur. Celui qui parle fait 900 à 940 px de diamètre, l'autre 620 à 650 ; l'image va jusqu'en bas (la zone sous
+  1670 n'est plus réservée pour les médaillons, seulement pour le texte). `prescale` 3,2 et `"sharpen": true` dans `cut.json`
+  (agrandissement lanczos + accentuation légère dans `build_media.py`), échelle CSS ≈ 1. Avec une source de ~300 px l'image
+  est douce : Nass préfère ça à des ronds petits. Les scènes à grandes caméras (« 2 · Live », vertical OBS) restent préférables.
+  Recadrage : rayon = haut de l'étiquette gravée + 2 px − centre (mesuré : 132 px pour Nass, 135 pour Sadek sur l'EP.01).
+  Géométrie : `projects/ep01/36-arreter-le-tgv/make_comp.py` (états H, N, N+, S, S+, E, E+).
 - **L'écran réel de Nass** occupe la bande quand il explique (états E / E+ : droites comme CN / CN+, boîte 34, 600, 1012 × 552,
   Nass en haut à gauche, Sadek en bas à droite, sous-titres à 1218).
 - Sans écran : états H, N (comme B), S (comme A), médaillons centrés. Un mot clé peut remplacer le dernier sous-titre à la
@@ -151,3 +158,19 @@ v1 du 2026-10-28, en attente du retour de Nass).
 ## Interdits
 
 Fond sombre, halo, néon, dégradé, carte en verre, pastille, icône générique, logo collé dans un coin, B-roll, avatar ou voix IA, musique, coupe sèche, secousse d'une image, texte qui bouge pendant qu'on le lit, chiffre non sourcé, étiquettes du live gardées dans le cadre (NASS / SADEK / LIVE gravés, bordures).
+
+### v5 : écarts égaux (demande de Nass, 2026-11-07)
+Règle : un seul écart e, identique au-dessus de la caméra du haut, entre cette caméra et la droite verte, entre les deux
+droites (bande des sous-titres), entre la droite or et la caméra du bas, et sous la caméra du bas : 5e + d_haut + d_bas = 1920.
+Droites horizontales. Celui qui parle fait 740 à 760 px, l'autre 660 (e ≈ 100). Accroche : 620 / 620 avec une bande de 3e pour
+les deux lignes du titre. État écran : Nass 480 à 500 en haut à gauche, écran 900 × 491 puis sous-titres dans la bande, Sadek 520
+en bas à droite, e ≈ 70. Tout est calculé par `sym()` et `sym_screen()` dans `projects/ep01/36-arreter-le-tgv/make_comp.py`.
+
+### Monologues : une seule caméra (demande de Nass, 2026-11-07)
+Dès qu'un seul parle longtemps, l'autre caméra disparaît : états `SOLO_S` / `SOLO_N` (`solo()` dans make_comp.py), caméra de
+900 px (940 au punch-in) en haut avec un écart de 130, droite verte à 1160, bande jusqu'à la droite or à 1790, zone
+d'illustrations (90, 1180, 900 × 300) et sous-titres à 1600 agrandis × 1,25. L'autre caméra se range derrière celle qui parle
+(opacité 0, 400 px). Règle de passe de parole : on revient aux deux caméras 1,3 s avant que l'autre parle, et on passe à sa
+caméra seule 0,4 s après son premier mot. Dans la bande, une illustration à l'encre par image forte des mots (train pour
+« TGV », tendance qui se dessine pour « the trend is your friend », bougies pour « casse un niveau »), SVG animé, couleurs de
+la DA, jamais de B-roll. Exemple complet : `projects/ep01/36-arreter-le-tgv/make_comp.py`.

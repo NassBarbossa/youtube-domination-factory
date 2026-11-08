@@ -3,7 +3,7 @@
     @font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }
     #root { position: absolute; inset: 0; }
     #capwrap { position: absolute; left: 0; right: 0; top: 0; height: 0; overflow: visible; }
-    .grp { position: absolute; left: 130px; right: 130px; top: -40px; text-align: center; font: 800 70px/1.08 'Inter Tight';
+    .grp { position: absolute; left: 130px; right: 130px; top: -36px; text-align: center; font: 800 66px/1.08 'Inter Tight';
             letter-spacing: -0.01em; color: #0B0E11; overflow: visible; }
     .w { position: relative; display: inline-block; }
     .w i { position: absolute; left: 0; right: 0; bottom: -8px; height: 9px; border-radius: 5px; transform-origin: 0 50%; transform: scaleX(0); }
@@ -25,7 +25,7 @@
     <div id="cg12" class="clip grp" data-start="13.385" data-duration="0.64"><span class="w" id="c12w0">encore<i style="background:#0F8A5F"></i></span> <span class="w" id="c12w1">là,<i style="background:#0F8A5F"></i></span></div>
     <div id="cg13" class="clip grp" data-start="14.025" data-duration="0.68"><span class="w" id="c13w0">pourquoi<i style="background:#0F8A5F"></i></span> <span class="w" id="c13w1">pas<i style="background:#0F8A5F"></i></span> <span class="w" id="c13w2">?<i style="background:#0F8A5F"></i></span></div>
     <div id="cg14" class="clip grp" data-start="14.705" data-duration="0.81"><span class="w" id="c14w0">Mais<i style="background:#0F8A5F"></i></span> <span class="w" id="c14w1">là,<i style="background:#0F8A5F"></i></span></div>
-    <div id="cg15" class="clip grp" data-start="15.665" data-duration="1.03"><span class="w" id="c15w0">c'est<i style="background:#0F8A5F"></i></span> <span class="w" id="c15w1">mieux<i style="background:#0F8A5F"></i></span> <span class="w" id="c15w2">de<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg15" class="clip grp" data-start="15.665" data-duration="0.77"><span class="w" id="c15w0">c'est<i style="background:#0F8A5F"></i></span> <span class="w" id="c15w1">mieux<i style="background:#0F8A5F"></i></span> <span class="w" id="c15w2">de<i style="background:#0F8A5F"></i></span></div>
     <div id="cg16" class="clip grp" data-start="17.295" data-duration="1.06"><span class="w" id="c16w0">Comme<i style="background:#0F8A5F"></i></span> <span class="w" id="c16w1">dirait<i style="background:#0F8A5F"></i></span> <span class="w" id="c16w2">un<i style="background:#0F8A5F"></i></span></div>
     <div id="cg17" class="clip grp" data-start="18.355" data-duration="0.48"><span class="w" id="c17w0">certain<i style="background:#0F8A5F"></i></span></div>
     <div id="cg18" class="clip grp" data-start="18.835" data-duration="1.07"><span class="w" id="c18w0">philosophe,<i style="background:#0F8A5F"></i></span></div>
@@ -212,12 +212,11 @@
     tl.fromTo("#c34w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 30.995);
     tl.fromTo("#cg35", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 31.125);
     tl.fromTo("#c35w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 31.175);
-    tl.fromTo("#capwrap", { y: 660 }, { y: 660, duration: 0.01 }, 0);
-    tl.to("#capwrap", { y: 1218, duration: 0.6, ease: "power3.inOut" }, 2.24);
-    tl.to("#capwrap", { y: 1218, duration: 0.6, ease: "power3.inOut" }, 9.58);
-    tl.to("#capwrap", { y: 850, duration: 0.6, ease: "power3.inOut" }, 17.08);
-    tl.to("#capwrap", { y: 705, duration: 0.6, ease: "power3.inOut" }, 22.47);
-    tl.to("#capwrap", { y: 850, duration: 0.6, ease: "power3.inOut" }, 27.0);
+    tl.fromTo("#capwrap", { y: 960, scale: 1, transformOrigin: "50% 0%" }, { y: 960, scale: 1, duration: 0.01 }, 0);
+    tl.to("#capwrap", { y: 1713, scale: 1.25, duration: 0.6, ease: "power3.inOut" }, 2.24);
+    tl.to("#capwrap", { y: 1600, scale: 1.25, duration: 0.6, ease: "power3.inOut" }, 17.08);
+    tl.to("#capwrap", { y: 920, scale: 1, duration: 0.6, ease: "power3.inOut" }, 21.17);
+    tl.to("#capwrap", { y: 1000, scale: 1, duration: 0.6, ease: "power3.inOut" }, 27.0);
     window.__timelines["captions"] = tl;
   </script>
 </template>

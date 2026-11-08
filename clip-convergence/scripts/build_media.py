@@ -90,12 +90,13 @@ def main(proj):
 
     # vidéos : chaque caméra, chaque morceau, avec poignées
     k = cfg.get("prescale", 1.45)
+    sharp = ",unsharp=5:5:0.5:5:5:0" if cfg.get("sharpen") else ""   # petite source très grossie (médaillons)
     for s in segs:
         for cam, (x, y, w, h) in cfg["crops"].items():
             out = proj / f"assets/video/{cam}_{s['id']}.mp4"
             W, Hh = int(round(w * k / 2) * 2), int(round(h * k / 2) * 2)
             run([FF, "-v", "error", "-y", "-ss", f"{s['src_a'] - H:.3f}", "-t", f"{s['dur'] + 2 * H:.3f}", "-i", src,
-                 "-vf", f"crop={w}:{h}:{x}:{y},scale={W}:{Hh}:flags=lanczos,fps=60,format=yuv420p",
+                 "-vf", f"crop={w}:{h}:{x}:{y},scale={W}:{Hh}:flags=lanczos{sharp},fps=60,format=yuv420p",
                  "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-g", "60", "-keyint_min", "60",
                  "-movflags", "+faststart", str(out)])
         print("vidéos", s["id"], "ok")

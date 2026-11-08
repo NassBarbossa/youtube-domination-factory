@@ -1,0 +1,59 @@
+{
+  "short": "36 — Arrêter le TGV en pleine route (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "crops": {
+    "nass": [
+      68,
+      704,
+      264,
+      264
+    ],
+    "sadek": [
+      1582,
+      698,
+      270,
+      270
+    ]
+  },
+  "segments": [
+    {
+      "id": "s1",
+      "speaker": "sadek",
+      "a": 443.88,
+      "b": 447.78,
+      "text": "Je ne traite pas énormément les figures chartistes, mais quand elles sont pertinentes, je le fais surtout sur des grosses unités de temps"
+    },
+    {
+      "id": "s2",
+      "speaker": "sadek",
+      "a": 465.76,
+      "b": 471.6,
+      "text": "quand on casse un niveau intéressant sur des bougies hebdomadaires ou journalières"
+    },
+    {
+      "id": "s3",
+      "speaker": "sadek",
+      "a": 471.78,
+      "b": 478.24,
+      "text": "il ne faut surtout pas essayer d'arrêter le TGV en pleine route et de continuer à trader dans l'expansion de marché"
+    },
+    {
+      "id": "s4",
+      "speaker": "nass",
+      "a": 479.38,
+      "b": 486.28,
+      "text": "ouais ça on revient vraiment aux bases qui est la tendance est votre ami, the trend is your friend"
+    },
+    {
+      "id": "s5",
+      "speaker": "nass",
+      "a": 487.66,
+      "b": 497.12,
+      "text": "faire du contre tendance que ça soit lié au trading ou à l'investissement, trading ça peut se faire mais c'est risqué, mais c'est vraiment la pire chose à faire"
+    }
+  ],
+  "sharpen": true
+}

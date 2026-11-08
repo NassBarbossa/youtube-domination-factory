@@ -40,16 +40,69 @@ SX, SY, SW_, SH_ = 34, 600, CUT["screen"]["size"][0], CUT["screen"]["size"][1]  
 # ---------- états ---------- PROPRE À LA MISE EN PAGE « écran + médaillons »
 # g / o = droite verte / or (y à gauche, y à droite) ; nass / sadek = (cx, cy, diamètre) du médaillon à l'écran ;
 # cap = y des sous-titres. Grossissement total (prescale × CSS) <= 1,6 : diamètre <= 1,6 × côté du crop.
+# Mise en page symétrique demandée par Nass (2026-11-07) : le même nombre de pixels e au-dessus de la caméra du haut, entre
+# cette caméra et la droite verte, entre les deux droites (bande des sous-titres), entre la droite or et la caméra du bas, et
+# sous la caméra du bas. Droites horizontales pour que ces écarts se lisent. 5e + d_haut + d_bas = 1920.
+FH = 1920
+
+
+def sym(top_cam, d_top, d_bot, band_mult=1, hook=None):
+    """État symétrique : top_cam est la caméra du haut ("nass" ou "sadek"). band_mult = bande entre les droites en multiples de e."""
+    e = (FH - d_top - d_bot) / (4 + band_mult)
+    g = e + d_top + e
+    o = g + band_mult * e
+    cams = {top_cam: (540, round(e + d_top / 2), d_top),
+            ("sadek" if top_cam == "nass" else "nass"): (540, round(o + e + d_bot / 2), d_bot)}
+    st = dict(g=(round(g), round(g)), o=(round(o), round(o)), cap=round(g + band_mult * e / 2), e=round(e), **cams)
+    if hook is not None:
+        st["hook"] = round(g + (band_mult * e - hook) / 2)
+    return st
+
+
+def sym_screen(d_top, d_bot, sw, sh, cap_h=100):
+    """État écran : Nass en haut à gauche, écran + sous-titres dans la bande, Sadek en bas à droite, mêmes écarts e."""
+    band = 14 + sh + 16 + cap_h + 14
+    e = (FH - d_top - d_bot - band) / 4
+    g = e + d_top + e
+    o = g + band
+    return dict(g=(round(g), round(g)), o=(round(o), round(o)), nass=(300, round(e + d_top / 2), d_top),
+                sadek=(780, round(o + e + d_bot / 2), d_bot), cap=round(g + 14 + sh + 16 + cap_h / 2), e=round(e),
+                screen=True, sx=round((1080 - sw) / 2), sy=round(g + 14), sw=sw, sh=sh)
+
+
+def solo(cam, d, e=130):
+    """Monologue (demande de Nass, 2026-11-07) : une seule caméra, grande, en haut ; la bande entre les droites porte les
+    illustrations (zone ILL) et les sous-titres plus gros en dessous. L'autre caméra se range derrière, invisible."""
+    g, o = e + d + e, FH - e
+    other = "sadek" if cam == "nass" else "nass"
+    return {cam: (540, round(e + d / 2), d), other: (540, round(e + d / 2), 400), "g": (g, g), "o": (o, o),
+            "cap": g + 440, "e": e, "solo": cam, "capscale": 1.25}
+
+
+def solo_screen(d, sw, sh, cap_h=110):
+    """Monologue de Nass avec son écran : caméra seule en haut, écran puis sous-titres dans la bande, mêmes écarts e."""
+    band = 14 + sh + 16 + cap_h + 14
+    e = (FH - d - band) / 3
+    g = e + d + e
+    o = g + band
+    return dict(g=(round(g), round(g)), o=(round(o), round(o)), nass=(540, round(e + d / 2), d), sadek=(540, round(e + d / 2), 400),
+                cap=round(g + 14 + sh + 16 + cap_h / 2), e=round(e), solo="nass", capscale=1.25,
+                screen=True, sx=round((1080 - sw) / 2), sy=round(g + 14), sw=sw, sh=sh)
+
+
+ILL = dict(left=90, top=1180, w=900, h=300)   # zone des illustrations dans la bande des états solo sans écran
+
 STATES = {
-    "H":  dict(g=(430, 470), o=(900, 840),   nass=(540, 225, 400), sadek=(540, 1160, 400), cap=660),                # accroche
-    "E":  dict(g=(540, 580), o=(1340, 1300), nass=(260, 300, 400), sadek=(820, 1530, 300), cap=1218, screen=True),  # Nass explique à l'écran
-    "E+": dict(g=(540, 580), o=(1340, 1300), nass=(260, 300, 430), sadek=(820, 1530, 320), cap=1218, screen=True),  # punch-in
-    "N":  dict(g=(700, 760), o=(1010, 930),  nass=(540, 370, 460), sadek=(540, 1260, 360), cap=850),                # Nass parle
-    "S":  dict(g=(560, 600), o=(860, 800),   nass=(540, 290, 360), sadek=(540, 1140, 470), cap=705),                # Sadek parle
+    "H":  sym("nass", 620, 620, band_mult=3, hook=200),   # accroche : les deux à 620, bande de 3e pour les deux lignes du titre
+    "E":  sym_screen(480, 520, 900, 491),                   # Nass explique à l'écran
+    "E+": sym_screen(500, 520, 900, 491),                   # punch-in
+    "N":  sym("nass", 740, 660),                            # Nass parle
+    "N+": sym("nass", 760, 660),                            # punch-in Nass
+    "S":  sym("nass", 660, 740),                            # Sadek parle (Nass reste en haut, plus petit)
+    "S+": sym("nass", 660, 760),                            # punch-in Sadek
+    "SOLO_E": solo_screen(860, 900, 491),                   # Nass seul, son écran dans la bande
+    "SOLO_N": solo("nass", 900),                            # Nass seul, sans écran
 }
-for st, S in STATES.items():
-    for cam in ("nass", "sadek"):
-        assert S[cam][2] <= 1.6 * CROP[cam][0] + 1, f"{st} {cam} : médaillon trop grossi (flou)"
 
 
 def med_tf(cam, st):
@@ -74,13 +127,15 @@ def find(seg, text, nth=0):
 
 # ---------- calendrier ---------- PROPRE AU CLIP : une bascule par couture de parole
 seams = [SEG[k]["out_start"] for k in ORDER[1:]]
+t_back = round(seams[3] - 1.3, 3)   # les deux caméras reviennent 1 s avant que Sadek parle (bascule comprise)
 MOVES = [
-    (seams[0], "E"),    # s1 -> s2 : l'écran s'ouvre, Nass dessine break / retest
-    (seams[1], "E+"),   # s2 -> s3 : punch-in, « giga résistance »
-    (seams[2], "N"),    # s3 -> s4 : l'écran se referme, le philosophe
-    (seams[3], "S"),    # s4 -> s5 : Sadek finit la phrase
-    (seams[4], "N"),    # s5 -> s6 : « Exactement »
+    (seams[0], "SOLO_E"),   # s1 -> s2 : Nass seul, l'écran s'ouvre, il dessine break / retest
+    (seams[2], "SOLO_N"),   # s3 -> s4 : l'écran se referme, le philosophe (Nass seul)
+    (t_back, "S"),          # retour aux deux caméras : Sadek va finir la phrase
+    (seams[4], "N"),        # s5 -> s6 : « Exactement » (dialogue, les deux restent)
 ]
+t_philo = find("s4", "philosophe")
+t_position = find("s4", "position")
 MOVE_DUR = 0.6
 E = "power3.inOut"
 t_screen_open, t_screen_close = seams[0], seams[2]
@@ -100,7 +155,7 @@ for name, base, keep, var in SFX_SRC:
 SFX = [
     ("sfx-whoosh-1", "whoosh-short-n.wav", round(t_screen_open - 0.20, 3), 0.34),   # l'écran s'ouvre
     ("sfx-pop-1", "pop-n.wav", round(t_patienter + 0.02, 3), 0.30),                  # PATIENTER
-    ("sfx-whoosh-2", "whoosh-n.wav", round(seams[3] - 0.22, 3), 0.30),               # la voix passe à Sadek
+    ("sfx-whoosh-2", "whoosh-n.wav", round(t_back - 0.22, 3), 0.30),                 # les deux caméras reviennent
     ("sfx-impact", "impact-bass-1-n.wav", round(END_T + 0.70, 3), 0.40),             # les droites touchent le logo
 ]
 
@@ -144,6 +199,8 @@ for gi, (seg, ws) in enumerate(groups):
             PAT_GI = gi          # ce groupe s'efface avant l'arrivée du mot clé (même place à l'écran)
         else:
             groups.pop(gi)
+            if gi > 0 and groups[gi - 1][0] == seg:
+                PAT_GI = gi - 1  # « patienter » était seul : c'est le groupe précédent qui s'efface avant le mot clé
         break
 
 # ---------- timeline de la scène ----------
@@ -152,6 +209,8 @@ H0 = STATES["H"]
 for cam in ("nass", "sadek"):
     x, y, sc = med_tf(cam, "H")
     js.append(f'tl.fromTo("#wrap-{cam}", {{ x: {x}, y: {y}, scale: {sc} }}, {{ x: {x}, y: {y}, scale: {sc}, duration: 0.01 }}, 0);')
+    js.append(f'tl.fromTo("#stage-{cam}", {{ opacity: 1 }}, {{ opacity: 1, duration: 0.01 }}, 0);')
+js.append('tl.fromTo("#stage-nass", { zIndex: 2 }, { zIndex: 2, duration: 0.01 }, 0);')   # Sadek se range derrière Nass
 for tm, st in MOVES:
     S, t0 = STATES[st], round(tm - MOVE_DUR / 2, 3)
     js += [
@@ -160,7 +219,18 @@ for tm, st in MOVES:
     ]
     for cam in ("nass", "sadek"):
         x, y, sc = med_tf(cam, st)
+        vis = 0 if S.get("solo") not in (None, cam) else 1
         js.append(f'tl.to("#wrap-{cam}", {{ x: {x}, y: {y}, scale: {sc}, duration: {MOVE_DUR}, ease: "{E}" }}, {t0});')
+        js.append(f'tl.to("#stage-{cam}", {{ opacity: {vis}, duration: {MOVE_DUR * 0.7:.2f}, ease: "power2.inOut" }}, {t0 if vis == 0 else round(t0 + MOVE_DUR * 0.3, 3)});')
+
+# ---------- illustration de la bande (état SOLO_N) ---------- PROPRE AU CLIP : « comme dirait un certain philosophe »
+js += [
+    f'tl.fromTo("#ill-quote", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.1 }}, {round(t_philo - 0.05, 3)});',
+    f'tl.fromTo("#q-open", {{ opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }}, {round(t_philo - 0.05, 3)});',
+    f'tl.fromTo("#q-close", {{ opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }}, {round(t_philo + 0.12, 3)});',
+    f'tl.fromTo("#q-line", {{ strokeDashoffset: 420 }}, {{ strokeDashoffset: 0, duration: 0.5, ease: "power2.out" }}, {round(t_position - 0.05, 3)});',
+    f'tl.to("#ill-quote", {{ opacity: 0, duration: 0.25, ease: "power2.in" }}, {round(t_back - 0.35, 3)});',
+]
 
 js += [
     # accroche
@@ -182,7 +252,7 @@ VV = [(90 + (7732.2 + 89) * ls, LY0 + (122.9 + 89) * ls), VG[1]]
 SW = round(245.9 * ls, 2)
 VX, VTOP, VBOT, VHALF = 540, 520, 820, 150
 js += [
-    f'tl.to(["#stage-nass", "#stage-sadek"], {{ opacity: 0, duration: 0.45, ease: "power2.in" }}, {END_T});',
+    f'tl.to(["#stage-nass", "#stage-sadek", "#ill"], {{ opacity: 0, duration: 0.45, ease: "power2.in" }}, {END_T});',
     f'tl.to("#line-o", {{ attr: {{ x1: {VX - VHALF}, y1: {VTOP}, x2: {VX}, y2: {VBOT} }}, strokeWidth: 46, duration: 0.7, ease: "{E}" }}, {END_T});',
     f'tl.to("#line-g", {{ attr: {{ x1: {VX + VHALF}, y1: {VTOP}, x2: {VX}, y2: {VBOT} }}, strokeWidth: 46, duration: 0.7, ease: "{E}" }}, {END_T});',
     f'tl.fromTo("#v-dot", {{ opacity: 0, scale: 0.2 }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }}, {END_T + 0.68});',
@@ -221,14 +291,18 @@ stage = f"""<template>
     #ring-sadek {{ box-shadow: inset 0 0 0 14px {GOLD}; }}
     #lines {{ position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }}
     #lines line {{ stroke-width: 12; stroke-linecap: round; }}
-    #hook {{ position: absolute; left: 0; right: 0; top: 532px; text-align: center; color: {INK}; }}
+    #hook {{ position: absolute; left: 0; right: 0; top: {STATES['H']['hook']}px; text-align: center; color: {INK}; }}
     #hook .h1 {{ font: 800 104px/0.95 'Inter Tight'; letter-spacing: -0.02em; }}
     #hook .h1 b {{ color: {GOLD_TXT}; font-weight: 800; }}
-    #screen {{ position: absolute; left: {SX}px; top: {SY}px; width: {SW_}px; height: {SH_}px; overflow: hidden; }}
+    #screen {{ position: absolute; left: {STATES['SOLO_E']['sx']}px; top: {STATES['SOLO_E']['sy']}px; width: {STATES['SOLO_E']['sw']}px; height: {STATES['SOLO_E']['sh']}px; overflow: hidden; }}
     #screen-body {{ position: absolute; inset: 0; }}
     #screen video {{ position: absolute; inset: 0; width: 100%; height: 100%; }}
     .kw {{ position: absolute; font: 800 104px/1 'Inter Tight'; letter-spacing: -0.03em; white-space: nowrap; }}
-    #kw-pat {{ left: 0; right: 0; top: {STATES["E"]["cap"] - 56}px; text-align: center; color: {INK}; }}
+    #kw-pat {{ left: 0; right: 0; top: {STATES["SOLO_E"]["cap"] - 50}px; text-align: center; color: {INK}; font-size: 96px; }}
+    #ill {{ position: absolute; left: {ILL["left"]}px; top: {ILL["top"]}px; width: {ILL["w"]}px; height: {ILL["h"]}px; }}
+    .ill {{ position: absolute; inset: 0; opacity: 0; }}
+    .ill svg {{ position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }}
+    .q {{ font: 800 300px/1 'Inter Tight'; fill: {INK}; }}
     #kw-pat span {{ box-shadow: inset 0 -14px 0 {GREEN}; }}
     #logo {{ position: absolute; left: {LX0}px; top: {LY0}px; width: {LOGO_W}px; height: {1669 * ls:.1f}px; }}
     #cta {{ position: absolute; left: 0; right: 0; top: 1068px; text-align: center; font: 700 46px 'Inter Tight'; color: {INK}; }}
@@ -257,6 +331,16 @@ stage = f"""<template>
     </div>
 
     <div id="kw-pat" class="kw" style="opacity:0"><span>PATIENTER</span></div>
+
+    <div id="ill">
+      <div id="ill-quote" class="ill">
+        <svg viewBox="0 0 900 300">
+          <text id="q-open" class="q" x="150" y="250" text-anchor="middle" opacity="0">«</text>
+          <text id="q-close" class="q" x="750" y="250" text-anchor="middle" opacity="0">»</text>
+          <line id="q-line" x1="240" y1="160" x2="660" y2="160" stroke="{GOLD}" stroke-width="12" stroke-linecap="round" stroke-dasharray="420" stroke-dashoffset="420"/>
+        </svg>
+      </div>
+    </div>
 
     <svg id="logo" viewBox="-89 -89 21736 1669" style="opacity:0">{logo_path}</svg>
     <svg id="lines" viewBox="0 0 1080 1920">
@@ -294,16 +378,16 @@ for gi, (seg, ws) in enumerate(groups):
         if wi + 1 < len(ws):
             off_at = max(ws[wi + 1]["s"], w["s"] + d_in + 0.002)
             cap_js.append(f'tl.to("#c{gi}w{wi} i", {{ scaleX: 0, duration: 0.06, ease: "power2.in" }}, {round(off_at, 3)});')
-cap_js.append(f'tl.fromTo("#capwrap", {{ y: {STATES["H"]["cap"]} }}, {{ y: {STATES["H"]["cap"]}, duration: 0.01 }}, 0);')
+cap_js.append(f'tl.fromTo("#capwrap", {{ y: {STATES["H"]["cap"]}, scale: 1, transformOrigin: "50% 0%" }}, {{ y: {STATES["H"]["cap"]}, scale: 1, duration: 0.01 }}, 0);')
 for tm, st in MOVES:
-    cap_js.append(f'tl.to("#capwrap", {{ y: {STATES[st]["cap"]}, duration: {MOVE_DUR}, ease: "{E}" }}, {round(tm - MOVE_DUR / 2, 3)});')
+    cap_js.append(f'tl.to("#capwrap", {{ y: {STATES[st]["cap"]}, scale: {STATES[st].get("capscale", 1)}, duration: {MOVE_DUR}, ease: "{E}" }}, {round(tm - MOVE_DUR / 2, 3)});')
 cap_js.append('window.__timelines["captions"] = tl;')
 captions = f"""<template>
   <style>
     @font-face {{ font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }}
     #root {{ position: absolute; inset: 0; }}
     #capwrap {{ position: absolute; left: 0; right: 0; top: 0; height: 0; overflow: visible; }}
-    .grp {{ position: absolute; left: 130px; right: 130px; top: -40px; text-align: center; font: 800 70px/1.08 'Inter Tight';
+    .grp {{ position: absolute; left: 130px; right: 130px; top: -36px; text-align: center; font: 800 66px/1.08 'Inter Tight';
             letter-spacing: -0.01em; color: {INK}; overflow: visible; }}
     .w {{ position: relative; display: inline-block; }}
     .w i {{ position: absolute; left: 0; right: 0; bottom: -8px; height: 9px; border-radius: 5px; transform-origin: 0 50%; transform: scaleX(0); }}
