@@ -147,7 +147,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 59 | Au milieu de range, on temporise (23:27–24:08) | fait (2026-11-09) |
 | 60 | L'or est en solde (24:14–27:13) | fait (2026-11-09) |
 | 61 | Apprends-moi à faire de l'oseille (29:28–30:46) | fait (2026-11-09) |
-| 62 | Budget pour commencer ? (31:11–31:43) | à faire |
+| 62 | Budget pour commencer ? (31:11–31:43) | fait (2026-11-09) |
 | 63 | C'est quoi l'altseason ? (32:16–33:50) | fait (2026-11-09) |
 | 64 | L'investissement c'est facile, le trading c'est dur (34:29–34:58) | à faire |
 | 65 | Payer pour apprendre ? (36:01–37:52) | à faire |

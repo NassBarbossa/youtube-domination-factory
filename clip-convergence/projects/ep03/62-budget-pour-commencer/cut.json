@@ -1,0 +1,53 @@
+{
+ "short": "62 — Budget pour commencer ? (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : deux ronds caméra de 210 px en bas (Nass à gauche, Sadek à droite)",
+ "prescale": 4.4,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   30,
+   448,
+   210,
+   210
+  ],
+  "sadek": [
+   1040,
+   448,
+   210,
+   210
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 1871.48,
+   "b": 1883.78,
+   "text": "Budget pour commencer tu conseilles combien ? Moi je parle en pourcentage donc dans l'investissement investir entre 10 et 20 % de votre salaire de votre activité par mois"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 1883.78,
+   "b": 1887.68,
+   "text": "après pour le trading ça va que tu conseilles combien pour commencer"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 1887.68,
+   "b": 1897.9,
+   "text": "? Le mois possible vous allez perdre de l'argent au début vous allez perdre de l'argent et c'est ça de perdre de l'argent au début quand on commence le trading parce que ça permet de prendre les bonnes habitudes directement"
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 1898.28,
+   "b": 1903.44,
+   "text": "donc le moins possible si vous avez un petit peu de capital et tout n'allez pas mettre tout votre capital dans le trading"
+  }
+ ]
+}
