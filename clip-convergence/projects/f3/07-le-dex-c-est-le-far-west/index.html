@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0A0A0A; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+      #ground { position: absolute; inset: 0; background: #0A0A0A url('assets/bg-nass-v2.jpg') center / cover no-repeat; }
+      #ground::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, rgba(10,10,10,0.25), rgba(10,10,10,0.80)); }
+    </style>
+  </head>
+  <body>
+    <!-- Short 7 « Le DEX, c'est le far west » — Convergence, DA « Les deux droites », variante écran + médaillons. Voix réelles, pas de musique. -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="28.12" data-width="1080" data-height="1920" data-fps="60" data-motion-blur="on">
+      <div id="ground"></div>
+      <div id="stage" data-composition-id="stage" data-composition-src="compositions/stage.html" data-start="0" data-duration="28.12"
+           data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0"
+           data-duration="23.97" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920"></div>
+      <audio id="voice" class="clip" src="assets/audio/voice.wav" data-start="0" data-volume="1" data-track-index="4"></audio>
+      <audio id="sfx-pop-1" class="clip" src="assets/sfx/pop-n.wav" data-start="8.085" data-volume="0.26" data-track-index="5"></audio>
+      <audio id="sfx-whoosh-1" class="clip" src="assets/sfx/whoosh-short-n.wav" data-start="8.47" data-volume="0.3" data-track-index="6"></audio>
+      <audio id="sfx-whoosh-2" class="clip" src="assets/sfx/whoosh-n.wav" data-start="13.01" data-volume="0.26" data-track-index="7"></audio>
+      <audio id="sfx-pop-2" class="clip" src="assets/sfx/pop-n.wav" data-start="14.025" data-volume="0.26" data-track-index="8"></audio>
+      <audio id="sfx-pop-3" class="clip" src="assets/sfx/pop-n.wav" data-start="23.165" data-volume="0.32" data-track-index="9"></audio>
+      <audio id="sfx-impact" class="clip" src="assets/sfx/impact-bass-1-n.wav" data-start="24.67" data-volume="0.4" data-track-index="10"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -87,7 +87,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 04 | Acheter avant les autres (01:52–02:22) | fait (2026-11-09) |
 | 05 | Concentre-toi : le CEX (02:33–03:04) | fait (2026-11-09) |
 | 06 | Limité par le nombre d'opportunités (03:05–03:38) | fait (2026-11-09) |
-| 07 | Le DEX, c'est le far west (03:38–04:02) | à faire |
+| 07 | Le DEX, c'est le far west (03:38–04:02) | fait (2026-11-09) |
 | 08 | « C'est moi l'indien » (04:03–04:26) | à faire |
 | 09 | La méthode IOC (04:26–04:52) | à faire |
 | 10 | Euros → SOL → tokens (04:52–05:31) | à faire |

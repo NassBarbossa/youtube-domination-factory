@@ -1,0 +1,39 @@
+{
+ "short": "F3-07 — Le DEX, c'est le far west (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 217.76,
+   "b": 226.4,
+   "text": "Mais moi, ma méthode, elle s'effectue dans le monde décentralisé. Centraliser les exchanges, décentraliser dans les DEX."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 226.4,
+   "b": 230.94,
+   "text": "donc à l'opposé c'est un decentralized exchange un échange décentralisé"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 230.94,
+   "b": 241.64,
+   "text": "et là tout le monde peut créer sa crypto donc vraiment toi, moi tout le monde peut créer sa crypto dans ce monde décentralisé donc forcément c'est le far west"
+  }
+ ]
+}
