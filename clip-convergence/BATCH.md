@@ -50,7 +50,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 12 | 30 % d'épargne : le matelas de sécurité (06:16–06:47) | fait (2026-11-09) |
 | 13 | 2 000 €, ça fait 800 € (06:47–07:15) | fait (2026-11-09) |
 | 14 | 15 % pour le plaisir (07:15–07:37) | fait (2026-11-09) |
-| 15 | La règle 40 · 30 · 15 · 15 (07:42–08:21) | à faire |
+| 15 | La règle 40 · 30 · 15 · 15 (07:42–08:21) | fait (2026-11-09) |
 | 16 | Augmente ta rentrée mensuelle (08:21–08:47) | à faire |
 | 17 | Pas pour gagner de l'argent (08:56–09:19) | à faire |
 
