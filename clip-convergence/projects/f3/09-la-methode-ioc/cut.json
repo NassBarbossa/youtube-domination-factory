@@ -1,0 +1,46 @@
+{
+ "short": "F3-09 — La méthode IOC (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 266.36,
+   "b": 271.38,
+   "text": "Et donc, cette méthode, pour pouvoir réussir dans le fact -well, je l'ai appelée IOC."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 271.62,
+   "b": 279.22,
+   "text": "La méthode que je vous partage aujourd'hui, c'est la méthode IOC. Et donc, cette méthode veut dire investissement on -chain."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 280.26,
+   "b": 284.78,
+   "text": "Donc, je t'explique sur quoi elle repose cette méthode investissement on -chain."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 285.18,
+   "b": 291.74,
+   "text": "Donc concrètement, tu vas prendre tes euros. Tu prends des euros, là dans l'exemple j'ai mis 600 euros, mais tu prends tes euros."
+  }
+ ]
+}
