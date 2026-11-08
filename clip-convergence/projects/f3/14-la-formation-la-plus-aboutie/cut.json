@@ -1,0 +1,39 @@
+{
+ "short": "F3-14 — La formation la plus aboutie que j'ai faite (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 556.92,
+   "b": 561.42,
+   "text": "Donc, voilà les gars, j'espère que cette formation, cette série de formations offertes vous a plu."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 571.28,
+   "b": 582.32,
+   "text": "Partagez, franchement, je le redis, c'est un peu prétentieux, mais je pense que c'est la formation la plus aboutie que j'ai fait. C'est trois vidéos de 10 minutes ultra condensées"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 582.32,
+   "b": 588.2,
+   "text": "et pourtant, j'ai peur que vous banalisez l'information, mais avec ça, vous pouvez aller tellement loin."
+  }
+ ]
+}
