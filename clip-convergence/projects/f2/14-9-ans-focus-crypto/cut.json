@@ -1,0 +1,46 @@
+{
+ "short": "F2-14 — 9 ans focus crypto (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 502.22,
+   "b": 510.68,
+   "text": "Mais moi, ça fait, c'est un peu long quand même, mais ça fait 9 ans, l'année prochaine, 10 ans que je suis focus crypto, crypto, crypto."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 510.9,
+   "b": 515.48,
+   "text": "Avec des très hauts, des très bas. Mais je suis focus sur une chose."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 515.7,
+   "b": 526.9,
+   "text": "La deuxième raison, les gars, et c'est encore plus à l'époque de l'intelligence artificielle, avec toutes les slopes qu'on voit sur les réseaux, on vous a rendu bête et incapable de faire les choses"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 528.12,
+   "b": 534.64,
+   "text": "la génération c'est une vérité, c'est pas complotiste elle est abrutie et du coup on ne fait pas les choses"
+  }
+ ]
+}
