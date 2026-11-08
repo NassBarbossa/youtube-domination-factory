@@ -1,0 +1,55 @@
+{
+ "short": "48 — Réagir plutôt qu'anticiper (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 506.4,
+   "b": 515.24,
+   "text": "Mais moi, dans ma façon d'investir, j'ai toujours essayé de ne pas d'anticiper. D'ailleurs, c'est mieux de réagir plutôt que d'anticiper."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 515.46,
+   "b": 523.1,
+   "text": "Mais j'aime bien voir les entrées au meilleur prix possible. Comme ça, je peux couper si ça s'invalide et pas trop perdre."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 523.56,
+   "b": 538.78,
+   "text": "Mais là, par exemple, si tu attends que ça fait ça, ça, et tu te dis OK, j'achète là, au final, tu as déjà cette zone qui est juste là. Et c'est un peu compliqué d'après de tenir ta position. Tu repasses vite en BE, voire en perte."
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}
