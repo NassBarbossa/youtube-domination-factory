@@ -1,0 +1,40 @@
+{
+ "short": "52 — T'étais sûr que ça allait monter ? (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 948.5,
+   "b": 958.18,
+   "text": "donc je me place dans le support et puis je vois ici que c'est une résistance je revends à la résistance tout simplement je ne vais pas chercher plus loin"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 958.64,
+   "b": 965.94,
+   "text": "évidemment que j'ai des invalidations si je vois qu'on commence à casser là ben là je coupe ma position et puis j'ai perdu tu vois c'est comme ça"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 965.94,
+   "b": 979.88,
+   "text": "ça c'est quelque chose je sais que beaucoup les débutants vous me dites mais mais là t'étais sûr que ça allait monter ben non je sais pas je me dis pour toutes les raisons que j'ai évoquées je pense que ça va plus monter que ça va descendre"
+  }
+ ]
+}
