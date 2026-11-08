@@ -1,0 +1,53 @@
+{
+ "short": "63 — C'est quoi l'altseason ? (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fullcam : deux grandes fenêtres caméra côte à côte",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   36,
+   150,
+   464,
+   464
+  ],
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 1936.14,
+   "b": 1940.66,
+   "text": "quand aura lieu la alt season ? alors ça c'est vraiment le commentaire qui m'a trigger"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 1944.76,
+   "b": 1947.94,
+   "text": "parce que j'ai compris avec le temps que c'est un problème de définition"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 1947.94,
+   "b": 1959.8,
+   "text": "donc déjà il faut se rappeler qu'est -ce que veut dire alt qu'est ce que un altcoin un altcoin par définition c'est un coin alternative à bitcoin alternative coin altcoin"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 2014.68,
+   "b": 2030.06,
+   "text": "Maintenant, il y a une inflation des cryptos avec PumpFun et tout ça, où tout le monde peut créer sa crypto en une seconde pour 5 dollars, même pas. Donc, la liquidité, elle ne peut plus aller de partout en même temps. Elle est concentrée dans quelques actifs qui valent vraiment le coup."
+  }
+ ]
+}
