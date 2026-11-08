@@ -1,0 +1,32 @@
+{
+ "short": "JA-06 — Une pression supplémentaire (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 144.06,
+   "b": 155.82,
+   "text": "j'étais là j'avais pas spécialement envie de trade mais je me disais je me mettais la pression faut que j'avance sur mon challenge déjà que je suis en train de m'afficher je suis à plus de 2000 dollars enfin, ça y est, je vais enfin faire des profits."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 156.02,
+   "b": 166.52,
+   "text": "Et donc, je me forçais à trader, je prenais des trades que je n'avais pas spécialement envie de prendre, tout ça pour pouvoir avancer sur mon challenge. Et donc, du coup, ça me mettait une pression supplémentaire."
+  }
+ ]
+}
