@@ -40,7 +40,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 02 | La Formule 1 et le karting (00:40–01:01) | fait (2026-11-09) |
 | 03 | Un secret depuis 2021 (01:04 + 04:17) | fait (2026-11-09) |
 | 04 | De quoi on ne va pas parler (01:20–01:52) | fait (2026-11-09) |
-| 05 | Investir, la définition (01:52–02:19) | à faire |
+| 05 | Investir, la définition (01:52–02:19) | fait (2026-11-09) |
 | 06 | Qui je suis pour vous dire ça ? (02:24–02:58) | à faire |
 | 07 | Toutes les phases, je les ai vécues (03:00 + 04:05) | à faire |
 | 08 | Roberto Carlos a perdu 99 % (04:28–05:02) | à faire |
