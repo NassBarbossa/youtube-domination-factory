@@ -105,7 +105,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 02 | Le verdict : du surplace (00:43–01:17) | fait (2026-11-09) |
 | 03 | Le marché a changé (01:17–01:37) | fait (2026-11-09) |
 | 04 | Easy mode, puis difficile (01:38–02:04) | fait (2026-11-09) |
-| 05 | Plus fort dans un marché facile (02:04–02:24) | à faire |
+| 05 | Plus fort dans un marché facile (02:04–02:24) | fait (2026-11-09) |
 | 06 | Une pression supplémentaire (02:24–02:47) | à faire |
 | 07 | Suis-je une fraude ? (02:47–03:12) | à faire |
 | 08 | 97 % de perdants ? La vraie stat (03:13–03:49) | à faire |
