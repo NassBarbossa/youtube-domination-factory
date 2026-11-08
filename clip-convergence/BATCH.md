@@ -54,7 +54,29 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 16 | Augmente ta rentrée mensuelle (08:21–08:47) | fait (2026-11-09) |
 | 17 | Pas pour gagner de l'argent (08:56–09:19) | fait (2026-11-09) |
 
-## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 15 clips, repérage à compléter | à faire
+## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 18 clips, thème `ydf` (`clip-convergence/projects/f2/`) | en cours
+
+| N° | Clip | Statut |
+|---|---|---|
+| 01 | J'ai fait payer 300 personnes pour ça (00:12–00:43) | fait (2026-11-09) |
+| 02 | Le bon sens, il faut le savoir (00:51–01:16) | à faire |
+| 03 | Flingue-moi mon algorithme (01:19–01:36) | à faire |
+| 04 | La huitième merveille du monde (01:45–02:34) | à faire |
+| 05 | 100 € par mois dans la bourse américaine (02:36–03:09) | à faire |
+| 06 | 100 € par mois dans l'or (03:09–03:33) | à faire |
+| 07 | Est-ce que vous avez 142 000 € ? (03:39–04:11) | à faire |
+| 08 | Est-ce qu'il fallait un master ? (04:22–04:49) | à faire |
+| 09 | L'or, un truc de grand-père ? (05:03–05:32) | à faire |
+| 10 | Imagine 200 € par mois (05:39–06:20) | à faire |
+| 11 | Le DCA, ce n'est pas un secret (06:24–06:57) | à faire |
+| 12 | On le sait depuis 1949 (06:58–07:26) | à faire |
+| 13 | Le syndrome de l'objet brillant (07:35–08:16) | à faire |
+| 14 | 9 ans focus crypto (08:22–08:54) | à faire |
+| 15 | Vous êtes des fainéants (08:54–09:35) | à faire |
+| 16 | Vous avez vidé ma batterie (09:36–09:58) | à faire |
+| 17 | Le code + le permis = le karting (09:58–10:39) | à faire |
+| 18 | Mon cadeau à la France (10:42–11:04) | à faire |
+
 ## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min) — 15 clips, repérage à compléter | à faire
 ## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, repérage à compléter | à faire
 ## Convergence EP.04 — « L'achat de la décennie sur le gold ? » `D0gALJr-y1o` (20 min, 60 i/s) — 15 clips | à faire

@@ -1,0 +1,61 @@
+{
+ "short": "F2-01 — J'ai fait payer 300 personnes pour ça (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 12.56,
+   "b": 21.04,
+   "text": "Ce que je m'apprête à vous partager les gars, j'ai fait payer les gens pour ça, cette méthode que beaucoup vous font toujours payer et c'est ok avec ça,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 21.04,
+   "b": 32.98,
+   "text": "Mais moi, j'ai fait payer plus de 300 personnes pour avoir accès à cette méthode pour devenir riche, comment devenir riche en 2021, en 2022."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 33.32,
+   "b": 37.18,
+   "text": "Et aujourd'hui, je vous la donne gratuitement dans cette formation offerte."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 37.32,
+   "b": 43.56,
+   "text": "Je ne veux plus faire des formations par le passé, comment je l'ai fait. Et je veux vous amener vers quelque chose d'autre."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
