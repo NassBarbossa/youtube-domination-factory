@@ -133,7 +133,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 50 | Encore un lundi noir ? (01:10–01:30) | fait (2026-11-09) |
 | 51 | Acheter avant le listing (15:06–15:42) | fait (2026-11-09) |
 | 52 | T'étais sûr que ça allait monter ? (15:48–16:19) | fait (2026-11-09) |
-| 53 | Baissier ? Pas en investissement (16:34–17:03) | à faire |
+| 53 | Baissier ? Pas en investissement (16:34–17:03) | fait (2026-11-09) |
 | 54 | Faites attention (19:31–19:52) | à faire |
 | 55 | Sans Sadek, vous êtes moins virulents (10:04–10:22) | à faire |
 

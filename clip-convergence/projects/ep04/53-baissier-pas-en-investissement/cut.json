@@ -1,0 +1,33 @@
+{
+ "short": "53 — Baissier ? Pas en investissement (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "plein cadre : fenêtre caméra, carré de 700 px sur le visage",
+ "prescale": 1.3,
+ "sharpen": false,
+ "crops": {
+  "nass": [
+   330,
+   110,
+   700,
+   700
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 994.72,
+   "b": 1009.26,
+   "text": "j'ai du mal à comprendre ceux qui sont baissés tu me parles d'être baissier en time frame mineur, ok mais dans de l'investissement j'ai vraiment du mal à être baissier sur le gold"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 1011.82,
+   "b": 1023.68,
+   "text": "en fait le truc c'est que crypto ils sont fortement reliés au Nasdaq et avec la hausse des taux potentiels avec la guerre et avec les mid -terms qui vont arriver,"
+  }
+ ]
+}

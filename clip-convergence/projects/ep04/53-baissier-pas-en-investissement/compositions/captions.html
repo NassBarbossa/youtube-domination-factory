@@ -1,0 +1,94 @@
+<template>
+  <style>
+    @font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }
+    @font-face { font-family: 'Plex Mono C'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }
+    #root { position: absolute; inset: 0; }
+    #capwrap { position: absolute; left: 0; right: 0; top: 0; height: 0; overflow: visible; }
+    .grp { position: absolute; left: 130px; right: 130px; top: -36px; text-align: center; font: 800 66px/1.08 'Inter Tight';
+            letter-spacing: -0.01em; color: #0B0E11; overflow: visible; }
+    .w { position: relative; display: inline-block; }
+    .w i { position: absolute; left: 0; right: 0; bottom: -8px; height: 9px; border-radius: 5px; transform-origin: 0 50%; transform: scaleX(0); }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+    <div id="capwrap" data-motion-blur="off">
+    <div id="cg0" class="clip grp" data-start="14.535" data-duration="0.9"><span class="w" id="c0w0">en<i style="background:#0F8A5F"></i></span> <span class="w" id="c0w1">fait<i style="background:#0F8A5F"></i></span> <span class="w" id="c0w2">le<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg1" class="clip grp" data-start="15.435" data-duration="0.62"><span class="w" id="c1w0">truc<i style="background:#0F8A5F"></i></span> <span class="w" id="c1w1">c'est<i style="background:#0F8A5F"></i></span> <span class="w" id="c1w2">que<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg2" class="clip grp" data-start="16.055" data-duration="0.66"><span class="w" id="c2w0">crypto<i style="background:#0F8A5F"></i></span> <span class="w" id="c2w1">ils<i style="background:#0F8A5F"></i></span> <span class="w" id="c2w2">sont<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg3" class="clip grp" data-start="16.715" data-duration="1.0"><span class="w" id="c3w0">fortement<i style="background:#0F8A5F"></i></span> <span class="w" id="c3w1">reliés<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg4" class="clip grp" data-start="17.715" data-duration="1.12"><span class="w" id="c4w0">au<i style="background:#0F8A5F"></i></span> <span class="w" id="c4w1">Nasdaq<i style="background:#0F8A5F"></i></span> <span class="w" id="c4w2">et<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg5" class="clip grp" data-start="18.835" data-duration="1.56"><span class="w" id="c5w0">avec<i style="background:#0F8A5F"></i></span> <span class="w" id="c5w1">la<i style="background:#0F8A5F"></i></span> <span class="w" id="c5w2">hausse<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg6" class="clip grp" data-start="20.395" data-duration="0.38"><span class="w" id="c6w0">des<i style="background:#0F8A5F"></i></span> <span class="w" id="c6w1">taux<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg7" class="clip grp" data-start="20.775" data-duration="1.52"><span class="w" id="c7w0">potentiels<i style="background:#0F8A5F"></i></span> <span class="w" id="c7w1">avec<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg8" class="clip grp" data-start="22.295" data-duration="1.46"><span class="w" id="c8w0">la<i style="background:#0F8A5F"></i></span> <span class="w" id="c8w1">guerre<i style="background:#0F8A5F"></i></span> <span class="w" id="c8w2">et<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg9" class="clip grp" data-start="23.755" data-duration="1.28"><span class="w" id="c9w0">avec<i style="background:#0F8A5F"></i></span> <span class="w" id="c9w1">les<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg10" class="clip grp" data-start="25.035" data-duration="0.9"><span class="w" id="c10w0">mid-terms<i style="background:#0F8A5F"></i></span> <span class="w" id="c10w1">qui<i style="background:#0F8A5F"></i></span></div>
+    <div id="cg11" class="clip grp" data-start="25.935" data-duration="0.545"><span class="w" id="c11w0">vont<i style="background:#0F8A5F"></i></span> <span class="w" id="c11w1">arriver,<i style="background:#0F8A5F"></i></span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cg0", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 14.535);
+    tl.fromTo("#c0w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 14.585);
+    tl.to("#c0w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 14.825);
+    tl.fromTo("#c0w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 14.825);
+    tl.to("#c0w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 15.025);
+    tl.fromTo("#c0w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 15.025);
+    tl.fromTo("#cg1", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 15.435);
+    tl.fromTo("#c1w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 15.485);
+    tl.to("#c1w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 15.725);
+    tl.fromTo("#c1w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 15.725);
+    tl.to("#c1w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 15.925);
+    tl.fromTo("#c1w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 15.925);
+    tl.fromTo("#cg2", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 16.055);
+    tl.fromTo("#c2w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 16.105);
+    tl.to("#c2w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 16.505);
+    tl.fromTo("#c2w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.11, ease: "power2.out" }, 16.505);
+    tl.to("#c2w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 16.625);
+    tl.fromTo("#c2w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 16.625);
+    tl.fromTo("#cg3", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 16.715);
+    tl.fromTo("#c3w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 16.765);
+    tl.to("#c3w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 17.265);
+    tl.fromTo("#c3w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.265);
+    tl.fromTo("#cg4", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 17.715);
+    tl.fromTo("#c4w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.765);
+    tl.to("#c4w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 17.985);
+    tl.fromTo("#c4w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 17.985);
+    tl.to("#c4w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 18.565);
+    tl.fromTo("#c4w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 18.565);
+    tl.fromTo("#cg5", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 18.835);
+    tl.fromTo("#c5w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 18.885);
+    tl.to("#c5w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 19.425);
+    tl.fromTo("#c5w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 19.425);
+    tl.to("#c5w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 20.065);
+    tl.fromTo("#c5w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 20.065);
+    tl.fromTo("#cg6", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 20.395);
+    tl.fromTo("#c6w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 20.445);
+    tl.to("#c6w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 20.605);
+    tl.fromTo("#c6w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 20.605);
+    tl.fromTo("#cg7", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 20.775);
+    tl.fromTo("#c7w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 20.825);
+    tl.to("#c7w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 21.645);
+    tl.fromTo("#c7w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 21.645);
+    tl.fromTo("#cg8", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 22.295);
+    tl.fromTo("#c8w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 22.345);
+    tl.to("#c8w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 22.685);
+    tl.fromTo("#c8w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 22.685);
+    tl.to("#c8w1 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 23.145);
+    tl.fromTo("#c8w2 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 23.145);
+    tl.fromTo("#cg9", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 23.755);
+    tl.fromTo("#c9w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 23.805);
+    tl.to("#c9w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 24.545);
+    tl.fromTo("#c9w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 24.545);
+    tl.fromTo("#cg10", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 25.035);
+    tl.fromTo("#c10w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 25.085);
+    tl.to("#c10w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 25.745);
+    tl.fromTo("#c10w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 25.745);
+    tl.fromTo("#cg11", { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "power2.out" }, 25.935);
+    tl.fromTo("#c11w0 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 25.985);
+    tl.to("#c11w0 i", { scaleX: 0, duration: 0.06, ease: "power2.in" }, 26.165);
+    tl.fromTo("#c11w1 i", { scaleX: 0 }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 26.165);
+    tl.fromTo("#capwrap", { y: 1460, scale: 1, transformOrigin: "50% 0%" }, { y: 1460, scale: 1, duration: 0.01 }, 0);
+    tl.to("#capwrap", { y: 1640, scale: 1.25, duration: 0.6, ease: "power3.inOut" }, 14.26);
+    window.__timelines["captions"] = tl;
+  </script>
+</template>
