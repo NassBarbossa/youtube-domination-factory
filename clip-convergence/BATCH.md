@@ -41,7 +41,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 03 | Un secret depuis 2021 (01:04 + 04:17) | fait (2026-11-09) |
 | 04 | De quoi on ne va pas parler (01:20–01:52) | fait (2026-11-09) |
 | 05 | Investir, la définition (01:52–02:19) | fait (2026-11-09) |
-| 06 | Qui je suis pour vous dire ça ? (02:24–02:58) | à faire |
+| 06 | Qui je suis pour vous dire ça ? (02:24–02:58) | fait (2026-11-09) |
 | 07 | Toutes les phases, je les ai vécues (03:00 + 04:05) | à faire |
 | 08 | Roberto Carlos a perdu 99 % (04:28–05:02) | à faire |
 | 09 | Mets pause, prends un papier (05:02–05:30) | à faire |
