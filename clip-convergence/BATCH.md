@@ -47,7 +47,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 09 | Mets pause, prends un papier (05:02–05:30) | fait (2026-11-09) |
 | 10 | 40 %, pas plus (05:31–06:00) | fait (2026-11-09) |
 | 11 | Déménage (06:00–06:14) | fait (2026-11-09) |
-| 12 | 30 % d'épargne : le matelas de sécurité (06:16–06:47) | à faire |
+| 12 | 30 % d'épargne : le matelas de sécurité (06:16–06:47) | fait (2026-11-09) |
 | 13 | 2 000 €, ça fait 800 € (06:47–07:15) | à faire |
 | 14 | 15 % pour le plaisir (07:15–07:37) | à faire |
 | 15 | La règle 40 · 30 · 15 · 15 (07:42–08:21) | à faire |
