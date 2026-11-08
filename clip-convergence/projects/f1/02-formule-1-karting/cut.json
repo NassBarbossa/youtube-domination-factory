@@ -1,0 +1,46 @@
+{
+ "short": "F1-02 — La Formule 1 et le karting (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 39.96,
+   "b": 42.26,
+   "text": "vous voulez tous conduire la Formule 1,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 42.48,
+   "b": 48.1,
+   "text": "vous voulez tous faire ce que vous voyez les gens faire, mais vous ne savez même pas conduire un karting."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 48.28,
+   "b": 53.44,
+   "text": "Donc c'est très important, on va passer le code aujourd'hui dans cette première vidéo."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 53.44,
+   "b": 61.3,
+   "text": "S'il vous plaît, ne banalisez pas l'information, même si c'est des choses qui vous semblent évidentes. Croyez -moi sur parole, je vais y revenir si je vous le dis."
+  }
+ ]
+}

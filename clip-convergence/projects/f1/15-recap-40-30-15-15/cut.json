@@ -1,0 +1,77 @@
+{
+ "short": "F1-15 — La règle 40 · 30 · 15 · 15 (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 462.0,
+   "b": 464.06,
+   "text": "Je commençais mes formations toujours comme ça."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 464.62,
+   "b": 468.76,
+   "text": "Faites cet exercice -là pour rationaliser au maximum le processus."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 468.98,
+   "b": 474.52,
+   "text": "Il faut 40 % de coût de la vie, 30 % d'épargne jusqu'à atteindre 6 mois."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 474.76,
+   "b": 486.38,
+   "text": "Après, vous pouvez faire plus d'investissements. Une fois que, admettons, vous avez, on a dit 800 euros, donc vous avez aller 2000, 3000 euros pour simplifier."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 487.02,
+   "b": 492.68,
+   "text": "Eh bien là, vous pouvez commencer à mettre plus que 10 % d'épargne et ensuite investissement."
+  },
+  {
+   "id": "s6",
+   "speaker": "nass",
+   "a": 493.0,
+   "b": 500.62,
+   "text": "Ça encore, chaque individu est différent, mais ça, c'est dans les grandes lignes comment vous devez gérer votre capital."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3",
+   "s4",
+   "s5"
+  ]
+ }
+}

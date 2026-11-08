@@ -1,0 +1,53 @@
+{
+ "short": "F1-08 — Roberto Carlos a perdu 99 % (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 268.54,
+   "b": 276.54,
+   "text": "et franchement, j'ai mis une petite photo récemment sur Insta, encore Roberto Carlos, le joueur de foot,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 276.66,
+   "b": 282.86,
+   "text": "il dit qu'il a perdu 99 % de sa fortune parce qu'il a fait des mauvais investissements, il a mal géré son argent"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 282.86,
+   "b": 288.82,
+   "text": "il a gagné peut -être des dizaines et des dizaines de millions, il a tout perdu et combien ont tout perdu"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 288.82,
+   "b": 296.16,
+   "text": "et vraiment, c'est quelque chose qui est très important, combien dans la crypto, j'ai vu des mecs monter à des centaines de millions, oui c'est vrai,"
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 296.8,
+   "b": 301.78,
+   "text": "Et tout perdre parce qu'ils n'avaient pas mis en place ce petit exercice qu'on va faire ensemble."
+  }
+ ]
+}

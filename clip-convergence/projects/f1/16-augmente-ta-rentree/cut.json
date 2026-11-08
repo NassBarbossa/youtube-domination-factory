@@ -1,0 +1,46 @@
+{
+ "short": "F1-16 — Augmente ta rentrée mensuelle (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 500.92,
+   "b": 506.38,
+   "text": "Donc, vas -y, passe à l'action, écris, fais ça et c'est quelque chose que tu vas faire tous les mois."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 506.58,
+   "b": 514.76,
+   "text": "Avant d'essayer de gagner de l'argent en investissement, occupe -toi de faire le chiffre que tu vas écrire en haut là, au -dessus."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 514.98,
+   "b": 520.16,
+   "text": "C'est ta rentrée mensuelle. Occupe -toi de l'augmenter par ton travail, par tes compétences, par des trucs comme ça."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 520.5,
+   "b": 527.4,
+   "text": "L'investissement, on va le voir tout le long de cette formation. tu vas voir, ce n'est pas très dur d'augmenter tes rentabilités en investissement."
+  }
+ ]
+}

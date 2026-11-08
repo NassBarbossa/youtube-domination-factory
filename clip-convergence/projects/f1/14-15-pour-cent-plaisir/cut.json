@@ -1,0 +1,46 @@
+{
+ "short": "F1-14 — 15 % pour le plaisir (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 435.38,
+   "b": 443.52,
+   "text": "Donc, vous voyez, je sais que moi, potentiellement, à mes débuts, il y a 10 ans, ou d'autres personnes, « Non, mais 100 euros tous les mois et tout, machin, je ne peux pas faire et tout."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 443.66,
+   "b": 447.32,
+   "text": "» Mais ça ne représente que 15%, tu vois, tu as déjà fait."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 447.56,
+   "b": 451.2,
+   "text": "Et quelque chose de très important aussi, c'est 15 % pour le plaisir."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 451.46,
+   "b": 456.64,
+   "text": "Parce que si vous êtes dans une psychologie que je veux faire de l'argent, machin, vous allez craquer, vous n'allez pas tenir."
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "short": "F1-11 — Déménage (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 359.76,
+   "b": 363.3,
+   "text": "Ouais, mais moi, je bosse à Paris et du coup, je ne suis pas assez bien payé,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 363.42,
+   "b": 364.74,
+   "text": "je ne veux pas prendre les transports."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 364.88,
+   "b": 366.84,
+   "text": "Déménage, ne va pas à Paris, fais autre chose."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 367.08,
+   "b": 374.5,
+   "text": "Il faut vraiment 40 % max que vous ne soyez pas endetté par les crédits, par tout ça. Donc, 40%."
+  }
+ ]
+}

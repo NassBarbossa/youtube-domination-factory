@@ -1,0 +1,53 @@
+{
+ "short": "F1-05 — Investir, la définition (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 111.9,
+   "b": 114.96,
+   "text": "Donc, j'ai décidé de prendre une petite définition, investir."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 115.32,
+   "b": 121.14,
+   "text": "Donc, investir, c'est mettre son argent dans quelque chose qui prend de la valeur avec le temps."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 121.48,
+   "b": 126.62,
+   "text": "On revient vraiment aux bases, mais c'est très important et c'est vraiment le cœur."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 116.18,
+   "b": 132.82,
+   "text": "investir, c'est mettre son argent dans quelque chose qui prend de la valeur avec le temps. On revient vraiment aux bases, mais c'est très important et c'est vraiment le cœur. Investir, c'est mettre son argent dans quelque chose qui prend de la valeur avec le temps, tout simplement."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 132.82,
+   "b": 139.48,
+   "text": "Et là, pour le coup, comme vous avez compris, on ne parle pas de scalping, on parle des choses qui prennent la valeur avec le temps pendant longtemps."
+  }
+ ]
+}

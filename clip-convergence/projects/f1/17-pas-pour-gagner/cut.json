@@ -1,0 +1,46 @@
+{
+ "short": "F1-17 — Pas pour gagner de l'argent (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 536.3,
+   "b": 543.24,
+   "text": "c'est vraiment pourquoi c'est très important d'investir pour pouvoir contrer l'inflation,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 543.44,
+   "b": 547.5,
+   "text": "tout simplement pas pour gagner de l'argent, mais pas pour en perdre pour l'inflation."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 547.8,
+   "b": 551.26,
+   "text": "Dis -moi dans les commentaires, je te ferai une petite vidéo sur qu'est -ce que l'inflation."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 551.26,
+   "b": 559.4,
+   "text": "Si tu veux aussi une vidéo sur pourquoi je pense que la liberté géographique est mille fois plus importante que la liberté financière,"
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "short": "F1-12 — 30 % d'épargne : le matelas de sécurité (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 375.94,
+   "b": 381.92,
+   "text": "Deuxièmement, 30%, vous allez mettre en épargne jusqu'à ce que j'appelle un matelas de sécurité."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 381.92,
+   "b": 387.24,
+   "text": "ça dépend votre âge, ça dépend votre situation ça dépend si vous avez des enfants et tout ça,"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 387.46,
+   "b": 394.04,
+   "text": "en gros jusqu'à que vous arrivez à avoir 3 mois de coût de la vie, entre 3 et 6 mois de coût de la vie"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 394.04,
+   "b": 401.18,
+   "text": "si vous arrivez à un pépin mentalement vous savez que vous avez entre 3 et 6 mois de coût de la vie,"
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 401.28,
+   "b": 407.26,
+   "text": "donc entre 3 et 6 fois 40 % de coût de la vie pour pouvoir être tranquille,"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s1",
+   "s2"
+  ]
+ }
+}

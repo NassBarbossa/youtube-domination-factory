@@ -1,0 +1,39 @@
+{
+ "short": "F1-03 — Un secret depuis 2021 (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 63.76,
+   "b": 71.0,
+   "text": "Et je vais vous partager également un secret que j'ai mis en place, que j'ai partagé depuis 2021."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 71.12,
+   "b": 75.6,
+   "text": "Et si vous ne l'avez jamais mis en place, croyez -moi sur parole, il va vous changer votre vie."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 257.08,
+   "b": 268.54,
+   "text": "Donc le secret que je vais vous révéler, c'est que tout le monde veut avoir des résultats dans l'investissement, mais avant d'être un bon investisseur, il faut savoir gérer son capital."
+  }
+ ]
+}

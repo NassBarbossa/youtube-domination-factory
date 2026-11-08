@@ -1,0 +1,46 @@
+{
+ "short": "F1-04 — De quoi on ne va pas parler (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 79.8,
+   "b": 85.58,
+   "text": "donc de quoi on parle et surtout de quoi on va pas parler dans cette série de formation offerte"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 85.58,
+   "b": 94.44,
+   "text": "eh ben on va pas parler de trading on va également pas parler de scalping d'achat de revente rapide tout ça on va pas en parler"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 94.44,
+   "b": 104.4,
+   "text": "on ne parlera pas d'automatisation avec l'IA j'ai fait sur cloud code regardez mon nouveau agent c'est dingue tout ça les gars on va pas parler de ça"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 104.4,
+   "b": 111.64,
+   "text": "ce que tout le monde doit mettre en place et ce de quoi on va parler, c'est tout simplement de l'investissement."
+  }
+ ]
+}

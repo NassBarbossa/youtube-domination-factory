@@ -1,0 +1,32 @@
+{
+ "short": "F1-01 — Pas une option, une obligation (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 6.34,
+   "b": 11.78,
+   "text": "Donc pourquoi il faut investir en 2026 ? Pourquoi ? Ce n'est pas une option, c'est une obligation."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 20.64,
+   "b": 32.18,
+   "text": "Donc ce sera obligatoire d'investir en 2027, en 2028, en 2029, en 2030 et bref au final jusqu'à la fin de votre vie tout simplement pour lutter contre l'inflation."
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+{
+ "short": "F1-06 — Qui je suis pour vous dire ça ? (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 144.52,
+   "b": 154.8,
+   "text": "qui je suis pour vous dire ça ? Donc, ça fait maintenant 10 ans, l'année prochaine, très exactement en 2027, ça fait 10 ans que je suis investisseur et entrepreneur."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 155.16,
+   "b": 161.8,
+   "text": "J'ai acheté mes premiers bitcoins en 2017. le Bitcoin pour la petite histoire valait 3000 dollars à ce moment -là."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 162.36,
+   "b": 170.04,
+   "text": "Et ça fait 6 ans que j'ai quitté mon emploi. Et depuis, tout simplement, je vis de mes investissements, je vis des projets que je fais."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 170.42,
+   "b": 177.98,
+   "text": "J'ai accompagné plus de 300 personnes que j'ai formées à l'investissement entre 2021 et 2022."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2",
+   "s4"
+  ]
+ }
+}

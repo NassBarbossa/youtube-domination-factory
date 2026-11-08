@@ -29,6 +29,39 @@ MOVE_DUR = 0.6
 E = "power3.inOut"
 ILL = dict(left=90, top=1180, w=900, h=300)   # zone des illustrations dans la bande des états solo sans écran
 
+ORANGE, CYAN, WHITE, RED_Y, MUTED = "#FF6B35", "#00E5FF", "#FFFFFF", "#FF4444", "rgba(255,255,255,0.78)"   # DA des slides YDF
+
+# Thèmes : « convergence » = DA « Les deux droites » (papier, encre, vert / or) ; « ydf » = DA des slides de la formation
+# (fond bg-nass-v2.jpg, Syne + Inter, orange / cyan). Le thème ne change que les couleurs, les polices, le fond et la fin.
+THEMES = {
+    "convergence": dict(
+        ink=INK, paper=PAPER, c_nass=GREEN, c_other=GOLD, hook_b=GREEN, hook_b2=GOLD_TXT, line_g=GREEN, line_o=GOLD,
+        font_display="Inter Tight", font_caption="Inter Tight", end="v", cta_kick="",
+        fonts_css="@font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }\n"
+                  "    @font-face { font-family: 'Plex Mono C'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }",
+        ring_nass=f"#ring-nass {{ box-shadow: inset 0 0 0 14px {GREEN}; }}", ring_sadek=f"#ring-sadek {{ box-shadow: inset 0 0 0 14px {GOLD}; }}",
+        lines_css="",
+        cta_css=f"#cta {{ position: absolute; left: 0; right: 0; top: 1068px; text-align: center; font: 700 46px 'Inter Tight'; color: {INK}; }}",
+        ground_css=f"#ground {{ position: absolute; inset: 0; background: {PAPER};\n"
+                   f"        background-image: linear-gradient({GRID} 1px, transparent 1px), linear-gradient(90deg, {GRID} 1px, transparent 1px);\n"
+                   f"        background-size: 96px 96px; background-position: -12px -12px; }}",
+    ),
+    "ydf": dict(
+        ink=WHITE, paper="#0A0A0A", c_nass=ORANGE, c_other=CYAN, hook_b=ORANGE, hook_b2=CYAN, line_g=ORANGE, line_o=CYAN,
+        font_display="Syne", font_caption="Inter", end="bar", cta_kick="Formation offerte", font_scale=0.76,
+        fonts_css="@font-face { font-family: 'Syne'; src: url('assets/fonts/Syne.ttf') format('truetype'); font-weight: 400 800; }\n"
+                  "    @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter.ttf') format('truetype'); font-weight: 100 900; }",
+        ring_nass=f"#ring-nass {{ box-shadow: inset 0 0 0 12px {ORANGE}, 0 0 44px rgba(255,107,53,0.45); }}",
+        ring_sadek=f"#ring-sadek {{ box-shadow: inset 0 0 0 12px {CYAN}, 0 0 44px rgba(0,229,255,0.40); }}",
+        lines_css="#line-g { filter: drop-shadow(0 0 14px rgba(255,107,53,0.65)); } #line-o { filter: drop-shadow(0 0 14px rgba(0,229,255,0.55)); }",
+        cta_css="#cta { position: absolute; left: 0; right: 0; top: 1030px; text-align: center; }\n"
+                f"    #cta .kick {{ font: 800 30px 'Syne'; letter-spacing: 0.34em; text-transform: uppercase; color: {ORANGE}; }}\n"
+                f"    #cta .t {{ margin-top: 26px; font: 800 50px/1.1 'Syne'; color: {WHITE}; letter-spacing: -0.01em; }}",
+        ground_css="#ground { position: absolute; inset: 0; background: #0A0A0A url('assets/bg-nass-v2.jpg') center / cover no-repeat; }\n"
+                   "      #ground::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, rgba(10,10,10,0.25), rgba(10,10,10,0.80)); }",
+    ),
+}
+
 # SFX : nom -> (fichier source, durée gardée, filtre ffmpeg préalable)
 SFX_KINDS = {
     "whoosh-short": ("whoosh-short", 0.55, ""),
@@ -71,7 +104,7 @@ def solo(cam, d, e=130):
     g, o = e + d + e, FH - e
     other = "sadek" if cam == "nass" else "nass"
     return {cam: (540, round(e + d / 2), d), other: (540, round(e + d / 2), 400), "g": (g, g), "o": (o, o),
-            "cap": g + 440, "e": e, "solo": cam, "capscale": 1.25}
+            "cap": g + 440, "e": e, "solo": cam, "capscale": 1.25, "hook": g + 40}
 
 
 def solo_screen(d, sw, sh, cap_h=110, cam="nass"):
@@ -83,7 +116,7 @@ def solo_screen(d, sw, sh, cap_h=110, cam="nass"):
     other = "sadek" if cam == "nass" else "nass"
     return {"g": (round(g), round(g)), "o": (round(o), round(o)), cam: (540, round(e + d / 2), d), other: (540, round(e + d / 2), 400),
             "cap": round(g + 14 + sh + 16 + cap_h / 2), "e": round(e), "solo": cam, "capscale": 1.25,
-            "screen": True, "sx": round((1080 - sw) / 2), "sy": round(g + 14), "sw": sw, "sh": sh}
+            "screen": True, "sx": round((1080 - sw) / 2), "sy": round(g + 14), "sw": sw, "sh": sh, "hook": round(g + 14 + sh + 24)}
 
 
 def screen_only(sw, sh, kw_h=300, cap_h=110, hook=180):
@@ -118,9 +151,11 @@ def base_states():
 
 
 class Comp:
-    def __init__(self, here, n_short, title, cta="Épisode 1 complet sur la chaîne"):
+    def __init__(self, here, n_short, title, cta="Épisode 1 complet sur la chaîne", theme="convergence"):
         self.HERE = Path(here)
         self.n_short, self.title, self.cta = n_short, title, cta
+        self.T = dict(THEMES[theme])
+        self.cta_kick = self.T["cta_kick"]
         self.TL = TL = json.loads((self.HERE / "timeline.json").read_text(encoding="utf-8"))
         self.CUT = CUT = json.loads((self.HERE / "cut.json").read_text(encoding="utf-8"))
         self.SEG = {s["id"]: s for s in TL["segments"]}
@@ -167,6 +202,9 @@ class Comp:
         return round(cx - d / 2, 1), round(cy - d / 2, 1), round(s, 4)
 
     def kw(self, id_, html, css, t_in, t_out, anim="pop", attrs=""):
+        fs = self.T.get("font_scale", 1)
+        if fs != 1:
+            css = re.sub(r"font-size:\s*(\d+(?:\.\d+)?)px", lambda m: f"font-size: {round(float(m.group(1)) * fs)}px", css)
         """attrs : attributs HTML en plus (ex. 'data-layout-allow-overlap' quand deux mots clés partagent une zone sans être visibles ensemble)."""
         self.kws.append(dict(id=id_, html=html, css=css, t_in=t_in, t_out=t_out, anim=anim, attrs=attrs))
 
@@ -177,6 +215,12 @@ class Comp:
         for i, t in enumerate(times):
             sc = amount if i % 2 == 0 else 1
             self.extra_js.append(f'tl.to("#screen-body", {{ scale: {sc}, duration: {MOVE_DUR}, ease: "{E}" }}, {round(t - MOVE_DUR / 2, 3)});')
+
+    def kwc(self, id_, html, color, t_in, t_out, size=92, top=None, anim="pop", attrs="", extra=""):
+        """Mot clé centré dans la bande (zone ILL) : la forme la plus courante."""
+        top = ILL["top"] + 20 if top is None else top
+        self.kw(id_, html, f"left: 0; right: 0; top: {top}px; text-align: center; color: {color}; font-size: {size}px; line-height: 1; {extra}",
+                t_in, t_out, anim, attrs)
 
     # ---------- SFX ----------
     def _sfx_files(self):
@@ -233,15 +277,16 @@ class Comp:
         seams = self.seams
         hook_fade = round(seams[0] - 0.32, 3) if self.hook_fade is None else round(self.hook_fade, 3)
         sfx = self._sfx_files()
+        T, CAMS = self.T, list(self.CROP)
 
         js = ["const tl = gsap.timeline({ paused: true });"]
         H0 = STATES["H"]
-        for cam in ("nass", "sadek"):
+        for cam in CAMS:
             x, y, sc = self.med_tf(cam, "H")
             js.append(f'tl.fromTo("#wrap-{cam}", {{ x: {x}, y: {y}, scale: {sc} }}, {{ x: {x}, y: {y}, scale: {sc}, duration: 0.01 }}, 0);')
             v0 = 1 if H0.get("solo") in (None, cam) else 0
             js.append(f'tl.fromTo("#stage-{cam}", {{ opacity: {v0} }}, {{ opacity: {v0}, duration: 0.01 }}, 0);')
-        for t, cam in self.z_front:
+        for t, cam in (self.z_front if len(CAMS) > 1 else []):
             other = "sadek" if cam == "nass" else "nass"
             if t == 0:
                 js.append(f'tl.fromTo("#stage-{cam}", {{ zIndex: 2 }}, {{ zIndex: 2, duration: 0.01 }}, 0);')
@@ -255,7 +300,7 @@ class Comp:
                 f'tl.to("#line-g", {{ attr: {{ y1: {S["g"][0]}, y2: {S["g"][1]} }}, duration: {MOVE_DUR}, ease: "{E}" }}, {t0});',
                 f'tl.to("#line-o", {{ attr: {{ y1: {S["o"][0]}, y2: {S["o"][1]} }}, duration: {MOVE_DUR}, ease: "{E}" }}, {t0});',
             ]
-            for cam in ("nass", "sadek"):
+            for cam in CAMS:
                 x, y, sc = self.med_tf(cam, st)
                 vis = 0 if S.get("solo") not in (None, cam) else 1
                 js.append(f'tl.to("#wrap-{cam}", {{ x: {x}, y: {y}, scale: {sc}, duration: {MOVE_DUR}, ease: "{E}" }}, {t0});')
@@ -291,8 +336,10 @@ class Comp:
         VV = [(90 + (7732.2 + 89) * ls, LY0 + (122.9 + 89) * ls), VG[1]]
         SW = round(245.9 * ls, 2)
         VX, VTOP, VBOT, VHALF = 540, 520, 820, 150
-        js += [
-            f'tl.to(["#stage-nass", "#stage-sadek", "#ill"], {{ opacity: 0, duration: 0.45, ease: "power2.in" }}, {END_T});',
+        stages_js = "[" + ", ".join(f'"#stage-{c}"' for c in CAMS) + ', "#ill"]'
+        if T["end"] == "v":
+          js += [
+            f'tl.to({stages_js}, {{ opacity: 0, duration: 0.45, ease: "power2.in" }}, {END_T});',
             f'tl.to("#line-o", {{ attr: {{ x1: {VX - VHALF}, y1: {VTOP}, x2: {VX}, y2: {VBOT} }}, strokeWidth: 46, duration: 0.7, ease: "{E}" }}, {END_T});',
             f'tl.to("#line-g", {{ attr: {{ x1: {VX + VHALF}, y1: {VTOP}, x2: {VX}, y2: {VBOT} }}, strokeWidth: 46, duration: 0.7, ease: "{E}" }}, {END_T});',
             f'tl.fromTo("#v-dot", {{ opacity: 0, scale: 0.2 }}, {{ opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }}, {END_T + 0.68});',
@@ -301,8 +348,16 @@ class Comp:
             f'tl.to("#v-dot", {{ opacity: 0, scale: 0.2, duration: 0.3, ease: "power2.in" }}, {END_T + 1.1});',
             f'tl.fromTo("#logo", {{ opacity: 0, filter: "blur(6px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, {END_T + 1.42});',
             f'tl.fromTo("#cta", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }}, {END_T + 1.75});',
-            'window.__timelines["stage"] = tl;',
-        ]
+          ]
+        else:   # « bar » : les deux droites se rejoignent en une courte barre orange / cyan, le CTA dessous
+          BY = 960
+          js += [
+            f'tl.to({stages_js}, {{ opacity: 0, duration: 0.45, ease: "power2.in" }}, {END_T});',
+            f'tl.to("#line-g", {{ attr: {{ x1: 400, y1: {BY}, x2: 540, y2: {BY} }}, strokeWidth: 16, duration: 0.7, ease: "{E}" }}, {END_T + 0.1});',
+            f'tl.to("#line-o", {{ attr: {{ x1: 540, y1: {BY}, x2: 680, y2: {BY} }}, strokeWidth: 16, duration: 0.7, ease: "{E}" }}, {END_T + 0.1});',
+            f'tl.fromTo("#cta", {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }}, {END_T + 0.85});',
+          ]
+        js.append('window.__timelines["stage"] = tl;')
 
         # ---------- HTML : scène ----------
         vids = {cam: "\n          ".join(
@@ -313,42 +368,51 @@ class Comp:
             f'<video id="screen-{s["id"]}" class="clip" src="assets/video/screen_{s["id"]}.mp4" muted playsinline '
             f'data-start="{s["out_start"]}" data-duration="{s["dur"]}" data-media-start="{TL["handle"]}" data-track-index="9"></video>'
             for s in TL["segments"] if (HERE / f'assets/video/screen_{s["id"]}.mp4').exists())
-        logo_path = re.search(r"<path[^>]*/>", LOGO.read_text(encoding="utf-8")).group(0)
+        logo_svg = (f'<svg id="logo" viewBox="-89 -89 21736 1669" style="opacity:0">{re.search(r"<path[^>]*/>", LOGO.read_text(encoding="utf-8")).group(0)}</svg>'
+                    if T["end"] == "v" else "")
+        cta_html = (f'<div id="cta" style="opacity:0">{self.cta}</div>' if T["end"] == "v"
+                    else f'<div id="cta" style="opacity:0"><div class="kick">{self.cta_kick}</div><div class="t">{self.cta}</div></div>')
+        wrap_css = "\n    ".join(f'#wrap-{cam} {{ width: {self.VW[cam]}px; height: {self.VW[cam]}px; }}' for cam in CAMS)
+        panels = "\n".join(f'''    <div id="stage-{cam}" class="panel">
+      <div id="wrap-{cam}" class="wrap">
+          {vids[cam]}
+          <div id="ring-{cam}" class="ring"></div>
+      </div>
+    </div>''' for cam in CAMS)
         SS = STATES[self.screen_state] if self.screen_state in STATES and STATES[self.screen_state].get("screen") else dict(sx=90, sy=1151, sw=900, sh=491)
         kw_css = "\n    ".join(f'#{k["id"]} {{ {k["css"]} }}' for k in self.kws)
         kw_html = "\n    ".join(f'<div id="{k["id"]}" class="kw" style="opacity:0" {k.get("attrs", "")}>{k["html"]}</div>' for k in self.kws)
         stage = f"""<template>
   <style>
-    @font-face {{ font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }}
-    @font-face {{ font-family: 'Plex Mono C'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }}
+    {T["fonts_css"]}
     #root {{ position: absolute; inset: 0; overflow: hidden; }}
     .panel {{ position: absolute; inset: 0; overflow: hidden; }}
     .wrap {{ position: absolute; left: 0; top: 0; border-radius: 50%; overflow: hidden; transform-origin: 0 0; }}
-    #wrap-nass {{ width: {self.VW["nass"]}px; height: {self.VW["nass"]}px; }}
-    #wrap-sadek {{ width: {self.VW["sadek"]}px; height: {self.VW["sadek"]}px; }}
+    {wrap_css}
     .cam {{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }}
     .ring {{ position: absolute; inset: 0; border-radius: 50%; }}
-    #ring-nass {{ box-shadow: inset 0 0 0 14px {GREEN}; }}
-    #ring-sadek {{ box-shadow: inset 0 0 0 14px {GOLD}; }}
+    {T["ring_nass"]}
+    {T["ring_sadek"]}
     #lines {{ position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }}
     #lines line {{ stroke-width: 12; stroke-linecap: round; }}
-    #hook {{ position: absolute; left: 0; right: 0; top: {STATES['H']['hook']}px; text-align: center; color: {INK}; }}
-    #hook .h1 {{ font: 800 {self.hook_font}px/0.95 'Inter Tight'; letter-spacing: -0.02em; }}
-    #hook .h1 b {{ color: {GREEN}; font-weight: 800; }}
-    #hook .h1 b.or {{ color: {GOLD_TXT}; }}
+    {T["lines_css"]}
+    #hook {{ position: absolute; left: 0; right: 0; top: {STATES['H']['hook']}px; text-align: center; color: {T["ink"]}; }}
+    #hook .h1 {{ font: 800 {round(self.hook_font * T.get("font_scale", 1))}px/0.95 '{T["font_display"]}'; letter-spacing: -0.02em; }}
+    #hook .h1 b {{ color: {T["hook_b"]}; font-weight: 800; }}
+    #hook .h1 b.or {{ color: {T["hook_b2"]}; }}
     {self.hook_css}
     #screen {{ position: absolute; left: {SS['sx']}px; top: {SS['sy']}px; width: {SS['sw']}px; height: {SS['sh']}px; overflow: hidden; }}
     #screen-body {{ position: absolute; inset: 0; }}
     #screen video {{ position: absolute; inset: 0; width: 100%; height: 100%; }}
-    .kw {{ position: absolute; font: 800 104px/1 'Inter Tight'; letter-spacing: -0.03em; white-space: nowrap; }}
+    .kw {{ position: absolute; font: 800 104px/1 '{T["font_display"]}'; letter-spacing: -0.03em; white-space: nowrap; color: {T["ink"]}; }}
     {kw_css}
     #ill {{ position: absolute; left: {ILL["left"]}px; top: {ILL["top"]}px; width: {ILL["w"]}px; height: {ILL["h"]}px; }}
     .ill {{ position: absolute; inset: 0; opacity: 0; }}
     .ill svg {{ position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }}
-    .ink {{ fill: none; stroke: {INK}; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }}
+    .ink {{ fill: none; stroke: {T["ink"]}; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }}
     {self.ill_css}
     #logo {{ position: absolute; left: {LX0}px; top: {LY0}px; width: {LOGO_W}px; height: {1669 * ls:.1f}px; }}
-    #cta {{ position: absolute; left: 0; right: 0; top: 1068px; text-align: center; font: 700 46px 'Inter Tight'; color: {INK}; }}
+    {T["cta_css"]}
   </style>
   <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
     <div id="screen">
@@ -356,18 +420,7 @@ class Comp:
           {screen_vids}
       </div>
     </div>
-    <div id="stage-nass" class="panel">
-      <div id="wrap-nass" class="wrap">
-          {vids["nass"]}
-          <div id="ring-nass" class="ring"></div>
-      </div>
-    </div>
-    <div id="stage-sadek" class="panel">
-      <div id="wrap-sadek" class="wrap">
-          {vids["sadek"]}
-          <div id="ring-sadek" class="ring"></div>
-      </div>
-    </div>
+{panels}
 
     <div id="hook">
       <div class="h1">{self.hook_html}</div>
@@ -379,14 +432,14 @@ class Comp:
       {self.ill_html}
     </div>
 
-    <svg id="logo" viewBox="-89 -89 21736 1669" style="opacity:0">{logo_path}</svg>
+    {logo_svg}
     <svg id="lines" viewBox="0 0 1080 1920">
-      <line id="line-g" x1="-30" y1="{H0["g"][0]}" x2="1110" y2="{H0["g"][1]}" stroke="{GREEN}"/>
-      <line id="line-o" x1="-30" y1="{H0["o"][0]}" x2="1110" y2="{H0["o"][1]}" stroke="{GOLD}"/>
-      <circle id="v-dot" cx="{VX}" cy="{VBOT}" r="34" fill="{INK}" opacity="0" style="transform-origin: {VX}px {VBOT}px"/>
+      <line id="line-g" x1="-30" y1="{H0["g"][0]}" x2="1110" y2="{H0["g"][1]}" stroke="{T["line_g"]}"/>
+      <line id="line-o" x1="-30" y1="{H0["o"][0]}" x2="1110" y2="{H0["o"][1]}" stroke="{T["line_o"]}"/>
+      <circle id="v-dot" cx="{VX}" cy="{VBOT}" r="34" fill="{T["ink"]}" opacity="0" style="transform-origin: {VX}px {VBOT}px"/>
     </svg>
 
-    <div id="cta" style="opacity:0">{self.cta}</div>
+    {cta_html}
   </div>
   <script>
     {(chr(10) + '    ').join(js)}
@@ -400,7 +453,7 @@ class Comp:
         groups = self._groups()
         cap_html, cap_js = [], ["const tl = gsap.timeline({ paused: true });"]
         for gi, (seg, ws) in enumerate(groups):
-            color = GREEN if SEG[seg]["speaker"] == "nass" else GOLD
+            color = T["c_nass"] if SEG[seg]["speaker"] == "nass" else T["c_other"]
             start = round(max(ws[0]["s"] - 0.05, 0), 3)
             nxt = groups[gi + 1][1][0]["s"] - 0.05 if gi + 1 < len(groups) else None
             end = round(min(ws[-1]["e"] + 0.18, nxt if nxt else 1e9, VOICE_END), 3)
@@ -423,11 +476,11 @@ class Comp:
         cap_js.append('window.__timelines["captions"] = tl;')
         captions = f"""<template>
   <style>
-    @font-face {{ font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }}
+    {T["fonts_css"]}
     #root {{ position: absolute; inset: 0; }}
     #capwrap {{ position: absolute; left: 0; right: 0; top: 0; height: 0; overflow: visible; }}
-    .grp {{ position: absolute; left: 130px; right: 130px; top: -36px; text-align: center; font: 800 {self.cap_font}px/1.08 'Inter Tight';
-            letter-spacing: -0.01em; color: {INK}; overflow: visible; }}
+    .grp {{ position: absolute; left: 130px; right: 130px; top: -36px; text-align: center; font: 800 {self.cap_font}px/1.08 '{T["font_caption"]}';
+            letter-spacing: -0.01em; color: {T["ink"]}; overflow: visible; }}
     .w {{ position: relative; display: inline-block; }}
     .w i {{ position: absolute; left: 0; right: 0; bottom: -8px; height: 9px; border-radius: 5px; transform-origin: 0 50%; transform: scaleX(0); }}
   </style>
@@ -455,11 +508,9 @@ class Comp:
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
     <style>
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-      html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: {PAPER}; }}
+      html, body {{ width: 1080px; height: 1920px; overflow: hidden; background: {T["paper"]}; }}
       #root {{ position: relative; width: 1080px; height: 1920px; overflow: hidden; }}
-      #ground {{ position: absolute; inset: 0; background: {PAPER};
-        background-image: linear-gradient({GRID} 1px, transparent 1px), linear-gradient(90deg, {GRID} 1px, transparent 1px);
-        background-size: 96px 96px; background-position: -12px -12px; }}
+      {T["ground_css"]}
     </style>
   </head>
   <body>

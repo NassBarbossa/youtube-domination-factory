@@ -1,0 +1,54 @@
+{
+ "short": "F1-07 — Toutes les phases, je les ai vécues (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 180.06,
+   "b": 187.36,
+   "text": "Et toutes les phases que tu as pu voir sur les marchés, en tout cas, mon zone d'expertise, c'est la crypto, je les ai vécues."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 187.36,
+   "b": 198.06,
+   "text": "que ce soit les cryptos tout simplement en 2017, les ICO, les NFT, les ordinales sur Bitcoin, les meme coins, la DeFi, bref tout ça je les ai vécu."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 245.68,
+   "b": 256.9,
+   "text": "sachez que ce que je vous dis, un, j'ai fait payer les gens pour transmettre ce savoir en 2021 -2022 et aujourd'hui encore, j'ai des résultats."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}

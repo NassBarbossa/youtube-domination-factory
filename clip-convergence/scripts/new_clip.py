@@ -27,6 +27,6 @@ shutil.copytree(src / "assets/fonts", dst / "assets/fonts")
 (dst / "assets/sfx").mkdir()
 for f in (src / "assets/sfx").glob("*.mp3"):
     shutil.copy(f, dst / "assets/sfx" / f.name)
-for f in (src / "assets").glob("*.svg"):
+for f in [*(src / "assets").glob("*.svg"), *(src / "assets").glob("*.jpg"), *(src / "assets").glob("*.png")]:
     shutil.copy(f, dst / "assets" / f.name)
 print("créé", dst)

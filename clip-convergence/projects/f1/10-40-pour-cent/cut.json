@@ -1,0 +1,61 @@
+{
+ "short": "F1-10 — 40 %, pas plus (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 331.46,
+   "b": 337.52,
+   "text": "Coût fixe de la vie, donc si par exemple tu gagnes 2 000 euros ou 1 500 ou 3 000 ou 5 000,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 337.76,
+   "b": 345.06,
+   "text": "bref, ton salaire mensuel, tes rentrées entrepreneuriales mensuelles, exactement quelque chose qui est tous les mois pareil,"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 345.74,
+   "b": 354.9,
+   "text": "40 % de ça, 40 % de ton loyer, il doit servir à salaire, loyer, abonnement, les choses vitaux, les choses vitales, pardon."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 355.46,
+   "b": 359.76,
+   "text": "Tu dois les garder 40%, pas plus, pas 70%."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}

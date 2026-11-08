@@ -1,0 +1,69 @@
+{
+ "short": "F1-13 — 2 000 €, ça fait 800 € (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 407.34,
+   "b": 411.3,
+   "text": "et s'il vous plaît moi je ne comprends pas les pourcents Frérot,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 411.56,
+   "b": 417.14,
+   "text": "2000 euros, 2000 pour 40%, eh bien, ça fait 800 euros."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 417.24,
+   "b": 421.48,
+   "text": "Tu vois, ce n'est pas très compliqué. Tout le monde peut le faire de tête quand tu passes du temps."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 421.96,
+   "b": 426.94,
+   "text": "Vous allez prendre ensuite 15 % que vous allez réserver à l'investissement."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 427.38,
+   "b": 435.24,
+   "text": "Donc, vous allez prendre 300 euros sur ces 2000 euros ou sur 1000 euros, eh bien, ce sera 150 euros que vous allez investir."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s4",
+   "s5"
+  ]
+ }
+}

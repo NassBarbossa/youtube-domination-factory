@@ -32,7 +32,28 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 30 | La plus grande correction de l'or (08:56–09:22, Sadek) — chiffres à vérifier sur GC=F | fait (2026-11-09) |
 | 34 | Le 10-10, −50 %, 200 jours de range (13:19–13:52, Nass) — chiffres à vérifier | fait (2026-11-09) |
 
-## Formation 1 — « Pourquoi investir en 2026 » `njfEJFd7hQ8` (9 min 29) — 15 clips, repérage à compléter | à faire
+## Formation 1 — « Pourquoi investir en 2026 » `njfEJFd7hQ8` (9 min 29) — 17 clips, thème `ydf` (`clip-convergence/projects/f1/`)
+
+| N° | Clip | Statut |
+|---|---|---|
+| 01 | Pas une option, une obligation (00:06–00:32) | fait (2026-11-09) |
+| 02 | La Formule 1 et le karting (00:40–01:01) | à faire |
+| 03 | Un secret depuis 2021 (01:04 + 04:17) | à faire |
+| 04 | De quoi on ne va pas parler (01:20–01:52) | à faire |
+| 05 | Investir, la définition (01:52–02:19) | à faire |
+| 06 | Qui je suis pour vous dire ça ? (02:24–02:58) | à faire |
+| 07 | Toutes les phases, je les ai vécues (03:00 + 04:05) | à faire |
+| 08 | Roberto Carlos a perdu 99 % (04:28–05:02) | à faire |
+| 09 | Mets pause, prends un papier (05:02–05:30) | à faire |
+| 10 | 40 %, pas plus (05:31–06:00) | à faire |
+| 11 | Déménage (06:00–06:14) | à faire |
+| 12 | 30 % d'épargne : le matelas de sécurité (06:16–06:47) | à faire |
+| 13 | 2 000 €, ça fait 800 € (06:47–07:15) | à faire |
+| 14 | 15 % pour le plaisir (07:15–07:37) | à faire |
+| 15 | La règle 40 · 30 · 15 · 15 (07:42–08:21) | à faire |
+| 16 | Augmente ta rentrée mensuelle (08:21–08:47) | à faire |
+| 17 | Pas pour gagner de l'argent (08:56–09:19) | à faire |
+
 ## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 15 clips, repérage à compléter | à faire
 ## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min) — 15 clips, repérage à compléter | à faire
 ## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, repérage à compléter | à faire

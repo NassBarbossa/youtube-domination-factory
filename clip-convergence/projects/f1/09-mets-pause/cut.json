@@ -1,0 +1,46 @@
+{
+ "short": "F1-09 — Mets pause, prends un papier (Formation 1 « Pourquoi investir en 2026 »)",
+ "source": "~/Videos/NassRiviera/youtube/njfEJFd7hQ8.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/njfEJFd7hQ8-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 302.04,
+   "b": 306.68,
+   "text": "Donc, je te laisse mettre pause. Va chercher un papier, un crayon, fais sur Paint, fais ce que tu veux."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 306.84,
+   "b": 310.92,
+   "text": "Mais c'est un exercice que vous allez faire qui vous servira tout le long de votre vie."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 312.42,
+   "b": 319.84,
+   "text": "Donc, concrètement, on va prendre ce petit diagramme et vous allez faire quelque chose qu'il va vous servir tous les mois."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 320.28,
+   "b": 330.52,
+   "text": "Donc, en fait, là, si vous êtes salarié, idéalement, vous êtes salarié, sinon si tu ne vas pas investir, frérot, là, c'est les bases. Mais les bases d'avant, c'est travail et gagne de l'argent."
+  }
+ ]
+}
