@@ -1,0 +1,76 @@
+{
+ "short": "60 — L'or est en solde (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : deux ronds caméra de 210 px en bas (Nass à gauche, Sadek à droite)",
+ "prescale": 4.4,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   30,
+   448,
+   210,
+   210
+  ],
+  "sadek": [
+   1040,
+   448,
+   210,
+   210
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 1454.6,
+   "b": 1463.74,
+   "text": "ce n'est pas une question de zone, c'est une question de moment. Acheter de l'or alors que l'ATH est à 5600 à 4180, c'est un très bon prix."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 1468.42,
+   "b": 1480.42,
+   "text": "Quand on est dans de l'investissement, acheter de l'or. Aujourd'hui, c'est un très, très, très bon prix. Si vous êtes en trading et que vous avez très peu de marge de manœuvre, faites attention, parce que c'est un très mauvais moment."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 1577.18,
+   "b": 1587.94,
+   "text": "vous regardez, quand vous descendez du point haut, on est sur une correction de 30%. Donc on peut dire que par rapport à son plus haut au pic de la guerre, c'est les soldes de 30 % entre guillemets."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 1588.44,
+   "b": 1599.12,
+   "text": "Donc ce qui veut dire c'est que dans une optique d'achat long terme, donc le fait d'acheter de façon long terme, eh bien vous ne prenez pas trop de risques de vous positionner à ce niveau -là."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 1628.98,
+   "b": 1633.0,
+   "text": "ce n'est pas le plus important quand vous êtes des investisseurs."
+  }
+ ],
+ "screen": {
+  "crop": [
+   130,
+   105,
+   880,
+   495
+  ],
+  "size": [
+   900,
+   506
+  ],
+  "segments": [
+   "s3",
+   "s4"
+  ]
+ }
+}
