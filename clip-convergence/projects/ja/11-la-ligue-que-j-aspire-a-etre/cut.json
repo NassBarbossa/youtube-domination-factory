@@ -1,0 +1,32 @@
+{
+ "short": "JA-11 — La ligue que j'aspire à être (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 298.18,
+   "b": 310.56,
+   "text": "La ligue que j'aspire à être et que très honnêtement, je devrais être si je faisais mieux les choses au vu du nombre de temps que je passe et le nombre d'années, c'est la ligue des Six Fix par mois."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 320.2,
+   "b": 328.9,
+   "text": "Il y en a beaucoup qui ont fait ça en août. il y en a beaucoup qui ont fait ça en septembre, en octobre je pense que ça va s'avérer plus difficile"
+  }
+ ]
+}
