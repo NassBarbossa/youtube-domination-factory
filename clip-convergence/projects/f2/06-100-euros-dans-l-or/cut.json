@@ -1,0 +1,55 @@
+{
+ "short": "F2-06 — 100 € par mois dans l'or (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 189.7,
+   "b": 200.84,
+   "text": "cette fois -ci, si tu avais mis pareil, 100 euros tous les mois dans l'or, donc l'or physique ou digital, peu importe, mais l'actif l'or,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 201.44,
+   "b": 204.94,
+   "text": "eh bien tu aurais eu 27 880 euros."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 205.16,
+   "b": 213.12,
+   "text": "Et quand on était au sommet, au pic de la guerre avec les Etats -Unis et tout, tu aurais eu x3, tu aurais eu plus de 30 000 euros"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2",
+   "s3"
+  ]
+ }
+}
