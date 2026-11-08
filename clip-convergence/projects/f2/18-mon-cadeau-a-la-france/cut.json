@@ -1,0 +1,46 @@
+{
+ "short": "F2-18 — Mon cadeau à la France (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 642.62,
+   "b": 647.86,
+   "text": "Donc, partagez la vidéo de la formation offerte. Je pense vraiment, c'est mon cadeau."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 648.22,
+   "b": 654.28,
+   "text": "On dit, ouais, toi, vous savez, on entend souvent, ouais, vous êtes parti à l'étranger parce que ça fait 4 ans que je suis parti à l'étranger."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 655.24,
+   "b": 660.46,
+   "text": "Tu ne donnes rien à la France. On t'a tout donné, l'éducation. Voilà mon cadeau à la France."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 660.98,
+   "b": 664.6,
+   "text": "Formation, j'essaie de tous vous rendre riches. Et voilà mon cadeau."
+  }
+ ]
+}

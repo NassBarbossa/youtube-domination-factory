@@ -75,7 +75,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 15 | Vous êtes des fainéants (08:54–09:35) | fait (2026-11-09) |
 | 16 | Vous avez vidé ma batterie (09:36–09:58) | fait (2026-11-09) |
 | 17 | Le code + le permis = le karting (09:58–10:39) | fait (2026-11-09) |
-| 18 | Mon cadeau à la France (10:42–11:04) | à faire |
+| 18 | Mon cadeau à la France (10:42–11:04) | fait (2026-11-09) |
 
 ## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min) — 15 clips, repérage à compléter | à faire
 ## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, repérage à compléter | à faire
