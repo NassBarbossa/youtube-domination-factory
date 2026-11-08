@@ -1,0 +1,61 @@
+{
+ "short": "F2-03 — Flingue-moi mon algorithme (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 79.16,
+   "b": 83.74,
+   "text": "Si tu n'as pas vu la première vidéo, c'est très important que tu ailles voir d'abord cette première vidéo."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 83.84,
+   "b": 88.18,
+   "text": "Je t'ai mis le petit i. Bon, ça fait 6 ans que je fais YouTube, je ne suis toujours plus si c'est là ou là."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 88.4,
+   "b": 93.48,
+   "text": "Mais tu as le petit i, vas -y, va voir la vidéo, flingue -moi mon algorithme, ce n'est pas grave, c'est pour toi."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 93.92,
+   "b": 96.94,
+   "text": "Va voir la vidéo 1 et après reviens voir cette vidéo."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}

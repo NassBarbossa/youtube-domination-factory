@@ -60,7 +60,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 |---|---|---|
 | 01 | J'ai fait payer 300 personnes pour ça (00:12–00:43) | fait (2026-11-09) |
 | 02 | Le bon sens, il faut le savoir (00:51–01:16) | fait (2026-11-09) |
-| 03 | Flingue-moi mon algorithme (01:19–01:36) | à faire |
+| 03 | Flingue-moi mon algorithme (01:19–01:36) | fait (2026-11-09) |
 | 04 | La huitième merveille du monde (01:45–02:34) | à faire |
 | 05 | 100 € par mois dans la bourse américaine (02:36–03:09) | à faire |
 | 06 | 100 € par mois dans l'or (03:09–03:33) | à faire |
