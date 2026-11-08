@@ -54,7 +54,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 16 | Augmente ta rentrée mensuelle (08:21–08:47) | fait (2026-11-09) |
 | 17 | Pas pour gagner de l'argent (08:56–09:19) | fait (2026-11-09) |
 
-## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 18 clips, thème `ydf` (`clip-convergence/projects/f2/`) | en cours
+## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 18 clips, thème `ydf` (`clip-convergence/projects/f2/`) | **fait (2026-11-09)**
 
 | N° | Clip | Statut |
 |---|---|---|
