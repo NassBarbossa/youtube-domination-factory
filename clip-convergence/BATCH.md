@@ -32,7 +32,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 30 | La plus grande correction de l'or (08:56–09:22, Sadek) — chiffres à vérifier sur GC=F | fait (2026-11-09) |
 | 34 | Le 10-10, −50 %, 200 jours de range (13:19–13:52, Nass) — chiffres à vérifier | fait (2026-11-09) |
 
-## Formation 1 — « Pourquoi investir en 2026 » `njfEJFd7hQ8` (9 min 29) — 17 clips, thème `ydf` (`clip-convergence/projects/f1/`)
+## Formation 1 — « Pourquoi investir en 2026 » `njfEJFd7hQ8` (9 min 29) — 17 clips, thème `ydf` (`clip-convergence/projects/f1/`) | **fait (2026-11-09)**
 
 | N° | Clip | Statut |
 |---|---|---|
