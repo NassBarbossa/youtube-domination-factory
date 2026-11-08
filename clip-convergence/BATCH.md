@@ -88,7 +88,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 05 | Concentre-toi : le CEX (02:33–03:04) | fait (2026-11-09) |
 | 06 | Limité par le nombre d'opportunités (03:05–03:38) | fait (2026-11-09) |
 | 07 | Le DEX, c'est le far west (03:38–04:02) | fait (2026-11-09) |
-| 08 | « C'est moi l'indien » (04:03–04:26) | à faire |
+| 08 | « C'est moi l'indien » (04:03–04:26) | fait (2026-11-09) |
 | 09 | La méthode IOC (04:26–04:52) | à faire |
 | 10 | Euros → SOL → tokens (04:52–05:31) | à faire |
 | 11 | En dehors des exchanges, avant les autres (07:36–08:02) | à faire |

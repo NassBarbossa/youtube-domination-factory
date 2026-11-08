@@ -1,0 +1,39 @@
+{
+ "short": "F3-08 — « C'est moi l'indien » (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 242.98,
+   "b": 250.4,
+   "text": "il y a beaucoup de gens qui perdent de l'argent c'est beaucoup d'arnaques il y a beaucoup d'arnaques il y a beaucoup de choses bien en gros c'est le far west"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 251.42,
+   "b": 261.76,
+   "text": "c'est pour ça qu'il faut venir équiper d'une méthode si tu vas dans le far west en mode, c'est moi l'indien, je ne connais rien, qui sait qui peut m'aider ? Il y a de grandes chances que tu te fasses capturer."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 262.0,
+   "b": 265.86,
+   "text": "Je ne suis pas sûr si la métaphore était good, mais on continue."
+  }
+ ]
+}
