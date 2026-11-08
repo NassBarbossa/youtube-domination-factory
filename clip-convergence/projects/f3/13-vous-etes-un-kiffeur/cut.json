@@ -1,0 +1,39 @@
+{
+ "short": "F3-13 — Vous êtes un kiffeur ? C'est OK (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 512.56,
+   "b": 521.42,
+   "text": "Si vous, c'est votre choix de juste faire ça, vous êtes un kiffeur, vous voulez juste profiter de la vie, eh bien, juste, obligatoire, investissez tous les mois,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 521.72,
+   "b": 529.86,
+   "text": "dans 10 ans, dans 20 ans, vos enfants, votre famille vous remercieront et c'est quelque chose qui a fait ses preuves, comme on a vu dans la vidéo, depuis 70 ans."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 530.46,
+   "b": 535.22,
+   "text": "Choix numéro 2, vous voulez affronter le Far West en étant bien entouré."
+  }
+ ]
+}
