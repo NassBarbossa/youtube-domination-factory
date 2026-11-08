@@ -1,0 +1,48 @@
+{
+ "short": "46 — Baissier sur l'or ? Je ne comprends pas (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 412.1,
+   "b": 424.66,
+   "text": "mais qui sont baissés sur le goal donc je comprends pas personnellement d'être baissé sur un support comme ça avec le contexte fondamental"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 424.66,
+   "b": 441.92,
+   "text": "Donc là, ça reprend la guerre Iran -États -Unis -Israël. Ça reprend à fond. Le contexte macro qui n'est pas bien. La Russie qui joue ses cartes aussi. Je ne vois pas pourquoi je serais bériche sur l'or à ce niveau -là."
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
