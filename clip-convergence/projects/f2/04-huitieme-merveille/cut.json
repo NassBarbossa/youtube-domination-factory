@@ -1,0 +1,53 @@
+{
+ "short": "F2-04 — La huitième merveille du monde (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 105.62,
+   "b": 112.8,
+   "text": "Recommençons avec une petite citation. qui est « Les intérêts composés sont la huitième merveille du monde"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 112.8,
+   "b": 123.26,
+   "text": "». Donc, cette citation, elle est attribuée à Einstein et vous connaissez tous les sept merveilles du monde, mais là, on parle de la huitième merveille du monde."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 123.66,
+   "b": 133.6,
+   "text": "Donc, pour expliquer ce que c'est les intérêts composés, tout simplement, faisons un petit test. 100 euros investis chaque mois pendant 10 ans."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 139.88,
+   "b": 148.32,
+   "text": "? Donc, si tu mets 100 euros tous les mois pendant 10 ans, évidemment 12 fois 10, ça fait 12 000 euros."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 148.52,
+   "b": 154.04,
+   "text": "Déjà, prendre conscience de ça. Putain, attends, si je mets 100 euros tous les mois de côté, ça me fait 12 000 euros."
+  }
+ ]
+}
