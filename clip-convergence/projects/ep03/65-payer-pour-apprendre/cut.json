@@ -1,0 +1,60 @@
+{
+ "short": "65 — Payer pour apprendre ? (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fullcam : deux grandes fenêtres caméra côte à côte",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   36,
+   150,
+   464,
+   464
+  ],
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 2161.6,
+   "b": 2168.02,
+   "text": "You have to pay to learn, ça dépend avec qui tu veux apprendre. Si tu veux apprendre avec une pub, c'est très bien aussi."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 2168.34,
+   "b": 2171.78,
+   "text": "Pour ceux qui ne veulent pas payer, vous allez payer plus cher au final, parce que vous allez perdre plus de temps."
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 2171.78,
+   "b": 2180.52,
+   "text": "mais moi j'ai rien contre le fait d'aller vers la gratuité c'est vous, c'est votre argent ça dépend si vous avez du capital ou pas"
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 2263.06,
+   "b": 2264.46,
+   "text": "moi je suis contre le copy trading,"
+  },
+  {
+   "id": "s5",
+   "speaker": "sadek",
+   "a": 2268.36,
+   "b": 2272.74,
+   "text": "très clairement, ce n'est pas du tout ce que je veux pour vous. Je veux transmettre et que je veux que vous soyez autonome."
+  }
+ ]
+}

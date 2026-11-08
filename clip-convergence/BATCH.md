@@ -150,7 +150,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 62 | Budget pour commencer ? (31:11–31:43) | fait (2026-11-09) |
 | 63 | C'est quoi l'altseason ? (32:16–33:50) | fait (2026-11-09) |
 | 64 | L'investissement c'est facile, le trading c'est dur (34:29–34:58) | fait (2026-11-09) |
-| 65 | Payer pour apprendre ? (36:01–37:52) | à faire |
+| 65 | Payer pour apprendre ? (36:01–37:52) | fait (2026-11-09) |
 | 66 | Vendeur de formation = arnaqueur ? (36:23–37:32) | à faire |
 | 67 | Le trading est un jeu de menteurs (40:13–41:06) | à faire |
 | 68 | Vous êtes tous meilleurs que moi (41:10–41:33) | à faire |
