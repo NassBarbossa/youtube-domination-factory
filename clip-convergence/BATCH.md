@@ -42,7 +42,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 04 | De quoi on ne va pas parler (01:20–01:52) | fait (2026-11-09) |
 | 05 | Investir, la définition (01:52–02:19) | fait (2026-11-09) |
 | 06 | Qui je suis pour vous dire ça ? (02:24–02:58) | fait (2026-11-09) |
-| 07 | Toutes les phases, je les ai vécues (03:00 + 04:05) | à faire |
+| 07 | Toutes les phases, je les ai vécues (03:00 + 04:05) | fait (2026-11-09) |
 | 08 | Roberto Carlos a perdu 99 % (04:28–05:02) | à faire |
 | 09 | Mets pause, prends un papier (05:02–05:30) | à faire |
 | 10 | 40 %, pas plus (05:31–06:00) | à faire |
