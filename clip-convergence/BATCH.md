@@ -77,7 +77,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 17 | Le code + le permis = le karting (09:58–10:39) | fait (2026-11-09) |
 | 18 | Mon cadeau à la France (10:42–11:04) | fait (2026-11-09) |
 
-## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min 00) — 15 clips, thème `ydf` (`clip-convergence/projects/f3/`) | en cours
+## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min 00) — 15 clips, thème `ydf` (`clip-convergence/projects/f3/`) | **fait (2026-11-09)**
 
 | N° | Clip | Statut |
 |---|---|---|
