@@ -97,6 +97,25 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 14 | La formation la plus aboutie que j'ai faite (09:17–09:48) | fait (2026-11-09) |
 | 15 | Que la paix soit sur vous (09:22–10:00) | fait (2026-11-09) |
 
-## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, repérage à compléter | à faire
+## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, thème `ydf` (`clip-convergence/projects/ja/`) | en cours
+
+| N° | Clip | Statut |
+|---|---|---|
+| 01 | J'abandonne mon challenge (00:00–00:27) | à faire |
+| 02 | Le verdict : du surplace (00:43–01:17) | à faire |
+| 03 | Le marché a changé (01:17–01:37) | à faire |
+| 04 | Easy mode, puis difficile (01:38–02:04) | à faire |
+| 05 | Plus fort dans un marché facile (02:04–02:24) | à faire |
+| 06 | Une pression supplémentaire (02:24–02:47) | à faire |
+| 07 | Suis-je une fraude ? (02:47–03:12) | à faire |
+| 08 | 97 % de perdants ? La vraie stat (03:13–03:49) | à faire |
+| 09 | La ligue des 80 % (03:49–04:10) | à faire |
+| 10 | Arrêtez, allez travailler (04:25–04:44) | à faire |
+| 11 | La ligue que j'aspire à être (04:58–05:29) | à faire |
+| 12 | Les cracks, pas les tricheurs (05:30–05:48) | à faire |
+| 13 | Connaissez votre ligue (06:19–06:38) | à faire |
+| 14 | Il faut survivre (02:04–06:45) | à faire |
+| 15 | Dites-moi quel sujet, je vous tourne ça (06:45–07:07) | à faire |
+
 ## Convergence EP.04 — « L'achat de la décennie sur le gold ? » `D0gALJr-y1o` (20 min, 60 i/s) — 15 clips | à faire
 ## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**) — 15 clips, en dernier | à faire
