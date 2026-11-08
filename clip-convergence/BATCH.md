@@ -74,7 +74,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 14 | 9 ans focus crypto (08:22–08:54) | fait (2026-11-09) |
 | 15 | Vous êtes des fainéants (08:54–09:35) | fait (2026-11-09) |
 | 16 | Vous avez vidé ma batterie (09:36–09:58) | fait (2026-11-09) |
-| 17 | Le code + le permis = le karting (09:58–10:39) | à faire |
+| 17 | Le code + le permis = le karting (09:58–10:39) | fait (2026-11-09) |
 | 18 | Mon cadeau à la France (10:42–11:04) | à faire |
 
 ## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min) — 15 clips, repérage à compléter | à faire

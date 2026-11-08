@@ -1,0 +1,61 @@
+{
+ "short": "F2-17 — Le code + le permis = le karting (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 598.94,
+   "b": 608.8,
+   "text": "donc les gars, vidéo 1 c'était le code donc vraiment c'était avant de chercher à investir son argent chercher à savoir gérer votre capital"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 612.64,
+   "b": 621.3,
+   "text": "vidéo 2 le permis on a passé le permis on a vu ça et est maintenant vous pouvez officiellement conduire un karting"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 621.3,
+   "b": 626.04,
+   "text": "franchement ce n'est pas compliqué et je sais je le répète encore vous allez banaliser l'information"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 632.22,
+   "b": 639.02,
+   "text": "les gars concentrez -vous mettez ça d'abord en place vos enfants vous remercieront dans quelques années."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}
