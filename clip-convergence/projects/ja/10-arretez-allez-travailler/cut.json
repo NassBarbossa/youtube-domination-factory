@@ -1,0 +1,32 @@
+{
+ "short": "JA-10 — Arrêtez, allez travailler (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 264.72,
+   "b": 274.78,
+   "text": "félicitations à vous si vous êtes dans cette ligue -là parce que vous pouvez, vous êtes plus fort que les 80 % qui perdent. Donc déjà, c'est déjà un point très positif."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 275.22,
+   "b": 284.44,
+   "text": "Après, très honnêtement, si en moyenne vous faites 100, 200 dollars par mois en trading full -time, les gars, arrêtez, allez travailler, c'est bien plus, mieux pour vous."
+  }
+ ]
+}
