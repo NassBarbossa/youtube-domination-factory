@@ -113,7 +113,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 10 | Arrêtez, allez travailler (04:25–04:44) | fait (2026-11-09) |
 | 11 | La ligue que j'aspire à être (04:58–05:29) | fait (2026-11-09) |
 | 12 | Les cracks, pas les tricheurs (05:30–05:48) | fait (2026-11-09) |
-| 13 | Connaissez votre ligue (06:19–06:38) | à faire |
+| 13 | Connaissez votre ligue (06:19–06:38) | fait (2026-11-09) |
 | 14 | Il faut survivre (02:04–06:45) | à faire |
 | 15 | Dites-moi quel sujet, je vous tourne ça (06:45–07:07) | à faire |
 

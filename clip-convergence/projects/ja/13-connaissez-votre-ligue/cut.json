@@ -1,0 +1,47 @@
+{
+ "short": "JA-13 — Connaissez votre ligue (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 378.72,
+   "b": 387.44,
+   "text": "Donc comme je disais, c'est vraiment important que vous connaissez votre ligue, moi je la connais et je sais que actuellement le marché, il est un peu difficile,"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 388.0,
+   "b": 397.88,
+   "text": "donc je préfère mieux me focus sur autre chose, préparer du contenu, faire des choses comme ça, que forcer les trades et tout simplement brûler mon capital."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
