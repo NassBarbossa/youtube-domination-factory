@@ -62,7 +62,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 02 | Le bon sens, il faut le savoir (00:51–01:16) | fait (2026-11-09) |
 | 03 | Flingue-moi mon algorithme (01:19–01:36) | fait (2026-11-09) |
 | 04 | La huitième merveille du monde (01:45–02:34) | fait (2026-11-09) |
-| 05 | 100 € par mois dans la bourse américaine (02:36–03:09) | à faire |
+| 05 | 100 € par mois dans la bourse américaine (02:36–03:09) | fait (2026-11-09) |
 | 06 | 100 € par mois dans l'or (03:09–03:33) | à faire |
 | 07 | Est-ce que vous avez 142 000 € ? (03:39–04:11) | à faire |
 | 08 | Est-ce qu'il fallait un master ? (04:22–04:49) | à faire |

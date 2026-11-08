@@ -1,0 +1,54 @@
+{
+ "short": "F2-05 — 100 € par mois dans la bourse américaine (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 156.88,
+   "b": 163.46,
+   "text": "SP 500, c'est la bourse américaine. Nous, on a la bourse française qui s'appelle le CAC 40."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 173.36,
+   "b": 183.76,
+   "text": "si tu avais mis 100 euros tous les mois dans cet indice là, en gros dans la bourse américaine, tu aurais eu aujourd'hui, aujourd'hui là maintenant c'est pas des fake data, tout est vérifiable"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 183.76,
+   "b": 189.7,
+   "text": "27 261 euros donc tu aurais multiplié ton capital par 2 ,5 quasiment"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}
