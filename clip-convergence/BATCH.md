@@ -125,7 +125,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 42 | Ce qui définit une tendance baissière (02:04–02:32) | fait (2026-11-09) |
 | 43 | Le bottom parfait, c'est par chance (03:23–04:25) | fait (2026-11-09) |
 | 44 | J'ai vendu à 115 et j'ai tenu (03:06–04:58) | fait (2026-11-09) |
-| 45 | Milieu de zone ? On attend (06:25–06:59) | à faire |
+| 45 | Milieu de zone ? On attend (06:25–06:59) | fait (2026-11-09) |
 | 46 | Baissier sur l'or ? Je ne comprends pas (06:52–07:21) | à faire |
 | 47 | Le gold, l'achat de la décennie ? (07:49–09:07) | à faire |
 | 48 | Réagir plutôt qu'anticiper (08:26–08:58) | à faire |

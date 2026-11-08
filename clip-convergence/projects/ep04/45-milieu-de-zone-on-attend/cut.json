@@ -1,0 +1,55 @@
+{
+ "short": "45 — Milieu de zone ? On attend (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 385.66,
+   "b": 399.14,
+   "text": "Donc on était en milieu de zone dans le dernier épisode. Donc comme on disait, en milieu de zone, c'est toujours plus difficile de prendre des positions, autant attendre les hautes zones ou les bas de zone"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 399.14,
+   "b": 406.66,
+   "text": "et donc on est en train de se rapprocher du bas du range donc vous voyez entre ces deux zones là"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 406.66,
+   "b": 419.88,
+   "text": "je vois certaines personnes je dis pas qu'ils ont tort je dis pas qu'ils ont raison mais qui sont baissés sur le goal donc je comprends pas personnellement d'être baissé sur un support comme ça"
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
