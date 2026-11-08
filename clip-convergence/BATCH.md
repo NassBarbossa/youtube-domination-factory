@@ -77,7 +77,26 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 17 | Le code + le permis = le karting (09:58–10:39) | fait (2026-11-09) |
 | 18 | Mon cadeau à la France (10:42–11:04) | fait (2026-11-09) |
 
-## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min) — 15 clips, repérage à compléter | à faire
+## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min 00) — 15 clips, thème `ydf` (`clip-convergence/projects/f3/`) | en cours
+
+| N° | Clip | Statut |
+|---|---|---|
+| 01 | 5 000 €, 10 000 €… ou offerte ici (00:00–01:43) | fait (2026-11-09) |
+| 02 | Plus important que l'investissement (00:15–00:47) | à faire |
+| 03 | 100 % doivent le faire, la Formule 1 non (00:47–01:16) | à faire |
+| 04 | Acheter avant les autres (01:52–02:22) | à faire |
+| 05 | Concentre-toi : le CEX (02:33–03:04) | à faire |
+| 06 | Limité par le nombre d'opportunités (03:05–03:38) | à faire |
+| 07 | Le DEX, c'est le far west (03:38–04:02) | à faire |
+| 08 | « C'est moi l'indien » (04:03–04:26) | à faire |
+| 09 | La méthode IOC (04:26–04:52) | à faire |
+| 10 | Euros → SOL → tokens (04:52–05:31) | à faire |
+| 11 | En dehors des exchanges, avant les autres (07:36–08:02) | à faire |
+| 12 | Vous avez deux choix (08:03–08:32) | à faire |
+| 13 | Vous êtes un kiffeur ? C'est OK (08:33–08:55) | à faire |
+| 14 | La formation la plus aboutie que j'ai faite (09:17–09:48) | à faire |
+| 15 | Que la paix soit sur vous (09:22–10:00) | à faire |
+
 ## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, repérage à compléter | à faire
 ## Convergence EP.04 — « L'achat de la décennie sur le gold ? » `D0gALJr-y1o` (20 min, 60 i/s) — 15 clips | à faire
 ## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**) — 15 clips, en dernier | à faire

@@ -1,0 +1,39 @@
+{
+ "short": "F3-01 — 5 000 €, 10 000 €… ou offerte ici (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 0.0,
+   "b": 6.1,
+   "text": "Yes les gars, c'est parti, troisième vidéo, on commence tout de suite. Donc, il est temps de conduire la Formule 1."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 79.78,
+   "b": 88.86,
+   "text": "Et ce que je vais te partager dans cette vidéo, c'est une stratégie que très peu sur le marché français mette en place. et encore moins, ils l'ont vulgarisé de la façon dont je vais le faire."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 93.08,
+   "b": 102.76,
+   "text": "Ou alors, ils la facturent dans des accompagnements très chers à plus de 5 000 euros, des masterminds de 10 000 euros. Bref, vous voyez comme moi ce qui se passe sur les réseaux."
+  }
+ ]
+}
