@@ -1,0 +1,39 @@
+{
+ "short": "F2-08 — Est-ce qu'il fallait un master ? (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 262.9,
+   "b": 271.28,
+   "text": "prenez une minute et j'aimerais vous poser la question est -ce que investir 100 euros tous les mois c'était quelque chose de difficile à faire"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 271.28,
+   "b": 284.12,
+   "text": "est -ce qu'il fallait un master est -ce qu'il fallait être un trader est -ce qu'il fallait faire cloud code, est -ce qu'il fallait faire du scalping à la minute, j'analyse le graphique, est -ce que j'ai pris trois actifs différents"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 284.12,
+   "b": 289.58,
+   "text": "est -ce que c'était quelque chose de difficile à faire de j'investis 100 euros tous les mois"
+  }
+ ]
+}

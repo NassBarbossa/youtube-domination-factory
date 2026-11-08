@@ -65,7 +65,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 05 | 100 € par mois dans la bourse américaine (02:36–03:09) | fait (2026-11-09) |
 | 06 | 100 € par mois dans l'or (03:09–03:33) | fait (2026-11-09) |
 | 07 | Est-ce que vous avez 142 000 € ? (03:39–04:11) | fait (2026-11-09) |
-| 08 | Est-ce qu'il fallait un master ? (04:22–04:49) | à faire |
+| 08 | Est-ce qu'il fallait un master ? (04:22–04:49) | fait (2026-11-09) |
 | 09 | L'or, un truc de grand-père ? (05:03–05:32) | à faire |
 | 10 | Imagine 200 € par mois (05:39–06:20) | à faire |
 | 11 | Le DCA, ce n'est pas un secret (06:24–06:57) | à faire |
