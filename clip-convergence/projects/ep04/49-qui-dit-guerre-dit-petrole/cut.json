@@ -1,0 +1,62 @@
+{
+ "short": "49 — Qui dit guerre dit pétrole (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 553.96,
+   "b": 561.92,
+   "text": "qu'est ce qu'on peut regarder on peut regarder l'oeil le pétrole donc évidemment qui dit guerre va dit reprise du pétrole de la hausse du pétrole"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 561.92,
+   "b": 575.96,
+   "text": "donc moi c'est des choses que j'ai toujours refusé de traiter les commodities comme ça, mais c'est intéressant, c'est intéressant pour voir justement comme quoi est -ce qu'on est bien dans des reprises de guerre et de tensions"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 575.96,
+   "b": 584.12,
+   "text": "et on voit que depuis la semaine dernière, même plus, puis 20 jours, le pétrole il repart à la hausse."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 589.22,
+   "b": 598.52,
+   "text": "donc je ne donne pas d'avis sur le Gol, je dis juste que je vois qu'il revient dans cette zone où on était au pic de la guerre, là, début mars, ça se voyait que ça allait repartir graphiquement"
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}
