@@ -1,0 +1,46 @@
+{
+ "short": "F2-02 — Le bon sens, il faut le savoir (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 51.08,
+   "b": 56.98,
+   "text": "c'est des choses simples les gars que je vais vous dire l'investissement de manière générale c'est du bon sens"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 56.98,
+   "b": 64.96,
+   "text": "tout simplement il n'y a pas besoin de overcomplicate c'est vraiment du bon sens mais le bon sens il faut le savoir"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 64.96,
+   "b": 70.26,
+   "text": "au début quand tu ne le sais pas, quand on ne te le dit pas tu ne sais pas que c'est du bon sens"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 70.26,
+   "b": 76.18,
+   "text": "mais une fois que tu l'as dit une fois qu'on te l'a expliqué simplement tu comprends que c'est juste du bon sens"
+  }
+ ]
+}
