@@ -1,0 +1,96 @@
+{
+  "short": "32 — C'est quoi Convergence (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "sharpen": true,
+  "crops": {
+    "nass": [
+      68,
+      704,
+      264,
+      264
+    ],
+    "sadek": [
+      1582,
+      698,
+      270,
+      270
+    ]
+  },
+  "screen": {
+    "crop": [
+      380,
+      220,
+      1160,
+      640
+    ],
+    "size": [
+      1012,
+      558
+    ],
+    "segments": [
+      "s2",
+      "s3"
+    ]
+  },
+  "segments": [
+    {
+      "id": "s1",
+      "speaker": "nass",
+      "a": 198.24,
+      "b": 203.42,
+      "text": "Donc qu'est-ce qu'on va parler ? On va parler principalement des tendances de marché"
+    },
+    {
+      "id": "s2",
+      "speaker": "nass",
+      "a": 203.48,
+      "b": 208.24,
+      "text": "donc accès investissement, accès trading et un peu des news"
+    },
+    {
+      "id": "s3",
+      "speaker": "nass",
+      "a": 212.2,
+      "b": 218.46,
+      "text": "après, dans un volume un peu plus large, dans un scope un peu plus large, on parlera de tout ce qui est lié à l'investissement"
+    },
+    {
+      "id": "s4",
+      "speaker": "nass",
+      "a": 218.92,
+      "b": 223.3,
+      "text": "Donc ça va à des liens qu'on peut faire avec l'IA, ça va à des investissements exotiques"
+    },
+    {
+      "id": "s5",
+      "speaker": "nass",
+      "a": 223.7,
+      "b": 227.44,
+      "text": "Je vois des petites cartes One Piece qui te feront plaisir, Sadek, devant moi"
+    },
+    {
+      "id": "s6",
+      "speaker": "nass",
+      "a": 228.12,
+      "b": 232.16,
+      "text": "on parlera de toutes ces choses là, pourquoi pas d'immobilier, pourquoi pas ça"
+    },
+    {
+      "id": "s7",
+      "speaker": "nass",
+      "a": 232.16,
+      "b": 239.98,
+      "text": "en gros Convergence donc c'est nos expertises et les différents sujets qui se rejoignent en un seul show"
+    },
+    {
+      "id": "s8",
+      "speaker": "nass",
+      "a": 239.98,
+      "b": 243.28,
+      "text": "donc on le dit une fois, on ne va pas le dire toutes les semaines"
+    }
+  ]
+}

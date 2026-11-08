@@ -1,0 +1,74 @@
+{
+  "short": "25 — Un ancien rappeur et un ancien plombier (Convergence EP.01)",
+  "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+  "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+  "raw_to_source": 0,
+  "prescale": 3.2,
+  "sharpen": true,
+  "crops": {
+    "nass": [
+      68,
+      704,
+      264,
+      264
+    ],
+    "sadek": [
+      1582,
+      698,
+      270,
+      270
+    ]
+  },
+  "screen": {
+    "crop": [
+      380,
+      220,
+      1160,
+      640
+    ],
+    "size": [
+      1012,
+      558
+    ],
+    "segments": [
+      "s3"
+    ]
+  },
+  "segments": [
+    {
+      "id": "s1",
+      "speaker": "nass",
+      "a": 247.78,
+      "b": 252.66,
+      "text": "tout ce qu'on va dire ça ne sera pas évidemment des conseils en investissement"
+    },
+    {
+      "id": "s2",
+      "speaker": "nass",
+      "a": 252.66,
+      "b": 254.62,
+      "text": "on partage juste ce qu'on fait"
+    },
+    {
+      "id": "s3",
+      "speaker": "nass",
+      "a": 254.62,
+      "b": 263.16,
+      "text": "et d'ailleurs pour ceux qui un jour voudraient se plaindre, il faudrait être sacrément bête de suivre bêtement les conseils d'un ancien rappeur et d'un ancien plombier"
+    },
+    {
+      "id": "s4",
+      "speaker": "nass",
+      "a": 263.16,
+      "b": 265.76,
+      "text": "ça serait quand même assez bête de votre part"
+    },
+    {
+      "id": "s5",
+      "speaker": "nass",
+      "a": 265.76,
+      "b": 274.16,
+      "text": "et il faudrait encore plus bête de ne pas voir que justement nous sommes un ancien rappeur et un ancien plombier"
+    }
+  ]
+}
