@@ -1,0 +1,39 @@
+{
+ "short": "F3-11 — En dehors des exchanges, avant les autres (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 456.08,
+   "b": 463.72,
+   "text": "Donc, voici l'exemple de la méthode IOC, comme je t'étais en train de dire, acheter des coins en dehors des exchanges et avant qu'ils soient connus de tous."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 464.14,
+   "b": 470.38,
+   "text": "Donc, je te fais le petit récap, maintenant que tu as eu l'exemple. En gros, tu prends tes euros, tu achètes des soldes."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 476.38,
+   "b": 482.4,
+   "text": "Bref, c'est un exemple, c'est pour te dire, t'expliquer comment la méthode IOC fonctionne."
+  }
+ ]
+}
