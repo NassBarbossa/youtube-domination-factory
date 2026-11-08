@@ -1,0 +1,54 @@
+{
+ "short": "JA-09 — La ligue des 80 % (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 229.48,
+   "b": 236.12,
+   "text": "donc il y a la ligue des 80 % perdants donc c'est une ligue qui ne fait pas plaisir"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 237.34,
+   "b": 244.66,
+   "text": "forcément si vous êtes perdant bah essayez de d'analyser ce que vous faites de mal et c'est de comprendre les choses"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 244.66,
+   "b": 249.74,
+   "text": "principalement si vous êtes dans les locaux ponte chaîne c'est parce que vous prenez trop de positions faites attention"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
