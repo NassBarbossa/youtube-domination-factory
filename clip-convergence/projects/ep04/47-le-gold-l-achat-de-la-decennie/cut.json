@@ -1,0 +1,62 @@
+{
+ "short": "47 — Le gold, l'achat de la décennie ? (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 469.12,
+   "b": 477.18,
+   "text": "Donc pour moi, je me positionne là. Donc je pense que si vous regardez les replays, je vous aurais mis une petite capture que j'ai acheté du gold là."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 477.6,
+   "b": 487.64,
+   "text": "Realement, si vraiment on est gourmand, c'est mieux de l'acheter à 3 .900. mais 3 900 ou 4 000, il n'y a pas de grande différence quand tu vises un retour."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 493.64,
+   "b": 499.28,
+   "text": "Pour moi, le gold, c'est de l'achat de la décennie. Sur ces niveaux -là, je n'arrive pas à être baissier."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 541.18,
+   "b": 547.9,
+   "text": "pour moi c'est l'achat de cette q4 2026 évidemment pas de conseils en investissement"
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s3"
+  ]
+ }
+}

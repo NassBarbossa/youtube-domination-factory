@@ -127,7 +127,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 44 | J'ai vendu à 115 et j'ai tenu (03:06–04:58) | fait (2026-11-09) |
 | 45 | Milieu de zone ? On attend (06:25–06:59) | fait (2026-11-09) |
 | 46 | Baissier sur l'or ? Je ne comprends pas (06:52–07:21) | fait (2026-11-09) |
-| 47 | Le gold, l'achat de la décennie ? (07:49–09:07) | à faire |
+| 47 | Le gold, l'achat de la décennie ? (07:49–09:07) | fait (2026-11-09) |
 | 48 | Réagir plutôt qu'anticiper (08:26–08:58) | à faire |
 | 49 | Qui dit guerre dit pétrole (09:13–09:58) | à faire |
 | 50 | Encore un lundi noir ? (01:10–01:30) | à faire |
