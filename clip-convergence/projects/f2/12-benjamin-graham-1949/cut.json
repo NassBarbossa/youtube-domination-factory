@@ -1,0 +1,61 @@
+{
+ "short": "F2-12 — On le sait depuis 1949 (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 418.04,
+   "b": 426.78,
+   "text": "Ça a été théorisé et popularisé depuis 1949 par Benjamin Graham dans son livre « L'investisseur intelligent"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 426.78,
+   "b": 436.64,
+   "text": "». Ça fait 50, 70, 75 ans, bientôt 80 ans qu'on sait que cette méthode, elle marche et qu'il faut la faire et qu'il faut la mettre en place."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 437.22,
+   "b": 440.98,
+   "text": "Et d'ailleurs, Benjamin Graham, c'était le mentor de Warren Buffett."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 440.98,
+   "b": 446.8,
+   "text": "donc Warren Buffett pour moi c'est l'un des meilleurs investisseurs de notre époque"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s4"
+  ]
+ }
+}
