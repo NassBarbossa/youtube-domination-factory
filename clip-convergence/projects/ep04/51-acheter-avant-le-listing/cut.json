@@ -1,0 +1,33 @@
+{
+ "short": "51 — Acheter avant le listing (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 906.64,
+   "b": 922.72,
+   "text": "c'est vraiment ce que j'ai partagé dans ma formation offerte pour opérer des cryptos en dehors des échanges qui sont intéressantes elles, elles ne tombent pas dans la catégorie on l'achète avant qu'elles soient listées sur un échange plus grand public"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 922.72,
+   "b": 942.16,
+   "text": "je pense qu'elles n'arriveront jamais à être listées parce qu'elles sont trop petites mais par contre vous voyez que graphiquement de la même façon dont on analyse le gold moi j'analyse de la même façon pas un même coin qui est à 10k évidemment mais un truc que ça fait des semaines qui est en place"
+  }
+ ]
+}

@@ -131,7 +131,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 48 | Réagir plutôt qu'anticiper (08:26–08:58) | fait (2026-11-09) |
 | 49 | Qui dit guerre dit pétrole (09:13–09:58) | fait (2026-11-09) |
 | 50 | Encore un lundi noir ? (01:10–01:30) | fait (2026-11-09) |
-| 51 | Acheter avant le listing (15:06–15:42) | à faire |
+| 51 | Acheter avant le listing (15:06–15:42) | fait (2026-11-09) |
 | 52 | T'étais sûr que ça allait monter ? (15:48–16:19) | à faire |
 | 53 | Baissier ? Pas en investissement (16:34–17:03) | à faire |
 | 54 | Faites attention (19:31–19:52) | à faire |
