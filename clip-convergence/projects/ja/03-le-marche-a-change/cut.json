@@ -1,0 +1,47 @@
+{
+ "short": "JA-03 — Le marché a changé (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 77.24,
+   "b": 85.12,
+   "text": "Et donc, la question, c'est pourquoi est -ce que j'ai fait du surplace Et donc, pourquoi je prends la décision d'arrêter mon challenge"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 85.12,
+   "b": 96.78,
+   "text": "? Eh bien, tout simplement, pour moi, je vois deux grandes raisons. Et ces deux grandes raisons, principalement, la première, c'est que le marché, il a changé, les gars. Le football, il a changé, le marché, il a changé, il faut se le dire."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}

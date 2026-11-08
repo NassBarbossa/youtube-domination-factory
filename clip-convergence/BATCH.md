@@ -103,7 +103,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 |---|---|---|
 | 01 | J'abandonne mon challenge (00:00–00:27) | fait (2026-11-09) |
 | 02 | Le verdict : du surplace (00:43–01:17) | fait (2026-11-09) |
-| 03 | Le marché a changé (01:17–01:37) | à faire |
+| 03 | Le marché a changé (01:17–01:37) | fait (2026-11-09) |
 | 04 | Easy mode, puis difficile (01:38–02:04) | à faire |
 | 05 | Plus fort dans un marché facile (02:04–02:24) | à faire |
 | 06 | Une pression supplémentaire (02:24–02:47) | à faire |
