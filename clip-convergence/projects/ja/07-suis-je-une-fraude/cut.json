@@ -1,0 +1,54 @@
+{
+ "short": "JA-07 — Suis-je une fraude ? (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 166.76,
+   "b": 173.66,
+   "text": "Et d'ailleurs, profitons de cette vidéo. Est -ce que j'arrête le challenge parce qu'en fait, je suis une fraude, je suis une arnaque."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 173.84,
+   "b": 183.98,
+   "text": "Donc, on va classifier et on reviendra au fur et à mesure de ces années dans est -ce que je suis un trader rentable. eh bien, je renverrai sur cette vidéo -là."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 184.56,
+   "b": 191.74,
+   "text": "Donc, pour moi, je pense que c'est très important de savoir votre ligue dans le trading, là où vous êtes placé."
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
