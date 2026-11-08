@@ -1,0 +1,147 @@
+<template>
+  <style>
+    @font-face { font-family: 'Inter Tight'; src: url('assets/fonts/InterTight-var.ttf') format('truetype'); font-weight: 100 900; }
+    @font-face { font-family: 'Plex Mono C'; src: url('assets/fonts/IBMPlexMono-SemiBold.ttf') format('truetype'); font-weight: 600; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .panel { position: absolute; inset: 0; overflow: hidden; }
+    .wrap { position: absolute; left: 0; top: 0; border-radius: 50%; overflow: hidden; transform-origin: 0 0; }
+    #wrap-nass { width: 844px; height: 844px; }
+    #wrap-sadek { width: 864px; height: 864px; }
+    .cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ring { position: absolute; inset: 0; border-radius: 50%; }
+    #ring-nass { box-shadow: inset 0 0 0 14px #0F8A5F; }
+    #ring-sadek { box-shadow: inset 0 0 0 14px #C98A0B; }
+    #lines { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+    #lines line { stroke-width: 12; stroke-linecap: round; }
+    #hook { position: absolute; left: 0; right: 0; top: 358px; text-align: center; color: #0B0E11; }
+    #hook .h1 { font: 800 104px/0.95 'Inter Tight'; letter-spacing: -0.02em; }
+    #hook .h1 b { color: #0F8A5F; font-weight: 800; }
+    #hook .h1 b.or { color: #A07006; }
+    
+    #screen { position: absolute; left: 40px; top: 910px; width: 1000px; height: 544px; overflow: hidden; }
+    #screen-body { position: absolute; inset: 0; }
+    #screen video { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .kw { position: absolute; font: 800 104px/1 'Inter Tight'; letter-spacing: -0.03em; white-space: nowrap; }
+    #kw-dxy { left: 0; right: 0; top: 393px; text-align: center; color: #0B0E11; font-size: 104px; }
+    #kw-dollar { left: 0; width: 540px; top: 403px; text-align: center; color: #0B0E11; font-size: 80px; }
+    #kw-baisse { left: 540px; width: 540px; top: 403px; text-align: center; color: #C8323F; font-size: 80px; }
+    #kw-decor { left: 0; right: 0; top: 398px; text-align: center; color: #A07006; font-size: 96px; letter-spacing: 0.04em; }
+    #kw-retour { left: 0; right: 0; top: 348px; text-align: center; color: #C8323F; font-size: 92px; line-height: 1; }
+    #kw-both { left: 0; right: 0; top: 348px; text-align: center; color: #0B0E11; font-size: 84px; line-height: 1; }
+    #kw-chute { left: 0; right: 0; top: 348px; text-align: center; color: #A07006; font-size: 96px; line-height: 1; }
+    #ill { position: absolute; left: 90px; top: 1180px; width: 900px; height: 300px; }
+    .ill { position: absolute; inset: 0; opacity: 0; }
+    .ill svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .ink { fill: none; stroke: #0B0E11; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+    
+    #logo { position: absolute; left: 90px; top: 930px; width: 900px; height: 69.1px; }
+    #cta { position: absolute; left: 0; right: 0; top: 1068px; text-align: center; font: 700 46px 'Inter Tight'; color: #0B0E11; }
+  </style>
+  <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+    <div id="screen">
+      <div id="screen-body" style="opacity:0" data-layout-allow-overflow>
+          <video id="screen-s1" class="clip" src="assets/video/screen_s1.mp4" muted playsinline data-start="0.0" data-duration="4.39" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s2" class="clip" src="assets/video/screen_s2.mp4" muted playsinline data-start="4.39" data-duration="2.11" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s3" class="clip" src="assets/video/screen_s3.mp4" muted playsinline data-start="6.5" data-duration="4.51" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s4" class="clip" src="assets/video/screen_s4.mp4" muted playsinline data-start="11.01" data-duration="2.94" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s5" class="clip" src="assets/video/screen_s5.mp4" muted playsinline data-start="13.95" data-duration="4.15" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s6" class="clip" src="assets/video/screen_s6.mp4" muted playsinline data-start="18.1" data-duration="3.54" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s7" class="clip" src="assets/video/screen_s7.mp4" muted playsinline data-start="21.64" data-duration="4.21" data-media-start="0.3" data-track-index="9"></video>
+          <video id="screen-s8" class="clip" src="assets/video/screen_s8.mp4" muted playsinline data-start="25.85" data-duration="1.8" data-media-start="0.3" data-track-index="9"></video>
+      </div>
+    </div>
+    <div id="stage-nass" class="panel">
+      <div id="wrap-nass" class="wrap">
+          <video id="nass-s1" class="clip cam" src="assets/video/nass_s1.mp4" muted playsinline data-start="0.0" data-duration="4.39" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s2" class="clip cam" src="assets/video/nass_s2.mp4" muted playsinline data-start="4.39" data-duration="2.11" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s3" class="clip cam" src="assets/video/nass_s3.mp4" muted playsinline data-start="6.5" data-duration="4.51" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s4" class="clip cam" src="assets/video/nass_s4.mp4" muted playsinline data-start="11.01" data-duration="2.94" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s5" class="clip cam" src="assets/video/nass_s5.mp4" muted playsinline data-start="13.95" data-duration="4.15" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s6" class="clip cam" src="assets/video/nass_s6.mp4" muted playsinline data-start="18.1" data-duration="3.54" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s7" class="clip cam" src="assets/video/nass_s7.mp4" muted playsinline data-start="21.64" data-duration="4.21" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s8" class="clip cam" src="assets/video/nass_s8.mp4" muted playsinline data-start="25.85" data-duration="1.8" data-media-start="0.3" data-track-index="1"></video>
+          <div id="ring-nass" class="ring"></div>
+      </div>
+    </div>
+    <div id="stage-sadek" class="panel">
+      <div id="wrap-sadek" class="wrap">
+          <video id="sadek-s1" class="clip cam" src="assets/video/sadek_s1.mp4" muted playsinline data-start="0.0" data-duration="4.39" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s2" class="clip cam" src="assets/video/sadek_s2.mp4" muted playsinline data-start="4.39" data-duration="2.11" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s3" class="clip cam" src="assets/video/sadek_s3.mp4" muted playsinline data-start="6.5" data-duration="4.51" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s4" class="clip cam" src="assets/video/sadek_s4.mp4" muted playsinline data-start="11.01" data-duration="2.94" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s5" class="clip cam" src="assets/video/sadek_s5.mp4" muted playsinline data-start="13.95" data-duration="4.15" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s6" class="clip cam" src="assets/video/sadek_s6.mp4" muted playsinline data-start="18.1" data-duration="3.54" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s7" class="clip cam" src="assets/video/sadek_s7.mp4" muted playsinline data-start="21.64" data-duration="4.21" data-media-start="0.3" data-track-index="2"></video>
+          <video id="sadek-s8" class="clip cam" src="assets/video/sadek_s8.mp4" muted playsinline data-start="25.85" data-duration="1.8" data-media-start="0.3" data-track-index="2"></video>
+          <div id="ring-sadek" class="ring"></div>
+      </div>
+    </div>
+
+    <div id="hook">
+      <div class="h1">C'EST OR<br><b class="or">CONTRE DOLLAR</b></div>
+    </div>
+
+    <div id="kw-dxy" class="kw" style="opacity:0" >LE DXY MONTE</div>
+    <div id="kw-dollar" class="kw" style="opacity:0" >DOLLAR FORT</div>
+    <div id="kw-baisse" class="kw" style="opacity:0" >OR EN BAISSE</div>
+    <div id="kw-decor" class="kw" style="opacity:0" >DÉCORRÉLATION</div>
+    <div id="kw-retour" class="kw" style="opacity:0" >RETOURNEMENT<br>TRÈS VIOLENT</div>
+    <div id="kw-both" class="kw" style="opacity:0" >DXY QUI MONTE<br>ET OR QUI MONTE</div>
+    <div id="kw-chute" class="kw" style="opacity:0" >POSITIVE<br>POUR L'ACTIF</div>
+
+    <div id="ill">
+      
+    </div>
+
+    <svg id="logo" viewBox="-89 -89 21736 1669" style="opacity:0"><path fill="#0B0E11" d="M753 1510Q557 1510 402.5 1419.0Q248 1328 159.5 1157.0Q71 986 71 746Q71 505 160.5 333.5Q250 162 404.5 71.0Q559 -20 753 -20Q876 -20 983.5 15.0Q1091 50 1175.0 117.5Q1259 185 1312.5 282.5Q1366 380 1383 504H1111Q1100 436 1068.5 384.0Q1037 332 990.5 295.5Q944 259 885.0 240.5Q826 222 758 222Q636 222 542.0 282.5Q448 343 395.0 460.5Q342 578 342 746Q342 916 395.5 1032.5Q449 1149 542.5 1208.5Q636 1268 757 1268Q824 1268 882.0 1250.5Q940 1233 987.5 1197.5Q1035 1162 1066.5 1111.5Q1098 1061 1111 995H1383Q1368 1102 1317.5 1195.5Q1267 1289 1185.5 1359.5Q1104 1430 995.0 1470.0Q886 1510 753 1510Z M2858.36 1510Q2663.36 1510 2507.86 1419.0Q2352.36 1328 2262.86 1157.0Q2173.36 986 2173.36 746Q2173.36 505 2262.86 333.5Q2352.36 162 2507.86 71.0Q2663.36 -20 2858.36 -20Q3054.36 -20 3208.36 71.0Q3362.36 162 3452.36 333.5Q3542.36 505 3542.36 746Q3542.36 986 3452.36 1157.0Q3362.36 1328 3208.36 1419.0Q3054.36 1510 2858.36 1510ZM2858.36 1268Q2979.36 1268 3072.36 1208.0Q3165.36 1148 3218.36 1031.5Q3271.36 915 3271.36 746Q3271.36 576 3218.36 459.0Q3165.36 342 3072.36 282.0Q2979.36 222 2858.36 222Q2737.36 222 2643.86 282.0Q2550.36 342 2497.36 459.0Q2444.36 576 2444.36 746Q2444.36 915 2497.36 1031.5Q2550.36 1148 2643.86 1208.0Q2737.36 1268 2858.36 1268Z M5601.72 0V1490H5359.72L4658.72 475H4645.72V1490H4375.72V0H4617.72L5318.72 1015H5331.72V0Z M8618.44 1490V0H9588.44V226H8888.44V626H9536.44V849H8888.44V1264H9592.44V1490Z M10440.800000000001 1490V0H10999.800000000001Q11171.800000000001 0 11288.300000000001 60.0Q11404.800000000001 120 11464.800000000001 227.5Q11524.800000000001 335 11524.800000000001 477Q11524.800000000001 620 11464.300000000001 725.0Q11403.800000000001 830 11285.800000000001 887.0Q11167.800000000001 944 10995.800000000001 944H10598.800000000001V721H10958.800000000001Q11059.800000000001 721 11124.300000000001 693.0Q11188.800000000001 665 11219.300000000001 610.5Q11249.800000000001 556 11249.800000000001 477Q11249.800000000001 398 11218.800000000001 341.5Q11187.800000000001 285 11123.800000000001 255.5Q11059.800000000001 226 10957.800000000001 226H10710.800000000001V1490ZM11277.800000000001 1490 10916.800000000001 814H11210.800000000001L11579.800000000001 1490Z M13005.160000000002 1510Q12800.160000000002 1510 12644.660000000002 1417.0Q12489.160000000002 1324 12402.160000000002 1153.0Q12315.160000000002 982 12315.160000000002 747Q12315.160000000002 507 12404.660000000002 335.0Q12494.160000000002 163 12648.160000000002 71.5Q12802.160000000002 -20 12997.160000000002 -20Q13121.160000000002 -20 13227.660000000002 16.0Q13334.160000000002 52 13417.160000000002 118.5Q13500.160000000002 185 13553.660000000002 276.0Q13607.160000000002 367 13625.160000000002 476H13350.160000000002Q13332.160000000002 417 13300.660000000002 370.0Q13269.160000000002 323 13224.660000000002 289.5Q13180.160000000002 256 13124.160000000002 239.0Q13068.160000000002 222 13000.160000000002 222Q12881.160000000002 222 12787.160000000002 282.5Q12693.160000000002 343 12639.660000000002 459.5Q12586.160000000002 576 12586.160000000002 744Q12586.160000000002 913 12639.160000000002 1030.0Q12692.160000000002 1147 12787.160000000002 1207.5Q12882.160000000002 1268 13007.160000000002 1268Q13120.160000000002 1268 13203.160000000002 1224.5Q13286.160000000002 1181 13331.160000000002 1101.0Q13376.160000000002 1021 13376.160000000002 912L13438.160000000002 922H13033.160000000002V711H13638.160000000002V889Q13638.160000000002 1081 13557.160000000002 1220.0Q13476.160000000002 1359 13332.660000000002 1434.5Q13189.160000000002 1510 13005.160000000002 1510Z M14476.520000000002 1490V0H15446.520000000002V226H14746.520000000002V626H15394.520000000002V849H14746.520000000002V1264H15450.520000000002V1490Z M17524.880000000005 0V1490H17282.880000000005L16581.880000000005 475H16568.880000000005V1490H16298.880000000003V0H16540.880000000005L17241.880000000005 1015H17254.880000000005V0Z M19041.24 1510Q18845.24 1510 18690.74 1419.0Q18536.24 1328 18447.74 1157.0Q18359.24 986 18359.24 746Q18359.24 505 18448.74 333.5Q18538.24 162 18692.74 71.0Q18847.24 -20 19041.24 -20Q19164.24 -20 19271.74 15.0Q19379.24 50 19463.24 117.5Q19547.24 185 19600.74 282.5Q19654.24 380 19671.24 504H19399.24Q19388.24 436 19356.74 384.0Q19325.24 332 19278.74 295.5Q19232.24 259 19173.24 240.5Q19114.24 222 19046.24 222Q18924.24 222 18830.24 282.5Q18736.24 343 18683.24 460.5Q18630.24 578 18630.24 746Q18630.24 916 18683.74 1032.5Q18737.24 1149 18830.74 1208.5Q18924.24 1268 19045.24 1268Q19112.24 1268 19170.24 1250.5Q19228.24 1233 19275.74 1197.5Q19323.24 1162 19354.74 1111.5Q19386.24 1061 19399.24 995H19671.24Q19656.24 1102 19605.74 1195.5Q19555.24 1289 19473.74 1359.5Q19392.24 1430 19283.24 1470.0Q19174.24 1510 19041.24 1510Z M20498.600000000002 1490V0H21468.600000000002V226H20768.600000000002V626H21416.600000000002V849H20768.600000000002V1264H21472.600000000002V1490Z"/></svg>
+    <svg id="lines" viewBox="0 0 1080 1920">
+      <line id="line-g" x1="-30" y1="896" x2="1110" y2="896" stroke="#0F8A5F"/>
+      <line id="line-o" x1="-30" y1="1622" x2="1110" y2="1622" stroke="#C98A0B"/>
+      <circle id="v-dot" cx="540" cy="820" r="34" fill="#0B0E11" opacity="0" style="transform-origin: 540px 820px"/>
+    </svg>
+
+    <div id="cta" style="opacity:0">Épisode 1 complet sur la chaîne</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#wrap-nass", { x: 340.0, y: 100.0, scale: 0.4739 }, { x: 340.0, y: 100.0, scale: 0.4739, duration: 0.01 }, 0);
+    tl.fromTo("#stage-nass", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#wrap-sadek", { x: 340.0, y: 100.0, scale: 0.463 }, { x: 340.0, y: 100.0, scale: 0.463, duration: 0.01 }, 0);
+    tl.fromTo("#stage-sadek", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#stage-nass", { zIndex: 2 }, { zIndex: 2, duration: 0.01 }, 0);
+    tl.fromTo("#stage-sadek", { zIndex: 0 }, { zIndex: 0, duration: 0.01 }, 0);
+    tl.fromTo("#hook", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+    tl.to("#hook", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 4.07);
+    tl.fromTo("#screen-body", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.to("#screen-body", { opacity: 1, duration: 0.25, ease: "power2.out" }, 0.01);
+    tl.to("#screen-body", { opacity: 0, duration: 0.3, ease: "power2.in" }, 27.65);
+    tl.fromTo("#kw-dxy", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 5.255);
+    tl.to("#kw-dxy", { opacity: 0, duration: 0.25, ease: "power2.in" }, 7.885);
+    tl.fromTo("#kw-dollar", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 8.125);
+    tl.to("#kw-dollar", { opacity: 0, duration: 0.25, ease: "power2.in" }, 10.71);
+    tl.fromTo("#kw-baisse", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 10.165);
+    tl.to("#kw-baisse", { opacity: 0, duration: 0.25, ease: "power2.in" }, 10.71);
+    tl.fromTo("#kw-decor", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 12.645);
+    tl.to("#kw-decor", { opacity: 0, duration: 0.25, ease: "power2.in" }, 17.8);
+    tl.fromTo("#kw-retour", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 18.915);
+    tl.to("#kw-retour", { opacity: 0, duration: 0.25, ease: "power2.in" }, 21.34);
+    tl.fromTo("#kw-both", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 23.045);
+    tl.to("#kw-both", { opacity: 0, duration: 0.25, ease: "power2.in" }, 25.55);
+    tl.fromTo("#kw-chute", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 26.585);
+    tl.to("#kw-chute", { opacity: 0, duration: 0.25, ease: "power2.in" }, 27.7);
+    tl.fromTo("#screen-body", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.01 }, 0);
+    tl.to("#screen-body", { scale: 1.05, duration: 0.6, ease: "power3.inOut" }, 10.71);
+    tl.to("#screen-body", { scale: 1, duration: 0.6, ease: "power3.inOut" }, 17.8);
+    tl.to("#screen-body", { scale: 1.05, duration: 0.6, ease: "power3.inOut" }, 21.34);
+    tl.to(["#stage-nass", "#stage-sadek", "#ill"], { opacity: 0, duration: 0.45, ease: "power2.in" }, 27.65);
+    tl.to("#line-o", { attr: { x1: 390, y1: 520, x2: 540, y2: 820 }, strokeWidth: 46, duration: 0.7, ease: "power3.inOut" }, 27.65);
+    tl.to("#line-g", { attr: { x1: 690, y1: 520, x2: 540, y2: 820 }, strokeWidth: 46, duration: 0.7, ease: "power3.inOut" }, 27.65);
+    tl.fromTo("#v-dot", { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 28.33);
+    tl.to("#line-o", { attr: { x1: 362.3, y1: 938.8, x2: 388.1, y2: 990.3 }, strokeWidth: 10.18, duration: 0.5, ease: "power3.inOut" }, 28.75);
+    tl.to("#line-g", { attr: { x1: 413.8, y1: 938.8, x2: 388.1, y2: 990.3 }, strokeWidth: 10.18, duration: 0.5, ease: "power3.inOut" }, 28.75);
+    tl.to("#v-dot", { opacity: 0, scale: 0.2, duration: 0.3, ease: "power2.in" }, 28.75);
+    tl.fromTo("#logo", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 29.07);
+    tl.fromTo("#cta", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 29.4);
+    window.__timelines["stage"] = tl;
+  </script>
+</template>

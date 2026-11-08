@@ -86,6 +86,20 @@ def solo_screen(d, sw, sh, cap_h=110, cam="nass"):
             "screen": True, "sx": round((1080 - sw) / 2), "sy": round(g + 14), "sw": sw, "sh": sh}
 
 
+def screen_only(sw, sh, kw_h=300, cap_h=110, hook=180):
+    """Écran seul (scène où l'invité partage son écran en plein cadre, aucune caméra exploitable) : zone des mots clés en
+    haut (kw_h), puis la bande entre les droites avec l'écran et les sous-titres, mêmes écarts e. Les caméras sont
+    cachées ("solo": "none") ; les coutures se marquent par un léger punch sur l'écran (Comp.punch)."""
+    band = 14 + sh + 16 + cap_h * 1.25 + 14
+    e = (FH - kw_h - band) / 3
+    g = e + kw_h + e
+    o = g + band
+    return {"g": (round(g), round(g)), "o": (round(o), round(o)), "nass": (540, 300, 400), "sadek": (540, 300, 400),
+            "cap": round(g + 14 + sh + 16 + cap_h * 1.25 / 2), "e": round(e), "solo": "none", "capscale": 1.25,
+            "screen": True, "sx": round((1080 - sw) / 2), "sy": round(g + 14), "sw": sw, "sh": sh,
+            "kw_top": round(e), "kw_h": kw_h, "hook": round(e + (kw_h - hook) / 2)}
+
+
 def base_states():
     return {
         "H": sym("nass", 620, 620, band_mult=3, hook=200),   # accroche : les deux à 620, bande de 3e pour deux lignes de titre
@@ -156,6 +170,14 @@ class Comp:
         """attrs : attributs HTML en plus (ex. 'data-layout-allow-overlap' quand deux mots clés partagent une zone sans être visibles ensemble)."""
         self.kws.append(dict(id=id_, html=html, css=css, t_in=t_in, t_out=t_out, anim=anim, attrs=attrs))
 
+    def punch(self, times, amount=1.05):
+        """Écran seul : à chaque instant donné, l'écran alterne entre 1 et `amount` d'échelle en 0,6 s (la couture se voit
+        sans caméra à basculer)."""
+        self.extra_js.append('tl.fromTo("#screen-body", { scale: 1, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.01 }, 0);')
+        for i, t in enumerate(times):
+            sc = amount if i % 2 == 0 else 1
+            self.extra_js.append(f'tl.to("#screen-body", {{ scale: {sc}, duration: {MOVE_DUR}, ease: "{E}" }}, {round(t - MOVE_DUR / 2, 3)});')
+
     # ---------- SFX ----------
     def _sfx_files(self):
         out = []
@@ -179,11 +201,11 @@ class Comp:
             t = self.fix.get((seg, w["w"].strip()), w["w"].strip())
             if not t:
                 continue
+            if any(seg == cs and a - 0.01 <= w["s"] < b for cs, a, b in self.cap_cuts):
+                continue
             if out and (t.startswith("'") or t.startswith("-") or t == "%"):
                 out[-1]["t"] += (" %" if t == "%" else t)
                 out[-1]["e"] = w["e"]
-                continue
-            if any(seg == cs and a - 0.01 <= w["s"] < b for cs, a, b in self.cap_cuts):
                 continue
             out.append({"t": t, "s": w["s"], "e": w["e"]})
         return out
@@ -217,7 +239,8 @@ class Comp:
         for cam in ("nass", "sadek"):
             x, y, sc = self.med_tf(cam, "H")
             js.append(f'tl.fromTo("#wrap-{cam}", {{ x: {x}, y: {y}, scale: {sc} }}, {{ x: {x}, y: {y}, scale: {sc}, duration: 0.01 }}, 0);')
-            js.append(f'tl.fromTo("#stage-{cam}", {{ opacity: 1 }}, {{ opacity: 1, duration: 0.01 }}, 0);')
+            v0 = 1 if H0.get("solo") in (None, cam) else 0
+            js.append(f'tl.fromTo("#stage-{cam}", {{ opacity: {v0} }}, {{ opacity: {v0}, duration: 0.01 }}, 0);')
         for t, cam in self.z_front:
             other = "sadek" if cam == "nass" else "nass"
             if t == 0:
@@ -247,7 +270,7 @@ class Comp:
         if self.screen_windows:   # opacité sur un enfant, jamais sur un .clip ; une base à 0 puis des .to (seek-safe)
             js.append('tl.fromTo("#screen-body", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);')
         for a, b in self.screen_windows:
-            js.append(f'tl.to("#screen-body", {{ opacity: 1, duration: 0.25, ease: "power2.out" }}, {round(a - 0.05, 3)});')
+            js.append(f'tl.to("#screen-body", {{ opacity: 1, duration: 0.25, ease: "power2.out" }}, {round(max(a - 0.05, 0.01), 3)});')
             js.append(f'tl.to("#screen-body", {{ opacity: 0, duration: 0.3, ease: "power2.in" }}, {round(b, 3)});')
         for k in self.kws:
             if k["anim"] == "pop":
@@ -329,7 +352,7 @@ class Comp:
   </style>
   <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
     <div id="screen">
-      <div id="screen-body" style="opacity:0">
+      <div id="screen-body" style="opacity:0" data-layout-allow-overflow>
           {screen_vids}
       </div>
     </div>

@@ -1,0 +1,111 @@
+{
+ "short": "26 — Changement de structure, c'est ultra simple (Convergence EP.01)",
+ "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   68,
+   704,
+   264,
+   264
+  ],
+  "sadek": [
+   1582,
+   698,
+   270,
+   270
+  ]
+ },
+ "scene": "sadek-plein-ecran : pas de caméra exploitable, écran seul",
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 1355.82,
+   "b": 1360.06,
+   "text": "pour ceux qui ne savent pas, c'est ultra simple, on ne va pas se cacher derrière des mots compliqués."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 1360.64,
+   "b": 1363.7,
+   "text": "Vous avez votre actif qui fait des plus hauts de plus en plus hauts."
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 1363.88,
+   "b": 1367.3,
+   "text": "Là, j'ai un haut. Là, j'ai un deuxième haut. Là, j'ai un troisième haut."
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 1367.84,
+   "b": 1371.04,
+   "text": "Une fois qu'on inverse la tendance, vous voyez ici,"
+  },
+  {
+   "id": "s5",
+   "speaker": "sadek",
+   "a": 1371.24,
+   "b": 1374.58,
+   "text": "le problème, c'est que les gens vont voir des market structure shift alors qu'ils ne sont pas avérés."
+  },
+  {
+   "id": "s6",
+   "speaker": "sadek",
+   "a": 1374.86,
+   "b": 1377.24,
+   "text": "Le market structure shift s'avère par le bas."
+  },
+  {
+   "id": "s7",
+   "speaker": "sadek",
+   "a": 1377.56,
+   "b": 1380.46,
+   "text": "Donc, il est fait ici avec des bas de plus en plus bas."
+  },
+  {
+   "id": "s8",
+   "speaker": "sadek",
+   "a": 1380.88,
+   "b": 1385.02,
+   "text": "Vous voyez, là, on avait ce qu'on appelle classiquement un support."
+  },
+  {
+   "id": "s9",
+   "speaker": "sadek",
+   "a": 1385.52,
+   "b": 1389.36,
+   "text": "Votre support a pété. Qu'est-ce qui se passe derrière ? Chute des ténèbres."
+  }
+ ],
+ "screen": {
+  "crop": [
+   60,
+   140,
+   1600,
+   870
+  ],
+  "size": [
+   1000,
+   544
+  ],
+  "segments": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9"
+  ]
+ }
+}

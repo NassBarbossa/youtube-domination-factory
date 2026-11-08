@@ -1,0 +1,103 @@
+{
+ "short": "27 — C'est or contre dollar (Convergence EP.01)",
+ "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   68,
+   704,
+   264,
+   264
+  ],
+  "sadek": [
+   1582,
+   698,
+   270,
+   270
+  ]
+ },
+ "scene": "sadek-plein-ecran : pas de caméra exploitable, écran seul",
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 1434.86,
+   "b": 1439.22,
+   "text": "Beaucoup de gens oublient que c'est or contre dollar."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 1439.52,
+   "b": 1441.6,
+   "text": "Et donc, plus vous avez un DXY qui monte,"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 1446.34,
+   "b": 1450.82,
+   "text": "Plus vous allez avoir un dollar fort, plus vous allez avoir un or en baisse."
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 1452.78,
+   "b": 1455.68,
+   "text": "Et inversement, quand vous avez de la décorrélation entre les deux,"
+  },
+  {
+   "id": "s5",
+   "speaker": "sadek",
+   "a": 1455.76,
+   "b": 1459.88,
+   "text": "c'est-à-dire que les deux vont aller dans le même mouvement puisque l'un interagit avec l'autre,"
+  },
+  {
+   "id": "s6",
+   "speaker": "sadek",
+   "a": 1460.4,
+   "b": 1463.82,
+   "text": "c'est que vous avez un retournement qui peut être très violent sur l'or."
+  },
+  {
+   "id": "s7",
+   "speaker": "sadek",
+   "a": 1464.24,
+   "b": 1468.34,
+   "text": "En général, si vous avez un DXY qui monte et un or qui monte en même temps,"
+  },
+  {
+   "id": "s8",
+   "speaker": "sadek",
+   "a": 1471.92,
+   "b": 1473.6,
+   "text": "la décorrélation va être positive pour l'actif."
+  }
+ ],
+ "screen": {
+  "crop": [
+   60,
+   140,
+   1600,
+   870
+  ],
+  "size": [
+   1000,
+   544
+  ],
+  "segments": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8"
+  ]
+ }
+}

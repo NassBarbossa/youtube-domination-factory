@@ -1,0 +1,87 @@
+{
+ "short": "29 — Le gap du week-end (Convergence EP.01)",
+ "source": "~/Videos/NassRiviera/youtube/ZjNa7wxwFkM.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/ZjNa7wxwFkM-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   68,
+   704,
+   264,
+   264
+  ],
+  "sadek": [
+   1582,
+   698,
+   270,
+   270
+  ]
+ },
+ "scene": "sadek-plein-ecran : pas de caméra exploitable, écran seul",
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 1250.6,
+   "b": 1255.48,
+   "text": "Il faut savoir que les marchés sont ouverts à nous, traders particuliers, retail, etc."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 1256.14,
+   "b": 1260.52,
+   "text": "Le plancton du lundi au vendredi, mais le samedi-dimanche,"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 1260.84,
+   "b": 1269.12,
+   "text": "les institutions, les gros acteurs du marché, les raffineries, etc. continuent évidemment à échanger de l'or et donc le prix continue à fluctuer."
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 1269.7,
+   "b": 1275.16,
+   "text": "Et en fait, un gap de marché, c'est peut-être l'un des signaux les plus importants."
+  },
+  {
+   "id": "s5",
+   "speaker": "sadek",
+   "a": 1275.22,
+   "b": 1282.8,
+   "text": "Pourquoi est-ce que c'est un signal qui est ultra important ? Parce que les investisseurs ne sont plus capables de camoufler leurs intentions."
+  },
+  {
+   "id": "s6",
+   "speaker": "sadek",
+   "a": 1283.34,
+   "b": 1287.36,
+   "text": "Et donc, quand ils sont vendeurs, c'est vraiment vendeur."
+  }
+ ],
+ "screen": {
+  "crop": [
+   60,
+   140,
+   1600,
+   870
+  ],
+  "size": [
+   1000,
+   544
+  ],
+  "segments": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6"
+  ]
+ }
+}
