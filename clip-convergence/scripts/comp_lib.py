@@ -218,7 +218,7 @@ class Comp:
 
     def kwc(self, id_, html, color, t_in, t_out, size=92, top=None, anim="pop", attrs="", extra=""):
         """Mot clé centré dans la bande (zone ILL) : la forme la plus courante."""
-        top = ILL["top"] + 20 if top is None else top
+        top = ILL["top"] + 38 if top is None else top
         self.kw(id_, html, f"left: 0; right: 0; top: {top}px; text-align: center; color: {color}; font-size: {size}px; line-height: 1; {extra}",
                 t_in, t_out, anim, attrs)
 
