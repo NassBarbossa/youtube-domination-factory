@@ -97,7 +97,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 14 | La formation la plus aboutie que j'ai faite (09:17–09:48) | fait (2026-11-09) |
 | 15 | Que la paix soit sur vous (09:22–10:00) | fait (2026-11-09) |
 
-## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, thème `ydf` (`clip-convergence/projects/ja/`) | en cours
+## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, thème `ydf` (`clip-convergence/projects/ja/`) | **fait (2026-11-09)**
 
 | N° | Clip | Statut |
 |---|---|---|
