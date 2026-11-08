@@ -1,0 +1,46 @@
+{
+ "short": "F3-06 — Limité par le nombre d'opportunités (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 185.2,
+   "b": 191.92,
+   "text": "Concrètement, c'est quoi un échange centralisé ? Donc par exemple, OKX, ce qu'ils vont faire, c'est qu'ils vont choisir quels cryptos sont disponibles."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 192.12,
+   "b": 200.88,
+   "text": "Donc sur leur plateforme, c'est eux qui décident ce qu'ils mettent et également, ils s'occupent de mettre en relation les acheteurs et les vendeurs. Ils achètent la plateforme, elle s'occupe."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 201.1,
+   "b": 207.72,
+   "text": "Toi, tu veux vendre ? Tiens, je te donne ta crypto en échange, tes euros. Toi, tu veux acheter ? Je te donne de la crypto."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 209.0,
+   "b": 217.5,
+   "text": "Donc forcément, vu que c'est eux qui décident ce qu'ils mettent en place sur leur plateforme, quelles cryptos sont laissées sur leur plateforme, tu es limité par le nombre d'opportunités."
+  }
+ ]
+}
