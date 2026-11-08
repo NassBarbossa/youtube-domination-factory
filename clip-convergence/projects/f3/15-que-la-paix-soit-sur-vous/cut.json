@@ -1,0 +1,32 @@
+{
+ "short": "F3-15 — Que la paix soit sur vous (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 561.92,
+   "b": 571.18,
+   "text": "Normalement, c'est la fin. Peut -être, je ferai des petits bonus, des petits add -ons dans cette formation offerte. Mais voilà, un petit commentaire, un petit partage."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 588.2,
+   "b": 599.9,
+   "text": "donc voilà les gars c'était Nas j'espère vous revoir dans le groupe on pourra communiquer ensemble les commentaires j'y réponds évidemment je compte sur toi pour partager et surtout que la paix soit sur vous"
+  }
+ ]
+}

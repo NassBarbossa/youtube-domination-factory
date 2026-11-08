@@ -95,7 +95,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 12 | Vous avez deux choix (08:03–08:32) | fait (2026-11-09) |
 | 13 | Vous êtes un kiffeur ? C'est OK (08:33–08:55) | fait (2026-11-09) |
 | 14 | La formation la plus aboutie que j'ai faite (09:17–09:48) | fait (2026-11-09) |
-| 15 | Que la paix soit sur vous (09:22–10:00) | à faire |
+| 15 | Que la paix soit sur vous (09:22–10:00) | fait (2026-11-09) |
 
 ## « J'abandonne mon challenge crypto » `JjAoE4zb_R0` (7 min 07) — 15 clips, repérage à compléter | à faire
 ## Convergence EP.04 — « L'achat de la décennie sur le gold ? » `D0gALJr-y1o` (20 min, 60 i/s) — 15 clips | à faire
