@@ -1,0 +1,39 @@
+{
+ "short": "F3-02 — Plus important que l'investissement (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 15.02,
+   "b": 25.2,
+   "text": "Donc, première vidéo, gérer son capital les gars. Et franchement, c'est plus important que l'investissement, c'est les bases, les fondations de toute votre carrière d'investisseur."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 25.4,
+   "b": 34.8,
+   "text": "Et la deuxième chose, c'est investir intelligemment et au niveau de investir intelligemment, je vous ai partagé une méthode qui a fait ses preuves, le DCA."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 35.28,
+   "b": 46.68,
+   "text": "Après, pour les personnes qui veulent passer plus de temps, qui veulent faire plus de choses, il y a évidemment des choses meilleures à faire que le DCA, mais je vous ai montré que c'est vraiment facile à mettre en place."
+  }
+ ]
+}
