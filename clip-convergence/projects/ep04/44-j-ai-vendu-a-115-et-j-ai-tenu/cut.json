@@ -1,0 +1,55 @@
+{
+ "short": "44 — J'ai vendu à 115 et j'ai tenu (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 186.84,
+   "b": 195.4,
+   "text": "Pour rappel, ceux qui sont dans le canal Telegram, j'avais partagé que j'avais vendu à 115 dollars à peu près 80 % ou 70 % de mes soldes."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 269.54,
+   "b": 283.62,
+   "text": "Donc, 115, j'ai revendu là sur le bottom. Ça a continué. Je n'ai pas paniqué, j'ai tenu. Et donc là, maintenant, on est à quasiment 15, 20 % de là où j'ai vendu."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 287.1,
+   "b": 298.84,
+   "text": "là je pense que je vais quand même re -rentrer une partie de ce que j'ai vendu parce que comme j'ai dit moi je suis fondamentalement haussier sur le moyen terme sur les cryptos"
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}

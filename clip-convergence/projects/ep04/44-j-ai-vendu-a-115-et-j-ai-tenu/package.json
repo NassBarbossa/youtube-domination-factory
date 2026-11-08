@@ -1,0 +1,11 @@
+{
+  "name": "44-j-ai-vendu-a-115-et-j-ai-tenu",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.9.20 preview",
+    "check": "npx --yes hyperframes@0.9.20 check",
+    "render": "npx --yes hyperframes@0.9.20 render",
+    "publish": "npx --yes hyperframes@0.9.20 publish"
+  }
+}
