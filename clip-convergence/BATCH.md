@@ -122,7 +122,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | N° | Clip | Statut |
 |---|---|---|
 | 41 | Épisode spécial : tout seul (00:36–01:10) | fait (2026-11-09) |
-| 42 | Ce qui définit une tendance baissière (02:04–02:32) | à faire |
+| 42 | Ce qui définit une tendance baissière (02:04–02:32) | fait (2026-11-09) |
 | 43 | Le bottom parfait, c'est par chance (03:23–04:25) | à faire |
 | 44 | J'ai vendu à 115 et j'ai tenu (03:06–04:58) | à faire |
 | 45 | Milieu de zone ? On attend (06:25–06:59) | à faire |

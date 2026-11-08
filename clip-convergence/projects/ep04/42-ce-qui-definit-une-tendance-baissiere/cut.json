@@ -1,0 +1,55 @@
+{
+ "short": "42 — Ce qui définit une tendance baissière (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "à l'écran : rond caméra 330 px en bas à gauche",
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   67,
+   697,
+   264,
+   264
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 124.26,
+   "b": 128.54,
+   "text": "Et là, on est en train de marquer potentiellement un changement de structure."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 131.96,
+   "b": 142.2,
+   "text": "Mais en tout cas, on peut voir sommet là, creux là, sommet là. Donc, on a un début de tendance baissière en court terme, bien évidemment."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 143.02,
+   "b": 152.74,
+   "text": "rappelez -vous ce qui définit une tendance baissière c'est quand on a des sommets de plus en plus bas et des points bas de plus en plus bas"
+  }
+ ],
+ "screen": {
+  "crop": [
+   380,
+   160,
+   1216,
+   684
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
