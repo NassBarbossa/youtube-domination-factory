@@ -1,0 +1,39 @@
+{
+ "short": "F3-12 — Vous avez deux choix (Formation 3 « L'investissement on-chain »)",
+ "source": "~/Videos/NassRiviera/youtube/71HX4YUNrNs.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/71HX4YUNrNs-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 482.96,
+   "b": 491.22,
+   "text": "Donc voilà, c'est la fin de cette formation offerte les gars. Je pense que j'ai passé pas mal de temps à préparer. Je pense que je vous ai offert vraiment un joli truc."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 491.74,
+   "b": 504.22,
+   "text": "Et maintenant les gars, vous avez deux choix, tout simplement deux choix. Choix 1, soit vous n'avez pas beaucoup de temps à consacrer ou vous n'avez pas l'envie de prendre beaucoup de risques et juste vous investissez tous les mois."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 504.22,
+   "b": 512.36,
+   "text": "Et franchement, les gars, je vais vous le dire, vraiment comme j'ai dit, c'est mon cadeau que je fais à la France, mais c'est OK. Franchement, c'est OK."
+  }
+ ]
+}
