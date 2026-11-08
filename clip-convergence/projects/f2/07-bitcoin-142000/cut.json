@@ -1,0 +1,61 @@
+{
+ "short": "F2-07 — Est-ce que vous avez 142 000 € ? (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 219.04,
+   "b": 225.48,
+   "text": "et si tu avais mis dans le bitcoin évidemment j'étais obligé de le mettre sur les 10 dernières années"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 227.1,
+   "b": 233.14,
+   "text": "et bien tu aurais eu 12 000 euros investis pour 142 000 euros"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 233.14,
+   "b": 246.8,
+   "text": "et pour ceux qui sont de ma communauté et qui fassent de la crypto, posez -vous la question est -ce que avec toutes les années de crypto, est -ce que vous avez 142 000 euros dans votre portefeuille"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 246.8,
+   "b": 251.26,
+   "text": "si vous ne l'avez pas il suffisait de mettre 100 euros tous les mois"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
