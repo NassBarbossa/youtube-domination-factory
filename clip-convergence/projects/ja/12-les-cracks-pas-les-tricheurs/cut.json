@@ -1,0 +1,32 @@
+{
+ "short": "JA-12 — Les cracks, pas les tricheurs (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 329.82,
+   "b": 338.88,
+   "text": "évidemment je ne parle pas des devs qui farment je ne parle pas des scams, je ne parle pas de tout ça je ne parle pas des bundlers 7k topper toute la journée"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 338.88,
+   "b": 348.48,
+   "text": "je parle vraiment des cracks et il y en a, et je ne fais pas partie est -ce qu'un jour je ferai partie de cette ligue je ne sais pas, mais en tout cas c'est ce que j'aspire être"
+  }
+ ]
+}
