@@ -73,7 +73,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 13 | Le syndrome de l'objet brillant (07:35–08:16) | fait (2026-11-09) |
 | 14 | 9 ans focus crypto (08:22–08:54) | fait (2026-11-09) |
 | 15 | Vous êtes des fainéants (08:54–09:35) | fait (2026-11-09) |
-| 16 | Vous avez vidé ma batterie (09:36–09:58) | à faire |
+| 16 | Vous avez vidé ma batterie (09:36–09:58) | fait (2026-11-09) |
 | 17 | Le code + le permis = le karting (09:58–10:39) | à faire |
 | 18 | Mon cadeau à la France (10:42–11:04) | à faire |
 

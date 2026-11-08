@@ -1,0 +1,46 @@
+{
+ "short": "F2-16 — Vous avez vidé ma batterie (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 576.24,
+   "b": 581.94,
+   "text": "Et quatrième raison, parce que sur les réseaux, vous voyez que de la merde, on vous dit tout et n'importe quoi"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 581.94,
+   "b": 588.38,
+   "text": "c'est le scalping, c'est les trucs, c'est les machins et donc du coup vous passez pas à l'action"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 588.88,
+   "b": 592.52,
+   "text": "waouh vous avez vidé ma batterie, tranquille je vous dis que vous êtes des feignants"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 592.52,
+   "b": 598.94,
+   "text": "c'est pour votre bien, c'est pour vous réveiller vous ne pas viderez ma batterie de mon appareil photo comme ça"
+  }
+ ]
+}
