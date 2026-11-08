@@ -134,7 +134,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 51 | Acheter avant le listing (15:06–15:42) | fait (2026-11-09) |
 | 52 | T'étais sûr que ça allait monter ? (15:48–16:19) | fait (2026-11-09) |
 | 53 | Baissier ? Pas en investissement (16:34–17:03) | fait (2026-11-09) |
-| 54 | Faites attention (19:31–19:52) | à faire |
+| 54 | Faites attention (19:31–19:52) | fait (2026-11-09) |
 | 55 | Sans Sadek, vous êtes moins virulents (10:04–10:22) | à faire |
 
 ## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**) — 15 clips, en dernier | à faire

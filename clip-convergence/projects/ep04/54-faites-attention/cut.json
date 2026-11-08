@@ -1,0 +1,33 @@
+{
+ "short": "54 — Faites attention (Convergence EP.04)",
+ "source": "~/Videos/NassRiviera/youtube/D0gALJr-y1o.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/D0gALJr-y1o-words.json",
+ "raw_to_source": 0,
+ "scene": "plein cadre : fenêtre caméra, carré de 700 px sur le visage",
+ "prescale": 1.3,
+ "sharpen": false,
+ "crops": {
+  "nass": [
+   330,
+   110,
+   700,
+   700
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 1171.72,
+   "b": 1182.28,
+   "text": "donc ouais semaine difficile temps difficile trading je pense très difficile limité faites attention si vous connaissez pas ce que vous faites c'est très difficile de trader actuellement"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 1182.28,
+   "b": 1192.06,
+   "text": "investir je pense que le gold il est bien il est déjà en train de repartir j'attendrai aujourd'hui quand même il est déjà en train de repartir"
+  }
+ ]
+}
