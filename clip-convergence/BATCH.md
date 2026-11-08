@@ -52,7 +52,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 14 | 15 % pour le plaisir (07:15–07:37) | fait (2026-11-09) |
 | 15 | La règle 40 · 30 · 15 · 15 (07:42–08:21) | fait (2026-11-09) |
 | 16 | Augmente ta rentrée mensuelle (08:21–08:47) | fait (2026-11-09) |
-| 17 | Pas pour gagner de l'argent (08:56–09:19) | à faire |
+| 17 | Pas pour gagner de l'argent (08:56–09:19) | fait (2026-11-09) |
 
 ## Formation 2 — « Comment devenir riche » `FVajDtrHsPU` (11 min 10) — 15 clips, repérage à compléter | à faire
 ## Formation 3 — « L'investissement on-chain » `71HX4YUNrNs` (10 min) — 15 clips, repérage à compléter | à faire

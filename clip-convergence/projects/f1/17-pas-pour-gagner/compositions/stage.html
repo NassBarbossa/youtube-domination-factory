@@ -1,0 +1,109 @@
+<template>
+  <style>
+    @font-face { font-family: 'Syne'; src: url('assets/fonts/Syne.ttf') format('truetype'); font-weight: 400 800; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter.ttf') format('truetype'); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .panel { position: absolute; inset: 0; overflow: hidden; }
+    .wrap { position: absolute; left: 0; top: 0; border-radius: 50%; overflow: hidden; transform-origin: 0 0; }
+    #wrap-nass { width: 742px; height: 742px; }
+    .cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ring { position: absolute; inset: 0; border-radius: 50%; }
+    #ring-nass { box-shadow: inset 0 0 0 12px #FF6B35, 0 0 44px rgba(255,107,53,0.45); }
+    #ring-sadek { box-shadow: inset 0 0 0 12px #00E5FF, 0 0 44px rgba(0,229,255,0.40); }
+    #lines { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+    #lines line { stroke-width: 12; stroke-linecap: round; }
+    #line-g { filter: drop-shadow(0 0 14px rgba(255,107,53,0.65)); } #line-o { filter: drop-shadow(0 0 14px rgba(0,229,255,0.55)); }
+    #hook { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; color: #FFFFFF; }
+    #hook .h1 { font: 800 64px/0.95 'Syne'; letter-spacing: -0.02em; }
+    #hook .h1 b { color: #FF6B35; font-weight: 800; }
+    #hook .h1 b.or { color: #00E5FF; }
+    
+    #screen { position: absolute; left: 60px; top: 1105px; width: 960px; height: 540px; overflow: hidden; }
+    #screen-body { position: absolute; inset: 0; }
+    #screen video { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .kw { position: absolute; font: 800 104px/1 'Syne'; letter-spacing: -0.03em; white-space: nowrap; color: #FFFFFF; }
+    #kw-perdre { left: 0; right: 0; top: 1218px; text-align: center; color: #FF4444; font-size: 67px; line-height: 1;  }
+    #kw-com { left: 0; right: 0; top: 1218px; text-align: center; color: #FFFFFF; font-size: 58px; line-height: 1;  }
+    #kw-geo { left: 0; right: 0; top: 1215px; text-align: center; color: #00E5FF; font-size: 43px; line-height: 1;  }
+    #kw-fin { left: 0; right: 0; top: 1305px; text-align: center; color: rgba(255,255,255,0.78); font-size: 38px; line-height: 1;  }
+    #ill { position: absolute; left: 90px; top: 1180px; width: 900px; height: 300px; }
+    .ill { position: absolute; inset: 0; opacity: 0; }
+    .ill svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .ink { fill: none; stroke: #FFFFFF; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+    
+    #logo { position: absolute; left: 90px; top: 930px; width: 900px; height: 69.1px; }
+    #cta { position: absolute; left: 0; right: 0; top: 1030px; text-align: center; }
+    #cta .kick { font: 800 30px 'Syne'; letter-spacing: 0.34em; text-transform: uppercase; color: #FF6B35; }
+    #cta .t { margin-top: 26px; font: 800 50px/1.1 'Syne'; color: #FFFFFF; letter-spacing: -0.01em; }
+  </style>
+  <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+    <div id="screen">
+      <div id="screen-body" style="opacity:0" data-layout-allow-overflow>
+          
+      </div>
+    </div>
+    <div id="stage-nass" class="panel">
+      <div id="wrap-nass" class="wrap">
+          <video id="nass-s1" class="clip cam" src="assets/video/nass_s1.mp4" muted playsinline data-start="0.0" data-duration="6.97" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s2" class="clip cam" src="assets/video/nass_s2.mp4" muted playsinline data-start="6.97" data-duration="4.1" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s3" class="clip cam" src="assets/video/nass_s3.mp4" muted playsinline data-start="11.07" data-duration="3.48" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s4" class="clip cam" src="assets/video/nass_s4.mp4" muted playsinline data-start="14.55" data-duration="8.18" data-media-start="0.3" data-track-index="1"></video>
+          <div id="ring-nass" class="ring"></div>
+      </div>
+    </div>
+
+    <div id="hook">
+      <div class="h1">PAS POUR GAGNER<br><b>DE L'ARGENT</b></div>
+    </div>
+
+    <div id="kw-perdre" class="kw" style="opacity:0" >POUR NE PAS<br>EN PERDRE</div>
+    <div id="kw-com" class="kw" style="opacity:0" >DIS-LE MOI<br>EN COMMENTAIRE</div>
+    <div id="kw-geo" class="kw" style="opacity:0" >LIBERTÉ GÉOGRAPHIQUE</div>
+    <div id="kw-fin" class="kw" style="opacity:0" >> LIBERTÉ FINANCIÈRE</div>
+
+    <div id="ill">
+      
+    </div>
+
+    
+    <svg id="lines" viewBox="0 0 1080 1920">
+      <line id="line-g" x1="-30" y1="1020" x2="1110" y2="1020" stroke="#FF6B35"/>
+      <line id="line-o" x1="-30" y1="1790" x2="1110" y2="1790" stroke="#00E5FF"/>
+      <circle id="v-dot" cx="540" cy="820" r="34" fill="#FFFFFF" opacity="0" style="transform-origin: 540px 820px"/>
+    </svg>
+
+    <div id="cta" style="opacity:0"><div class="kick">Formation offerte</div><div class="t">Les 3 vidéos<br>sur la chaîne</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#wrap-nass", { x: 160.0, y: 130.0, scale: 1.0243 }, { x: 160.0, y: 130.0, scale: 1.0243, duration: 0.01 }, 0);
+    tl.fromTo("#stage-nass", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+    tl.to("#line-g", { attr: { y1: 1160, y2: 1160 }, duration: 0.6, ease: "power3.inOut" }, 6.67);
+    tl.to("#line-o", { attr: { y1: 1790, y2: 1790 }, duration: 0.6, ease: "power3.inOut" }, 6.67);
+    tl.to("#wrap-nass", { x: 90.0, y: 130.0, scale: 1.2129, duration: 0.6, ease: "power3.inOut" }, 6.67);
+    tl.to("#stage-nass", { opacity: 1, duration: 0.42, ease: "power2.inOut" }, 6.85);
+    tl.to("#line-g", { attr: { y1: 1200, y2: 1200 }, duration: 0.6, ease: "power3.inOut" }, 10.77);
+    tl.to("#line-o", { attr: { y1: 1790, y2: 1790 }, duration: 0.6, ease: "power3.inOut" }, 10.77);
+    tl.to("#wrap-nass", { x: 70.0, y: 130.0, scale: 1.2668, duration: 0.6, ease: "power3.inOut" }, 10.77);
+    tl.to("#stage-nass", { opacity: 1, duration: 0.42, ease: "power2.inOut" }, 10.95);
+    tl.to("#line-g", { attr: { y1: 1160, y2: 1160 }, duration: 0.6, ease: "power3.inOut" }, 14.25);
+    tl.to("#line-o", { attr: { y1: 1790, y2: 1790 }, duration: 0.6, ease: "power3.inOut" }, 14.25);
+    tl.to("#wrap-nass", { x: 90.0, y: 130.0, scale: 1.2129, duration: 0.6, ease: "power3.inOut" }, 14.25);
+    tl.to("#stage-nass", { opacity: 1, duration: 0.42, ease: "power2.inOut" }, 14.43);
+    tl.fromTo("#hook", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+    tl.to("#hook", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 6.65);
+    tl.fromTo("#kw-perdre", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 9.435);
+    tl.to("#kw-perdre", { opacity: 0, duration: 0.25, ease: "power2.in" }, 10.765);
+    tl.fromTo("#kw-com", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 11.155);
+    tl.to("#kw-com", { opacity: 0, duration: 0.25, ease: "power2.in" }, 18.115);
+    tl.fromTo("#kw-geo", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 18.605);
+    tl.to("#kw-geo", { opacity: 0, duration: 0.25, ease: "power2.in" }, 23.18);
+    tl.fromTo("#kw-fin", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 21.685);
+    tl.to("#kw-fin", { opacity: 0, duration: 0.25, ease: "power2.in" }, 23.18);
+    tl.to(["#stage-nass", "#ill"], { opacity: 0, duration: 0.45, ease: "power2.in" }, 22.73);
+    tl.to("#line-g", { attr: { x1: 400, y1: 960, x2: 540, y2: 960 }, strokeWidth: 16, duration: 0.7, ease: "power3.inOut" }, 22.830000000000002);
+    tl.to("#line-o", { attr: { x1: 540, y1: 960, x2: 680, y2: 960 }, strokeWidth: 16, duration: 0.7, ease: "power3.inOut" }, 22.830000000000002);
+    tl.fromTo("#cta", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 23.580000000000002);
+    window.__timelines["stage"] = tl;
+  </script>
+</template>
