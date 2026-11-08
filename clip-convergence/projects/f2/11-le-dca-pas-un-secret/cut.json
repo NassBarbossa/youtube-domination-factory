@@ -1,0 +1,46 @@
+{
+ "short": "F2-11 — Le DCA, ce n'est pas un secret (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 384.64,
+   "b": 390.62,
+   "text": "Donc, cette méthode, les gars, elle s'appelle le DCA, le Dollar Cost Averaging."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 400.14,
+   "b": 403.82,
+   "text": "Investir tous les mois dans quelque chose qui prend de la valeur avec le temps."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 404.24,
+   "b": 410.4,
+   "text": "Et je n'ai même pas envie d'utiliser le concept marketing et de vous dire que c'est un secret, les gars."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 413.56,
+   "b": 417.78,
+   "text": "parce que ça serait une insulte tout simplement de vous dire que c'est un secret."
+  }
+ ]
+}

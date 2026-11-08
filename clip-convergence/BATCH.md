@@ -68,7 +68,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 08 | Est-ce qu'il fallait un master ? (04:22–04:49) | fait (2026-11-09) |
 | 09 | L'or, un truc de grand-père ? (05:03–05:32) | fait (2026-11-09) |
 | 10 | Imagine 200 € par mois (05:39–06:20) | fait (2026-11-09) |
-| 11 | Le DCA, ce n'est pas un secret (06:24–06:57) | à faire |
+| 11 | Le DCA, ce n'est pas un secret (06:24–06:57) | fait (2026-11-09) |
 | 12 | On le sait depuis 1949 (06:58–07:26) | à faire |
 | 13 | Le syndrome de l'objet brillant (07:35–08:16) | à faire |
 | 14 | 9 ans focus crypto (08:22–08:54) | à faire |
