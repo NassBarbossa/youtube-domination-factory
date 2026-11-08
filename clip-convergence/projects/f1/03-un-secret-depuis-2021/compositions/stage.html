@@ -1,0 +1,100 @@
+<template>
+  <style>
+    @font-face { font-family: 'Syne'; src: url('assets/fonts/Syne.ttf') format('truetype'); font-weight: 400 800; }
+    @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter.ttf') format('truetype'); font-weight: 100 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .panel { position: absolute; inset: 0; overflow: hidden; }
+    .wrap { position: absolute; left: 0; top: 0; border-radius: 50%; overflow: hidden; transform-origin: 0 0; }
+    #wrap-nass { width: 742px; height: 742px; }
+    .cam { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ring { position: absolute; inset: 0; border-radius: 50%; }
+    #ring-nass { box-shadow: inset 0 0 0 12px #FF6B35, 0 0 44px rgba(255,107,53,0.45); }
+    #ring-sadek { box-shadow: inset 0 0 0 12px #00E5FF, 0 0 44px rgba(0,229,255,0.40); }
+    #lines { position: absolute; inset: 0; width: 1080px; height: 1920px; overflow: visible; }
+    #lines line { stroke-width: 12; stroke-linecap: round; }
+    #line-g { filter: drop-shadow(0 0 14px rgba(255,107,53,0.65)); } #line-o { filter: drop-shadow(0 0 14px rgba(0,229,255,0.55)); }
+    #hook { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; color: #FFFFFF; }
+    #hook .h1 { font: 800 64px/0.95 'Syne'; letter-spacing: -0.02em; }
+    #hook .h1 b { color: #FF6B35; font-weight: 800; }
+    #hook .h1 b.or { color: #00E5FF; }
+    
+    #screen { position: absolute; left: 60px; top: 1105px; width: 960px; height: 540px; overflow: hidden; }
+    #screen-body { position: absolute; inset: 0; }
+    #screen video { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .kw { position: absolute; font: 800 104px/1 'Syne'; letter-spacing: -0.03em; white-space: nowrap; color: #FFFFFF; }
+    #kw-vie { left: 0; right: 0; top: 1200px; text-align: center; color: #00E5FF; font-size: 67px; line-height: 1;  }
+    #kw-avant { left: 0; right: 0; top: 1200px; text-align: center; color: #FFFFFF; font-size: 55px; line-height: 1;  }
+    #kw-chute { left: 0; right: 0; top: 1200px; text-align: center; color: #FF6B35; font-size: 67px; line-height: 1;  }
+    #ill { position: absolute; left: 90px; top: 1180px; width: 900px; height: 300px; }
+    .ill { position: absolute; inset: 0; opacity: 0; }
+    .ill svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .ink { fill: none; stroke: #FFFFFF; stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
+    
+    #logo { position: absolute; left: 90px; top: 930px; width: 900px; height: 69.1px; }
+    #cta { position: absolute; left: 0; right: 0; top: 1030px; text-align: center; }
+    #cta .kick { font: 800 30px 'Syne'; letter-spacing: 0.34em; text-transform: uppercase; color: #FF6B35; }
+    #cta .t { margin-top: 26px; font: 800 50px/1.1 'Syne'; color: #FFFFFF; letter-spacing: -0.01em; }
+  </style>
+  <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
+    <div id="screen">
+      <div id="screen-body" style="opacity:0" data-layout-allow-overflow>
+          
+      </div>
+    </div>
+    <div id="stage-nass" class="panel">
+      <div id="wrap-nass" class="wrap">
+          <video id="nass-s1" class="clip cam" src="assets/video/nass_s1.mp4" muted playsinline data-start="0.0" data-duration="7.36" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s2" class="clip cam" src="assets/video/nass_s2.mp4" muted playsinline data-start="7.36" data-duration="4.6" data-media-start="0.3" data-track-index="1"></video>
+          <video id="nass-s3" class="clip cam" src="assets/video/nass_s3.mp4" muted playsinline data-start="11.96" data-duration="11.48" data-media-start="0.3" data-track-index="1"></video>
+          <div id="ring-nass" class="ring"></div>
+      </div>
+    </div>
+
+    <div id="hook">
+      <div class="h1">UN SECRET<br><b>DEPUIS 2021</b></div>
+    </div>
+
+    <div id="kw-vie" class="kw" style="opacity:0" >IL VA CHANGER<br>VOTRE VIE</div>
+    <div id="kw-avant" class="kw" style="opacity:0" >AVANT D'ÊTRE<br>UN BON INVESTISSEUR</div>
+    <div id="kw-chute" class="kw" style="opacity:0" >SAVOIR GÉRER<br>SON CAPITAL</div>
+
+    <div id="ill">
+      
+    </div>
+
+    
+    <svg id="lines" viewBox="0 0 1080 1920">
+      <line id="line-g" x1="-30" y1="1020" x2="1110" y2="1020" stroke="#FF6B35"/>
+      <line id="line-o" x1="-30" y1="1790" x2="1110" y2="1790" stroke="#00E5FF"/>
+      <circle id="v-dot" cx="540" cy="820" r="34" fill="#FFFFFF" opacity="0" style="transform-origin: 540px 820px"/>
+    </svg>
+
+    <div id="cta" style="opacity:0"><div class="kick">Formation offerte</div><div class="t">Les 3 vidéos<br>sur la chaîne</div></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#wrap-nass", { x: 160.0, y: 130.0, scale: 1.0243 }, { x: 160.0, y: 130.0, scale: 1.0243, duration: 0.01 }, 0);
+    tl.fromTo("#stage-nass", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+    tl.to("#line-g", { attr: { y1: 1160, y2: 1160 }, duration: 0.6, ease: "power3.inOut" }, 7.06);
+    tl.to("#line-o", { attr: { y1: 1790, y2: 1790 }, duration: 0.6, ease: "power3.inOut" }, 7.06);
+    tl.to("#wrap-nass", { x: 90.0, y: 130.0, scale: 1.2129, duration: 0.6, ease: "power3.inOut" }, 7.06);
+    tl.to("#stage-nass", { opacity: 1, duration: 0.42, ease: "power2.inOut" }, 7.24);
+    tl.to("#line-g", { attr: { y1: 1200, y2: 1200 }, duration: 0.6, ease: "power3.inOut" }, 11.66);
+    tl.to("#line-o", { attr: { y1: 1790, y2: 1790 }, duration: 0.6, ease: "power3.inOut" }, 11.66);
+    tl.to("#wrap-nass", { x: 70.0, y: 130.0, scale: 1.2668, duration: 0.6, ease: "power3.inOut" }, 11.66);
+    tl.to("#stage-nass", { opacity: 1, duration: 0.42, ease: "power2.inOut" }, 11.84);
+    tl.fromTo("#hook", { opacity: 1 }, { opacity: 1, duration: 0.01 }, 0);
+    tl.to("#hook", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 7.04);
+    tl.fromTo("#kw-vie", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 10.475);
+    tl.to("#kw-vie", { opacity: 0, duration: 0.25, ease: "power2.in" }, 14.96);
+    tl.fromTo("#kw-avant", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 18.705);
+    tl.to("#kw-avant", { opacity: 0, duration: 0.25, ease: "power2.in" }, 21.885);
+    tl.fromTo("#kw-chute", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 21.925);
+    tl.to("#kw-chute", { opacity: 0, duration: 0.25, ease: "power2.in" }, 23.89);
+    tl.to(["#stage-nass", "#ill"], { opacity: 0, duration: 0.45, ease: "power2.in" }, 23.44);
+    tl.to("#line-g", { attr: { x1: 400, y1: 960, x2: 540, y2: 960 }, strokeWidth: 16, duration: 0.7, ease: "power3.inOut" }, 23.540000000000003);
+    tl.to("#line-o", { attr: { x1: 540, y1: 960, x2: 680, y2: 960 }, strokeWidth: 16, duration: 0.7, ease: "power3.inOut" }, 23.540000000000003);
+    tl.fromTo("#cta", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 24.290000000000003);
+    window.__timelines["stage"] = tl;
+  </script>
+</template>
