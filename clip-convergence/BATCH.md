@@ -108,7 +108,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 05 | Plus fort dans un marché facile (02:04–02:24) | fait (2026-11-09) |
 | 06 | Une pression supplémentaire (02:24–02:47) | fait (2026-11-09) |
 | 07 | Suis-je une fraude ? (02:47–03:12) | fait (2026-11-09) |
-| 08 | 97 % de perdants ? La vraie stat (03:13–03:49) | à faire |
+| 08 | 97 % de perdants ? La vraie stat (03:13–03:49) | fait (2026-11-09) |
 | 09 | La ligue des 80 % (03:49–04:10) | à faire |
 | 10 | Arrêtez, allez travailler (04:25–04:44) | à faire |
 | 11 | La ligue que j'aspire à être (04:58–05:29) | à faire |

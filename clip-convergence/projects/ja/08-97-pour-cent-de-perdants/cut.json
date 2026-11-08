@@ -1,0 +1,54 @@
+{
+ "short": "JA-08 — 97 % de perdants ? La vraie stat (J'abandonne mon challenge crypto)",
+ "source": "~/Videos/NassRiviera/youtube/JjAoE4zb_R0.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/JjAoE4zb_R0-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1688,
+   846,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 193.26,
+   "b": 202.22,
+   "text": "Donc, j'ai sorti une petite stat qui disait que, bon, on dit souvent que 97 % des traders, c'est des traders perdants et 3 % c'est des gagnants."
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 202.72,
+   "b": 213.3,
+   "text": "Est -ce que c'est vrai ? Est -ce que c'est faux ? Moi, j'ai trouvé un petit article avec une petite stat de novembre 2025 à août 2026, 74 % des traders c'était des perdants"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 213.3,
+   "b": 229.48,
+   "text": "donc il y a eu plus de 270 millions qui ont été perdus de dollars pendant cette partie là et voilà 74 % plus il fait les gars on va dire la fameuse loi de Pareto 80 % c'est des traders perdants 20 % c'est des traders gagnants"
+  }
+ ],
+ "screen": {
+  "crop": [
+   240,
+   60,
+   1440,
+   810
+  ],
+  "size": [
+   960,
+   540
+  ],
+  "segments": [
+   "s2"
+  ]
+ }
+}
