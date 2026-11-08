@@ -70,7 +70,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 10 | Imagine 200 € par mois (05:39–06:20) | fait (2026-11-09) |
 | 11 | Le DCA, ce n'est pas un secret (06:24–06:57) | fait (2026-11-09) |
 | 12 | On le sait depuis 1949 (06:58–07:26) | fait (2026-11-09) |
-| 13 | Le syndrome de l'objet brillant (07:35–08:16) | à faire |
+| 13 | Le syndrome de l'objet brillant (07:35–08:16) | fait (2026-11-09) |
 | 14 | 9 ans focus crypto (08:22–08:54) | à faire |
 | 15 | Vous êtes des fainéants (08:54–09:35) | à faire |
 | 16 | Vous avez vidé ma batterie (09:36–09:58) | à faire |

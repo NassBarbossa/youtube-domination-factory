@@ -1,0 +1,53 @@
+{
+ "short": "F2-13 — Le syndrome de l'objet brillant (Formation 2 « Comment devenir riche »)",
+ "source": "~/Videos/NassRiviera/youtube/FVajDtrHsPU.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/FVajDtrHsPU-words.json",
+ "raw_to_source": 0,
+ "prescale": 3.2,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   1640,
+   805,
+   232,
+   232
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 455.96,
+   "b": 462.58,
+   "text": "et là vous allez me dire mais Nass si c'était si simple pourquoi personne ne le fait en fait ? pourquoi on est tous pauvres"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 468.22,
+   "b": 475.24,
+   "text": "La première raison, je pense, c'est ce qu'on appelle le shiny object effect ou en français, le syndrome de l'objet brillant."
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 475.84,
+   "b": 484.18,
+   "text": "Concrètement, je vais faire de l'e -commerce. Ah non, ça ne marche pas. Je vais faire de l'IA. Ah non, ça ne marche pas. Je vais faire du trading. Ah non, ça ne marche pas. Je vais faire ça."
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 484.36,
+   "b": 492.22,
+   "text": "Et en fait, vous entendez plein de choses et vous ne restez pas focus sur une seule chose, à savoir juste investir 100 euros tous les mois."
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 495.02,
+   "b": 496.72,
+   "text": "Et donc, du coup, vous commencez, vous arrêtez."
+  }
+ ]
+}
