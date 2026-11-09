@@ -11,7 +11,7 @@ sys.path.insert(0, str(HERE.parents[2] / "scripts"))
 from comp_lib import Comp, ORANGE, CYAN, WHITE, RED_Y, MUTED, solo, solo_screen  # noqa: E402
 NO_CSS = ".no { position: relative; display: inline-block; padding: 0 10px; } .no::after { content: ''; position: absolute; left: 0; right: 0; top: 52%; height: 9px; background: " + RED_Y + "; border-radius: 5px; transform: translateY(-50%); box-shadow: 0 0 16px rgba(255,68,68,.6); }"
 
-c = Comp(HERE, 8, "« « C'est moi l'indien » »", cta="Les 3 vidéos<br>sur la chaîne", theme="ydf")
+c = Comp(HERE, 8, "« « C'est moi l'indien » »", cta="Les 3 vidéos<br>sur la chaîne", theme="ydf", end="outro")
 seams, find, S = c.seams, c.find, c.STATES
 E = seams + [c.END_T]  # E[i] = fin du morceau i+1
 S["H"] = solo("nass", 760)
@@ -28,5 +28,5 @@ c.kwc("kw-indien", "« C'EST MOI L'INDIEN,<br>QUI PEUT M'AIDER ? »", MUTED, t_i
 c.kwc("kw-chute", "TU TE FAIS<br>CAPTURER", WHITE, t_capt - 0.3, c.END_T + 0.45, size=88, anim="rise")
 SFX = [("sfx-pop-1", "pop", t_arn - 0.08, 0.26), ("sfx-whoosh-1", "whoosh-short", E[0] - 0.2, 0.3), ("sfx-pop-2", "pop", t_meth - 0.18, 0.3),
        ("sfx-pop-3", "pop", t_indien - 0.28, 0.24), ("sfx-whoosh-2", "whoosh", E[1] - 0.22, 0.26), ("sfx-pop-4", "pop", t_capt - 0.28, 0.3)]
-c.sfx = SFX + [("sfx-impact", "impact-bass-1", c.END_T + 0.70, 0.40)]
+c.sfx = SFX   # la fin « outro » ajoute ses propres sons
 c.build()
