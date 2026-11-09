@@ -1,0 +1,60 @@
+{
+ "short": "66 — Vendeur de formation = arnaqueur ? (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fullcam : deux grandes fenêtres caméra côte à côte",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "nass": [
+   36,
+   150,
+   464,
+   464
+  ],
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 2183.02,
+   "b": 2190.3,
+   "text": "même en 2026 c'est aussi mal vu les formations en France c'est vraiment symptomatique de la France"
+  },
+  {
+   "id": "s2",
+   "speaker": "nass",
+   "a": 2192.36,
+   "b": 2199.04,
+   "text": "quand t'es vendeur de formation t'es forcément un arnaqueur pour la plupart des français alors qu'effectivement il y a tout sur Youtube"
+  },
+  {
+   "id": "s3",
+   "speaker": "nass",
+   "a": 2207.6,
+   "b": 2219.58,
+   "text": "qu'il y a plein de gens qui ont des techniques différentes. Par exemple, moi, je vais être plutôt dans l'investissement et dans le trading on -chain. Sadek, lui, il va être plutôt dans le trading sur les marchés traditionnels. Qu'est -ce qui va plus vous plaire"
+  },
+  {
+   "id": "s4",
+   "speaker": "nass",
+   "a": 2241.62,
+   "b": 2247.78,
+   "text": "c'est plus simple si vous trouvez que la personne est légitime, donc ça après c'est à vous et de faire votre avis"
+  },
+  {
+   "id": "s5",
+   "speaker": "nass",
+   "a": 2247.78,
+   "b": 2252.28,
+   "text": "si la personne est légitime, c'est plus simple d'acheter une formation qui vous fera gagner du temps si vous n'avez pas l'habitude"
+  }
+ ]
+}
