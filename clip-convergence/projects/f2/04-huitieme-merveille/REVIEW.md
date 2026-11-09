@@ -1,12 +1,15 @@
-# REVIEW — Short F2-04 « La huitième merveille du monde » (Formation 2, v1 du 2026-11-09)
+# REVIEW — Short F2-04 « La huitième merveille du monde » (Formation 2, v2 du 2026-11-09 : outro)
 
 ## Choix
 - Série « tous les montages » du 2026-11-08, DA des slides de la formation (réponse de Nass du 2026-11-09 : « la DA des PDF
   montrés »). Sans validation par clip : à revoir en lot.
 
+- Outro v2 (demande de Nass du 2026-11-09 : « outro ultra banger, 3 s, sons HyperFrames, formation offerte sur Nassin Crypto ») :
+  la fin barre + CTA est remplacée par l'outro commune de comp_lib (`end="outro"`), même chorégraphie sur F1, F2, F3.
+
 ## Mesuré
 - check : 0 erreur, 1 `nested_media_start_basis_ambiguous`.
-- Rendu : 45.93 s, 1080 × 1920, 60 i/s, -14.3 LUFS, crête -1.0 dBTP, 17.4 Mo.
+- Rendu : 44.78 s, 1080 × 1920, 60 i/s, -14.2 LUFS, crête -1.0 dBTP, 20.3 Mo.
 
 ## Regardé seulement
 - Images à 0.8, 3.6, 12.46, 22.7, 31.94, 38.98, 41.17, 45.52 s (accroche, mots clés, chute, fin).
