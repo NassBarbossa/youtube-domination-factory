@@ -1,0 +1,40 @@
+{
+ "short": "68 — Vous êtes tous meilleurs que moi (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fin d'émission : la fenêtre de Nass montre son punk, Sadek seul à l'image",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 2470.04,
+   "b": 2477.0,
+   "text": "Dernière question, les gars. Ça ne sert à rien de poser des questions sur qu'est -ce qu'on pense de un tel ou un tel, les gars. Posez -nous des questions."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 2478.12,
+   "b": 2488.68,
+   "text": "Je ne vais jamais répondre parce que vous êtes tous des bons et moi, je suis là pour être le meilleur, donc je n'ai pas le temps de justement commencer à vous dire lui un tel c'est de la merde, un tel c'est pas bon"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 2489.48,
+   "b": 2493.16,
+   "text": "vous êtes tous meilleurs que moi, moi je suis là pour être meilleur que vous"
+  }
+ ]
+}
