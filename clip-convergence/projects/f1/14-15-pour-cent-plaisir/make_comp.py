@@ -10,7 +10,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2] / "scripts"))
 from comp_lib import Comp, ORANGE, CYAN, WHITE, RED_Y, MUTED, solo, solo_screen  # noqa: E402
 
-c = Comp(HERE, 14, "« 15 % pour le plaisir »", cta="Les 3 vidéos<br>sur la chaîne", theme="ydf")
+c = Comp(HERE, 14, "« 15 % pour le plaisir »", cta="Les 3 vidéos<br>sur la chaîne", theme="ydf", end="outro")
 seams, find, S = c.seams, c.find, c.STATES
 E = seams + [c.END_T]  # E[i] = fin du morceau i+1
 S["H"] = solo("nass", 760)
@@ -26,5 +26,5 @@ c.kwc("kw-chute", "SINON VOUS ALLEZ<br>CRAQUER", RED_Y, t_craquer - 0.4, c.END_T
 c.cap_cuts = [("s4", t_craquer - 0.3, 1e9)]; c.cap_end_before = [t_craquer - 0.2]
 SFX = [("sfx-whoosh-1", "whoosh-short", E[0] - 0.2, 0.3), ("sfx-pop-1", "pop", t_15 - 0.78, 0.26), ("sfx-whoosh-2", "whoosh", E[2] - 0.22, 0.26),
        ("sfx-pop-2", "pop", t_plaisir - 0.48, 0.28), ("sfx-pop-3", "pop", t_craquer - 0.38, 0.3)]
-c.sfx = SFX + [("sfx-impact", "impact-bass-1", c.END_T + 0.70, 0.40)]
+c.sfx = SFX   # la fin « outro » ajoute ses propres sons
 c.build()
