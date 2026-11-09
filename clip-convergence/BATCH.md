@@ -155,5 +155,5 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 67 | Le trading est un jeu de menteurs (40:13–41:06) | fait (2026-11-09) |
 | 68 | Vous êtes tous meilleurs que moi (41:10–41:33) | fait (2026-11-09) |
 | 69 | C'est quoi un carnet d'ordres ? (39:19–40:12) | fait (2026-11-09) |
-| 70 | Une bonne situation financière ? (44:41–45:00) | à faire |
+| 70 | Une bonne situation financière ? (44:41–45:00) | fait (2026-11-09) |
 

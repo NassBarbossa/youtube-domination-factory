@@ -1,0 +1,40 @@
+{
+ "short": "70 — Une bonne situation financière ? (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fin d'émission : la fenêtre de Nass montre son punk, Sadek seul à l'image",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "nass",
+   "a": 2681.4,
+   "b": 2687.26,
+   "text": "est -ce que c'est important pour commencer le trading il faut quand même avoir une bonne situation financière"
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 2687.26,
+   "b": 2692.2,
+   "text": "alors pour commencer le trading apprendre etc ta situation financière n'a rien à voir"
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 2692.2,
+   "b": 2700.74,
+   "text": "pour commencer à exercer le trading comme une activité que ce soit annexe ou principale oui il faut une bonne situation financière bien vrai"
+  }
+ ]
+}
