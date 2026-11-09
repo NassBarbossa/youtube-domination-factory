@@ -1,0 +1,47 @@
+{
+ "short": "67 — Le trading est un jeu de menteurs (Convergence EP.03)",
+ "source": "~/Videos/NassRiviera/youtube/PJaScgDfiMk.mp4",
+ "transcript": "~/youtube-domination-factory/context/transcripts/PJaScgDfiMk-words.json",
+ "raw_to_source": 0,
+ "scene": "fin d'émission : la fenêtre de Nass montre son punk, Sadek seul à l'image",
+ "prescale": 2.0,
+ "sharpen": true,
+ "crops": {
+  "sadek": [
+   524,
+   100,
+   468,
+   468
+  ]
+ },
+ "segments": [
+  {
+   "id": "s1",
+   "speaker": "sadek",
+   "a": 2413.22,
+   "b": 2418.84,
+   "text": "C'est intéressant d'avoir une compréhension du carnet d'ordre, c'est complètement suicidaire de se reposer que dessus."
+  },
+  {
+   "id": "s2",
+   "speaker": "sadek",
+   "a": 2440.56,
+   "b": 2446.44,
+   "text": "Donc, tous ceux qui vous disent le carnet d'ordre, le footprint, etc., sont des gens qui mentent."
+  },
+  {
+   "id": "s3",
+   "speaker": "sadek",
+   "a": 2446.82,
+   "b": 2455.12,
+   "text": "Moi, ce que je dis en trading, maîtrisez le maximum de concepts, utilisez -en le moins et ayez ce qu'on appelle de la convergence et de la confluence."
+  },
+  {
+   "id": "s4",
+   "speaker": "sadek",
+   "a": 2455.84,
+   "b": 2466.54,
+   "text": "Le trading est un jeu de menteur. Si vous avez trois menteurs qui disent la même chose sans se connaître, même s'ils mentent, ça sera la vérité. Et vous êtes là pour trouver la vérité."
+  }
+ ]
+}
