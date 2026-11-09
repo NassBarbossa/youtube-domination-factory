@@ -137,7 +137,7 @@ Statuts : **fait** (rendu + qa + SPEC/REVIEW + EPISODE) · **en cours** · à fa
 | 54 | Faites attention (19:31–19:52) | fait (2026-11-09) |
 | 55 | Sans Sadek, vous êtes moins virulents (10:04–10:22) | fait (2026-11-09) |
 
-## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**, seul le replay YouTube est sur ce Mac) — 15 clips, en dernier | en cours
+## Convergence EP.03 — « Or ou Bitcoin en 2026 » `PJaScgDfiMk` (45 min, **720p**, seul le replay YouTube est sur ce Mac) — 15 clips, en dernier | **fait (2026-11-09)**
 
 | N° | Clip | Statut |
 |---|---|---|

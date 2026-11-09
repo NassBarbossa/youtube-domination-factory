@@ -75,3 +75,13 @@ python {repo}/clip-convergence/scripts/qa_render.py <fichier.mp4> --duration <D>
 | Sur Mac, faster-whisper n'est pas installé | `qa_voice_mlx.py` (mlx-whisper, GPU) ; scripts OpenCV via `uv run --python 3.12 --with numpy,opencv-python` |
 | Une languette verte ou or sous un médaillon | l'étiquette gravée NASS / SADEK mord sur le bas du cercle : rayon du crop = haut de l'étiquette + 2 px − centre |
 | Le mot clé remplace un mot qui formait un groupe de sous-titres à lui seul | le groupe précédent reste affiché sous le mot clé (35 v5, « c'est mieux de » sous PATIENTER) | quand le groupe du mot clé est vidé, c'est le groupe précédent du même morceau qui s'efface avant le mot clé (`PAT_GI = gi - 1`) |
+
+## Série du 2026-11-09 (EP.03 depuis le replay YouTube 720p) : pièges rencontrés
+
+- **Le replay n'est pas le brut** : la mise en page du live change (ronds + TradingView, ronds + slide, fullcam, punk). Repérer les bascules à la frame (`ffmpeg -ss`) avant de couper ; un morceau ne traverse jamais une bascule (clip 62 : « ne faites pas cette erreur-là » tombait sur la bascule fullcam, retiré).
+- **Regarder les visages, pas seulement les coutures** : `face_track.py` donne la position médiane par morceau. Un visage à x ≈ 25 px sur un rond de 210 = la personne est hors de sa caméra (Nass penché vers son écran, 18:00–18:33 et 24:51–25:12). Réponse : écran seul (`screen_only`, même boîte d'écran que l'état solo si on alterne) ou l'autre caméra seule. Zéro visage détecté = fauteuil vide (Sadek, 29:28–31:15) : accroche et états solo de l'autre.
+- **Mots clés = états solo** (règle EP.01 retrouvée à la dure) : dans les états à deux caméras (N, S, E), la bande ne contient que les sous-titres ; un mot clé posé là tombe sur la caméra du bas (contraste 1,1:1 au check). Celui qui parle longtemps passe en SOLO_N / SOLO_S, retour aux deux caméras 1,3 s avant que l'autre parle.
+- **Punk** : à partir de 38:20 la fenêtre de Nass montre son avatar ; Sadek porte seul les clips (crops « punk », `solo("sadek", 760)` en accroche).
+- **Un rendu à la fois** : deux `hyperframes render` en parallèle (ou un rendu + des `step`) font échouer ffmpeg (`VIDEO_EXTRACTION_FAILED`, `Runtime.evaluate timed out`). Tuer les `preview --foreground` orphelins avant de relancer.
+- **Mot clé en fin de morceau** : s'il porte le dernier mot d'un morceau, il reste moins d'une seconde à l'écran (`line_unread`) ; le prolonger dans le morceau suivant jusqu'au mot clé d'après − 0,9 s.
+- **Transcription YouTube** : « rennes » pour « range », « mois » pour « moins », « la alt season », un « ? » parasite en tête de morceau : `c.fix` par segment, et `find` sur le token sans apostrophe (« or, » pour « l'or, », « indécision » pour « d'indécision »).
