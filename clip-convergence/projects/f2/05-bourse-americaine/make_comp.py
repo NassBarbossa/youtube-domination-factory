@@ -11,7 +11,7 @@ sys.path.insert(0, str(HERE.parents[2] / "scripts"))
 from comp_lib import Comp, ORANGE, CYAN, WHITE, RED_Y, MUTED, solo, solo_screen  # noqa: E402
 NO_CSS = ".no { position: relative; display: inline-block; padding: 0 10px; } .no::after { content: ''; position: absolute; left: 0; right: 0; top: 52%; height: 9px; background: " + RED_Y + "; border-radius: 5px; transform: translateY(-50%); box-shadow: 0 0 16px rgba(255,68,68,.6); }"
 
-c = Comp(HERE, 5, "« 100 € par mois dans la bourse américaine »", cta="Les 3 vidéos<br>sur la chaîne", theme="ydf")
+c = Comp(HERE, 5, "« 100 € par mois dans la bourse américaine »", cta="Les 3 vidéos<br>sur la chaîne", theme="ydf", end="outro")
 seams, find, S = c.seams, c.find, c.STATES
 E = seams + [c.END_T]  # E[i] = fin du morceau i+1
 S["H"] = solo("nass", 760)
@@ -27,5 +27,5 @@ c.kwc("kw-100", "100 € / MOIS<br>PENDANT 10 ANS", WHITE, E[0] + 0.3, t_verif -
 c.kwc("kw-verif", "TOUT EST<br>VÉRIFIABLE", CYAN, t_verif - 0.8, E[1] - 0.3, size=84)
 SFX = [("sfx-whoosh-1", "whoosh-short", E[0] - 0.2, 0.3), ("sfx-pop-1", "pop", E[0] + 0.32, 0.26), ("sfx-pop-2", "pop", t_verif - 0.78, 0.26),
        ("sfx-whoosh-2", "whoosh", E[1] - 0.22, 0.3)]
-c.sfx = SFX + [("sfx-impact", "impact-bass-1", c.END_T + 0.70, 0.40)]
+c.sfx = SFX   # la fin « outro » ajoute ses propres sons
 c.build()
