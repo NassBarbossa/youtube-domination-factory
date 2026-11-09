@@ -1,13 +1,16 @@
-# REVIEW — Short F1-17 « Pas pour gagner de l'argent » (Formation 1, v1 du 2026-11-09)
+# REVIEW — Short F1-17 « Pas pour gagner de l'argent » (Formation 1, v2 du 2026-11-09 : outro)
 
 ## Choix
 - Série « tous les montages » du 2026-11-08, DA des slides de la formation (réponse de Nass du 2026-11-09 : « la DA des PDF
   montrés »). Sans validation par clip : à revoir en lot.
 - « Mille fois » reste dans la voix ; la chute oppose les deux libertés, c'est sa thèse.
 
+- Outro v2 (demande de Nass du 2026-11-09 : « outro ultra banger, 3 s, sons HyperFrames, formation offerte sur Nassin Crypto ») :
+  la fin barre + CTA est remplacée par l'outro commune de comp_lib (`end="outro"`), même chorégraphie sur F1, F2, F3.
+
 ## Mesuré
 - check : 0 erreur, 1 `nested_media_start_basis_ambiguous`.
-- Rendu : 26.88 s, 1080 × 1920, 60 i/s, -14.3 LUFS, crête -1.5 dBTP, 11.6 Mo.
+- Rendu : 25.73 s, 1080 × 1920, 60 i/s, -14.1 LUFS, crête -1.1 dBTP, 12.4 Mo.
 
 ## Regardé seulement
 - Images à 0.8, 3.5, 9.0, 12.8, 18.6, 22.1, 26.5 s (accroche, mots clés, chute, fin).
