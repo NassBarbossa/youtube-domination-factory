@@ -68,7 +68,48 @@ SFX_KINDS = {
     "whoosh": ("whoosh-short", 0.62, "asetrate=48000*0.86,aresample=48000,"),   # whoosh grave
     "pop": ("pop", 0.40, ""),
     "impact-bass-1": ("impact-bass-1", 1.00, ""),
+    # sons de l'outro « formation offerte » (bibliothèque HyperFrames media-use, licence Pixabay)
+    "whoosh-cine": ("whoosh-cinematic", 1.70, "atrim=start=1.9,asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.08,"),   # la montée du souffle (1,9 → 3,6 s)
+    "impact-long": ("impact-bass-1", 1.50, "atrim=0:1.5,afade=t=out:st=0.9:d=0.6,"),                          # le coup de basse, queue de 0,6 s
+    "sparkle": ("sparkle", 1.50, "atrim=0:1.5,afade=t=out:st=1.1:d=0.4,"),
 }
+
+# Outro « formation offerte » (Nass, 2026-11-09) : 3 s après la voix, sons alignés sur les mouvements. t relatif à END_T.
+OUTRO_D = 3.0
+def outro_sfx(end_t):
+    return [("sfx-o-sweep", "whoosh-cine", end_t - 0.45, 0.45),     # le souffle monte sous la sortie des caméras, crête sur le slam
+            ("sfx-o-hit", "impact-long", end_t + 0.40, 0.50),       # FORMATION claque
+            ("sfx-o-hit2", "whoosh-short", end_t + 0.56, 0.32),     # OFFERTE
+            ("sfx-o-bar", "whoosh-short", end_t + 0.73, 0.24),      # la barre s'ouvre
+            ("sfx-o-pop", "pop", end_t + 0.94, 0.32),               # le badge
+            ("sfx-o-shine", "sparkle", end_t + 1.18, 0.28)]         # le reflet sur NASSIN CRYPTO
+
+
+OUTRO_HTML = """<div id="outro" data-layout-allow-overflow>
+      <div id="o-flash"></div>
+      <div id="o-wrap">
+        <div id="o-l1" class="o-slam" style="opacity:0">FORMATION</div>
+        <div id="o-l2" class="o-slam" style="opacity:0">OFFERTE</div>
+        <div id="o-sub" style="opacity:0">Retrouvez-la sur</div>
+        <div id="o-chanwrap"><div id="o-chan" style="opacity:0"><span class="o-play"><i></i></span><span class="o-name">NASSIN CRYPTO</span><div id="o-shine"></div></div></div>
+      </div>
+    </div>"""
+
+OUTRO_CSS = """#outro {{ position: absolute; inset: 0; }}
+    #o-flash {{ position: absolute; inset: 0; opacity: 0; background: radial-gradient(circle at 50% 46%, rgba(255,107,53,0.75), rgba(255,107,53,0) 62%); }}
+    #o-wrap {{ position: absolute; inset: 0; transform-origin: 50% 50%; }}
+    .o-slam {{ position: absolute; left: 0; right: 0; text-align: center; font: 800 96px/1 '{display}'; letter-spacing: -0.03em; color: {ink}; }}
+    #o-l1 {{ top: 716px; }}
+    #o-l2 {{ top: 826px; color: {orange}; text-shadow: 0 0 42px rgba(255,107,53,0.55); }}
+    #o-sub {{ position: absolute; left: 0; right: 0; top: 1058px; text-align: center; font: 600 46px/1 '{caption}'; color: {muted}; letter-spacing: 0.01em; }}
+    #o-chanwrap {{ position: absolute; left: 0; right: 0; top: 1124px; display: flex; justify-content: center; }}
+    #o-chan {{ position: relative; display: flex; align-items: center; gap: 22px; padding: 18px 36px 18px 22px; border-radius: 26px; overflow: hidden;
+               background: rgba(255,255,255,0.06); border: 3px solid rgba(255,107,53,0.55); }}
+    .o-play {{ width: 64px; height: 64px; border-radius: 18px; background: {orange}; display: flex; align-items: center; justify-content: center; flex: none; }}
+    .o-play i {{ display: block; width: 0; height: 0; border-style: solid; border-width: 15px 0 15px 24px; border-color: transparent transparent transparent #FFFFFF; margin-left: 6px; }}
+    .o-name {{ font: 800 52px/1 '{display}'; color: {ink}; letter-spacing: 0.01em; white-space: nowrap; }}
+    #o-shine {{ position: absolute; top: -40px; bottom: -40px; left: 0; width: 140px; pointer-events: none;
+                background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%); }}"""
 
 
 # ---------- états ---------- mise en page symétrique (Nass, 2026-11-07) : le même écart e au-dessus de la caméra du haut,
@@ -151,10 +192,13 @@ def base_states():
 
 
 class Comp:
-    def __init__(self, here, n_short, title, cta="Épisode 1 complet sur la chaîne", theme="convergence"):
+    def __init__(self, here, n_short, title, cta="Épisode 1 complet sur la chaîne", theme="convergence", end=None):
+        """end : fin du clip ; None = celle du thème (« v » Convergence, « bar » ydf), « outro » = outro formation offerte 3 s."""
         self.HERE = Path(here)
         self.n_short, self.title, self.cta = n_short, title, cta
         self.T = dict(THEMES[theme])
+        if end:
+            self.T["end"] = end
         self.cta_kick = self.T["cta_kick"]
         self.TL = TL = json.loads((self.HERE / "timeline.json").read_text(encoding="utf-8"))
         self.CUT = CUT = json.loads((self.HERE / "cut.json").read_text(encoding="utf-8"))
@@ -163,7 +207,7 @@ class Comp:
         self.K = TL["prescale"]
         self.VOICE_END = TL["duration_voice"]
         self.END_T = self.VOICE_END
-        self.D = round(self.END_T + 4.15, 2)   # le CTA reste >= 2 s ; pas de disclaimer à l'image (il va dans la légende)
+        self.D = round(self.END_T + (OUTRO_D if self.T["end"] == "outro" else 4.15), 2)   # le CTA reste >= 2 s ; pas de disclaimer à l'image (il va dans la légende)
         self.CROP = {cam: (c[2], c[3]) for cam, c in CUT["crops"].items()}
         self.VW = {cam: round(self.CROP[cam][0] * self.K / 2) * 2 for cam in self.CROP}   # côté du médaillon vidéo avant échelle CSS
         self.STATES = base_states()
@@ -276,6 +320,11 @@ class Comp:
         END_T, VOICE_END, D = self.END_T, self.VOICE_END, self.D
         seams = self.seams
         hook_fade = round(seams[0] - 0.32, 3) if self.hook_fade is None else round(self.hook_fade, 3)
+        if self.T["end"] == "outro":
+            self.sfx = list(self.sfx) + outro_sfx(END_T)
+            for k in self.kws:   # tout mot clé encore affiché s'efface avec les caméras
+                if k["t_out"] is None or k["t_out"] > END_T:
+                    k["t_out"] = END_T
         sfx = self._sfx_files()
         T, CAMS = self.T, list(self.CROP)
 
@@ -349,13 +398,42 @@ class Comp:
             f'tl.fromTo("#logo", {{ opacity: 0, filter: "blur(6px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }}, {END_T + 1.42});',
             f'tl.fromTo("#cta", {{ opacity: 0, filter: "blur(8px)" }}, {{ opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }}, {END_T + 1.75});',
           ]
-        else:   # « bar » : les deux droites se rejoignent en une courte barre orange / cyan, le CTA dessous
+        elif T["end"] == "bar":   # les deux droites se rejoignent en une courte barre orange / cyan, le CTA dessous
           BY = 960
           js += [
             f'tl.to({stages_js}, {{ opacity: 0, duration: 0.45, ease: "power2.in" }}, {END_T});',
             f'tl.to("#line-g", {{ attr: {{ x1: 400, y1: {BY}, x2: 540, y2: {BY} }}, strokeWidth: 16, duration: 0.7, ease: "{E}" }}, {END_T + 0.1});',
             f'tl.to("#line-o", {{ attr: {{ x1: 540, y1: {BY}, x2: 680, y2: {BY} }}, strokeWidth: 16, duration: 0.7, ease: "{E}" }}, {END_T + 0.1});',
             f'tl.fromTo("#cta", {{ opacity: 0, y: 24 }}, {{ opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }}, {END_T + 0.85});',
+          ]
+        else:   # « outro » : caméras soufflées, droites qui filent, FORMATION / OFFERTE qui claquent, barre, badge NASSIN CRYPTO
+          O = END_T
+          js += [
+            f'tl.to({stages_js[:-1]}, "#screen"], {{ opacity: 0, scale: 1.14, filter: "blur(12px)", duration: 0.34, ease: "power2.in" }}, {O});',
+            f'tl.to("#line-g", {{ attr: {{ x1: 1250, x2: 2390 }}, duration: 0.38, ease: "power3.in" }}, {O});',
+            f'tl.to("#line-o", {{ attr: {{ x1: -1340, x2: -200 }}, duration: 0.38, ease: "power3.in" }}, {O});',
+            # slam 1 : FORMATION, flash orange, secousse
+            f'tl.fromTo("#o-flash", {{ opacity: 0 }}, {{ opacity: 0.8, duration: 0.06, ease: "power1.out" }}, {O + 0.40});',
+            f'tl.to("#o-flash", {{ opacity: 0, duration: 0.5, ease: "power2.out" }}, {O + 0.46});',
+            f'tl.fromTo("#o-l1", {{ opacity: 0, scale: 1.75, filter: "blur(16px)" }}, {{ opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }}, {O + 0.40});',
+            f'tl.fromTo("#o-wrap", {{ x: 0, y: 0 }}, {{ x: -14, y: 8, duration: 0.05, ease: "none" }}, {O + 0.42});',
+            f'tl.to("#o-wrap", {{ x: 11, y: -6, duration: 0.05, ease: "none" }}, {O + 0.47});',
+            f'tl.to("#o-wrap", {{ x: -5, y: 3, duration: 0.05, ease: "none" }}, {O + 0.52});',
+            f'tl.to("#o-wrap", {{ x: 0, y: 0, duration: 0.08, ease: "power2.out" }}, {O + 0.57});',
+            # slam 2 : OFFERTE
+            f'tl.fromTo("#o-l2", {{ opacity: 0, scale: 1.6, filter: "blur(14px)" }}, {{ opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.28, ease: "expo.out" }}, {O + 0.58});',
+            f'tl.to("#o-wrap", {{ x: 8, y: -4, duration: 0.05, ease: "none" }}, {O + 0.66});',
+            f'tl.to("#o-wrap", {{ x: 0, y: 0, duration: 0.08, ease: "power2.out" }}, {O + 0.71});',
+            # la barre orange / cyan s'ouvre depuis le centre, « Retrouvez-la sur » monte
+            f'tl.set(["#line-g", "#line-o"], {{ attr: {{ x1: 540, x2: 540, y1: 1012, y2: 1012 }}, strokeWidth: 14 }}, {O + 0.74});',
+            f'tl.to("#line-g", {{ attr: {{ x1: 386, x2: 534 }}, duration: 0.34, ease: "expo.out" }}, {O + 0.75});',
+            f'tl.to("#line-o", {{ attr: {{ x1: 546, x2: 694 }}, duration: 0.34, ease: "expo.out" }}, {O + 0.75});',
+            f'tl.fromTo("#o-sub", {{ opacity: 0, y: 26 }}, {{ opacity: 1, y: 0, duration: 0.32, ease: "power3.out" }}, {O + 0.78});',
+            # le badge NASSIN CRYPTO saute en place, un reflet le traverse
+            f'tl.fromTo("#o-chan", {{ opacity: 0, scale: 0.55, y: 34 }}, {{ opacity: 1, scale: 1, y: 0, duration: 0.42, ease: "back.out(1.8)" }}, {O + 0.92});',
+            f'tl.fromTo("#o-shine", {{ x: -260, skewX: -18 }}, {{ x: 820, skewX: -18, duration: 0.55, ease: "power2.inOut" }}, {O + 1.2});',
+            # tenue : lente poussée pour ne pas figer
+            f'tl.fromTo("#o-wrap", {{ scale: 1 }}, {{ scale: 1.035, duration: {OUTRO_D - 1.0:.2f}, ease: "sine.inOut" }}, {O + 1.0});',
           ]
         js.append('window.__timelines["stage"] = tl;')
 
@@ -371,7 +449,9 @@ class Comp:
         logo_svg = (f'<svg id="logo" viewBox="-89 -89 21736 1669" style="opacity:0">{re.search(r"<path[^>]*/>", LOGO.read_text(encoding="utf-8")).group(0)}</svg>'
                     if T["end"] == "v" else "")
         cta_html = (f'<div id="cta" style="opacity:0">{self.cta}</div>' if T["end"] == "v"
-                    else f'<div id="cta" style="opacity:0"><div class="kick">{self.cta_kick}</div><div class="t">{self.cta}</div></div>')
+                    else f'<div id="cta" style="opacity:0"><div class="kick">{self.cta_kick}</div><div class="t">{self.cta}</div></div>' if T["end"] == "bar"
+                    else OUTRO_HTML)
+        outro_css = OUTRO_CSS.format(display=T["font_display"], caption=T["font_caption"], ink=T["ink"], orange=ORANGE, muted=MUTED) if T["end"] == "outro" else ""
         wrap_css = "\n    ".join(f'#wrap-{cam} {{ width: {self.VW[cam]}px; height: {self.VW[cam]}px; }}' for cam in CAMS)
         panels = "\n".join(f'''    <div id="stage-{cam}" class="panel">
       <div id="wrap-{cam}" class="wrap">
@@ -413,6 +493,7 @@ class Comp:
     {self.ill_css}
     #logo {{ position: absolute; left: {LX0}px; top: {LY0}px; width: {LOGO_W}px; height: {1669 * ls:.1f}px; }}
     {T["cta_css"]}
+    {outro_css}
   </style>
   <div id="root" data-composition-id="stage" data-width="1080" data-height="1920">
     <div id="screen">
